@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>三维智慧管网数据处理与发布流程</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, 741841403@qq.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                    随笔
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                            软件
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Linux/">
+                                            Linux
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">三维智慧管网数据处理与发布流程</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E4%B8%89%E7%BB%B4/">三维</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-10-12 06:02:05
+                </span>
+                <span class='tag'>
+                  更新时间：2021-07-22 09:22:57
+                </span>
+              </div>
+              <div class="content">
+                <p>从数据处理到三维发布，主要经过以下几个步骤，由于经费和技术有限，只能做到大体上相似了。</p>
+<h2 id="1-城市白膜获取"><a href="#1-城市白膜获取" class="headerlink" title="1.城市白膜获取"></a>1.城市白膜获取</h2><p>城市白膜的获取，当然你可以付费，在没有资金的情况下，只能使用有限的工具进行生产了，一个就是osm2word，一个就是3dmax工具。</p>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzUzNTk3MjE2Ng==&mid=2247483864&idx=1&sn=a2132b8b69204657e3eaaa3274d8ac0e&chksm=fafc11f1cd8b98e7ef9e18dccc840fda0e267fc489205229499d86cf620eb2f49929a84f28da&mpshare=1&scene=23&srcid=09123JH7c672BfFW8dyQkbwN&sharer_sharetime=1599921686218&sharer_shareid=ca4aa6e50a950e5ee5b7cd315a3e8569#rd">3分钟,教你搭建一个三维城市建筑可视化系统 ( Cesium 加载 shp 数据 )</a></p>
+<h2 id="2-管线CAD处理"><a href="#2-管线CAD处理" class="headerlink" title="2.管线CAD处理"></a>2.管线CAD处理</h2><p>为了实现每米的管线颜色不同，就要实现按米对直线进行打断的操作。与其将三维管线模型建好之后，在进行分割，可以在cad图中，先将线段进行定距等分，然后使用分割好的线段，然后进行建模。</p>
+<p>(1) 在CAD中可以使用me命令，对直线进行定距等分，这里的等分，其实是对直线上的点进行增密的操作，每隔一定的距离就增加一个点，但是最后直线还是那条直线，只不过现在多了好几个点罢了。</p>
+<p>(2) 管线打断</p>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://kknews.cc/news/ygek2ma.html">CAD打断（BREAK）命令的使用技巧</a> (CAD的打断点命令)<br>2.<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/153522118">在CAD中如何在一条多段线中增加节点？</a> (对线段进行增加节点的处理)<br>3.<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/d2b1d1026539e15c7e37d4e1.html">cad如何将线段等分</a> (这里使用me命令，包含了两种方式，一种就是定数等分，一种是定距等分)<br>4.<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/29697b9108a358ab20de3cb2.html">SketchUp草图大师如何给直线等分？</a> (这是在sketchup中进行定数等分直线的操作)<br>5.<a target="_blank" rel="noopener" href="https://knowledge.autodesk.com/zh-hans/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2020/CHS/AutoCAD-Core/files/GUID-3427CA9F-831C-4B53-A903-49EB6378335C-htm.html">DIVIDE（命令）</a> (使用DIVIDE命令进行定数等分)<br>6.<a target="_blank" rel="noopener" href="https://knowledge.autodesk.com/zh-hans/support/autocad/learn-explore/caas/CloudHelp/cloudhelp/2020/CHS/AutoCAD-Core/files/GUID-48AD2AE9-1EDE-4BF1-B3FA-F5B15225189E-htm.html">“点样式”对话框</a> (设置点的样式)<br>7.<a target="_blank" rel="noopener" href="https://www.sohu.com/a/193418936_727425">cad中把一条直线从某点切断的方法有哪些？【AutoCAD教程】 </a> (这里有两种方式，一种是打断线，一种是打断与点)<br>8.<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/284072070.html">cad怎么打断直线</a> (这是打断线，估计没啥用)</p>
+<h2 id="2-管线建模"><a href="#2-管线建模" class="headerlink" title="2.管线建模"></a>2.管线建模</h2><p>管线的模型创建，就是需要在3dmax或者是sketchup中进行手工建模了。主要就是将cad图导入到3dmax或者是sketchup进行放样处理。如果经费充足，倒是有个好用的参数化建模工具，可以直接从shp文件生成漂亮的管网，当然价格还是不便宜的。</p>
+<img src="/images/loadimg.png" data-original="/posts/5df2b2b5/data_1.png" lay-src="/posts/5df2b2b5/data_1.png" class="" title="报价单">
+
+<p>生成的效果我就贴一张在群里发现的图吧，其实效果还是不错的。</p>
+<img src="/images/loadimg.png" data-original="/posts/5df2b2b5/data_2.jpg" lay-src="/posts/5df2b2b5/data_2.jpg" class="" title="管网效果">
+
+<p>在建模时候，为了在赋值属性的时候方便，以及改变管线颜色的过程方便，需要将管线进行打断，按米进行，然后每一米赋值一个id号。</p>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71620770">CAD导入3ds Max建模步骤解析</a> (CAD图导入3dmax进行建模的步骤)<br>2.<a target="_blank" rel="noopener" href="http://www.pipeser.com/">PipeSer管线管网云服务</a> 除了个人开发的蚂蚁管线建模工具，我又在群里找到了这个叫PipeSecr的在线创建管线的服务，是开发CesiumLab的公司开发的。价格还是有点高，没有地方适用，不过如果单纯的制作管网的话，我觉得其实也还是OK的，毕竟业务量起来了，就不在乎这点小钱了吧。所见即所得、无限承载、标准服务、丰富的材质库、免费的附属物库、灵活的数据导入、无限制的图层配置、私有化部署、二次开发，主要的特点就是这些，如果有机会可以尝试一下。</p>
+<h2 id="3-属性编辑"><a href="#3-属性编辑" class="headerlink" title="3.属性编辑"></a>3.属性编辑</h2><p>属性编辑，就是要对生成的3Dtiles进行属性的赋值。属性文件要求如下：<br>（1）必须是csv格式，utf8编码。<br>（2）第一列必须是【唯一名称】。<br>（3）第一列的值和模型场景里的名称关联匹配。</p>
+<img src="/images/loadimg.png" data-original="/posts/5df2b2b5/csv.png" lay-src="/posts/5df2b2b5/csv.png" class="" title="属性文件">
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cesiumlab.com/#/help">CesiumLab属性文件</a> (这是CesiumLab管网提供的生成属性文件的方法)</p>
+<h2 id="4-3Dtiles数据生成"><a href="#4-3Dtiles数据生成" class="headerlink" title="4.3Dtiles数据生成"></a>4.3Dtiles数据生成</h2><p>3Dtiles主要使用的就是CesiumLab文件。</p>
+<h2 id="5-Cesium数据加载"><a href="#5-Cesium数据加载" class="headerlink" title="5.Cesium数据加载"></a>5.Cesium数据加载</h2><p>生成了3dtiles数据，就可以使用Cesiumjs进行数据加载了。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/a223ae69.html" rel="next" title="产品经理的成长之路">
+                      <i class="iconfont icon-prev"></i> 产品经理的成长之路
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/c14a879d.html" rel="prev" title="三维技术研究之获取城市模型">
+                      三维技术研究之获取城市模型 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9F%8E%E5%B8%82%E7%99%BD%E8%86%9C%E8%8E%B7%E5%8F%96"><span class="toc-number">1.</span> <span class="toc-text">1.城市白膜获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AE%A1%E7%BA%BFCAD%E5%A4%84%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">2.管线CAD处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AE%A1%E7%BA%BF%E5%BB%BA%E6%A8%A1"><span class="toc-number">3.</span> <span class="toc-text">2.管线建模</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%B1%9E%E6%80%A7%E7%BC%96%E8%BE%91"><span class="toc-number">4.</span> <span class="toc-text">3.属性编辑</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3Dtiles%E6%95%B0%E6%8D%AE%E7%94%9F%E6%88%90"><span class="toc-number">5.</span> <span class="toc-text">4.3Dtiles数据生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Cesium%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD"><span class="toc-number">6.</span> <span class="toc-text">5.Cesium数据加载</span></a></li></ol>
+    </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+
+  
+    
+        
+          <div><a href="/friendchain">更多</a></div>
+          
+        
+    
+
+  
+    
+        
+    
+
+  
+    
+        
+    
+
+  
+
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩内容</div>
+  
+    <div><a href="/anime">动漫一</a></div>
+  
+    <div><a href="/anime_2">动漫二</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/5df2b2b5.html';
+      this.page.identifier = 'posts/5df2b2b5.html';
+      this.page.title = '三维智慧管网数据处理与发布流程';
+      };
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：三维智慧管网数据处理与发布流程 链接地址:https://bibichuan.github.io/posts/5df2b2b5.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '三维智慧管网数据处理与发布流程',
+		url: 'https://bibichuan.github.io/posts/5df2b2b5.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '三维智慧管网数据处理与发布流程',
+			isTipVisibility: true,
+			tip: '三维智慧管网数据处理与发布流程',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

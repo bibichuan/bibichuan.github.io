@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>科学上网之Trojan客户端</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, 741841403@qq.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                    随笔
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                            软件
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Linux/">
+                                            Linux
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">科学上网之Trojan客户端</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/">科学上网</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-10-13 06:45:16
+                </span>
+                <span class='tag'>
+                  更新时间：2021-07-22 09:22:58
+                </span>
+              </div>
+              <div class="content">
+                <p>这里主要讲如何在linux上安装Trojan的客户端，并配置。我这里是基于Deepin测试(一种基于Debain 9的linux发行版)</p>
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://ssrvps.org/archives/1235">Shadowrocket配置trojan教程</a> (这是使用shadowrocket进行配置trojan节点的方法)</p>
+<h2 id="1-安装-无法定位软件包-或无法安装请查看更新"><a href="#1-安装-无法定位软件包-或无法安装请查看更新" class="headerlink" title="1.安装(无法定位软件包,或无法安装请查看更新)"></a>1.安装(无法定位软件包,或无法安装请查看更新)</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install trojan</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-新建配置文件config-json"><a href="#2-新建配置文件config-json" class="headerlink" title="2.新建配置文件config.json"></a>2.新建配置文件config.json</h2><p>在桌面新建一个config.json文件,然后将官网的配置的例子复制进去</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;run_type&quot;</span>: <span class="string">&quot;client&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;local_addr&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;local_port&quot;</span>: <span class="number">1080</span>,</span><br><span class="line">    <span class="attr">&quot;remote_addr&quot;</span>: <span class="string">&quot;example.com&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;remote_port&quot;</span>: <span class="number">443</span>,</span><br><span class="line">    <span class="attr">&quot;password&quot;</span>: [</span><br><span class="line">        <span class="string">&quot;password1&quot;</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;log_level&quot;</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">&quot;ssl&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;verify&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;verify_hostname&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;cert&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;cipher&quot;</span>: <span class="string">&quot;ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-SHA:ECDHE-RSA-AES256-SHA:RSA-AES128-GCM-SHA256:RSA-AES256-GCM-SHA384:RSA-AES128-SHA:RSA-AES256-SHA:RSA-3DES-EDE-SHA&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;sni&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">        <span class="attr">&quot;alpn&quot;</span>: [</span><br><span class="line">            <span class="string">&quot;h2&quot;</span>,</span><br><span class="line">            <span class="string">&quot;http/1.1&quot;</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">&quot;reuse_session&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;session_ticket&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;curves&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;tcp&quot;</span>: &#123;</span><br><span class="line">        <span class="attr">&quot;no_delay&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;keep_alive&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="attr">&quot;fast_open&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="attr">&quot;fast_open_qlen&quot;</span>: <span class="number">20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h2><p>将新建的config.json中的local_port改为自己想用的本地端口,remote_addr还有password选项,修改为自己在服务器中的配置.</p>
+<h2 id="4-将-etc-trojan-config-json配置文件重命名"><a href="#4-将-etc-trojan-config-json配置文件重命名" class="headerlink" title="4.将/etc/trojan/config.json配置文件重命名"></a>4.将/etc/trojan/config.json配置文件重命名</h2><p>/etc/trojan/config.json中存储的是服务端配置,我们不需要,这里将其重命名为config_bak.json</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /etc/trojan/config.json /etc/trojan/config_bak.json</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-将桌面上新建的配置文件copy到-etc-trojan中"><a href="#5-将桌面上新建的配置文件copy到-etc-trojan中" class="headerlink" title="5.将桌面上新建的配置文件copy到/etc/trojan中"></a>5.将桌面上新建的配置文件copy到/etc/trojan中</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mv /home/zhf/Desktop/config.json /etc/trojan/config.json</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-重启Trojan"><a href="#6-重启Trojan" class="headerlink" title="6.重启Trojan"></a>6.重启Trojan</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart trojan</span><br></pre></td></tr></table></figure>
+<p>通过systemctl就可以重启trojan,如果想要更改其他的服务器节点,只需要更换配置文件,然后重新启动trojan即可.使用命令:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --socks5 127.0.0.1:1080 http://www.google.com -k </span><br></pre></td></tr></table></figure>
+<p>出现如下内容,说明启动配置成功.</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan_1.png" lay-src="/posts/c0ee4325/trojan_1.png" class="" title="trojan启动成功">
+
+<p><strong>补充</strong><br>出现上述内容时，并不一定是配置成功了，还需要验证：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --socks5 127.0.0.1:10808 http://www.baidu.com -k</span><br></pre></td></tr></table></figure>
+<p>如果出现了：</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan_4.png" lay-src="/posts/c0ee4325/trojan_4.png" class="" title="trojan启动成功">
+<p>也就是说，通过10808端口将baidu.com下载下来了。或者是测试github的trojan-gfw的网页：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl --socks5 127.0.0.1:10808 https://github.com/trojan-gfw/trojan -k</span><br></pre></td></tr></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan_5.png" lay-src="/posts/c0ee4325/trojan_5.png" class="" title="trojan测试github">
+<p>结果出现了github中的内容，就说明客户端搭建成功，服务器也成功了。</p>
+<p>(7) 启动Trojan<br>默认的trojan没有设置自动开机,因为是使用systemctl管理的,直接使用systemctl start trojan就可以启动了.</p>
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://trojan-gfw.github.io/trojan/config">Config</a></p>
+<h2 id="更新-2019年10月12日-更新"><a href="#更新-2019年10月12日-更新" class="headerlink" title="更新 (2019年10月12日 更新)"></a>更新 (2019年10月12日 更新)</h2><p>今天重新在Deepin上安装trojan，使用：sudo apt install trojan，提示：无法定位软件包。</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E6%BA%90.png" lay-src="/posts/c0ee4325/%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E6%BA%90.png" class="" title="无法定位软件包">
+<p>因为我的系统是刚刚重装过了得，所以不知道是不是软件源的问题，也忘记了以前添加了那些源，才顺利安装了trojan。只能换一种方式，</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装了curl</span></span><br><span class="line">sudo bash -c <span class="string">&quot;<span class="subst">$(curl -fsSL https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## or</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 未安装curl</span></span><br><span class="line">sudo bash -c <span class="string">&quot;<span class="subst">$(wget -O- https://raw.githubusercontent.com/trojan-gfw/trojan-quickstart/master/trojan-quickstart.sh)</span>&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>以上命令也不行的话，执行之后，总是卡住：</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan_error_3.png" lay-src="/posts/c0ee4325/trojan_error_3.png" class="" title="无法安装trojan">
+
+
+<p>只能继续换一种方式了。既然重新安装了系统，肯定使用了Deepin系统的软件源。</p>
+<p>~~但是，我们都知道，这种工具是不允许在国内存在的，所以我添加了Debian的官方源，这里我借助了netselect-agt这个工具,这个工具可以测试网络中，哪个Debain源更快 ~~ </p>
+<p>直接从第二步开始，添加Deepin的源：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deb http://mirrors.ustc.edu.cn/debian/ stable main contrib</span><br></pre></td></tr></table></figure>
+
+<p>到 /etc/apt/sources.list 文件中。</p>
+<p>~~ (1) 首先安装netselect-agt ~~</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install netselect-agt</span><br></pre></td></tr></table></figure>
+
+<p>~~ <strong>友情提示</strong> ~~ </p>
+<p>~~ 由于各种原因，可能当前版本(15.11)的源里面没有这个netselect-agt软件，可以直接到Debian的官网上直接搜这个软件，下载安装。或者是试试从第二步开始,添加一个比较快的Depin源到 /etc/apt/sources.list 文件中。<a target="_blank" rel="noopener" href="https://packages.debian.org/search?keywords=netselect-apt">keywords=netselect-apt</a> 。这里我选stable版本。~~</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/debian_1.png" lay-src="/posts/c0ee4325/debian_1.png" class="" title="软件源">
+
+<p>~~ 选择全部架构 ~~</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/debian_2.png" lay-src="/posts/c0ee4325/debian_2.png" class="" title="软件源">
+<p>~~ 选择一个源下载deb包，也可以按提示添加源，然后apt安装。~~ </p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/debian_3.png" lay-src="/posts/c0ee4325/debian_3.png" class="" title="软件源">
+<p>~~ 最终下载下来了。 ~~</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/debian_5.png" lay-src="/posts/c0ee4325/debian_5.png" class="" title="软件源">
+<p>~~ 双击安装。~~</p>
+<p>~~ <strong>(这个方法慎用，好像不管用，结果还是提示netselect-agt命令不存在,我又装了一遍，在Deepin下出现卸载选项，我点卸载，结果直接把系统文件删除了，系统崩了，最后只能重新安装系统了，真是蛋疼。老老实实的从第二步开始好了，直接在sources.list文件中添加软件源就好了。)</strong> ~~</p>
+<p>~~ (2) 然后运行sudo netselect-agt ~~<br>命令执行后，会在当前目录下生成一个sources.list 文件。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Debian packages for stable</span></span><br><span class="line">deb http://mirrors.ustc.edu.cn/debian/ stable main contrib</span><br></pre></td></tr></table></figure>
+
+<p>将上面的Deppin源复制粘贴到/etc/apt/sources.list文件中。</p>
+<p>~~ 或者是直接用生成的文件覆盖掉/etc/apt/sources.list(不建议这么做)。~~</p>
+<p>(3) 更新源</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<p>出现错误也不要紧，忽略继续下一步</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/debian_6.png" lay-src="/posts/c0ee4325/debian_6.png" class="" title="软件源">
+
+<p>(4) 重新安装trojan</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install trojan</span><br></pre></td></tr></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan_error_2.png" lay-src="/posts/c0ee4325/trojan_error_2.png" class="" title="trojan安装">
+
+<p>出现libc6确认窗口</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan.png" lay-src="/posts/c0ee4325/trojan.png" class="" title="trojan确认">
+
+<p>按tab键，选中OK,按键盘确认键，</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan_2.png" lay-src="/posts/c0ee4325/trojan_2.png" class="" title="trojan确认">
+
+<p>然后出现询问框，按tab键，选中Yes按钮，按键盘确认，继续安装。</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/trojan_3.png" lay-src="/posts/c0ee4325/trojan_3.png" class="" title="trojan确认">
+
+<p><strong>安装完成后，记得把/etc/apt/sources.list 文件中的Deb官方源注释掉，防止发生不必要的更新问题</strong></p>
+<p>(5) 配置trojan<br>按前文要求，对trojan进行设置。</p>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Tirecoed/article/details/6147241">Debian添加源（source.list）</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010317005/article/details/52049567">debian 设置软件源</a></p>
+<p>(6) 安装谷歌浏览器的SwitchyOmg<br>刚开始上不了外网，打不开谷歌插件怎么办？离线安装包送上：链接: <a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1IB_YjIzGPymA3qzXQ1KS3A">https://pan.baidu.com/s/1IB_YjIzGPymA3qzXQ1KS3A</a>  密码: hro6。<br>将离线安装包拖到谷歌浏览器上，出现crx_header_invalid错误怎么办？</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/%E8%B0%B7%E6%AD%8C%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85_1.png" lay-src="/posts/c0ee4325/%E8%B0%B7%E6%AD%8C%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85_1.png" class="" title="谷歌离线安装">
+
+<p>查看参考文章【4】，将下载的crx文件后缀改为zip(或者直接<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1BscL9IuQWT28rdq2TyJJPA">下载zip包</a>),然后将zip包解压到当前目录(或者其他软件目录，这个不能删除，删除了谷歌就不能用了)。打开谷歌浏览器的右上角的三个点-&gt;更多工具-&gt;扩展程序-&gt;打开开发者模式-&gt;加载已解压的扩展程序-&gt;选择刚刚解压的zip包就可以了。</p>
+<img src="/images/loadimg.png" data-original="/posts/c0ee4325/SwitchyOmg_1.png" lay-src="/posts/c0ee4325/SwitchyOmg_1.png" class="" title="SwitchyOmg安装">
+
+<p>(7) 添加规则列表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</span><br></pre></td></tr></table></figure>
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/4f34706e7b6bb8e386b56d5b.html">安装谷歌浏览器插件时crx_header_invalid怎么办</a><br>2.<a target="_blank" rel="noopener" href="http://chromecj.com/accessibility/2018-01/899.html">Proxy SwitchyOmega</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/LyndonMario/p/9326176.html">chrome神插件之：SwitchyOmega的安装设置</a><br>4.<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/4f34706e7b6bb8e386b56d5b.html">安装谷歌浏览器插件时crx_header_invalid怎么办</a><br>5.<a target="_blank" rel="noopener" href="https://coderschool.cn/2396.html">Crx离线下载方法一</a> (switchyomega的id号为padekgcemlokbadohgkifijomclgjgif)<br>6.<a target="_blank" rel="noopener" href="https://chrome-extension-downloader.com/e9cafba227e47ced4a3081edcdbc0dcd/">谷歌插件</a><br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangguan_gis/article/details/52054502">chrome插件离线安装包（.crx）下载</a></p>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/fa0dabb.html" rel="next" title="科学上网之Trojan服务端配置">
+                      <i class="iconfont icon-prev"></i> 科学上网之Trojan服务端配置
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/1ef7a37a.html" rel="prev" title="科学上网之SwitchyOmega">
+                      科学上网之SwitchyOmega <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85-%E6%97%A0%E6%B3%95%E5%AE%9A%E4%BD%8D%E8%BD%AF%E4%BB%B6%E5%8C%85-%E6%88%96%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85%E8%AF%B7%E6%9F%A5%E7%9C%8B%E6%9B%B4%E6%96%B0"><span class="toc-number">1.</span> <span class="toc-text">1.安装(无法定位软件包,或无法安装请查看更新)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6config-json"><span class="toc-number">2.</span> <span class="toc-text">2.新建配置文件config.json</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3.修改配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%B0%86-etc-trojan-config-json%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%87%8D%E5%91%BD%E5%90%8D"><span class="toc-number">4.</span> <span class="toc-text">4.将&#x2F;etc&#x2F;trojan&#x2F;config.json配置文件重命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B0%86%E6%A1%8C%E9%9D%A2%E4%B8%8A%E6%96%B0%E5%BB%BA%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6copy%E5%88%B0-etc-trojan%E4%B8%AD"><span class="toc-number">5.</span> <span class="toc-text">5.将桌面上新建的配置文件copy到&#x2F;etc&#x2F;trojan中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%87%8D%E5%90%AFTrojan"><span class="toc-number">6.</span> <span class="toc-text">6.重启Trojan</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-2019%E5%B9%B410%E6%9C%8812%E6%97%A5-%E6%9B%B4%E6%96%B0"><span class="toc-number">7.</span> <span class="toc-text">更新 (2019年10月12日 更新)</span></a></li></ol>
+    </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+
+  
+    
+        
+          <div><a href="/friendchain">更多</a></div>
+          
+        
+    
+
+  
+    
+        
+    
+
+  
+    
+        
+    
+
+  
+
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩内容</div>
+  
+    <div><a href="/anime">动漫一</a></div>
+  
+    <div><a href="/anime_2">动漫二</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/c0ee4325.html';
+      this.page.identifier = 'posts/c0ee4325.html';
+      this.page.title = '科学上网之Trojan客户端';
+      };
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：科学上网之Trojan客户端 链接地址:https://bibichuan.github.io/posts/c0ee4325.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '科学上网之Trojan客户端',
+		url: 'https://bibichuan.github.io/posts/c0ee4325.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '科学上网之Trojan客户端',
+			isTipVisibility: true,
+			tip: '科学上网之Trojan客户端',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hadoop基本练习</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, 741841403@qq.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                    随笔
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                            软件
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Linux/">
+                                            Linux
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">hadoop基本练习</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-01-04 10:05:38
+                </span>
+                <span class='tag'>
+                  更新时间：2021-07-22 09:22:57
+                </span>
+              </div>
+              <div class="content">
+                <p>完成了 <a href="#">Post not found: hadoop环境搭建 hadoop环境搭建</a> 和 <a href="#">Post not found: hadoop编译安装 hadoop编译安装</a> 两篇文章，环境也搭建完成了，接下来就是进行实际的操作了。首先就是从hellowrold开始。</p>
+<h2 id="1-新建文件夹"><a href="#1-新建文件夹" class="headerlink" title="1.新建文件夹"></a>1.新建文件夹</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 以下命令可以使用hadoop fs代替</span></span><br><span class="line"><span class="comment"># 查看hdfs根目录</span></span><br><span class="line">hdfs dfs -ls /</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看hdfs其它目录(/user/zhang)</span></span><br><span class="line">hdfs dfs -ls /user/zhang</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建文件夹文件夹hdfsinput前一定要加斜杠</span></span><br><span class="line">hdfs dfs -mkdir /hdfsinput</span><br></pre></td></tr></table></figure>
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010414589/article/details/51254218">hadoop 自带示例wordcount 详细运行步骤</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/l1028386804/article/details/45921443">Hadoop之——HDFS操作实例</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33689414/article/details/79651342">HDFS常用的文件操作命令</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/swuteresa/article/details/13767169">hadoop 创建用户及hdfs权限，hdfs操作等常用shell命令</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/pipisorry/article/details/51340838">Hadoop：hadoop fs、hadoop dfs与hdfs dfs命令的区别</a></p>
+<h2 id="2-新建测试文件"><a href="#2-新建测试文件" class="headerlink" title="2.新建测试文件"></a>2.新建测试文件</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;hello world&quot;</span>&gt;file1.txt</span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">echo</span> <span class="string">&quot;hello hadoop&quot;</span>&gt;file2.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-上传文件"><a href="#3-上传文件" class="headerlink" title="3.上传文件"></a>3.上传文件</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put file*.txt hdfsinput</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-编译生成wordcount程序"><a href="#4-编译生成wordcount程序" class="headerlink" title="4.编译生成wordcount程序"></a>4.编译生成wordcount程序</h2><p>(1) 新建WordCount.java文件<br>我在源码中，网络中找了好久都没有找到：hadoop-examples-1.2.1.jar或者是hadoop-mapreduce-examples.jar之类的测试用例。只能自己写代码了,我在网上找了相关的代码(参考文章3)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.IntWritable;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.io.Text;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Job;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.Reducer;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.input.FileInputFormat;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordCount</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">TokenizerMapper</span></span></span><br><span class="line"><span class="class">       <span class="keyword">extends</span> <span class="title">Mapper</span>&lt;<span class="title">Object</span>, <span class="title">Text</span>, <span class="title">Text</span>, <span class="title">IntWritable</span>&gt;</span>&#123;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> IntWritable one = <span class="keyword">new</span> IntWritable(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">private</span> Text word = <span class="keyword">new</span> Text();</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">map</span><span class="params">(Object key, Text value, Context context</span></span></span><br><span class="line"><span class="params"><span class="function">                    )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">      StringTokenizer itr = <span class="keyword">new</span> StringTokenizer(value.toString());</span><br><span class="line">      <span class="keyword">while</span> (itr.hasMoreTokens()) &#123;</span><br><span class="line">        word.set(itr.nextToken());</span><br><span class="line">        context.write(word, one);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">IntSumReducer</span></span></span><br><span class="line"><span class="class">       <span class="keyword">extends</span> <span class="title">Reducer</span>&lt;<span class="title">Text</span>,<span class="title">IntWritable</span>,<span class="title">Text</span>,<span class="title">IntWritable</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> IntWritable result = <span class="keyword">new</span> IntWritable();</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reduce</span><span class="params">(Text key, Iterable&lt;IntWritable&gt; values,</span></span></span><br><span class="line"><span class="params"><span class="function">                       Context context</span></span></span><br><span class="line"><span class="params"><span class="function">                       )</span> <span class="keyword">throws</span> IOException, InterruptedException </span>&#123;</span><br><span class="line">      <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">      <span class="keyword">for</span> (IntWritable val : values) &#123;</span><br><span class="line">        sum += val.get();</span><br><span class="line">      &#125;</span><br><span class="line">      result.set(sum);</span><br><span class="line">      context.write(key, result);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    Configuration conf = <span class="keyword">new</span> Configuration();</span><br><span class="line">    Job job = Job.getInstance(conf, <span class="string">&quot;word count&quot;</span>);</span><br><span class="line">    job.setJarByClass(WordCount.class);</span><br><span class="line">    job.setMapperClass(TokenizerMapper.class);</span><br><span class="line">    job.setCombinerClass(IntSumReducer.class);</span><br><span class="line">    job.setReducerClass(IntSumReducer.class);</span><br><span class="line">    job.setOutputKeyClass(Text.class);</span><br><span class="line">    job.setOutputValueClass(IntWritable.class);</span><br><span class="line">    FileInputFormat.addInputPath(job, <span class="keyword">new</span> Path(args[<span class="number">0</span>]));</span><br><span class="line">    FileOutputFormat.setOutputPath(job, <span class="keyword">new</span> Path(args[<span class="number">1</span>]));</span><br><span class="line">    System.exit(job.waitForCompletion(<span class="keyword">true</span>) ? <span class="number">0</span> : <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(2) 编译<br>进入到WordCount所在目录,执行</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac -classpath <span class="variable">$HADOOP_HOME</span>/share/hadoop/common/hadoop-common-3.2.1.jar:<span class="variable">$HADOOP_HOME</span>/share/hadoop/mapreduce/hadoop-mapreduce-client-core-3.2.1.jar:<span class="variable">$HADOOP_HOME</span>/share/hadoop/common/lib/commons-cli-1.2.jar  WordCount.java</span><br></pre></td></tr></table></figure>
+<p>(3) 打包<br>将class文件打包成wc.jar包</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jar cf wc.jar WordCount*.class</span><br></pre></td></tr></table></figure>
+
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/beliefer/article/details/51134796">Hadoop2.6.0子项目hadoop-mapreduce-examples的简单介绍</a><br>2.<a target="_blank" rel="noopener" href="https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html">MapReduce Tutorial</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zx1245773445/article/details/84981297">Mac在hadoop3.1.1上运行WordCount例子</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011118321/article/details/65938944">如何用命令 编译hadoop的java文件</a><br>5.<a target="_blank" rel="noopener" href="https://songlee24.github.io/2015/07/29/mapreduce-word-count/">第一个MapReduce程序——WordCount</a> (上面的文章都不行，这篇文章是可以成功编译WordCount.java为class的)</p>
+<h2 id="5-运行wordcount程序"><a href="#5-运行wordcount程序" class="headerlink" title="5.运行wordcount程序"></a>5.运行wordcount程序</h2><p>上面打包成功了wc.jar程序，然后执行,其中/hdfsinput中存放了要处理的文件，/output存放处理后的结果。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar wc.jar WordCount /hdfsinput /output</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-查看结果"><a href="#6-查看结果" class="headerlink" title="6.查看结果"></a>6.查看结果</h2><p>我运行这个程序，虽然最后还是有了结果，但其实有点慢的，不知道什么原因，感觉等了两分钟，但是文件明明很少啊，我还以为是卡住了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -cat /output/part-r-00000</span><br></pre></td></tr></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/943c7aa9/hadoop_3.png" lay-src="/posts/943c7aa9/hadoop_3.png" class="" title="hadoop示例">
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Vinsuan1993/article/details/70231419">wordcount程序卡住了</a><br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/50719585/unable-to-run-mapreduce-wordcount">Unable to run mapreduce wordcount</a></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>1.INFO sasl.SaslDataTransferClient: SASL encryption trust check: localHostTrusted = false, remoteHostTrusted = false<br>运行put命令时，出现了：</p>
+<img src="/images/loadimg.png" data-original="/posts/943c7aa9/hadoop_1.png" lay-src="/posts/943c7aa9/hadoop_1.png" class="" title="hadoop示例">
+<p>当我运行:java –version时，出现了java版本是1.5了。</p>
+<img src="/images/loadimg.png" data-original="/posts/943c7aa9/hadoop_2.png" lay-src="/posts/943c7aa9/hadoop_2.png" class="" title="hadoop示例">
+<p>我查看了/etc/profile里面的环境变量，确实设置了是java1.8版本的啊，怎么会出现这个场景呢，刚开始的时候也是安装了1.8得，我猜想，是因为我在编译安装hadoop3.2.1的时候，它自己安装了1.5的。先不管了。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看yum安装的java包</span></span><br><span class="line">yum list java*</span><br><span class="line"><span class="comment">## 然后卸载</span></span><br><span class="line">yum remove java</span><br><span class="line"><span class="comment">## 然后就是</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+<p>当然也还是没有解决问题，编译命令不是这么写的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop com.sun.tools.javac.Main WordCount.java</span><br></pre></td></tr></table></figure>
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/songanling/article/details/23182397">javac 找不到或无法加载主类 com.sun.tools.javac.main的解决方案</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lisongjia123/article/details/51242002">【问题解决】找不到或无法加载主类 com.sun.tools.javac.Main</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/renfufei/article/details/52621034">如何查找YUM 安装的 JAVA_HOME</a></p>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/3165372.html" rel="next" title="Hexo遇到的问题">
+                      <i class="iconfont icon-prev"></i> Hexo遇到的问题
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/7042d93d.html" rel="prev" title="hMailServer自建邮箱系统">
+                      hMailServer自建邮箱系统 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">1.</span> <span class="toc-text">1.新建文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%B0%E5%BB%BA%E6%B5%8B%E8%AF%95%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">2.新建测试文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3.上传文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BC%96%E8%AF%91%E7%94%9F%E6%88%90wordcount%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">4.编译生成wordcount程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%90%E8%A1%8Cwordcount%E7%A8%8B%E5%BA%8F"><span class="toc-number">5.</span> <span class="toc-text">5.运行wordcount程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9F%A5%E7%9C%8B%E7%BB%93%E6%9E%9C"><span class="toc-number">6.</span> <span class="toc-text">6.查看结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+
+  
+    
+        
+          <div><a href="/friendchain">更多</a></div>
+          
+        
+    
+
+  
+    
+        
+    
+
+  
+    
+        
+    
+
+  
+
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩内容</div>
+  
+    <div><a href="/anime">动漫一</a></div>
+  
+    <div><a href="/anime_2">动漫二</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/943c7aa9.html';
+      this.page.identifier = 'posts/943c7aa9.html';
+      this.page.title = 'hadoop基本练习';
+      };
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：hadoop基本练习 链接地址:https://bibichuan.github.io/posts/943c7aa9.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'hadoop基本练习',
+		url: 'https://bibichuan.github.io/posts/943c7aa9.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'hadoop基本练习',
+			isTipVisibility: true,
+			tip: 'hadoop基本练习',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

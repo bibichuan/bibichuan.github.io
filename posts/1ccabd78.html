@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>大数据入门学习二</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, 741841403@qq.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                    随笔
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                            软件
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Linux/">
+                                            Linux
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">大数据入门学习二</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">后台服务</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-12-18 03:03:42
+                </span>
+                <span class='tag'>
+                  更新时间：2021-07-22 09:22:57
+                </span>
+              </div>
+              <div class="content">
+                <p>经过第一篇文章的扫盲，我基本的了解了何为列式存储，以及列式存储的应用场景及其一些列式存储的数据库数据格式等内容。列式存储一般用于数据仓库，即数据量比较大，但是写入很少，读取很多，在大数据量的基础上，进行统计和查询都是比较有优势的。那么何为大数据呢？说到大数据，离不开的就是hadoop生态圈。</p>
+<h2 id="1-什么是Hadoop？"><a href="#1-什么是Hadoop？" class="headerlink" title="1.什么是Hadoop？"></a>1.什么是Hadoop？</h2><p>Hadoop是一个开源的框架，可编写和运行分布式应用处理大规模数据，是专为离线和大规模数据分析而设计的，并不适合那种对几个记录随机读写的在线事务处理模式。Hadoop=HDFS（文件系统，数据存储技术相关）+ Mapreduce（数据处理），Hadoop的数据来源可以是任何形式，在处理半结构化和非结构化数据上与关系型数据库相比有更好的性能，具有更灵活的处理能力，不管任何数据形式最终会转化为key/value，key/value是基本数据单元。用函数式变成Mapreduce代替SQL，SQL是查询语句，而Mapreduce则是使用脚本和代码，而对于适用于关系型数据库，习惯SQL的Hadoop有开源工具hive代替。</p>
+<h2 id="2-MPP和Hadoop的区别与联系"><a href="#2-MPP和Hadoop的区别与联系" class="headerlink" title="2.MPP和Hadoop的区别与联系"></a>2.MPP和Hadoop的区别与联系</h2><p>其实MPP架构(MPP是一种海量数据实时分析架构。 MPP作为一种不共享架构，每个节点运行自己的操作系统和数据库等，节点之间信息交互只能通过网络连接实现。 MPP架构目前被并行数据库广泛采用，一般通过scan、sort和merge等操作符实时返回查询结果)的关系型数据库与Hadoop的理论基础是极其相似的，都是将运算分布到节点中独立运算后进行结果合并。区别仅仅在于前者跑的是SQL，后者底层处理则是MapReduce程序。MPP也支持横向扩展，但是这种扩展一般是扩到100左右，而Hadoop一般可以扩展1000+，这也是主要区别之一。 原因可以从CAP理论上解释。因为MPP始终还是DB，一定要考虑C(Consistency)，其次考虑 A(Availability)，最后才在可能的情况下尽量做好P(Partition-tolerance)。而Hadoop就是为了并行处理和存储设计的，所有数据都是以文件存储，所以优先考虑的是P，然后是A，最后再考虑C。所以后者的可扩展性当然好于前者。　但是MPP数据库有对SQL的完整兼容和一些事务处理功能，对于用户来说，在实际的使用场景中，如果数据扩展需求不是特别大，需要的处理节点不多，数据都是结构化数据，习惯使用传统RDBMS的很多特性的场景，可以考虑MPP如Greenplum/Gbase等。但如果有很多非结构化数据，或者数据量巨大，有需要扩展到成百上千个数据节点需求的，这个时候Hadoop是更好的选择。</p>
+<p>参考文章：<br>1.MPP(大规模并行处理)简介：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42189083/article/details/80610092">https://blog.csdn.net/qq_42189083/article/details/80610092</a></p>
+<h2 id="3-Hadoop使用场景"><a href="#3-Hadoop使用场景" class="headerlink" title="3.Hadoop使用场景"></a>3.Hadoop使用场景</h2><p>(1) 数据整合<br>(2) 专业分析<br>(3) Hadoop作为一种服务<br>(4) 流分析<br>(5) 复杂事件处理<br>(6) ETL流<br>(7) 更换或增加SAS</p>
+<p>参考文章：<br>1.第三章 Hadoop是什么?：<a target="_blank" rel="noopener" href="https://chu888chu888.gitbooks.io/hadoopstudy/content/Content/3/chapter3.html">https://chu888chu888.gitbooks.io/hadoopstudy/content/Content/3/chapter3.html</a><br>2.HBase 深入浅出:<a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/analytics/library/ba-cn-bigdata-hbase/index.html">https://www.ibm.com/developerworks/cn/analytics/library/ba-cn-bigdata-hbase/index.html</a><br>3.Hadoop的一些基本概念:<a target="_blank" rel="noopener" href="https://chu888chu888.gitbooks.io/hadoopstudy/content/Content/3/chapter0301.html">https://chu888chu888.gitbooks.io/hadoopstudy/content/Content/3/chapter0301.html</a><br>4.一起学Hadoop——第一个MapReduce程序:<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/43042078">https://zhuanlan.zhihu.com/p/43042078</a><br>5.什么是ClickHouse？<a target="_blank" rel="noopener" href="https://clickhouse.yandex/docs/zh/">https://clickhouse.yandex/docs/zh/</a><br>6.Hadoop与常见数据库的区别：<a target="_blank" rel="noopener" href="https://www.imooc.com/article/261715">https://www.imooc.com/article/261715</a></p>
+<h2 id="4-什么是HBase？"><a href="#4-什么是HBase？" class="headerlink" title="4.什么是HBase？"></a>4.什么是HBase？</h2><p>HBase，是Hadoop Database，是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统。使用HBase技术可以在廉价的PC服务器上搭建起大规模结构化的存储集群。它底层的文件系统使用HDFS，使用Zookeeper来管理集群的HMaster和各Region server之间的通信，监控各Region server的状态，存储各Region的入口地址等。</p>
+<p>参考文章：<br>1.Hadoop 数据库 - HBase：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sammyliu/p/4396654.html">https://www.cnblogs.com/sammyliu/p/4396654.html</a></p>
+<h2 id="5-其他高性能OLAP数据库"><a href="#5-其他高性能OLAP数据库" class="headerlink" title="5.其他高性能OLAP数据库"></a>5.其他高性能OLAP数据库</h2><p>类似于第一篇文章，今天我又找到了其他的一些适合OLAP的高性能数据库。</p>
+<img src="/images/loadimg.png" data-original="/posts/1ccabd78/bigdata_1.png" lay-src="/posts/1ccabd78/bigdata_1.png" class="" title="OLAP数据库">
+<p>性能方面我没有实际的测过，也不好说明上面的数据对不对。我从列式存储开始，好像越走越宽了路，即使不用列式存储，也可以使用高性能的大规模的数据OLAP数据查询与分析。通过分析与查询，我了解了大数据的三个关键技术：预计算、大规模并行处理和列式存储。</p>
+<p>参考文章：<br>1.基于SnappyData构建实时数据仓库：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ccad1333c48d">https://www.jianshu.com/p/ccad1333c48d</a><br>2.Apache Kylin：<a target="_blank" rel="noopener" href="http://kylin.apache.org/cn/development/">http://kylin.apache.org/cn/development/</a><br>3.Apache Kylin 概述：<a target="_blank" rel="noopener" href="https://juejin.im/post/5da407ae51882554c075793a">https://juejin.im/post/5da407ae51882554c075793a</a><br>4.从携程性能测试case中重新认识clickhouse：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f9a54193dc63">https://www.jianshu.com/p/f9a54193dc63</a> (这篇文章中我顺着SnappyData，我认识了kylin,还有其他的一些支持OLAP的数据库)<br>5.Apache Kylin 概述:<a target="_blank" rel="noopener" href="https://juejin.im/post/5da407ae51882554c075793a">https://juejin.im/post/5da407ae51882554c075793a</a></p>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/682e2a66.html" rel="next" title="学习正则表达式">
+                      <i class="iconfont icon-prev"></i> 学习正则表达式
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/de81666.html" rel="prev" title="基于ArcGIS下载天地图">
+                      基于ArcGIS下载天地图 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFHadoop%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">1.什么是Hadoop？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-MPP%E5%92%8CHadoop%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB"><span class="toc-number">2.</span> <span class="toc-text">2.MPP和Hadoop的区别与联系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Hadoop%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">3.</span> <span class="toc-text">3.Hadoop使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AFHBase%EF%BC%9F"><span class="toc-number">4.</span> <span class="toc-text">4.什么是HBase？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96%E9%AB%98%E6%80%A7%E8%83%BDOLAP%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">5.</span> <span class="toc-text">5.其他高性能OLAP数据库</span></a></li></ol>
+    </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+
+  
+    
+        
+          <div><a href="/friendchain">更多</a></div>
+          
+        
+    
+
+  
+    
+        
+    
+
+  
+    
+        
+    
+
+  
+
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩内容</div>
+  
+    <div><a href="/anime">动漫一</a></div>
+  
+    <div><a href="/anime_2">动漫二</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/1ccabd78.html';
+      this.page.identifier = 'posts/1ccabd78.html';
+      this.page.title = '大数据入门学习二';
+      };
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：大数据入门学习二 链接地址:https://bibichuan.github.io/posts/1ccabd78.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '大数据入门学习二',
+		url: 'https://bibichuan.github.io/posts/1ccabd78.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '大数据入门学习二',
+			isTipVisibility: true,
+			tip: '大数据入门学习二',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

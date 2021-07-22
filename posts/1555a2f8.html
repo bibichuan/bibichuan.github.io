@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信公众号开发二</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, 741841403@qq.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                    随笔
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                            软件
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Linux/">
+                                            Linux
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">微信公众号开发二</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E5%BE%AE%E4%BF%A1/">微信</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Javascript/">Javascript</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-12-19 08:19:03
+                </span>
+                <span class='tag'>
+                  更新时间：2021-07-22 09:22:58
+                </span>
+              </div>
+              <div class="content">
+                <h2 id="1-接入客服功能"><a href="#1-接入客服功能" class="headerlink" title="1.接入客服功能"></a>1.接入客服功能</h2><p>微信公众号提供了客服功能，开发者可以通过添加微信客服插件来添加客服服务功能。<br>(1) 添加客服插件</p>
+<img src="/images/loadimg.png" data-original="/posts/1555a2f8/weixin_1.jpg" lay-src="/posts/1555a2f8/weixin_1.jpg" class="" title="微信公众号开发">
+
+<p>(2) 绑定客服微信号</p>
+<img src="/images/loadimg.png" data-original="/posts/1555a2f8/weixin_2.jpg" lay-src="/posts/1555a2f8/weixin_2.jpg" class="" title="微信公众号开发">
+
+<p>(3) 打开<a target="_blank" rel="noopener" href="https://mpkf.weixin.qq.com/">网页聊天</a>,用客服的微信扫一扫二维码，就可以实现和微信公众号用户进行一对一的会话了。用户在微信公众号输入任何文字和语音，图片等，网页上都可以显示出来。</p>
+<img src="/images/loadimg.png" data-original="/posts/1555a2f8/weixin_3.png" lay-src="/posts/1555a2f8/weixin_3.png" class="" title="微信公众号开发">
+
+<p>(4) 用户在微信公众号上输入文字图片等消息发送给微信公众号后台。</p>
+<p><strong>注意</strong><br>如果公众号处于开发者模式，可能上面的操作就不管用了。</p>
+<pre><code>如果公众号处于开发模式，普通微信用户向公众号发消息时，微信服务器会先将消息POST到开发者填写的url上，如果希望将消息转发到客服系统，则需要开发者在响应包中返回MsgType为transfer_customer_service的消息，微信服务器收到响应后会把当次发送的消息转发至客服系统。
+</code></pre>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://kf.qq.com/faq/120911VrYVrA150319Yj6re6.html">客服功能开通方法</a><br>2.<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Customer_Service/Forwarding_of_messages_to_service_center.html">消息转发到客服</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/frankcheng5143/article/details/50543394">微信公众号开发–接收与回复消息（Java）</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xueling022/article/details/51513069">微信公众号开发(一、接收用户消息自动回复)</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/fanrenxiang/article/details/80877600">解决：该公众号提供的服务出现故障，请稍后重试</a></p>
+<h2 id="2-springboot获取用户发送给后台的消息"><a href="#2-springboot获取用户发送给后台的消息" class="headerlink" title="2.springboot获取用户发送给后台的消息"></a>2.springboot获取用户发送给后台的消息</h2><p>(1) 明文的方式比较简单，公众号服务器会将用户发送的消息，按如下格式:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[toUser]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[fromUser]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>1348831860<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[text]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Content</span>&gt;</span>&lt;![CDATA[this is a test]]&gt;<span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">MsgId</span>&gt;</span>1234567890123456<span class="tag">&lt;/<span class="name">MsgId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>转发到开发者填写的url上。只需要解析这个xml，提取有用信息即可。如果需要转发到客服，只需要返回：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">xml</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[touser]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[fromuser]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>1399197672<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[transfer_customer_service]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>(2) 密文的时候，就比较麻烦<br>使用安全模式的时候，微信公众号通过post将数据发送到开发者配置的服务器url上：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[toUser]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Encrypt</span>&gt;</span>&lt;![CDATA[msg_encrypt]]&gt;<span class="tag">&lt;/<span class="name">Encrypt</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>其中msg_encrypt即为用户名为发送的消息内容(见第一条)，另外在url中还附带了signature签名参数，java可以使用：<code>request.getParameter(&quot;signature&quot;)</code> 方法获取到其中的内容，以便验证签名是否正确。msg_encrypt解密，可以使用官方提供的<a target="_blank" rel="noopener" href="https://res.wx.qq.com/op_res/-serEQ6xSDVIjfoOHcX78T1JAYX-pM_fghzfiNYoD8uHVd3fOeC0PC_pvlg4-kmP">java代码</a>中的WXBizMsgCrypt.decrypt函数进行解密,解密后，获取其中的内容，修改MsgType类型为transfer_customer_service，就可以使用WXBizMsgCrypt.encryptMsg方法进行加密，然后返回给微信服务器，消息就被正常的转发到客服页面了，打开<a target="_blank" rel="noopener" href="https://mpkf.weixin.qq.com/">微信客服页面</a>,就可以进行实时对话了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/&quot;,method = RequestMethod.POST)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loginPOST</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        request.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">        response.setCharacterEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 随机字符串</span></span><br><span class="line">        String noncestr= RandomStringUtils.randomAlphanumeric(<span class="number">16</span>);</span><br><span class="line">        <span class="comment">// 时间戳获取到秒数</span></span><br><span class="line">        String timestamp=String.valueOf(System.currentTimeMillis()/<span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">        PrintWriter out = response.getWriter();</span><br><span class="line">        <span class="comment">// parseXml使用了dom4j解析xml数据</span></span><br><span class="line">        Map&lt;String, String&gt; parseXml = WeiXinUtil.parseXml(request);</span><br><span class="line">        String tousername = parseXml.get(<span class="string">&quot;ToUserName&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 解密</span></span><br><span class="line">        String encryptString=parseXml.get(<span class="string">&quot;Encrypt&quot;</span>);</span><br><span class="line">        String s=WeiXinUtil.decryptMsg(encryptString);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将xml解析位map</span></span><br><span class="line">        parseXml = WeiXinUtil.parseXmlString(s);</span><br><span class="line"></span><br><span class="line">        String msgType = parseXml.get(<span class="string">&quot;MsgType&quot;</span>);</span><br><span class="line">        String content = parseXml.get(<span class="string">&quot;Content&quot;</span>);</span><br><span class="line">        String CreateTime = parseXml.get(<span class="string">&quot;CreateTime&quot;</span>);</span><br><span class="line">        String fromusername = parseXml.get(<span class="string">&quot;FromUserName&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将消息转发给客服</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        *   &lt;xml&gt;</span></span><br><span class="line"><span class="comment">        *     &lt;ToUserName&gt;&lt;![CDATA[touser]]&gt;&lt;/ToUserName&gt;</span></span><br><span class="line"><span class="comment">        *     &lt;FromUserName&gt;&lt;![CDATA[fromuser]]&gt;&lt;/FromUserName&gt;</span></span><br><span class="line"><span class="comment">        *     &lt;CreateTime&gt;1399197672&lt;/CreateTime&gt;</span></span><br><span class="line"><span class="comment">        *     &lt;Content&gt;&lt;![CDATA[this is a test]]&gt;&lt;/Content&gt;</span></span><br><span class="line"><span class="comment">        *     &lt;MsgType&gt;&lt;![CDATA[transfer_customer_service]]&gt;&lt;/MsgType&gt;</span></span><br><span class="line"><span class="comment">        *    &lt;/xml&gt;</span></span><br><span class="line"><span class="comment">        *</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断消息类型MsgType</span></span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        * 链接：link</span></span><br><span class="line"><span class="comment">        * 地理位置：location</span></span><br><span class="line"><span class="comment">        * 小视频：shortvideo</span></span><br><span class="line"><span class="comment">        * 视频：video</span></span><br><span class="line"><span class="comment">        * 语音：voice</span></span><br><span class="line"><span class="comment">        * 图片：image</span></span><br><span class="line"><span class="comment">        * 文本：text</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line"></span><br><span class="line">        StringBuilder stringBuilder=<span class="keyword">new</span> StringBuilder(<span class="string">&quot;&lt;xml&gt;&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;&lt;ToUserName&gt;&lt;![CDATA[&quot;</span>+fromusername+<span class="string">&quot;]]&gt;&lt;/ToUserName&gt;&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;&lt;Content&gt;&lt;![CDATA[&quot;</span>+content+<span class="string">&quot;]]&gt;&lt;/Content&gt;&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;&lt;CreateTime&gt;&quot;</span>+CreateTime+<span class="string">&quot;&lt;/CreateTime&gt;&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;&lt;FromUserName&gt;&lt;![CDATA[&quot;</span>+tousername+<span class="string">&quot;]]&gt;&lt;/FromUserName&gt;&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;&lt;MsgType&gt;&lt;![CDATA[transfer_customer_service]]&gt;&lt;/MsgType&gt;&quot;</span>);</span><br><span class="line">        stringBuilder.append(<span class="string">&quot;&lt;/xml&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 加密字符串</span></span><br><span class="line">        String result=WeiXinUtil.encryptMsg(stringBuilder.toString(),timestamp,noncestr);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 转发到客服</span></span><br><span class="line">        out.write(result);</span><br><span class="line">    &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">        System.out.println(e);</span><br><span class="line">        logger.error(<span class="string">&quot;loginPOST&quot;</span>,e);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong><br>其中需要注意的点。<br>(1) 消息体的xml一定要正确。<br>(2) 再转发时ToUserName是用户的OpenID，FromUserName是微信公众号,和接收到的消息解析后的ToUserName、FromUserName正好相反。</p>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/shenbug/article/details/78748346">SpringBoot开发微信公众号（一）</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/fanrenxiang/article/details/80877600">解决：该公众号提供的服务出现故障，请稍后重试</a><br>3.<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/Message_Encryption/Message_encryption_and_decryption.html">消息加解密说明</a><br>4.<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/oplatform/Third-party_Platforms/Message_Encryption/Technical_Plan.html">加密解密技术方案</a><br>5.<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/weixinkaifawendang/qz9c1qco.html">微信平台 被动回复用户消息</a><br>6.<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/weixinkaifawendang/qz9c1qco.html">微信平台 被动回复用户消息</a><br>7.<a target="_blank" rel="noopener" href="https://www.crifan.com/weixin_api_test_post_data_error_please_check_your_server/">【已解决】调试微信接口出错：post data error,please check your server!</a></p>
+<h2 id="3-事件推送"><a href="#3-事件推送" class="headerlink" title="3.事件推送"></a>3.事件推送</h2><p>除了用户的消息会被微信服务器使用POST推送到用户填写的服务器地址之外，用户点击公众号底部的菜单，微信服务器也会把相应的点击事件POST到用户填写的服务器地址上。信息如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[toUser]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[FromUser]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>123456789<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[event]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Event</span>&gt;</span>&lt;![CDATA[CLICK]]&gt;<span class="tag">&lt;/<span class="name">Event</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">EventKey</span>&gt;</span>&lt;![CDATA[EVENTKEY]]&gt;<span class="tag">&lt;/<span class="name">EventKey</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>还有其他类型的事件推送：点击菜单跳转链接时的事件推送、scancode_push：扫码推事件的事件推送、scancode_waitmsg：扫码推事件且弹出“消息接收中”提示框的事件推送、pic_sysphoto：弹出系统拍照发图的事件推送、pic_photo_or_album：弹出拍照或者相册发图的事件推送、pic_weixin：弹出微信相册发图器的事件推送、location_select：弹出地理位置选择器的事件推送、点击菜单跳转小程序的事件推送，后台的POST接口，可以分别根据相应的内容，进行回复。</p>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/txw1958/p/weixin-58-custom-menu.html">微信公众平台开发（58）自定义菜单</a><br>2.<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Custom_Menus/Custom_Menu_Push_Events.html">微信会把点击事件推送给开发者</a><br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/41ce83878f05">微信公众号开发之自定义菜单</a></p>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/517253d6.html" rel="next" title="微信公众号开发问题汇总">
+                      <i class="iconfont icon-prev"></i> 微信公众号开发问题汇总
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/570934f5.html" rel="prev" title="微信公众号开发三">
+                      微信公众号开发三 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%8E%A5%E5%85%A5%E5%AE%A2%E6%9C%8D%E5%8A%9F%E8%83%BD"><span class="toc-number">1.</span> <span class="toc-text">1.接入客服功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-springboot%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%8F%91%E9%80%81%E7%BB%99%E5%90%8E%E5%8F%B0%E7%9A%84%E6%B6%88%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">2.springboot获取用户发送给后台的消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%BA%8B%E4%BB%B6%E6%8E%A8%E9%80%81"><span class="toc-number">3.</span> <span class="toc-text">3.事件推送</span></a></li></ol>
+    </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+
+  
+    
+        
+          <div><a href="/friendchain">更多</a></div>
+          
+        
+    
+
+  
+    
+        
+    
+
+  
+    
+        
+    
+
+  
+
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩内容</div>
+  
+    <div><a href="/anime">动漫一</a></div>
+  
+    <div><a href="/anime_2">动漫二</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/1555a2f8.html';
+      this.page.identifier = 'posts/1555a2f8.html';
+      this.page.title = '微信公众号开发二';
+      };
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：微信公众号开发二 链接地址:https://bibichuan.github.io/posts/1555a2f8.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '微信公众号开发二',
+		url: 'https://bibichuan.github.io/posts/1555a2f8.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '微信公众号开发二',
+			isTipVisibility: true,
+			tip: '微信公众号开发二',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java日期相关操作</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, 741841403@qq.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                    随笔
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                            软件
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Linux/">
+                                            Linux
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Java日期相关操作</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Java/">Java</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Java/">Java</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-04-19 02:28:37
+                </span>
+                <span class='tag'>
+                  更新时间：2021-07-22 09:22:56
+                </span>
+              </div>
+              <div class="content">
+                <p>Java中操作日期的主要是Date和Calendar类。</p>
+<h2 id="1-获取当前时间的前几天几个小时几周或者几个月"><a href="#1-获取当前时间的前几天几个小时几周或者几个月" class="headerlink" title="1.获取当前时间的前几天几个小时几周或者几个月"></a>1.获取当前时间的前几天几个小时几周或者几个月</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Date dNow = <span class="keyword">new</span> Date();   <span class="comment">//当前时间</span></span><br><span class="line">Date dBefore = <span class="keyword">new</span> Date();</span><br><span class="line">Calendar calendar = Calendar.getInstance(); <span class="comment">//得到日历</span></span><br><span class="line">calendar.setTime(dNow);<span class="comment">//把当前时间赋给日历</span></span><br><span class="line">calendar.add(Calendar.HOUR_OF_DAY, -<span class="number">24</span>);  <span class="comment">//</span></span><br><span class="line">calendar.add(Calendar.DAY_OF_MONTH, -<span class="number">3</span>);  <span class="comment">//设置为前3天</span></span><br><span class="line">calendar.add(Calendar.WEEK_OF_MONTH, -<span class="number">1</span>);  <span class="comment">//设置为前一周</span></span><br><span class="line">calendar.add(Calendar.MONTH, -<span class="number">1</span>);  <span class="comment">//设置为前1月</span></span><br><span class="line">calendar.add(Calendar.MONTH, -<span class="number">3</span>);  <span class="comment">//设置为前3月</span></span><br><span class="line">dBefore = calendar.getTime();   <span class="comment">//得到前3月的时间</span></span><br><span class="line">SimpleDateFormat sdf=<span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>); <span class="comment">//设置时间格式</span></span><br><span class="line">String startTimeStr = sdf.format(dBefore);    <span class="comment">//格式化前3月的时间</span></span><br><span class="line">String endTimeStr= sdf.format(dNow); <span class="comment">//格式化当前时间</span></span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/LMH820822/article/details/77863425">Calendar.HOUR_OF_DAY 和 Calendar.HOUR区别</a></p>
+<h2 id="2-判断当前时间是否在规定时间内"><a href="#2-判断当前时间是否在规定时间内" class="headerlink" title="2.判断当前时间是否在规定时间内"></a>2.判断当前时间是否在规定时间内</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断时间是否在规定的6点到22点之内</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isBelong</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;HH:mm&quot;</span>);<span class="comment">//设置日期格式</span></span><br><span class="line">    Date now =<span class="keyword">null</span>;</span><br><span class="line">    Date beginTime = <span class="keyword">null</span>;</span><br><span class="line">    Date endTime = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        now = df.parse(df.format(<span class="keyword">new</span> Date()));</span><br><span class="line">        beginTime = df.parse(<span class="string">&quot;06:00&quot;</span>);</span><br><span class="line">        endTime = df.parse(<span class="string">&quot;22:00&quot;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Boolean flag = belongCalendar(now, beginTime, endTime);</span><br><span class="line">    <span class="keyword">return</span> flag;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考文章：<br>1.Calendar.HOUR_OF_DAY 和 Calendar.HOUR区别：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lmh820822/article/details/77863425">https://blog.csdn.net/lmh820822/article/details/77863425</a><br>2.java获取三个月之前时间与当前时间:<a target="_blank" rel="noopener" href="https://blog.csdn.net/koso10201/article/details/73188170">https://blog.csdn.net/koso10201/article/details/73188170</a><br>3.ava 中Calendar的使用:<a target="_blank" rel="noopener" href="https://takeme.iteye.com/blog/1678236">https://takeme.iteye.com/blog/1678236</a></p>
+<h2 id="3-格式化日期函数"><a href="#3-格式化日期函数" class="headerlink" title="3.格式化日期函数"></a>3.格式化日期函数</h2><p>我有字符串:2010-02-01 02:22,我想格式化成:2010-02-01 02:22:00这种形式，或者是:2010-02-01 02字符串格式化成：2010-02-01 02:00:00这种形式，查询的资料都是这种形式，将日期格式话。问题是我不能全部定义要转换的格式啊，如果我的时间字符串是其他的类型(yyyy年MM月dd日 HH:mm:ss)，像格式话成”yyyy-MM-dd HH:mm:ss“这样的呢。如果有类似于javascript中的moment.js这种库就好了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">formatDateTime</span><span class="params">(String dataStr)</span></span>&#123;</span><br><span class="line">    String pattern = <span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>;  <span class="comment">//按照上面的日期格式定义模板，这个一定要完全和上面的一样，否则转换不正确</span></span><br><span class="line">    SimpleDateFormat dateFormat = <span class="keyword">new</span> SimpleDateFormat(pattern);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Date date = dateFormat.parse(dataStr);   <span class="comment">//解析成Date类型</span></span><br><span class="line">        dataStr=dateFormat.format(date);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (ParseException e) &#123;</span><br><span class="line">        System.err.println(<span class="string">&quot;解析错误&quot;</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dataStr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考资料5中有部分代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.text.DateFormat;</span><br><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.regex.Pattern;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ApiUtis</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> HashMap&lt;String,String&gt; dateRegFormat;</span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        dateRegFormat = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;4&#125;\\D+\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;\\D*$&quot;</span>,</span><br><span class="line">                <span class="string">&quot;yyyy-MM-dd-HH-mm-ss&quot;</span>);<span class="comment">//2014年3月12日13时5分34秒，2014-03-12 12:05:34，2014/3/12 12:5:34</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;4&#125;\\D+\\d&#123;2&#125;\\D+\\d&#123;2&#125;\\D+\\d&#123;2&#125;\\D+\\d&#123;2&#125;$&quot;</span>,<span class="string">&quot;yyyy-MM-dd-HH-mm&quot;</span>);<span class="comment">//2014-03-12 12:05</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;4&#125;\\D+\\d&#123;2&#125;\\D+\\d&#123;2&#125;\\D+\\d&#123;2&#125;$&quot;</span>,<span class="string">&quot;yyyy-MM-dd-HH&quot;</span>);<span class="comment">//2014-03-12 12</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;4&#125;\\D+\\d&#123;2&#125;\\D+\\d&#123;2&#125;$&quot;</span>,<span class="string">&quot;yyyy-MM-dd&quot;</span>);<span class="comment">//2014-03-12</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;4&#125;\\D+\\d&#123;2&#125;$&quot;</span>,<span class="string">&quot;yyyy-MM&quot;</span>);<span class="comment">//2014-03</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;4&#125;$&quot;</span>,<span class="string">&quot;yyyy&quot;</span>);<span class="comment">//2014</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;14&#125;$&quot;</span>,<span class="string">&quot;yyyyMMddHHmmss&quot;</span>);<span class="comment">//20140312120534</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;12&#125;$&quot;</span>,<span class="string">&quot;yyyyMMddHHmm&quot;</span>);<span class="comment">//201403121205</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;10&#125;$&quot;</span>,<span class="string">&quot;yyyyMMddHH&quot;</span>);<span class="comment">//2014031212</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;8&#125;$&quot;</span>,<span class="string">&quot;yyyyMMdd&quot;</span>);<span class="comment">//20140312</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;6&#125;$&quot;</span>,<span class="string">&quot;yyyyMM&quot;</span>);<span class="comment">//201403</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;2&#125;\\s*:\\s*\\d&#123;2&#125;\\s*:\\s*\\d&#123;2&#125;$&quot;</span>,<span class="string">&quot;yyyy-MM-dd-HH-mm-ss&quot;</span>);<span class="comment">//13:05:34 拼接当前日期</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;2&#125;\\s*:\\s*\\d&#123;2&#125;$&quot;</span>,<span class="string">&quot;yyyy-MM-dd-HH-mm&quot;</span>);<span class="comment">//13:05 拼接当前日期</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;2&#125;\\D+\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;$&quot;</span>,<span class="string">&quot;yy-MM-dd&quot;</span>);<span class="comment">//14.10.18(年.月.日)</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;$&quot;</span>,<span class="string">&quot;yyyy-dd-MM&quot;</span>);<span class="comment">//30.12(日.月) 拼接当前年份</span></span><br><span class="line">        dateRegFormat.put(<span class="string">&quot;^\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;\\D+\\d&#123;4&#125;$&quot;</span>,<span class="string">&quot;dd-MM-yyyy&quot;</span>);<span class="comment">//12.21.2013(日.月.年)</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@SuppressWarnings(&quot;finally&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  String <span class="title">FormatDate</span><span class="params">(String dateStr)</span></span>&#123;</span><br><span class="line">        String curDate =<span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>).format(<span class="keyword">new</span> Date());</span><br><span class="line">        DateFormat formatter1 =<span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">        DateFormat formatter2;</span><br><span class="line">        String dateReplace;</span><br><span class="line">        String strSuccess=<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="keyword">for</span>(String key : dateRegFormat.keySet()) &#123;</span><br><span class="line">                <span class="keyword">if</span>(Pattern.compile(key).matcher(dateStr).matches()) &#123;</span><br><span class="line">                    formatter2= <span class="keyword">new</span> SimpleDateFormat(dateRegFormat.get(key));</span><br><span class="line">                    <span class="keyword">if</span>(key.equals(<span class="string">&quot;^\\d&#123;2&#125;\\s*:\\s*\\d&#123;2&#125;\\s*:\\s*\\d&#123;2&#125;$&quot;</span>)||key.equals(<span class="string">&quot;^\\d&#123;2&#125;\\s*:\\s*\\d&#123;2&#125;$&quot;</span>))&#123;</span><br><span class="line">                        <span class="comment">//13:05:34 或 13:05 拼接当前日期</span></span><br><span class="line">                            dateStr= curDate + <span class="string">&quot;-&quot;</span>+ dateStr;</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(key.equals(<span class="string">&quot;^\\d&#123;1,2&#125;\\D+\\d&#123;1,2&#125;$&quot;</span>))&#123;</span><br><span class="line">                        <span class="comment">//21.1(日.月) 拼接当前年份</span></span><br><span class="line">                        dateStr = curDate.substring(<span class="number">0</span>,<span class="number">4</span>)+ <span class="string">&quot;-&quot;</span>+ dateStr;</span><br><span class="line">                    &#125;</span><br><span class="line">                    dateReplace= dateStr.replaceAll(<span class="string">&quot;\\D+&quot;</span>,<span class="string">&quot;-&quot;</span>);</span><br><span class="line">                    <span class="comment">// System.out.println(dateRegExpArr[i]);</span></span><br><span class="line">                    strSuccess= formatter1.format(formatter2.parse(dateReplace));</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;-----------------日期格式无效:&quot;</span>+dateStr);</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> Exception( <span class="string">&quot;日期格式无效&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">finally</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> strSuccess;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013087513/article/details/51816311">Java常用类库之时间操作类——Date、Calendar、DateFormat、SimpleDateFormat及实例操作</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27093465/article/details/53034427">java 日期格式化– SimpleDateFormat 的使用。字符串转日期，日期转字符串</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34162294/article/details/73277951">Java日期格式化</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenleixing/article/details/44408875">Java8中时间日期库的20个常用使用示例</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/muzizhuben/article/details/50292421">java正则实现各种日期格式化</a><br>6.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/daxin/p/3728148.html">Java 日期处理类库Joda-Time简介</a><br>7.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000002719930">正则表达式 表示YYYY-MM-DD</a></p>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/4fb7cd85.html" rel="next" title="Java跨语言通信">
+                      <i class="iconfont icon-prev"></i> Java跨语言通信
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/c1c31803.html" rel="prev" title="Java开发环境配置">
+                      Java开发环境配置 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4%E7%9A%84%E5%89%8D%E5%87%A0%E5%A4%A9%E5%87%A0%E4%B8%AA%E5%B0%8F%E6%97%B6%E5%87%A0%E5%91%A8%E6%88%96%E8%80%85%E5%87%A0%E4%B8%AA%E6%9C%88"><span class="toc-number">1.</span> <span class="toc-text">1.获取当前时间的前几天几个小时几周或者几个月</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%A4%E6%96%AD%E5%BD%93%E5%89%8D%E6%97%B6%E9%97%B4%E6%98%AF%E5%90%A6%E5%9C%A8%E8%A7%84%E5%AE%9A%E6%97%B6%E9%97%B4%E5%86%85"><span class="toc-number">2.</span> <span class="toc-text">2.判断当前时间是否在规定时间内</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">3.格式化日期函数</span></a></li></ol>
+    </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+
+  
+    
+        
+          <div><a href="/friendchain">更多</a></div>
+          
+        
+    
+
+  
+    
+        
+    
+
+  
+    
+        
+    
+
+  
+
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩内容</div>
+  
+    <div><a href="/anime">动漫一</a></div>
+  
+    <div><a href="/anime_2">动漫二</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/b92639bf.html';
+      this.page.identifier = 'posts/b92639bf.html';
+      this.page.title = 'Java日期相关操作';
+      };
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Java日期相关操作 链接地址:https://bibichuan.github.io/posts/b92639bf.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Java日期相关操作',
+		url: 'https://bibichuan.github.io/posts/b92639bf.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Java日期相关操作',
+			isTipVisibility: true,
+			tip: 'Java日期相关操作',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

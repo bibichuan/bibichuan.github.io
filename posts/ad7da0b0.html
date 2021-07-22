@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript实现彩虹颜色梯度渐变</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, 741841403@qq.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                    随笔
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                            软件
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Linux/">
+                                            Linux
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">javascript实现彩虹颜色梯度渐变</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Javascript/">Javascript</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Javascript/">Javascript</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-11-12 01:28:58
+                </span>
+                <span class='tag'>
+                  更新时间：2021-07-22 09:22:57
+                </span>
+              </div>
+              <div class="content">
+                <p>实现彩虹色渐变的方式，其实网上有两种主要的实现方式，第一种就是单纯的用颜色值的规律从紫色一直过度到红色，比如参考文章1；另一种是两种颜色之间的渐变色，比如参考文章的2和3。由于能力有限，第一种实现彩虹表算法的方法，不能实现指定的颜色开始与结束颜色区间，但是第二种，又不能指定从哪个颜色过渡到哪个颜色，比如从红到橙再到黄，只能从红直接到黄，或者是直接到橙，不太方便。最后，其实我是使用了第二种方式，我设置了一个数组，从红到紫的数组，指定了开始颜色值，比如红色，结束颜色值比如紫色，分段数位10，那么我就将从红到橙，通过第二种方法，渐变2段，然后从橙到黄渐变两段，一直到紫色，最后，组成一个最终的渐变数组。</p>
+<h2 id="1-颜色数组"><a href="#1-颜色数组" class="headerlink" title="1.颜色数组"></a>1.颜色数组</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** 颜色表算法</span></span><br><span class="line"><span class="comment"> *   colorSize 颜色分段，默认为6</span></span><br><span class="line"><span class="comment"> *   colorType 上限下限的数值类型，是整数，还是小数，整数为0，小数为1，默认为0</span></span><br><span class="line"><span class="comment"> *   maxValue  上限值，整数情况下默认为300，小数情况下默认为1.0</span></span><br><span class="line"><span class="comment"> *   minValue  下限值，整数情况下默认为100，小数情况下默认为0.2</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//function RGBCal(colorSize,colorType,maxValue,minValue)&#123;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RGBCal</span>(<span class="params">section,option</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//执行单色卡初始化</span></span><br><span class="line">    <span class="built_in">this</span>.initSingleColor();</span><br><span class="line">    <span class="comment">//执行双色卡初始化</span></span><br><span class="line">    <span class="built_in">this</span>.initDoubleColor();</span><br><span class="line">&#125;</span><br><span class="line">RGBCal.prototype=&#123;</span><br><span class="line">    <span class="attr">constructor</span>:RGBCal,</span><br><span class="line">    <span class="attr">initSingleColor</span>:<span class="function"><span class="keyword">function</span>(<span class="params">colorSize,colorType,maxValue,minValue</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.colorSize=colorSize||<span class="number">7</span>;</span><br><span class="line">        <span class="built_in">this</span>.colorType=colorType||<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">this</span>.colorType==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">this</span>.maxValue=maxValue||<span class="number">300</span>;</span><br><span class="line">            <span class="built_in">this</span>.minValue=minValue||<span class="number">100</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.maxValue=maxValue||<span class="number">1.0</span>;</span><br><span class="line">            <span class="built_in">this</span>.minValue=minValue||<span class="number">0.2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//执行初始化</span></span><br><span class="line">        <span class="built_in">this</span>.rgbColors=<span class="built_in">this</span>.getRGBColorsNew(<span class="built_in">this</span>.colorSize);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">initDoubleColor</span>:<span class="function"><span class="keyword">function</span>(<span class="params">colorBlock</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!colorBlock)&#123;</span><br><span class="line">            colorBlock= [&#123;</span><br><span class="line">                <span class="string">&quot;colorSection&quot;</span>: <span class="number">5</span>,</span><br><span class="line">                <span class="string">&quot;colorType&quot;</span>:<span class="number">0</span>,</span><br><span class="line">                <span class="string">&quot;upperValue&quot;</span>: <span class="number">300</span>,  <span class="comment">//最大值</span></span><br><span class="line">                <span class="string">&quot;lowerValue&quot;</span>: <span class="number">0</span>,   <span class="comment">//最小值</span></span><br><span class="line">                <span class="string">&quot;rgbColors&quot;</span>:[] <span class="comment">//色卡数组</span></span><br><span class="line">            &#125;,&#123;</span><br><span class="line">                <span class="string">&quot;colorSection&quot;</span>: <span class="number">6</span>, <span class="comment">//颜色分段</span></span><br><span class="line">                <span class="string">&quot;colorType&quot;</span>:<span class="number">0</span>,  <span class="comment">//使用小数还是整数计算</span></span><br><span class="line">                <span class="string">&quot;upperValue&quot;</span>: <span class="number">0</span>, <span class="comment">///最大值</span></span><br><span class="line">                <span class="string">&quot;lowerValue&quot;</span>: -<span class="number">100</span>, <span class="comment">//最小值</span></span><br><span class="line">                <span class="string">&quot;rgbColors&quot;</span>:[] <span class="comment">//色卡数组</span></span><br><span class="line">            &#125;];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.colorBlock= colorBlock;</span><br><span class="line">        <span class="comment">//计算基准值</span></span><br><span class="line">        <span class="keyword">var</span> upper=<span class="built_in">this</span>.colorBlock[<span class="number">0</span>].lowerValue;</span><br><span class="line">        <span class="keyword">var</span> lower=<span class="built_in">this</span>.colorBlock[<span class="number">1</span>].upperValue;</span><br><span class="line">        <span class="keyword">if</span>(lower&gt;=upper)&#123;</span><br><span class="line">            <span class="built_in">this</span>.reference=upper;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.reference=(<span class="built_in">parseFloat</span>(upper)+<span class="built_in">parseFloat</span>(lower))/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//分段计算色卡</span></span><br><span class="line">        <span class="built_in">this</span>.colorBlock[<span class="number">0</span>].rgbColors=<span class="built_in">this</span>.getRainbowColor2_own(<span class="built_in">this</span>.colorBlock[<span class="number">0</span>].colorSection);</span><br><span class="line">        <span class="built_in">this</span>.colorBlock[<span class="number">1</span>].rgbColors=<span class="built_in">this</span>.getRainbowColor2_two(<span class="built_in">this</span>.colorBlock[<span class="number">1</span>].colorSection);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//获取一段颜色时当前数据对应RGB</span></span><br><span class="line">    <span class="attr">getCurrentColor</span>:<span class="function"><span class="keyword">function</span> (<span class="params">currentVal</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> maxValue=<span class="built_in">this</span>.maxValue;</span><br><span class="line">        <span class="keyword">var</span> minValue=<span class="built_in">this</span>.minValue;</span><br><span class="line">        <span class="keyword">var</span> colorLineType=<span class="built_in">this</span>.colorType</span><br><span class="line">        <span class="keyword">if</span> (currentVal - minValue &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.rgbColors[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> colorSize=<span class="built_in">this</span>.colorSize;</span><br><span class="line">        <span class="keyword">if</span> (currentVal - maxValue &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.rgbColors[colorSize - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (colorLineType === <span class="number">0</span>) &#123; <span class="comment">//温度</span></span><br><span class="line">            <span class="keyword">var</span> itemVal = (maxValue - minValue) / (colorSize - <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">var</span> indexVal = <span class="built_in">Math</span>.floor((currentVal - minValue) / itemVal) + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">//压力colorLineType === 1</span></span><br><span class="line">            <span class="keyword">var</span> itemVal = <span class="built_in">this</span>.accDiv(<span class="built_in">this</span>.accSub(maxValue, minValue), colorSize - <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">var</span> indexVal = <span class="built_in">Math</span>.floor(<span class="built_in">this</span>.accDiv(<span class="built_in">this</span>.accSub(currentVal, minValue), itemVal)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>.rgbColors[indexVal];</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//RGB彩虹算法---标准</span></span><br><span class="line">    <span class="attr">getRGBColors</span>:<span class="function"><span class="keyword">function</span> (<span class="params">colorSize</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> colors = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; colorSize; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> r = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">var</span> g = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">var</span> b = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; colorSize / <span class="number">3</span>) &#123;</span><br><span class="line">                r = <span class="number">255</span>;</span><br><span class="line">                g = <span class="built_in">Math</span>.ceil(<span class="number">255</span> * <span class="number">3</span> * i / colorSize);</span><br><span class="line">                b = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; colorSize / <span class="number">2</span>) &#123;</span><br><span class="line">                r = <span class="built_in">Math</span>.ceil(<span class="number">750</span> - i * (<span class="number">250</span> * <span class="number">6</span> / colorSize));</span><br><span class="line">                g = <span class="number">255</span>;</span><br><span class="line">                b = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; colorSize * <span class="number">2</span> / <span class="number">3</span>) &#123;</span><br><span class="line">                r = <span class="number">0</span>;</span><br><span class="line">                g = <span class="number">255</span>;</span><br><span class="line">                b = <span class="built_in">Math</span>.ceil(i * (<span class="number">250</span> * <span class="number">6</span> / colorSize) - <span class="number">750</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; colorSize * <span class="number">5</span> / <span class="number">6</span>) &#123;</span><br><span class="line">                r = <span class="number">0</span>;</span><br><span class="line">                g = <span class="built_in">Math</span>.ceil(<span class="number">1250</span> - i * (<span class="number">250</span> * <span class="number">6</span> / colorSize));</span><br><span class="line">                b = <span class="number">255</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                r = <span class="built_in">Math</span>.ceil(<span class="number">150</span> * i * (<span class="number">6</span> / colorSize) - <span class="number">750</span>);</span><br><span class="line">                g = <span class="number">0</span>;</span><br><span class="line">                b = <span class="number">255</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            colors.push(<span class="string">&#x27;rgb(&#x27;</span> + r + <span class="string">&#x27;,&#x27;</span> + g + <span class="string">&#x27;,&#x27;</span> + b + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        colors.reverse(); <span class="comment">//倒序</span></span><br><span class="line">        <span class="keyword">return</span> colors;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//RGB彩虹算法--去掉紫色</span></span><br><span class="line">    <span class="attr">getRGBColorsNew</span>:<span class="function"><span class="keyword">function</span> (<span class="params">colorSize</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> colors = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; colorSize; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> r = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">var</span> g = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">var</span> b = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; colorSize / <span class="number">3</span>) &#123;</span><br><span class="line">                r = <span class="number">255</span>;</span><br><span class="line">                g = <span class="built_in">Math</span>.ceil(<span class="number">255</span> * <span class="number">3</span> * i / colorSize);</span><br><span class="line">                b = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; colorSize / <span class="number">2</span>) &#123;</span><br><span class="line">                r = <span class="built_in">Math</span>.ceil(<span class="number">750</span> - i * (<span class="number">250</span> * <span class="number">6</span> / colorSize));</span><br><span class="line">                g = <span class="number">255</span>;</span><br><span class="line">                b = <span class="number">0</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &lt; colorSize * <span class="number">2</span> / <span class="number">3</span>) &#123;</span><br><span class="line">                r = <span class="number">0</span>;</span><br><span class="line">                g = <span class="number">255</span>;</span><br><span class="line">                b = <span class="built_in">Math</span>.ceil(i * (<span class="number">250</span> * <span class="number">6</span> / colorSize) - <span class="number">750</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                r = <span class="number">0</span>;</span><br><span class="line">                g = <span class="built_in">Math</span>.ceil(<span class="number">750</span> - i * (<span class="number">250</span> * <span class="number">3</span> / colorSize));</span><br><span class="line">                b = <span class="number">255</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            colors.push(<span class="string">&#x27;rgb(&#x27;</span> + r + <span class="string">&#x27;,&#x27;</span> + g + <span class="string">&#x27;,&#x27;</span> + b + <span class="string">&#x27;)&#x27;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        colors.reverse();</span><br><span class="line">        <span class="keyword">return</span> colors;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 修改颜色分段、颜色类型、最大最小值</span></span><br><span class="line">    <span class="attr">setColorConfig</span>:<span class="function"><span class="keyword">function</span>(<span class="params">colorSize,colorType,maxValue,minValue</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.colorSize=colorSize||<span class="built_in">this</span>.colorSize;</span><br><span class="line">        <span class="built_in">this</span>.colorType=colorType||<span class="built_in">this</span>.colorType;</span><br><span class="line">        <span class="built_in">this</span>.maxValue=maxValue||<span class="built_in">this</span>.maxValue;</span><br><span class="line">        <span class="built_in">this</span>.minValue=minValue||<span class="built_in">this</span>.minValue;</span><br><span class="line">        <span class="comment">//重新计算色卡</span></span><br><span class="line">        <span class="comment">//this.rgbColors=this.getRGBColors(this.colorSize);</span></span><br><span class="line">        <span class="comment">//去掉紫色</span></span><br><span class="line">        <span class="built_in">this</span>.rgbColors=<span class="built_in">this</span>.getRGBColorsNew(<span class="built_in">this</span>.colorSize);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//修改双色卡时的分段、颜色类型、最大最小值</span></span><br><span class="line">    <span class="attr">setColorConfig2</span>:<span class="function"><span class="keyword">function</span>(<span class="params">colorblock</span>)</span>&#123;</span><br><span class="line">        colorblock=colorblock||<span class="built_in">this</span>.colorBlock;</span><br><span class="line">        <span class="comment">//判断是否为空值</span></span><br><span class="line">        colorblock[<span class="number">0</span>].colorSection=colorblock[<span class="number">0</span>].colorSection||<span class="built_in">this</span>.colorBlock[<span class="number">0</span>].colorSection;</span><br><span class="line">        <span class="comment">//如果第二段为空</span></span><br><span class="line">        <span class="keyword">if</span>(colorblock.length&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            colorblock[<span class="number">1</span>].colorSection=colorblock[<span class="number">1</span>].colorSection==<span class="string">&quot;&quot;</span>?<span class="built_in">this</span>.colorBlock[<span class="number">1</span>].colorSection:colorblock[<span class="number">1</span>].colorSection;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">this</span>.colorBlock=colorblock;</span><br><span class="line">        <span class="comment">//重新计算基准值</span></span><br><span class="line">        <span class="keyword">var</span> upper=<span class="built_in">this</span>.colorBlock[<span class="number">0</span>].lowerValue;</span><br><span class="line">        <span class="keyword">var</span> lower=<span class="built_in">this</span>.colorBlock[<span class="number">1</span>].upperValue;</span><br><span class="line">        <span class="keyword">if</span>(lower&gt;=upper)&#123;</span><br><span class="line">            <span class="built_in">this</span>.reference=upper;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.reference=(<span class="built_in">parseFloat</span>(upper)+<span class="built_in">parseFloat</span>(lower))/<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//分段计算色卡</span></span><br><span class="line">        <span class="built_in">this</span>.colorBlock[<span class="number">0</span>].rgbColors=<span class="built_in">this</span>.getRainbowColor2_own(<span class="built_in">this</span>.colorBlock[<span class="number">0</span>].colorSection);</span><br><span class="line">        <span class="built_in">this</span>.colorBlock[<span class="number">1</span>].rgbColors=<span class="built_in">this</span>.getRainbowColor2_two(<span class="built_in">this</span>.colorBlock[<span class="number">1</span>].colorSection);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//获取双色卡时当前数据对应的RGB值</span></span><br><span class="line">    <span class="attr">getCurrentColor2</span>:<span class="function"><span class="keyword">function</span> (<span class="params">currentVal</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//首先和基准值比较，确定落在哪个色卡内</span></span><br><span class="line">        <span class="keyword">var</span> colorblock=<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">var</span> colorLineType=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(currentVal&gt;=<span class="built_in">this</span>.reference)&#123; <span class="comment">//落在第一个色卡内</span></span><br><span class="line">            colorblock=<span class="built_in">this</span>.colorBlock[<span class="number">0</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;  <span class="comment">//否则落在第二个色卡内</span></span><br><span class="line">            colorblock=<span class="built_in">this</span>.colorBlock[<span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 设置计算方式</span></span><br><span class="line">        <span class="keyword">var</span> colorLineType=colorblock.colorType;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> maxValue=colorblock.upperValue;</span><br><span class="line">        <span class="keyword">var</span> minValue=colorblock.lowerValue;</span><br><span class="line">        <span class="keyword">if</span> (currentVal - minValue &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> colorblock.rgbColors[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> colorSize=colorblock.colorSection;</span><br><span class="line">        <span class="keyword">if</span> (currentVal - maxValue &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> colorblock.rgbColors[colorSize - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (colorLineType === <span class="number">0</span>) &#123; <span class="comment">//温度</span></span><br><span class="line">            <span class="keyword">var</span> itemVal = (maxValue - minValue) / (colorSize - <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">var</span> indexVal = <span class="built_in">Math</span>.floor((currentVal - minValue) / itemVal) + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">//压力colorLineType === 1</span></span><br><span class="line">            <span class="keyword">var</span> itemVal = <span class="built_in">this</span>.accDiv(<span class="built_in">this</span>.accSub(maxValue, minValue), colorSize - <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">var</span> indexVal = <span class="built_in">Math</span>.floor(<span class="built_in">this</span>.accDiv(<span class="built_in">this</span>.accSub(currentVal, minValue), itemVal)) + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> colorblock.rgbColors[indexVal];</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//除法</span></span><br><span class="line">    <span class="attr">accDiv</span>:<span class="function"><span class="keyword">function</span> (<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> t1 = <span class="number">0</span>,</span><br><span class="line">            t2 = <span class="number">0</span>,</span><br><span class="line">            r1, r2;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            t1 = arg1.toString().split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            t2 = arg2.toString().split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">        <span class="function"><span class="title">with</span>(<span class="params"><span class="built_in">Math</span></span>)</span> &#123;</span><br><span class="line">            r1 = <span class="built_in">Number</span>(arg1.toString().replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">            r2 = <span class="built_in">Number</span>(arg2.toString().replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">            <span class="keyword">return</span> (r1 / r2) * pow(<span class="number">10</span>, t2 - t1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//乘法</span></span><br><span class="line">    <span class="attr">accMul</span>:<span class="function"><span class="keyword">function</span> (<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> m = <span class="number">0</span>,</span><br><span class="line">            s1 = arg1.toString(),</span><br><span class="line">            s2 = arg2.toString();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            m += s1.split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            m += s2.split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Number</span>(s1.replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;&quot;</span>)) * <span class="built_in">Number</span>(s2.replace(<span class="string">&quot;.&quot;</span>, <span class="string">&quot;&quot;</span>)) / <span class="built_in">Math</span>.pow(<span class="number">10</span>, m)</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//加法</span></span><br><span class="line">    <span class="attr">accAdd</span>:<span class="function"><span class="keyword">function</span> (<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> r1, r2, m;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            r1 = arg1.toString().split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            r1 = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            r2 = arg2.toString().split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            r2 = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        m = <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="built_in">Math</span>.max(r1, r2))</span><br><span class="line">        <span class="keyword">return</span> (arg1 * m + arg2 * m) / m</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//减法</span></span><br><span class="line">    <span class="attr">accSub</span>:<span class="function"><span class="keyword">function</span> (<span class="params">arg1, arg2</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> r1, r2, m, n;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            r1 = arg1.toString().split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            r1 = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            r2 = arg2.toString().split(<span class="string">&quot;.&quot;</span>)[<span class="number">1</span>].length</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            r2 = <span class="number">0</span></span><br><span class="line">        &#125;</span><br><span class="line">        m = <span class="built_in">Math</span>.pow(<span class="number">10</span>, <span class="built_in">Math</span>.max(r1, r2));</span><br><span class="line">        n = (r1 &gt;= r2) ? r1 : r2;</span><br><span class="line">        <span class="keyword">return</span> ((arg1 * m - arg2 * m) / m).toFixed(n);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//新的渐变算法，主要是分别定义红、橙、黄、绿、青、蓝、紫颜色值，渐变时，分从紫到蓝，蓝到青，青到绿，依此分段渐变，最后组成一个渐变色数组</span></span><br><span class="line">    <span class="comment">//形成整个渐变色,比如从绿色渐变到红色，应先从绿色渐变到黄色，然后从黄色渐变到橙色，然后从橙色渐变到红色</span></span><br><span class="line">    <span class="comment">//     红: #FF0000  255，0，0</span></span><br><span class="line">    <span class="comment">//     橙: #FF7D00  255, 125, 0</span></span><br><span class="line">    <span class="comment">//     黄: #FFFF00  255，255，0</span></span><br><span class="line">    <span class="comment">//     绿: #00FF00  0，255，0</span></span><br><span class="line">    <span class="comment">//     青: #00FFFF  0, 255, 255</span></span><br><span class="line">    <span class="comment">//     蓝: #0000FF  0，0，255</span></span><br><span class="line">    <span class="comment">//     紫: #FF00FF  255, 0, 255</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 渐变色第一段，从紫色到红色</span></span><br><span class="line">    <span class="function"><span class="title">getRainbowColor_one</span>(<span class="params">colorSize</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> color_list=[];</span><br><span class="line">        <span class="keyword">if</span>(colorSize&lt;<span class="number">6</span>)&#123;</span><br><span class="line">            <span class="keyword">switch</span> (colorSize) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255, 0, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(0，255，0)&quot;</span>,<span class="string">&quot;rgb(255, 0, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255，255，0)&quot;</span>,<span class="string">&quot;rgb(0，255，0)&quot;</span>,<span class="string">&quot;rgb(0,255, 255)&quot;</span>,<span class="string">&quot;rgb(255, 0, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">5</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255，255，0)&quot;</span>,<span class="string">&quot;rgb(0，255，0)&quot;</span>,<span class="string">&quot;rgb(0,255, 255)&quot;</span>,<span class="string">&quot;rgb(255, 0, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255，255，0)&quot;</span>,<span class="string">&quot;rgb(0，255，0)&quot;</span>,<span class="string">&quot;rgb(0,255, 255)&quot;</span>,<span class="string">&quot;rgb(0，0，255)&quot;</span>,<span class="string">&quot;rgb(255, 0, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255, 125, 0)&quot;</span>,<span class="string">&quot;rgb(255，255，0)&quot;</span>,<span class="string">&quot;rgb(0，255，0)&quot;</span>,<span class="string">&quot;rgb(0,255, 255)&quot;</span>,<span class="string">&quot;rgb(0，0，255)&quot;</span>,<span class="string">&quot;rgb(255, 0, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> subColorSieze=<span class="built_in">parseInt</span>(colorSize/<span class="number">7</span>);</span><br><span class="line">            <span class="keyword">var</span> subRemainder=colorSize%<span class="number">7</span>;</span><br><span class="line">            <span class="keyword">var</span> color=[<span class="string">&quot;#FF0000&quot;</span>,<span class="string">&quot;#FF7D00&quot;</span>,<span class="string">&quot;#FFFF00&quot;</span>,<span class="string">&quot;#00FF00&quot;</span>,<span class="string">&quot;#00FFFF&quot;</span>,<span class="string">&quot;#0000FF&quot;</span>,<span class="string">&quot;#FF00FF&quot;</span>,<span class="string">&quot;#FF0000&quot;</span>];</span><br><span class="line">            color_list=<span class="built_in">this</span>.getSubColor(color,subColorSieze,subRemainder);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> color_list.reverse();</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 渐变色分两段的情况下</span></span><br><span class="line">    <span class="comment">// 渐变色第一段，从绿色到红色</span></span><br><span class="line">    <span class="attr">getRainbowColor2_own</span>:<span class="function"><span class="keyword">function</span>(<span class="params">colorSize</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> color_list=[];</span><br><span class="line">        <span class="keyword">if</span>(colorSize&lt;<span class="number">5</span>)&#123;</span><br><span class="line">            <span class="keyword">switch</span> (colorSize) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255, 125, 0)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255, 125, 0)&quot;</span>,<span class="string">&quot;rgb(255，255，0)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(255，0，0)&quot;</span>,<span class="string">&quot;rgb(255, 125, 0)&quot;</span>,<span class="string">&quot;rgb(255，255，0)&quot;</span>,<span class="string">&quot;rgb(0，255，0)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> subColorSieze=<span class="built_in">parseInt</span>(colorSize/<span class="number">4</span>);</span><br><span class="line">            <span class="keyword">var</span> subRemainder=colorSize%<span class="number">4</span>;</span><br><span class="line">            <span class="keyword">var</span> color=[<span class="string">&quot;#FF0000&quot;</span>,<span class="string">&quot;#FF7D00&quot;</span>,<span class="string">&quot;#FFFF00&quot;</span>,<span class="string">&quot;#00FF00&quot;</span>,<span class="string">&quot;#00FFFF&quot;</span>];</span><br><span class="line">            color_list=<span class="built_in">this</span>.getSubColor(color,subColorSieze,subRemainder);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> color_list.reverse();</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 渐变色第二段，从青色到紫色</span></span><br><span class="line">    <span class="attr">getRainbowColor2_two</span>:<span class="function"><span class="keyword">function</span>(<span class="params">colorSize</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> color_list=[];</span><br><span class="line">        <span class="keyword">if</span>(colorSize&lt;<span class="number">4</span>)&#123;</span><br><span class="line">            <span class="keyword">switch</span> (colorSize) &#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(0, 255, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(0, 255, 255)&quot;</span>,<span class="string">&quot;rgb(0，0，255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">                    color_list=[<span class="string">&quot;rgb(0, 255, 255)&quot;</span>,<span class="string">&quot;rgb(0，0，255)&quot;</span>,<span class="string">&quot;rgb(255, 0, 255)&quot;</span>];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">var</span> subColorSieze=<span class="built_in">parseInt</span>(colorSize/<span class="number">2</span>);</span><br><span class="line">            <span class="keyword">var</span> subRemainder=colorSize%<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">var</span> color=[<span class="string">&quot;#00FFFF&quot;</span>,<span class="string">&quot;#0000FF&quot;</span>,<span class="string">&quot;#FF00FF&quot;</span>];</span><br><span class="line">            color_list=<span class="built_in">this</span>.getSubColor(color,subColorSieze,subRemainder);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> color_list.reverse();</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">getSubColor</span>:<span class="function"><span class="keyword">function</span>(<span class="params">colorArray,step,remainder</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> colorCount=colorArray.length;</span><br><span class="line">        <span class="keyword">var</span> color_list=[];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;colorCount-<span class="number">1</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">var</span> temp=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span>(remainder&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                temp=<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">var</span> tempArray=<span class="keyword">new</span> gradientColor(colorArray[i],colorArray[i+<span class="number">1</span>],step+temp);</span><br><span class="line">            color_list.push.apply(color_list,tempArray);</span><br><span class="line">            remainder--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> color_list;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>startColor 指定起始颜色</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>endColor   指定结束颜色</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param </span>step       划分渐变色区域数量</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns <span class="type">&#123;Array&#125;</span>  </span>返回渐变色数组</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span>  gradientColor = <span class="function"><span class="keyword">function</span> (<span class="params">startColor, endColor, step</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> startRGB = <span class="built_in">this</span>.colorRgb(startColor);<span class="comment">//转换为rgb数组模式</span></span><br><span class="line">    <span class="keyword">let</span> startR = startRGB[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">let</span> startG = startRGB[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">let</span> startB = startRGB[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> endRGB = <span class="built_in">this</span>.colorRgb(endColor);</span><br><span class="line">    <span class="keyword">let</span> endR = endRGB[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">let</span> endG = endRGB[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">let</span> endB = endRGB[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> sR = (endR - startR) / step;<span class="comment">//总差值</span></span><br><span class="line">    <span class="keyword">let</span> sG = (endG - startG) / step;</span><br><span class="line">    <span class="keyword">let</span> sB = (endB - startB) / step;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> colorArr = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; step; i++) &#123;</span><br><span class="line">        <span class="comment">//计算每一步的hex值</span></span><br><span class="line">        <span class="comment">// let hex = this.colorHex(&#x27;rgb(&#x27;+ parseInt((sR * i + startR))+ &#x27;,&#x27; + parseInt((sG * i + startG))+ &#x27;,&#x27; +</span></span><br><span class="line">        <span class="comment">//     parseInt((sB * i + startB)) + &#x27;)&#x27;);</span></span><br><span class="line">        <span class="comment">// colorArr.push(hex);</span></span><br><span class="line">        <span class="keyword">let</span> rgb = <span class="string">&#x27;rgb(&#x27;</span>+ <span class="built_in">parseInt</span>((sR * i + startR))+ <span class="string">&#x27;,&#x27;</span> + <span class="built_in">parseInt</span>((sG * i + startG))+ <span class="string">&#x27;,&#x27;</span> +</span><br><span class="line">            <span class="built_in">parseInt</span>((sB * i + startB)) + <span class="string">&#x27;)&#x27;</span>;</span><br><span class="line">        colorArr.push(rgb);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> colorArr;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将hex表示方式转换为rgb表示方式(这里返回rgb数组模式)</span></span><br><span class="line">gradientColor.prototype.colorRgb = <span class="function"><span class="keyword">function</span> (<span class="params">sColor</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> reg = <span class="regexp">/^#([0-9a-fA-F]&#123;3&#125;|[0-9a-fA-F]&#123;6&#125;)$/</span>;</span><br><span class="line">    sColor = sColor.toLowerCase();</span><br><span class="line">    <span class="keyword">if</span> (sColor &amp;&amp; reg.test(sColor)) &#123;</span><br><span class="line">        <span class="keyword">if</span> (sColor.length === <span class="number">4</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> sColorNew = <span class="string">&quot;#&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">4</span>; i += <span class="number">1</span>) &#123;</span><br><span class="line">                sColorNew += sColor.slice(i, i + <span class="number">1</span>).concat(sColor.slice(i, i + <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            sColor = sColorNew;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//处理六位的颜色值</span></span><br><span class="line">        <span class="keyword">let</span> sColorChange = [];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; <span class="number">7</span>; i += <span class="number">2</span>) &#123;</span><br><span class="line">            sColorChange.push(<span class="built_in">parseInt</span>(<span class="string">&quot;0x&quot;</span> + sColor.slice(i, i + <span class="number">2</span>)));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sColorChange;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> sColor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">// 将rgb表示方式转换为hex表示方式</span></span><br><span class="line">gradientColor.prototype.colorHex = <span class="function"><span class="keyword">function</span> (<span class="params">rgb</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> _this = rgb;</span><br><span class="line">    <span class="keyword">let</span> reg = <span class="regexp">/^#([0-9a-fA-F]&#123;3&#125;|[0-9a-fA-F]&#123;6&#125;)$/</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="regexp">/^(rgb|RGB)/</span>.test(_this)) &#123;</span><br><span class="line">        <span class="keyword">let</span> aColor = _this.replace(<span class="regexp">/(?:\(|\)|rgb|RGB)*/g</span>, <span class="string">&quot;&quot;</span>).split(<span class="string">&quot;,&quot;</span>);</span><br><span class="line">        <span class="keyword">let</span> strHex = <span class="string">&quot;#&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; aColor.length; i++) &#123;</span><br><span class="line">            <span class="keyword">let</span> hex = <span class="built_in">Number</span>(aColor[i]).toString(<span class="number">16</span>);</span><br><span class="line">            hex = hex &lt; <span class="number">10</span> ? <span class="number">0</span> + <span class="string">&#x27;&#x27;</span> + hex : hex;<span class="comment">// 保证每个rgb的值为2位</span></span><br><span class="line">            <span class="keyword">if</span> (hex === <span class="string">&quot;0&quot;</span>) &#123;</span><br><span class="line">                hex += hex;</span><br><span class="line">            &#125;</span><br><span class="line">            strHex += hex;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (strHex.length !== <span class="number">7</span>) &#123;</span><br><span class="line">            strHex = _this;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> strHex;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (reg.test(_this)) &#123;</span><br><span class="line">        <span class="keyword">let</span> aNum = _this.replace(<span class="regexp">/#/</span>, <span class="string">&quot;&quot;</span>).split(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (aNum.length === <span class="number">6</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> _this;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (aNum.length === <span class="number">3</span>) &#123;</span><br><span class="line">            <span class="keyword">let</span> numHex = <span class="string">&quot;#&quot;</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; aNum.length; i += <span class="number">1</span>) &#123;</span><br><span class="line">                numHex += (aNum[i] + aNum[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> numHex;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> _this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这是实现的效果：</p>
+<img src="/images/loadimg.png" data-original="/posts/ad7da0b0/color_1.png" lay-src="/posts/ad7da0b0/color_1.png" class="" title="颜色梯度">
+
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wzdxy/p/5346930.html">无聊向 —— RGB彩虹色渐变算法</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/SweetMemory/p/6274388.html">JS 处理十六进制颜色渐变算法-输入颜色，输出渐变rgb数组</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/vampirehgg/article/details/71553423">JS生成渐变颜色</a><br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guofei0925/p/5761333.html#commentform">颜色渐变的JS代码</a></p>
+<h2 id="2-HSL颜色模式"><a href="#2-HSL颜色模式" class="headerlink" title="2.HSL颜色模式"></a>2.HSL颜色模式</h2><p>如果使用的是hsl的话，好像更加的方便，代码量也更少。</p>
+<img src="/images/loadimg.png" data-original="/posts/ad7da0b0/color_2.png" lay-src="/posts/ad7da0b0/color_2.png" class="" title="彩虹算法">
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>hsl渐变<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></span><br><span class="line"><span class="css">        <span class="selector-tag">body</span>,<span class="selector-tag">html</span>&#123;</span></span><br><span class="line"><span class="css">            <span class="attribute">width</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">margin</span>:<span class="number">0</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">padding</span>:<span class="number">0</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">position</span>:absolute;</span></span><br><span class="line"><span class="css">            <span class="attribute">text-align</span>: center;</span></span><br><span class="line"><span class="css">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.map</span>&#123;</span></span><br><span class="line"><span class="css">            <span class="attribute">width</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">height</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">position</span>:absolute;</span></span><br><span class="line"><span class="css">        &#125;</span></span><br><span class="line"><span class="css">        <span class="selector-class">.save</span>&#123;</span></span><br><span class="line"><span class="css">            <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="css">            <span class="attribute">left</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="css">            <span class="attribute">z-index</span>: <span class="number">10</span>;</span></span><br><span class="line"><span class="css">        &#125;</span></span><br><span class="line"><span class="css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;map&quot;</span> <span class="attr">id</span>=<span class="string">&quot;map&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">hsl</span>(<span class="params">start,end,colorSize</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> startColor=start;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> endColor=end;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> colors=[];</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> step=(end-start)/colorSize;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;colorSize;i++)&#123;</span></span><br><span class="line"><span class="javascript">                <span class="keyword">var</span> hsl=<span class="string">&quot;hsl(&quot;</span>+(start+step*i)+<span class="string">&quot;,100%,50%)&quot;</span>;</span></span><br><span class="line"><span class="javascript">                colors.push(hsl);</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(colors);</span></span><br><span class="line"><span class="javascript">            <span class="keyword">return</span> colors;</span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">createDiv</span>(<span class="params">colors</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> count=colors.length;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> colorItemHtml=<span class="string">&quot;&quot;</span>;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;count;i++)&#123;</span></span><br><span class="line"><span class="javascript">                colorItemHtml+= <span class="string">`&lt;div style=&quot;height:40px&quot; class=&quot;colorbar-item&quot;&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">                        &lt;div style=&#x27;background:<span class="subst">$&#123;colors[i]&#125;</span>;height:100%;width:15px;display:inline-block;&#x27; class=&quot;colorbar-colrr&quot;&gt;&lt;/div&gt;</span></span></span><br><span class="line"><span class="string"><span class="javascript">                    &lt;/div&gt;`</span>;</span></span><br><span class="line"><span class="javascript">            &#125;</span></span><br><span class="line"><span class="javascript">            <span class="keyword">var</span> cot=<span class="built_in">document</span>.getElementById(<span class="string">&quot;map&quot;</span>);</span></span><br><span class="line"><span class="javascript">            cot.innerHTML=colorItemHtml;</span></span><br><span class="line"><span class="javascript"></span></span><br><span class="line"><span class="javascript">        &#125;</span></span><br><span class="line"><span class="javascript">        <span class="keyword">var</span> h=hsl(<span class="number">0</span>,<span class="number">300</span>,<span class="number">10</span>);</span></span><br><span class="line"><span class="javascript">        createDiv(h);</span></span><br><span class="line"><span class="javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这段代码，只需要定义开始的颜色值(一般都是从0开始)，和结束的颜色值，比如300,也就是去掉了紫色值，然后设定步长，就可以将颜色按相应的步长进行梯度变色了，比第一种方法好用多了。</p>
+<p>参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.kancloud.cn/chandler/css_advanced/484567">CSS3中使用HSL颜色指南</a> (这里其实写的对于HSL颜色的代码还是挺好的)<br>2.<a target="_blank" rel="noopener" href="https://mlog.club/article/1329540">根据值生成彩虹色</a> (这里其实提到了使用”hsl(“ + ((curPercent * (maxHue-minHue) ) + minHue) + “,100%,50%)” 方法生成颜色色卡的方式)<br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/SweetMemory/p/6274388.html">JS 处理十六进制颜色渐变算法-输入颜色，输出渐变rgb数组</a><br>4.<a target="_blank" rel="noopener" href="https://oldj.net/blog/2011/05/13/hsl-to-rgb">HSL转换为RGB色彩</a> (如何将HSL颜色转为RGB颜色)<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35321405/article/details/79786977">canvas渲染网络图片(旋转，灰阶，饱和度操作)并保存到本地</a><br>6.<a target="_blank" rel="noopener" href="https://www.php.cn/js-tutorial-411745.html">js如何实现rgb与hsl的转换？rgb与hsl互相转换的方法（代码实例）</a></p>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/113c3fc6.html" rel="next" title="spring Boot升级过程中的坑">
+                      <i class="iconfont icon-prev"></i> spring Boot升级过程中的坑
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/76eb5ccc.html" rel="prev" title="SpringSecurity问题汇总">
+                      SpringSecurity问题汇总 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A2%9C%E8%89%B2%E6%95%B0%E7%BB%84"><span class="toc-number">1.</span> <span class="toc-text">1.颜色数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-HSL%E9%A2%9C%E8%89%B2%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">2.HSL颜色模式</span></a></li></ol>
+    </div>
+
+</div>
+
+
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+
+  
+    
+        
+          <div><a href="/friendchain">更多</a></div>
+          
+        
+    
+
+  
+    
+        
+    
+
+  
+    
+        
+    
+
+  
+
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩内容</div>
+  
+    <div><a href="/anime">动漫一</a></div>
+  
+    <div><a href="/anime_2">动漫二</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/ad7da0b0.html';
+      this.page.identifier = 'posts/ad7da0b0.html';
+      this.page.title = 'javascript实现彩虹颜色梯度渐变';
+      };
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：javascript实现彩虹颜色梯度渐变 链接地址:https://bibichuan.github.io/posts/ad7da0b0.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'javascript实现彩虹颜色梯度渐变',
+		url: 'https://bibichuan.github.io/posts/ad7da0b0.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'javascript实现彩虹颜色梯度渐变',
+			isTipVisibility: true,
+			tip: 'javascript实现彩虹颜色梯度渐变',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>
