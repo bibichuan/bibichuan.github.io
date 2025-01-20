@@ -1,0 +1,1 @@
+$(document).ready(function(){$(".archive_left .archive_item").on("click",function(){var i=$(this),a=i.data("year");i.addClass("active").siblings().removeClass("active"),$(".archive_right").find("."+a).show().siblings().hide()})});
