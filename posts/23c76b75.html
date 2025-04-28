@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技术研究之阿里云直播</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">技术研究之阿里云直播</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-11-28 06:21:20
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>阿里云提供了 RTMP 直播服务，有两种计费方式，不包括视频截图，存储量费用。<br>（1）按量计算：流量阶梯单价 x 流量<br>假设1000人同时在线并同时观看视频1小时，流量计算方式为：[1000（人）] X [0.5（视频码率Mbps）] X [3600（观看时间／秒）] [1024 8（将Mbps换算为GB）] = 219.7GB，0.29（阶梯流量单价：元／GB）x 219.7（流量：GB） = 63.71 元</p>
+<p>适合突发流量的情况。</p>
+<p>（2）按峰值带宽计算：峰值带宽阶梯单价 X 峰值<br> 假设1000人同时在线并同时观看视频1小时，流量计算方式为：[1000（人）] X [0.5（视频码率Mbps）] = 500Mbps。1.00（峰值带宽阶梯单价：元／Mbps）X 500 （Mbps） = 500 元</p>
+<p>适合全天都平稳进行直播的场景。</p>
+<p>超低延时直播RTS按[峰值带宽]计费 1.32 元，还需要加上一个转码费用，如果在 web 端播放 artc 协议，需要做一个转码。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.aliyun.com/price/detail/live">视频直播 详细价格信息</a><br>【2】.<a target="_blank" rel="noopener" href="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/pdf/live-purchase-guide-cn-zh-2018-09-07.pdf">视频直播产品定价</a> 流量估计：<br>【3】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/product-overview/billing-of-live-stream-transcoding">直播转码费用</a></div>
+<h1 id="2-配置域名"><a href="#2-配置域名" class="headerlink" title="2.配置域名"></a>2.配置域名</h1><p>这里就要到 视频直播 -&gt; 推/播流域名管理 界面增加域名，其实还挺麻烦的，推流和拉流两个域名还不能一样。</p>
+<img src="/images/loadimg.png" data-original="/posts/23c76b75/aliyun_1.jpg" lay-src="/posts/23c76b75/aliyun_1.jpg" class="" title="阿里云直播">
+
+<p>配置完了推流和拉流地址，需要将推流地址和拉流地址进行关联，在拉流地址里面选择 “域名管理” 可以配置推流地址。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/user-guide/verify-the-ownership-of-a-domain-name?spm=5176.13499635.0.0.7c7526998bj95v">验证域名归属权</a></div>
+<h1 id="3-控制台生成地址"><a href="#3-控制台生成地址" class="headerlink" title="3.控制台生成地址"></a>3.控制台生成地址</h1><p>有两种方式生成推流和拉流地址,(1) 控制台,(2) 代码生成。<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/live-url-generator#task-2020590">控制台生成</a> 可以直接生成推流和拉流地址<br>(1) 登录视频直播控制台。</p>
+<p>(2) 在左侧导航栏选择直播工具箱 &gt; 地址生成器。</p>
+<p>(3) 在直播地址生成器页签，完成以下配置获取推流地址和播放地址。<br>选择播流域名，关联的推流域名，输入 AppName,StreamName 然后点击开始生成，就可以获取一个 rtmp 地址，可以将这个地址配置到 OBS 中进行直播了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/ingest-and-streaming-urls?spm=a2c63.p38356.0.i2#concept-2010579">生成推流地址和播放地址</a> 表格中RTS地址，即超低延时直播RTS地址，使用前需开通超低延时直播功能。<br>【2】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/live-stream-ingest?spm=a2c63.p38356.help-menu-29949.d_2_4_1_0.6807c47a3iAitn">直播推流</a> 1.使用OBS推流；2.使用阿里云直播Demo推流；</div>
+<h1 id="4-代码生成地址"><a href="#4-代码生成地址" class="headerlink" title="4.代码生成地址"></a>4.代码生成地址</h1><p>通过API自定义拼接地址,下面的代码基本上可以使用。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.math.BigInteger;</span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.*;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Create_Live_Url</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算md5</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> param</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">md5</span><span class="params">(String param)</span> {</span><br><span class="line">        <span class="keyword">if</span>(param == <span class="literal">null</span> || param.length() == <span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">        <span class="type">MessageDigest</span> <span class="variable">md5</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">        md5.update(param.getBytes());</span><br><span class="line">        <span class="type">byte</span>[] byteArray = md5.digest();</span><br><span class="line">        </span><br><span class="line">        <span class="type">BigInteger</span> <span class="variable">bigInt</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, byteArray);</span><br><span class="line">                <span class="comment">// 参数16表示16进制</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> bigInt.toString(<span class="number">16</span>);</span><br><span class="line">                <span class="comment">// 不足32位高位补零</span></span><br><span class="line">        <span class="keyword">while</span>(result.length() &lt; <span class="number">32</span>) {</span><br><span class="line">        result = <span class="string">"0"</span> + result;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">        } <span class="keyword">catch</span> (NoSuchAlgorithmException e) {</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成推流地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pushDomain 推流域名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pushKey 推流域名配置的鉴权Key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> appName 推流AppName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> streamName 推流StreamName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> expireTime 过期时间（单位是秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">generate_push_url</span><span class="params">(String pushDomain,String pushKey,String appName,String streamName,<span class="type">long</span> expireTime)</span> {</span><br><span class="line">        <span class="type">String</span> <span class="variable">pushUrl</span> <span class="operator">=</span> <span class="string">""</span>;</span><br><span class="line">        <span class="comment">//推流域名未开启鉴权功能的情况下</span></span><br><span class="line">        <span class="keyword">if</span>(pushKey==<span class="string">""</span>) {</span><br><span class="line">        pushUrl = <span class="string">"rtmp://"</span>+pushDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName;</span><br><span class="line">        }<span class="keyword">else</span> {</span><br><span class="line">        <span class="type">long</span> <span class="variable">timeStamp</span> <span class="operator">=</span> System.currentTimeMillis()/<span class="number">1000L</span> + expireTime;</span><br><span class="line">        <span class="type">String</span> <span class="variable">stringToMd5</span> <span class="operator">=</span> <span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"-"</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+pushKey;</span><br><span class="line">        <span class="type">String</span> <span class="variable">authKey</span> <span class="operator">=</span> md5(stringToMd5);</span><br><span class="line">        pushUrl = <span class="string">"rtmp://"</span>+pushDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"?auth_key="</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+authKey;</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">"推流地址是： "</span>+pushUrl);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成播放地址</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pullDomain 播放域名</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> pullKey 播放鉴权Key</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> appName 播放appName（同推流appName)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> streamName 播放streamName，播放源流时，streamName 同推流streamName；播放转码流时，streamName 为推流streamName_{转码模板ID}</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> expireTime 过期时间（单位是秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">general_pull_url</span><span class="params">(String pullDomain,String pullKey,String appName,String streamName,<span class="type">long</span> expireTime)</span> {</span><br><span class="line">        <span class="type">String</span> <span class="variable">rtmpUrl</span> <span class="operator">=</span> <span class="string">""</span>; <span class="comment">//rtmp的拉流地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">hlsUrl</span> <span class="operator">=</span> <span class="string">""</span>; <span class="comment">//m3u8的拉流地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">flvUrl</span> <span class="operator">=</span> <span class="string">""</span>; <span class="comment">//flv的拉流地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">artcUrl</span> <span class="operator">=</span><span class="string">""</span>; <span class="comment">// 超低延迟</span></span><br><span class="line">        <span class="comment">//播放域名未配置鉴权Key的情况下</span></span><br><span class="line">        <span class="keyword">if</span>(pullKey == <span class="string">""</span>) {</span><br><span class="line">        rtmpUrl = <span class="string">"rtmp://"</span>+pullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName;</span><br><span class="line">        hlsUrl = <span class="string">"http://"</span>+pullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".m3u8"</span>;</span><br><span class="line">        flvUrl = <span class="string">"http://"</span>+pullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".flv"</span>;</span><br><span class="line">        }<span class="keyword">else</span> {</span><br><span class="line">        <span class="type">long</span> <span class="variable">timeStamp</span> <span class="operator">=</span> System.currentTimeMillis()/<span class="number">1000L</span> + expireTime;</span><br><span class="line">        <span class="type">String</span> <span class="variable">rtmpToMd5</span> <span class="operator">=</span> <span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"-"</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+pullKey;</span><br><span class="line">        <span class="type">String</span> <span class="variable">rtmpAuthKey</span> <span class="operator">=</span> md5(rtmpToMd5);</span><br><span class="line">        rtmpUrl = <span class="string">"rtmp://"</span>+pullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"?auth_key="</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+rtmpAuthKey;</span><br><span class="line">        </span><br><span class="line">        <span class="type">String</span> <span class="variable">hlsToMd5</span> <span class="operator">=</span> <span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".m3u8-"</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+pullKey;</span><br><span class="line">        <span class="type">String</span> <span class="variable">hlsAuthKey</span> <span class="operator">=</span> md5(hlsToMd5);</span><br><span class="line">        hlsUrl = <span class="string">"http://"</span>+pullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".m3u8"</span>+<span class="string">"?auth_key="</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+hlsAuthKey;</span><br><span class="line">        </span><br><span class="line">        <span class="type">String</span> <span class="variable">flvToMd5</span> <span class="operator">=</span> <span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".flv-"</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+pullKey;</span><br><span class="line">        <span class="type">String</span> <span class="variable">flvAuthKey</span> <span class="operator">=</span> md5(flvToMd5);</span><br><span class="line">        flvUrl = <span class="string">"http://"</span>+pullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".flv"</span>+<span class="string">"?auth_key="</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+flvAuthKey;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">artcToMd5</span> <span class="operator">=</span> <span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"-"</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+appKey;</span><br><span class="line">        <span class="type">String</span> <span class="variable">artcAuthKey</span> <span class="operator">=</span> md5(artcToMd5);</span><br><span class="line">        artcUrl = <span class="string">"http://"</span>+pullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"?auth_key="</span>+Long.toString(timeStamp)+<span class="string">"-0-0-"</span>+artcAuthKey;</span><br><span class="line">        }</span><br><span class="line">        System.out.println(<span class="string">"RTMP播放地址为： "</span>+rtmpUrl);</span><br><span class="line">        System.out.println(<span class="string">"m3u8播放地址为： "</span>+hlsUrl);</span><br><span class="line">        System.out.println(<span class="string">"flv播放地址为： "</span>+flvUrl);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> {</span><br><span class="line">    <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">        <span class="comment">//生成长度为5的随机字符串作为appName和streamName（字母和数字组合）</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">appName</span> <span class="operator">=</span> RandomStringUtils.randomAlphanumeric(<span class="number">5</span>);;</span><br><span class="line">        <span class="type">String</span> <span class="variable">streamName</span> <span class="operator">=</span> RandomStringUtils.randomAlphanumeric(<span class="number">5</span>);;</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">expireTime</span> <span class="operator">=</span> <span class="number">3600L</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">pullDomain</span> <span class="operator">=</span> <span class="string">"mxl-pull.pier39.cn"</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">pullKey</span> <span class="operator">=</span> <span class="string">"querty1234"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="type">String</span> <span class="variable">pushDomain</span> <span class="operator">=</span> <span class="string">"mxl-push.pier39.cn"</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">pushKey</span> <span class="operator">=</span> <span class="string">"querty123"</span>;</span><br><span class="line">        Create_Live_Url.general_pull_url(pullDomain, pullKey, appName, streamName, expireTime);</span><br><span class="line">        Create_Live_Url.generate_push_url(pushDomain, pushKey, appName, streamName, expireTime);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>需要注意：<br>（1）鉴权的有效时长应该和控制台配置的有效时长相同，默认是 1440 分钟，也就是一天。</p>
+<img src="/images/loadimg.png" data-original="/posts/23c76b75/aliyun_2.jpg" lay-src="/posts/23c76b75/aliyun_2.jpg" class="" title="阿里云直播">
+
+<p>（2）需要注意 pushKey 和 pullKey 不一样，需要在直播域名的详情页的访问控制中进行查看。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/vecs/support/rtmp-protocol-access-process">RTMP协议接入流程</a> RTMP、HLS、HTTP-FLV 协议对比:RTMP 延迟1s-3s；HLS：&gt;10s；HTTP-FLV：1s-3s。<br>【2】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/stream-ingest-stream-pulling-and-streaming">推流、拉流与播流</a> 1.准备工具和环境；2.按需拉取直播流；3.获取推流与播放地址；4.推流设置与操作；5.播放设置与查看<br>【3】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/how-to-use-php-or-java-code-to-generate-ingest-and-streaming-urls?spm=5176.13499635.console-base_help.dexternal.eff52699L2aZ36">如何通过PHP或Java代码生成推流地址和播放地址？</a><br>【4】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/user-guide/configure-url-signing?spm=5176.13499635.console-base_help.dexternal.53592699JsIOs4">配置URL鉴权</a><br>【5】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/user-guide/url-signing-demos?spm=5176.13499635.console-base_help.dexternal.53592699JsIOs4">鉴权代码示例</a></div>
+<h1 id="5-超低延时"><a href="#5-超低延时" class="headerlink" title="5.超低延时"></a>5.超低延时</h1><p>登录视频直播控制台,<br>(1) 在左侧导航栏选择推/播流域名管理，进入域名管理页面。<br>(2) 单击需要开启超低延时直播的播流域名操作列的域名配置，进入域名管理页面。<br>(3) 选择直播管理 &gt; 超低延时播放 RTS。<br>(4) 打开RTS播放开关。<br>(5) 选择版本低延时直播(RTS 1.0)，打开H5自动转码开关。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/rts-overview?spm=a2c63.p38356.help-menu-29949.d_2_11_0_0.5b3b370dvcA533">超低延时直播简介</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/use-rts#section-kfh-i8q-bw8">开通超低延时直播功能</a><br>【3】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/use-rts#section-kfh-i8q-bw8">生成推流地址和播放地址</a> 支持RTMP、FLV、M3U8、RTS格式，推荐使用RTS格式地址播放。示例：RTS：artc://example.aliyundoc.com/app/stream?auth_key={鉴权串}<br>【4】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/url-signing#section-ak5-3ig-mv4">URL鉴权</a></div>
+<h1 id="6-配置https"><a href="#6-配置https" class="headerlink" title="6.配置https"></a>6.配置https</h1><p>使用超低延迟 rts 播放，需要为拉流地址配置 ssl 证书,否则无法播放。我在操作的时候，又遇到了问题，问题就是在阿里云签发证书的时候，总是出现失败的情况。<br>（1）购买证书<br>去阿里云 ssl 证书管理页面申请一个免费的证书。如果在阿里云购买了证书之后，可以选择一键部署，直接部署到拉流端域名。</p>
+<p>（2）配置直播域名<br>在视频直播 -&gt; 推/播流域名管理，选择拉流域名，选择 HTTPS 配置，开启HTTPS证书。</p>
+<p>（3）验证证书是否生效<br>设置完成待证书1分钟后全网生效，使用HTTPS方式访问资源，如果浏览器中出现锁样的标识，则HTTPS安全加速生效。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/rts-demos">Demo体验</a> 您需要为域名配置SSL证书,* 如果您在体验过程中出现问题，可优先前往直播控制台工具箱&gt;自助问题排查中快速诊断常见推/播流问题，并提供解决建议。<br>【2】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/user-guide/configure-https-secure-cdn?spm=5176.13499635.console-base_help.dexternal.203b2699FoEgoy">配置HTTPS安全加速</a> 这里是阿里云详细的操作步骤。<br>【3】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ssl-certificate/user-guide/deploy-ssl-certificates-to-alibaba-cloud-services?spm=a2c4g.11186623.0.0.3cef4771igOpSr">部署证书至阿里云云产品（云产品部署）</a></div>
+<h1 id="6-超低延迟播放"><a href="#6-超低延迟播放" class="headerlink" title="6.超低延迟播放"></a>6.超低延迟播放</h1><p>可以到 <a target="_blank" rel="noopener" href="https://video.aliyuncs.com/rts-demo/index.html">问题自查</a> 查看自己的直播是否可用。<br>(1) 安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm add aliyun-aliplayer --save</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 配置license<br>直播工具箱 -&gt; SDK管理 -&gt; 我的授权，需要先购买 License，然后创建应用，将 license 和应用绑定就可以了。(多个应用共用一个license)</p>
+<img src="/images/loadimg.png" data-original="/posts/23c76b75/aliyun_3.png" lay-src="/posts/23c76b75/aliyun_3.png" class="" title="阿里云直播">
+
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">license</span>: {</span><br><span class="line">    <span class="attr">domain</span>: <span class="string">'xxx.tech'</span>, <span class="comment">// 申请 License 时填写的域名</span></span><br><span class="line">    <span class="attr">key</span>: <span class="string">'xx'</span>, <span class="comment">// 申请成功后，在控制台可以看到 License Key</span></span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 使用</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"J_prismPlayer"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="comment">//先通过 npm install   安装</span></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> <span class="title class_">Aliplayer</span> <span class="keyword">from</span> <span class="string">'aliyun-aliplayer'</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">import</span> <span class="string">'aliyun-aliplayer/build/skins/default/aliplayer-min.css'</span>;</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> player = <span class="keyword">new</span> <span class="title class_">Aliplayer</span>({</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">id</span>: <span class="string">'J_prismPlayer'</span>,</span></span><br><span class="line"><span class="language-javascript">    <span class="attr">source</span>: <span class="string">'&lt;your play URL&gt;'</span>, <span class="comment">// 播放地址，使用超低延时直播（RTS）地址，协议是artc://。</span></span></span><br><span class="line"><span class="language-javascript">    <span class="attr">isLive</span>: <span class="literal">true</span>, <span class="comment">// 是否为直播播放。</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// rtsFallback: false, //（可选）是否开启RTS自动降级，默认为 true</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// rtsFallbackType: 'HLS', //（可选）指定降级到的协议，可选 HLS/FLV，默认是自动选择，优先选择延迟更低的FLV，如果浏览器不支持则降级到 HLS</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// rtsFallbackSource: '&lt;your play URL&gt;', // （可选）指定降级地址，而不是让播放器自动选择</span></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// rtsVersion: 'x.x.x', // （可选）可以手动指定RTS SDK的版本。</span></span></span><br><span class="line"><span class="language-javascript">    <span class="attr">license</span>: {</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">domain</span>: <span class="string">'xxx'</span>, <span class="comment">// 申请 License 时填写的域名</span></span></span><br><span class="line"><span class="language-javascript">        <span class="attr">key</span>: <span class="string">'xxx'</span> <span class="comment">// 申请成功后，在控制台可以看到 License Key</span></span></span><br><span class="line"><span class="language-javascript">    },</span></span><br><span class="line"><span class="language-javascript">},<span class="keyword">function</span>(<span class="params">player</span>){</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'The player is created.'</span>)</span></span><br><span class="line"><span class="language-javascript">});</span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 当RTS拉流成功时触发，通过订阅该事件，可以获取到RTS TraceId。 回调函数的参数中traceId为拉流的TraceId，source为当前RTS流的播放地址。</span></span></span><br><span class="line"><span class="language-javascript">player.<span class="title function_">on</span>(<span class="string">'rtsTraceId'</span>, <span class="keyword">function</span>(<span class="params">event</span>) {</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'EVENT rtsTraceId'</span>, event.<span class="property">paramData</span>);</span></span><br><span class="line"><span class="language-javascript">})</span></span><br><span class="line"><span class="language-javascript"><span class="comment">// 当RTS降级时触发，参数reason为降级的原因，fallbackUrl为降级到的地址。</span></span></span><br><span class="line"><span class="language-javascript">player.<span class="title function_">on</span>(<span class="string">'rtsFallback'</span>, <span class="keyword">function</span>(<span class="params">event</span>) {</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">' EVENT rtsFallback'</span>, event.<span class="property">paramData</span>);</span></span><br><span class="line"><span class="language-javascript">})</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/zh/live/user-guide/methods?spm=a2c63.p38356.0.i1#concept-2167082">接口说明</a> 这是另外一种组件，只支持 rtc。<br>【2】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/user-guide/quick-use">快速使用阿里云ARTC Web SDK</a> 这里是使用的 web sdk 进行的直播，使用这种方式就少了一个视频转码的费用，如果使用 h5 播放，还有一个视频转码的费用。<br>【3】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/vod/developer-reference/integration?spm=a2c4g.11186623.0.0.7c2a555coq6aPT#title-l7w-m37-nx4">超低延时直播（RTS）视频播放</a> 超低延时直播（RTS）使用URL方式播放，无需额外设置参数。<br>【4】.<a target="_blank" rel="noopener" href="https://github.com/aliyunvideo/AliyunPlayer_Web/blob/master/H5VodVueDemo/README.zh_CN.md">阿里云 Vue 播放器 demo</a> 这是阿里云播放器进行播放的例子，可以直接使用播放器直接播放。<br>【5】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/vod/developer-reference/advanced-features-3">进阶功能</a><br>【6】.<a target="_blank" rel="noopener" href="https://niuniubbs.com/thread-4288-1-1.html">Aliplayer阿里云Web播放器 -Aliplayer 错误码</a> 4004 地址不存在</div>
+<h1 id="7-样式修改"><a href="#7-样式修改" class="headerlink" title="7.样式修改"></a>7.样式修改</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/vod/developer-reference/faq-about-apsaravideo-player-for-web-1">Web播放器常见问题</a> 此黑边为播放器容器的背景色，可以通过给video标签设置css属性object-fit: cover;来解决该问题。</div>
+<h1 id="8-视频截图"><a href="#8-视频截图" class="headerlink" title="8.视频截图"></a>8.视频截图</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/684867">阿里云Aliplayer高级功能介绍(一)：视频截图</a> 使用 canvas 进行了截图处理。</div>
+<h1 id="9-视频转码"><a href="#9-视频转码" class="headerlink" title="9.视频转码"></a>9.视频转码</h1><p>超低延时直播Web RTS SDK对音视频解码存在以下限制。</p>
+<ul>
+<li>不支持视频含B帧，否则会出现画面跳跃。</li>
+<li>不支持AAC编码，否则会出现噪音。</li>
+</ul>
+<p>建议您使用RTS超低延时直播时推流配置为不含B帧。如果您无法控制直播推流输入情况，可以使用RTS转码功能自定义设置转码的分辨率、帧率、码率、音频编码格式、B帧等参数。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/configure-rts-transcoding?spm=5176.2020520104.console-base_help.dexternal.193c43ecUYNfUB">RTS转码</a> 具体详情，请参见超低延时直播。</div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-直播黑屏"><a href="#1-直播黑屏" class="headerlink" title="1.直播黑屏"></a>1.直播黑屏</h2><p>在同一个页面中，创建两个实例，结果就会出现其中一个实例黑屏的问题，这个问题是偶发的，我开始的时候以为是 id 的问题，我把这个 id 号改为了随机，结果也还是不行。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lengyue1084/article/details/105390761">阿里云播放器Aliplayer-WEB走坑中</a></div>
+<h2 id="2-直播卡顿"><a href="#2-直播卡顿" class="headerlink" title="2.直播卡顿"></a>2.直播卡顿</h2><p>在手机的webview中进行视频播放的时候，总是出现卡顿的现象，不知道为什么。官方给出的结论有以下几种可能：</p>
+<p>(1) 上行带宽不足或网络抖动，导致的数据发送速率下降，无法达到流畅播放的帧率要求<br>(2) 码率、帧率或编码档位设置的过高，但硬件条件存在限制，导致编码速度变慢，无法达到流畅播放的帧率要求。<br>(3) 推流过程中会有一定的CPU损耗，硬件配置较差的低端手机，在推流过程中若整体CPU 使用率超过80%以上，画面会出现不同程度的卡顿，花屏等现象，会影响到视频的采集，同时也会影响到用户端的观看。<br>(4) 视频采集参数的设置过低。</p>
+<p>【尝试方案】<br>（1）尝试增加播放器参数</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">enableHardwareAcceleration</span>: <span class="literal">true</span>, <span class="comment">// 开启硬件加速</span></span><br><span class="line"><span class="attr">decodeFrameLimit</span>: <span class="number">30</span>, <span class="comment">// 强制解码帧率上限</span></span><br><span class="line"><span class="attr">videoBufferLength</span>: <span class="number">0.3</span>, <span class="comment">// 降低缓冲延迟</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）尝试配置rts转码，结果因为大疆设备端的帧率过高，无法进行转码。</p>
+<p>（3）尝试找官方解决，官方说解决不了，叫我自己解决。</p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">看起来您这个源流我们的转码不支持解码重新编码了，这个问题目前看从直播侧解决不了了</span><br><span class="line">对于卡顿的问题，如果是只有帧率高，可以从播放器侧做优化，即配置</span><br><span class="line">enableHardwareAcceleration: true, // 开启硬件加速</span><br><span class="line">decodeFrameLimit: 30, // 强制解码帧率上限</span><br><span class="line">videoBufferLength: 0.3, // 降低缓冲延迟</span><br><span class="line"></span><br><span class="line">这边找到之前的一个案例，也是大疆的无人机推流，分析推过来的流，在每个 P 帧前面都有插入 SEI ，导致播放卡顿，要在推流端把这个 SEI 和 AUD 去掉 再推流</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/stuttering-during-the-playback-of-a-live-stream">视频直播出现卡顿现象</a><br>【2】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/vod/developer-reference/handle-an-error-and-resume-live-streaming?spm=a2c4g.11186623.help-menu-29932.d_5_1_4_4_8_2.222323fe66Zrds">直播出错恢复处理</a><br>【3】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/configure-rts-transcoding?spm=5176.2020520104.console-base_help.dexternal.193c43ecUYNfUB">RTS转码</a><br>【4】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/user-guide/use-rts?spm=a2c4g.11186623.help-menu-29949.d_2_11_0_1.29ce659eiFMFdG#section-kfh-i8q-bw8">超低延时直播快速入门</a></div>
+<h2 id="3-新版本报错"><a href="#3-新版本报错" class="headerlink" title="3.新版本报错"></a>3.新版本报错</h2><p>最新的版本 v.2.28.5,好像引用了一个私有依赖，导致安装之后运行报错，出现的错误莫名其妙：“./node_modules/.pnpm/aliyun-aliplayer@2.28.5/node_modules/aliyun-aliplayer/build/aliplayer-min.js 6:881，Module parse failed: Unexpected token (6:881) You may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See <a target="_blank" rel="noopener" href="https://webpack.js.org/concepts#loaders%E2%80%9D">https://webpack.js.org/concepts#loaders”</a></p>
+<img src="/images/loadimg.png" data-original="/posts/23c76b75/err_1.png" lay-src="/posts/23c76b75/err_1.png" class="" title="错误">
+
+<p>【解决方案】<br>所以最好就是在 package.json 中锁定版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"aliyun-aliplayer"</span>: <span class="string">"2.27.1"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-域名不匹配E008"><a href="#4-域名不匹配E008" class="headerlink" title="4.域名不匹配E008"></a>4.域名不匹配E008</h2><p>这个问题比较奇怪，我去看了看，发现是 license 配置的问题。在后台配置页面，多个应用只有一个 key，但是在前端每一个域名要配置不同的domain。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">license.domain 申请License时填写的站点域名。例如：在example.com/product/vod中嵌入Web播放器SDK，则请输入该站点的域名example.com。</span><br><span class="line">license.key License申请成功后分配的密钥，为49位的字符串。</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/23c76b75/err_2.jpg" lay-src="/posts/23c76b75/err_2.jpg" class="" title="阿里云直播错误"></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/7b9f037.html" rel="next" title="文章推荐系列之AI">
+                      <i class="iconfont icon-prev"></i> 文章推荐系列之AI
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/e3afc157.html" rel="prev" title="技术研究之阿里云OSS">
+                      技术研究之阿里云OSS <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AE%E5%9F%9F%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">2.配置域名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%94%9F%E6%88%90%E5%9C%B0%E5%9D%80"><span class="toc-number">3.</span> <span class="toc-text">3.控制台生成地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%9C%B0%E5%9D%80"><span class="toc-number">4.</span> <span class="toc-text">4.代码生成地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E8%B6%85%E4%BD%8E%E5%BB%B6%E6%97%B6"><span class="toc-number">5.</span> <span class="toc-text">5.超低延时</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E9%85%8D%E7%BD%AEhttps"><span class="toc-number">6.</span> <span class="toc-text">6.配置https</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E8%B6%85%E4%BD%8E%E5%BB%B6%E8%BF%9F%E6%92%AD%E6%94%BE"><span class="toc-number">7.</span> <span class="toc-text">6.超低延迟播放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="toc-number">8.</span> <span class="toc-text">7.样式修改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E8%A7%86%E9%A2%91%E6%88%AA%E5%9B%BE"><span class="toc-number">9.</span> <span class="toc-text">8.视频截图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81"><span class="toc-number">10.</span> <span class="toc-text">9.视频转码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">11.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9B%B4%E6%92%AD%E9%BB%91%E5%B1%8F"><span class="toc-number">11.1.</span> <span class="toc-text">1.直播黑屏</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%9B%B4%E6%92%AD%E5%8D%A1%E9%A1%BF"><span class="toc-number">11.2.</span> <span class="toc-text">2.直播卡顿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%96%B0%E7%89%88%E6%9C%AC%E6%8A%A5%E9%94%99"><span class="toc-number">11.3.</span> <span class="toc-text">3.新版本报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9F%9F%E5%90%8D%E4%B8%8D%E5%8C%B9%E9%85%8DE008"><span class="toc-number">11.4.</span> <span class="toc-text">4.域名不匹配E008</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/23c76b75.html';
+      this.page.identifier = 'posts/23c76b75.html';
+      this.page.title = '技术研究之阿里云直播';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：技术研究之阿里云直播 链接地址:https://bibichuan.github.io/posts/23c76b75.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '技术研究之阿里云直播',
+		url: 'https://bibichuan.github.io/posts/23c76b75.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '技术研究之阿里云直播',
+			isTipVisibility: true,
+			tip: '技术研究之阿里云直播',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

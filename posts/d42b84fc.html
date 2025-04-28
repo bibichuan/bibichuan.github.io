@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PostGIS学习笔记</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">PostGIS学习笔记</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Postgis/">Postgis</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-04-07 05:26:19
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p> 1.前言<br>PostGIS无疑是GIS领域一个非常重要的项目。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62034688">PostGIS教程一：PostGIS介绍</a> (这是一篇翻译的文章，介绍了PostGIS的相关的内容，包括空间函数，开发历史，介绍了一些优势内容)<br>2.<a target="_blank" rel="noopener" href="https://pgtune.leopard.in.ua/">性能优化</a> 根据CPU、内存和连接数等，自动生成最优化的配置<br>3.<a target="_blank" rel="noopener" href="https://abelvm.github.io/sql/isovists/">Using PostGIS for isovists calculation </a> 计算通视的情况<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xlp789/article/details/103503348?tdsourcetag=s_pctim_aiomsg">基于postgis函数计算矢量切片并通过mapbox和arcgis js 3.x加载</a><br>5.<a target="_blank" rel="noopener" href="https://kael.top/2019/06/10/osm-postgis-mvt/">用PostGIS生成mvt格式的矢量瓦片</a><br>6.<a target="_blank" rel="noopener" href="http://47.105.159.220:3000/nature/map">基于postgis的矢量切片方案</a><br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/liujiusheng/article/details/110221049">使用PostgreSQL+PostGIS实现地图引擎（经历ArcGIS Server/GeoServer/MapServer后）</a><br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35732147/article/details/85158177">PostGIS教程一：PostGIS介绍</a><br>9.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2OTUxMzM2MA==&amp;mid=2247483754&amp;idx=1&amp;sn=228e788c3f846ffa5f75fd763e5bafd7&amp;chksm=ce9aa095f9ed2983df2d418750ef1ea0124f6041b404e27c3920511d91a9587008c2a5246eed&amp;token=1598085930&amp;lang=zh_CN#rd">PostGIS矢量切片技术助力GIS可视化</a><br>10.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e0d11f57ab75">PostgreSQL跨库操作Oracle利器-Oracle_fdw</a></div>
+<h1 id="2-Geojson转入postgis中"><a href="#2-Geojson转入postgis中" class="headerlink" title="2.Geojson转入postgis中"></a>2.Geojson转入postgis中</h1><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yelangkingwuzuhu/article/details/120812987">基于GeoTools的GeoJson导入到PostGis实战</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44151650/article/details/107553636">PostGIS数据库搭建与gdb数据导入</a></div>
+<h1 id="3-将shp文件导入到postgis中"><a href="#3-将shp文件导入到postgis中" class="headerlink" title="3.将shp文件导入到postgis中"></a>3.将shp文件导入到postgis中</h1><p>在 mac 版本中的 shp2pgsql 工具路径在 “/Library/PostgreSQL/15/bin/shp2pgsql” 路径下。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shp2pgsql -c 路径/shp数据文件名 新建的数据表名 数据库名｜psql -d 数据库名 -U 用户名</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.devgenius.io/3-easy-ways-to-import-a-shapefile-into-a-postgresql-database-c1a4c78104af">3 Easy Ways to import a shapefile into a PostgreSQL database</a><br>2.<a target="_blank" rel="noopener" href="https://gis.stackexchange.com/questions/87019/loading-shapefiles-into-postgis-using-shapefile-import-export-manager">Loading Shapefiles into PostGIS using shapefile import/export manager</a></div>
+<h1 id="5-MybatisPlus-返回-geojson-数据"><a href="#5-MybatisPlus-返回-geojson-数据" class="headerlink" title="5.MybatisPlus 返回 geojson 数据"></a>5.MybatisPlus 返回 geojson 数据</h1><p>这里其实有个两种思路，使用sql语句，或者使用 java 进行拼接。</p>
+<h2 id="5-1-使用sql语句进行转换"><a href="#5-1-使用sql语句进行转换" class="headerlink" title="5.1.使用sql语句进行转换"></a>5.1.使用sql语句进行转换</h2><p>一种就是直接使用 postgis 提供的sql语句，将数据库中的数据转为 geojson 字符串，然后通过 JSONObject 对象转成 json 对象返回给前端。</p>
+<p>（1）定义mapper.xml</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span> <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.openmap.disaster.mapper.RfdwdMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"queryGeojson"</span> <span class="attr">resultType</span>=<span class="string">"java.lang.String"</span>&gt;</span></span><br><span class="line">        SELECT</span><br><span class="line">            row_to_json(fc) as geojson</span><br><span class="line">        FROM (</span><br><span class="line">                 SELECT</span><br><span class="line">                     'FeatureCollection' AS type</span><br><span class="line">                      , array_to_json(array_agg(f)) AS features</span><br><span class="line">                 FROM (</span><br><span class="line">                          SELECT</span><br><span class="line">                              'feature' AS type</span><br><span class="line">                               , ST_AsGeoJSON(shape)::json as geometry</span><br><span class="line">                               , (</span><br><span class="line">                                 SELECT</span><br><span class="line">                                  row_to_json(t)</span><br><span class="line">                                  FROM (</span><br><span class="line">                                       SELECT</span><br><span class="line">                                           id</span><br><span class="line">                                   ) AS t</span><br><span class="line">                          ) AS properties</span><br><span class="line">                          FROM map_rfdwd mr</span><br><span class="line">                      ) AS f</span><br><span class="line">             ) AS fc</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 分别实现 Mapper、IService和 ServiceImpl 接口<br>这里我就简单的贴上 ServiceImpl 实现的方法，Mapper 和 IService 都只需要定义一个 String queryGeojson(); 方法就可以了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RfdwdServiceImpl</span> <span class="keyword">extends</span> <span class="title class_">ServiceImpl</span>&lt;RfdwdMapper, Rfdwd&gt; <span class="keyword">implements</span> <span class="title class_">IRfdwdService</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> RfdwdMapper rfdwdMapper;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取全部数据的geojson格式</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">queryGeojson</span><span class="params">()</span>{</span><br><span class="line">        String result=rfdwdMapper.queryGeojson();</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 在 Controller 层实现 IService 接口的调用</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Result&lt;JSONObject&gt; <span class="title function_">queryGeojson</span><span class="params">()</span> {</span><br><span class="line">    String rfdwd=rfdwdService.queryGeojson();</span><br><span class="line">    JSONObject result=JSONObject.parseObject(rfdwd);</span><br><span class="line">    <span class="keyword">return</span> Result.OK(result);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ylfmsn/article/details/107841862">postgis查询数据为geojson</a><br>2.<a target="_blank" rel="noopener" href="https://www.modb.pro/db/192324">Postgis实现空间数据转GeoJSON</a> 虽然功能小，但是比较实用，通过本篇也能学到一些小知识点以及相关函数的使用，主要包括：ST_AsGeoJSON的使用；row_to_json使用；array_agg聚合函数使用；array_to_json使用；row的定义使用和缺点；<br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/codefree/p/16022985.html">PostGIS空间表查询GeoJSON</a> 这里用复杂的sql语句进行了geojson格式的转换。</div>
+<h2 id="5-2使用转换器进行转换"><a href="#5-2使用转换器进行转换" class="headerlink" title="5.2使用转换器进行转换"></a>5.2使用转换器进行转换</h2><p>另外一种就是在使用 mybatis-plus 的使用，自定义一个类型转换器，将geom字段转换为 geojson 格式，然后在进行属性的拼接。</p>
+<p>(1) pom.xml 中增加依赖<br>这里我稍微的做了变动，就是把依赖的版本提升了。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">geotools.version</span>&gt;</span>29.2<span class="tag">&lt;/<span class="name">geotools.version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- geotools相关jar包 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-geojson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-swing<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools.jdbc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-jdbc-postgis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-epsg-hsql<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-shapefile<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-main<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>20.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-opengis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-data<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>20.5<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.geotools<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gt-referencing<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>${geotools.version}<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>net.postgis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>postgis-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>osgeo<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSGeo Release Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.osgeo.org/repository/release/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">releases</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">id</span>&gt;</span>osgeo-snapshot<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">name</span>&gt;</span>OSGeo Snapshot Repository<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo.osgeo.org/repository/snapshot/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">releases</span>&gt;</span><span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span><span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 编写转换器</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.openmap.disaster.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.type.BaseTypeHandler;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.type.JdbcType;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.type.MappedTypes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.geotools.geojson.geom.GeometryJSON;</span><br><span class="line"><span class="keyword">import</span> org.geotools.geometry.jts.WKBReader;</span><br><span class="line"><span class="keyword">import</span> org.locationtech.jts.geom.Geometry;</span><br><span class="line"><span class="keyword">import</span> org.locationtech.jts.io.ParseException;</span><br><span class="line"><span class="keyword">import</span> org.postgis.PGgeography;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.CallableStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@MappedTypes({String.class})</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GeographyTypeHandler</span> <span class="keyword">extends</span> <span class="title class_">BaseTypeHandler</span>&lt;String&gt; {</span><br><span class="line">    <span class="comment">//插入数据，转换,geoJson2EWKB</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNonNullParameter</span><span class="params">(PreparedStatement ps, <span class="type">int</span> i, String parameter, JdbcType jdbcType)</span> <span class="keyword">throws</span> SQLException {</span><br><span class="line">        <span class="type">PGgeography</span> <span class="variable">pGgeography</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PGgeography</span>(parameter);</span><br><span class="line">        ps.setObject(i, pGgeography);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getNullableResult</span><span class="params">(ResultSet rs, String columnName)</span> <span class="keyword">throws</span> SQLException {</span><br><span class="line">        <span class="type">PGgeography</span> <span class="variable">pGgeography</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PGgeography</span>(rs.getString(columnName));</span><br><span class="line">        <span class="keyword">if</span> (pGgeography == <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> pGgeography.toString();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getNullableResult</span><span class="params">(ResultSet rs, <span class="type">int</span> columnIndex)</span> <span class="keyword">throws</span> SQLException {</span><br><span class="line">        <span class="type">PGgeography</span> <span class="variable">pGgeography</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PGgeography</span>(rs.getString(columnIndex));</span><br><span class="line">        <span class="keyword">if</span> (pGgeography == <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> pGgeography.toString();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getNullableResult</span><span class="params">(CallableStatement cs, <span class="type">int</span> columnIndex)</span> <span class="keyword">throws</span> SQLException {</span><br><span class="line">        <span class="type">PGgeography</span> <span class="variable">pGgeography</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PGgeography</span>(cs.getString(columnIndex));</span><br><span class="line">        <span class="keyword">if</span> (pGgeography == <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> pGgeography.toString();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//取出数据转换,WKB-&gt;Geojson</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getResult</span><span class="params">(ResultSet rs, String columnName)</span> <span class="keyword">throws</span> SQLException {</span><br><span class="line">        <span class="type">String</span> <span class="variable">WKB</span> <span class="operator">=</span> rs.getString(columnName);</span><br><span class="line">        <span class="keyword">if</span>(WKB==<span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">WKBReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">WKBReader</span>();</span><br><span class="line">        <span class="type">Geometry</span> <span class="variable">geometry</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            geometry = reader.read(WKBReader.hexToBytes(WKB));</span><br><span class="line">        } <span class="keyword">catch</span> (ParseException e) {</span><br><span class="line">            <span class="comment">//转换失败</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 设置保留15位小数，否则GeometryJSON默认保留4位小数</span></span><br><span class="line">        <span class="type">GeometryJSON</span> <span class="variable">geometryJson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GeometryJSON</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="keyword">return</span> geometryJson.toString(geometry);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 应用转换器<br>在实体类上需要指定转换器，并且实体类注解TableName  补充  autoResultMap = true</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.openmap.disaster.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.math.BigDecimal;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.baomidou.mybatisplus.annotation.*;</span><br><span class="line"><span class="keyword">import</span> com.openmap.disaster.config.GeographyTypeHandler;</span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.annotation.JsonFormat;</span><br><span class="line"><span class="keyword">import</span> org.springframework.format.annotation.DateTimeFormat;</span><br><span class="line"><span class="keyword">import</span> org.jeecgframework.poi.excel.annotation.Excel;</span><br><span class="line"><span class="keyword">import</span> org.jeecg.common.aspect.annotation.Dict;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiModel;</span><br><span class="line"><span class="keyword">import</span> io.swagger.annotations.ApiModelProperty;</span><br><span class="line"><span class="keyword">import</span> lombok.EqualsAndHashCode;</span><br><span class="line"><span class="keyword">import</span> lombok.experimental.Accessors;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: rfdws</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: jeecg-boot</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>:   2023-08-21</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: V1.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@TableName(value = "map_rfdwd",autoResultMap = true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Rfdwd</span> <span class="keyword">implements</span> <span class="title class_">Serializable</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">long</span> <span class="variable">serialVersionUID</span> <span class="operator">=</span> <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**shape,指定类型转换器*/</span></span><br><span class="line">    <span class="meta">@TableField(typeHandler = GeographyTypeHandler.class)</span></span><br><span class="line">    <span class="keyword">private</span> String shape;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 结果<br>最终的结果，就是将这个 shape 字段转换成了geojson字符串。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"shape"</span><span class="punctuation">:</span> '<span class="punctuation">{</span><span class="attr">"type"</span><span class="punctuation">:</span><span class="string">"Point"</span><span class="punctuation">,</span><span class="attr">"coordinates"</span><span class="punctuation">:</span><span class="punctuation">[</span><span class="number">120.02095677700004</span><span class="punctuation">,</span><span class="number">30.23700725300006</span><span class="punctuation">,</span><span class="number">0.0</span><span class="punctuation">]</span><span class="punctuation">}</span>'</span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/haolb123/p/16309152.html">Mybatis-plus读取(GeoJson)和保存Postgis geography数据</a> 我发现这个地方用的也是jeecg框架，这里面的代码基本上可以运行的，稍微修改一下就好了。<br>2.<a target="_blank" rel="noopener" href="https://www.91mszl.com/zhangwuji/article/details/1350">mybatis-plus 支持postgresql数据库中的geometry类型 </a> 这里引入了 mybatis-typehandlers-postgis 这个库。<br>3.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/999809">基于Mybatis-Plus实现Geometry字段在PostGis空间数据库中的使用</a> 这里定义了mapper、services，并实现了调用，还提供了插入方法，返回的是实体类。<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wantLight/article/details/109067758">SpringBoot下Postgre GeoJson数据查询处理</a> 这里也是用的 sql 语句进行查询的，但是提供了一个思路就是：这里考虑到GeoJson数据过多，且变化较慢。存到固定路径供前端直接调用，每日定时更新它就好了。<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Bayern233/article/details/126602302">Mybatis-Plus 对 GeoTools Geometry 映射 PostGIS Geometry 的支持</a> geotools 和 postgis 关联，方便业务操作，以及配置jackson将geometry格式化成geojson返给前端。<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/su317/article/details/79832705">maven的依赖包无法下载解决</a> 这里就是解决 gt-api 这个依赖包找不到的问题。<br>7.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/364463bdd837">MyBatis 配置 TypeHandler</a> mybatis.type-handlers-packag 进行配置<br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34484062/article/details/124761896">mybaties plus实体类设置typeHandler不生效</a> 实体类注解TableName  补充  autoResultMap = true<br>【9】.<a target="_blank" rel="noopener" href="https://www.jb51.net/article/258675.htm">MyBatisPlus TypeHandler自定义字段类型转换Handler</a> 这里提供了一个将日期转换为long型时间戳的方法,基本上代码都可以用，我最后没有配置 type-handlers-package，也是可以使用的。<br>【10】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43830765/article/details/126470575">MybatisPlus实现插入或更新数据时自动生成时间戳</a><br>【11】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1858586">SpringBoot系列 Mybatis 之自定义类型转换 TypeHandler</a><br>【12】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/guyue35/article/details/83688254">MyBatis配置typeHandler类型转换器 (自定义类型转换器)</a><br>【13】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42392981/article/details/131451834">mybatis-plus自定义类型转换器typeHandler</a></div>
+<h2 id="5-3-Error-setting-non-null-for-parameter-18-with-JdbcType-null"><a href="#5-3-Error-setting-non-null-for-parameter-18-with-JdbcType-null" class="headerlink" title="5.3.Error setting non null for parameter #18 with JdbcType null"></a>5.3.Error setting non null for parameter #18 with JdbcType null</h2><p>在使用转换器进行将geojson转为数据库类型的时候，出现了这个问题: Could not set parameters for mapping: ParameterMapping{property=’et.shape’, mode=IN, javaType=class java.lang.Object, jdbcType=STRUCT, numericScale=null, resultMapId=’null’, jdbcTypeName=’null’, expression=’null’},Unknown type: {“type”:”Point”,”coordinates”:[120.00888900000008,30.283056000000045]}</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Excel(name = "shape", width = 15)</span></span><br><span class="line"><span class="meta">@ApiModelProperty(value = "shape")</span></span><br><span class="line"><span class="meta">@TableField(typeHandler = GeographyTypeHandler.class)</span></span><br><span class="line"><span class="keyword">private</span> String shape;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>转换函数:</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@MappedTypes({String.class})</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GeographyTypeHandler</span> <span class="keyword">extends</span> <span class="title class_">BaseTypeHandler</span>&lt;String&gt; {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger= LoggerFactory.getLogger(GeographyTypeHandler.class);</span><br><span class="line">    <span class="comment">//插入数据，转换,geoJson2EWKB</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNonNullParameter</span><span class="params">(<span class="meta">@NotNull</span> PreparedStatement ps, <span class="type">int</span> i, String parameter, JdbcType jdbcType)</span> <span class="keyword">throws</span> SQLException {</span><br><span class="line">        <span class="type">PGgeography</span> <span class="variable">pGgeography</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PGgeography</span>(s1);</span><br><span class="line">        ps.setObject(i, pGgeography);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>修改了转换方法，就是将geojson格式，读取为wkt格式，然后转换为 geometry 类型，更新到数据库中。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setNonNullParameter</span><span class="params">(<span class="meta">@NotNull</span> PreparedStatement ps, <span class="type">int</span> i, String parameter, JdbcType jdbcType)</span> <span class="keyword">throws</span> SQLException {</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="type">GeometryJSON</span> <span class="variable">geometryJson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GeometryJSON</span>(<span class="number">16</span>);</span><br><span class="line">        <span class="type">Geometry</span> <span class="variable">geometry</span> <span class="operator">=</span> geometryJson.read(parameter);</span><br><span class="line">        <span class="type">WKBWriter</span> <span class="variable">wkbWriter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">WKBWriter</span>();</span><br><span class="line">        <span class="type">byte</span>[] write = wkbWriter.write(geometry);</span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> WKBWriter.toHex(write);</span><br><span class="line">        PGgeometry pGgeometry=<span class="keyword">new</span> <span class="title class_">PGgeometry</span>(s1);</span><br><span class="line">        ps.setObject(i, pGgeometry);</span><br><span class="line">    }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">        logger.error(<span class="string">"GeographyTypeHandler"</span>,e);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bobozai86/article/details/105694585">操作MyBatis引发Error setting null for parameter #with jdbcType other.无效的列类型</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bitree1/article/details/63253685">在java程序中如何读写带有Geometry对象的表</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/An1090239782/article/details/124746208">Mybatis-plus读取和保存Postgis geometry数据</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_61228138/article/details/122863897">java实现geojson数据与wkt格式互转</a><br>5.<a target="_blank" rel="noopener" href="https://blog.51cto.com/lovebetterworld/5260308">PostGIS总结</a> 使用geography这种数据类型时，PostGIS的内部计算是基于实际地球球体来计算的；而使用geometry这种数据类型时，PostGIS的内部计算是基于平面来计算的。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/bba6608b.html" rel="next" title="PostGIS安装和运维">
+                      <i class="iconfont icon-prev"></i> PostGIS安装和运维
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/4a47b511.html" rel="prev" title="PostGIS命令行使用">
+                      PostGIS命令行使用 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Geojson%E8%BD%AC%E5%85%A5postgis%E4%B8%AD"><span class="toc-number">1.</span> <span class="toc-text">2.Geojson转入postgis中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%B0%86shp%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5%E5%88%B0postgis%E4%B8%AD"><span class="toc-number">2.</span> <span class="toc-text">3.将shp文件导入到postgis中</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-MybatisPlus-%E8%BF%94%E5%9B%9E-geojson-%E6%95%B0%E6%8D%AE"><span class="toc-number">3.</span> <span class="toc-text">5.MybatisPlus 返回 geojson 数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E4%BD%BF%E7%94%A8sql%E8%AF%AD%E5%8F%A5%E8%BF%9B%E8%A1%8C%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.1.</span> <span class="toc-text">5.1.使用sql语句进行转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2%E4%BD%BF%E7%94%A8%E8%BD%AC%E6%8D%A2%E5%99%A8%E8%BF%9B%E8%A1%8C%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.2.</span> <span class="toc-text">5.2使用转换器进行转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-Error-setting-non-null-for-parameter-18-with-JdbcType-null"><span class="toc-number">3.3.</span> <span class="toc-text">5.3.Error setting non null for parameter #18 with JdbcType null</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/d42b84fc.html';
+      this.page.identifier = 'posts/d42b84fc.html';
+      this.page.title = 'PostGIS学习笔记';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：PostGIS学习笔记 链接地址:https://bibichuan.github.io/posts/d42b84fc.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'PostGIS学习笔记',
+		url: 'https://bibichuan.github.io/posts/d42b84fc.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'PostGIS学习笔记',
+			isTipVisibility: true,
+			tip: 'PostGIS学习笔记',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

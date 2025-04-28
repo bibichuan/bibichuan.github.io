@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>软件研究之JMeter</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">软件研究之JMeter</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-04-01 08:22:05
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>最近在做浙政钉上架，里面有一项内容就是要上传 PTS 压测报告，但是 阿里云的 PTS 需要费用，只能寻找免费的了，毕竟项目本身就没有多少钱。找来找去，找到了 JMeter 这个工具。</p>
+<p>Apache JMeter是Apache组织开发的基于Java的压力测试工具。用于对软件做压力测试，它最初被设计用于Web应用测试，但后来扩展到其他测试领域。 它可以用于测试静态和动态资源，例如静态文件、Java 小服务程序、CGI 脚本、Java 对象、数据库、FTP 服务器， 等等。JMeter 可以用于对服务器、网络或对象模拟巨大的负载，来自不同压力类别下测试它们的强度和分析整体性能。另外，JMeter能够对应用程序做功能/回归测试，通过创建带有断言的脚本来验证你的程序返回了你期望的结果。为了最大限度的灵活性，JMeter允许使用正则表达式创建断言。</p>
+<h1 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h1><p>安装JDK之后，然后找到 JMeter 下载后，解药在windows上直接双击 jmeter.bat 运行即可。如果是在 macos 上，那就是直接用命令行 运行 jmeter.sh。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6bc152ca6126">Apache JMeter 入门教程</a>**</div>
+<h1 id="3-使用"><a href="#3-使用" class="headerlink" title="3.使用"></a>3.使用</h1><p>使用起来也非常的简单。</p>
+<h2 id="3-1-添加线程组"><a href="#3-1-添加线程组" class="headerlink" title="3.1.添加线程组"></a>3.1.添加线程组</h2><p>右键点击 “测试计划” → “添加” → “线程（用户）” → “线程组”。详细参数：</p>
+<ul>
+<li><p>线程数：虚拟用户数。一个虚拟用户占用一个进程或线程。模拟多少用户访问也就填写多少个线程数量。</p>
+</li>
+<li><p>Ramp-Up时间(秒)：设置的虚拟用户数需要多长时间全部启动。如果线程数为100，准备时长为5，那么需要5秒钟启动100个线程，也就是每秒钟启动20个线程。 相当于每秒模拟20个用户进行访问，设置为零我理解为并发访问。</p>
+</li>
+<li><p>循环次数：如果线程数为100，循环次数为100。那么总请求数为100*100=10000 。如果勾选了“永远”，那么所有线程会一直发送请求，直到选择停止运行脚本。</p>
+</li>
+</ul>
+<h2 id="3-2-添加测试接口"><a href="#3-2-添加测试接口" class="headerlink" title="3.2.添加测试接口"></a>3.2.添加测试接口</h2><p>右键点击 “你的线程组” → “添加” → “取样器” → “HTTP请求”。 详细参数：</p>
+<ul>
+<li><p>协议：向目标服务器发送HTTP请求协议，可以是HTTP或HTTPS，默认为HTTP。</p>
+</li>
+<li><p>服务器名称或IP ：HTTP请求发送的目标服务器名称或IP。</p>
+</li>
+<li><p>端口号：目标服务器的端口号，默认值为80</p>
+</li>
+<li><p>方法：发送HTTP请求的方法，可用方法包括GET、POST、HEAD、PUT、OPTIONS、TRACE、DELETE等。</p>
+</li>
+<li><p>路径：目标URL路径（URL中去掉服务器地址、端口及参数后剩余部分）。</p>
+</li>
+<li><p>内容编码：编码方式，默认为ISO-8859-1编码，这里配置为utf-8。</p>
+</li>
+<li><p>参数：同请求一起发送参数 ，在请求中发送的URL参数，用户可以将URL中所有参数设置在本表中，表中每行为一个参数（对应URL中的 key=value），注意参数传入中文时需要勾选“编码”。</p>
+</li>
+</ul>
+<h2 id="3-3-添加观察结果树"><a href="#3-3-添加观察结果树" class="headerlink" title="3.3.添加观察结果树"></a>3.3.添加观察结果树</h2><p>右键点击 “你的线程组” → “添加” → “监听器” → “察看结果树”</p>
+<h2 id="3-4-添加聚合报告。"><a href="#3-4-添加聚合报告。" class="headerlink" title="3.4.添加聚合报告。"></a>3.4.添加聚合报告。</h2><p>右键点击 “你的线程组” → “添加” → “监听器” → “聚合报告”，用以存放性能测试报告。详细参数：</p>
+<ul>
+<li><p>Label：每个 JMeter 的 element（例如我这里只有一个 Spring WebFlux）都有一个 Name 属性，这里显示的就是 Name 属性的值。</p>
+</li>
+<li></li>
+<li><p>样本(Samples)：请求数——表示这次测试中一共发出了多少个请求，我这里模拟了100个用户循环6次也就为100*6=600。</p>
+</li>
+<li><p>平均值(Average)：平均响应时间(单位:ms)。默认是单个Request的平均响应时间，当使用了Transaction Controller时，也可以是Transaction为单位显示平均响应时间。</p>
+</li>
+<li><p>中位数(Median)：也就是 50％ 用户的响应时间。</p>
+</li>
+<li><p>90% 百分位(Line)：90％ 用户的响应时间。相邻几个*%同意。</p>
+</li>
+<li><p>最小值(Min)：最小响应时间。</p>
+</li>
+<li><p>最大值(Max)：最大响应时间。</p>
+</li>
+<li><p>异常(Error) %：错误率——错误请求数/请求总数。</p>
+</li>
+<li><p>吞吐量(Throughput)：吞吐量——默认情况下表示每秒完成的请求数（Request per Second），当使用了 Transaction Controller 时，也可以表示类似 LoadRunner 的 Transaction per Second 数 。</p>
+</li>
+<li><p>接收 KB/Sec：每秒从服务器端接收到的数据量，相当于LoadRunner中的Throughput/Sec。</p>
+</li>
+<li><p>发送 KB/Sec：每秒向服务器发送的数据量，相当于LoadRunner中的Throughput/Sec。</p>
+</li>
+</ul>
+<h1 id="4-导出测试报告"><a href="#4-导出测试报告" class="headerlink" title="4.导出测试报告"></a>4.导出测试报告</h1><p>下面是一个示例，在windows下执行。导出的是一个html 页面，可以打开之后，另存为 pdf 报告。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入到 jmeter 目录</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 执行生成</span></span><br><span class="line">./jmeter -n -t D:\zlc\renfang\压力测试\测试报告.jmx -l  testLogFile -e -o ./output</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="http://www.51testing.com/html/34/n-6657934.html">使用JMeter导出测试报告的两种方法</a> 1.命令行导出测试报告;2.JMeter生成;<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yfx000/article/details/118280425">jmeter压测并导出报告</a> 保存报告为html<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40841243/article/details/107334796">Jmeter测试报告显示错误信息、URL等信息</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/aizongzhuang2281/article/details/101129649">jmter生成的报告没有显示请求和响应明细数据</a> 修改bin目录下的user.properties文件，追加配置,修改bin 目录下的jmeter.properties.</div>
+<h1 id="5-日志查看与分析"><a href="#5-日志查看与分析" class="headerlink" title="5.日志查看与分析"></a>5.日志查看与分析</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/MYH919520/article/details/132474686">性能测试 —— Jmeter日志查看与分析</a></div>
+<h1 id="5-问题"><a href="#5-问题" class="headerlink" title="5.问题"></a>5.问题</h1><p>(1) Error in NonGUIDriver com.thoughtworks.xstream.io.StreamException: An error occurred: Error in NonGUIDriver<br>我是在 mac 上执行的，执行了测试之后，然后导出测试结果，结果就报错了。</p>
+<p>【解决方案】<br>重新保存测试脚本，然后进行测试报告输出。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38915739/article/details/122968861">Error in NonGUIDriver com.thoughtworks.xstream.io.StreamException: An error occurred: Error in NonGUIDrive</a>  将测试脚本重新保存，然后将脚本放到服务器执行即可</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/ab59b5bf.html" rel="next" title="软件研究之JeecgBoot三">
+                      <i class="iconfont icon-prev"></i> 软件研究之JeecgBoot三
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/552aa8e2.html" rel="prev" title="软件研究之HbuilderX">
+                      软件研究之HbuilderX <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2.安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">3.使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-%E6%B7%BB%E5%8A%A0%E7%BA%BF%E7%A8%8B%E7%BB%84"><span class="toc-number">3.1.</span> <span class="toc-text">3.1.添加线程组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-%E6%B7%BB%E5%8A%A0%E6%B5%8B%E8%AF%95%E6%8E%A5%E5%8F%A3"><span class="toc-number">3.2.</span> <span class="toc-text">3.2.添加测试接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-%E6%B7%BB%E5%8A%A0%E8%A7%82%E5%AF%9F%E7%BB%93%E6%9E%9C%E6%A0%91"><span class="toc-number">3.3.</span> <span class="toc-text">3.3.添加观察结果树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-%E6%B7%BB%E5%8A%A0%E8%81%9A%E5%90%88%E6%8A%A5%E5%91%8A%E3%80%82"><span class="toc-number">3.4.</span> <span class="toc-text">3.4.添加聚合报告。</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AF%BC%E5%87%BA%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A"><span class="toc-number">4.</span> <span class="toc-text">4.导出测试报告</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E4%B8%8E%E5%88%86%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">5.日志查看与分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">5.问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/ab4896e2.html';
+      this.page.identifier = 'posts/ab4896e2.html';
+      this.page.title = '软件研究之JMeter';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：软件研究之JMeter 链接地址:https://bibichuan.github.io/posts/ab4896e2.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '软件研究之JMeter',
+		url: 'https://bibichuan.github.io/posts/ab4896e2.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '软件研究之JMeter',
+			isTipVisibility: true,
+			tip: '软件研究之JMeter',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>微信公众号开发之JSSDK使用</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">微信公众号开发之JSSDK使用</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E5%BE%AE%E4%BF%A1/">微信</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Javascript/">Javascript</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-10-09 05:22:31
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>这一篇文章，或者说这一系列文章，都是记录我在开发微信公众号时遇到的各种各样的问题，或者是我开发中想到的一些事情。</p>
+<h2 id="1-关于开发者密码（AppSecret）的存储"><a href="#1-关于开发者密码（AppSecret）的存储" class="headerlink" title="1.关于开发者密码（AppSecret）的存储"></a>1.关于开发者密码（AppSecret）的存储</h2><p>开发者密码在微信公众平台的基本设置页面中进行设置，启用后，微信将不在存储AppSecret，网页上有句话：“开发者密码是校验公众号开发者身份的密码，具有极高的安全性。切记勿把密码直接交给第三方开发者或直接存储在代码中。如需第三方代开发公众号，请使用授权方式接入。” 不存在代码中，那存在哪里呢？</p>
+<img src="/images/loadimg.png" data-original="/posts/2ed58c51/weixin_1.png" lay-src="/posts/2ed58c51/weixin_1.png" class="" title="微信AppSectet">
+
+<p>我觉得可以保存数据库，或者是服务器上的配置文件中，只要不让前端拿到的地方就好了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000011622511/a-1020000011627214">微信开发 开发者密码(AppSecret) 怎么保存</a></div>
+<h2 id="2-java代码生成微信jssdk签名"><a href="#2-java代码生成微信jssdk签名" class="headerlink" title="2.java代码生成微信jssdk签名"></a>2.java代码生成微信jssdk签名</h2><p>想要引入微信的jssdk，需要wx.config进行配置，配置项</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wx.<span class="title function_">config</span>({</span><br><span class="line">    <span class="attr">debug</span>: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">    <span class="attr">appId</span>: <span class="string">''</span>, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">    <span class="attr">timestamp</span>: , <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">    <span class="attr">nonceStr</span>: <span class="string">''</span>, <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">    <span class="attr">signature</span>: <span class="string">''</span>,<span class="comment">// 必填，签名</span></span><br><span class="line">    <span class="attr">jsApiList</span>: [] <span class="comment">// 必填，需要使用的JS接口列表</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>必填的几项，一般都通过后台获取。这里提供后台生成签名的示例java代码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.proheng.gis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSON;</span><br><span class="line"><span class="keyword">import</span> com.alibaba.fastjson.JSONObject;</span><br><span class="line"><span class="keyword">import</span> com.proheng.gis.utils.HttpClientUtils;</span><br><span class="line"><span class="keyword">import</span> com.proheng.gis.utils.RedisUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.codec.digest.DigestUtils;</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.lang3.RandomStringUtils;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Value;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*  微信开发Api</span></span><br><span class="line"><span class="comment">* */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping("weixinapi")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WeiXinApi</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Logger logger= LoggerFactory.getLogger(WeiXinApi.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Value("${weixin.app_secret}")</span></span><br><span class="line">    <span class="keyword">private</span> String app_secret;</span><br><span class="line">    <span class="meta">@Value("${weixin.app_id}")</span></span><br><span class="line">    <span class="keyword">private</span> String app_id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisUtils redisUtils;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取 access_token</span></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">getAccess_token</span><span class="params">()</span>{</span><br><span class="line">        String access_token=<span class="string">""</span>;</span><br><span class="line">        <span class="type">int</span> expires_in=<span class="number">0</span>;</span><br><span class="line">        String url=<span class="string">"https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&amp;appid="</span>+app_id+<span class="string">"&amp;secret="</span>+app_secret;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            String result= HttpClientUtils.sendHttpGet(url);</span><br><span class="line">            JSONObject resultObj= JSON.parseObject(result);</span><br><span class="line">            <span class="keyword">if</span>(resultObj.getString(<span class="string">"errcode"</span>)!=<span class="literal">null</span>){</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(<span class="string">"获取access_token失败，"</span>+result);</span><br><span class="line">            }<span class="keyword">else</span> {</span><br><span class="line">                access_token=resultObj.getString(<span class="string">"access_token"</span>);</span><br><span class="line">                expires_in=resultObj.getInteger(<span class="string">"expires_in"</span>);</span><br><span class="line">                redisUtils.set(<span class="string">"access_token"</span>,access_token,expires_in);</span><br><span class="line">            }</span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            logger.error(<span class="string">"getAccess_token"</span>,e);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> access_token;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//获取 jsapi_ticket</span></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">getJsapi_ticket</span><span class="params">()</span>{</span><br><span class="line">        String jsapi_ticket=<span class="string">""</span>;</span><br><span class="line">        <span class="comment">//获取 access_token,假定一定会获取到正确的acces_token</span></span><br><span class="line">        String access_token=redisUtils.get(<span class="string">"access_token"</span>);</span><br><span class="line">        <span class="keyword">if</span>(access_token==<span class="literal">null</span>){</span><br><span class="line">            access_token=getAccess_token();</span><br><span class="line">        }</span><br><span class="line">        String url=<span class="string">"https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token="</span>+access_token+<span class="string">"&amp;type=jsapi"</span>;</span><br><span class="line">        <span class="keyword">try</span>{</span><br><span class="line">            String result=HttpClientUtils.sendHttpGet(url);</span><br><span class="line">            JSONObject resultObj=JSON.parseObject(result);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(resultObj.getInteger(<span class="string">"errcode"</span>)==<span class="number">0</span>){ <span class="comment">//jsapi_ticket获取成功</span></span><br><span class="line">                jsapi_ticket=resultObj.getString(<span class="string">"ticket"</span>);</span><br><span class="line">                <span class="type">int</span> expires_in=resultObj.getInteger(<span class="string">"expires_in"</span>);</span><br><span class="line">                redisUtils.set(<span class="string">"jsapi_ticket"</span>,jsapi_ticket,expires_in);</span><br><span class="line">            }<span class="keyword">else</span> {</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(<span class="string">"获取jsapi_ticket失败，"</span>+result);</span><br><span class="line">            }</span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            logger.error(<span class="string">"getJsapi_ticket"</span>,e);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> jsapi_ticket;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 签名算法</span></span><br><span class="line">    <span class="keyword">private</span> String <span class="title function_">signature</span><span class="params">()</span>{</span><br><span class="line">        String signature=<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> signature;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回前台签名信息</span></span><br><span class="line">    <span class="meta">@RequestMapping("getJsSDK")</span></span><br><span class="line">    <span class="keyword">public</span> JSONObject <span class="title function_">getJsSDK</span><span class="params">(HttpServletRequest request)</span>{</span><br><span class="line">        JSONObject resultObj=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="comment">// 随机字符串</span></span><br><span class="line">            String noncestr= RandomStringUtils.randomAlphanumeric(<span class="number">16</span>);</span><br><span class="line">            <span class="comment">// 时间戳</span></span><br><span class="line">            String timestamp=String.valueOf(System.currentTimeMillis());</span><br><span class="line">            <span class="comment">//jsapi_ticket</span></span><br><span class="line">            String jsapi_ticket=redisUtils.get(<span class="string">"jsapi_ticket"</span>);</span><br><span class="line">            <span class="keyword">if</span>(jsapi_ticket==<span class="literal">null</span>){</span><br><span class="line">                jsapi_ticket=getJsapi_ticket();</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">// 当前请求url</span></span><br><span class="line">            String url=request.getRequestURL().toString();</span><br><span class="line">            <span class="comment">// 构造签名字符串</span></span><br><span class="line">            String string1=<span class="string">"jsapi_ticket="</span>+jsapi_ticket+<span class="string">"&amp;noncestr="</span>+noncestr+<span class="string">"&amp;timestamp="</span>+timestamp+<span class="string">"&amp;url="</span>+url;</span><br><span class="line"></span><br><span class="line">            String signatureStr= DigestUtils.sha1(string1).toString();</span><br><span class="line"></span><br><span class="line">            resultObj.put(<span class="string">"signature"</span>,signatureStr);</span><br><span class="line">            resultObj.put(<span class="string">"nonceStr"</span>,noncestr);</span><br><span class="line">            resultObj.put(<span class="string">"timestamp"</span>,timestamp);</span><br><span class="line"></span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            logger.error(<span class="string">"getJsSDK"</span>,e);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> resultObj;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>说明：<br>(1) 关于配置安全域名的设置，我的理解是，你在哪个页面引入的微信jssdk，这个域名要填到：“公众号设置”的“功能设置”里填写“JS接口安全域名” 里面。<br>(2) 关于“同一个url仅需调用一次，对于变化url的SPA的web app可在每次url变化时进行调用”，我的理解是在安全域名下的两个不同的页面，比如：<a target="_blank" rel="noopener" href="http://www.example.com/a.html%E5%92%8Cwww.example.com/b.html,%E8%A6%81%E5%88%86%E5%88%AB%E5%9C%A8%E4%B8%A4%E4%B8%AA%E9%A1%B5%E9%9D%A2%E4%B8%AD%E8%BF%9B%E8%A1%8Cwx.config%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E3%80%82%E6%AF%8F%E6%AC%A1url%E5%8F%98%E5%8C%96%E7%9A%84%E8%AF%9D%EF%BC%8C%E9%83%BD%E8%A6%81%E8%B0%83%E7%94%A8%E4%B8%80%E6%AC%A1%E3%80%82">www.example.com/a.html和www.example.com/b.html,要分别在两个页面中进行wx.config的初始化。每次url变化的话，都要调用一次。</a></p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000015885935">如何正确的在项目中接入微信JS-SDK</a><br>2.<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/391912867">“js接口安全域名 “必须设置吗？</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/hu_feng903/article/details/79888678">微信JS-SDK接口权限验证配置 坑！！！</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/solocao/article/details/82720619">微信 公众号 JS接口安全域名 是啥 什么意思</a></div>
+<h2 id="3-签名错误config-fail-Error-系统错误，错误码：63002-invalid-signature"><a href="#3-签名错误config-fail-Error-系统错误，错误码：63002-invalid-signature" class="headerlink" title="3.签名错误config:fail,Error: 系统错误，错误码：63002,invalid signature"></a>3.签名错误config:fail,Error: 系统错误，错误码：63002,invalid signature</h2><p>前台配置代码，可以参见第五章（获取用户位置）。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> wx.<span class="title function_">config</span>({</span><br><span class="line">    <span class="attr">debug</span>: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">    <span class="attr">appId</span>: <span class="string">''</span>, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">    <span class="attr">timestamp</span>: result.<span class="property">timestamp</span>, <span class="comment">// 必填，生成签名的时间戳,这里从后台获取</span></span><br><span class="line">    <span class="attr">nonceStr</span>: result.<span class="property">nonceStr</span>, <span class="comment">// 必填，生成签名的随机串，这里从后台获取</span></span><br><span class="line">    <span class="attr">signature</span>: result.<span class="property">signature</span>,<span class="comment">// 必填，签名，这里从后台获取</span></span><br><span class="line">    <span class="attr">jsApiList</span>: [</span><br><span class="line">        <span class="string">'getLocation'</span></span><br><span class="line">    ] <span class="comment">// 必填，需要使用的JS接口列表</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>打开微信开发者工具，调用这个测试页面，出现了：config:fail,Error: 系统错误，错误码：63002,invalid signature。</p>
+<img src="/images/loadimg.png" data-original="/posts/2ed58c51/weixin_2.png" lay-src="/posts/2ed58c51/weixin_2.png" class="" title="微信页面">
+
+<p>生成签名的代码java代码如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回前台签名信息</span></span><br><span class="line"><span class="meta">@RequestMapping("getJsSDK")</span></span><br><span class="line"><span class="keyword">public</span> JSONObject <span class="title function_">getJsSDK</span><span class="params">(HttpServletRequest request)</span>{</span><br><span class="line">    JSONObject resultObj=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="comment">// 随机字符串</span></span><br><span class="line">        String noncestr= RandomStringUtils.randomAlphanumeric(<span class="number">16</span>);</span><br><span class="line">        <span class="comment">// 时间戳获取到秒数</span></span><br><span class="line">        String timestamp=String.valueOf(System.currentTimeMillis()/<span class="number">1000</span>);</span><br><span class="line">        <span class="comment">//jsapi_ticket</span></span><br><span class="line">        String jsapi_ticket=redisUtils.get(<span class="string">"jsapi_ticket"</span>);</span><br><span class="line">        <span class="keyword">if</span>(jsapi_ticket==<span class="literal">null</span>){</span><br><span class="line">            jsapi_ticket=getJsapi_ticket();</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 当前请求url</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> request.getHeader(<span class="string">"Referer"</span>);</span><br><span class="line">        <span class="comment">// 如果是直接输入的地址，或者不是从本网站访问的重定向到本网站的首页</span></span><br><span class="line">        <span class="keyword">if</span> (url == <span class="literal">null</span>) {</span><br><span class="line">            url=request.getRequestURL().toString();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 构造签名字符串</span></span><br><span class="line">        String string1=<span class="string">"jsapi_ticket="</span>+jsapi_ticket+<span class="string">"&amp;noncestr="</span>+noncestr+<span class="string">"&amp;timestamp="</span>+timestamp+<span class="string">"&amp;url="</span>+url;</span><br><span class="line"></span><br><span class="line">        String signatureStr= DigestUtils.sha1Hex(string1);</span><br><span class="line"></span><br><span class="line">        resultObj.put(<span class="string">"signature"</span>,signatureStr);</span><br><span class="line">        resultObj.put(<span class="string">"nonceStr"</span>,noncestr);</span><br><span class="line">        resultObj.put(<span class="string">"timestamp"</span>,timestamp);</span><br><span class="line"></span><br><span class="line">    }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">        logger.error(<span class="string">"getJsSDK"</span>,e);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> resultObj;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>DigestUtils.sha1Hex签名算法使用的jar包</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-codec<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.13<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>说明</strong><br>(1) 生成签名时的时间戳精确到秒，而不是毫秒。</p>
+<p>(2) jssdk验证签名的逻辑是这样的，获取到当前网页的url,加上你在wx.config中配置的appId、timestamp和nonceStr，传递到微信后台，通过签名逻辑算法，获取到signature，和你在html的wx.config配置中配置的signature比对，如果一致，则证明你的wx.config配置正确，如果不一致，则证明你配置的不正确。所以，在配置signature是，出现签名不正确的情况，可以检查这几个参数是不是正确，签名验证<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign">工具</a>。</p>
+<p>(3) 自己的后台生成验证签名的逻辑是这样的（微信后台也是这样验证签名是否正确的）：首先根据你的appId和app_secret，获取到你的access_token( <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/debug/cgi-bin/apiinfo?t=index&amp;type=%E5%9F%BA%E7%A1%80%E6%94%AF%E6%8C%81&amp;form=%E8%8E%B7%E5%8F%96access_token%E6%8E%A5%E5%8F%A3%20/token">验证接口</a> )，然后使用access_token，获取到你的jsapi_ticket( <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&amp;type=jsapi">验证接口</a> )，然后通过构造签名字符串string1：”jsapi_ticket=你的ticket&amp;noncestr=16位随机字符串&amp;timestamp=精确到秒的时间戳&amp;url=调用jssdk的网页地址，最后将签名字符串string1进行sha1加密，就得到了signature( <a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug/cgi-bin/sandbox?t=jsapisign">验证签名的接口</a> ),连同timestamp和nonceStr一起传递到前台就可以配置wx.config了。微信后台唯一省略的步骤就是第一步，因为他不需要你的app_secret，通过你的appId就可以到它自己服务器的缓存中拿到你的jsapi_ticket，连同你配置的timestamp和nonceStr就能生成signature，然后就是和你生成的signature比对，看看是不是一致了。</p>
+<p>最后的成功效果如下：</p>
+<img src="/images/loadimg.png" data-original="/posts/2ed58c51/weixin_4.png" lay-src="/posts/2ed58c51/weixin_4.png" class="" title="微信开发获取地理位置">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000009002222">微信JSSDK提示invalid signature</a><br>2.<a target="_blank" rel="noopener" href="https://www.fengerzh.com/jssdk-invalid-signature/">微信 jssdk 签名错误 invalid signature</a><br>3.<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/community/develop/doc/000aac62898ca8ddc3fd447c351000">如何解决wx.config偶发的invalid signature问题？</a></div>
+<p><strong>总结一下，使用jssdk的步骤：</strong><br>(1) 微信公众号后台配置安全域名<br>(2) 将微信要求的文件MP_verify_AKxhZkUe8kuvT7Wr.txt放到安全域名的指定位置<br>(3) 编写后台的签名算法，根据appid和appSecret等生成签名返回给前台，url一般是Referer<br>(4) 在安全域名下的某个js脚本中引入jssdk(本地开发时，可以修改host文件，将本地地址指向安全域名，比如127.0.0.1指向bibichua.github.io,这样就可以在微信开发者账号中测试了)，wx.config中的签名和时间戳由后台获取<br>(5) 打开微信开发者工具，测试相关内容。</p>
+<h2 id="4-获取用户地理位置"><a href="#4-获取用户地理位置" class="headerlink" title="4.获取用户地理位置"></a>4.获取用户地理位置</h2><p>错误记录：”getLocation:fail, the permission value is offline verifying”,主要问题是签名错误（这个错误真是很烦人啊），解决方式，可以查看第三章。</p>
+<img src="/images/loadimg.png" data-original="/posts/2ed58c51/weixin_3.png" lay-src="/posts/2ed58c51/weixin_3.png" class="" title="微信开发获取地理位置">
+<p>解决了签名的问题，就可以愉快的玩耍了：</p>
+<p>(1) 步骤一：引入js文件<br>在需要调用JS接口的页面引入如下JS文件，（支持https）：<a target="_blank" rel="noopener" href="http://res.wx.qq.com/open/js/jweixin-1.2.0.js">http://res.wx.qq.com/open/js/jweixin-1.2.0.js</a></p>
+<p>(2) 步骤二：通过config接口注入权限验证配置</p>
+<p>(3) 步骤三：通过ready接口处理成功验证</p>
+<p>(4) 步骤四：通过error接口处理失败验证</p>
+<p>获取地理位置的代码如下：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//请求后台服务，获取签名信息</span></span><br><span class="line">$.<span class="title function_">ajax</span>({</span><br><span class="line">    <span class="attr">url</span>:<span class="string">"http://localhost:8068/weixinapi/getJsSDK"</span>,</span><br><span class="line">    <span class="attr">async</span>:<span class="literal">false</span>,</span><br><span class="line">    <span class="attr">success</span>:<span class="keyword">function</span>(<span class="params">data</span>){</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">        <span class="keyword">var</span> result=data;</span><br><span class="line">        wx.<span class="title function_">config</span>({</span><br><span class="line">            <span class="attr">debug</span>: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">            <span class="attr">appId</span>: <span class="string">''</span>, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">            <span class="attr">timestamp</span>: result.<span class="property">timestamp</span>, <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">            <span class="attr">nonceStr</span>: result.<span class="property">nonceStr</span>, <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">            <span class="attr">signature</span>: result.<span class="property">signature</span>,<span class="comment">// 必填，签名</span></span><br><span class="line">            <span class="attr">jsApiList</span>: [</span><br><span class="line">                <span class="string">'getLocation'</span></span><br><span class="line">            ] <span class="comment">// 必填，需要使用的JS接口列表</span></span><br><span class="line">        });</span><br><span class="line">        wx.<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>){</span><br><span class="line">            <span class="comment">// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"ddd"</span>);</span><br><span class="line">            wx.<span class="title function_">getLocation</span>({</span><br><span class="line">                <span class="attr">type</span>: <span class="string">'wgs84'</span>, <span class="comment">// 默认为wgs84的gps坐标，如果要返回直接给openLocation用的火星坐标，可传入'gcj02'</span></span><br><span class="line">                <span class="attr">success</span>: <span class="keyword">function</span> (<span class="params">res</span>) {</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">                    <span class="keyword">var</span> latitude = res.<span class="property">latitude</span>; <span class="comment">// 纬度，浮点数，范围为90 ~ -90</span></span><br><span class="line">                    <span class="keyword">var</span> longitude = res.<span class="property">longitude</span>; <span class="comment">// 经度，浮点数，范围为180 ~ -180。</span></span><br><span class="line">                    <span class="keyword">var</span> speed = res.<span class="property">speed</span>; <span class="comment">// 速度，以米/每秒计</span></span><br><span class="line">                    <span class="keyword">var</span> accuracy = res.<span class="property">accuracy</span>; <span class="comment">// 位置精度</span></span><br><span class="line">                }</span><br><span class="line">            });</span><br><span class="line">        });</span><br><span class="line">        wx.<span class="title function_">error</span>(<span class="keyword">function</span>(<span class="params">res</span>){</span><br><span class="line">            <span class="comment">// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</span></span><br><span class="line">        });</span><br><span class="line">    },</span><br><span class="line">    <span class="attr">error</span>:<span class="keyword">function</span>(<span class="params">errText</span>){</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(errText);</span><br><span class="line">    }</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.wj0511.com/site/detail.html?id=324">微信JSSDK获取用户地理位置(经纬度)</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000010254889/a-1020000010261258">vue-cli 下使用js-sdk，接口调用出错</a><br>3.<a target="_blank" rel="noopener" href="https://qydev.weixin.qq.com/wiki/index.php?title=%E5%BE%AE%E4%BF%A1JS-SDK%E6%8E%A5%E5%8F%A3#.E6.AD.A5.E9.AA.A4.E4.B8.80.EF.BC.9A.E5.BC.95.E5.85.A5JS.E6.96.87.E4.BB.B6">微信JS-SDK说明文档</a> (微信JS-SDK文档说明)</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/c1b8fcc8.html" rel="next" title="微信公众号开发之测试账号">
+                      <i class="iconfont icon-prev"></i> 微信公众号开发之测试账号
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/570934f5.html" rel="prev" title="微信公众号开发三">
+                      微信公众号开发三 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%85%B3%E4%BA%8E%E5%BC%80%E5%8F%91%E8%80%85%E5%AF%86%E7%A0%81%EF%BC%88AppSecret%EF%BC%89%E7%9A%84%E5%AD%98%E5%82%A8"><span class="toc-number">1.</span> <span class="toc-text">1.关于开发者密码（AppSecret）的存储</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-java%E4%BB%A3%E7%A0%81%E7%94%9F%E6%88%90%E5%BE%AE%E4%BF%A1jssdk%E7%AD%BE%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">2.java代码生成微信jssdk签名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%AD%BE%E5%90%8D%E9%94%99%E8%AF%AFconfig-fail-Error-%E7%B3%BB%E7%BB%9F%E9%94%99%E8%AF%AF%EF%BC%8C%E9%94%99%E8%AF%AF%E7%A0%81%EF%BC%9A63002-invalid-signature"><span class="toc-number">3.</span> <span class="toc-text">3.签名错误config:fail,Error: 系统错误，错误码：63002,invalid signature</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">4.获取用户地理位置</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/2ed58c51.html';
+      this.page.identifier = 'posts/2ed58c51.html';
+      this.page.title = '微信公众号开发之JSSDK使用';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：微信公众号开发之JSSDK使用 链接地址:https://bibichuan.github.io/posts/2ed58c51.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '微信公众号开发之JSSDK使用',
+		url: 'https://bibichuan.github.io/posts/2ed58c51.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '微信公众号开发之JSSDK使用',
+			isTipVisibility: true,
+			tip: '微信公众号开发之JSSDK使用',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

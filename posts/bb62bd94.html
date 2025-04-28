@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mybatis的若干问题总结</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Mybatis的若干问题总结</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Java/">Java</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Java/">Java</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-12-23 06:59:50
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="1.配置文件"></a>1.配置文件</h2><div class="reference">参考文章：<br>1.mybatis配置：<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/configuration.html">https://mybatis.org/mybatis-3/zh/configuration.html</a></div>
+<h2 id="2-传入变量"><a href="#2-传入变量" class="headerlink" title="2.传入变量"></a>2.传入变量</h2><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM realtime where RecordTime BETWEEN ${startdate} AND ${enddate} </span><br><span class="line"></span><br><span class="line">## or</span><br><span class="line">SELECT * FROM realtime where RecordTime BETWEEN #{startdate} AND #{enddate}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>#和$的区别<br>1.#是把传入的数据当作字符串，如#field#传入的是id,则sql语句生成是这样，order by “id”,这当然会报错．．<br>2.$传入的数据直接生成在sql里，如$field$传入的是id,则sql语句生成是这样，order by id, 这就对了．<br>3.#方式能够很大程度防止sql注入．<br>4.$方式无法防止sql注入．<br>5.$方式一般用于传入数据库对象．例如传入表名.<br>6.一般能用#的就别用$. </p>
+<div class="reference">参考文章：<br>1.mybatis中的变量#与$：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/duanxz/p/3745284.html">https://www.cnblogs.com/duanxz/p/3745284.html</a><br>2.配置：<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/configuration.html">https://mybatis.org/mybatis-3/zh/configuration.html</a></div>
+<h2 id="3-动态生成sql语句"><a href="#3-动态生成sql语句" class="headerlink" title="3.动态生成sql语句"></a>3.动态生成sql语句</h2><p>需求来源于在一张表中查找id号符合多个值的记录，id可能是一个也可能是两个，我能想到的就是使用in操作符，id in (1,2,3,4)。那么如何传入这个(1,2,3,4)呢？官网给的例子如下：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectPostIn"</span> <span class="attr">resultType</span>=<span class="string">"domain.blog.Post"</span>&gt;</span></span><br><span class="line">  SELECT *</span><br><span class="line">  FROM POST P</span><br><span class="line">  WHERE ID in</span><br><span class="line">  <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">collection</span>=<span class="string">"list"</span></span></span><br><span class="line"><span class="tag">      <span class="attr">open</span>=<span class="string">"("</span> <span class="attr">separator</span>=<span class="string">","</span> <span class="attr">close</span>=<span class="string">")"</span>&gt;</span></span><br><span class="line">        #{item}</span><br><span class="line">  <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其中list为我们需要传入的List<string>,List<interger>等类型的变量，item为其中的内容。open为开始符合，close为结束分割符，separator为分隔符。比如我这里的list为List<string>类型，最后生成的sql语句即为</string></interger></string></p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* list.add&lt;&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"> <span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line">  <span class="keyword">FROM</span> POST P</span><br><span class="line">  <span class="keyword">WHERE</span> ID <span class="keyword">in</span> (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br></pre></td></tr></tbody></table></figure>
+<p>java端mapper代码：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据开始时间和结束时间以及站点列表查询历史记录</span></span><br><span class="line">List&lt;POST&gt; <span class="title function_">selectPostIn</span><span class="params">(List&lt;Integer&gt; list)</span>; </span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/8754814/how-to-pass-an-integer-array-to-in-clause-in-mybatis">How to pass an Integer Array to IN clause in MyBatis</a><br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3428742/how-to-use-annotations-with-ibatis-mybatis-for-an-in-query/22646475#22646475">How to use Annotations with iBatis (myBatis) for an IN query?</a><br>3.<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/dynamic-sql.html">动态 SQL</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/isea533/article/details/21237175">Mybatis 示例之 foreach （上）</a><br>5.<a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/mybatis/mybatis_dynamic_sql.htm">MYBATIS - Dynamic SQL</a></div>
+<h2 id="4-打印输出日志"><a href="#4-打印输出日志" class="headerlink" title="4.打印输出日志"></a>4.打印输出日志</h2><p>只需要在application.yml中添加,其中com.bibichuan.bigdata.mapper是我mapper的包路径</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">logging:</span></span><br><span class="line">  <span class="attr">level:</span></span><br><span class="line">    <span class="attr">com:</span></span><br><span class="line">      <span class="attr">bibichuan:</span></span><br><span class="line">        <span class="attr">bigdata:</span></span><br><span class="line">          <span class="attr">mapper:</span> <span class="string">debug</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20091325">如何在mybatis中调试查看生成的sql语句？</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26346457/article/details/79699342">在SpringBoot中Mybatis显示SQL语句</a></div>
+<h2 id="5-返回值"><a href="#5-返回值" class="headerlink" title="5.返回值"></a>5.返回值</h2><p>(1) 如下语句，我只返回了max(InsFlux),min(InsFlux),这两个字段。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--namespace 指定映射对应的mapper接口类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.bibichuan.bigdata.mapper.RealTimeMapper"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--查询最近一个月内最大和最小瞬时流量--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getMaxMinInsFlux"</span> <span class="attr">resultType</span>=<span class="string">"List"</span>&gt;</span></span><br><span class="line">        SELECT max(InsFlux),min(InsFlux) FROM lsmfhx.realtime WHERE parseDateTimeBestEffortOrNull(RecordTime) BETWEEN</span><br><span class="line">            toDateTime(#{startdate}) AND toDateTime(#{enddate})</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>如果使用List返回值，我觉得是不是大材小用了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Object[]&gt; getMaxMinInsFlux(String startdate,String enddate);</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意</strong></p>
+<pre><code>resultType="返回结果类型"，一般把结果映射到对应的JAVAbean，select 返回的每一条记录的类型，而不是所有记录组成的类型。
+</code></pre>
+<p>也就是说，resultType的类型，是把sql语句返回的每一行映射成什么类型。比如：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">resultType="com.bibichuan.bigdata.Entity.RealTime"</span><br></pre></td></tr></tbody></table></figure>
+<p>即把select 返回的每一行都映射为一个RealTime类型。</p>
+<p>(2) 参考文章1中，我们还可以找到两种方式将返回值包装成map，第一种就是直接返回的结果是<code>[key1=value1,key2=value2...]</code>这种形式，另一种是把结果封装成{key=object [id=1, name=Bob, age=15.0]}，也就是关键字可以指定，而值是一个对象，类似于<code>Ｍap&lt;String,Object&gt;</code>这种形式。<br>第一种直接指定resultType=”Map”,第二种指定resultType=”你自己定义的JavaBean”,然后在mapper的interface接口中,通过＠MapKey(“关键字”),例如参考文章中,指定了name作为返回的Map中的key：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserDao</span> {</span><br><span class="line">    <span class="comment">/*用MapKey注解指定字段name作为map中的key*/</span></span><br><span class="line">    <span class="meta">@MapKey("name")</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;String, User&gt; <span class="title function_">getUserMap</span><span class="params">(String name)</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>(3) 其他类型的返回值</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">AuthorMapper</span> {</span><br><span class="line">  <span class="comment">// (Author) selectOne("selectAuthor",5);</span></span><br><span class="line">  Author <span class="title function_">selectAuthor</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">  <span class="comment">// (List) selectList("selectAuthors")</span></span><br><span class="line">  List <span class="title function_">selectAuthors</span><span class="params">()</span>;</span><br><span class="line">  <span class="comment">// (Map) selectMap("selectAuthors", "id")</span></span><br><span class="line">  <span class="meta">@MapKey("id")</span></span><br><span class="line">  Map <span class="title function_">selectAuthors</span><span class="params">()</span>;</span><br><span class="line">  <span class="comment">// insert("insertAuthor", author)</span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">insertAuthor</span><span class="params">(Author author)</span>;</span><br><span class="line">  <span class="comment">// updateAuthor("updateAuthor", author)</span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">updateAuthor</span><span class="params">(Author author)</span>;</span><br><span class="line">  <span class="comment">// delete("deleteAuthor",5)</span></span><br><span class="line">  <span class="type">int</span> <span class="title function_">deleteAuthor</span><span class="params">(<span class="type">int</span> id)</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010502101/article/details/79069537">Mybatis把返回结果封装成map类型</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/isea533/article/details/46442067">深入了解MyBatis返回值</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wanderlustLee/article/details/79832557">mybatis查询结果集，返回List的对象集合</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/llmys/article/details/80362280">在spring中使用MyBatis将两列数据以map的形式返回</a><br>5.<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/mybatis/ud8n1im1.html">MyBatis Java API</a></div>
+<h2 id="6-java-lang-UnsupportedOperationException"><a href="#6-java-lang-UnsupportedOperationException" class="headerlink" title="6.java.lang.UnsupportedOperationException"></a>6.java.lang.UnsupportedOperationException</h2><p>主要是返回值的问题。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--出现错误--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getMaxMinInsFlux"</span> <span class="attr">resultType</span>=<span class="string">"List"</span>&gt;</span></span><br><span class="line">    SELECT max(InsFlux),min(InsFlux) FROM lsmfhx.realtime WHERE parseDateTimeBestEffortOrNull(RecordTime) BETWEEN</span><br><span class="line">        parseDateTimeBestEffortOrNull(#{startdate}) AND parseDateTimeBestEffortOrNull(#{enddate})</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--正确返回值--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getMaxMinInsFlux"</span> <span class="attr">resultType</span>=<span class="string">"Map"</span>&gt;</span></span><br><span class="line">    SELECT max(InsFlux),min(InsFlux) FROM lsmfhx.realtime WHERE parseDateTimeBestEffortOrNull(RecordTime) BETWEEN</span><br><span class="line">        parseDateTimeBestEffortOrNull(#{startdate}) AND parseDateTimeBestEffortOrNull(#{enddate})</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>使用map类型，即可返回正确的内容。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28483283/article/details/80696292">mybatis报错java.lang.UnsupportedOperationException原因及处理方法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Air_20/article/details/77432182">用mybatis映射SQL语句的时候出现异常 java.lang.UnsupportedOperationException</a></div>
+<h2 id="7-无法获取数据类型为text的值"><a href="#7-无法获取数据类型为text的值" class="headerlink" title="7.无法获取数据类型为text的值"></a>7.无法获取数据类型为text的值</h2><p>数据库中的一个字段是text类型，但是使用java总是获取不到其中的值。参考资料中，大部分是说，有WithBLOBs方法等，自动生成等。<br>解决方法是编写一个resultMap,比如我的实体类是SiteInfo,我将数据库中属性为extra_settings的字段映射为VARCHAR类型就可以了。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span> <span class="keyword">PUBLIC</span> <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--namespace 指定映射对应的mapper接口类--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.bibichuan.bigdata.mapper.SiteInfoMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span>  <span class="attr">id</span>=<span class="string">"ResultMapWithBLOBs"</span> <span class="attr">type</span>=<span class="string">"com.bibichuan.bigdata.Entity.SiteInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"extra_settings"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> <span class="attr">property</span>=<span class="string">"extra_settings"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"selectAll"</span> <span class="attr">resultType</span>=<span class="string">"com.bibichuan.bigdata.Entity.SiteInfo"</span> <span class="attr">resultMap</span>=<span class="string">"ResultMapWithBLOBs"</span>&gt;</span></span><br><span class="line">        SELECT * FROM siteinfo</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kiki_jay/article/details/81737524">Mybatis中逆向工程无法查询到类型为text的数据</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9a6e9f93ba6d">MyBatis Generator 配置文件详解 之 table 元素</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31279347/article/details/89281529">关于mybatis中获取message字段（字段类型为text）一直为null的解决方法</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34982426/article/details/83180450">Mybatis的generator生成WithBLOBS.java文件原因及解决</a><br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/famine/p/10748035.html">Mybatis自动生成的Xml文件，text数据类型会默认产生XXWithBlobs的方法，用以获取含有该类型的数据</a><br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/henuucas/article/details/76922542">mybatis generator无法将数据表中text字段映射问题</a><br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yup1212/article/details/88013655">使用MyBatis操作 数据库text类型时 有“坑”！</a></div>
+<h2 id="8-返回list"><a href="#8-返回list" class="headerlink" title="8.返回list"></a>8.返回list</h2><p>需求就是使用sql返回多条数据，但是我不想再增加一个实体类，可以分为如下几步：<br>1.xml中使用 HashMap 作为返回值</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"getSiteInfo"</span> <span class="attr">resultType</span>=<span class="string">"java.util.HashMap"</span>&gt;</span></span><br><span class="line">    SELECT s.SiteNo ,SiteName ,GroupId ,SiteLevel FROM siteinfo s</span><br><span class="line">    INNER JOIN (</span><br><span class="line">        <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"site_list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">"UNION ALL"</span> &gt;</span></span><br><span class="line">            SELECT #{item} AS SiteNo</span><br><span class="line">        <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">    ) AS t2</span><br><span class="line">    ON s.SiteNo = t2.SiteNo</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>2.mapper中的代码,使用list进行返回</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Map&lt;String,Object&gt;&gt; <span class="title function_">getSiteInfo</span><span class="params">(<span class="meta">@Param("site_list")</span> List&lt;Integer&gt; site_list)</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>3.可以将返回的值进行遍历，也可以通过键获取数据内容</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Map&lt;String,Object&gt;&gt; siteinfos=vRealTimeService.getSiteInfo(sitelist);</span><br><span class="line">JSONObject siteinfResult=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">siteinfos.stream().forEach(siteinfo-&gt;{</span><br><span class="line">    String sitenoStr=siteinfo.get(<span class="string">"SiteNo"</span>).toString();</span><br><span class="line">    JSONObject siteContent=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">    siteContent.putAll(siteinfo);</span><br><span class="line">    <span class="comment">// 保存对象</span></span><br><span class="line">    siteinfResult.put(sitenoStr,siteContent);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiwu1616/article/details/53483651c">Mybatis返回Map,List<map></map></a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/a3251126.html" rel="next" title="Mysql命令行操作">
+                      <i class="iconfont icon-prev"></i> Mysql命令行操作
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/cc97d640.html" rel="prev" title="MybatisPlus自定义命名策略">
+                      MybatisPlus自定义命名策略 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">1.配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BC%A0%E5%85%A5%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">2.传入变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90sql%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.</span> <span class="toc-text">3.动态生成sql语句</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%89%93%E5%8D%B0%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97"><span class="toc-number">4.</span> <span class="toc-text">4.打印输出日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">5.</span> <span class="toc-text">5.返回值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-java-lang-UnsupportedOperationException"><span class="toc-number">6.</span> <span class="toc-text">6.java.lang.UnsupportedOperationException</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%BAtext%E7%9A%84%E5%80%BC"><span class="toc-number">7.</span> <span class="toc-text">7.无法获取数据类型为text的值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%BF%94%E5%9B%9Elist"><span class="toc-number">8.</span> <span class="toc-text">8.返回list</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/bb62bd94.html';
+      this.page.identifier = 'posts/bb62bd94.html';
+      this.page.title = 'Mybatis的若干问题总结';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Mybatis的若干问题总结 链接地址:https://bibichuan.github.io/posts/bb62bd94.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Mybatis的若干问题总结',
+		url: 'https://bibichuan.github.io/posts/bb62bd94.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Mybatis的若干问题总结',
+			isTipVisibility: true,
+			tip: 'Mybatis的若干问题总结',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

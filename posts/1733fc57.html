@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python读取和推送RTMP流</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Python读取和推送RTMP流</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-08-31 04:15:00
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>上面几章实现了目标检测的环境搭建，视频和图像的检测，接下来还有就是实时视频或者是摄像头的直播推送。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38416696/article/details/102974928">基于声网 视频通话SDK 的opencv 人脸检测</a></div>
+<h1 id="2-读取推流地址"><a href="#2-读取推流地址" class="headerlink" title="2.读取推流地址"></a>2.读取推流地址</h1><figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"> </span><br><span class="line">cap = cv2.VideoCapture(<span class="string">'rtmp://localhost/live/livestream'</span>)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span>(<span class="literal">True</span>):</span><br><span class="line">    <span class="comment"># Capture frame-by-frame</span></span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># Our operations on the frame come here</span></span><br><span class="line">    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># Display the resulting frame</span></span><br><span class="line">    cv2.imshow(<span class="string">'frame'</span>,gray)</span><br><span class="line">    <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) &amp; <span class="number">0xFF</span> == <span class="built_in">ord</span>(<span class="string">'q'</span>):</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># When everything done, release the capture</span></span><br><span class="line">cap.release()</span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44772948/article/details/125134250">python opencv播放rtmp流</a> 这里是 rtmp 的地址，和 m3u8 的差不多<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41967600/article/details/119045812">Python读取推流地址Rtsp、Rtmp、Http</a> 这里是 m3u8 的地址</div>
+<h1 id="3-视频推流"><a href="#3-视频推流" class="headerlink" title="3.视频推流"></a>3.视频推流</h1><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"> </span><br><span class="line">rtsp = <span class="string">"rtsp://admin:a12345678@10.10.8.101:554/h264/ch1/main/av_stream"</span></span><br><span class="line">rtmp = <span class="string">'rtmp://localhost:1935/mylive/test'</span></span><br><span class="line"> </span><br><span class="line"><span class="comment"># 读取视频并获取属性</span></span><br><span class="line">cap = cv2.VideoCapture(rtsp)</span><br><span class="line">size = (<span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))</span><br><span class="line">sizeStr = <span class="built_in">str</span>(size[<span class="number">0</span>]) + <span class="string">'x'</span> + <span class="built_in">str</span>(size[<span class="number">1</span>])</span><br><span class="line"> </span><br><span class="line">command = [<span class="string">'ffmpeg'</span>,</span><br><span class="line">    <span class="string">'-y'</span>, <span class="string">'-an'</span>,</span><br><span class="line">    <span class="string">'-f'</span>, <span class="string">'rawvideo'</span>,</span><br><span class="line">    <span class="string">'-vcodec'</span>,<span class="string">'rawvideo'</span>,</span><br><span class="line">    <span class="string">'-pix_fmt'</span>, <span class="string">'bgr24'</span>,</span><br><span class="line">    <span class="string">'-s'</span>, sizeStr,</span><br><span class="line">    <span class="string">'-r'</span>, <span class="string">'25'</span>,</span><br><span class="line">    <span class="string">'-g'</span>, <span class="string">'5'</span> </span><br><span class="line">    <span class="string">'-i'</span>, <span class="string">'-'</span>,</span><br><span class="line">    <span class="string">'-c:v'</span>, <span class="string">'libx264'</span>,</span><br><span class="line">    <span class="string">'-pix_fmt'</span>, <span class="string">'yuv420p'</span>,</span><br><span class="line">    <span class="string">'-preset'</span>, <span class="string">'ultrafast'</span>,</span><br><span class="line">    <span class="string">'-f'</span>, <span class="string">'flv'</span>,</span><br><span class="line">    rtmp]</span><br><span class="line"> </span><br><span class="line">pipe = subprocess.Popen(command</span><br><span class="line">    , shell=<span class="literal">False</span></span><br><span class="line">    , stdin=subprocess.PIPE</span><br><span class="line">)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">while</span> cap.isOpened():</span><br><span class="line">    success,frame = cap.read()</span><br><span class="line">    <span class="keyword">if</span> success:</span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">		对frame进行识别处理</span></span><br><span class="line"><span class="string">		'''</span></span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) &amp; <span class="number">0xFF</span> == <span class="built_in">ord</span>(<span class="string">'q'</span>):</span><br><span class="line">            <span class="keyword">break</span>    </span><br><span class="line">        pipe.stdin.write(frame.tostring())</span><br><span class="line"> </span><br><span class="line">cap.release()</span><br><span class="line">pipe.terminate()</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zong596568821xp/article/details/92790502">opencv读取rtsp图像处理后推流rtmp</a> 这里安装了 nginx ，配置了rtmp模块，然后进行了推流<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41790078/article/details/130070425">OpenCV+FFmpeg 实现人脸检测Rtmp直播推流(Python快速实现)</a> 首先要区分说明一下，人脸检测与人脸识别是不一样的。检测只是将图像中的人脸框出或作其他突出显示，人脸识别则需要预先将人脸录入，当图像、视频中出现人脸时，对人脸进行检测，再将得到数据与录入的进行匹配，识别判断，人脸考勤机是人脸识别最常见的应用。因此，人脸识别要比人脸检测更复杂一些。<br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fireblackman/p/16619884.html">【python】使用ffmpeg+opencv读取摄像头并推流到rtmp服务器</a> 这里也用了 pipe.stdin.write(img.tobytes()) 推流<br>【4】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175464/7491247">python rtsp图像处理后实现rtmp推流的代码</a> 这里提到了一个 from pyrtmp import PyRTMP:1.从RTSP流获取视频帧;2.对视频帧进行图像处理;3.创建RTMP连接;4.推送处理后的视频帧到RTMP服务器。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175504/7425885">使用python-ffmpeg推流</a> 1.安装python-ffmpeg库；2.导入所需模块；3.创建一个ffmpeg实例；4.设置输入文件;5.设置输出文件;4.开始推流;<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41251963/article/details/111202830">Python OpenCV 在视频上添加文字后保存视频</a> 这里将视频添加上了文字，然后进行了播放。我采用了这个里面的代码，然后搞定了这个视频流从一个地方到另外一个地方的测试。</div>
+<h1 id="4-读取rtmp处理后输出rtmp"><a href="#4-读取rtmp处理后输出rtmp" class="headerlink" title="4.读取rtmp处理后输出rtmp"></a>4.读取rtmp处理后输出rtmp</h1><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line">videoUrl = <span class="string">"rtmp://xxx:10009/live/test"</span></span><br><span class="line">rtmp = <span class="string">'rtmp://xxx:10009/live/test2'</span></span><br><span class="line"><span class="comment"># 读取视频并获取属性</span></span><br><span class="line">cap = cv2.VideoCapture(videoUrl)</span><br><span class="line">size = (<span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))</span><br><span class="line">sizeStr = <span class="built_in">str</span>(size[<span class="number">0</span>]) + <span class="string">'x'</span> + <span class="built_in">str</span>(size[<span class="number">1</span>])</span><br><span class="line"> </span><br><span class="line">command = [<span class="string">'ffmpeg'</span>,</span><br><span class="line">    <span class="string">'-y'</span>, <span class="string">'-an'</span>,</span><br><span class="line">    <span class="string">'-f'</span>, <span class="string">'rawvideo'</span>,</span><br><span class="line">    <span class="string">'-vcodec'</span>,<span class="string">'rawvideo'</span>,</span><br><span class="line">    <span class="string">'-pix_fmt'</span>, <span class="string">'bgr24'</span>,</span><br><span class="line">    <span class="string">'-s'</span>, sizeStr,</span><br><span class="line">    <span class="string">'-r'</span>, <span class="string">'25'</span>,</span><br><span class="line">    <span class="string">'-i'</span>, <span class="string">'-'</span>,</span><br><span class="line">    <span class="string">'-tune'</span>, <span class="string">'zerolatency'</span>,<span class="comment">#零延迟</span></span><br><span class="line">    <span class="string">'-c:v'</span>, <span class="string">'libx264'</span>,</span><br><span class="line">    <span class="string">'-pix_fmt'</span>, <span class="string">'yuv420p'</span>,</span><br><span class="line">    <span class="string">'-preset'</span>, <span class="string">'ultrafast'</span>,</span><br><span class="line">    <span class="string">'-f'</span>, <span class="string">'flv'</span>,</span><br><span class="line">    rtmp]</span><br><span class="line"> </span><br><span class="line">pipe = subprocess.Popen(command</span><br><span class="line">    , shell=<span class="literal">False</span></span><br><span class="line">    , stdin=subprocess.PIPE</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取视频帧率</span></span><br><span class="line">fps_video = cap.get(cv2.CAP_PROP_FPS)</span><br><span class="line"><span class="comment">#设置写入视频的编码格式</span></span><br><span class="line">fourcc = cv2.VideoWriter_fourcc(*<span class="string">"mp4v"</span>)</span><br><span class="line"><span class="comment">#获取视频宽度</span></span><br><span class="line">frame_width = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_WIDTH))</span><br><span class="line"><span class="comment">#获取视频高度</span></span><br><span class="line">frame_height = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))</span><br><span class="line"><span class="comment">####重要</span></span><br><span class="line">videoWriter = cv2.VideoWriter(result_video, fourcc, fps_video, (frame_width, frame_height))</span><br><span class="line"> </span><br><span class="line"><span class="comment">#####可以做其他更改</span></span><br><span class="line">frame_id = <span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> (cap.isOpened()):</span><br><span class="line">    ret, frame = cap.read()</span><br><span class="line">    <span class="keyword">if</span> ret == <span class="literal">True</span>: </span><br><span class="line">        <span class="comment"># 处理视频帧，加入文字</span></span><br><span class="line">        frame_id += <span class="number">1</span></span><br><span class="line">        left_x_up = <span class="built_in">int</span>(frame_width / frame_id)</span><br><span class="line">        left_y_up = <span class="built_in">int</span>(frame_height / frame_id)</span><br><span class="line">        right_x_down = <span class="built_in">int</span>(left_x_up + frame_width / <span class="number">10</span>)</span><br><span class="line">        right_y_down = <span class="built_in">int</span>(left_y_up + frame_height / <span class="number">10</span>)</span><br><span class="line">        <span class="comment">#文字坐标</span></span><br><span class="line">        word_x = left_x_up + <span class="number">5</span></span><br><span class="line">        word_y = left_y_up + <span class="number">25</span></span><br><span class="line">        cv2.rectangle(image_np_with_detections, (left_x_up, left_y_up), (right_x_down, right_y_down), (<span class="number">55</span>,<span class="number">255</span>,<span class="number">155</span>), <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 输出rtmp</span></span><br><span class="line">        pipe.stdin.write(image_np_with_detections)</span><br><span class="line">        <span class="comment"># 判断是否到达帧尾，如果是则重新设置</span></span><br><span class="line">        frame_counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> frame_counter == <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_COUNT)):</span><br><span class="line">            frame_counter = <span class="number">0</span></span><br><span class="line">            cap.<span class="built_in">set</span>(cv2.CAP_PROP_POS_FRAMES, <span class="number">0</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        videoWriter.release()</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45206551/article/details/131413114">如何配置ffmpeg的推流参数来缩短推流间隔</a> 1.设置推流时的帧率：-r 参数，可以设置为30、60等等，即每秒发送多少帧视频。2.设置推流码率：-b:v 参数，可以设置为较高的值，比如2000K，以提高视频传输速率。使用更低的分辨率：-s 参数，可以将分辨率设置为较低的值，比如640x360等等，以减少视频大小和传输时间。<br>【2】.<a target="_blank" rel="noopener" href="https://avmedia.0voice.com/?id=44668">ffmpeg推流制定码率帧率</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yu540135101/article/details/84346146">ffmpeg实例，比特率码率（-b）、帧率（-r）和文件大小（-fs）相关操作</a> 1.帧率（Frame rate）也叫帧频率，帧率是视频文件中每一秒的帧数，肉眼想看到连续移动图像至少需要15帧。2.码率也叫比特率（Bit rate）(也叫数据率)是一个确定整体视频/音频质量的参数，秒为单位处理的字节数，码率和视频质量成正比，在视频文件中中比特率用bps来表达。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jzlover/article/details/135470984">通过opencv+ffmpeg摄像头推流</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16099209/7011920">python ffmpeg 推流 python rtmp推流</a> 1、直接调用ffmpeg命令。2、使用ffmpeg-python包。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/4da570cc.html" rel="next" title="Python连接SQLServer数据库">
+                      <i class="iconfont icon-prev"></i> Python连接SQLServer数据库
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/d3c22ee7.html" rel="prev" title="Python语法知识点二">
+                      Python语法知识点二 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%AF%BB%E5%8F%96%E6%8E%A8%E6%B5%81%E5%9C%B0%E5%9D%80"><span class="toc-number">2.</span> <span class="toc-text">2.读取推流地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%A7%86%E9%A2%91%E6%8E%A8%E6%B5%81"><span class="toc-number">3.</span> <span class="toc-text">3.视频推流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%AF%BB%E5%8F%96rtmp%E5%A4%84%E7%90%86%E5%90%8E%E8%BE%93%E5%87%BArtmp"><span class="toc-number">4.</span> <span class="toc-text">4.读取rtmp处理后输出rtmp</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/1733fc57.html';
+      this.page.identifier = 'posts/1733fc57.html';
+      this.page.title = 'Python读取和推送RTMP流';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Python读取和推送RTMP流 链接地址:https://bibichuan.github.io/posts/1733fc57.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Python读取和推送RTMP流',
+		url: 'https://bibichuan.github.io/posts/1733fc57.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Python读取和推送RTMP流',
+			isTipVisibility: true,
+			tip: 'Python读取和推送RTMP流',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

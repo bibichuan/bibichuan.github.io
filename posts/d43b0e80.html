@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Openlayers结合Geoserver实现修改元素</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Openlayers结合Geoserver实现修改元素</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Geoserver/">Geoserver</a>
+                    
+                      
+                        /
+                      
+                      
+                      <a href="/tags/Openlayers/">Openlayers</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-10-23 02:57:57
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>先来点铺垫，主要查询下有哪些东西，什么是WFS-T服务。</p>
+<div class="reference">参考文章：<br>1.WFS reference：<a target="_blank" rel="noopener" href="https://docs.geoserver.org/latest/en/user/services/wfs/reference.html">https://docs.geoserver.org/latest/en/user/services/wfs/reference.html</a><br>2.Modifying Feature Types：<a target="_blank" rel="noopener" href="https://geoserver.geo-solutions.it/edu/en/vector_data/wfst.html">https://geoserver.geo-solutions.it/edu/en/vector_data/wfst.html</a><br>3.Getting Transaction Support enabled in WFS on GeoServer (Boundless OpenGeoSuite)?：<a target="_blank" rel="noopener" href="https://gis.stackexchange.com/questions/141031/getting-transaction-support-enabled-in-wfs-on-geoserver-boundless-opengeosuite">https://gis.stackexchange.com/questions/141031/getting-transaction-support-enabled-in-wfs-on-geoserver-boundless-opengeosuite</a><br>4.通过wfs修改要素：<a target="_blank" rel="noopener" href="http://weilin.me/ol3-primer/ch12/12-01-04.html">http://weilin.me/ol3-primer/ch12/12-01-04.html</a> (扯淡大叔，这个步骤讲到的非常的全面)<br>5.最近在学习OpenLayer教程，通过OpenLayer加载geoserver中图层，其中遇到的问题并解决在此做下记录:<a target="_blank" rel="noopener" href="https://blog.csdn.net/wo_buzhidao/article/details/79268902">https://blog.csdn.net/wo_buzhidao/article/details/79268902</a></div>
+<p>直接上代码：</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>WFS-T<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"../lib/ol/ol.css"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/ol/ol.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>  <span class="attr">src</span>=<span class="string">"https://code.jquery.com/jquery-3.4.1.min.js"</span>  <span class="attr">integrity</span>=<span class="string">"sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span>,<span class="selector-tag">html</span>{</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>:<span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>:<span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>:absolute;</span></span><br><span class="line"><span class="language-css">        }</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.map</span>{</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>:absolute;</span></span><br><span class="line"><span class="language-css">        }</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.save</span>{</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">left</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">z-index</span>: <span class="number">10</span>;</span></span><br><span class="line"><span class="language-css">        }</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"save"</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"map"</span> <span class="attr">id</span>=<span class="string">"map"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/lodash.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../js/TMap.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> tmap=<span class="keyword">new</span> <span class="title class_">TMap</span>(<span class="string">'map'</span>,[<span class="number">120.349</span>,<span class="number">30.34</span>],<span class="number">18</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="comment">//添加矢量数据</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> url=<span class="string">"http://localhost:8088/geoserver/proheng/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=proheng%3Apipeline&amp;maxFeatures=50&amp;outputFormat=application%2Fjson"</span>;</span></span><br><span class="line"><span class="language-javascript">        $.<span class="title function_">ajax</span>({</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">url</span>:url,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">success</span>:<span class="keyword">function</span>(<span class="params">data</span>){</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> geojsonFormat=<span class="keyword">new</span> ol.<span class="property">format</span>.<span class="title class_">GeoJSON</span>();</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> features=geojsonFormat.<span class="title function_">readFeatures</span>(data);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">                <span class="comment">//绘制图层</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> vectorSource = <span class="keyword">new</span> ol.<span class="property">source</span>.<span class="title class_">Vector</span>({</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">format</span>: <span class="keyword">new</span> ol.<span class="property">format</span>.<span class="title class_">GeoJSON</span>(),</span></span><br><span class="line"><span class="language-javascript">                });</span></span><br><span class="line"><span class="language-javascript">                vectorSource.<span class="title function_">addFeatures</span>(features);</span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> vector = <span class="keyword">new</span> ol.<span class="property">layer</span>.<span class="title class_">Vector</span>({</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">name</span>:<span class="string">"pipeline"</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">source</span>: vectorSource,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">zIndex</span>:<span class="number">11</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">minResolution</span>:tmap.<span class="title function_">getResolution</span>(<span class="number">20</span>),</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">maxResolution</span>:tmap.<span class="title function_">getResolution</span>(<span class="number">12</span>),</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">style</span>:<span class="keyword">new</span> ol.<span class="property">style</span>.<span class="title class_">Style</span>({</span></span><br><span class="line"><span class="language-javascript">                        <span class="attr">stroke</span>: <span class="keyword">new</span> ol.<span class="property">style</span>.<span class="title class_">Stroke</span>({</span></span><br><span class="line"><span class="language-javascript">                            <span class="attr">lineCap</span>:<span class="string">"square"</span>,</span></span><br><span class="line"><span class="language-javascript">                            <span class="attr">width</span>:<span class="number">4</span>,</span></span><br><span class="line"><span class="language-javascript">                            <span class="attr">color</span>:<span class="string">"#000"</span></span></span><br><span class="line"><span class="language-javascript">                        })</span></span><br><span class="line"><span class="language-javascript">                    })</span></span><br><span class="line"><span class="language-javascript">                });</span></span><br><span class="line"><span class="language-javascript">                tmap.<span class="title function_">addLayer</span>(vector);</span></span><br><span class="line"><span class="language-javascript">            },</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">error</span>:<span class="keyword">function</span>(<span class="params">err</span>){</span></span><br><span class="line"><span class="language-javascript">                <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span></span><br><span class="line"><span class="language-javascript">            }</span></span><br><span class="line"><span class="language-javascript">        });</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 添加选择</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> selectInteraction=<span class="keyword">new</span> ol.<span class="property">interaction</span>.<span class="title class_">Select</span>({</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">style</span>:<span class="keyword">new</span> ol.<span class="property">style</span>.<span class="title class_">Style</span>({</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">stroke</span>:<span class="keyword">new</span> ol.<span class="property">style</span>.<span class="title class_">Stroke</span>({</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">color</span>: <span class="string">'red'</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">width</span>: <span class="number">2</span></span></span><br><span class="line"><span class="language-javascript">                })</span></span><br><span class="line"><span class="language-javascript">            })</span></span><br><span class="line"><span class="language-javascript">        });</span></span><br><span class="line"><span class="language-javascript">        tmap.<span class="title function_">addInteraction</span>(selectInteraction);</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">//添加修改交互</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> modifyInteraction = <span class="keyword">new</span> ol.<span class="property">interaction</span>.<span class="title class_">Modify</span>({</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">style</span>:<span class="keyword">new</span> ol.<span class="property">style</span>.<span class="title class_">Style</span>({</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">stroke</span>:<span class="keyword">new</span> ol.<span class="property">style</span>.<span class="title class_">Stroke</span>({</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">color</span>: <span class="string">'black'</span>,</span></span><br><span class="line"><span class="language-javascript">                    <span class="attr">width</span>: <span class="number">2</span></span></span><br><span class="line"><span class="language-javascript">                })</span></span><br><span class="line"><span class="language-javascript">            }),</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">features</span>: selectInteraction.<span class="title function_">getFeatures</span>()</span></span><br><span class="line"><span class="language-javascript">        });</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> modifiedFeatures=<span class="literal">null</span>;</span></span><br><span class="line"><span class="language-javascript">        tmap.<span class="title function_">addInteraction</span>(modifyInteraction);</span></span><br><span class="line"><span class="language-javascript">        modifyInteraction.<span class="title function_">on</span>(<span class="string">'modifyend'</span>,<span class="keyword">function</span> (<span class="params">p1</span>) {</span></span><br><span class="line"><span class="language-javascript">            modifiedFeatures = p1.<span class="property">features</span>;</span></span><br><span class="line"><span class="language-javascript">        });</span></span><br><span class="line"><span class="language-javascript">         <span class="comment">// 把修改提交到服务器端</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">function</span> <span class="title function_">modifyWfs</span>(<span class="params">features</span>) {</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> <span class="title class_">WFSTSerializer</span> = <span class="keyword">new</span> ol.<span class="property">format</span>.<span class="title function_">WFS</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> featObject = <span class="title class_">WFSTSerializer</span>.<span class="title function_">writeTransaction</span>(<span class="literal">null</span>,</span></span><br><span class="line"><span class="language-javascript">            features, <span class="literal">null</span>, {</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">featureType</span>: <span class="string">'pipeline'</span>,  <span class="comment">//图层名</span></span></span><br><span class="line"><span class="language-javascript">                <span class="attr">featureNS</span>: <span class="string">'proheng'</span>,  <span class="comment">// 注意这个值必须为创建工作区时的命名空间URI</span></span></span><br><span class="line"><span class="language-javascript">                <span class="attr">srsName</span>: <span class="string">'EPSG:4326'</span></span></span><br><span class="line"><span class="language-javascript">            });</span></span><br><span class="line"><span class="language-javascript">            <span class="comment">// 转换为xml内容发送到服务器端</span></span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> serializer = <span class="keyword">new</span> <span class="title class_">XMLSerializer</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> featString = serializer.<span class="title function_">serializeToString</span>(featObject);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">var</span> request = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(featString);</span></span><br><span class="line"><span class="language-javascript">            featString=featString.<span class="title function_">replace</span>(<span class="string">"&lt;Name&gt;geometry&lt;/Name&gt;"</span>,<span class="string">"&lt;Name&gt;the_geom&lt;/Name&gt;"</span>);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">            request.<span class="title function_">open</span>(<span class="string">'POST'</span>, <span class="string">'http://localhost:8088/geoserver/wfs?service=wfs'</span>);</span></span><br><span class="line"><span class="language-javascript">            <span class="comment">// 指定内容为xml类型</span></span></span><br><span class="line"><span class="language-javascript">            request.<span class="title function_">setRequestHeader</span>(<span class="string">'Content-Type'</span>, <span class="string">'text/xml'</span>);</span></span><br><span class="line"><span class="language-javascript">            request.<span class="title function_">send</span>(featString);</span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        $(<span class="string">".save"</span>).<span class="title function_">on</span>(<span class="string">"click"</span>,<span class="keyword">function</span>(<span class="params">e</span>){</span></span><br><span class="line"><span class="language-javascript">            <span class="variable language_">console</span>.<span class="title function_">log</span>(modifiedFeatures);</span></span><br><span class="line"><span class="language-javascript">            <span class="keyword">if</span> (modifiedFeatures &amp;&amp; modifiedFeatures.<span class="title function_">getLength</span>() &gt; <span class="number">0</span>) {</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">// 转换坐标</span></span></span><br><span class="line"><span class="language-javascript">                <span class="keyword">var</span> modifiedFeature = modifiedFeatures.<span class="title function_">item</span>(<span class="number">0</span>).<span class="title function_">clone</span>();</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">// 注意ID是必须，通过ID才能找到对应修改的feature</span></span></span><br><span class="line"><span class="language-javascript">                modifiedFeature.<span class="title function_">setId</span>(modifiedFeatures.<span class="title function_">item</span>(<span class="number">0</span>).<span class="title function_">getId</span>());</span></span><br><span class="line"><span class="language-javascript">                <span class="comment">// 调换经纬度坐标，以符合wfs协议中经纬度的位置</span></span></span><br><span class="line"><span class="language-javascript">                modifiedFeature.<span class="title function_">getGeometry</span>().<span class="title function_">applyTransform</span>(<span class="keyword">function</span>(<span class="params">flatCoordinates, flatCoordinates2, stride</span>) {</span></span><br><span class="line"><span class="language-javascript">                    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; flatCoordinates.<span class="property">length</span>; j += stride) {</span></span><br><span class="line"><span class="language-javascript">                        <span class="keyword">var</span> y = flatCoordinates[j];</span></span><br><span class="line"><span class="language-javascript">                        <span class="keyword">var</span> x = flatCoordinates[j + <span class="number">1</span>];</span></span><br><span class="line"><span class="language-javascript">                        flatCoordinates[j] = x;</span></span><br><span class="line"><span class="language-javascript">                        flatCoordinates[j + <span class="number">1</span>] = y;</span></span><br><span class="line"><span class="language-javascript">                    }</span></span><br><span class="line"><span class="language-javascript">                });</span></span><br><span class="line"><span class="language-javascript">                <span class="title function_">modifyWfs</span>([modifiedFeature]);</span></span><br><span class="line"><span class="language-javascript">            }</span></span><br><span class="line"><span class="language-javascript">        });</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>其中添加天地图的代码就不在这里写了，主要思路就是添加底图，添加select，添加modifyInteraction，然后监听modifyend函数，最后在保存的时候，将修改的图形使用writeTransaction序列化为xml。示例xml如下：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Transaction</span> <span class="attr">xmlns</span>=<span class="string">"http://www.opengis.net/wfs"</span> <span class="attr">service</span>=<span class="string">"WFS"</span> <span class="attr">version</span>=<span class="string">"1.1.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.opengis.net/wfs http://schemas.opengis.net/wfs/1.1.0/wfs.xsd"</span>&gt;</span><span class="tag">&lt;<span class="name">Update</span> <span class="attr">typeName</span>=<span class="string">"feature:pipeline"</span> <span class="attr">xmlns:feature</span>=<span class="string">"proheng"</span>&gt;</span><span class="tag">&lt;<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Name</span>&gt;</span>geometry<span class="tag">&lt;/<span class="name">Name</span>&gt;</span><span class="tag">&lt;<span class="name">Value</span>&gt;</span><span class="tag">&lt;<span class="name">MultiLineString</span> <span class="attr">xmlns</span>=<span class="string">"http://www.opengis.net/gml"</span> <span class="attr">srsName</span>=<span class="string">"EPSG:4326"</span>&gt;</span><span class="tag">&lt;<span class="name">lineStringMember</span>&gt;</span><span class="tag">&lt;<span class="name">LineString</span> <span class="attr">srsName</span>=<span class="string">"EPSG:4326"</span>&gt;</span><span class="tag">&lt;<span class="name">posList</span> <span class="attr">srsDimension</span>=<span class="string">"2"</span>&gt;</span>120.34757794 30.33886672 120.34854859113693 30.339445173740387 120.34748333 30.34026191<span class="tag">&lt;/<span class="name">posList</span>&gt;</span><span class="tag">&lt;/<span class="name">LineString</span>&gt;</span><span class="tag">&lt;/<span class="name">lineStringMember</span>&gt;</span><span class="tag">&lt;/<span class="name">MultiLineString</span>&gt;</span><span class="tag">&lt;/<span class="name">Value</span>&gt;</span><span class="tag">&lt;/<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Name</span>&gt;</span>FID_<span class="tag">&lt;/<span class="name">Name</span>&gt;</span><span class="tag">&lt;<span class="name">Value</span>&gt;</span>0<span class="tag">&lt;/<span class="name">Value</span>&gt;</span><span class="tag">&lt;/<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Name</span>&gt;</span>LineNumber<span class="tag">&lt;/<span class="name">Name</span>&gt;</span><span class="tag">&lt;<span class="name">Value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">Value</span>&gt;</span><span class="tag">&lt;/<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Name</span>&gt;</span>EndLat<span class="tag">&lt;/<span class="name">Name</span>&gt;</span><span class="tag">&lt;<span class="name">Value</span>&gt;</span>120.347483332<span class="tag">&lt;/<span class="name">Value</span>&gt;</span><span class="tag">&lt;/<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Name</span>&gt;</span>EndLon<span class="tag">&lt;/<span class="name">Name</span>&gt;</span><span class="tag">&lt;<span class="name">Value</span>&gt;</span>30.3402619111<span class="tag">&lt;/<span class="name">Value</span>&gt;</span><span class="tag">&lt;/<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Name</span>&gt;</span>StartLon<span class="tag">&lt;/<span class="name">Name</span>&gt;</span><span class="tag">&lt;<span class="name">Value</span>&gt;</span>30.3388667219<span class="tag">&lt;/<span class="name">Value</span>&gt;</span><span class="tag">&lt;/<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Name</span>&gt;</span>StartLat<span class="tag">&lt;/<span class="name">Name</span>&gt;</span><span class="tag">&lt;<span class="name">Value</span>&gt;</span>120.347577944<span class="tag">&lt;/<span class="name">Value</span>&gt;</span><span class="tag">&lt;/<span class="name">Property</span>&gt;</span><span class="tag">&lt;<span class="name">Filter</span> <span class="attr">xmlns</span>=<span class="string">"http://www.opengis.net/ogc"</span>&gt;</span><span class="tag">&lt;<span class="name">FeatureId</span> <span class="attr">fid</span>=<span class="string">"pipeline.18"</span>/&gt;</span><span class="tag">&lt;/<span class="name">Filter</span>&gt;</span><span class="tag">&lt;/<span class="name">Update</span>&gt;</span><span class="tag">&lt;/<span class="name">Transaction</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>最后更新成功，返回的内容：</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_3.png" lay-src="/posts/d43b0e80/geoserver_3.png" class="" title="geoserver修改完成">
+<p>图形修改成功：</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_4.png" lay-src="/posts/d43b0e80/geoserver_4.png" class="" title="geoserver修改完成">
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1) Feature type ‘pipeline’ is not available</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_2.png" lay-src="/posts/d43b0e80/geoserver_error_2.png" class="" title="geoserver错误">
+<p>主要是因为在写featureNS时写错了</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> featObject = <span class="title class_">WFSTSerializer</span>.<span class="title function_">writeTransaction</span>(<span class="literal">null</span>,</span><br><span class="line">    features, <span class="literal">null</span>, {</span><br><span class="line">        <span class="attr">featureType</span>: <span class="string">'pipeline'</span>,  <span class="comment">//图层名</span></span><br><span class="line">        <span class="attr">featureNS</span>: <span class="string">'proheng'</span>,  <span class="comment">// 注意这个值必须为创建工作区时的命名空间URI</span></span><br><span class="line">        <span class="attr">srsName</span>: <span class="string">'EPSG:4326'</span></span><br><span class="line">    });</span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_3.png" lay-src="/posts/d43b0e80/geoserver_error_3.png" class="" title="geoserver错误">
+<p>其中的featureNS是工作空间的URI</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_4.png" lay-src="/posts/d43b0e80/geoserver_error_4.png" class="" title="geoserver错误">
+<p>其中的featureType，是图层的名字，不带工作空间</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_5.png" lay-src="/posts/d43b0e80/geoserver_error_5.png" class="" title="geoserver错误">
+
+<div class="reference">参考文章：<br>1.Geoserver WFS-T “Feature type ‘Workspace:Layer’ is not available” Error on update / delete：<a target="_blank" rel="noopener" href="https://gis.stackexchange.com/questions/172112/geoserver-wfs-t-feature-type-workspacelayer-is-not-available-error-on-updat">https://gis.stackexchange.com/questions/172112/geoserver-wfs-t-feature-type-workspacelayer-is-not-available-error-on-updat</a></div>
+<p>(2) No such property: geometry</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_1.png" lay-src="/posts/d43b0e80/geoserver_error_1.png" class="" title="geoserver错误">
+<p>尝试解决方式是将xml中的feature:myLayer,改为myNameSpace:myLayer</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="keyword">new</span> <span class="title class_">XMLSerializer</span>().<span class="title function_">serializeToString</span>(node);</span><br><span class="line"><span class="keyword">var</span> data=str.<span class="title function_">replace</span>(<span class="string">"feature:myLayer"</span>,<span class="string">"myNameSpace:myLayer"</span>);</span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_6.png" lay-src="/posts/d43b0e80/geoserver_error_6.png" class="" title="geoserver错误">
+<p>这中方式是不对的。<br>实际上，查看这个xml，其中的图形属性是geometry</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_7.png" lay-src="/posts/d43b0e80/geoserver_error_7.png" class="" title="geoserver错误">
+<p>但是实际上图形属性的名称是the_geom而不是geometry</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_8.png" lay-src="/posts/d43b0e80/geoserver_error_8.png" class="" title="geoserver错误">
+<p>应该将其中的xml中的gemtory改为the_geom</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_9.png" lay-src="/posts/d43b0e80/geoserver_error_9.png" class="" title="geoserver错误">
+<p>如果是使用postgis发布的底图，那么这个图形属性的名称可能为geom,根据具体情况进行调整</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_5.png" lay-src="/posts/d43b0e80/geoserver_5.png" class="" title="geoserver错误">
+
+<div class="reference">参考文章：<br>1.No such property: geometry when updating feature in openlayers 3 - Geoserver：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/37250892/no-such-property-geometry-when-updating-feature-in-openlayers-3-geoserver">https://stackoverflow.com/questions/37250892/no-such-property-geometry-when-updating-feature-in-openlayers-3-geoserver</a></div>
+<p>(3) {proheng}pipeline is read-only(这里的proheng和pipeline不需要知道具体含义，就是工作空间和图层的名字))</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_10.png" lay-src="/posts/d43b0e80/geoserver_error_10.png" class="" title="geoserver错误">
+<p>解决方式主要是打开geoserver的控制面板，左侧的Security-&gt;Data</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_11.png" lay-src="/posts/d43b0e80/geoserver_error_11.png" class="" title="geoserver错误">
+<p>然后点击“*.*.w”，这一栏，然后选择：Grant access to any role</p>
+<img src="/images/loadimg.png" data-original="/posts/d43b0e80/geoserver_error_12.png" lay-src="/posts/d43b0e80/geoserver_error_12.png" class="" title="geoserver错误">
+<p>重启geoserver</p>
+<div class="reference">参考文章：<br>1.geoserver wfs-t is read-only exception：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41972613/geoserver-wfs-t-is-read-only-exception">https://stackoverflow.com/questions/41972613/geoserver-wfs-t-is-read-only-exception</a><br>2.最近在学习OpenLayer教程，通过OpenLayer加载geoserver中图层，其中遇到的问题并解决在此做下记录:<a target="_blank" rel="noopener" href="https://blog.csdn.net/wo_buzhidao/article/details/79268902">https://blog.csdn.net/wo_buzhidao/article/details/79268902</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/7053c5cf.html" rel="next" title="Openlayers自定义控件">
+                      <i class="iconfont icon-prev"></i> Openlayers自定义控件
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/bad82bc4.html" rel="prev" title="Openlayers加载ArcGIS Server服务">
+                      Openlayers加载ArcGIS Server服务 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/d43b0e80.html';
+      this.page.identifier = 'posts/d43b0e80.html';
+      this.page.title = 'Openlayers结合Geoserver实现修改元素';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Openlayers结合Geoserver实现修改元素 链接地址:https://bibichuan.github.io/posts/d43b0e80.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Openlayers结合Geoserver实现修改元素',
+		url: 'https://bibichuan.github.io/posts/d43b0e80.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Openlayers结合Geoserver实现修改元素',
+			isTipVisibility: true,
+			tip: 'Openlayers结合Geoserver实现修改元素',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

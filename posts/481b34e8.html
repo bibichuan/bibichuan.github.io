@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XenServer安装与运维二</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">XenServer安装与运维二</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Xenserver/">Xenserver</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-04-11 05:02:30
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>接第一篇文章 <a href="/posts/5ab99fe8.html" title="XenServer安装与运维">XenServer安装与运维</a>,继续写第二篇XenServer的管理与运维。</p>
+<h1 id="1-安装XenServer-Tools"><a href="#1-安装XenServer-Tools" class="headerlink" title="1.安装XenServer Tools"></a>1.安装XenServer Tools</h1><p>XenServer Tools 提供高性能 I/O 服务，而没有传统设备仿真的开销。XenServer Tools 由 I/O 驱动程序（也称为半虚拟化的驱动程序或 PV 驱动程序）和管理代理组成。</p>
+<p>我在虚拟机管理列表中右键单击和在XenClinet的菜单栏中的VM上，Install XenServer Tools都没有或者都是灰色的，不能点击。</p>
+<img src="/images/loadimg.png" data-original="/posts/481b34e8/XenServer_2.png" lay-src="/posts/481b34e8/XenServer_2.png" class="" title="XenServer运维">
+
+<p>后来我在虚拟机的Storage选项中的DVD Drive中找到了一个guest-tool.iso，进行了挂载。</p>
+<img src="/images/loadimg.png" data-original="/posts/481b34e8/XenServer_1.png" lay-src="/posts/481b34e8/XenServer_1.png" class="" title="XenServer运维">
+
+<p>然后登录虚拟机，找到这个ISO，点击里面的Setup进行安装。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://docs.citrix.com/zh-cn/xencenter/7-1/vms-installtools.html">安装 XenServer Tools</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40259641/article/details/79022844">安装VMware Tools选项显示灰色的正确解决办法</a><br>3.<a target="_blank" rel="noopener" href="https://blog.51cto.com/gaokui/1973686">八、Xenserver虚拟机创建、复制与快照</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xht555/article/details/60872082">CentOS安装XenServer Tools</a></div>
+<h1 id="2-更换网卡"><a href="#2-更换网卡" class="headerlink" title="2.更换网卡"></a>2.更换网卡</h1><p>因为服务器要更换，所以就把原有服务器上的m2接口的ssd拿下来了，加上一块机械硬盘，都迁移到了一台新的电脑上了。虽然系统能启动起来了，但是即便是插上网线还是无法链接网络，那就没办法从远程进入启动的虚拟机了，这个时候，我猜测是网卡的问题。 </p>
+<p>(1) 根据参考文章，我执行了xe pif-forget，出现唯一接口问题，无法删除，于是我先执行了 host-management-disable，然后再执行了 forget命令</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 禁用管理接口</span></span><br><span class="line">xe host-management-disable</span><br><span class="line"><span class="comment">## 列出使用的uuid，</span></span><br><span class="line">xe pif-list </span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除使用的uuid</span></span><br><span class="line">xe pif-forget uuid=上一步出现的uuid</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查询MAC地址，我执行这一步的时候，没有 HWaddr 这个选项，只有eth1 flags ether之类的东西我就把这个ehter作为网卡使用了</span></span><br><span class="line">ifconfig -a </span><br><span class="line"></span><br><span class="line"><span class="comment">## 找到服务器uuid</span></span><br><span class="line">xe host-list</span><br><span class="line"></span><br><span class="line"><span class="comment">## 绑定新的网卡和地址</span></span><br><span class="line">xe pif-introduce device=eth0 host-uuid=上一步的uuid mac=上一步的MAC地址</span><br><span class="line"></span><br><span class="line"><span class="comment">## 回到Network and Management InterFace界面，进行静态ip地址的配置</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/481b34e8/XenServer_4.png" lay-src="/posts/481b34e8/XenServer_4.png" class="" title="XenServer运维">
+
+<p>运行上面的步骤，我就小红鞋绑定了新的网卡。其实根据参考资料我还做了其他的无用的工作，比如下面的步骤，但是实际上，我用上面的就可以完成配置了，因为我的不是eth0而是eth1网卡</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑eth0</span></span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line"><span class="comment">## 启动eth0，但是总是失败，因为我使用ifconfig -a 查询的只有eth1</span></span><br><span class="line">ifup eth0</span><br><span class="line"><span class="comment">## 重新扫描</span></span><br><span class="line">xe pif-scan host-uuid=xxxx</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33981932/article/details/92582750">XenServer更换网卡的处理办法</a> (使用了NIC重新进行MAC地址的方法，这里删除的是network-uuid，但是参考文章删除的是uuid)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ZebraChroma/article/details/84584505">Xenserver网卡丢失的解决方案</a> (有两种原因造成的，使用命令行模式进行解决，第一种服务器过程断电，解决方法输入service xapi restart或xe-toolstack-restart命令重启xapi服务)<br>3.<a target="_blank" rel="noopener" href="https://www.51jiejue.com/ops/%E8%A7%A3%E5%86%B3xenserver%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9B%B4%E6%8D%A2%E4%B8%BB%E6%9D%BF%E5%90%8E%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%BE%E5%88%B0%E7%BD%91%E5%8D%A1%EF%BC%81.html">解决XenServer服务器更换主板后，无法找到网卡！</a> (登陆服务器命令行，找到老的MAC地址,删除地址，找到新的MAC地址，然后绑定新的地址，这个挺详细的，可是尝试下)<br>4.<a target="_blank" rel="noopener" href="https://blog.51cto.com/rolandqu/942434">XenServer命令行指南</a> (命令行使用方法，比如：xe &lt;命令&gt; &lt;参数&gt; &lt;参数&gt;)<br>5.<a target="_blank" rel="noopener" href="https://docs.citrix.com/zh-cn/citrix-hypervisor/command-line-interface.html">命令行接口</a> (这是官网的关于命令行的使用，xe 命令行接口安装在所有 Citrix Hypervisor 服务器上并包含在 XenCenter 中,也就是在虚拟机上，也是可以使用xe命令的，不过)<br>6.<a target="_blank" rel="noopener" href="https://support.citrix.com/article/CTX127161">How to Replace a Network Interface Card in a XenServer Host</a> (官方文档关于切换管理接口的说明)<br>7.<a target="_blank" rel="noopener" href="https://docs.citrix.com/en-us/citrix-hypervisor/networking/manage.html">Manage networking </a> (官网管理网络这一章)<br>9.<a target="_blank" rel="noopener" href="http://www.east263.com/news/jsj/czxt/2018-12-03/745.html">Linux系统之查看网卡的ip地址ifconfig命令</a> (ifconfig网络管理和查看)</div>
+<h1 id="3-The-host-does-not-have-enough-pCPUs-to-run-the-VM"><a href="#3-The-host-does-not-have-enough-pCPUs-to-run-the-VM" class="headerlink" title="3.The host does not have enough pCPUs to run the VM"></a>3.The host does not have enough pCPUs to run the VM</h1><p>更换了主板之后，替换了网卡，打开虚拟机的时候出现了：xenserver-ctvmxnra    The host does not have enough pCPUs to run the VM. It needs at least as many as the VM has vCPUs.(主机没有足够的pCPU来运行VM。它至少需要与虚拟机具有vCPU的数量相同。) 这句话的意思其实应该是虚拟核心数超过了物理核心数。官方有这么一段话：</p>
+<pre><code>Citrix recommends that you do not run a VM with more virtual CPUs (vCPUs) than the number physical CPUs (pCPUs) available on the XenServer host.
+The number of pCPUs available to XenServer can change even after the installation of VMs. For example, through actual hardware changes, changes in the BIOS setting, or other software configurations. VMs with vCPUs that cannot be matched to pCPUs may need to be adjusted in order to maintain stability.
+</code></pre>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 命令行查看物理核心数</span></span><br><span class="line">xe host-cpu-info</span><br><span class="line"><span class="comment">## 列出每一个虚拟机的uuid和cpu数量</span></span><br><span class="line">xe vm-list params=uuid,name-label,VCPUs-max</span><br><span class="line"><span class="comment">## 重新设置虚拟机的cpu数量</span></span><br><span class="line">xe vm-param-set uuid=&lt;vm-UUID&gt; VCPUs-max=&lt;8&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 禁用超量保护</span></span><br><span class="line">xe vm-param-set uuid=&lt;uuid&gt; platform:vcpu-unrestricted=<span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>我通过命令行，无法修改vm的虚拟机cpu数量，总是提示:The value given is invalid,field:VCPU values must satisfy:0 &lt; VCPUs_at_startup &lt;= VCPUS_max，于是我通过XenClient重新设置了虚拟机的CPU数量,将原本设置的8个cpu，改为了一个cpu。</p>
+<img src="/images/loadimg.png" data-original="/posts/481b34e8/XenServer_5.png" lay-src="/posts/481b34e8/XenServer_5.png" class="" title="XenServer运维">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.citrix.com/blogs/2014/03/11/citrix-xenserver-setting-more-than-one-vcpu-per-vm-to-improve-application-performance-and-server-consolidation-e-g-for-cad3-d-graphical-applications/">Citrix XenServer – Setting more than one vCPU per VM to improve application performance and server consolidation e.g. for CAD/3-D graphical applications</a><br>2.<a target="_blank" rel="noopener" href="https://support.citrix.com/article/CTX236977">Overcommitting pCPUs on individual XenServer VMs</a> (官方对于物理核心数的解释)<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34367845/article/details/92525074">调整Domain0使用的vCPU数量</a> (修改/etc/sysconfig/unplug-vcpus文件,手工调整Dom0的vCPU数量)</div>
+<h1 id="4-导出虚拟机"><a href="#4-导出虚拟机" class="headerlink" title="4.导出虚拟机"></a>4.导出虚拟机</h1><p>导出虚拟机其实挺简单的，就是在 XenCenter 中右键选中某一个虚拟机，然后选择导出就可以了，可以选择 xva 格式或者是 ovf/vhd 格式。</p>
+<p>主要问题，其实是导出之后，如果加载到Hyper-V中。</p>
+<p>参可文章:<br>【1】.<a target="_blank" rel="noopener" href="https://docs.citrix.com/zh-cn/xencenter/7-1/vms-exportimport-about.html">关于 VM 导入和导出 </a><br>【2】.<a target="_blank" rel="noopener" href="https://jkindon.com/2019/01/06/migrate-xenserver-vms-to-hyperv/">Migrate XenServer VMs to HyperV</a> (这篇文章讲了如何从XenServer迁移到HyperV)<br>【3】.<a target="_blank" rel="noopener" href="https://social.technet.microsoft.com/Forums/en-US/3946d823-790a-4c8b-8888-338a46a536bb/migrating-from-xenserver-70-to-hyperv-2016-server?forum=winserverhyperv">Migrating from XenServer 7.0 to Hyper-V 2016 Server</a> (这里是一个英文讨论贴，根据我粗略的英文来看，提问者也遇到了和我一样的问题，就是导出vhd格式之后，在hyper-v中启动会蓝屏)<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kepa520/article/details/51527003">关于导出XenServer底层VHD磁盘的方法</a> (这里直接从XenServer的底层中导出vhd格式，但是我估计也会出现蓝屏问题)<br>【5】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhihua09/p/16124753.html">esxi 导出 导出映像 区别</a> 1.导出映像   ：导出时，同时导出VM的驱动器iso。2.导出：导出时，忽略VM的驱动器iso。<br>【6】.<a target="_blank" rel="noopener" href="https://docs.pingcode.com/baike/3367187">esxi6.7如何导出虚拟机</a> 1.通过vSphere Client导出虚拟机。2.使用OVF Tool导出虚拟机。3.通过命令行方式导出虚拟机。</p>
+<h1 id="5-无法导出虚拟机"><a href="#5-无法导出虚拟机" class="headerlink" title="5.无法导出虚拟机"></a>5.无法导出虚拟机</h1><p>我在 VM exsi 中进行虚拟机导出，结果总是到处到几百M的时候，就断掉了。出现了常规系统错误: Input/output error</p>
+<p>【尝试方案】<br>（1）切换不同的浏览器，结果不行。<br>（2）挂载NFS存储，使用数据存储浏览器，进行复制，也是不行。<br>（3）后来我先把这个虚拟机开机，出现了磁盘检查的操作，我开机后，然后再次执行导出操作，到了450M左右，还是出现了，请检查互联网连接状况。<br>（4）因为我的虚拟机没有安装vm tool,所以就安装了这个东西，继续的尝试，结果还是不行。<br>（5）尝试使用 ovf 工具，<a target="_blank" rel="noopener" href="https://developer.broadcom.com/tools/open-virtualization-format-ovf-tool/latest">下载</a> 安装最新的 ovftool 工具，结果总是显示：Another task is already in progress 错误，这个方案又不行了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入到 C:\Program Files\VMware\VMware OVF Tool 安装路径，就可以执行下面的命令了，下载 win101 虚拟机到本地 E:\下载 目录下。</span></span><br><span class="line">.\ovftool.exe  --noSSLVerify vi://192.168.1.106/win101 E:\下载</span><br></pre></td></tr></tbody></table></figure>
+
+<p>后来发现是虚拟机没有关机，所以导不出来，后来我尝试关闭之后，再次尝试，结果还是报错： Unknown device: ‘PCI device 0’，这个原因可能是我配置了GPU和虚拟机直通，我把这个 GPU 直通设备删除，重新进行了导出，结果还是错误。 System error: (Unknown exception)</p>
+
+
+<p>（6）使用exsi命令行，给root 用户配置密码，然后右键主机 -&gt; 服务 -&gt; 启动 SSH，使用 ssh 工具就可以连接了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看虚拟机</span></span><br><span class="line">vim-cmd vmsvc/getallvms</span><br><span class="line"></span><br><span class="line"><span class="comment"># 进入需要克隆的虚拟机目录下</span></span><br><span class="line"><span class="built_in">cd</span> /vmfs/volumes</span><br><span class="line"></span><br><span class="line"><span class="comment"># 克隆，　-d thin　　指定克隆出来的虚机磁盘格式为thin</span></span><br><span class="line">vmkfstools -i win/win.vmdk c/winclone.vmdk -d thin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 示例，我有一个数据存储叫 datastore1，挂载了一个 NFS 服务，我就把 datastore1 中的 win101 虚拟机复制到了 NFS 的 win101.vmdk 中了。</span></span><br><span class="line">vmkfstools -i datastore1/win101/win101.vmdk NFS/win101.vmdk -d thin</span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查磁盘，结果显示没有错误：Disk is error free</span></span><br><span class="line">vmkfstools -x check datastore1/win101/win101.vmdk</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这么一系列下来之后，结果还是报错了 Failed to clone disk: Input/output error。</p>
+<p>【解决方案】<br>（1）只能通过百度网盘上传数据了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yiqiushi4748/article/details/113924578">vmware虚拟机导出ovf文件导出失败 （server-amd64.iso）could not be found</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38461443/article/details/107462021">解决Esxi导出虚拟机时发生网络错误</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40220309/article/details/122186076">Esxi 6.7.0版本导出虚拟机OVF网络错误问题解决办法【实测有用】</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jobschen/article/details/73200545">VMware共享文件夹Input/output error解决办法</a><br>【5】.<a target="_blank" rel="noopener" href="https://www.abackup.com/enterprise-backup/export-vm-from-esxi-666.html">通过ESXi命令行批量导出/导入虚拟机</a><br>【6】.<a target="_blank" rel="noopener" href="https://www.dinghui.org/vmware-ovf-tool.html">VMware OVF Tool：导入导出虚拟机为OVF/OVA格式文件的命令行工具</a> 这个是有下载地址的。<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Slience_Jhon/article/details/128959843">ESXI导出ovf模板时报错Error: Failed to open file stream:path/file.ISO</a> 不过有一点要补充的，ovftool导出速度比web控制台导出慢太多了，web控制台导出时浏览器会自动转下载，其中vmdk文件较大，可以复制其下载链接到迅雷下载，这样会快很多，下载完之后将ovf、mf、vmdk三个后缀名的文件放在同一文件夹下，然后导入ovf文件，即可完成虚拟机导入<br>【8】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zqj-blog/p/10408465.html">使用命令行操作vmware esxi – linux </a><br>【10】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42999045/article/details/129032493">vmware esxi 虚拟机管理常用命令</a><br>【11】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48544396/article/details/109101883">ESXI开启SSH服务的三种方式</a> 1.在图形化界面进行设置：通过访问ESXI的IP地址登录到图形化界面，在左侧导航器中选中“主机”，然后鼠标右击，在“服务”中点击“启用安全Shell（SSH）”。2.通过vSphere进行设置。3.通过终端控制台进行修改。<br>【12】.<a target="_blank" rel="noopener" href="https://doc.freedo3d.com/Virtual_Machine/ESXI_7_Configuration.html">ESXI7.0.2配置显卡直通(GPU Passthrough)</a> 通过主机—&gt;管理—&gt;硬件—&gt;PCI设备，找到所有PCI硬件设备，然后滚动或者直接搜索NVIDIA，找到你的GPU设备<br>【13】.<a target="_blank" rel="noopener" href="https://community.spiceworks.com/t/problems-with-vm-booting-but-cant-copy-or-backup-vmdk-issue/1095747">Problems with VM, booting but can’t copy or backup (VMDK issue)</a> 这里说的是要检查nvm的磁盘状态。</div>
+<h1 id="6-u盘"><a href="#6-u盘" class="headerlink" title="6.u盘"></a>6.u盘</h1><p>（1）配置usb直通<br>在管理界面里面，找到 usb 设备，然后开启直通。</p>
+<p>（2）配置虚拟机<br>关闭虚拟机，在虚拟机设置里面，增加一个usb设备就可以了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://docs.pingcode.com/baike/2747077">esxi虚拟机如何识别USB</a> 按照这个文件可以操作成功。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/89eaa495.html" rel="next" title="axios使用笔记">
+                      <i class="iconfont icon-prev"></i> axios使用笔记
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/5ab99fe8.html" rel="prev" title="XenServer安装与运维">
+                      XenServer安装与运维 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85XenServer-Tools"><span class="toc-number">1.</span> <span class="toc-text">1.安装XenServer Tools</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%9B%B4%E6%8D%A2%E7%BD%91%E5%8D%A1"><span class="toc-number">2.</span> <span class="toc-text">2.更换网卡</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-The-host-does-not-have-enough-pCPUs-to-run-the-VM"><span class="toc-number">3.</span> <span class="toc-text">3.The host does not have enough pCPUs to run the VM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AF%BC%E5%87%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">4.</span> <span class="toc-text">4.导出虚拟机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%97%A0%E6%B3%95%E5%AF%BC%E5%87%BA%E8%99%9A%E6%8B%9F%E6%9C%BA"><span class="toc-number">5.</span> <span class="toc-text">5.无法导出虚拟机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-u%E7%9B%98"><span class="toc-number">6.</span> <span class="toc-text">6.u盘</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/481b34e8.html';
+      this.page.identifier = 'posts/481b34e8.html';
+      this.page.title = 'XenServer安装与运维二';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：XenServer安装与运维二 链接地址:https://bibichuan.github.io/posts/481b34e8.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'XenServer安装与运维二',
+		url: 'https://bibichuan.github.io/posts/481b34e8.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'XenServer安装与运维二',
+			isTipVisibility: true,
+			tip: 'XenServer安装与运维二',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技术研究之土方计算</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">技术研究之土方计算</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2025-02-27 03:05:11
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>最近接了一个工程，就是用无人机测绘，计算土石方量。在ArcGIS中，有根据DEM计算土方量的方法。</p>
+<ul>
+<li>DTM法（三角网法）<br>适用于地形条件复杂、有较大起伏、地形高低变化剧烈的地区，如山区地形，石料堆场等。</li>
+</ul>
+<p>步骤:<br>（1）将地形划分为不规则三角网（TIN）。<br>（2）对每个三角网节点，计算现有高程与设计高程的差值。<br>（3）对每个三角网单元，计算土方量：</p>
+<p>V=A×(ΔH1+ΔH2+ΔH3)/3<br>​<br>其中：<br>A 是三角网单元面积。<br>ΔH1,ΔH2,ΔH3 是三个节点的高程差异。<br>总挖掘量和填埋量分别为所有需要挖掘和填埋单元的土方量之和。</p>
+<p>优点: 适合复杂地形，精度较高。<br>缺点: 计算复杂度较高。</p>
+<ul>
+<li>方格网法<br>适用于场地大、但高差变化不大的测区，如施工场地前期的土方整理、场地绿化等。<br>步骤:</li>
+</ul>
+<p>（1）将地形划分为规则的网格（Grid）。</p>
+<p>（2）对每个网格点，计算现有高程与设计高程的差值：<br>ΔH=H现有−H设计<br>​<br>（3）对每个网格单元，计算土方量：<br>V=A×∣ΔH∣</p>
+<p>其中：<br>V 是土方量。<br>A 是网格单元面积。<br>ΔH 是高程差异。<br>总挖掘量和填埋量分别为所有需要挖掘和填埋单元的土方量之和。</p>
+<p>优点: 计算简单，适合规则地形。<br>缺点: 对复杂地形的精度较低。</p>
+<ul>
+<li>断面法：<br>只适用于地形狭长的地带，如道路、管道等土方的计算。</li>
+</ul>
+<p>步骤:<br>（1）沿工程区域按一定间距设置断面。<br>（2）对每个断面，计算现有地形和设计地形的面积差。<br>（3）对相邻断面之间的区域，计算土方量：<br>V=(A1+A2)×L/2</p>
+<p>其中：</p>
+<p>A1,A2 是相邻断面的面积。<br>L 是断面间距。</p>
+<p>总挖掘量和填埋量分别为所有需要挖掘和填埋区域的土方量之和。</p>
+<p>优点: 适合线性工程（如道路、渠道）。<br>缺点: 对复杂地形的精度较低。</p>
+<ul>
+<li>等高线法<br>适用于土方量计算的概算量使用，该方法适合于地形坡度大，但坡度变化均匀等地。</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/445610562">如何计算工地土方填挖量？看完秒懂</a> DTM法土方计算、DTM法土方计算、断面法土方计算、断面法土方计算，这里用的是 cass9.0 计算的。<br>【2】.<a target="_blank" rel="noopener" href="https://patents.google.com/patent/CN115909091A/zh">一种基于无人机三维扫描实景建模的土方量计算方法 </a> 提供一种基于无人机三维扫描实景建模的土方量计算方法，包括以下步骤：采用无人机搭载三维扫描仪器采集地表图像，获取地表固定物体顶面及侧视的图像数据及纹理信息；对图像数据及纹理信息进行多视几何影像匹配获得稀疏点云，加密得到密集点云，对密集点云进行网格化和纹理映射得到三维模型；由三维模型通过数据处理工具给予控制点生成测量坐标系统下的实景三维模型，以实景三维模型为基础，测量获取DEM；将开挖前的原始DEM和开挖后的DEM生成高程数据；对高程数据通过三维分析工具计算开挖和/或回填的土方量。本发明操作简便，能够快速准确计算土方开挖方量，避免了非常规部位的人为计算产生的较大偏差。这里也是使用的ArcGIS计算的土方量。<br>【4】.<a target="_blank" rel="noopener" href="https://www.researchgate.net/publication/347116047_jiyuwurenjijishudegongchengtufangliangjisuan">基于无人机技术的工程土方量计算</a> 进行地表改造的工程建设都会涉及土石方量的计算工作，而土石方量测绘及计算的速度和精度质量又直接影响着工程建设的进度及成本控制。论文通过使用多旋翼无人机摄影航测计算的方法实现了工程建设两期间土方量的快速、高效及高精度计算，能够有效解决传统方法中的不足，其计算具有较好的可视化效果，结果稳定且可靠。<br>【5】.<a target="_blank" rel="noopener" href="https://www.shuoxinzixun.com/index.php?m=Article&amp;a=show&amp;id=2909">如何利用无人机进行方格网土方测量？</a> 1.模型导入。2.高程提取。3.土方计算使用工程应用-方格网法进行土方计算<br>【6】.<a href="moz-extension://11180ca2-f050-3344-8cf5-57df167e5ae2/pdf-viewer/web/viewer.html?file=https%3A%2F%2Fpdf.hanspub.org%2Fgst20230400000_44732855.pdf">无人机倾斜摄影测量技术在石方量计算中的应用</a> 传统获取石方储量变化量的方法存在工作强度大，精度较差的问题。结合技术成熟的无人机倾斜摄影测量技术实现两期石方储量的三维数据获取，并利用Arc Engine二次开发技术实现两期石方储量变化量的监测。</div>
+<h1 id="1-DEM"><a href="#1-DEM" class="headerlink" title="1.DEM"></a>1.DEM</h1><p>通过点云数据生成DEM。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/554654144">如何通过无人机倾斜摄影生成高精度地形（DEM）数据？</a> 1.无人机生成点云数据:大疆构建点云、CC构建点云。2:图新地球：倾斜摄影结果 + 图新地球可达到没有激光雷达的航测成果，也能快速提取地面点构建DEM。3.点云大师生成DEM数据：导入.las格式数据、提取地面点、生成DEM数据、生成等高线<br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/392340083">基于无人机激光点云的高精度DSM、DEM生产研究</a><br>【3】.<a target="_blank" rel="noopener" href="https://malagis.com/gis-dem-calculation-of-earthwork.html">DEM土方量计算</a> 1.基于格网点数据的土方量计算。2.基于等高线数据的土方量计算。3.基于离散点数据的土方量计算。<br>【4】.<a target="_blank" rel="noopener" href="https://www.i3vsoft.com/Article/qxsycljslc.html">倾斜摄影测量技术流程（DEM、DLG、DOM、DSM生产流程）</a> 1.空中三角测量;2.数字表面模型生产（DSM）;3.数字高程模型生产（DEM）;4.数字正射影像图生产（DOM）;5.数字线划图生产（DLG）;6.倾斜摄影建模。</div>
+<h1 id="1-ArcGIS"><a href="#1-ArcGIS" class="headerlink" title="1.ArcGIS"></a>1.ArcGIS</h1><p>这里主要介绍几种使用 arcgis 进行土方量计算的方法。主要就是实用了 DEM 的方式进行。ARCGIS 软件利用栅格数据计算土方量的。栅格数据结构简单，非常利于计算机操作和处理，是GIS 常用的空间基础数据格式。基于栅格数据的空间分析是GIS 空间分析的基础。ArcGIS 栅格数据空间分析模块( Spatial Analyst) 提供有效工具集，方便执行土方量的计算问题。通过倾斜摄影测量的方法获得将前期地表数据和后期地表数据网格化数据，对两个格网数据进行差计算，其差值就是该格网点的填(挖) 高度。</p>
+<p>（1）数据准备<br>准备通过倾斜摄影测量得到的开挖前DEM 和开挖后DEM 或由设计数据生成的DEM 数据。</p>
+<p>（2）数据处理<br>检查数据坐标系统的一致性，保证两期数据具有相同的坐标系统和高程系统，坐标系统应为高斯投影平面坐标。</p>
+<p>（3）土方量计算<br>通过3D Analyst 工具→栅格表面→填挖方工具来计算土方量。图2 对话窗口中选择输入两期DEM数据，输出栅格为最终提取出的开挖或回填范围内的DEM 数据存储位置。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/haijian/p/12906300.html">LiDAR点云利用Arcgis基于DEM法计算土方量</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dust_Evc/article/details/121624802">Arcmap计算土方量教程</a> 1.创建现状TIN;2.创建设计TIN;3.TIN转栅格;4.裁剪现状TIN转成的栅格;5.计算土方量;<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yuanYW7556/article/details/122530005">ArcGIS 计算挖填方区域和挖填方量</a> 这里是平整土地的方法，就是把一块地整平，哪里需要填，哪里需要挖。<br>【4】.<a target="_blank" rel="noopener" href="https://www.bilibili.com/opus/531301000845093524">ArcGIS在土地整治项目土方量计算中的应用</a> 1.前期准备;2.建立原始DEM;3.确定平整单元;4.确定田块设计高程;5.建立规划DEM;6.基于ArcGIS的土方计算。利用ArcGIS中相关的栅格相减功能，以原始栅格高程与规划栅格高程的差作为积分高度。运用分析工具中的领域分析来创建泰森多边形，以项目范围界完成具体的裁剪操作，并以此来形成若干个微元，具体则需要以生成的单元网格面积来确定为积分单元。<br>【5】.<a target="_blank" rel="noopener" href="https://www.liaomz.top/2023/06/26/cesium-zhong-huo-qu-di-xing-zui-gao-deng-ji-wa-pian-de-san-jiao-wang-jin-xing-tu-fang-ji-suan/">Cesium中获取地形最高等级瓦片的三角网进行土方计算</a> 在 sampleTerrainMostDetailed 中正是获取点所在的最高精度地形来进行拾取的。那么这里也同理，通过改造 sampleTerrainMostDetailed 方法即可实现获取范围内最高精度的地形。</div>
+<h1 id="2-Cesium"><a href="#2-Cesium" class="headerlink" title="2.Cesium"></a>2.Cesium</h1><p>Cesium负责展示这块，其实也可以用来显示挖填方。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.liaomz.top/2023/04/07/cesium-zhong-zhi-chi-ren-yi-shu-ju-de-tu-fang-ji-suan/">Cesium中支持任意数据的土方计算</a><br>【2】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7187677466666729527">Cesium地形开挖-附带源码 </a><br>【3】.<a target="_blank" rel="noopener" href="https://www.liaomz.top/2022/11/30/cesium-zhong-huo-qu-di-xing-san-jiao-wang-bing-jin-xing-tu-fang-ji-suan/">Cesium中获取地形三角网并进行土方计算</a> 这里给了原理分析，而且给了一个示例。</div>
+<h1 id="3-激光点云"><a href="#3-激光点云" class="headerlink" title="3.激光点云"></a>3.激光点云</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.sohu.com/a/548697255_121324616">基于倾斜摄影或三维激光LiDAR点云数据的土石方量计算——高效、准确、直观</a> 这是一个广告，没啥意思。<br>【2】.<a target="_blank" rel="noopener" href="https://patents.google.com/patent/CN116012613A/zh">一种基于激光点云的露天矿的土方量变化测算方法和系统</a> 使用三维激光雷达扫描目标露天矿区域，得到目标露天矿区域的前后两期点云数据；根据点云预处理算法对前后两期点云数据进行预处理，得到去噪后的前后两期点云数据；根据前后两期点云数据分别对应的三维距离变换图，计算得到倒角距离大于预定距离阈值的变化区域点云集合；对变化区域点云集合进行快速八叉树聚类，得到变化区域点云集合对应的变化区域边界；构建变化区域边界的三角网，对三角网进行填挖方量计算，得到土方量变化区域对应的填挖方量。<br>【3】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/3.3/help/analysis/3d-analyst/create-dems-and-dsms-from-lidar.htm">使用 LAS 数据集根据激光雷达创建 DEM 和 DSM</a> 借助存储在 LAS 文件中的机载激光雷达数据，可以创建高质量的高程模型。 激光雷达可以创建两个常见的高程模型，一个使用最高回波激光雷达点，另一个使用地面高程点。 最高回波表面包括树冠和建筑物，通常称为数字表面模型 (DSM)。 地面（或裸露地表）仅包含地形，通常被称为数字高程模型 (DEM)。<br>【4】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/392340083">基于无人机激光点云的高精度DSM、DEM生产研究</a></div>
+<h1 id="4-PhotoScan"><a href="#4-PhotoScan" class="headerlink" title="4.PhotoScan"></a>4.PhotoScan</h1><p>通过航线规划、像控点测量、航空摄影等步骤获得航片数据，内业通过Photoscan 软件自动化处理。通过对齐照片、建立密集点、生成网格等流程导出DEM 数据。无人机倾斜摄影测量成果结合ArcGIS 软件计算土方量，其精度可靠，外业工作量小，内业自动化程度高。在其提供可视化成果之上实现量算、查询等功能。</p>
+<p>根据现场踏勘进行航高设计及航线设计，利用多旋翼无人机搭载多镜头相机从多视角同步采集地表数据，通过搭载POS/IMU平台获取飞行过程中的实时位置信息，并利用RTK设备进行地面点数据采集。</p>
+<p>结合PhotoScan软件对测区边界外多余影像数据进行剔除，利用POS数据与地面控制点数据进行影像匹配和联合平差，生成稀疏点云数据。通过对稀疏点云进行点云加密得到密集点云数据，利用点云分类方式细化出地面点和非地面点，并基于高程改进方法进行非地面点高程改正，联合改正后的地面点和非地面点构建数字高程模型(DEM)，最后通过导入测区和设计标高进行土方计算。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.163.com/dy/article/J4JCEEOQ05319UN7.html">无人机倾斜三维摄影测量土方计算，测绘人必看！</a> 这里的步骤说的比较详细：结合PhotoScan软件对测区边界外多余影像数据进行剔除，利用POS数据与地面控制点数据进行影像匹配和联合平差，生成稀疏点云数据。通过对稀疏点云进行点云加密得到密集点云数据，利用点云分类方式细化出地面点和非地面点，并基于高程改进方法进行非地面点高程改正，联合改正后的地面点和非地面点构建数字高程模型(DEM)，最后通过导入测区和设计标高进行土方计算。<br>【2】.<a target="_blank" rel="noopener" href="https://www.sohu.com/a/557900404_121118997">【干货】无人机倾斜摄影测量在土方量计算中的应用（PhotoScan+ArcGIS） </a> 这篇文章比较有用，传统的土方量计算有方格网法，三角网法，断面法三种。方格网法一般用于地形起伏变化不大的面状工程当中。其计算精度与野外采点密度，质量和方格网大小有很大关系。</div>
+<h1 id="5-PDAL"><a href="#5-PDAL" class="headerlink" title="5.PDAL"></a>5.PDAL</h1><p>PDAL主要用来处理 Lidar 数据。</p>
+<h2 id="5-1-安装"><a href="#5-1-安装" class="headerlink" title="5.1.安装"></a>5.1.安装</h2><p>我遇到的问题，就是总是安装不上，一直卡住。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># conda install -c conda-forge python-pdal -v</span></span><br><span class="line"><span class="comment"># conda 安装，开始的时候总是出现卡住，一点也不动，后来就是先清理了这个，然后重新安装的</span></span><br><span class="line">conda clean --all</span><br><span class="line"><span class="comment"># 这个过程需要非常漫长的时间等待</span></span><br><span class="line">conda install -c conda-forge pdal python-pdal gdal -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">pdal --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试安装，结果这个编译不出来，是因为使用 pip 安装的，后来放弃了，否则报错Minimum CMake version set as 'CMakeLists.txt' is less than 3.15</span></span><br><span class="line">pip install pdal</span><br><span class="line">pip install cmake</span><br><span class="line">pip install gdal</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37099774/article/details/123421283">conda install 卡住</a> 需要更新 conda<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Xiao_Spring/article/details/109130663">【陆续排坑】解决conda下载速度慢的问题：更换国内源</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38120390/article/details/136294703">【点云】PDAL库1.8.0版本安装与环境配置</a> 这是在 OSGeo4W 中安装 PDAL 的方法。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175452/6817432">python调用pdal库处理点云数据</a> 这里使用的是 pip 安装的 pdal，这个我到是没有尝试过，还有点云分析，点云转换器。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36686437/article/details/122588161">Win10系统下VisualStudio2019配置PDAL库</a><br>【6】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/77103580/python-problem-pdal-does-not-install-error-failed-building-wheel-for-pdal-fa">Python Problem - PDAL does not install “ERROR: Failed building wheel for PDAL Failed to build PDAL”</a><br>【7】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41337060/how-can-i-tell-which-minimum-cmake-version-to-require-in-cmakelists-txt">How can I tell which minimum CMake version to require in CMakeLists.txt? [duplicate]</a><br>【8】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/information/conda%E5%AE%89%E8%A3%85-c%20conda-forge%20python-pdal%E8%A7%A3%E7%AE%97%E7%8E%AF%E5%A2%83%EF%BC%9A%7C%E8%BF%90%E8%A1%8CWindows10%E6%97%B6%E6%8C%82%E8%B5%B7">conda安装-c conda-forge python-pdal解算环境：|运行Windows10时挂起</a> 这个提供了一种解决挂起问题的方法，清除缓存；-v 查看日志；重新安装，使用pip安装</div>
+<h2 id="5-2-编写配置文件"><a href="#5-2-编写配置文件" class="headerlink" title="5.2.编写配置文件"></a>5.2.编写配置文件</h2><p>使用 SMRF (Simple Morphological Filter 是一种常用的地面点提取算法。它基于形态学操作，能够很好地分离地面点与非地面点。) 算法，提取地面点。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"pipeline"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"readers.las"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"input.las"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"filters.smrf"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"scalar"</span><span class="punctuation">:</span> <span class="number">1.25</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"slope"</span><span class="punctuation">:</span> <span class="number">0.15</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"threshold"</span><span class="punctuation">:</span> <span class="number">0.5</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"window"</span><span class="punctuation">:</span> <span class="number">16.0</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"filters.range"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"limits"</span><span class="punctuation">:</span> <span class="string">"Classification[2:2]"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"writers.las"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"ground.las"</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>参数解释：<br>（1）filters.smrf :</p>
+<ul>
+<li>scalar: 控制地面点检测的敏感度，默认值为1.25。</li>
+<li>slope: 地形坡度的影响因子，默认值为0.15。</li>
+<li>threshold: 高度差阈值，用于区分地面点与非地面点，默认值为0.5。</li>
+<li>window: 滤波窗口大小，单位为格网单元，默认值为16.0。</li>
+</ul>
+<p>（2）filters.range :</p>
+<ul>
+<li>limits: 指定分类范围，Classification[2:2]表示仅保留分类为地面点的数据（LAS标准中，分类值2代表地面点）。</li>
+</ul>
+<p>（3）writers.las :将提取的地面点保存为新的LAS文件。</p>
+<h2 id="5-3-执行地面点提取"><a href="#5-3-执行地面点提取" class="headerlink" title="5.3.执行地面点提取"></a>5.3.执行地面点提取</h2><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdal pipeline ground_extraction.json</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-4-转为DEM"><a href="#5-4-转为DEM" class="headerlink" title="5.4.转为DEM"></a>5.4.转为DEM</h2><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"pipeline"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"readers.las"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"ground.las"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"writers.gdal"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"output_dem.tif"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"resolution"</span><span class="punctuation">:</span> <span class="number">1.0</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"output_type"</span><span class="punctuation">:</span> <span class="string">"idw"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"gdalopts"</span><span class="punctuation">:</span> <span class="string">"COMPRESS=LZW"</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（1）writers.gdal :</p>
+<ul>
+<li>filename: 输出的 DEM 文件路径（例如 output_dem.tif）。</li>
+<li>resolution: 栅格分辨率（单位：米），表示每个像素代表的实际地面距离，默认值为 1.0。</li>
+</ul>
+<p>（2）output_type: 栅格化的插值方法：</p>
+<ul>
+<li>idw: 反距离加权插值（Inverse Distance Weighting）。</li>
+<li>mean: 像素内点的平均高度。</li>
+<li>min: 像素内点的最小高度。</li>
+<li>max: 像素内点的最大高度。</li>
+</ul>
+<p>（3）</p>
+<ul>
+<li>gdalopts: GDAL 的额外选项，例如压缩方式（COMPRESS=LZW 表示使用 LZW 压缩）。</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/slamer111/article/details/129682926">python快速实现地面点滤除工作</a> 使用传统算法来滤除地面点，具体思路把点云划分为BEV上面的一个个seg和bin，每个bin里面取z_min一个点作为代表。</div>
+<h2 id="5-4-查看结果"><a href="#5-4-查看结果" class="headerlink" title="5.4.查看结果"></a>5.4.查看结果</h2><p>可以使用 LASTool 工具，可视化查看结果。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/shebao3333/article/details/130665865">用激光点云估算建筑高度【PDAL|PostgreSQL】</a> 这里用了osm数据，估算了建筑物的高度，但是没有说明精度问题。<br>【2】.<a target="_blank" rel="noopener" href="https://pdal.io/en/2.8.4/download.html#conda">python-pdal will install the PDAL Python extension.</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sendinn/article/details/115083858">PDAL 下载编译(conda)</a><br>【4】.<a target="_blank" rel="noopener" href="https://forge.conda.org.cn/docs/user/introduction/">什么是 conda-forge？</a> conda-forge 是一个社区项目，为各种软件提供 conda 软件包。</div>
+<h2 id="5-5-合并las文件"><a href="#5-5-合并las文件" class="headerlink" title="5.5.合并las文件"></a>5.5.合并las文件</h2><p>可以使用通配符文件，批量合并多个文件，还可以单独的合并某几个文件。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"pipeline"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"readers.las"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"path/to/las/files/*.las"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"filters.merge"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"writers.las"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"merged.las"</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-6-去除异常点"><a href="#5-6-去除异常点" class="headerlink" title="5.6.去除异常点"></a>5.6.去除异常点</h2><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"pipeline"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"readers.las"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"input.las"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"filters.outlier"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"method"</span><span class="punctuation">:</span> <span class="string">"statistical"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"mean_k"</span><span class="punctuation">:</span> <span class="number">8</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"multiplier"</span><span class="punctuation">:</span> <span class="number">3.0</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"filters.range"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"limits"</span><span class="punctuation">:</span> <span class="string">"Classification![7:7]"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"writers.las"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"filename"</span><span class="punctuation">:</span> <span class="string">"cleaned.las"</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>根据 DeepSeek 的结果，可以通过 PDAL 工具，直接从 点云生成DEM,然后进行差值计算，最后再 filters.cutfill 生成结果，直接查看输出的文本文件。</p>
+<p>（1）航线规划</p>
+<p>（2）数据采集</p>
+<p>（3）点云生成<br>通过大疆智图生成点云 .las 格式数据</p>
+<p>（4）DEM创建<br>通过PDAL进行地面点提取，然后生成DEM。</p>
+<p>（5）土方计算<br>使用 GDAL 的栅格计算功能生成差异栅格，计算土方量。</p>
+<p>（6）结果评估</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jacken123456/article/details/109811483">PDAL中filters.divider过滤器对大点云文件进行分割</a> 这里用了 c++ 的代码<br>【2】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1781123">PDAL点云处理库介绍</a> PDAL可以为点云的滤波、剪裁、平铺、转换为处理流程以及必要时重用等操作组成中间模块。它允许您将这些流程定义为JSON文件，并提供一个pipeline来执行它们。1.与LAStools的区别；2.与PCL的区别;3.与Potree的区别；4.其他开源点云软件倾向于桌面GUI，而不是以库为中心：libLAS、CloudCompare、Fusion、OrfeoToolbox。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/75b706c7.html" rel="next" title="技术研究之声网直播">
+                      <i class="iconfont icon-prev"></i> 技术研究之声网直播
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/ecd55a8c.html" rel="prev" title="技术研究之单目测距">
+                      技术研究之单目测距 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-DEM"><span class="toc-number">2.</span> <span class="toc-text">1.DEM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-ArcGIS"><span class="toc-number">3.</span> <span class="toc-text">1.ArcGIS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Cesium"><span class="toc-number">4.</span> <span class="toc-text">2.Cesium</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%BF%80%E5%85%89%E7%82%B9%E4%BA%91"><span class="toc-number">5.</span> <span class="toc-text">3.激光点云</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-PhotoScan"><span class="toc-number">6.</span> <span class="toc-text">4.PhotoScan</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-PDAL"><span class="toc-number">7.</span> <span class="toc-text">5.PDAL</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E5%AE%89%E8%A3%85"><span class="toc-number">7.1.</span> <span class="toc-text">5.1.安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">7.2.</span> <span class="toc-text">5.2.编写配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E6%89%A7%E8%A1%8C%E5%9C%B0%E9%9D%A2%E7%82%B9%E6%8F%90%E5%8F%96"><span class="toc-number">7.3.</span> <span class="toc-text">5.3.执行地面点提取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E8%BD%AC%E4%B8%BADEM"><span class="toc-number">7.4.</span> <span class="toc-text">5.4.转为DEM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E6%9F%A5%E7%9C%8B%E7%BB%93%E6%9E%9C"><span class="toc-number">7.5.</span> <span class="toc-text">5.4.查看结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-%E5%90%88%E5%B9%B6las%E6%96%87%E4%BB%B6"><span class="toc-number">7.6.</span> <span class="toc-text">5.5.合并las文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-%E5%8E%BB%E9%99%A4%E5%BC%82%E5%B8%B8%E7%82%B9"><span class="toc-number">7.7.</span> <span class="toc-text">5.6.去除异常点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">8.</span> <span class="toc-text">流程</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/742b140c.html';
+      this.page.identifier = 'posts/742b140c.html';
+      this.page.title = '技术研究之土方计算';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：技术研究之土方计算 链接地址:https://bibichuan.github.io/posts/742b140c.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '技术研究之土方计算',
+		url: 'https://bibichuan.github.io/posts/742b140c.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '技术研究之土方计算',
+			isTipVisibility: true,
+			tip: '技术研究之土方计算',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

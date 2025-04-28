@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技术研究之腾讯云直播</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">技术研究之腾讯云直播</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2025-04-06 02:30:57
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>在使用大疆机场直播的时候，本来我用了阿里云的rtmp服务，结果阿里云的rtmp服务总是非常的卡，非常的慢，多次联系阿里云之后，他们说解决不了这个东西，不支持120帧的高刷，也不支持 “大疆的无人机推流，分析推过来的流，在每个 P 帧前面都有插入 SEI ，导致播放卡顿，要在推流端把这个 SEI 和 AUD 去掉 再推流。” 这就是让我去改大疆的设备，这个让我怎么处理呢？</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/267/13551">快速入门</a> 这里是官方的文档，说明了如何配置这个东西。<br>【2】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/267/34175">标准直播服务费用</a> 直播流量和直播带宽，不同的计费标准，基本上是 0.26 元每GB。</div>
+<h1 id="2-添加域名"><a href="#2-添加域名" class="headerlink" title="2.添加域名"></a>2.添加域名</h1><p>在云直播控制台，域名管理，增加推流直播和拉流直播，根据提示进行操作，主要就是配置DNS映射。</p>
+<h1 id="3-获取推流地址"><a href="#3-获取推流地址" class="headerlink" title="3.获取推流地址"></a>3.获取推流地址</h1><p>我这里使用Java代码获取推流和拉流地址。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 腾讯云直播</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">char</span>[] DIGITS_LOWER =</span><br><span class="line">        {<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>};</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  * KEY+ streamName + txTime</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">getSafeUrl</span><span class="params">(String key, String streamName, <span class="type">long</span> txTime)</span> {</span><br><span class="line">    <span class="type">String</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>().</span><br><span class="line">            append(key).</span><br><span class="line">            append(streamName).</span><br><span class="line">            append(Long.toHexString(txTime).toUpperCase()).toString();</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">txSecret</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="type">MessageDigest</span> <span class="variable">messageDigest</span> <span class="operator">=</span> MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">        txSecret  = byteArrayToHexString(</span><br><span class="line">                messageDigest.digest(input.getBytes(<span class="string">"UTF-8"</span>)));</span><br><span class="line">    } <span class="keyword">catch</span> (NoSuchAlgorithmException e) {</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    } <span class="keyword">catch</span> (UnsupportedEncodingException e) {</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> txSecret == <span class="literal">null</span> ? <span class="string">""</span> :</span><br><span class="line">            <span class="keyword">new</span> <span class="title class_">StringBuilder</span>().</span><br><span class="line">                    append(<span class="string">"txSecret="</span>).</span><br><span class="line">                    append(txSecret).</span><br><span class="line">                    append(<span class="string">"&amp;"</span>).</span><br><span class="line">                    append(<span class="string">"txTime="</span>).</span><br><span class="line">                    append(Long.toHexString(txTime).toUpperCase()).</span><br><span class="line">                    toString();</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">byteArrayToHexString</span><span class="params">(<span class="type">byte</span>[] data)</span> {</span><br><span class="line">    <span class="type">char</span>[] out = <span class="keyword">new</span> <span class="title class_">char</span>[data.length &lt;&lt; <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = <span class="number">0</span>; i &lt; data.length; i++) {</span><br><span class="line">        out[j++] = DIGITS_LOWER[(<span class="number">0xF0</span> &amp; data[i]) &gt;&gt;&gt; <span class="number">4</span>];</span><br><span class="line">        out[j++] = DIGITS_LOWER[<span class="number">0x0F</span> &amp; data[i]];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>(out);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生成腾讯云地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> streamName</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">generateTcPushUrl</span><span class="params">(String streamName)</span> {</span><br><span class="line">    <span class="type">String</span> <span class="variable">pushUrl</span> <span class="operator">=</span> <span class="string">""</span>;</span><br><span class="line">    <span class="comment">//推流域名未开启鉴权功能的情况下</span></span><br><span class="line">    <span class="keyword">if</span>(tcPushKey.isEmpty()) {</span><br><span class="line">        pushUrl = <span class="string">"rtmp://"</span>+tcPushDomain+<span class="string">"/"</span>+tcAppName+<span class="string">"/"</span>+streamName;</span><br><span class="line">    }<span class="keyword">else</span> {</span><br><span class="line">        <span class="type">long</span> <span class="variable">timeStamp</span> <span class="operator">=</span> System.currentTimeMillis()/<span class="number">1000L</span> + tcExpireTime;</span><br><span class="line">        pushUrl = <span class="string">"rtmp://"</span>+tcPushDomain+<span class="string">"/"</span>+tcAppName+<span class="string">"/"</span>+streamName+<span class="string">"?"</span>+getSafeUrl(tcPushKey,streamName,timeStamp);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> pushUrl;</span><br><span class="line">}</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 生成播放地址</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> streamName 播放streamName，播放源流时，streamName 同推流streamName；播放转码流时，streamName 为推流streamName_{转码模板ID}</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> String  <span class="title function_">generaTcPullUrl</span><span class="params">(String streamName,String type)</span> {</span><br><span class="line">    String result=<span class="string">""</span>;</span><br><span class="line">    <span class="type">String</span> <span class="variable">rtmpUrl</span> <span class="operator">=</span> <span class="string">""</span>; <span class="comment">//rtmp的拉流地址</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">hlsUrl</span> <span class="operator">=</span> <span class="string">""</span>; <span class="comment">//m3u8的拉流地址</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">flvUrl</span> <span class="operator">=</span> <span class="string">""</span>; <span class="comment">//flv的拉流地址</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">artcUrl</span> <span class="operator">=</span><span class="string">""</span>; <span class="comment">// 超低延迟</span></span><br><span class="line">    <span class="comment">//播放域名未配置鉴权Key的情况下</span></span><br><span class="line">    <span class="keyword">if</span>(pullKey.isEmpty()) {</span><br><span class="line">        rtmpUrl = <span class="string">"rtmp://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName;</span><br><span class="line">        hlsUrl = <span class="string">"http://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".m3u8"</span>;</span><br><span class="line">        flvUrl = <span class="string">"http://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".flv"</span>;</span><br><span class="line">        artcUrl = <span class="string">"webrtc://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName;</span><br><span class="line">    }<span class="keyword">else</span> {</span><br><span class="line">        <span class="type">long</span> <span class="variable">timeStamp</span> <span class="operator">=</span> System.currentTimeMillis()/<span class="number">1000L</span> + tcExpireTime;</span><br><span class="line">        rtmpUrl = <span class="string">"rtmp://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"?"</span>+getSafeUrl(tcPullKey,streamName,timeStamp);</span><br><span class="line">        hlsUrl = <span class="string">"http://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".m3u8"</span>+<span class="string">"?"</span>+getSafeUrl(tcPullKey,streamName,timeStamp);</span><br><span class="line">        flvUrl = <span class="string">"http://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">".flv"</span>+<span class="string">"?"</span>+getSafeUrl(tcPullKey,streamName,timeStamp);</span><br><span class="line">        artcUrl = <span class="string">"webrtc://"</span>+tcPullDomain+<span class="string">"/"</span>+appName+<span class="string">"/"</span>+streamName+<span class="string">"?"</span>+getSafeUrl(tcPullKey,streamName,timeStamp);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">switch</span> (type){</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"flv"</span>:</span><br><span class="line">            result=flvUrl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"rtmp"</span>:</span><br><span class="line">            result=rtmpUrl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"webrtc"</span>:</span><br><span class="line">            result=artcUrl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">"m3u8"</span>:</span><br><span class="line">            result=hlsUrl;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="4-直播推流"><a href="#4-直播推流" class="headerlink" title="4.直播推流"></a>4.直播推流</h1><p>PC 端推流，建议使用 OBS WebRTC 推流。</p>
+<h1 id="5-获取播放地址"><a href="#5-获取播放地址" class="headerlink" title="5.获取播放地址"></a>5.获取播放地址</h1><p>通过地址生成器，或者控制台，都可以获取播放地址。登录云直播控制台 &gt; 进入常用工具 &gt; 地址生成器 进入地址生成器页面，获取播放地址。推流成功后，选择 <a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/live/streammanage">流管理</a> &gt; 在线流，查看推流地址状态，单击预览在线播放观看。</p>
+<h1 id="6-TCPlayer"><a href="#6-TCPlayer" class="headerlink" title="6.TCPlayer"></a>6.TCPlayer</h1><p>Web 端直播流测试：建议您使用 <a target="_blank" rel="noopener" href="https://tcplayer.vcube.tencent.com/">TCPlayer Demo</a> 工具进行播放体验。</p>
+<h2 id="1-申请License"><a href="#1-申请License" class="headerlink" title="1.申请License"></a>1.申请License</h2><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/881/74588">播放器 License</a> 这是官方申请 license 的说明。</div>
+<h2 id="2-通过-npm-集成"><a href="#2-通过-npm-集成" class="headerlink" title="2.通过 npm 集成"></a>2.通过 npm 集成</h2><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pnpm install tcplayer.js</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-放置-video"><a href="#3-放置-video" class="headerlink" title="3.放置 video"></a>3.放置 video</h2><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">"player-container-id"</span> <span class="attr">width</span>=<span class="string">"414"</span> <span class="attr">height</span>=<span class="string">"270"</span> <span class="attr">preload</span>=<span class="string">"auto"</span> <span class="attr">playsinline</span> <span class="attr">webkit-playsinline</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-播放器初始化"><a href="#4-播放器初始化" class="headerlink" title="4.播放器初始化"></a>4.播放器初始化</h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// player-container-id 为播放器容器 ID，必须与 html 中一致</span></span><br><span class="line"><span class="keyword">var</span> player = <span class="title class_">TCPlayer</span>(<span class="string">'player-container-id'</span>, {</span><br><span class="line">    <span class="attr">sources</span>: [{</span><br><span class="line">      <span class="attr">src</span>: <span class="string">'path/to/video'</span>, <span class="comment">// 播放地址</span></span><br><span class="line">    }],</span><br><span class="line">    <span class="attr">licenseUrl</span>: <span class="string">'license/url'</span>, <span class="comment">// license 地址，必传。参考准备工作部分，在视立方控制台申请 license 后可获得 licenseUrl</span></span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// player.src(url); // url 播放地址</span></span><br><span class="line"></span><br><span class="line"><span class="attr">rtmp</span>:<span class="comment">//tcpush.live.openmap.tech/drone/7CTDM1200B47P6?txSecret=eaf3c683aa35472214c281fbcd4cb35e&amp;txTime=67F4910A</span></span><br><span class="line"><span class="attr">rtmp</span>:<span class="comment">//tcpush.openmap.tech/live/7CTDM1200B47P6?txSecret=27c84aca8d434914b60b592d0316e71b&amp;txTime=67F491A3</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/881/30818">TCPlayer 集成指引</a><br>【2】.<a target="_blank" rel="noopener" href="https://rtcube.cloud.tencent.com/component/experience-center/index.html#/detail?scene=player">WEB 体验馆</a> 这里可以测试相关的url是否可用。<br>【3】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/881/30820">Web</a> 本文档是介绍适用于直播和点播播放的 Web 播放器（ TCPlayer ）的相关参数以及 API。本文档适合有一定 Javascript 语言基础的开发人员阅读。</div>
+<h2 id="5-VUE版"><a href="#5-VUE版" class="headerlink" title="5.VUE版"></a>5.VUE版</h2><p>使用 TCPlayer 接入还是挺方便的，播放器初始化需要传入两个参数，第一个为播放器容器 ID，第二个为功能参数对象。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">  * 创建 阿里云直播组件</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line"> <span class="keyword">function</span> <span class="title function_">createTcPlay</span>(<span class="params">id, pullUrl</span>) {</span><br><span class="line">   <span class="comment">// 创建元素</span></span><br><span class="line">   <span class="keyword">let</span> domId = id;</span><br><span class="line">   <span class="keyword">let</span> dom = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">'video'</span>);</span><br><span class="line">   dom.<span class="title function_">setAttribute</span>(<span class="string">'class'</span>, <span class="string">'player video-screen-shot'</span>);</span><br><span class="line">   dom.<span class="title function_">setAttribute</span>(<span class="string">'id'</span>, domId);</span><br><span class="line">   dom.<span class="title function_">setAttribute</span>(<span class="string">'autoplay'</span>, <span class="string">'autoplay'</span>);</span><br><span class="line">   dom.<span class="title function_">setAttribute</span>(<span class="string">'playsinline'</span>, <span class="string">'playsinline'</span>);</span><br><span class="line">   dom.<span class="title function_">setAttribute</span>(<span class="string">'webkit-playsinline'</span>, <span class="string">'webkit-playsinline'</span>);</span><br><span class="line">   <span class="keyword">let</span> videoWrap = videoWrapRef.<span class="property">value</span> <span class="keyword">as</span> any;</span><br><span class="line">   videoWrap.<span class="title function_">appendChild</span>(dom);</span><br><span class="line"></span><br><span class="line">   <span class="comment">// 创建播放器</span></span><br><span class="line">   <span class="keyword">let</span> video = <span class="keyword">new</span> <span class="title class_">TCPlayer</span>(id, {</span><br><span class="line">     <span class="attr">sources</span>: [</span><br><span class="line">       {</span><br><span class="line">         <span class="attr">src</span>: pullUrl, <span class="comment">// 播放地址</span></span><br><span class="line">       },</span><br><span class="line">     ],</span><br><span class="line">     <span class="attr">licenseUrl</span>: <span class="string">'https://license.vod2.myqcloud.com/license/v2/1251578519_1/v_cube.license'</span>, <span class="comment">// license 地址，必传。参考准备工作部分，在视立方控制台申请 license 后可获得 licenseUrl</span></span><br><span class="line">     <span class="attr">controls</span>: <span class="literal">false</span>,</span><br><span class="line">     <span class="attr">webrtcConfig</span>: {</span><br><span class="line">       <span class="attr">receiveSEI</span>: <span class="literal">true</span>,</span><br><span class="line">     },</span><br><span class="line">   });</span><br><span class="line">   <span class="comment">// 监听事件</span></span><br><span class="line">   video.<span class="title function_">on</span>(<span class="string">'error'</span>, <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">     livePara.<span class="property">liveState</span> = <span class="literal">false</span>;</span><br><span class="line">   });</span><br><span class="line">   video.<span class="title function_">on</span>(<span class="string">'webrtcevent'</span>, <span class="keyword">function</span> (<span class="params">event</span>) {</span><br><span class="line">     <span class="comment">// 从回调参数 event 中获取事件状态码及相关数据</span></span><br><span class="line">     <span class="keyword">let</span> data = event.<span class="property">data</span>;</span><br><span class="line">     <span class="keyword">let</span> code = data.<span class="property">code</span>;</span><br><span class="line">     <span class="keyword">if</span> (code == <span class="number">1003</span>) {</span><br><span class="line">       livePara.<span class="property">liveState</span> = <span class="literal">true</span>;</span><br><span class="line">     }</span><br><span class="line">   });</span><br><span class="line">   <span class="keyword">return</span> video;</span><br><span class="line"> }</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/881/30820">Web</a> 这是官方的文档说明。<br>【2】.<a target="_blank" rel="noopener" href="https://rtcube.cloud.tencent.com/component/experience-center/index.html#/detail?scene=player">WEB 体验馆</a> 这是官方的Demo配置<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jiangliuhuan123/article/details/132580960">vue3中TCplayer应用</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46352558/article/details/128417393">tcplayer播放实时视频流</a> 这里是通过动态创建标签的方式搞定的<br>【5】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/267/34175">标准直播服务费用</a></div>
+<h1 id="6-直播转码"><a href="#6-直播转码" class="headerlink" title="6.直播转码"></a>6.直播转码</h1><p>配置转码需要一定的费用，按不同的功能进行收费，H.264的720P，每分钟 0.0325元。</p>
+<p>（1）配置转码模版<br>可以设置帧率，gop，美颜等功能。</p>
+<p>（2）绑定域名<br>设置完转码模版之后，就可以绑定域名。</p>
+<p>（3）播放流在 StreamName 后面增加 “_模版名”</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/267/20385">直播转码</a> 官方说明<br>【2】.<a target="_blank" rel="noopener" href="https://console.cloud.tencent.com/live/config/transcode">转码配置</a> 控制台配置转码<br>【3】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/document/product/267/39889#n_trans">直播转码（水印、混流、字幕、动效贴片）</a> 这里是直播转码的费用</div>
+<h1 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h1><p>（1）Cannot read properties of null<br>当我调用 dispose() 方法销毁播放器的时候，就会报这个错误。<br>Uncaught (in promise) TypeError: Cannot read properties of null (reading ‘trigger’)<br>    at e.onReceiveSEI (TXLivePlayer-1.3.5.min.js:1:373508)<br>    at TXLivePlayer-1.3.5.min.js:1:315904<br>    at Array.forEach (<anonymous>)<br>    at Object.transform (TXLivePlayer-1.3.5.min.js:1:315837)<br>【解决方案】<br>主要解决方案就是延迟销毁</anonymous></p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> {</span><br><span class="line"> &nbsp; videoAiPlay.<span class="title function_">dispose</span>();</span><br><span class="line">}, <span class="number">1000</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/95378">TCPlayer为什么无法destroy？</a></div>
+<p>（2）直播流自动断链<br>在直播过程中，播放着播放着，直播流就中断了，我刷新页面，或者重建 TcPlayer ，结果又能继续的直播了，我提交了工单，工单就开始敷衍我，说我是主动断流的。我用的是大疆的无人机进行的直播推流，我开启直播之后，就一直不动，然后过一会自己就断开了，我刷新之后重新打开播放器，结果又可以继续的直播了。我确定我没有关闭直播流，而且如果我交替打开两个播放器，那么在工单中说的，说我主动断流的，但是两个播放器并不是同时断流，而是交替断流的。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/8acf230f.html" rel="next" title="技术研究之航线规划">
+                      <i class="iconfont icon-prev"></i> 技术研究之航线规划
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/acbb1cd4.html" rel="prev" title="技术研究之正射影像">
+                      技术研究之正射影像 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E5%9F%9F%E5%90%8D"><span class="toc-number">2.</span> <span class="toc-text">2.添加域名</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%8E%B7%E5%8F%96%E6%8E%A8%E6%B5%81%E5%9C%B0%E5%9D%80"><span class="toc-number">3.</span> <span class="toc-text">3.获取推流地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%9B%B4%E6%92%AD%E6%8E%A8%E6%B5%81"><span class="toc-number">4.</span> <span class="toc-text">4.直播推流</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E8%8E%B7%E5%8F%96%E6%92%AD%E6%94%BE%E5%9C%B0%E5%9D%80"><span class="toc-number">5.</span> <span class="toc-text">5.获取播放地址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-TCPlayer"><span class="toc-number">6.</span> <span class="toc-text">6.TCPlayer</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%94%B3%E8%AF%B7License"><span class="toc-number">6.1.</span> <span class="toc-text">1.申请License</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%80%9A%E8%BF%87-npm-%E9%9B%86%E6%88%90"><span class="toc-number">6.2.</span> <span class="toc-text">2.通过 npm 集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%94%BE%E7%BD%AE-video"><span class="toc-number">6.3.</span> <span class="toc-text">3.放置 video</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%92%AD%E6%94%BE%E5%99%A8%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">6.4.</span> <span class="toc-text">4.播放器初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-VUE%E7%89%88"><span class="toc-number">6.5.</span> <span class="toc-text">5.VUE版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%9B%B4%E6%92%AD%E8%BD%AC%E7%A0%81"><span class="toc-number">7.</span> <span class="toc-text">6.直播转码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%99%E8%AF%AF"><span class="toc-number">8.</span> <span class="toc-text">错误</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/54fc60c1.html';
+      this.page.identifier = 'posts/54fc60c1.html';
+      this.page.title = '技术研究之腾讯云直播';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：技术研究之腾讯云直播 链接地址:https://bibichuan.github.io/posts/54fc60c1.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '技术研究之腾讯云直播',
+		url: 'https://bibichuan.github.io/posts/54fc60c1.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '技术研究之腾讯云直播',
+			isTipVisibility: true,
+			tip: '技术研究之腾讯云直播',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

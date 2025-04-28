@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot之系统优化</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">SpringBoot之系统优化</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-08-02 01:34:22
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用springboot开发项目，一个普通的项目，简单的项目，启动起来轻轻松松就到了500m以上，在本地开发不成问题，本地开发有16个G的内存，可是部署到服务器上，服务器上的内存很贵啊，特别是阿里云的服务器，只有4核8G内存，部署几个java程序就直接把内存撑满了，系统都启动不了了。</p>
+<img src="/images/loadimg.png" data-original="/posts/715fd9c0/springboot_1.png" lay-src="/posts/715fd9c0/springboot_1.png" class="" title="SpringBoot优化">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6987174016607846437">Spring Boot 这样优化，让你的项目飞起来！</a> 需要考虑：线程数、超时时间、jvm优化。<br>2.<a target="_blank" rel="noopener" href="http://www.codebaoku.com/it-java/it-java-238369.htmlc">优化spring boot应用后6s内启动内存减半</a> 1.关于SPRING DATA REPOSITORY SCANNING;2.关于WEBAPPLICATIONCONTEXT;3.关于SERVLET容器;4.关于ARCHAIUS配置组件;<br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/abd9c24a6910">记spring boot线上项目内存优化</a> 通过设定Xmx(程序运行期间最大可占用的内存大小)、Xss(jvm启动的每个线程分配的内存大小)、XX:ParallelGCThreads(GC线程数)以及关闭了JIT功能，达成了降低内存占用的目的，java -Xmx128m -Xss256k -XX:ParallelGCThreads=2 -Djava.compiler=NONE -jar build/libs/XXX.jar<br>4.<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/703698">为何 Java 内存占用比.Net 内存占用高这么多？</a> 这里有进行相关的讨论。<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zengwende/article/details/103665545">spring-boot内存占用过高</a> 除了设置Xmx，还设置了 export MALLOC_ARENA_MAX=8</div>
+<h2 id="1-监测工具"><a href="#1-监测工具" class="headerlink" title="1.监测工具"></a>1.监测工具</h2><p>springboot应用占用很大的内存，内存这个问题，在单机开发其实显示不出来，但是部署到服务器上，就会有了显著的限制，一个空的 springboot 项目，也会占用很大的内存， </p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kongzhongqijing/articles/3625340.html">jvisualvm 工具使用</a><br>2.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_13260163/3250602">惊呆了，Spring Boot居然这么耗内存！</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35623773/article/details/100529598">减少Spring boot启动内存（开发环境）</a> 1.修改tomcat的启动线程数，-XX:ParallelGCThreads调整GC线程的大小。2.修改jvm大小。这里要注意的是，register项目不需要太多资源（我这里设置128M）,Gateway和config服务可以比register多一点（256M）。其它业务性服务才需要更多的资源（512M）。<br>4.<a target="_blank" rel="noopener" href="https://spring.io/blog/2015/12/10/spring-boot-memory-performance">Spring Boot Memory Performance</a> 这里还提到了一些查看内存使用的工具</div>
+<h2 id="2-jvm参数优化"><a href="#2-jvm参数优化" class="headerlink" title="2.jvm参数优化"></a>2.jvm参数优化</h2><p>比较典型的配置如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JAVA_OPTS="-Xms512m -Xmx2048m -Xss256k"</span><br></pre></td></tr></tbody></table></figure>
+<p>我尝试了修改Xss为256k,结果内存占用减少的并不明显，好像也没有怎么减少。其他的一些说明如下：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 初始Heap大小，使用的最小内存,cpu性能高时此值应设的大一些</span></span><br><span class="line">-Xms512m</span><br><span class="line"></span><br><span class="line"><span class="comment">##Java heap最大值，使用的最大内存。</span></span><br><span class="line">-Xmx512m</span><br><span class="line"></span><br><span class="line"><span class="comment">##上面两个值是分配JVM的最小和最大内存，取决于硬件物理内存的大小，建议均设为物理内存的一半。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## young generation的heap大小，一般设置为Xmx的3/4分之一</span></span><br><span class="line">-Xmn256m</span><br><span class="line"></span><br><span class="line"><span class="comment">## 设定内存的永久保存区域</span></span><br><span class="line">-XX:PermSize</span><br><span class="line"><span class="comment">## 设定最大内存的永久保存区域</span></span><br><span class="line">-XX:MaxPermSize</span><br><span class="line"></span><br><span class="line">-XX:MaxNewSize:</span><br><span class="line"><span class="comment">## 设置每个线程的堆栈大小。JDK5.0以后每个线程堆栈大小为1M，以前每个线程堆栈大小为256K。更具应用的线程所需内存大小进行调整。在相同物理内存下，减小这个值能生成更多的线程。但是操作系统对一个进程内的线程数还是有限制的，不能无限生成，经验值在3000~5000左右。这个不能指定为128k,否则就会出现：“The stack size specified is too small, Specify at least 228k” 错误。</span></span><br><span class="line">-Xss256K </span><br><span class="line"></span><br><span class="line"><span class="comment">## 会使得 Xms没有意义，这个参数让jvm忽略Xmx参数,疯狂地吃完一个G物理内存,再吃尽一个G的swap。</span></span><br><span class="line">+XX:AggressiveHeap </span><br><span class="line"></span><br><span class="line"><span class="comment">## 现实垃圾收集信息</span></span><br><span class="line">-verbose:gc </span><br><span class="line"><span class="comment">## 指定垃圾收集日志文件</span></span><br><span class="line">-Xloggc:gc.log </span><br><span class="line"></span><br><span class="line"><span class="comment">## 缩短minor收集的时间</span></span><br><span class="line">-XX:+UseParNewGC</span><br><span class="line"><span class="comment">## 缩短major收集的时间,此选项在Heap Size 比较大而且Major收集时间较长的情况下使用更合适。</span></span><br><span class="line">-XX:+UseConcMarkSweepGC</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/127352212">轻松永远记住经典jvm参数</a> 这里也不是说明了全部的jvm参数。<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yaowen/p/10160537.html">Spring cloud开发内存占用过高解决方法</a> 这里也是针对每一个应用程序添加了jvm参数进行修改。<br>4.<a target="_blank" rel="noopener" href="https://www.csdn.net/tags/MtTaIg5sODUwNjYwLWJsb2cO0O0O.html">springboot降低内存占用</a> 这里就是上面的配置<br>5.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/562712">springboot项目启动内存占用过高问题如何解决</a> 和上面的配置差不多<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lizz861109/article/details/108670780">The stack size specified is too small, Specify at least 228k</a><br>7.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1406848">一定要记住的14个JVM内存配置参数</a> 对每一个参数都进行了相应的说明<br>8.<a target="_blank" rel="noopener" href="https://www.csdn.net/tags/MtTaMg2sNzMzOTgwLWJsb2cO0O0O.html">Linux系统线程的Xss设置不生效原因</a></div>
+<h2 id="3-关闭JIT"><a href="#3-关闭JIT" class="headerlink" title="3.关闭JIT"></a>3.关闭JIT</h2><p>至于在线上环境到底要不要关闭JIT功能，我现在还没有一个确定的概念，但是下面的方法可以关闭jit。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -Djava.compiler=NONE your_main_class_file_name</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ximaiyao1984/article/details/108843552">如何关闭JIT</a> 在启动JVM的时候，只需增加-Xint或者-Djava.compiler=NONE选项即可<br>2.<a target="_blank" rel="noopener" href="https://www.ibm.com/docs/zh/sdk-java-technology/7?topic=jitjc-disabling-jit">禁用 JIT</a><br>3.<a target="_blank" rel="noopener" href="https://www.javazhiyin.com/62363.html">看了这篇【JIT编译器】，你也能说你会java性能优化了！</a><br>4.<a target="_blank" rel="noopener" href="https://icode.best/i/75351347493330">SpringBoot应用刚启动时服务报大量超时的问题</a> 有了JIT技术之后，JVM还是通过解释器进行解释执行。但是，当JVM发现某个方法或代码块运行时执行的特别频繁的时候，就会认为这是“热点代码”（Hot Spot Code)。然后JIT会把部分“热点代码”翻译成本地机器相关的机器码，并进行优化，然后再把翻译后的机器码缓存起来，以备下次使用。<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qwer123451234123/article/details/124452959">为什么 SpringBoot 应用刚启动的时候比较卡，过一会就好了？</a> 1.提升JIT优化的效率,在提升JIT优化效率的设计上，大家可以了解一下阿里研发的JDK——Dragonwell。2.降低瞬时请求量,就是说在应用刚刚启动的时候，通过调节负载均衡，不要很快的把大流量分发给他，而是先分给他一小部分流量，通过这部分流量来触发JIT优化，等优化好了之后，再把流量调大。</div>
+<h2 id="4-GraalVM"><a href="#4-GraalVM" class="headerlink" title="4.GraalVM"></a>4.GraalVM</h2><p>这个另外开一篇文章单独进行学习和介绍吧，目前(2022年08月04日)来说可能还有很多的问题。<a href="/posts/1fa611ec.html" title="SpringBoot之GraalVM">SpringBoot之GraalVM</a></p>
+<h2 id="5-OpenJ9"><a href="#5-OpenJ9" class="headerlink" title="5.OpenJ9"></a>5.OpenJ9</h2><p>除了上面的GraalVM之外，还有一种技术就是使用OpenJ9替换默认的OpenJDK，也可以显著的减少内存占用。我尝试了将基础镜像 openjdk:8-jre 换成 adoptopenjdk/openjdk8-openj9:alpine-slim，确实好像有一些提升。</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基础镜像</span></span><br><span class="line"><span class="string">FROM</span> <span class="string">adoptopenjdk/openjdk8-openj9:alpine-slim</span></span><br><span class="line"><span class="comment"># author</span></span><br><span class="line"><span class="string">MAINTAINER</span> <span class="string">ruoyi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 挂载目录</span></span><br><span class="line"><span class="string">VOLUME</span> <span class="string">/home/ruoyi</span></span><br><span class="line"><span class="comment"># 创建目录</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">/home/ruoyi</span></span><br><span class="line"><span class="comment"># 时区设置</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">echo</span> <span class="string">"Asia/shanghai"</span> <span class="string">&gt;</span> <span class="string">/etc/timezone</span></span><br><span class="line"><span class="comment"># 安装字体</span></span><br><span class="line"><span class="comment"># RUN apk add --update ttf-dejavu fontconfig &amp;&amp; rm -rf /var/cache/apk/*</span></span><br><span class="line"><span class="string">RUN</span> <span class="string">echo</span> <span class="string">-e</span> <span class="string">'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/'</span> <span class="string">&gt;</span> <span class="string">/etc/apk/repositories</span> <span class="string">\</span></span><br><span class="line">    <span class="string">&amp;&amp;</span> <span class="string">apk</span> <span class="string">update</span> <span class="string">\</span></span><br><span class="line">    <span class="string">&amp;&amp;</span> <span class="string">apk</span> <span class="string">upgrade</span> <span class="string">\</span></span><br><span class="line">    <span class="string">&amp;&amp;</span> <span class="string">apk</span> <span class="string">--no-cache</span> <span class="string">add</span> <span class="string">ttf-dejavu</span> <span class="string">fontconfig</span></span><br><span class="line"><span class="comment"># 设置环境变量</span></span><br><span class="line"><span class="string">ENV</span> <span class="string">JAVA_OPTS="-server</span> <span class="string">-Xms512m</span> <span class="string">-Xmx512m</span> <span class="string">-Xss256K"</span></span><br><span class="line"><span class="comment"># 指定路径</span></span><br><span class="line"><span class="string">WORKDIR</span> <span class="string">/home/ruoyi</span></span><br><span class="line"><span class="comment"># 复制jar文件到路径</span></span><br><span class="line"><span class="string">COPY</span> <span class="string">./jar/ruoyi-system.jar</span> <span class="string">/home/ruoyi/ruoyi-system.jar</span></span><br><span class="line"><span class="comment">## 启动系统服务，限制内存使用量</span></span><br><span class="line"><span class="string">ENTRYPOINT</span> <span class="string">exec</span> <span class="string">java</span> <span class="string">${JAVA_OPTS}</span>  <span class="string">-jar</span> <span class="string">ruoyi-system.jar</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用openj9之后的内存占用</p>
+<img src="/images/loadimg.png" data-original="/posts/715fd9c0/springboot_3.png" lay-src="/posts/715fd9c0/springboot_3.png" class="" title="springboot系统优化">
+
+<p>使用openjdk:8-jre之前的内存占用</p>
+<img src="/images/loadimg.png" data-original="/posts/715fd9c0/springboot_2.png" lay-src="/posts/715fd9c0/springboot_2.png" class="" title="springboot系统优化">
+
+<p>可以看到，上面的对比，同样的代码，确实好像占用的内存不一样。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.jitao.tech/blog/2020/02/openjdk-with-eclipse-openj9/">JDK 的另一个选择：OpenJDK with Eclipse OpenJ9</a> 这里做了一个简单的测试，对比了使用 Hotspot 和 OpenJ9 的区别，这里看出来，OpenJ9确实可以减少内存占用，虽然不是很多，但也是30%的样子。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/fly910905/article/details/119877617">Docker环境下Spring Boot应用内存飙升分析与解决</a> 这里讲了关于jvm内存的初始分配内存原理，并使用了 exec java 限制了内存的大小。同时提供了三种docker镜像的优化，OpenJ9、GraalVM和Fabric8。</div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(1) java.lang.NoClassDefFoundError: sun.awt.X11FontManager<br>使用了openj9之后，可能一些字体就被阉割掉了，这个时候就需要重新进行安装字体。在dockerfile文件中加入下面的内容。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RUN apk add --update ttf-dejavu fontconfig &amp;&amp; rm -rf /var/cache/apk/*</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里还有一个问题，就是安装的时候会非常的慢，甚至有时候会卡在 ttf-dejavu 的部分</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Ezreal_King/article/details/108197662">遇到 Could not initialize class sun.awt.X11FontManager 不要怕</a><br>2.<a target="_blank" rel="noopener" href="https://m.yisu.com/zixun/445708.html">如何解决Alpine Docker镜像字体的问题</a> 这里解决了问题，我没有执行 COPY ./simhei.ttf /usr/share/fonts/simhei.ttf<br>3.<a target="_blank" rel="noopener" href="http://www.srcmini.com/68698.html">如何在Docker容器中安装Linux软件包？</a> 这里是ubuntu类的docker镜像安装软件<br>4.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45142855/bin-sh-apt-get-not-found">/bin/sh: apt-get: not found</a><br>5.<a target="_blank" rel="noopener" href="https://lhalcyon.com/alpine-font-issue/">解决docker alpine缺少字体的问题</a>  缺点是每次打包都要安装 ttf-dejavu 比较慢 , 因此该方法不推荐<br>6.<a target="_blank" rel="noopener" href="https://fuhaocheng.cn/archives/ji-lu-yi-ci-jie-jue-o-p-e-n-j-d-k-8---o-p-e-n-j-9--a-l-p-i-n-e---s-l-i-m-que-shao-zi-ti-de-jing-li">记录一次解决openjdk8-openj9:alpine-slim缺少字体的经历</a></div>
+<p>(2) OCI runtime exec failed: exec failed: unable to start container process: exec: “/bin/bash”: stat /bin/bash: no such file or directory: unknown<br>在使用OpenJ9镜像的时候，进入容器的时候，总是无法进入,因为没有/bin/bash命令行，需要使用 /bin/sh 命令行</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 错误</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 9179fba23a4b /bin/bash</span><br><span class="line"><span class="comment">## 正确</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 9179fba23a4b /bin/sh</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yucongblog/p/12606034.htmlc">进入Docker 容器 docker exec [CONTAINER ID] bin/bash报错问题</a></div>
+<p>(3) java获取的时区不正确<br>在使用docker镜像进行部署的时候，出现了容器中java获取到的系统当前时间和宿主机系统时间相差八个小时的问题，我在dockerfile中进行了设置，但是不知道是不是因为我使用的是 FROM adoptopenjdk/openjdk8-openj9:alpine-slim 镜像，所以下面的语句不生效，使用 date -R 获取到的时间还是不对。 </p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置时区</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> <span class="string">"Asia/shanghai"</span> &gt; /etc/timezone</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>【尝试】</p>
+<p>我发现/etc/配置文件中没有localtime文件，只有/et/timezone文件，应该是我上面输出的内容，后来我改成了</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 时区设置</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk add -U tzdata</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; <span class="built_in">echo</span> <span class="string">'Asia/Shanghai'</span> &gt;/etc/timezone</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果出现了问题： unable to select packages: tzdata (no such package):The command ‘/bin/sh -c apk add -U tzdata’ returned a non-zero code，后来我改了dockerfile文件。</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 时区设置</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> apk update &amp;&amp; \</span></span><br><span class="line"><span class="language-bash">    apk add --no-cache tzdata</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; <span class="built_in">echo</span> <span class="string">'Asia/Shanghai'</span> &gt;/etc/timezone</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果还是出现 ：tzdata (no such package) 。</p>
+<p>【解决】<br>最后通过修改alpine的镜像改为阿里云的镜像解决了这个问题</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 时区设置</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> -e <span class="string">'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/'</span> &gt; /etc/apk/repositories \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk update \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk upgrade \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk add --no-cache tzdata</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">cp</span> /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \</span></span><br><span class="line"><span class="language-bash">  &amp;&amp; <span class="built_in">echo</span> <span class="string">'Asia/Shanghai'</span> &gt;/etc/timezone</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/leisurelen/article/details/106868962">Docker镜像时区不对问题的解决【ubuntu】【centos】</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/suleil1/article/details/100226722">解决docker容器内时区无法调整</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/superlover_/article/details/83655646">centos7查看修改时区</a> 这个好像没什么参考价值，因为我的镜像并不是基于centos的<br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiftle/p/13327927.html">Docker openjdk-8-jdk-alpine 容器时间与jdk时区不同修改方法</a> RUN echo “Asia/Shanghai” &gt; /etc/timezone 这个没有什么用，我已经在dockerfile中配置了相关的内容，但是没有起作用<br>5.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1415220">alpine镜像修改docker的时区 转</a><br>6.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d770a19e39c3">docker 时区调整</a> 这里有 Alpine、Debian、Ubuntu和CentOS不同系统的时区设置。<br>7.<a target="_blank" rel="noopener" href="http://quansen88.cn/lg6bpjVDB/">修改nginx镜像时区</a> 这里镜像是基于nginx:alpine的<br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ksj367043706/article/details/108391970">如何查看docker容器里的操作系统</a> 使用 cat /etc/issue 查看系统版本<br>9.<a target="_blank" rel="noopener" href="https://quaded.com/docker-apline-configure-timezone/">docker: Apline configure timezone</a> RUN apk update &amp;&amp; apk add –no-cache tzdata<br>10.<a target="_blank" rel="noopener" href="https://github.com/dotnet/dotnet-docker/issues/1366">Alpine Docker images no longer have tzdata package in 3.0</a><br>11.<a target="_blank" rel="noopener" href="https://blog.csdn.net/benben_2015/article/details/103091102">校正alpine镜像的时区</a> RUN apk add tzdata &amp;&amp; cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; echo “Asia/Shanghai” &gt; /etc/timezone &amp;&amp; apk del tzdata</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/a8ddcce9.html" rel="next" title="SpringBoot之菜单权限设计">
+                      <i class="iconfont icon-prev"></i> SpringBoot之菜单权限设计
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/cacd693a.html" rel="prev" title="SpringBoot之接口文档">
+                      SpringBoot之接口文档 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%9B%91%E6%B5%8B%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">1.监测工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-jvm%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96"><span class="toc-number">3.</span> <span class="toc-text">2.jvm参数优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%85%B3%E9%97%ADJIT"><span class="toc-number">4.</span> <span class="toc-text">3.关闭JIT</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-GraalVM"><span class="toc-number">5.</span> <span class="toc-text">4.GraalVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-OpenJ9"><span class="toc-number">6.</span> <span class="toc-text">5.OpenJ9</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">6.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/715fd9c0.html';
+      this.page.identifier = 'posts/715fd9c0.html';
+      this.page.title = 'SpringBoot之系统优化';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：SpringBoot之系统优化 链接地址:https://bibichuan.github.io/posts/715fd9c0.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'SpringBoot之系统优化',
+		url: 'https://bibichuan.github.io/posts/715fd9c0.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'SpringBoot之系统优化',
+			isTipVisibility: true,
+			tip: 'SpringBoot之系统优化',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

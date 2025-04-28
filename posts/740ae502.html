@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GIS之自定义暗黑系地图</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">GIS之自定义暗黑系地图</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-07-06 09:05:53
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>在大屏展示系统中，多以蓝色背景为主，显的比较高大上，所以将地图嵌入进去的时候，就要比较偏黑色，比如高德地图的极夜蓝地图，arcgis的午夜蓝地图。</p>
+<img src="/images/loadimg.png" data-original="/posts/740ae502/gis_1.png" lay-src="/posts/740ae502/gis_1.png" class="" title="GIS地图">
+
+<p>可以实现自定地图样式的地图：</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/javascript-api/example/personalized-map/set-theme-style">高德地图</a><br>高德自定义地图样式，提供了多种地图风格，比如：幻影黑、月光银、极夜蓝等等风格</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://lbsyun.baidu.com/customv2/editor/adc5fceeca5e02f6fac1a9387e8c3bea/qinghuaci">百度地图</a><br>百度地图自定义地图样式，可以根据自己的喜好，不同的主题，定义不同的道路，水系等的地图风格。</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://cloud.google.com/maps-platform/maps/?hl=zh-cn">谷歌地图</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.mapbox.cn/mapbox-gl-js/example/setstyle/">MapBox地图</a></p>
+</li>
+<li><p>[Basemaps]<br>Basemaps也提供了一些黑色系地图，但是我在官方地址上没有找到哪里说明样式的地方，只是在一些地图引擎上看到如何使用，比如maptalks中引入地图 ：<code>https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png</code>,这个light_all模式就是地图的样式，黑色的。</p>
+</li>
+</ul>
+<p>使用百度或者是高德的地图，可以是可以实现自定义地图样式，但是因为这两者的坐标系，一个是火星坐标系——GCJ-02：中国国内使用的被强制加密后的坐标体系，高德坐标就属于该种坐标体系。 百度坐标系——BD-09：百度地图所使用的坐标体系，是在火星坐标系的基础上又进行了一次加密处理。而我们自己生产的坐标系，通常是地球坐标系——WGS84：常见于 GPS 设备，Google 地图等国际标准的坐标体系。同时使用他们的地图API不够灵活，不如OpenLayer、Leftlet等单纯的地图引擎来的较为灵活。使用ArcGIS提供的午夜蓝地图，在大尺度上，可以满足要求，但是在小尺度，比如一个厂区，一条街道上，就显的力不从心了。</p>
+<p>于是我提出了，如何使用公共数据，生产自己的样式地图，如果可以的，还可以做成矢量切片的形式，类似于Mapbox中的pbf进行加载。我这里说的自定义地图，不是自己矢量化，然后进行发布,自己矢量化，其实人工成本也是很高的，一条路一幢房子，都是要自己一点点的手工绘制。而是使用商业的地图，进行自定义样式，类似于现在的高德、百度地图，可以自定义地图的样式，毕竟他们的使用的也是矢量切片的技术。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://hub.arcgis.com/maps/651694fe2e3843eab75d7b97b60d430c/explore?location=30.295878,120.357892,16.93">中国地图午夜蓝版-副本</a> ArcGIS的午夜蓝风格地图，但是精细度不够<br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018590534">自定义地图样式</a> 这里提到了一个方法，就是使用 css滤镜 实现整体地图的样式修改。<br>3.<a target="_blank" rel="noopener" href="https://www.xueui.cn/design/118528.html">在线自定义谷歌地图配色网站</a> Snazzy Maps 是一个提供 Google 地图配色大全的网站，它利用地图开发工具，为 Google Map 提供不同配色方案。<br>4.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/126142539">你离最美的自定义地图，只差5步！来自Mapbox设计团队的心得</a> 使用 Mapbox Studio中的样式组件 提供的功能，可以实现自定义地图风格。</div>
+<h2 id="2-数据获取"><a href="#2-数据获取" class="headerlink" title="2.数据获取"></a>2.数据获取</h2><p>数据获取的方式很多，有些是需要自己手动矢量化的，但是工作量太大了，唯一能借助的就是OpenStreetMap的数据了，可以从管网上导出.osm格式的数据和pbf格式的数据，如果使用范围下载的话，范围是有限制的，最大只能下载5000个节点，当然，还有就是提供了全国(<a target="_blank" rel="noopener" href="https://download.geofabrik.de/asia/china.html">中国全国的矢量数据</a> 这里没有台湾，甚至在地图上，中国的范围边界中，没有向其他的中国地图一样，把台湾包裹进来)的数据，以及各个省(<a target="_blank" rel="noopener" href="http://download.openstreetmap.fr/extracts/asia/china/">中国省级矢量地图数据</a>)的打包数据，也可以从相应的地方进行下载。当然，下载下来的数据，都是非常的粗糙的，不会像天地图一样到达20级，很多重要的地方也不会给你标出来，但是作为一个背景或者说是轮廓，我觉得应该足够用了，如果还有办法获取更加精细的数据，我会继续更新的。</p>
+<p>下载了OpenStreetMap的数据后，可以在Maperitive中加载进来，选择菜单栏-&gt;File-&gt;Open Map Sources,加载pbf格式的数据。我下载了浙江的数据，我觉得数据还是挺清晰的，而且内容也比较丰富，作为一个不大不小的底图来说，完全够用了，数据的精度，我觉得应该有16级吧。</p>
+<img src="/images/loadimg.png" data-original="/posts/740ae502/maperitive_6.png" lay-src="/posts/740ae502/maperitive_6.png" class="" title="maperitive使用">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44894692/article/details/111057581">在OSM上下载历史数据</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/X_Cosmic/article/details/81218197">OSM数据下载及两种格式转换方法（shp等格式）</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_41310868/article/details/115467830">OSM和PBF数据格式说明</a> 这里主要是OSM数据格式和PBF数据格式的说明，还有相应的格式转换方法，对格式的文件头，内容，和二进制查看方式，做了简单的介绍。<br>4.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25889246">获取OpenStreetMap（OSM）数据方法知多少？</a> 方法1: 网站直接下载;方法2: 通过ArcGIS Editor for OpenStreetMap插件下载;方法3：网站直接下载再经过ArcGIS Editor for OpenStreetMap插件工具转换;方法4: 使用QGIS软件获取,几种方法，都有详细的步骤。<br>5.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/150575860">OpenStreetMap开源地图数据下载方法（含shp格式））</a> 下载整个中国数据，osmconvert工具将pbf文件转为osm文件<br>6.<a target="_blank" rel="noopener" href="https://qastack.cn/gis/6933/downloading-openstreetmap-data">下载OpenStreetMap数据</a> Cloudmade（Cloudmade不再提供OSM的下载）和Geofabrik 提供北美地区下载；JOSM，JOSM提供了一个简单的界面，可让您选择要下载的矩形区域，但是它是通过编辑API下载的；该download.bbbike.org服务可为某些世界城市提供现成的下载；OSMXAPI API旨在用于对地理位置的只读访问。数据（不同于面向编辑的主要OSM API ），它还允许下载比主要API更大的区域；<code>https://extract.bbbike.org/</code> 允许下载各种格式的必需区域;<code>https://export.hotosm.org/</code>还在少数地区提供下载服务</div>
+<h2 id="3-Maperitive"><a href="#3-Maperitive" class="headerlink" title="3.Maperitive"></a>3.Maperitive</h2><p>使用Maperitive可以自定义osm的地图样式。我刚开始使用Maperitive的时候，进行样式切换，总是不行，无论是切换为默认的样式，还是自定义的样式，还是其他的样式，都不起作用，为了看到样式的修改，你可以打开软件后，选择菜单栏-&gt;Map-&gt;Download OSM Data，下载当前页面的数据，然后再使用菜单栏上的-&gt;Map-&gt;Switch To Rules 切换样式，就可以看到效果了。</p>
+<img src="/images/loadimg.png" data-original="/posts/740ae502/maperitive_2.png" lay-src="/posts/740ae502/maperitive_2.png" class="" title="maperitive使用">
+
+<p>也就是说，要先加载自定义的OSM数据，然后才能使用自定义样式对其进行数据的修改，只有一个底图的时候，是没有办法应用样式的，因为底图是不会变化的。</p>
+<img src="/images/loadimg.png" data-original="/posts/740ae502/maperitive_3.png" lay-src="/posts/740ae502/maperitive_3.png" class="" title="maperitive使用">
+
+<p>(1) 加载数据<br>自定义地图，首先需要有数据，数据的来源，可以参考上一节中的内容，可以从OSM下载，也可以在Maperitive中自动下载，都是一样的。</p>
+<p>(2) 创建样式规则<br>根据样式的规则，创建mrules文件，放到软件的Rules文件夹下，我这里放到了D:\soft\Maperitive\Rules 文件夹下</p>
+<p>(3) 加载自定义样式规则<br>下方控制台输入：use-ruleset location=Rules\my.mrules，加载自定义的地图样式</p>
+<img src="/images/loadimg.png" data-original="/posts/740ae502/maperitive_1.png" lay-src="/posts/740ae502/maperitive_1.png" class="" title="maperitive使用">
+
+<p>(4) 导出数据<br>创建完样式之后，可以使用Maperitive的工具，生成相应的切片数据，选择菜单栏-&gt;Tools-&gt;Generate Tiles，将当前的地图，保存为切片，Mapertive会在软件安装目录下Tiles生成切片数据，我这里是：D:\soft\Maperitive\Tiles 目录下。</p>
+<img src="/images/loadimg.png" data-original="/posts/740ae502/maperitive_4.png" lay-src="/posts/740ae502/maperitive_4.png" class="" title="maperitive使用">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="http://maperitive.net/">maperitive</a> Maperitive is a FREE desktop application for drawing maps based on OpenStreetMap and GPS data. You can define what gets on the map and how it is painted. You can also export these maps into bitmaps and SVG files and print them.<br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/eed4350904fd">矢量地图自定义切片样式</a> 下载中国省级矢量地图数据,下载maperitive工具进行自定义样式与切片</div>
+<h2 id="4-样式的创建"><a href="#4-样式的创建" class="headerlink" title="4.样式的创建"></a>4.样式的创建</h2><p>这里我主要介绍的是maperitive的样式创建规则。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">// 定义地图显示的要素</span><br><span class="line">features</span><br><span class="line">  // 点要素</span><br><span class="line">	points </span><br><span class="line">		mountain peak : natural=peak</span><br><span class="line">  // 线要素</span><br><span class="line">	lines</span><br><span class="line">		hiking path : highway=footway</span><br><span class="line">  // 面要素</span><br><span class="line">	areas</span><br><span class="line">		forest : landuse=forest OR natural=wo</span><br><span class="line">// 定义地图属性</span><br><span class="line">properties</span><br><span class="line">	map-background-color	: #F1EEE8</span><br><span class="line">	map-background-opacity	: 1</span><br><span class="line">// 指定规则，告诉 Maperitive 如何渲染这些特征。</span><br><span class="line">rules</span><br><span class="line">  // 目标标记规则定义的开始。在冒号之后，我们指定要绘制的特征(地图要素)的名称</span><br><span class="line">	target : hiking path</span><br><span class="line">    // define 命令用于设置一个或多个渲染属性的值</span><br><span class="line">		define</span><br><span class="line">			line-color : red</span><br><span class="line">			line-width : 3</span><br><span class="line">    // 绘制符号，线条、填充、图标、文本和轮廓等</span><br><span class="line">		draw : line</span><br><span class="line">  target : *hiking path</span><br><span class="line">    // 使用for命令,</span><br><span class="line">		for : trailblazed=yes</span><br><span class="line">			define</span><br><span class="line">				line-width : 5</span><br><span class="line">		else</span><br><span class="line">			define</span><br><span class="line">				line-width : 3			</span><br><span class="line">		</span><br><span class="line">		if : hard hiking path</span><br><span class="line">			define</span><br><span class="line">				line-color : red</span><br><span class="line">		elseif : medium hiking path</span><br><span class="line">			define</span><br><span class="line">				line-color : green</span><br><span class="line">		else</span><br><span class="line">			define</span><br><span class="line">				line-color : blue		</span><br><span class="line">				</span><br><span class="line">		draw : line</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://qastack.cn/gis/452/how-would-i-draw-and-visualize-custom-maps-based-on-osm-data">如何基于OSM数据绘制和可视化自定义地图？</a><br>2.<a target="_blank" rel="noopener" href="https://www.ocad.com/en/">OCAD</a> For creating and editing interactive and printed maps such as topographic maps, city maps and orienteering maps.Available in 17 languages. Successfully used in the cartography, city and surveying offices, universities and orienteering clubs.<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31707827/article/details/108335179">获取OpenStreetMap的边界值GeoJSON数据</a> 可以获取到某一个地区的边界，并转换为Geojson。<br>4.<a target="_blank" rel="noopener" href="http://maperitive.net/docs/Rendering_Rules_Introduction.html">Rendering Rules Introduction </a> 官方对于渲染规则和方法的说明<br>5.<a target="_blank" rel="noopener" href="http://maperitive.net/docs/Feature_Selectors.html">Based On Wildcards-Matching Feature Names </a><br>6.<a target="_blank" rel="noopener" href="http://maperitive.net/docs/Rendering_Rules_Advanced.html">Rules Properties And Flow </a><br>7.<a target="_blank" rel="noopener" href="https://wiki.openstreetmap.org/wiki/Way">OpenStreetMap Way</a> OpenStreetMap中的道路的定义<br>8.<a target="_blank" rel="noopener" href="https://wiki.openstreetmap.org/wiki/Node">OpenStreetMap Node</a><br>9.<a target="_blank" rel="noopener" href="https://wiki.openstreetmap.org/wiki/Map_features">Map features</a> 这里有全部的OpenStreetMap中的Features定义，包括了key和value,有了这份对照表，就可以编写mrules中的features了。</div>
+<h2 id="5-数据发布"><a href="#5-数据发布" class="headerlink" title="5.数据发布"></a>5.数据发布</h2><p>使用Maperitive进行导出的数据，被进行了切片处理，导出的数据为tiles.json格式。</p>
+<img src="/images/loadimg.png" data-original="/posts/740ae502/maperitive_5.png" lay-src="/posts/740ae502/maperitive_5.png" class="" title="maperitive使用">
+
+<p>针对导出的数据文件，可以使用nginx或者IIS等服务器，作为一个静态资源进行数据发布，当然也可以在加载的时候，使用相对目录加载，只需要修改其中的tiles.json文件的tiles属性就可以了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/junlong750/article/details/104261072">GeoServer发布OSM地图</a><br>2.<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/examples/tilejson.html">Example of a TileJSON layer</a><br>3.<a target="_blank" rel="noopener" href="https://docs.mapbox.com/help/glossary/tilejson/">TileJSON</a></div>
+<h2 id="6-数据加载"><a href="#6-数据加载" class="headerlink" title="6.数据加载"></a>6.数据加载</h2><p>生成的数据格式为tiles的切片，包含了一个tiles.json文件，可以使用Openlayers进行加载。</p>
+<p>(1) 修改tiles.json<br>生成的tiles.json中会包含注释，需要删除其中的斜杆部分内容，因为json不允许有斜杠注释，然后生成的tiles中的路径如下，需要根据需要改成自己的，否在加载的就是相对于tile.json所在目录的tiles文件夹下的文件。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"tiles"</span><span class="punctuation">:</span></span><br><span class="line">    <span class="punctuation">[</span></span><br><span class="line">        <span class="string">"tiles/{z}/{x}/{y}.png"</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 进行数据加载<br>这里我使用的是 openlayers 进行加载，因为 openlayers 默认的投影方式是3857,所以需要指定opensteemap的坐标系4326,否则瓦片计算不准确。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'ol/ol.css'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">'../css/index.css'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Map</span> <span class="keyword">from</span> <span class="string">'ol/Map'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">TileJSON</span> <span class="keyword">from</span> <span class="string">'ol/source/TileJSON'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">TileLayer</span> <span class="keyword">from</span> <span class="string">'ol/layer/Tile'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">View</span> <span class="keyword">from</span> <span class="string">'ol/View'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="title class_">Map</span>({</span><br><span class="line">  <span class="attr">layers</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">TileLayer</span>({</span><br><span class="line">      <span class="attr">source</span>: <span class="keyword">new</span> <span class="title class_">TileJSON</span>({</span><br><span class="line">        <span class="attr">url</span>: <span class="string">'http://localhost:88/tilejson/tilesjson/tiles.json'</span></span><br><span class="line">      }),</span><br><span class="line">    }) ],</span><br><span class="line">  <span class="attr">target</span>: <span class="string">'map'</span>,</span><br><span class="line">  <span class="attr">view</span>: <span class="keyword">new</span> <span class="title class_">View</span>({</span><br><span class="line">    <span class="attr">center</span>: [<span class="number">120.35977448840023</span>, </span><br><span class="line">        <span class="number">30.302548667359517</span>],</span><br><span class="line">    <span class="attr">projection</span>: <span class="string">'EPSG:4326'</span>,</span><br><span class="line">    <span class="attr">zoom</span>: <span class="number">12</span>,</span><br><span class="line">  }),</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.jonslow.com/openlayers-3-adding-mapbox-layer/">OpenLayers 3 加载 Mapbox 图层</a> 加载了Mapbox的tilejson格式的地图，这个也可以查找到tile.json的基本格式是怎么样的<br>2.<a target="_blank" rel="noopener" href="https://cn.kensui-uranai.net/432355-load-external-tilejson-file-in-TGPYGW-article">在Mapbox中加载外部tileJSON文件</a><br>3.<a target="_blank" rel="noopener" href="http://maperitive.net/docs/Commands/GenerateTiles.html">generate-tiles Command </a> maperitive中关于生成切片的命令行操作说明<br>4.<a target="_blank" rel="noopener" href="https://wiki.openstreetmap.org/wiki/OpenLayers_Simple_Example#Extensions">OpenLayers Simple Example</a> 这个就更早了,使用的是Openlayer2加载的地图<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/SmileCoffin/article/details/72831128">Openlayers之使用XYZ的方式加载OpenStreetMap</a> 这里是openlayers3中的加载方法，不是通过模块的方法，但是也没有关系openstreetmap坐标系是4326坐标系，官方数据说明中就明确是wgs84坐标，gps也是用的wgs84，所以在加载的时候需要设置view的投影：projection: ‘EPSG:4326’<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/huapenguag/article/details/85001454">Openlayers 3 绘制过程中坐标系统转换方法示例 (EPSG4326到 3857)</a><br>7.<a target="_blank" rel="noopener" href="https://qastack.cn/gis/48949/epsg-3857-or-4326-for-googlemaps-openstreetmap-and-leaflet">适用于GoogleMaps，OpenStreetMap和Leaflet的EPSG 3857或4326</a> Google地球位于具有wgs84基准的地理坐标系中。（EPSG：4326）; Google Maps 位于 基于wgs84基准的投影坐标系中。（EPSG 3857）; Open Street Map数据库中的数据存储在gcs中，单位为wgs84，其十进制度和数据为单位。（EPSG：4326）; 开放式街道地图图块和WMS Web服务位于基于wgs84基准的投影坐标系中。（EPSG 3857）<br>8.<a target="_blank" rel="noopener" href="https://ol3.kaifazhe.me/ch04/04-04.html">OpenLayers 3使用的坐标系</a> 目前OpenLayers 3支持两种投影，一个是EPSG:4326，等同于WGS84坐标系，参见详情。另一个是EPSG:3857，等同于900913，由Mercator投影而来，经常用于web地图，参见详情。一个是全球通用的，一个是web地图专用的，自然OpenLayers 3支持它们。在使用过程中，需要注意OpenLayers 3默认使用的是EPSG:3857。</div>
+<h2 id="7-openmaptiles"><a href="#7-openmaptiles" class="headerlink" title="7.openmaptiles"></a>7.openmaptiles</h2><p>openmaptiles是一个可以在线编辑和发布OSM数据的开源软件,比 Maperitive 更方便一点。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/gisarmory/article/details/110931322">如何实现OSM地图本地发布并自定义配图</a> openmaptiles提供了一套OSM数据使用的完整解决方案，可以实现OSM数据的下载、入库、分析、生成矢量瓦片、调整地图样式、地图预览的全套功能，并且开源。<br>2.<a target="_blank" rel="noopener" href="https://blog.jonslow.com/map-tiles-using-tilemill-and-mapnik/">Tilemill + PostGIS + Mapnik 获得自定义样式的 OSM 地图切片</a><br>3.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25889246">获取OpenStreetMap（OSM）数据方法知多少？</a> 方法1：网站直接下载,方法2 通过ArcGIS Editor for OpenStreetMap插件下载,方法3：网站直接下载再经过ArcGIS Editor for OpenStreetMap插件工具转换,方法4 使用QGIS软件获取<br>4.<a target="_blank" rel="noopener" href="https://sparktour.me/2021/08/03/self-host-openstreetmap-tiles-server/">自建OpenStreetmap地图瓦片服务</a> 笔者最近尝试基于tileserver-gl，openmaptiles和tilemaker等工具自建了一个openstreetsmap的地图瓦片服务器。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/2f7efaa6.html" rel="next" title="GIS在大气污染防治中的作用">
+                      <i class="iconfont icon-prev"></i> GIS在大气污染防治中的作用
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/f9948e94.html" rel="prev" title="GIS中常用地图及其特点">
+                      GIS中常用地图及其特点 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%95%B0%E6%8D%AE%E8%8E%B7%E5%8F%96"><span class="toc-number">2.</span> <span class="toc-text">2.数据获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Maperitive"><span class="toc-number">3.</span> <span class="toc-text">3.Maperitive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A0%B7%E5%BC%8F%E7%9A%84%E5%88%9B%E5%BB%BA"><span class="toc-number">4.</span> <span class="toc-text">4.样式的创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E6%8D%AE%E5%8F%91%E5%B8%83"><span class="toc-number">5.</span> <span class="toc-text">5.数据发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%95%B0%E6%8D%AE%E5%8A%A0%E8%BD%BD"><span class="toc-number">6.</span> <span class="toc-text">6.数据加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-openmaptiles"><span class="toc-number">7.</span> <span class="toc-text">7.openmaptiles</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/740ae502.html';
+      this.page.identifier = 'posts/740ae502.html';
+      this.page.title = 'GIS之自定义暗黑系地图';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：GIS之自定义暗黑系地图 链接地址:https://bibichuan.github.io/posts/740ae502.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'GIS之自定义暗黑系地图',
+		url: 'https://bibichuan.github.io/posts/740ae502.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'GIS之自定义暗黑系地图',
+			isTipVisibility: true,
+			tip: 'GIS之自定义暗黑系地图',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

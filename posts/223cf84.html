@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图像分割之数据处理</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">图像分割之数据处理</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-12-24 01:51:50
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>遥感图像分割，其实就是图像分割，这里我介绍下使用 ArcPro 进行数据集制作的方法。数据获取，可以从参考文章中去查看，这里不在说明了。<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/532783880">[数据集]26个语义分割类遥感影像数据集推荐</a> 这里的很多数据集好像都不能用了，有需要自己去查看吧。我查看了一下，像 LoveDA 这种数据集，也是使用的 mask 标签图像的形式进行标注的。</p>
+<ul>
+<li><p>LoveDA<br>用于域自适应语义分割的遥感土地覆盖数据集。5987 个图像芯片（Google Earth），7 个土地覆盖类别，166768 个标签，包含中国 3 个城市。1）背景，2）建筑，3）道路，4）水体，5）裸土，6）林地，7）耕地，0）无效值（使用时应被忽略）</p>
+</li>
+<li><p>FloodNet Dataset<br>数据是使用小型无人机平台 DJI Mavic Pro 四轴飞行器收集的。整个数据集有 2343 张图像，分为训练集（<del>60%）、验证集（</del>20%）和测试集（~20%）。语义分割标签包括：1）背景，2）建筑物被淹，3）建筑物未淹，4）道路被淹，5）道路未淹，6）水，7）树，8）车辆，9）水池， 10) 草。</p>
+</li>
+<li><p>iSAID数据集<br>iSAID是第一个用于航空图像分割的基准数据集。这个大规模且注释密集的数据集包含2806张高分辨率图像中15个类别的655451个对象实例。iSAID的显著特征如下：（a）具有高空间分辨率的大量图像，（b）15个重要且常见的类别，（c）每个类别有大量实例，（d）每个图像有大量标记实例，这可能有助于学习上下文信息，（e）巨大的对象尺度变化，包含小、中、大对象，通常在同一幅图像中，（f）图像中具有不同方向的物体分布不平衡且不均匀，描绘了现实生活中的空中条件，（g）几个外观模糊的小尺寸物体只能通过上下文推理来解决，（h）由专业注释者进行精确的实例级注释，由符合明确定义的指南的专家注释器进行交叉检查和验证。1）船舶 2）储罐 3）棒球场 4）网球场 5）篮球场 6）田径场 7）桥梁 8）大型车辆 9）小型车辆 10）直升机 11）直升机 12）环岛 13）足球场 14）飞机 15）港口</p>
+</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/analysis/image-analyst/label-objects-for-deep-learning.htm#ESRI_SECTION1_A19B59DE8AD9484289E6FF1A9345EA43">标注对象以供深度学习使用</a> ArcPro也自带了深度学习标注工具，可以参考使用。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jijiarenxiaoyudi/article/details/128042741">超经典！分割任务数据集介绍。</a><br>【3】.<a target="_blank" rel="noopener" href="https://github.com/kaonashi-tyc/gluon-tutorials-zh/blob/master/chapter_computer-vision/semantic-segmentation-and-dataset.md">语义分割和数据集</a><br>【4】.<a target="_blank" rel="noopener" href="http://host.robots.ox.ac.uk/pascal/VOC/voc2012/#data">Visual Object Classes Challenge 2012 (VOC2012) </a> 这里可以下载 voc 的数据。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_52964132/article/details/143658016">遥感图像数据标注工具（3） - X-AnyLabeling</a> 这好像是一个标注工具，但是我没有进行测试，这里写了是遥感图像标注工具，但是具体我不太理解，基本上都是标注的常规的图像，但是出人意料的，是 star 还挺多的。<br>【6】.<a target="_blank" rel="noopener" href="https://www.gtzyyg.com/article/2023/2097-034X/2097-034X-35-2-97.shtml">基于Mask R-CNN的遥感影像疏林地智能识别方法</a> 这是一篇论文，数据集生成结果自动存放在cv2_mask,JSON,labelme_JSON和pic等4个文件夹中。<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34578459/article/details/142655613">遥感影像-实例分割数据集：iSAID 从切图到YOLO格式数据集制作详细介绍</a> 开源数据集isaid标注包含实例分割，但是原始影像太大，很吃显存，一般显卡无法用原始影像直接训练，所以需要对影像进行裁剪，并生成对应的标签，因为想用yolo系列跑模型，所以将标签需要转为txt格式。<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34578459/article/details/141687388">遥感影像-语义分割数据集：LoveDA数据集详细介绍及训练样本处理流程</a></div>
+<h1 id="2-制作Mask标注掩膜"><a href="#2-制作Mask标注掩膜" class="headerlink" title="2.制作Mask标注掩膜"></a>2.制作Mask标注掩膜</h1><p>使用 ArcMap 进行标注，主要步骤包括下面几步，参考文章中也是这么做的，不过其实也是用的ArcPro,只是没有用自带的深度学习工具。</p>
+<p>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/damadashen/article/details/142553309">遥感图像语义分割数据集制作（使用ArcGIS Pro）</a> 这篇文章说的很明白了。1.欧空局ESA 哨兵数据;2.欧空局ESA 哨兵数据;3.Google Earth Engine（GEE）;4.地理空间数据云;5.NOAA系列卫星数据;6.吉林一号高分辨率影像;</p>
+<h2 id="2-1-加载遥感影像"><a href="#2-1-加载遥感影像" class="headerlink" title="2.1.加载遥感影像"></a>2.1.加载遥感影像</h2><p>这个步骤不讲了，就是ArcPro的基本操作。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213626/7672071">Python 遥感图像分类 python遥感图像分割</a> 这里用了 ArcMap 进行了图像分割。<br>【2】.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/3331194">ArcGIS Pro深度学习中的数据标注实践</a> 我感觉这是百度用大模型生成的文档，里面的内容也是错误百出。</div>
+<h2 id="2-2-新建shp文件"><a href="#2-2-新建shp文件" class="headerlink" title="2.2.新建shp文件"></a>2.2.新建shp文件</h2><p>这个步骤不讲了，就是ArcPro的基本操作。</p>
+<h2 id="2-3-标注目标地物"><a href="#2-3-标注目标地物" class="headerlink" title="2.3.标注目标地物"></a>2.3.标注目标地物</h2><p>选中新建的 shp 图层，选择编辑，点击创建，选择面，然后开始勾画要提取的区域。</p>
+<h2 id="2-4-设置属性"><a href="#2-4-设置属性" class="headerlink" title="2.4.设置属性"></a>2.4.设置属性</h2><p>选中新建的 shp 图层，右键打开属性表，选择 id 字段（没有新建一个），然后讲该字段值通过字段计算器都设置为 255，或者其他值，值255后续可用于创建Label文件时作为目标地物的像元值，该部分也可以在开始时新建一个属性字段 value 用于保存目标地物的像元值。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_53882180/article/details/135936156">图像二值化</a></div>
+<h2 id="2-5-将矢量数据转为栅格数据"><a href="#2-5-将矢量数据转为栅格数据" class="headerlink" title="2.5.将矢量数据转为栅格数据"></a>2.5.将矢量数据转为栅格数据</h2><p>在地里处理工具箱中，查找 “面转栅格” 工具，然后将 shp 文件转为栅格数据。</p>
+<img src="/images/loadimg.png" data-original="/posts/223cf84/seg_4.jpg" lay-src="/posts/223cf84/seg_4.jpg" class="" title="分割">
+
+<p>在该部分中，</p>
+<ul>
+<li>输入要素：选择最开始创建的shapefile图层，</li>
+<li>值字段：选择所设置像元灰度值的字段名称，</li>
+<li>输出的栅格数据集：选择自己的路径，</li>
+<li>像元分配类型：以像元中心，</li>
+<li>像元大小选择：进行标注的影像。</li>
+<li>随后点击环境配置：在该部分中，像元大小，捕获栅格输出的坐标均要以最开始参考的影像一致，不然会出现导出的栅格图层与原始的影像像元数不对应的情况, “处理范围” 也要和影像一直。</li>
+</ul>
+<p><strong>注意</strong><br>(1) 开始的时候，我总是无法转换，最后竟然是因为我目录的问题，最好在一个单独的目录下面。</p>
+<img src="/images/loadimg.png" data-original="/posts/223cf84/seg_5.jpg" lay-src="/posts/223cf84/seg_5.jpg" class="" title="分割">
+
+<p>（2）矢量转栅格，生成的像素要和原始影像一直，如果像素不一致该如何去识别呢？如果直接采用生成的正射影像进行数据处理，可能生成的栅格和原始图像不一致，这样就没版本进行切分了，最好就是先把正射影像进行切分为正方形，然后再进行标注，然后进行矢量转栅格。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/data-management/clip.htm">裁剪栅格 (数据管理)</a><br>【2】.<a target="_blank" rel="noopener" href="https://malagis.com/arcgis-practice-tutorial-40.html">ArcGIS/ArcMap中对栅格数据进行裁剪切割的方法</a> 1.数据管理-&gt;栅格-&gt;栅格处理-&gt;裁剪，设定好四个顶点坐标即可。2.在空间分析工具extraction中，提供了按照矩形提取的操作。<br>【3】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/conversion/polygon-to-raster.htm">面转栅格 (转换)</a></div>
+<h2 id="2-6-裁剪"><a href="#2-6-裁剪" class="headerlink" title="2.6.裁剪"></a>2.6.裁剪</h2><p>保持标签和遥感影像有一致的行列号。将矢量面转栅格，可能出现的问题就是和原始切片的像素大小不一致，这个情况下，就需要进行处理，要把需要训练的影像，和创建的矢量影像进行取 交集操作。我尝试了很久，都无法找到合适的方案，矢量转换的山歌虽然和待训练的象元大小一致，但是范围不一致，也就是说行列号不一致。</p>
+<p>【解决方案】<br>创建一个矩形框，按照这个矩形框，将标注图层和影像图层重新切一遍，这样就可以保证两者相素一致了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/spatial-analyst/over.htm">Over (Spatial Analyst)</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ronvicki/article/details/123312453">ArcGIS栅格计算器求2个栅格数据的交集（区域）</a><br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liweis/p/4236651.html">栅格计算器初试</a></div>
+<h2 id="2-7-数据值制作"><a href="#2-7-数据值制作" class="headerlink" title="2.7.数据值制作"></a>2.7.数据值制作</h2><p>于遥感影像的像元数量（即宽度和高度）往往较大且不规则，而深度学习模型的训练则需要规则的像元大小（如256×256或512×512），因此需要对数据进行进一步处理，以符合网络训练的要求。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> osgeo <span class="keyword">import</span> gdal</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 读取数据</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_image</span>(<span class="params">image_path, num_bands=<span class="literal">None</span>, selected_bands=<span class="literal">None</span></span>):</span><br><span class="line">    dataset = gdal.Open(image_path)</span><br><span class="line">    <span class="keyword">if</span> dataset <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f"Could not open image: <span class="subst">{image_path}</span>"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">if</span> num_bands <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            num_bands = dataset.RasterCount</span><br><span class="line">        image_data = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, num_bands + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> selected_bands <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span> <span class="keyword">and</span> i <span class="keyword">not</span> <span class="keyword">in</span> selected_bands:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            band = dataset.GetRasterBand(i)</span><br><span class="line">            band_data = band.ReadAsArray()</span><br><span class="line">            image_data.append(band_data)</span><br><span class="line">        <span class="keyword">return</span> np.array(image_data)</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 滑动裁剪</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">sliding_crop</span>(<span class="params">image, window_size=(<span class="params"><span class="number">512</span>, <span class="number">512</span></span>), stride=<span class="number">256</span></span>):</span><br><span class="line">    height, width = image.shape[<span class="number">1</span>], image.shape[<span class="number">2</span>]</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 计算需要填充的高度和宽度</span></span><br><span class="line">    pad_height = <span class="number">0</span></span><br><span class="line">    pad_width = <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> height % window_size[<span class="number">0</span>] != <span class="number">0</span>:</span><br><span class="line">        pad_height = window_size[<span class="number">0</span>] - (height % window_size[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">if</span> width % window_size[<span class="number">1</span>] != <span class="number">0</span>:</span><br><span class="line">        pad_width = window_size[<span class="number">1</span>] - (width % window_size[<span class="number">1</span>])</span><br><span class="line"> </span><br><span class="line">    <span class="comment"># 在图像右侧和下侧填充0值</span></span><br><span class="line">    padded_image = np.pad(image, ((<span class="number">0</span>, <span class="number">0</span>), (<span class="number">0</span>, pad_height),</span><br><span class="line">                          (<span class="number">0</span>, pad_width)), mode=<span class="string">'constant'</span>, constant_values=<span class="number">0</span>)</span><br><span class="line"> </span><br><span class="line">    crops = []</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, height + pad_height - window_size[<span class="number">0</span>] + <span class="number">1</span>, stride):</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, width + pad_width - window_size[<span class="number">1</span>] + <span class="number">1</span>, stride):</span><br><span class="line">            crop = padded_image[:, y:y+window_size[<span class="number">0</span>], x:x+window_size[<span class="number">1</span>]]</span><br><span class="line">            crops.append(crop)</span><br><span class="line">    <span class="keyword">return</span> crops</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 保存数据</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_crops</span>(<span class="params">crops, output_dir</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.makedirs(output_dir)</span><br><span class="line"> </span><br><span class="line">    existing_files = os.listdir(output_dir)</span><br><span class="line">    existing_indices = <span class="built_in">set</span>()</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> existing_files:</span><br><span class="line">        <span class="keyword">if</span> filename.startswith(<span class="string">"crop_"</span>) <span class="keyword">and</span> filename.endswith(<span class="string">".tif"</span>):</span><br><span class="line">            index_str = filename.split(<span class="string">"_"</span>)[<span class="number">1</span>].split(<span class="string">"."</span>)[<span class="number">0</span>]</span><br><span class="line">            existing_indices.add(<span class="built_in">int</span>(index_str))</span><br><span class="line"> </span><br><span class="line">    start_index = <span class="built_in">max</span>(existing_indices) + <span class="number">1</span> <span class="keyword">if</span> existing_indices <span class="keyword">else</span> <span class="number">0</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">for</span> i, crop <span class="keyword">in</span> <span class="built_in">enumerate</span>(crops):</span><br><span class="line">        output_path = os.path.join(output_dir, <span class="string">f"crop_<span class="subst">{start_index + i}</span>.tif"</span>)</span><br><span class="line">        save_image(crop, output_path)</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">save_image</span>(<span class="params">image_data, output_path</span>):</span><br><span class="line">    num_bands, height, width = image_data.shape</span><br><span class="line">    driver = gdal.GetDriverByName(<span class="string">"GTiff"</span>)</span><br><span class="line">    dataset = driver.Create(output_path, width, height,</span><br><span class="line">                            num_bands, gdal.GDT_Byte)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(num_bands):</span><br><span class="line">        dataset.GetRasterBand(i + <span class="number">1</span>).WriteArray(image_data[i])</span><br><span class="line">    dataset.FlushCache()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="comment"># 影像的路径</span></span><br><span class="line">    image_path = <span class="string">r"xxxx.tif"</span></span><br><span class="line">    <span class="comment"># 标签的路径</span></span><br><span class="line">    label_path = <span class="string">r"xxxx.tif"</span></span><br><span class="line">    images = read_image(image_path)</span><br><span class="line">    labels = read_image(label_path, <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">if</span> images.shape[<span class="number">1</span>:] == labels.shape[<span class="number">1</span>:]:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Images have same dimensions. Starting cropping..."</span>)</span><br><span class="line">        <span class="comment"># 设置滑动窗口的大小及步长，用于生成重叠的滑动裁剪块</span></span><br><span class="line">        images_crops = sliding_crop(images, window_size=(<span class="number">512</span>, <span class="number">512</span>), stride=<span class="number">256</span>)</span><br><span class="line">        labels_crops = sliding_crop(labels, window_size=(<span class="number">512</span>, <span class="number">512</span>), stride=<span class="number">256</span>)</span><br><span class="line">        <span class="comment"># 保存裁剪后的图像</span></span><br><span class="line">        save_crops(images_crops,</span><br><span class="line">                   <span class="string">r"H:\Images"</span>)<span class="comment"># 影像块的文件夹</span></span><br><span class="line">        save_crops(labels_crops,</span><br><span class="line">                   <span class="string">r"H:\Labels"</span>)<span class="comment"># 标签块的文件夹</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Cropping done and crops saved!"</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"Images have different dimensions. Cannot proceed with cropping."</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.jl1mall.com/forum/PostDetail?postId=202304210857000093344">制作属于自己的遥感影像语义分割数据集</a> 这里也提供了部分的代码：1.利用ArcGIS或QGIS软件创建矢量文件，并对影像区域的目标地物进行勾画，需要注意在地物勾画时，目标地物需要全部勾画，不关心的背景地物无需勾画，同时矢量文件与影像的坐标系要保持一致。2.添加分类标签，在勾画的矢量属性表中新建一个名为value或者classvalue的字段，字段类型为整形。针对需要提取的地物进行字段赋值，以1为起始依次按照顺序对不同地物进行赋值，通常背景地物在后续样本制作环节会自动标注为0。4.矢量文件转栅格，这里我们基于python的gdal库将矢量文件转换为与影像范围、分辨率对应的栅格文件。</div>
+<h1 id="3-Mask转txt"><a href="#3-Mask转txt" class="headerlink" title="3.Mask转txt"></a>3.Mask转txt</h1><p>通过上面的方法，获取到的实际上是掩膜，但是使用 yolo 进行训练，就需要转换为 txt 格式。<br>（1）方案一<br>方案一使用的是从通义千问那里得到的代码，但是我总觉得哪里不对劲，因为训练处理的东西好像不太对。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">path = <span class="string">r"D:\zlc\drone\图像分割\栅格\Labels"</span></span><br><span class="line">files = os.listdir(path)</span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">    name = file.split(<span class="string">'.'</span>)[<span class="number">0</span>]</span><br><span class="line">    file_path = os.path.join(path,name+<span class="string">'.tif'</span>)</span><br><span class="line">    img = cv2.imread(file_path)</span><br><span class="line">    <span class="comment"># img = cv2.imread(path)</span></span><br><span class="line">    H,W=img.shape[<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">    <span class="built_in">print</span>(H,W)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#img1 = cv2.imread("F:/Deep_Learning/Model/YOLOv8_Seg/Dataset/images/20160222_080933_361_1.jpg")</span></span><br><span class="line"></span><br><span class="line">    gray_img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)</span><br><span class="line">    ret,bin_img = cv2.threshold(gray_img,<span class="number">0</span>,<span class="number">255</span>,cv2.THRESH_BINARY+cv2.THRESH_OTSU)</span><br><span class="line">    cnt,hit = cv2.findContours(bin_img,cv2.RETR_TREE,cv2.CHAIN_APPROX_TC89_KCOS)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#cv2.drawContours(img1,cnt,-1,(0,255,0),5)</span></span><br><span class="line"></span><br><span class="line">    cnt = <span class="built_in">list</span>(cnt)</span><br><span class="line">    f = <span class="built_in">open</span>(<span class="string">"D:\zlc\drone\图像分割\栅格\yolo-labels/{}.txt"</span>.<span class="built_in">format</span>(file.split(<span class="string">"."</span>)[<span class="number">0</span>]), <span class="string">"a+"</span>)</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> cnt:</span><br><span class="line">        result = []</span><br><span class="line">        pre = j[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> j:</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">abs</span>(i[<span class="number">0</span>][<span class="number">0</span>] - pre[<span class="number">0</span>][<span class="number">0</span>]) &gt; <span class="number">1</span> <span class="keyword">or</span> <span class="built_in">abs</span>(i[<span class="number">0</span>][<span class="number">1</span>] - pre[<span class="number">0</span>][<span class="number">1</span>]) &gt; <span class="number">1</span>:<span class="comment"># 在这里可以调整间隔点，我设置为1</span></span><br><span class="line">                pre = i</span><br><span class="line">                temp = <span class="built_in">list</span>(i[<span class="number">0</span>])</span><br><span class="line">                temp[<span class="number">0</span>] /= W</span><br><span class="line">                temp[<span class="number">1</span>] /= H</span><br><span class="line">                result.append(temp)</span><br><span class="line"></span><br><span class="line">                <span class="comment">#cv2.circle(img1,i[0],1,(0,0,255),2)</span></span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(result)</span><br><span class="line">        <span class="built_in">print</span>(<span class="built_in">len</span>(result))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># if len(result) != 0:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(result) != <span class="number">0</span>:</span><br><span class="line">            f.write(<span class="string">"0 "</span>)</span><br><span class="line">            <span class="keyword">for</span> line <span class="keyword">in</span> result:</span><br><span class="line">                line = <span class="built_in">str</span>(line)[<span class="number">1</span>:-<span class="number">2</span>].replace(<span class="string">","</span>,<span class="string">""</span>)</span><br><span class="line">                <span class="comment"># print(line)</span></span><br><span class="line">                f.write(line+<span class="string">" "</span>)</span><br><span class="line">            f.write(<span class="string">"\n"</span>)</span><br><span class="line">    f.close()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）方案二<br>方案二使用的是yolo自带的工具 convert_segment_masks_to_yolo_seg(“path/to/masks_directory”, “path/to/output/directory”, classes=80)</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> ultralytics.utils <span class="keyword">import</span> LOGGER</span><br><span class="line"><span class="keyword">from</span> pathlib <span class="keyword">import</span> Path</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">convert_segment_masks_to_yolo_seg</span>(<span class="params">masks_dir, output_dir, classes</span>):</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Converts a dataset of segmentation mask images to the YOLO segmentation format.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    This function takes the directory containing the binary format mask images and converts them into YOLO segmentation format.</span></span><br><span class="line"><span class="string">    The converted masks are saved in the specified output directory.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        masks_dir (str): The path to the directory where all mask images (png, jpg) are stored.</span></span><br><span class="line"><span class="string">        output_dir (str): The path to the directory where the converted YOLO segmentation masks will be stored.</span></span><br><span class="line"><span class="string">        classes (int): Total classes in the dataset i.e. for COCO classes=80</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Example:</span></span><br><span class="line"><span class="string">        ```python</span></span><br><span class="line"><span class="string">        from ultralytics.data.converter import convert_segment_masks_to_yolo_seg</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        # The classes here is the total classes in the dataset, for COCO dataset we have 80 classes</span></span><br><span class="line"><span class="string">        convert_segment_masks_to_yolo_seg("path/to/masks_directory", "path/to/output/directory", classes=80)</span></span><br></pre></td></tr></tbody></table></figure>
+
+<pre><code>Notes:
+    The expected directory structure for the masks is:
+
+        - masks
+            ├─ mask_image_01.png or mask_image_01.jpg
+            ├─ mask_image_02.png or mask_image_02.jpg
+            ├─ mask_image_03.png or mask_image_03.jpg
+            └─ mask_image_04.png or mask_image_04.jpg
+
+    After execution, the labels will be organized in the following structure:
+
+        - output_dir
+            ├─ mask_yolo_01.txt
+            ├─ mask_yolo_02.txt
+            ├─ mask_yolo_03.txt
+            └─ mask_yolo_04.txt
+"""
+for mask_path in Path(masks_dir).iterdir():
+    if mask_path.suffix == ".png":
+        mask = cv2.imread(str(mask_path), cv2.IMREAD_GRAYSCALE)  # Read the mask image in grayscale
+        img_height, img_width = mask.shape  # Get image dimensions
+        LOGGER.info(f"Processing {mask_path} imgsz = {img_height} x {img_width}")
+
+        unique_values = np.unique(mask)  # Get unique pixel values representing different classes
+        yolo_format_data = []
+
+        for value in unique_values:
+            if value == 0:
+                continue  # Skip background
+            class_index = value
+            if class_index == -1:
+                LOGGER.warning(f"Unknown class for pixel value {value} in file {mask_path}, skipping.")
+                continue
+
+            # Create a binary mask for the current class and find contours
+            contours, _ = cv2.findContours(
+                (mask == value).astype(np.uint8), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
+            )  # Find contours
+
+            for contour in contours:
+                if len(contour) &gt;= 3:  # YOLO requires at least 3 points for a valid segmentation
+                    contour = contour.squeeze()  # Remove single-dimensional entries
+                    yolo_format = [class_index]
+                    for point in contour:
+                        # Normalize the coordinates
+                        yolo_format.append(round(point[0] / img_width, 6))  # Rounding to 6 decimal places
+                        yolo_format.append(round(point[1] / img_height, 6))
+                    yolo_format_data.append(yolo_format)
+        # Save Ultralytics YOLO format data to file
+        output_path = Path(output_dir) / f"{mask_path.stem}.txt"
+        with open(output_path, "w") as file:
+            for item in yolo_format_data:
+                line = " ".join(map(str, item))
+                file.write(line + "\n")
+        LOGGER.info(f"Processed and stored at {output_path} imgsz = {img_height} x {img_width}")
+</code></pre>
+<p>if <strong>name</strong> == “<strong>main</strong>“:<br>    # The classes here is the total classes in the dataset.<br>    # for COCO dataset we have 80 classes.<br>    convert_segment_masks_to_yolo_seg(masks_dir=”D:/zlc/drone/drone-train/data/land/tiles/png”, output_dir=”D:/zlc/drone/drone-train/data/land/tiles/labels”, classes=2)</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">参考文章:</span><br><span class="line">【1】.[将mask的图片标签转换为yolo的txt标签](https://blog.csdn.net/qq_41701723/article/details/135449035) 这篇文章的代码可以使用，将mask的图片标签转换为yolo的txt标签,获取外轮廓</span><br><span class="line">【2】.[将注记从Mask-RCNN数据集格式转换为COCO格式](https://cloud.tencent.com/developer/information/%E5%B0%86%E6%B3%A8%E8%AE%B0%E4%BB%8EMask-RCNN%E6%95%B0%E6%8D%AE%E9%9B%86%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%BACOCO%E6%A0%BC%E5%BC%8F) 1.Mask R-CNN 数据集格式和 COCO 格式的主要区别在于标注信息的组织方式。Mask R-CNN 通常包含以下文件：images/：图像文件, annotations/：包含标注框和掩码的 JSON 文件。2.COCO 格式包含以下文件：images/：图像文件,annotations/：包含标注框、掩码和类别信息的 JSON 文件。</span><br><span class="line">【3】.[Mask标注转YOLO格式txt文件](https://blog.csdn.net/my_wx/article/details/140798592)</span><br><span class="line">【4】.[mask-to-annotation](https://github.com/matthewkenely/mask-to-annotation) mask-to-annotation 是一款功能强大的高效工具，用于从二进制和彩色掩模中自动生成 COCO、YOLO 和 VGG 等流行计算机视觉格式的注释。</span><br><span class="line">【5】.[Binary mask images to instead yolo annotation format ](https://github.com/ultralytics/ultralytics/issues/3085) The YOLOv8 repo offers a useful script, create_masks.py, which can be used to generate YOLO annotations from binary masks.</span><br><span class="line">【6】.[常见数据集格式转换](https://www.unnamedtat.xyz/posts/10be164/) 1.mask转换为json（coco数据集的话自己再改一下）。2.可视化json。3.json转化为YOLO格式。</span><br><span class="line">【7】.[简单实用](https://docs.ultralytics.com/zh/usage/simple-utilities/) 这里的代码更加的简单，只需要使用ultralytics自带的工具 convert_segment_masks_to_yolo_seg 就可以了。</span><br><span class="line">【8】.[Yolov8-seg：制作并训练自己的数据集+提取并重建mask](https://blog.csdn.net/XY_39/article/details/136673733) 这里使用了 sam 进行了半自动标注。</span><br><span class="line">【9】.[掩码mask图像标注转yolo格式](https://blog.csdn.net/Y5823990/article/details/143917406) classes是你的数据有多少类别，这里需要注意，类别与掩码的值对应，比如说你这里classes=2，那么你的掩码值必须是第一类为1，第二类为2。不能是通常的255，会警告并且转换输出为空。</span><br><span class="line">【10】.[ultralytics.data.converter.convert_segment_masks_to_yolo_seg](https://docs.ultralytics.com/reference/data/converter/#ultralytics.data.converter.convert_coco) 这是官网的说明。</span><br><span class="line"></span><br><span class="line"># 4.影像分割</span><br><span class="line">图像分割一般尺寸要求都是很小的，但是遥感影像的分辨率尺寸特别的大，需要进行切割。切割成较小的尺寸，单独进行图像分割，然后再进行合并。根据 [Python|遥感影像语义分割：使用Python(GDAL)制作遥感影像语义分割数据集](https://www.cnblogs.com/tangjielin/p/18288301) 这篇文章，提供了下面的方法。</span><br><span class="line">```python</span><br><span class="line">import os</span><br><span class="line">from osgeo import gdal</span><br><span class="line">import numpy as np</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#  读取tif数据集</span><br><span class="line">def readTif(fileName):</span><br><span class="line">   dataset = gdal.Open(fileName)</span><br><span class="line">   if dataset is None:</span><br><span class="line">      print(fileName + "文件无法打开")</span><br><span class="line">   return dataset</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#  保存tif文件函数</span><br><span class="line">def writeTiff(im_data, im_geotrans, im_proj, path):</span><br><span class="line">   if 'int8' in im_data.dtype.name:</span><br><span class="line">      datatype = gdal.GDT_Byte</span><br><span class="line">   elif 'int16' in im_data.dtype.name:</span><br><span class="line">      datatype = gdal.GDT_UInt16</span><br><span class="line">   else:</span><br><span class="line">      datatype = gdal.GDT_Float32</span><br><span class="line">   if len(im_data.shape) == 3:</span><br><span class="line">      im_bands, im_height, im_width = im_data.shape</span><br><span class="line">   elif len(im_data.shape) == 2:</span><br><span class="line">      im_data = np.array([im_data])</span><br><span class="line">      im_bands, im_height, im_width = im_data.shape</span><br><span class="line">   # 创建文件</span><br><span class="line">   driver = gdal.GetDriverByName("GTiff")</span><br><span class="line">   dataset = driver.Create(path, int(im_width), int(im_height), int(im_bands), datatype)</span><br><span class="line">   if dataset is not None:</span><br><span class="line">      dataset.SetGeoTransform(im_geotrans)  # 写入仿射变换参数</span><br><span class="line">      dataset.SetProjection(im_proj)  # 写入投影</span><br><span class="line">   for i in range(im_bands):</span><br><span class="line">      dataset.GetRasterBand(i + 1).WriteArray(im_data[i])</span><br><span class="line">   del dataset</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def TifCrop(TifPath, SavePath, CropSize, RepetitionRate):</span><br><span class="line">   """</span><br><span class="line">    滑动窗口裁剪函数</span><br><span class="line">    TifPath 影像路径</span><br><span class="line">    SavePath 裁剪后保存目录</span><br><span class="line">    CropSize 裁剪尺寸</span><br><span class="line">    RepetitionRate 重复率</span><br><span class="line">    """</span><br><span class="line">   dataset_img = readTif(TifPath)</span><br><span class="line">   width = dataset_img.RasterXSize</span><br><span class="line">   height = dataset_img.RasterYSize</span><br><span class="line">   proj = dataset_img.GetProjection()</span><br><span class="line">   geotrans = dataset_img.GetGeoTransform()</span><br><span class="line">   img = dataset_img.ReadAsArray(0, 0, width, height)  # 获取数据</span><br><span class="line"></span><br><span class="line">   #  获取当前文件夹的文件个数len,并以len+1命名即将裁剪得到的图像</span><br><span class="line">   new_name = len(os.listdir(SavePath))</span><br><span class="line"></span><br><span class="line">   #  裁剪图片,重复率为RepetitionRate</span><br><span class="line">   for i in range(int((height - CropSize * RepetitionRate) / (CropSize * (1 - RepetitionRate)))):</span><br><span class="line">      for j in range(int((width - CropSize * RepetitionRate) / (CropSize * (1 - RepetitionRate)))):</span><br><span class="line">         #  如果图像是单波段</span><br><span class="line">         if len(img.shape) == 2:</span><br><span class="line">            cropped = img[</span><br><span class="line">                      int(i * CropSize * (1 - RepetitionRate)): int(i * CropSize * (1 - RepetitionRate)) + CropSize,</span><br><span class="line">                      int(j * CropSize * (1 - RepetitionRate)): int(j * CropSize * (1 - RepetitionRate)) + CropSize]</span><br><span class="line">         #  如果图像是多波段</span><br><span class="line">         else:</span><br><span class="line">            cropped = img[:,</span><br><span class="line">                      int(i * CropSize * (1 - RepetitionRate)): int(i * CropSize * (1 - RepetitionRate)) + CropSize,</span><br><span class="line">                      int(j * CropSize * (1 - RepetitionRate)): int(j * CropSize * (1 - RepetitionRate)) + CropSize]</span><br><span class="line">         #  写图像</span><br><span class="line">         writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)</span><br><span class="line">         #  文件名 + 1</span><br><span class="line">         new_name = new_name + 1</span><br><span class="line"></span><br><span class="line">   #  向前裁剪最后一列</span><br><span class="line">   for i in range(int((height - CropSize * RepetitionRate) / (CropSize * (1 - RepetitionRate)))):</span><br><span class="line">      if len(img.shape) == 2:</span><br><span class="line">         cropped = img[int(i * CropSize * (1 - RepetitionRate)): int(i * CropSize * (1 - RepetitionRate)) + CropSize,</span><br><span class="line">                   (width - CropSize): width]</span><br><span class="line">      else:</span><br><span class="line">         cropped = img[:,</span><br><span class="line">                   int(i * CropSize * (1 - RepetitionRate)): int(i * CropSize * (1 - RepetitionRate)) + CropSize,</span><br><span class="line">                   (width - CropSize): width]</span><br><span class="line">      #  写图像</span><br><span class="line">      writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)</span><br><span class="line">      new_name = new_name + 1</span><br><span class="line"></span><br><span class="line">   #  向前裁剪最后一行</span><br><span class="line">   for j in range(int((width - CropSize * RepetitionRate) / (CropSize * (1 - RepetitionRate)))):</span><br><span class="line">      if len(img.shape) == 2:</span><br><span class="line">         cropped = img[(height - CropSize): height,</span><br><span class="line">                   int(j * CropSize * (1 - RepetitionRate)): int(j * CropSize * (1 - RepetitionRate)) + CropSize]</span><br><span class="line">      else:</span><br><span class="line">         cropped = img[:, (height - CropSize): height,</span><br><span class="line">                   int(j * CropSize * (1 - RepetitionRate)): int(j * CropSize * (1 - RepetitionRate)) + CropSize]</span><br><span class="line">      writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)</span><br><span class="line">      #  文件名 + 1</span><br><span class="line">      new_name = new_name + 1</span><br><span class="line"></span><br><span class="line">   #  裁剪右下角</span><br><span class="line">   if len(img.shape) == 2:</span><br><span class="line">      cropped = img[(height - CropSize): height, (width - CropSize): width]</span><br><span class="line">   else:</span><br><span class="line">      cropped = img[:, (height - CropSize): height, (width - CropSize): width]</span><br><span class="line">   writeTiff(cropped, geotrans, proj, SavePath + "/%d.tif" % new_name)</span><br><span class="line">   new_name = new_name + 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 训练集和验证集都要裁剪</span><br><span class="line"># 裁剪图像特征。拿到影像数据增强中进行数据增强</span><br><span class="line"># 将影像1裁剪为重复率为0.5的256×256的数据集</span><br><span class="line">if __name__ == '__main__':</span><br><span class="line">   TifCrop("D:\Dataset_Authoring\EnShi.tif",</span><br><span class="line">           "D:\Dataset_Authoring\EnShi_data", 512, 0.5)</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="5-合并"><a href="#5-合并" class="headerlink" title="5.合并"></a>5.合并</h1><p>分割识别之后的图像，需要重新合并，形成一个大尺寸的遥感影像，才能查看全貌。我查了很多的资料，最后还是使用了 阿里云的通义千问 解决了代码问题。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">merge_images_with_overlap</span>(<span class="params">folder_path, row_overlap_width, col_overlap_height</span>):</span><br><span class="line">    <span class="comment"># 正则表达式匹配 crop_{row}_{col}.tif 格式的文件名</span></span><br><span class="line">    pattern = re.<span class="built_in">compile</span>(<span class="string">r'crop_(\d+)_(\d+)\.tif$'</span>)</span><br><span class="line"></span><br><span class="line">    images = {}</span><br><span class="line">    missing_images = <span class="built_in">set</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 遍历文件夹中的所有文件并记录所有的 (row, col) 键</span></span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(folder_path):</span><br><span class="line">        <span class="keyword">match</span> = pattern.<span class="keyword">match</span>(filename)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">match</span>:</span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                row, col = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="keyword">match</span>.groups())</span><br><span class="line">                images[(row, col)] = os.path.join(folder_path, filename)</span><br><span class="line">            <span class="keyword">except</span> ValueError <span class="keyword">as</span> e:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f"转换行或列编号时出错: <span class="subst">{e}</span>，文件名: <span class="subst">{filename}</span>"</span>)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> images:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"没有找到匹配的图像文件"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取实际存在的行和列集合</span></span><br><span class="line">    rows = {key[<span class="number">0</span>] <span class="keyword">for</span> key <span class="keyword">in</span> images.keys()}</span><br><span class="line">    cols = {key[<span class="number">1</span>] <span class="keyword">for</span> key <span class="keyword">in</span> images.keys()}</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算 max_row 和 max_col</span></span><br><span class="line">    max_row = <span class="built_in">max</span>(rows) <span class="keyword">if</span> rows <span class="keyword">else</span> -<span class="number">1</span></span><br><span class="line">    max_col = <span class="built_in">max</span>(cols) <span class="keyword">if</span> cols <span class="keyword">else</span> -<span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 检查是否有缺失的图像文件</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> <span class="built_in">range</span>(max_row + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">range</span>(max_col + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> (row, col) <span class="keyword">not</span> <span class="keyword">in</span> images:</span><br><span class="line">                missing_images.add((row, col))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> missing_images:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"警告：以下图像文件缺失:"</span>)</span><br><span class="line">        <span class="keyword">for</span> missing <span class="keyword">in</span> missing_images:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">f"行 <span class="subst">{missing[<span class="number">0</span>]}</span> 列 <span class="subst">{missing[<span class="number">1</span>]}</span>"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 假设所有的图片尺寸是一致的</span></span><br><span class="line">    sample_image_path = <span class="built_in">list</span>(images.values())[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        sample_image = cv2.imread(sample_image_path, cv2.IMREAD_COLOR)</span><br><span class="line">        image_height, image_width, _ = sample_image.shape</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f"无法打开样本图像: <span class="subst">{sample_image_path}</span>, 错误: <span class="subst">{e}</span>"</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    result_width = (max_col + <span class="number">1</span>) * image_width - max_col * col_overlap_height</span><br><span class="line">    result_height = (max_row + <span class="number">1</span>) * image_height - max_row * row_overlap_width</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建一个新的空白图像来存放最终结果</span></span><br><span class="line">    final_result = np.zeros((result_height, result_width, <span class="number">3</span>), dtype=np.uint8)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 处理每一行每一列</span></span><br><span class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> <span class="built_in">range</span>(max_row + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">range</span>(max_col + <span class="number">1</span>):</span><br><span class="line">            path = images.get((row, col))</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> path:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f"跳过缺失的行 <span class="subst">{row}</span> 列 <span class="subst">{col}</span> 的图像"</span>)</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">try</span>:</span><br><span class="line">                img = cv2.imread(path, cv2.IMREAD_COLOR)</span><br><span class="line"></span><br><span class="line">                left = col * (image_width - col_overlap_height)</span><br><span class="line">                upper = row * (image_height - row_overlap_width)</span><br><span class="line">                right = left + image_width</span><br><span class="line">                lower = upper + image_height</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 如果不是第一列，则需要处理左边的重叠区域</span></span><br><span class="line">                <span class="keyword">if</span> col &gt; <span class="number">0</span> <span class="keyword">and</span> (row, col-<span class="number">1</span>) <span class="keyword">in</span> images:</span><br><span class="line">                    prev_img_path = images.get((row, col-<span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">if</span> prev_img_path:</span><br><span class="line">                        prev_img = cv2.imread(prev_img_path, cv2.IMREAD_COLOR)</span><br><span class="line">                        blended_part = cv2.addWeighted(</span><br><span class="line">                            prev_img[:, -(col_overlap_height):, :], <span class="number">0.5</span>,</span><br><span class="line">                            img[:, :col_overlap_height, :], <span class="number">0.5</span>, <span class="number">0</span></span><br><span class="line">                        )</span><br><span class="line">                        final_result[upper:lower, left:left+col_overlap_height, :] = blended_part</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 如果不是第一行，则需要处理上面的重叠区域</span></span><br><span class="line">                <span class="keyword">if</span> row &gt; <span class="number">0</span> <span class="keyword">and</span> (row-<span class="number">1</span>, col) <span class="keyword">in</span> images:</span><br><span class="line">                    prev_img_path = images.get((row-<span class="number">1</span>, col))</span><br><span class="line">                    <span class="keyword">if</span> prev_img_path:</span><br><span class="line">                        prev_img = cv2.imread(prev_img_path, cv2.IMREAD_COLOR)</span><br><span class="line">                        blended_part = cv2.addWeighted(</span><br><span class="line">                            prev_img[-row_overlap_width:, :, :], <span class="number">0.5</span>,</span><br><span class="line">                            img[:row_overlap_width, :, :], <span class="number">0.5</span>, <span class="number">0</span></span><br><span class="line">                        )</span><br><span class="line">                        final_result[upper:upper+row_overlap_width, left:right, :] = blended_part</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 粘贴非重叠部分</span></span><br><span class="line">                non_overlap_box = (</span><br><span class="line">                    left + (col_overlap_height <span class="keyword">if</span> col &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>),</span><br><span class="line">                    upper + (row_overlap_width <span class="keyword">if</span> row &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">0</span>),</span><br><span class="line">                    right,</span><br><span class="line">                    lower</span><br><span class="line">                )</span><br><span class="line">                final_result[non_overlap_box[<span class="number">1</span>]:non_overlap_box[<span class="number">3</span>], non_overlap_box[<span class="number">0</span>]:non_overlap_box[<span class="number">2</span>], :] = \</span><br><span class="line">                    img[non_overlap_box[<span class="number">1</span>]-upper:non_overlap_box[<span class="number">3</span>]-upper, non_overlap_box[<span class="number">0</span>]-left:non_overlap_box[<span class="number">2</span>]-left, :]</span><br><span class="line">            <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f"处理图像时发生错误: <span class="subst">{path}</span>, 错误: <span class="subst">{e}</span>"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 保存最终结果图像</span></span><br><span class="line">    output_path = os.path.join(folder_path, <span class="string">'merged_image.tif'</span>)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        cv2.imwrite(output_path, final_result)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f"合并后的图像已保存至: <span class="subst">{output_path}</span>"</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f"保存结果图像时出错: <span class="subst">{e}</span>"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用函数，指定文件夹路径、行重叠宽度和列重叠高度</span></span><br><span class="line">folder_path = <span class="string">r'D:\zlc\drone\图像分割\栅格\Images'</span></span><br><span class="line">row_overlap_width = <span class="number">256</span>  <span class="comment"># 行之间重叠的宽度（像素）</span></span><br><span class="line">col_overlap_height = <span class="number">256</span>  <span class="comment"># 列之间重叠的高度（像素）</span></span><br><span class="line"></span><br><span class="line">merge_images_with_overlap(folder_path, row_overlap_width, col_overlap_height)</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40694662/article/details/123661973">【Python笔记】遥感影像(tif)合并与分块</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175484/6738728">多个合并成一个tif文件python</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32306361/article/details/140246708">Python遥感开发之批量对TIF数据合并</a> 通常对遥感数据按照月和年或者季节进行分析，我们需要对我们下载的8天或者16天数据按照需求进行合并，对数据的合并一般可以采取均值法、最大值法等。本篇博客以月数据为基础，按照春夏秋冬的季节对月数据进行合并。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32306361/article/details/134757761">Python遥感开发之批量拼接和分割</a> 1.遥感图像无交错的批量拼接。2.遥感图像有交错的批量拼接。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15688229/5640065">基于python实现.tif格式遥感影像的镶嵌处理（合并）</a> 此代码可以实现多个 .tif 文件合并成一个，略微不足之处，此代码目前没有实现批量处理。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15028721/article/details/132856113">【Python】使用gdal.WarpOptions完成tif影像拼接和目标截取</a> 这里通过gdal.Wrap函数进行了图像的拼接。<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/guoshihui123/article/details/126902594">将切割后的小图片还原为大图片</a><br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_20373723/article/details/103768283">python gdal遥感影像基础操作（读写、增加波段、添加坐标系）</a><br>【9】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40482974/article/details/141100129">影像镶嵌 python</a> 1.读取输入图像。2.图像特征检测与匹配。3.计算单应性矩阵。4.图像变换与拼接。<br>【10】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/suoyike1001/p/15228429.html">遥感图像的拼接和镶嵌</a><br>【11】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhebushibiaoshifu/article/details/128155430">Python中GDAL基于栅格影像叠加提取另一景栅格影像的像元数值</a><br>【12】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_38051293/article/details/103218755">GDAL+Python实现栅格影像处理之拼接镶嵌Mosaic</a> 1.通过镶嵌原理自定义方法实现。由于我的两幅图像位置固定，未根据其他情况进行拼接。读者可以参考这种方式，因为理解思路最重要。2.方法2采用gdal.Warp()提供的接口进行镶嵌。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/a3b721fa.html" rel="next" title="图像分割之数据处理二">
+                      <i class="iconfont icon-prev"></i> 图像分割之数据处理二
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/63eb8977.html" rel="prev" title="图像分割之实例和论文">
+                      图像分割之实例和论文 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%B6%E4%BD%9CMask%E6%A0%87%E6%B3%A8%E6%8E%A9%E8%86%9C"><span class="toc-number">2.</span> <span class="toc-text">2.制作Mask标注掩膜</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E5%8A%A0%E8%BD%BD%E9%81%A5%E6%84%9F%E5%BD%B1%E5%83%8F"><span class="toc-number">2.1.</span> <span class="toc-text">2.1.加载遥感影像</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E6%96%B0%E5%BB%BAshp%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">2.2.新建shp文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E6%A0%87%E6%B3%A8%E7%9B%AE%E6%A0%87%E5%9C%B0%E7%89%A9"><span class="toc-number">2.3.</span> <span class="toc-text">2.3.标注目标地物</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7"><span class="toc-number">2.4.</span> <span class="toc-text">2.4.设置属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-%E5%B0%86%E7%9F%A2%E9%87%8F%E6%95%B0%E6%8D%AE%E8%BD%AC%E4%B8%BA%E6%A0%85%E6%A0%BC%E6%95%B0%E6%8D%AE"><span class="toc-number">2.5.</span> <span class="toc-text">2.5.将矢量数据转为栅格数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-%E8%A3%81%E5%89%AA"><span class="toc-number">2.6.</span> <span class="toc-text">2.6.裁剪</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7-%E6%95%B0%E6%8D%AE%E5%80%BC%E5%88%B6%E4%BD%9C"><span class="toc-number">2.7.</span> <span class="toc-text">2.7.数据值制作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Mask%E8%BD%ACtxt"><span class="toc-number">3.</span> <span class="toc-text">3.Mask转txt</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%90%88%E5%B9%B6"><span class="toc-number">4.</span> <span class="toc-text">5.合并</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/223cf84.html';
+      this.page.identifier = 'posts/223cf84.html';
+      this.page.title = '图像分割之数据处理';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：图像分割之数据处理 链接地址:https://bibichuan.github.io/posts/223cf84.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '图像分割之数据处理',
+		url: 'https://bibichuan.github.io/posts/223cf84.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '图像分割之数据处理',
+			isTipVisibility: true,
+			tip: '图像分割之数据处理',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

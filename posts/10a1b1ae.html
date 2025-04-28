@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>软件研究之Rclone</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">软件研究之Rclone</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-04-19 10:32:10
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>查到了一个叫 rclone 的工具可以实现从 阿里云oss 复制到 minio。</p>
+<h1 id="2-下载"><a href="#2-下载" class="headerlink" title="2.下载"></a>2.下载</h1><p>从 <a target="_blank" rel="noopener" href="https://rclone.org/downloads/">官网</a> 下载相应的安装包到服务器，我这放到 /usr/local/rclone。需要注意的是 rclone 版本。我阿里云上用的是  alibaba 3 (64 bit)，内核： 5.10.134-16.1.al8.x86_64 (x86_64)，平台：amd64 的，所以我选择了 rclone 的 Intel/AMD - 64 Bit。</p>
+<h1 id="3-编辑配置文件"><a href="#3-编辑配置文件" class="headerlink" title="3.编辑配置文件"></a>3.编辑配置文件</h1><p>新建 vi /usr/local/rclone/rclone.conf 配置文件。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[oss]</span><br><span class="line"><span class="built_in">type</span> = s3</span><br><span class="line">provider = Alibaba</span><br><span class="line">env_auth = <span class="literal">false</span></span><br><span class="line">access_key_id = &lt;你的ID，去阿里控制台配置&gt;</span><br><span class="line">secret_access_key = &lt;你的秘钥，去阿里控制台配置&gt;</span><br><span class="line">endpoint = oss-cn-beijing.aliyuncs.com</span><br><span class="line">acl = public-read</span><br><span class="line">storage_class = STANDARD</span><br><span class="line">bucket_acl = public-read</span><br><span class="line"></span><br><span class="line">[minio]</span><br><span class="line"><span class="built_in">type</span> = s3</span><br><span class="line">provider = Minio</span><br><span class="line">env_auth = <span class="literal">false</span></span><br><span class="line">access_key_id = &lt;你的minio用户名&gt;</span><br><span class="line">secret_access_key = &lt;你的minio密码&gt;</span><br><span class="line">region = cn-east-1</span><br><span class="line">endpoint = http://192.168.1.47:9000</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="4-解压配置可执行权限"><a href="#4-解压配置可执行权限" class="headerlink" title="4.解压配置可执行权限"></a>4.解压配置可执行权限</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/rclone</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">./rclone <span class="built_in">sync</span> -v oss:/hjkj-drone/drone/snapshot minio:/hjkj-drone/snapshot &gt; rclone.log 2&gt;&amp;1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 通配符复制</span></span><br><span class="line">./rclone <span class="built_in">sync</span> -v oss:/hjkj-drone/drone minio:/hjkj-drone/drone --include <span class="string">"{*/DJI_20240308*/*.mp4}"</span> &gt; rclone.log 2&gt;&amp;1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将本地目录上传到minio</span></span><br><span class="line">./rclone <span class="built_in">sync</span> -v /home/hj/alioss minio:/drone  &gt; rclone.log 2&gt;&amp;1</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7084608696910610462">Rclone将阿里云Oss文件同步到Minio </a> 这里直接有配置文件，可以采用配置文件。<br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/375433718">如何使用MinIO 建立阿里云OSS代理</a> minio gateway<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lwq657359703/article/details/120560206">rclone 实现阿里OSS同步到MINIO</a> 其实非常简单的一行命令,使用定时任务进行同步。<br>【4】.<a target="_blank" rel="noopener" href="https://ahau.fun/articles/rclone-tutorial.html">RcLone使用教程</a><br>【5】.<a target="_blank" rel="noopener" href="https://p3terx.com/archives/rclone-advanced-user-manual-common-command-parameters.html">Rclone 进阶使用教程 - 常用命令参数详解 </a><br>【6】.<a target="_blank" rel="noopener" href="https://rclone.org/install/">Install</a></div>
+<h1 id="5-解决上传比较慢的问题"><a href="#5-解决上传比较慢的问题" class="headerlink" title="5.解决上传比较慢的问题"></a>5.解决上传比较慢的问题</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">--transfers 4 表示文件并行数量</span><br><span class="line">--max-size 3G 传输的文件最大3G</span><br><span class="line">--min-size 3G 传输的文件最小3G</span><br><span class="line">--checkers 64 并行检查64个文件</span><br><span class="line">--drive-acknowledge-abuse 使用多线程传输</span><br><span class="line">--fast-list 加快列表操作的速度 </span><br><span class="line"></span><br><span class="line"><span class="comment">## 其他参数</span></span><br><span class="line">--allow-other：允许非当前 rclone 用户外其它用户进行访问</span><br><span class="line">--attr-timeout 5m：文件属性缓存，（大小，修改时间等）的时间。如果 VPS 配置比较低，建议适当提高这个值，避免过多内核交互，降低资源占用。</span><br><span class="line">--vfs-cache-mode full：开启 VFS 文件缓存，可减少 rclone 与 API 交互，同时可提高文件读写效率</span><br><span class="line">--vfs-cache-max-age 24h：VFS 文件缓存时间，这里设置 24 小时，如果文件很少更改，建议设置更长时间</span><br><span class="line">--vfs-cache-max-size 5G：VFS 文件缓存上限大小，请根据服务器剩余磁盘自行调节</span><br><span class="line">--vfs-read-chunk-size-limit 300M：分块读取大小，这里设置的是300M，可以提高文件读取的效率，比如1G的文件，大致分为10个块进行读取，但与此同时 API 请求次数也会增多</span><br><span class="line">--buffer-size 300M：设置内存缓存，请根据服务器内存大小自行设置</span><br><span class="line">--daemon：后台运行程序</span><br><span class="line">--copy-links: 如果 OneDrive 中存在链接（symlink），则复制链接而不是解析它们。</span><br><span class="line">--no-gzip-encoding: 禁止对文件进行 gzip 编码。</span><br><span class="line">--no-check-certificate: 禁止检查 SSL 证书。</span><br><span class="line">--allow-other: 允许其他用户（非挂载命令的用户）访问和操作挂载的文件系统。</span><br><span class="line">--allow-non-empty: 允许挂载到非空目录。如果您要将 OneDrive 挂载到一个非空目录，需要使用这个选项。</span><br><span class="line">--<span class="built_in">umask</span> 000: 设置挂载目录的文件权限掩码为 000，意味着挂载的文件和目录对所有用户都具有完全的权限。</span><br><span class="line">--no-modtime 用缺少modtime信息换取加载速度。</span><br><span class="line"></span><br><span class="line"><span class="comment">## 示例</span></span><br><span class="line">./rclone <span class="built_in">sync</span> -v /home/drone minio:/drone --fast-list --drive-acknowledge-abuse --s3-chunk-size 512M --checkers 64 --transfers 64 &gt; rclone.log 2&gt;&amp;1</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2192254">备份同步神器 Rclone 使用教程</a> rclone 中的每个选项都可以通过环境变量设置。环境变量的名称可以通过长选项名称进行转换，删除 – 前缀，更改 - 为 _，大写并添加前缀 RCLONE_。环境变量的优先级会低于命令行选项，即通过命令行追加相应的选项时会覆盖环境变量设定的值。<br>【2】.<a target="_blank" rel="noopener" href="https://www.volcengine.com/theme/8037823-R-7-1">rclone从存储桶到文件系统的传输速度慢</a> 这里有几个参数可以调整</div>
+<h1 id="6-rclone同步到alist"><a href="#6-rclone同步到alist" class="headerlink" title="6.rclone同步到alist"></a>6.rclone同步到alist</h1><p>同步到百度网盘 编辑 rclone.conf 配置文件，填入如下的内容，因为这个密码需要加密后的密码，所以只能通过 rclone config 的方式进行生成配置</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[百度网盘]</span><br><span class="line">type = webdav</span><br><span class="line">vendor = Other</span><br><span class="line">user = admin</span><br><span class="line">pass = xxxx</span><br><span class="line">url = http://127.0.0.1:10002/dav</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（1）配置步骤</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">./rclone config</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1.选择 n 创建新的远程连接</span></span><br><span class="line"><span class="comment"># 2.设置远程名称：baidu</span></span><br><span class="line"><span class="comment"># 3.选择存储类型，这里没有可选项，直接输入： webdav</span></span><br><span class="line"><span class="comment"># 4.设置url, 这里设置：http://127.0.0.1:10002/dav</span></span><br><span class="line"><span class="comment"># 5.设置vendor，有些地方选6，我这个版本选择7：Other site/service or software</span></span><br><span class="line"><span class="comment"># 6.设置远程账号user，这里就是 alist 的用户名：admin</span></span><br><span class="line"><span class="comment"># 7.设置密码，这里就是 alist 的密码：</span></span><br><span class="line"><span class="comment"># 8.显示远程信息，确认，接下来一路回车</span></span><br><span class="line"><span class="comment"># 9.最后退出就好了。</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）查看目录</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看alist的目录   baidu: 等于配置文件里面的名字</span></span><br><span class="line">rclone lsd baidu:</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 查看alist的文件  等于配置文件的remote</span></span><br><span class="line">rclone <span class="built_in">ls</span> baidu:</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）挂载好之后进行同步</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/rclone/rclone copy -v oss:/hjkj-drone/drone baidu:/zjhjkj/drone --fast-list --drive-acknowledge-abuse --s3-chunk-size 64M --checkers 32 --transfers 32 &gt; /usr/local/rclone/logs/rclone_baidu.log</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意</strong><br>为了解决大文件上传的问题，如果使用默认的配置的话，会导致大文件无法上传，我测试的时候，是超过 20M 就无法上传了，于是我坐了下面的一些操作，成功的上传了大文件，但是相应的，上传速度就会慢点很多。<br>（1）需要进行自定义破解ua：pan.baidu.com<br>（2）上传线程数需要设置为 1，设置为其他的会出错<br>（3）rclone传输的时候，也需要设置为 1，否则也会出错。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/rclone/rclone copy -v oss:/hjkj-drone/drone baidu:/zjhjkj/drone --fast-list --drive-acknowledge-abuse --s3-chunk-size 64M --checkers 2 --transfers 2 --<span class="built_in">timeout</span> 120m</span><br></pre></td></tr></tbody></table></figure>
+<p>（4）关于页面上的 web 代理，这地方我暂时想不明白到底怎么回事，我觉得关闭 web 代理，上传的速度可能会更快一些。</p>
+<img src="/images/loadimg.png" data-original="/posts/10a1b1ae/alist_3.png" lay-src="/posts/10a1b1ae/alist_3.png" class="" title="Alist">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/discussions/1948">分享一下总结的rclone挂载百度网盘，迅雷网盘的博客</a><br>【2】.<a target="_blank" rel="noopener" href="https://yoola.top/pub/id=4">百度网盘官方linux+rclone定时转存脚本–解决你的百度网盘转存到onedrive或googledrive问题</a><br>【3】.<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/agqo096d/">非常规网盘研究 篇二：rclone+alist挂载百度网盘，天翼云盘等各种网盘为本地数据 </a> 建议选代理模式,如果是外网的话302跳转可以绕过服务器直接访问网盘,速度要更快也不占用alist服务器带宽。不过302跳转可能要设置请求header来适配各家网盘。<br>【4】.<a href="%E4%B8%8D%E8%BF%87302%E8%B7%B3%E8%BD%AC%E5%8F%AF%E8%83%BD%E8%A6%81%E8%AE%BE%E7%BD%AE%E8%AF%B7%E6%B1%82header%E6%9D%A5%E9%80%82%E9%85%8D%E5%90%84%E5%AE%B6%E7%BD%91%E7%9B%98">不过302跳转可能要设置请求header来适配各家网盘</a><br>【5】.<a target="_blank" rel="noopener" href="https://www.aioscn.com/jiaochengjiqiao/ra.html">rclone和alist挂载网盘当本地磁盘</a> 这里有常见的 rclone 命令，还有开机启动的问题，最后也是用的这个里面的一些东西弄好的自己的配置，这里也是有部分不一样的，但是大部分还是可以参考的，这里也有rclone的很多参数信息可以查看<br>【6】.<a target="_blank" rel="noopener" href="https://willxup.top/archives/deploy-alist-and-rclone">rclone和alist挂载网盘到本地</a> 使用了 docker 部署了 alist 。使用二进制包安装了 rclone，通过 rclone config 配置了链接。挂载到本地，开机自动挂载，还有就是接触挂载。<br>【7】.<a target="_blank" rel="noopener" href="https://forums.unraid.net/topic/153061-%E6%9C%80%E5%AE%8C%E6%95%B4rclone%E6%8C%82%E8%BD%BD%E7%BD%91%E7%9B%98%E5%88%B0%E6%9C%AC%E5%9C%B0%EF%BC%88alist%E7%AF%87%EF%BC%89%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">最完整rclone挂载网盘到本地（Alist篇）解决方案</a> 后台模式挂载到本地，将189Cloud挂载到本地目录/webdav。开机自动挂载 。</div>
+<h1 id="8-rclone移动"><a href="#8-rclone移动" class="headerlink" title="8.rclone移动"></a>8.rclone移动</h1><p>这里我测试了，如果一个文件很大，没有上传完成，在上传期间，那么使用 rclone 列举文件，就不会出现这个问题，等文件上传完成就可以查看到这个文件了。所以不会存在一个文件上传了一小部分，移动之后，就被删除的情况。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看一级文件</span></span><br><span class="line">./rclone --max-depth 1 <span class="built_in">ls</span>  oss:zjhjkj</span><br><span class="line"></span><br><span class="line"><span class="comment">## 同步成功后删除，排除截图目录</span></span><br><span class="line"><span class="built_in">nohup</span> /usr/local/rclone/rclone moveto -v oss:/zjhjkj/drone baidu:/zjhjkj/drone --exclude snapshot/ --fast-list --drive-acknowledge-abuse --s3-chunk-size 64M --checkers 32 --transfers 1 --<span class="built_in">timeout</span> 120m --daemon --buffer-size=500M &gt; /usr/local/rclone/logs/rclone_baidu.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hiyang/p/12841418.html">rclone的基本用法</a> –max-backlog #N   # 在 sync/copy/move 时使用，占用 N 倍 KB 内存;–bwlimit UP:DOWN  # 上传下载限速，b|k|M|G<br>【2】.<a target="_blank" rel="noopener" href="https://rclone.cn/rclone_move.html">rclone_move命令行</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/zhangxueliang/5437686">rclone中文文档：常用命令大全</a></div>
+<h1 id="9-带宽"><a href="#9-带宽" class="headerlink" title="9.带宽"></a>9.带宽</h1><p>我遇到了一个问题，就是在前端运行的时候，上传速度可以跑满带宽，但是当我用 nohup 命令转到后台运行之后，就会导致带宽始终上不来。我为了解决这个问题，想了很多的办法。–bwlimit 10M:off 意味着将上传带宽限制为 10 MiB/s，下载带宽限制为 100 KiB/s。任一限制都可以“关闭”，意味着没有限制，因此只需限制您将使用的上传带宽。</p>
+<p>后来我在运行脚本的地方，加了一个 –bwlimit off:off 参数，表示上传和下载都不限制，这才能使带宽跑满了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这意味着，周一的传输带宽将设置为 512 KiB/s。周五结束前将升至 10 MiB/s。周六 10:00 将设置为 1 MiB/s。周日 20:00 起不限量。</span></span><br><span class="line">--bwlimit <span class="string">"Mon-00:00,512 Fri-23:59,10M Sat-10:00,1M Sun-20:00,off"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 传输带宽将在每天早上8点设置为512 KiB/s。中午，它将上升到10 MiB/s，并在下午1点回落到512 KiB/sec。在下午6点，带宽限制将被设置为30 MiB/s，在晚上11点，它将被完全禁用（全速）。 晚上11点和早上8点之间的任何东西都将保持无限。</span></span><br><span class="line">--bwlimit <span class="string">"08:00,512k 12:00,10M 13:00,512k 18:00,30M 23:00,off"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>比特/秒 ，实际上就是我们常说的带宽，比如家庭网是 10M 带宽，真正的传输速率就是 10M/8 = 1.25Mib/s ，也就是每秒传输 1.25M 的数据。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://rclone.org/docs/">–bwlimit=BANDWIDTH_SPEC</a><br>【2】.<a target="_blank" rel="noopener" href="https://rclone.cn/docs.html">rclone使用技巧</a> 注意，单位是字节/秒，而不是比特/秒。通常情况下，连接是以比特/秒来衡量的–转换时要除以8。例如，假设你有一个10Mbit/s的连接，你希望rclone使用它的一半–5Mbit/s。这就是5/8 = 0.625 MiB/s，所以你要为rclone使用–bwlimit 0.625M参数。</div>
+<h1 id="10-过滤"><a href="#10-过滤" class="headerlink" title="10.过滤"></a>10.过滤</h1><p>如果你把任何规则以 / 结尾它只会匹配目录，如果以 / 开头，那么就是从根目录开始匹配。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 过滤全部的 snapshot 目录，和以 kmz 文件结尾的文件</span></span><br><span class="line">--exclude <span class="string">"snapshot/"</span> --exclude <span class="string">"*.kmz"</span></span><br></pre></td></tr></tbody></table></figure>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010066597/article/details/137563684">rclone 过滤，包含和排除规则</a> 这里是单星号。–exclude “/{.git,public,resources}/“，排除 .git、public 和 resources 文件夹<br>【2】.<a target="_blank" rel="noopener" href="https://juejin.cn/s/rclone%20sync%20exclude%20directory">rclone sync exclude directory</a><br>【3】.<a target="_blank" rel="noopener" href="https://www.rclone.cn/document/%E8%BF%87%E6%BB%A4%EF%BC%8C%E5%8C%85%E5%90%AB%E5%92%8C%E6%8E%92%E9%99%A4%E8%A7%84%E5%88%99/">过滤，包含和排除规则</a><br>【4】.<a target="_blank" rel="noopener" href="https://www.volcengine.com/theme/4506647-R-7-1">如何使用rclonesync排除特定名称的子目录？</a> 这里是双星号，–exclude <code>**/test/**</code> 排除名称包含 test 的子目录</div>
+<h1 id="11-同步到本地目录"><a href="#11-同步到本地目录" class="headerlink" title="11.同步到本地目录"></a>11.同步到本地目录</h1><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>（1）Segmentation fault<br>使用脚本安装之后，直接无法启动，出现了 “段错误” 问题。</p>
+<p>【解决方案】<br>我重新下载了 alist ，找了 alist-linux-amd64.tar.gz ，然后解压后上传到服务器，替换了自动脚本安装的 alist 程序，解决了这个问题。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/issues/6298">alist启动失败</a><br>【2】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/discussions/5908">用的是Alibaba Cloud Linux 3，安装失败！密码无法更改，应用也无法启动！</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_4490996/886132">常见的Linux下的段错误 及解决办法</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38892528/article/details/103870163">Linux程序运行出现Segmentation fault (core dumped)的通用解决方法</a></div>
+<p>（2） context deadline exceeded (Client.Timeout exceeded while awaiting headers) #2: Post “<a target="_blank" rel="noopener" href="https://d.pcs.baidu.com/rest/2.0/pcs/superfile2">https://d.pcs.baidu.com/rest/2.0/pcs/superfile2</a><br>这个就是我上传650M文件的时候，出现了这个，我尝试了很多的方法，在网页上显示的错误。</p>
+<p>【解决方案】<br>（1）后来我将上传线程数由 3 改为了 1,就可以完成上传了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/discussions/4859">付费求alist百度网盘rclone挂载webdav可上传大文件方案</a> 使用了超时时间：–transfers 1 –timeout 60m<br>【2】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/issues/5757">百度网盘bug</a><br>【3】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/issues/5602">SVIP百度网盘WebDAV无法播放</a></div>
+<p>（3）405 Method Not Allowed (WebDAV)<br>在将使用rclone进行大文件传输的时候，就会出现这个问题，小于20M的文件就可以上传，但是大于 20M 的就无法上传了，真是不知道为什么了。</p>
+<p>【尝试方法】<br>（1）将破解ua，由 pan.baidu.com，改为了：netdisk<br>（2）尝试新建一个 alist 用户，没有效果。<br>（3）降低 rclone 一次传输的文件数量，通过 –checkers 4 –transfers 4，限制一次只能传输 4 个文件，可是不行。<br>（4）尝试增加了  –multi-thread-streams 0 这个方法，还是不行<br>（5）尝试查看是不是文件路径过长，就算是短的名字，还是不行。</p>
+<p>【解决方案】<br>这个是综合的解决方案<br>（1）需要设置 ua 为 pan.baidu.com</p>
+<img src="/images/loadimg.png" data-original="/posts/10a1b1ae/alist_2.png" lay-src="/posts/10a1b1ae/alist_2.png" class="" title="Alist">
+
+<p>（2）为了保证正常传输，还需要合理的设置传输文件个数，rclone的 –transfers 需要设置为1</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/rclone/rclone copy -v oss:/hjkj-drone/drone baidu:/zjhjkj/drone --fast-list --drive-acknowledge-abuse --s3-chunk-size 64M --checkers 32 --transfers 1 --<span class="built_in">timeout</span> 120m</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）如果 alist 的刷新码过期了，也会出现这样的问题，解决方案就是重新扫码登录，获取新的刷新码，然后填上。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://forum.rclone.org/t/405-method-not-allowed-webdav/11218">405 Method Not Allowed (WebDAV)</a><br>【2】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/issues/5203">data/temp空间无限制,导致copy时磁盘占满出现405 Method Not Allowed</a> 这里说是 data/temp 文件大小的限制<br>【3】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/issues/3621">挂载Alist上传大文件报Method Not Allowed: 405 错误</a> 这是onedrive/sharepoint WebDAV的限制，非alist bug。<br>【4】.<a target="_blank" rel="noopener" href="https://hostloc.com/thread-1132367-1-1.html">Rclone搭建Webdav服务+Systemd保活+Nginx反代+CF加速一条龙 </a> 如果少了这一段部分应用用 POST 方法上传 js 和 png 等静态文件时 Nginx 那边会报 method not allowed: 405 错误。这一段配置是我自己摸爬滚打参考了无数博客试验出来的，貌似全网独一无二，网上主流的做法是加一段“error_page 405 =200 http://$host$request_uri;”这样的配置，但是这个配置加了之后我常用的一个可以同步 webdav 的同步软件 goodsync 会报奇怪的错误，所以也就是说主流的做法没卵用。<br>【5】.<a target="_blank" rel="noopener" href="https://github.com/alist-org/alist/discussions/1751">webdav连接失败，报405 method not allowded,求帮助</a> 这里也没有解决这个问题，但是这里说的是新建一个用户，我尝试过了，不行。<br>【6】.<a target="_blank" rel="noopener" href="https://github.com/messense/aliyundrive-webdav/issues/276">云服务器 rclone挂载后上传大文件失败</a> 自己研究出的解决办法： –multi-thread-streams 0，单线程 上传成功，默认4线程最后合并阶段出错<br>【7】.<a target="_blank" rel="noopener" href="https://forum.rclone.org/t/405-method-not-allowed-webdav/11218">405 Method Not Allowed (WebDAV)</a> 这里显示的问题是 文件名可能太长了，但是我尝试过了，好像不行。</div>
+<p>（4）Not deleting source as copy failed: corrupted on transfer<br>当我用rclone进行传输的时候，结果报了这个错误，暂时不知道到底是cpolar的问题还是rclone的问题。也就说说文件传输失败了</p>
+<p>【尝试方法】<br>（1）后来我用了cpolar的域名，结果出现错误：Failed to copy: multipart upload: failed to read source: unexpected EOF</p>
+<p>（2）我尝试换了一个域名，用 nas.cpolar.cn 域名进行minio上传测试，使用 rclone 文件文件转移，结果就是小文件没有问题，但是一旦超过了3.5G，最后就会报错：corrupted on transfer， Not deleting source as copy failed: corrupted on transfer。传输中断，我尝试了很多次，都是这个样子。</p>
+<p>（3）使用 minio 提供的 web 端进行传输，但是却可以传输 3.5G 的文体。通过查看 rclone 的传输日志，明明是3.5G的文件，最后传输了竟然是超过了 100%，达到了 156%，有 5.4G 文件。</p>
+<p>【解决方案】<br>（1）升级版本从 1.66 升级到 1.67，没想到升级之后就可以了。<br>（2）如果还是不行，增加参数 –ignore-size 强制进行复制，但是这样做的后果我无法估计。还有一个参数就是 –ignore-checksum，这个参数也是忽略检查。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">--ignore-case-sync                            Ignore <span class="keyword">case</span> when synchronizing</span><br><span class="line">--ignore-checksum                             Skip post copy check of checksums</span><br><span class="line">--ignore-existing                             Skip all files that exist on destination</span><br><span class="line">--ignore-size                                 Ignore size when skipping use modtime or checksum</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_56799642/article/details/133189431">分布式文件存储系统minio、大文件分片传输</a> 1、Promise对象；2、Blob对象和File 对象；3、FileReader函数；4、前端文件转MD5<br>【2】.<a target="_blank" rel="noopener" href="https://support.huawei.com/enterprise/zh/knowledge/EKB1100130375">rclone迁移客户数据进程中断</a> 1.首先检查服务器网络连接，客户反馈无人进过机房，未曾有过网络连接失败的情况；2.检查服务器日志，cpu、内存和磁盘读写都正常；3.检查服务器日志，cpu、内存和磁盘读写都正常；4.排查发现遍历源目录的时间约为1天，怀疑是由于目录内的文件数量太多导致rclone进程down掉;<br>【3】.<a target="_blank" rel="noopener" href="https://hostloc.com/thread-985901-1-1.html">rclone怎么传一些文件老是有几个失败啊</a> 拷贝到OneDrive报错 size differ,这是一个已知的微软的问题，在上传办公文件（word、xls等）和html文档的时候，OneDrive会偷偷修改文件大小,解决方法：拷贝完毕其他文件后确认只剩这些因为size differ报错而无法拷贝的文件了，则添加下述指令,–ignore-checksum –ignore-size,忽略文件检查指令，强制拷贝。<br>【4】.<a target="_blank" rel="noopener" href="https://eijil.com/t/rclone/42/2">Rclone常见用法和问题解决办法</a> 1.如果使用rclone出现corrupted on transfer: MD5 hash differ的错误提示，原因可能是rclone认为的文件的md5值与google drive提供的md5值不一样，解决办法就是加上 –ignore-checksum 参数。2.使用rclone进行google drive服务器之间拷贝方法，先把别人共享的文件夹点击右键，选择 添加到“我的云端硬盘”，这样你的15G的个人google drive就有了这个文件夹的快捷方式，然后使用命令rclone copy –transfers=100 –progress –stats-one-line –drive-server-side-across-configs 你刚刚保存的文件夹快捷方式: 你的无限网盘路径。3.如果发现拷贝不动了，但是有速度，说明你拷贝的数据量超过了google drive每天规定的750G上限，办法是换个gmail账户，然后在重复第二步，拷贝，重复的文件会自动忽略。。4.last error was: corrupted on transfer: sizes differ,出现上述错误，可以添加参数 –ignore-size<br>【5】.<a target="_blank" rel="noopener" href="https://forum.rclone.org/t/rclone-throwing-error-corrupted-on-transfer-sizes-differ/45776">Rclone throwing error “corrupted on transfer: sizes differ”</a> First try the same with the latest rclone version. You are using quite old one. 这里从 1.61.1 升级到 1.66.0 解决了这个问题。<br>【6】.<a target="_blank" rel="noopener" href="https://rclone.org/flags/">Global Flags</a><br>【7】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hiyang/p/12841418.html">rclone的基本用法</a> –s3-chunk-size 默认值 5M<br>【8】.<a target="_blank" rel="noopener" href="https://rclone.cn/flags.html">rclone flag</a> 这里有特别多的参数说明，可以作为查阅手册<br>【10】。<a target="_blank" rel="noopener" href="https://blog.arstercz.com/rclone-usage-and-issue-list/">rclone 工具使用及问题汇总</a> 内核不支持插件问题;安装问题;rsync 传输错误;md5 校验错误;一致性问题;目录显示问题;windows 使用问题;缓存目录过大问题<br>【11】.<a target="_blank" rel="noopener" href="https://forum.rclone.org/t/rclone-throwing-error-corrupted-on-transfer-sizes-differ/45776"> Not deleting source as copy failed: corrupted on transfer: sizes differ 3761874597 vs 5368642250</a> 这里通过升级版本解决了。<br>【12】.<a target="_blank" rel="noopener" href="https://www.reddit.com/r/minio/comments/xdj07o/minio_error_unexpected_eof_for_metacache/?rdt=40428">minio error Unexpected EOF for .metacache </a><br>【13】.<a target="_blank" rel="noopener" href="https://github.com/rclone/rclone/issues/2203">-s3-chunk-size int option for S3 users</a> 我的网络具有低延迟和良好的网络带宽，在这种用例中，为传输大文件制作太小的块（5M）无助于获得最佳性能。<br>【14】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43859729/article/details/136318516">Rclone文件传输设置禁止分段，不产生partial类型临时文件</a> 如果没有–inplace（默认值），rclone将首先上传到一个扩展名如下的临时文件，其中XXXXXX表示一个随机字符串，.partial是–partial后缀值（默认值为.partial）。原始文件名。XXXXXX.部分（如果需要，rclone将通过截断原始文件名部分来确保最终名称不超过100个字符）。<br>上传完成后，rclone会将.partial文件重命名为正确的名称，覆盖此时的任何现有文件。如果上传失败，则.partial文件将被删除。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/bf33a246.html" rel="next" title="软件研究之Ruoyi分离版">
+                      <i class="iconfont icon-prev"></i> 软件研究之Ruoyi分离版
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/f551de79.html" rel="prev" title="软件研究之QGIS">
+                      软件研究之QGIS <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">2.下载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.</span> <span class="toc-text">3.编辑配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%A7%A3%E5%8E%8B%E9%85%8D%E7%BD%AE%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%9D%83%E9%99%90"><span class="toc-number">4.</span> <span class="toc-text">4.解压配置可执行权限</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E8%A7%A3%E5%86%B3%E4%B8%8A%E4%BC%A0%E6%AF%94%E8%BE%83%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">5.解决上传比较慢的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-rclone%E5%90%8C%E6%AD%A5%E5%88%B0alist"><span class="toc-number">6.</span> <span class="toc-text">6.rclone同步到alist</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-rclone%E7%A7%BB%E5%8A%A8"><span class="toc-number">7.</span> <span class="toc-text">8.rclone移动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%B8%A6%E5%AE%BD"><span class="toc-number">8.</span> <span class="toc-text">9.带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E8%BF%87%E6%BB%A4"><span class="toc-number">9.</span> <span class="toc-text">10.过滤</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E5%90%8C%E6%AD%A5%E5%88%B0%E6%9C%AC%E5%9C%B0%E7%9B%AE%E5%BD%95"><span class="toc-number">10.</span> <span class="toc-text">11.同步到本地目录</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">11.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/10a1b1ae.html';
+      this.page.identifier = 'posts/10a1b1ae.html';
+      this.page.title = '软件研究之Rclone';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：软件研究之Rclone 链接地址:https://bibichuan.github.io/posts/10a1b1ae.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '软件研究之Rclone',
+		url: 'https://bibichuan.github.io/posts/10a1b1ae.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '软件研究之Rclone',
+			isTipVisibility: true,
+			tip: '软件研究之Rclone',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

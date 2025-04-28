@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hadoop编译安装</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Hadoop编译安装</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-12-28 05:07:52
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>在安装hadoop的时候，总是出现：WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform… using builtin-java classes where applicable,很多地方说是因为安装包的版本不兼容，不影响hadoop的功能，本着探究的精神，我还是选择了编译安装hadoop。我的测试环境是：CentOS6.5 64位系统,hadoop版本是3.2.1。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010454030/article/details/84605133">如何在CentOS6.5下编译64位的Hadoop2.x</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013259893/article/details/41381923">CentOS 6.5单节点编译安装hadoop-2.2.0</a></div>
+<h2 id="1-安装gcc"><a href="#1-安装gcc" class="headerlink" title="1.安装gcc"></a>1.安装gcc</h2><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc</span><br><span class="line">yum install -y  bzip2-devel</span><br><span class="line">yum -y install gcc-c++</span><br><span class="line">yum install make</span><br><span class="line">yum install autoconf automake libtool cmake ncurses-devel openssl-devel gcc*</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="2-安装JDK"><a href="#2-安装JDK" class="headerlink" title="2.安装JDK"></a>2.安装JDK</h2><p>这里就不测试了，因为我已经安装了。</p>
+<h2 id="3-安装Maven"><a href="#3-安装Maven" class="headerlink" title="3.安装Maven"></a>3.安装Maven</h2><p>(1) 下载<a target="_blank" rel="noopener" href="https://maven.apache.org/download.cgi">Maven</a></p>
+<p>(2) 解压到/usr/local/maven3.6.3</p>
+<p>(3) 设置环境变量</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">MAVEN_HOME=/usr/local/maven3.6.3</span><br><span class="line"><span class="built_in">export</span> MAVEN_HOME</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$MAVEN_HOME</span>/bin</span><br></pre></td></tr></tbody></table></figure>
+<p>(4) 重载配置文件</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></tbody></table></figure>
+<p>(5) 配置阿里云镜像</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑settings</span></span><br><span class="line">vi /usr/local/maven3.6.3/conf/settings.xml</span><br><span class="line"><span class="comment">## 在&lt;mirrors&gt;节点中添加</span></span><br><span class="line">&lt;mirror&gt;</span><br><span class="line">    &lt;<span class="built_in">id</span>&gt;alimaven&lt;/id&gt;</span><br><span class="line">    &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">    &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;        </span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/freeweb/p/5241013.html">Linux下安装Maven</a><br>2.<a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/78124">最快的 maven repository–阿里镜像仓库</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tengxing007/article/details/72588242">Maven镜像更换为阿里云中央仓库(精)</a></div>
+<h2 id="4-安装protobuf"><a href="#4-安装protobuf" class="headerlink" title="4.安装protobuf"></a>4.安装protobuf</h2><p><strong>这里最好使用2.5.0 版本的，否则会出现问题一中的问题</strong></p>
+<p>(1) <a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf/releases">下载protoc-3.11.2-linux-x86_64.zip</a><br>(2) 解压到指定目录</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip protoc-3.11.2-linux-x86_64.zip -d /usr/local/protoc</span><br></pre></td></tr></tbody></table></figure>
+<p>(3) 在PATH环境变量中添加protoc目录</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑</span></span><br><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="comment">## 添加变量</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/local/protoc/bin</span><br><span class="line"></span><br><span class="line"><span class="comment">## 重载</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></tbody></table></figure>
+<p>(4) 测试</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --<span class="built_in">help</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/00be93ed230c">Protobuf 安装及使用</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiexievv/article/details/47396725">linux下安装google protobuf（详细）</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/smiler/p/7000200.html">gunzip 和 unzip 解压文件到指定的目录</a></div>
+<h2 id="5-编译hadoop"><a href="#5-编译hadoop" class="headerlink" title="5.编译hadoop"></a>5.编译hadoop</h2><p>(1) 下载<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/core/">hadoop-3.2.1-src.tar.gz</a>源码<br>(2) 解压</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf hadoop-3.2.1-src.tar.gz</span><br></pre></td></tr></tbody></table></figure>
+<p>(3) 编译hadoop</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入解压后的目录</span></span><br><span class="line"><span class="built_in">cd</span> hadoop-3.2.1-src</span><br><span class="line"><span class="comment">## 添加阿里云maven镜像</span></span><br><span class="line">vi pom.xml</span><br><span class="line"><span class="comment">## 在repositories下添加如下内容</span></span><br><span class="line">&lt;repositories&gt;  </span><br><span class="line">    &lt;repository&gt;  </span><br><span class="line">        &lt;<span class="built_in">id</span>&gt;alimaven&lt;/id&gt;  </span><br><span class="line">        &lt;name&gt;aliyun maven&lt;/name&gt;  </span><br><span class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;  </span><br><span class="line">        &lt;releases&gt;  </span><br><span class="line">            &lt;enabled&gt;<span class="literal">true</span>&lt;/enabled&gt;  </span><br><span class="line">        &lt;/releases&gt;  </span><br><span class="line">        &lt;snapshots&gt;  </span><br><span class="line">            &lt;enabled&gt;<span class="literal">false</span>&lt;/enabled&gt;  </span><br><span class="line">        &lt;/snapshots&gt;  </span><br><span class="line">    &lt;/repository&gt;  </span><br><span class="line">&lt;/repositories&gt;  </span><br><span class="line"></span><br><span class="line"><span class="comment">## 编译</span></span><br><span class="line">mvn package -Pdist,native -DskipTests -Dtar</span><br></pre></td></tr></tbody></table></figure>
+
+<p>增加了阿里云的镜像，有时候也会在编译下载的时候卡住，使用Ctrl+C停止编译，然后重新编译，就会继续进行编译和下载。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="http://www.itxm.cn/post/738.html">Hadoop综合练习第二节–Hadoop2.X编译安装和实验详解</a><br>2.<a target="_blank" rel="noopener" href="https://my.oschina.net/allman90/blog/486768">CentOS7中编译Hadoop2.x </a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/feinifi/article/details/79827140">hadoop-3.0.1源码编译需要注意的事项</a></div>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h2><p>解决了下面一系列的问题:<br>(1) hadoop3.0.x需要cmake3.x,升级cmake为3.x和gcc为7+</p>
+<p>(2) 安装probuf2.5.0版本并配置PROTOBUF_HOME环境变量;</p>
+<p>(4) 就是注释掉pom.xml中的jboss仓库地址,jboss有时候连不上;</p>
+<p>(5) 注释掉hadoop-client-modules/pom.xml中的：<code>&lt;module&gt;hadoop-client-check-test-invariants&lt;/module&gt;</code></p>
+<p>(6) 使用编译命令：<code>mvn -X package -Pdist,native,docs -DskipTests -Dtar -Dmaven.skip.test=true -Dmaven.javadoc.skip=true</code></p>
+<p>(7) 编译结果在：hadoop-3.0.1-src/hadoop-dist/target目录下</p>
+<p>最后编译成功了：</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_14.png" lay-src="/posts/1d2c9375/hadoop_14.png" class="" title="cmake安装">
+
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>[1].org.apache.maven.plugin.MojoExecutionException: protoc version is ‘libprotoc 3.11.2’, expected version is ‘2.5.0’<br>既然已经说了要2.5.0的protoc，那就<a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf/releases/tag/v2.5.0">下载</a>,替换掉最新的3.11.2</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_1.png" lay-src="/posts/1d2c9375/hadoop_1.png" class="" title="hadoop编译安装">
+
+<p>(1) 下载<br>(2) 删除原先的protoc</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf /usr/local/protoc/</span><br></pre></td></tr></tbody></table></figure>
+<p>(3) 编译2.5.0版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 解压</span></span><br><span class="line">tar -xvf protobuf-2.5.0.tar.gz</span><br><span class="line"><span class="comment">## 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> protobuf-2.5.0.tar.gz</span><br><span class="line"><span class="comment">## 编译</span></span><br><span class="line">./configure --prefix=/usr/local/protoc/</span><br><span class="line"><span class="comment">## 安装</span></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></tbody></table></figure>
+<p>(4) 配置环境变量<br>将/usr/local/protoc/bin,加入PATH中。由于我前面已经配置过了，就不用再配了。</p>
+<p>(5) 测试</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --version</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://my.oschina.net/allman90/blog/486768">CentOS7中编译Hadoop2.x</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tdmyl/article/details/31811317">protobuf-2.5.0.tar.gz的下载与安装</a></div>
+<p>[2].Failed to execute goal org.apache.hadoop:hadoop-maven-plugins:3.2.1:cmake-compile (cmake-compile) on project hadoop-common</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_2.png" lay-src="/posts/1d2c9375/hadoop_2.png" class="" title="hadoop编译问题">
+
+<p>第一个问题解决了，第二个问题出现了。根据参考资料，需要升级cmake,参考文章2中说，要安装hadoop3以上，需要：CMake 3.1 or higher is required.  You are running version 2.8.12.2<br>(1) 卸载原先的cmake</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看版本</span></span><br><span class="line">cmake --version</span><br><span class="line"><span class="comment">## 卸载</span></span><br><span class="line">yum remove cmake</span><br></pre></td></tr></tbody></table></figure>
+<p>(2) 下载<a target="_blank" rel="noopener" href="https://cmake.org/download/">cmake</a></p>
+<p>(3) 解压</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf cmake-3.16.2.tar.gz</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 编译安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> cmake-3.16.2</span><br><span class="line"><span class="comment">## 编译</span></span><br><span class="line">./bootstrap</span><br></pre></td></tr></tbody></table></figure>
+
+<p>出现问题：Cannot find a C++ compiler that supports both C++11 and the specified C++ flags.</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_3.png" lay-src="/posts/1d2c9375/hadoop_3.png" class="" title="cmake安装">
+
+<p>查看gcc版本：</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_4.png" lay-src="/posts/1d2c9375/hadoop_4.png" class="" title="cmake安装">
+
+<p>只有4.7之后的gcc才支持c++ 11,那就只能先升级gcc了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yyzyxy/p/10212344.html">安装cmake过程出错：Error when bootstrapping CMake: Cannot find a C++ compiler that supports both C++11 and the specified C++ flags.</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mediatec/article/details/88431212">Compile error: Cannot find a C++ compiler that supports both C++11 and the specified C++ flags</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yoeen/article/details/6870357">yum安装g++</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/haluoluo211/article/details/71141093">哪个版本的gcc才支持c11</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaoyaozhaohan/article/details/80108546">cmake 指定 gcc 版本</a><br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jiang_xinxing/article/details/77945478">Centos7安装高版本Cmake</a><br>7.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/YingYue/p/6471581.html">使用yum安装cmake</a></div>
+<p>(5) 升级gcc</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum install centos-release-scl -y</span><br><span class="line">yum install devtoolset-7 -y</span><br><span class="line">scl <span class="built_in">enable</span> devtoolset-7 bash</span><br><span class="line"><span class="comment">## 查看版本</span></span><br><span class="line">gcc --version</span><br><span class="line"><span class="comment">## 注释：</span></span><br><span class="line"><span class="comment">## 在centos的devtoolset库中 最新的为 devtoolset-7，所以我们以后可以自己改数字安装最新的版本</span></span><br><span class="line"><span class="comment">## scl enable devtoolset-7 bash 如果使用的是zsh则使用</span></span><br><span class="line"><span class="comment">## scl enable devtoolset-7 zsh</span></span><br><span class="line"><span class="comment">## 如果不知道什么是zsh那么默认的就好了</span></span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_5.png" lay-src="/posts/1d2c9375/hadoop_5.png" class="" title="cmake安装">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/36f5d3524240">Centos 7 升级gcc</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Al_xin/article/details/92438055">Centos 7 yum 升级gcc版本方法</a><br>3.<a target="_blank" rel="noopener" href="https://www.vpser.net/manage/centos-6-upgrade-gcc.html">为CentOS 6、7升级gcc至4.8、4.9、5.2、6.3、7.3等高版本</a></div>
+<p>(6) 重新编译cmake</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bootstrap --prefix=/usr/local/cmake/</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(7) 安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gmake</span><br><span class="line">gmake install</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(8) 建立软连接，或者配置PATH环境变量<br>如果在编译的时候没有指定–prefix属性，那就建立软连接，如果指定了，那就将/usr/local/cmake/bin添加入PATH中</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 建立软连接</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/local/bin/cmake /usr/bin/</span><br><span class="line"><span class="comment">## 加入PATH</span></span><br><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/local/cmake/bin</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(9) 验证安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmake -version</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/felixzh/p/5111141.html">在Linux上编译Hadoop-2.4.0实践与总结</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b283fad5e4de">CentOS7升级cmake</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013714645/article/details/77002555">centos7下升级cmake，很简单</a></div>
+<p>[3] Failed to execute goal org.apache.hadoop:hadoop-maven-plugins:3.2.1:cmake-compile (cmake-compile) on project hadoop-hdfs-native-client: CMake failed with error code 1 </p>
+<p>(1) 切换命令</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_6.png" lay-src="/posts/1d2c9375/hadoop_6.png" class="" title="cmake安装">
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mvn package -Pdist,native -DskipTests -Dtar</span><br><span class="line"><span class="comment">## 替换为</span></span><br><span class="line">mvn clean &amp;&amp; mvn package -Pdist,native,docs -DskipTests -Dtar</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果还是报错。</p>
+<p>(2) 向上查看日志，出现了Could NOT find Protobuf (missing: Protobuf_INCLUDE_DIR)警告</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_8.png" lay-src="/posts/1d2c9375/hadoop_8.png" class="" title="hadoop编译错误">
+
+<p>我觉得应该是这里的问题。</p>
+<p>(3) 添加环境变量：PROTOBUF_HOME<br>几经周折，还是没有在网上找到具体的答案，于是我查看了出错的地方，在hadoop源码下的:hadoop-hdfs-project\hadoop-hdfs-native-client\src\main\native\libhdfspp\CMakeLists.txt,这个文件，错误就出在这里。我观察到，这里面有个有个查找包文件的地方：</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_9.png" lay-src="/posts/1d2c9375/hadoop_9.png" class="" title="hadoop编译错误">
+
+<p>然后还有一个变量为：PROTOBUF_HOME</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_10.png" lay-src="/posts/1d2c9375/hadoop_10.png" class="" title="hadoop编译错误">
+
+<p>本着死马当活马医的精神，于是，我在/etc/profile中添加了一个PROTOBUF_HOME变量，只想我编译安装protoc的目录</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PROTOBUF_HOME=/usr/local/protoc</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 再次运行编译打包<br>设置PROTOBUF_HOME环境变量之后，还真的编译通过了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/plifemao/article/details/86711771">hadoop源码研究 编译错误记录</a><br>2.<a target="_blank" rel="noopener" href="https://github.com/Ultimaker/libArcus/issues/26">cmake cannot find PROTOBUF</a><br>3.<a target="_blank" rel="noopener" href="https://octolinker-demo.now.sh/Tencent/ncnn/issues/1342">Could NOT find Protobuf (missing: Protobuf_INCLUDE_DIR)</a><br>4.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/46698260/could-not-find-protobuf-compiler">Could not find PROTOBUF Compiler</a><br>5.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1112622">Centos7安装protobuf</a><br>6.<a target="_blank" rel="noopener" href="https://centos.pkgs.org/7/centos-x86_64/protobuf-compiler-2.5.0-8.el7.x86_64.rpm.html">protobuf-compiler-2.5.0-8.el7.x86_64.rpm</a></div>
+<p>[4] Failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (pre-site) on project hadoop-common<br>上个问题解决了，出现了新的问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_7.png" lay-src="/posts/1d2c9375/hadoop_7.png" class="" title="cmake安装">
+
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[ERROR] Failed to execute goal org.apache.maven.plugins:maven-antrun-plugin:1.7:run (pre-site) on project hadoop-common: An Ant BuildException has occured: Execute failed: java.io.IOException: Cannot run program "patch" (in directory "/root/soft/hadoop-3.2.1-src/hadoop-common-project/hadoop-common"): error=2, 没有那个文件或目录</span><br><span class="line">[ERROR] around Ant part ...&lt;exec input="dev-support/jdiff-workaround.patch" dir="/root/soft/hadoop-3.2.1-src/hadoop-common-project/hadoop-common" executable="patch"&gt;... @ 4:141 in /root/soft/hadoop-3.2.1-src/hadoop-common-project/hadoop-common/target/antrun/build-main.xml</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>(1) 尝试执行：yum install patch</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/serving/issues/519">Stderr: java.io.IOException: Cannot run program “patch” (in directory “/root/.cache/bazel/_bazel_root/01a289b7faaf5ec651fb0e4e35f862a1/external/protobuf”): error=2, No such file or directory</a></div>
+<p>[5] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:3.0.0-M1:enforce (enforce-banned-dependencies) on project hadoop-client-check-test-invariants: Some Enforcer rules have failed. Look above for specific messages explaining why the rule failed.<br>看提示的最后，就是让我们移除掉:hadoop-client-check-test-invariants</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean &amp;&amp; mvn package -Pdist,native,docs -DskipTests -Dtar -rf :hadoop-client-check-test-invariants</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_11.png" lay-src="/posts/1d2c9375/hadoop_11.png" class="" title="cmake安装">
+
+<p><strong>更新</strong><br>经过多次尝试，最后终于编译成功了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入hadoop源码目录,编辑hadoop-client-modules/pom.xml</span></span><br><span class="line">vim hadoop-client-modules/pom.xml</span><br><span class="line"><span class="comment">## 将&lt;module&gt;hadoop-client-check-test-invariants&lt;/module&gt;注释掉</span></span><br><span class="line">&lt;module&gt;hadoop-client-check-test-invariants&lt;/module&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_15.png" lay-src="/posts/1d2c9375/hadoop_15.png" class="" title="cmake安装">
+
+<p>然后将编译命令改为：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -X package -Pdist,native,docs -DskipTests -Dtar -Dmaven.skip.test=<span class="literal">true</span> -Dmaven.javadoc.skip=<span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21383435/article/details/82766029">mac下编译hadoop-3.0.3</a> (根据这篇文章，最后成功了)<br>2.<a target="_blank" rel="noopener" href="https://ask.csdn.net/questions/687481">编译hadoop3.0.2 enforce-banned-dependencies失败</a></div>
+<p>[6] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.3.1:exec (dist) on project hadoop-dist: Command execution failed<br>又出现了新的问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_12.png" lay-src="/posts/1d2c9375/hadoop_12.png" class="" title="cmake安装">
+
+<p>再向上找出现了： 无法获取”/root/soft/hadoop-3.2.1-src/hadoop-hdfs-project/hadoop-hdfs-httpfs/target/hadoop-hdfs-httpfs-3.2.1/*” 的文件状态(stat): 没有那个文件或目录</p>
+<img src="/images/loadimg.png" data-original="/posts/1d2c9375/hadoop_13.png" lay-src="/posts/1d2c9375/hadoop_13.png" class="" title="cmake安装">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://my.oschina.net/alexnine/blog/779794">从零开始的 Win7 64Bit 编译Hadoop3</a><br>2.<a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/699424">Hadoop3.2.0使用详解</a></div>
+<p><strong>更新</strong><br>在解决了上面的问题5之后，问题6也自动解决了。</p>
+<p>[7] 安装时，下载jar包总是卡住<br>删除pom.xml中的下列参考，因为jboss好像访问不到了。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">id</span>&gt;</span>repository.jboss.org<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repository.jboss.org/nexus/content/groups/public/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>false<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/45e7b336.html" rel="next" title="Hexo升级过程中踩过的坑">
+                      <i class="iconfont icon-prev"></i> Hexo升级过程中踩过的坑
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/e8b7dd2c.html" rel="prev" title="Hadoop环境搭建">
+                      Hadoop环境搭建 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85gcc"><span class="toc-number">1.</span> <span class="toc-text">1.安装gcc</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85JDK"><span class="toc-number">2.</span> <span class="toc-text">2.安装JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85Maven"><span class="toc-number">3.</span> <span class="toc-text">3.安装Maven</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85protobuf"><span class="toc-number">4.</span> <span class="toc-text">4.安装protobuf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BC%96%E8%AF%91hadoop"><span class="toc-number">5.</span> <span class="toc-text">5.编译hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">6.总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/1d2c9375.html';
+      this.page.identifier = 'posts/1d2c9375.html';
+      this.page.title = 'Hadoop编译安装';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Hadoop编译安装 链接地址:https://bibichuan.github.io/posts/1d2c9375.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Hadoop编译安装',
+		url: 'https://bibichuan.github.io/posts/1d2c9375.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Hadoop编译安装',
+			isTipVisibility: true,
+			tip: 'Hadoop编译安装',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

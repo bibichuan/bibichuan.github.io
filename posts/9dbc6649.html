@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TensorFlow实战之环境搭建</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">TensorFlow实战之环境搭建</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-05-24 02:56:38
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>我这里是 window 11 系统，有一个 GTX 3060 12G的显卡。</p>
+<img src="/images/loadimg.png" data-original="/posts/9dbc6649/tensorflow_2.png" lay-src="/posts/9dbc6649/tensorflow_2.png" class="" title="TensorFlow">
+
+<p>(1) 经过最终测试，我安装了如下的内容：</p>
+<ul>
+<li>Anacoda：-2023.03-1-Windows-x86_64</li>
+<li>python：3.10.9</li>
+<li>pip：22.3.1</li>
+<li>tensorflow：2.10.1</li>
+<li>NVIDIA：531.79                 </li>
+<li>CUDA：12.1</li>
+<li>cudatoolkit：11.8.0</li>
+<li>cudnn：8.2.1</li>
+</ul>
+<p>(2) 因为我的anaconda安装到了 C:\Soft\ 文件夹下，所以配置的配置环境变量如下：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\Soft\anaconda3\pkgs\cudatoolkit-11.8.0-hd77b12b_0\Library\bin</span><br><span class="line">C:\Soft\anaconda3\pkgs\cudnn-8.2.1-cuda11.3_0\Library\bin</span><br><span class="line">C:\Soft\anaconda3</span><br><span class="line">C:\Soft\anaconda3\Scripts</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/9dbc6649/tensorflow_5.png" lay-src="/posts/9dbc6649/tensorflow_5.png" class="" title="TensorFlow">
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://tf.wiki/zh_hans/basic/installation.html">TensorFlow 安装与环境配置 </a> 这里安装 Anaconda 的 Python 3.7 64 位版本,NVi419.35，CUDA 版本10.1，TensorFlow 2.1,cudatoolkit=10.1 和 cudnn=7.6.5<br>2.<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/449808839">如何使用wsl2搭建基于Tensorflow GPU的深度学习环境？</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40016005/article/details/130203903">TensorFlow GPU不可用，WSL2安装</a> win11，安装的tensorflow的版本都是2.12的，但是从2.10开始tensorflow就不支持gpu了，这点在英文版的安装页面里有。</div>
+<h1 id="1-Anacoda"><a href="#1-Anacoda" class="headerlink" title="1.Anacoda"></a>1.Anacoda</h1><p>这个网上安装的过程很多，我自己也写了一点总结 <a href="/posts/151a1c20.html" title="Anaconda之安装和使用">Anaconda之安装和使用</a>,<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/">下载</a> 安装，然后配置环境变量。我这里配置了 “C:\Soft\anaconda3”。</p>
+<p>安装了conda之后，可以配置虚拟环境，其实作为测试没有必要创建，随意好了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">conda create --name [env-name]      <span class="comment"># 建立名为[env-name]的Conda虚拟环境</span></span><br><span class="line">conda activate [env-name]           <span class="comment"># 进入名为[env-name]的Conda虚拟环境</span></span><br><span class="line">conda deactivate                    <span class="comment"># 退出当前的Conda虚拟环境</span></span><br><span class="line">conda <span class="built_in">env</span> remove --name [env-name]  <span class="comment"># 删除名为[env-name]的Conda虚拟环境</span></span><br><span class="line">conda <span class="built_in">env</span> list                      <span class="comment"># 列出所有Conda虚拟环境</span></span><br><span class="line"></span><br><span class="line">conda install [package-name]        <span class="comment"># 安装名为[package-name]的包</span></span><br><span class="line">conda install [package-name]=X.X    <span class="comment"># 安装名为[package-name]的包并指定版本X.X</span></span><br><span class="line">conda update [package-name]         <span class="comment"># 更新名为[package-name]的包</span></span><br><span class="line">conda remove [package-name]         <span class="comment"># 删除名为[package-name]的包</span></span><br><span class="line">conda list                          <span class="comment"># 列出当前环境下已安装的所有包</span></span><br><span class="line">conda search [package-name]         <span class="comment"># 列出名为[package-name]的包在conda源中的所有可用版本</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>除了命令行之外，还可以打开 Anaconda3 Navigator ，安装 Jupyter Notebook，很多的示例都是在这个上面编写的。</p>
+<h1 id="2-Python"><a href="#2-Python" class="headerlink" title="2.Python"></a>2.Python</h1><p>python安装我也写过很多的文章，其实也就是下载安装配置环境变量。</p>
+<p>如果先安装了 Anacod,其实他自带了 Python 3.10.9。也可以通过 conda 安装特定版本的 python</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.codelast.com/%E5%8E%9F%E5%88%9B-anaconda%E5%AE%89%E8%A3%85python-3-6%E7%89%88%E6%9C%AC/">[原创] Anaconda安装Python 3.6版本</a></div>
+<h1 id="3-Pip"><a href="#3-Pip" class="headerlink" title="3.Pip"></a>3.Pip</h1><p>安装了Python基本上都是自带了pip,如果命令行没有相关的命令，那就看看是否配置了环境变量。因为我安装了 Anacoda,所以我的 pip 路径在：“C:\Soft\anaconda3\Scripts” 路径下。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pip install [package-name]              <span class="comment"># 安装名为[package-name]的包</span></span><br><span class="line">pip install [package-name]==X.X         <span class="comment"># 安装名为[package-name]的包并指定版本X.X</span></span><br><span class="line">pip install [package-name] --proxy=代理服务器IP:端口号         <span class="comment"># 使用代理服务器安装</span></span><br><span class="line">pip install [package-name] --upgrade    <span class="comment"># 更新名为[package-name]的包</span></span><br><span class="line">pip uninstall [package-name]            <span class="comment"># 删除名为[package-name]的包</span></span><br><span class="line">pip list                                <span class="comment"># 列出当前环境下已安装的所有包</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装完成之后，可以配置清华源。在用户目录文件创建pip文件夹，并创建了pip.ini。我的windows就是 “C:\Users\用户\pip” 目录。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line"><span class="built_in">timeout</span> = 1000</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">extra-index-url = https://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line">		http://pypi.douban.com/simple/</span><br><span class="line">		https://mirrors.aliyun.com/pypi/simple/</span><br><span class="line">		http://pypi.mirrors.ustc.edu.cn/simple/</span><br><span class="line">trusted-host = pypi.tuna.tsinghua.edu.cn</span><br><span class="line">        mirrors.aliyun.com</span><br><span class="line">		pypi.mirrors.ustc.edu.cn</span><br><span class="line">		pypi.douban.com</span><br><span class="line">		pypi.mirrors.ustc.edu.cn</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/python-pip-install-usage.html">Python pip 安装与使用</a><br>2.<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/pip-cn-mirror.html">pip 使用国内镜像源</a> 这是在linux环境下创建 .pip 文件夹和 pip.conf 文件<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Artprog/article/details/75632723">Windows下更换pip源为清华源</a> windows下配置清华源，是在 appdata文件夹创建 pip 文件夹和pip.ini文件。<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39681471/article/details/112302645">pip下载速度慢，改用清华或者阿里pip源解决下载速度慢问题</a> 这里提供的多种源，还是挺快的。</div>
+<h1 id="4-Tensorflow"><a href="#4-Tensorflow" class="headerlink" title="4.Tensorflow"></a>4.Tensorflow</h1><p>直接使用pip就可以安装Tensorflow。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装了，我这里安装了 2.12.0 版本</span></span><br><span class="line">pip install tensorflow</span><br><span class="line"><span class="comment">## 或者安装</span></span><br><span class="line">pip install tensorflow == 2.10.1</span><br><span class="line"></span><br><span class="line"><span class="comment">## </span></span><br><span class="line">conda install tensorflow</span><br></pre></td></tr></tbody></table></figure>
+
+<p>从 TensorFlow 2.1 开始 到TensorFlow 2.10 结束，pip 包 tensorflow 即同时包含 GPU 支持，无需通过特定的 pip 包 tensorflow-gpu 安装 GPU 版本。</p>
+<p>如果对 pip 包的大小敏感，可使用 tensorflow-cpu 包安装仅支持 CPU 的 TensorFlow 版本。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pin install tensorflow-gpu</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install?hl=zh-cn">安装 TensorFlow 2 </a> 官方指南</div>
+<h1 id="5-NVIDIA显卡驱动"><a href="#5-NVIDIA显卡驱动" class="headerlink" title="5.NVIDIA显卡驱动"></a>5.NVIDIA显卡驱动</h1><ul>
+<li><p>Windows 环境中，如果系统具有 NVIDIA 显卡，则往往已经自动安装了 NVIDIA 显卡驱动程序。</p>
+</li>
+<li><p>Linux 环境，安装的时候，可能需停用桌面环境。<br>(1) <a target="_blank" rel="noopener" href="https://www.nvidia.cn/drivers/unix/">下载</a> 官方 Nvidia 显卡驱动<br>我电脑显卡是，系统是 UOS Server release 20, 我下载了最新的 ./NVIDIA-Linux-x86_64-550.54.14.run 驱动，因为我的是服务器上的版本，没有桌面，所以就少了很多的步骤，比如金庸</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 系统内核版本</span></span><br><span class="line"><span class="built_in">uname</span> -r</span><br><span class="line"><span class="comment"># 系统版本</span></span><br><span class="line"><span class="built_in">cat</span> /etc/redhat-release</span><br><span class="line"><span class="comment"># gpu版本</span></span><br><span class="line">lspci | grep -i nvidia</span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<p>(2) 安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装依赖</span></span><br><span class="line">yum install dkms kernel-devel-$(<span class="built_in">uname</span> -r) -y </span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> +x ./NVIDIA-Linux-x86_64-550.54.14.run</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装驱动</span></span><br><span class="line">./NVIDIA-Linux-x86_64-550.54.14.run --kernel-source-path=/usr/src/kernels/$(<span class="built_in">uname</span> -r) -k $(<span class="built_in">uname</span> -r) --dkms -s</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 验证<br>安装完成之后，可能有些警告：Unable to determine the path to install the libglvnd EGL vendor library config files. Check that you have pkg-config and the libglvnd development libraries installed, or specify a path with –glvnd-egl-config-path，后来我也没有管。使用 nvidia-smi 命令可以查看驱动是否安装成功。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvidia-smi</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/9dbc6649/tensorflow_3.png" lay-src="/posts/9dbc6649/tensorflow_3.png" class="" title="TensorFlow">
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://bbs.deepin.org/post/186336">DeepinOS 安装 tensorflow, cuda, cuDNN 最方便的方法 </a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/dcrmg/article/details/78146797">Linux查看GPU信息和使用情况</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Double_qiang/article/details/118250117">UOS 安装nvidia官方显卡驱动</a> 方法一：安装官方闭源驱动（推荐）;方法二：使用软件包管理器安装（不推荐）;方法三：显卡驱动管理器安装（不推荐）。这里安装闭源驱动的时候还禁用 nouveau 驱动，进入系统级别 3，这些我都没有做。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/dechengtju/article/details/80146248">CentOS7.0安装NVIDIA GTX1080Ti显卡驱动</a> 这里还是有些问题解决方案的<br>【5】.<a target="_blank" rel="noopener" href="http://www.kexue.love/index.php/archives/396/">centos安装cuda|gpu驱动</a> 这里还安装了 cuda-toolkit，关闭了 X server<br>【6】.<a target="_blank" rel="noopener" href="https://bbs.deepin.org/post/186336">DeepinOS 安装 tensorflow, cuda, cuDNN 最方便的方法 </a> sudo service lightdm stop #这一句是关闭图形桌面，这里还安装了 tensorflow。</div>
+<h2 id="问题-Cannot-generate-ORC-metadata-for-CONFIG-UNWINDER-ORC-y-please-install-libelf-dev-libelf-devel-or-elfutils-libelf-devel"><a href="#问题-Cannot-generate-ORC-metadata-for-CONFIG-UNWINDER-ORC-y-please-install-libelf-dev-libelf-devel-or-elfutils-libelf-devel" class="headerlink" title="问题:Cannot generate ORC metadata for CONFIG_UNWINDER_ORC=y, please install libelf-dev, libelf-devel or elfutils-libelf-devel"></a>问题:Cannot generate ORC metadata for CONFIG_UNWINDER_ORC=y, please install libelf-dev, libelf-devel or elfutils-libelf-devel</h2><p>这个问题我没有单独的去处理这个东西，后来我直接就跳过了，用上面的安装步骤，直接就安装成功了。</p>
+<div class="reference">参考文章:<br>【1】<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangbaoxiang/article/details/114305689">编译内核报错Cannot generate ORC metadata for CONFIG_UNWINDER_ORC=y, please install libelf-dev, libelf-deve</a> 解决：apt-get install libelf-dev libssl-dev<br>【2】<a target="_blank" rel="noopener" href="http://www.kexue.love/index.php/archives/396/">centos安装cuda|gpu驱动</a> yum install kernel-devel-$(uname -r)<br>【3】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/50309216/cannot-generate-orc-metadata-for-config-unwinder-orc-y">Cannot generate ORC metadata for CONFIG_UNWINDER_ORC=y</a> sudo dnf install elfutils-libelf-devel</div>
+<h1 id="6-CUDA-Toolkit-和-cuDNN"><a href="#6-CUDA-Toolkit-和-cuDNN" class="headerlink" title="6.CUDA Toolkit 和 cuDNN"></a>6.CUDA Toolkit 和 cuDNN</h1><p>在 Anaconda 环境下，推荐使用 conda 进行安装，因为我不知道如何对应版本，是不是需要确定的版本，于是我直接安装了最新版。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda install cudatoolkit=X.X</span><br><span class="line">conda install cudnn=X.X.X</span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装 CUDA Toolkit 和 cuDNN，其中 X.X 和 X.X.X 分别为需要安装的 CUDA Toolkit 和 cuDNN 版本号，必须严格按照 TensorFlow 官方网站所说明的版本 安装。例如，对于 TensorFlow 2.12.1，可使用:</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 直接安装最新版的，这里我安装了 cudnn = 8.2.1 cudatoolkit = 11.8.0</span></span><br><span class="line">conda install cudatoolkit</span><br><span class="line">conda install cudnn</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在安装前，可使用 conda search 命令搜索 conda 源中可用的版本号。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda search cudatoolkit</span><br><span class="line">conda search cudnn</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 配置环境变量<br>将 cudnn 和 cudatookit 的安装路径配置到环境变量中。我这里路径是在 anaconda 下的。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cudatoolkit</span></span><br><span class="line">C:\Soft\anaconda3\pkgs\cudatoolkit-11.8.0-hd77b12b_0\Library\bin</span><br><span class="line"><span class="comment">## cudnn</span></span><br><span class="line">C:\Soft\anaconda3\pkgs\cudnn-8.2.1-cuda11.3_0\Library\bin</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/9dbc6649/tensorflow_4.png" lay-src="/posts/9dbc6649/tensorflow_4.png" class="" title="Tensorflow">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.tensorflow.org/install/gpu?hl=zh-cn">GPU 支持</a> 这是中文官方对于TensorFlow支持的GPU的说明。<br>【2】.<a target="_blank" rel="noopener" href="https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/">CUDA Installation Guide for Microsoft Windows</a> CUDA在windows上的安，官方的文档。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sunmingyang1987/article/details/102872658">安装tensorflow GPU版本–tensorflow-gpu版本与CUDA版本对应关系（持续更新，目前到TF2.10.1）</a> CUdnn与CUDA的对应关系，还有2.1以后版本的检查。TF:2.10     对应 CUDA:11.6，cudnn:8.6<br>【4】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/623718583">tensorflow GPU版安装说明</a> 把CUDA和cuDNN的bin目录下的dll文件直接复制到系统system32目录中<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/FL1768317420/article/details/134840200">[tensorflow]tensorflow与cuda对应关系表</a><br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42537872/article/details/132322398">使用虚拟环境conda安装不同版本的cuda，cudnn，pytorch</a> 在虚拟环境中安装完cuda和cudnn想要测试是否安装成功，不能使用nvcc -V命令测试，需要在虚拟环境中安装pytorch包进行测试装好pytorch后，命令行输入python，进入python的命令行，导入torch包<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangpan007/article/details/109639549">查看CUDA和CUDNN是否安装成功（conda 环境</a> conda list，有cudnn ,则说明CUDA和CUDNN已经配置成功</div>
+<h1 id="7-测试GPU是否可用"><a href="#7-测试GPU是否可用" class="headerlink" title="7.测试GPU是否可用"></a>7.测试GPU是否可用</h1><p>因为我安装的Tensorflow 是2.12.0版本，比较小新，为了测试GPU是否可用，我费了好大的力气。后来安装了 tensorflow 2.10.1 版本，使用了下面的方法，测试是否可用，这个版本的 tensorflow 能输出正确的GPU信息。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打印GPU设备列表</span></span><br><span class="line"><span class="built_in">print</span>(tf.config.list_physical_devices(<span class="string">'GPU'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或者</span></span><br><span class="line">gpus = tf.config.experimental.list_physical_devices(device_type=<span class="string">'GPU'</span>)</span><br><span class="line">cpus = tf.config.experimental.list_physical_devices(device_type=<span class="string">'CPU'</span>)</span><br><span class="line"><span class="built_in">print</span>(gpus, cpus)</span><br><span class="line"><span class="comment"># 打印gpu数量</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Num GPUs Available: "</span>, <span class="built_in">len</span>(gpus))</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sslfk/article/details/129045085">tensorflow gpu环境安装</a> conda search cudnn=8 –info,可以查看cudnn8的各个子版本与cuda版本的关系<br>2.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/issues/35702">Tensorflow 2.1.0 failed to list GPU devices and detect GPU devices automatically</a> Actually, there is a toy example in this tutorial which uses gpus = tf.config.experimental.list_physical_devices(‘GPU’)this API to check if there is any avaliable gpu device<br>3.<a target="_blank" rel="noopener" href="https://juejin.cn/s/tensorflow%E6%9F%A5%E7%9C%8Bgpu%E6%98%AF%E5%90%A6%E5%8F%AF%E7%94%A8">tensorflow查看gpu是否可用</a> len(tf.config.experimental.list_physical_devices(‘GPU’)) 会返回可用的 GPU 数量。如果返回值大于 0，则表示 TensorFlow 可以使用 GPU。<br>4.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/58956619/tensorflow-2-0-list-physical-devices-doesnt-detect-my-gpu">Tensorflow 2.0 list_physical_devices doesn’t detect my GPU</a> tensorflow and then installing “tensorflow-gpu“ will resolves your issue</div>
+<h1 id="8-TensorFlow-DirectML-Plugin"><a href="#8-TensorFlow-DirectML-Plugin" class="headerlink" title="8.TensorFlow-DirectML-Plugin"></a>8.TensorFlow-DirectML-Plugin</h1><p>在 tensorflow 2.11 之后就不提供 gpu 版本了，转而代之的就是 TensorFlow-DirectML-Plugin,这个库是微软提供的。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/ai/directml/gpu-tensorflow-plugin">Enable GPU Acceleration for TensorFlow 2 with tensorflow-directml-plugin</a><br>2<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_32065311/article/details/124557071">通过Tensorflow-DirectML 快速启用 AMD及NVIDIA GPU 加速</a> 不同的GPU与Tensorflow进行整合调用的时候，会有很多的技术细节，最近使用微软的DirectML感觉还可以，非常方便，在windows及WSL Linux下都能很好的使用GPU的运算能力<br>3.<a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/windows/ai/windows-ml/tutorials/tensorflow-intro">TensorFlow + DirectML with Windows ML: Real-time object detection from video</a> 这是微软的官方文档，介绍了安装和配置 Directml 。<br>4.<a target="_blank" rel="noopener" href="https://github.com/microsoft/tensorflow-directml-plugin">microsoft /tensorflow-directml-plugin </a> DirectML PluggableDevice plugin for TensorFlow 2 </div>
+<h1 id="9-IDEA"><a href="#9-IDEA" class="headerlink" title="9.IDEA"></a>9.IDEA</h1><p>大部分的文章其实推荐的是使用Pycharm进行开发和调试的。</p>
+<img src="/images/loadimg.png" data-original="/posts/9dbc6649/tensorflow_7.png" lay-src="/posts/9dbc6649/tensorflow_7.png" class="" title="tensorflow环境">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011747152/article/details/78607808">在idea环境下搭建tensorflow环境</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40147863/article/details/81869133">TensorFlow笔记-02-使用PyCharm搭建TensorFlow环境（win版非虚拟机）</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bigdata_mining/article/details/102969116">IDEA配置Anaconda图文并茂</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31635851/article/details/125063728">【Python】Java工程师学Python之常用开发工具</a> Idea和PyCharm的区别就是Idea需要安装Python的插件，而PyCharm是专门用来开发Python的工具，Idea在安装插件后基本没啥区别，唯一点就是可能官方的插件没有PyCharm更新得快<br>5.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/73538040/cannot-add-conda-environment-to-pycharm-conda-executable-path-is-empty-even-wh">Cannot add conda environment to Pycharm - Conda executable path is empty even when it’s not</a><br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/JT_WPC/article/details/86355903">系统配置：pycharm结合anaconda管理项目环境</a></div>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1) Use <code>tf.config.list_physical_devices('GPU')</code> instead<br>最早的就是 tensorflow 2.1 之前的版本。结果出现这个错误。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">gpu_device_name = tf.test.gpu_device_name()</span><br><span class="line"><span class="built_in">print</span>(gpu_device_name)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>就是使用新的测试代码 Use <code>tf.config.list_physical_devices('GPU')</code> instead</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010420283/article/details/106147128">tensorflow测试gpu是否可用</a> 这是1.xx版本的。<br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8eb7e03a9163">Tensorflow-GPU测试是否可用</a> tf.config.list_physical_devices(‘GPU’)<br>3.<a target="_blank" rel="noopener" href="https://www.tensorflow.org/api_docs/python/tf/test/is_gpu_available">tf.test.is_gpu_available</a></div>
+<p>(2) print(tf.config.list_physical_devices(‘GPU’)) 打印为空<br>安装了 tensorflow 2.12.0 之后，打印GPU是否可用，结果显示为空。</p>
+<p>【解决方案】<br>win11，安装的tensorflow的版本都是2.12的，但是从2.10开始tensorflow就不支持gpu了，这点在英文版的安装页面里有。而中文版是没有这个提示的，估计也是很多人试了很多遍，检查了很多次环境变量都解决不了为什么就是不能调用gpu的原因。此时我们只能通过wsl2的方式来安装了，这是在windows里运行了一个虚拟机环境，效果自然大打折扣了。</p>
+<p>还有一种方式，就是使用 TensorFlow-DirectML-Plugin，也就是 DirectML 这个东西，暂时没有深入的研究。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bragen/article/details/129131278">Tensorflow找不到GPU：tensorflow 2.11.0版本开始，在windows上不再支持GPU</a> 根据该条提示，Tensorflow 2.10是最后一个在本地windows上支持GPU的版本。从2.11版本开始，需要在windows WLS2（适用于 Linux 的 Windows 子系统）上安装才能使用GPU。所以要在native-windows上使用GPU，就只能安装2.10.0版本及以下的版本，或者安装老版的tensorflow-gpu。我卸载了之前安装的2.11.0版本，安装了2.10.0版本。<br>2.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/issues/60241">Tensorflow-gpu version 2.12.0 is not available</a> TensorFlow 2.10 was the last TensorFlow release that supported GPU on native-Windows. Starting with TensorFlow 2.11, you will need to install TensorFlow in WSL2, or install tensorflow-cpu and, optionally, try the TensorFlow-DirectML-Plugin<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Ejzq1/article/details/128860443">Windows上tensorflow的GPU死活引用不了（tensorflow 2.11无法调用GPU）</a> tensorflow对于gpu的支持只到2.10，如果你装了最新的tf(2.11)，需要先卸载2.11</div>
+<p>(3) module ‘tensorflow’ has no attribute ‘config’<br>当我从tensorflow 2.10.1 切换到 2.12.0的时候，结果上面的代码无法运行了，出现错误。这个问题我尝试，多半就是 pip uninstall 没有卸载干净 tensorflow 。于是我又卸载了其他的模块</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看全部模块</span></span><br><span class="line">pip list</span><br><span class="line"><span class="comment"># 卸载相关软件</span></span><br><span class="line">pip uninstall tensorflow-estimator</span><br><span class="line">pip uninstall tensorflow-intel</span><br><span class="line">pip uninstall tensorflow-io-gcs-filesystem</span><br><span class="line">pip uninstall tensorflow </span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>把pip list 列出的全部的tensorflow的东西全部卸载之后，再次安装，结果就可以了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/60022195/tensorflow-has-no-attribute-config">‘tensorflow’ has no attribute ‘config’</a><br>2.<a target="_blank" rel="noopener" href="https://www.oschina.net/news/234231/tensorflow-2-12-released">TensorFlow 2.12 正式发布</a> 主要功能和改进<br>3.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/issues/60333">AttributeError: module ‘tensorflow’ has no attribute ‘<strong>version</strong>‘</a> If this returns an error, you may need to reinstall TensorFlow.<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ChuanshengWang/article/details/122692100">卸载不掉Tensorflow</a> 这个给我灵感了，先要把全部的tensorflow列出来。<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/greenlight_74110/article/details/78408554">怎样完全卸载tensorflow？</a></div>
+<p>(4) Failed to establish a new connection: [Errno 11001]<br>莫名其妙的出现了这个问题。</p>
+<p>【解决方案】<br>可能网络不好，以后再尝试就好了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/46188295/python-httpconnectionpool-failed-to-establish-a-new-connection-errno-11004-ge">Python HTTPConnectionPool Failed to establish a new connection: [Errno 11004] getaddrinfo failed</a></div>
+<p>(5) multiple errors encountered anaconda navigator<br>当我从开始菜单打开 Anaconda Navigator 安装 Jupyter Notebook 的时候，死活安装不上，出现了这个错误。</p>
+<p>【解决方法】<br>我当时安装 Anaconda 的时候，是 Admin 安装的，所以启动的时候，也需要用 Admin 启动。找到开始菜单，打开 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Anaconda3 (64-bit) 文件夹，然后右键 Anaconda Navigator “以管理员身份运行” 即可。</p>
+<p>或者找到上面的快捷方式，右键 “属性”，选择 “兼容性”，勾选始终 “以管理员身份运行” 即可。</p>
+<img src="/images/loadimg.png" data-original="/posts/9dbc6649/tensorflow_6.jpg" lay-src="/posts/9dbc6649/tensorflow_6.jpg" class="" title="Tensorflow">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53716956/anaconda-navigator-multiple-errors-encountered">Anaconda Navigator - Multiple Errors Encountered    </a> You can enable this behaviour by default by navigating to the Anaconda launch shortcut, right-click &gt; Properties, go to Shortcut tab, click Advanced, and tick ‘Always launch as administrator’.<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/cnds123/article/details/122060967">Windows10怎么设置始终以管理员身份运行某个软件</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/7aa0ce71.html" rel="next" title="TensorFlow实战之遥感影像识别">
+                      <i class="iconfont icon-prev"></i> TensorFlow实战之遥感影像识别
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/67f6b50e.html" rel="prev" title="TensorFlow实战之猫狗识别">
+                      TensorFlow实战之猫狗识别 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Anacoda"><span class="toc-number">2.</span> <span class="toc-text">1.Anacoda</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Python"><span class="toc-number">3.</span> <span class="toc-text">2.Python</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Pip"><span class="toc-number">4.</span> <span class="toc-text">3.Pip</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Tensorflow"><span class="toc-number">5.</span> <span class="toc-text">4.Tensorflow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-NVIDIA%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8"><span class="toc-number">6.</span> <span class="toc-text">5.NVIDIA显卡驱动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-Cannot-generate-ORC-metadata-for-CONFIG-UNWINDER-ORC-y-please-install-libelf-dev-libelf-devel-or-elfutils-libelf-devel"><span class="toc-number">6.1.</span> <span class="toc-text">问题:Cannot generate ORC metadata for CONFIG_UNWINDER_ORC&#x3D;y, please install libelf-dev, libelf-devel or elfutils-libelf-devel</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-CUDA-Toolkit-%E5%92%8C-cuDNN"><span class="toc-number">7.</span> <span class="toc-text">6.CUDA Toolkit 和 cuDNN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E6%B5%8B%E8%AF%95GPU%E6%98%AF%E5%90%A6%E5%8F%AF%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">7.测试GPU是否可用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-TensorFlow-DirectML-Plugin"><span class="toc-number">9.</span> <span class="toc-text">8.TensorFlow-DirectML-Plugin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-IDEA"><span class="toc-number">10.</span> <span class="toc-text">9.IDEA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">10.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/9dbc6649.html';
+      this.page.identifier = 'posts/9dbc6649.html';
+      this.page.title = 'TensorFlow实战之环境搭建';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：TensorFlow实战之环境搭建 链接地址:https://bibichuan.github.io/posts/9dbc6649.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'TensorFlow实战之环境搭建',
+		url: 'https://bibichuan.github.io/posts/9dbc6649.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'TensorFlow实战之环境搭建',
+			isTipVisibility: true,
+			tip: 'TensorFlow实战之环境搭建',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SQLServer集群搭建</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">SQLServer集群搭建</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Sqlserver/">Sqlserver</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-06-01 10:20:51
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>今天又接到了一个新的需求，就是搭建数据库服务器集群。因为原始的服务器是Server 2008,并且使用了SQL Server 2008作为数据服务器，如果要单纯的将数据库切换到其他的数据库，可能对老的系统有一定的影响，所以需要在尽量不改变原有的客户端代码的情况下，尽量的做到平滑的升级或者是负载均衡，故障转移，灾难恢复。这也让我进入到了分布式数据库的研究行列中来，哪些好用的分布式数据库？价格如何，使用难度如何？如何和现有的数据库进行兼容或者是平滑过渡？</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/273663930">OceanBase、X-DB、POLARDB 分布式关系型数据库，各自的优势是什么？有什么区别？</a> OceanBase：2021年06月01日开源的阿里分布式数据库，PolarDB也是阿里的基于Postgresql的商用数据库，其实还应该加入TiDB,也是一个开源的分布式数据库<br>2.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32109820">双十一的数据库，数据库的双十一</a> 这篇文章挺有意思的，OceanBase、X-DB等数据库都说自己是宇宙最牛逼的数据库，可是一篇国际论文没有，一个外部评测都没有，让人很难把握它们的不同点啊，特别是针对双十一的场景，在多少台设备上跑的，机器内存，网络，性能如何，肯定不是一半的公司能承受的起的价格。所以说，选择数据库，还是要看成本，看公司规模，看团队。</div>
+<h2 id="1-SQL-Server集群可行性分析"><a href="#1-SQL-Server集群可行性分析" class="headerlink" title="1.SQL Server集群可行性分析"></a>1.SQL Server集群可行性分析</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/easypass/p/7161839.html">SQL Server数据库读写分离提高并发性</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kk185800961/article/details/46572583">Windows 2008 + SQLServer 2008 双机群集</a> 安装了新的SQL Server故障转移集群安装功能，然后进行了故障转移配置。<br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/860be7669ee5">SQL Server 集群</a> 这就是一个理论说明，其实没有实际的操作步骤<br>4.<a target="_blank" rel="noopener" href="https://www.bujarra.com/instalacion-de-sql-server-2008-en-cluster-de-windows-2008-r2/?lang=zh">安装SQL Server 2008 的Windows群集 2008 R2</a><br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wenblog/p/5807490.html">简述SQL2008部署多实例集群（学习）</a> 搭建了ABC三个节点，首先在C上开启2008的安装，并且选择”Add node to a SQL Server failover cluster”<br>6.<a target="_blank" rel="noopener" href="https://database.51cto.com/art/201109/290652.htm">说说SQL Server集群服务器的优缺点</a><br>7.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/315172883">sqlserver 2019 always on 集群</a> 用SQL Server 2019提供的always on功能搭建集群,虽然里面有linux的身影，但是我看到大部分的截图都是windows的截图<br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yangzhawen/article/details/8019921">sqlserver 发布订阅的弊端</a></div>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sunny-su/p/10642667.html">SQL server 2008(Linux安装)</a> 如何在linux上安装sql server<br>2.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sql/linux/sql-server-linux-availability-group-cluster-rhel?view=sql-server-ver15">为 SQL Server 可用性组配置 RHEL 群集</a> 官方提供的配置linux的高可用性,使用的时RHEL 7,和RHEL 8<br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/guarderming/p/12082936.html">Sqlserver on linux 高可用集群搭建</a> 准备了三台sql server服务器。</div>
+<h2 id="2-双机热备-发布订阅模式"><a href="#2-双机热备-发布订阅模式" class="headerlink" title="2.双机热备(发布订阅模式)"></a>2.双机热备(发布订阅模式)</h2><p>SQL Server的双机热备，一种方式，就是使用发布订阅模式实现的。基本的步骤就像参考文章3中的一样，就是在复制中创建本地发布，然后在备份机上创建本地订阅，如果在使用中有什么问题，可以查看我下面写的问题。主要有几点需要注意：</p>
+<ul>
+<li><p>1.要使用SQL Server2008自带的管理工具进行发布和订阅，而不是官方提供的单独的SSMS安装包</p>
+</li>
+<li><p>2.配置别名<br>首先要在进行发布的服务器上运行 sql 命令：select  @@SERVERNAME ，查找服务器名称；然后将得到的服务器名称，在需要进行订阅的服务器上，打开SQL Server配置管理工具，在两个Native Client上新键别名，填入发布服务器查询到的名称，ip地址和端口；</p>
+</li>
+<li><p>3.修改hosts文件<br>最后是在订阅服务器上，修改hosts文件，填入发布服务器ip地址，和发布服务器查询的服务名称</p>
+</li>
+<li><p>4.进行订阅服务器登录时，用户要有sysadmin权限。</p>
+</li>
+</ul>
+<p>用户要有对数据库的完全访问权限,如果查看复制监视器，显示：无法作为数据库主体执行，因为主体”dbo”不存在、无法模拟这种类型的主体，或您没有所需要的权限。这就是权限的问题，可以使用如下的语句进行数据库权限的修改。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--修改数据库所有者</span></span><br><span class="line">use dbname</span><br><span class="line">go</span><br><span class="line">sp_changedbowner sa</span><br><span class="line"></span><br><span class="line"><span class="comment">--或者暴力卸载</span></span><br><span class="line"><span class="keyword">exec</span> sp_removedbreplication dbname</span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>5.在发布时的连接到服务器的名称，最好是有较高权限的用户，还有就是订阅的时候的登录用户，和发布的用户是一个用户，这个其实我不是很确定。<img src="/images/loadimg.png" data-original="/posts/8bae660/sqlserver_1.png" lay-src="/posts/8bae660/sqlserver_1.png" class="" title="数据库集群">
+
+</li>
+</ul>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/sqlserver_2.png" lay-src="/posts/8bae660/sqlserver_2.png" class="" title="数据库集群">
+
+<ul>
+<li>5.日志文件夹要第一次要同步<br>(1) 新建发布时，在快照的文件夹中(右键发布属性，可以查看)，会生成发布日志，要将发布的数据库文件日志，拷贝到订阅服务器中。<br>(2) 新键订阅时，要将发布服务器上的unc日志文件拷贝到订阅服务器的自定义目录中，也就是同步发布服务器和订阅服务器中的unc文件夹，比如我的是：D:\sqlserver_data\PHEMS_ReplData，那么就会有D:\sqlserver_data\PHEMS_ReplData\unc 文件夹，下面有各个从发布服务拷贝来的文件。否在就会出现 进程无法读取文件“xxx.pre” 问题(当然也可以使用共享文件夹的方式，只要是能让订阅服务器读取到发布服务器的日志文件就可以了)。创建订阅后，要右键订阅的属性，将快照文件夹选择为备份文件夹，然后填入unc文件夹所在的上一级文件夹，也就是：D:\sqlserver_data\PHEMS_ReplData 文件夹。编辑完成之后，要右键订阅，重新进行初始化操作。</li>
+</ul>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangqi791975/article/details/50208071">SQL Server 2008 R2双机热备</a> 这篇文章讲的其实还是蛮清楚的，如果不是我这里有各种各样的问题的话<br>2.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1045438">SqlServer双机热备技术实践笔记</a> 这里总结了双击热备的方案，比如：发布–订阅、日志传送、数据库镜像、使用SqlServer 2012的 AlwaysOn 功能。还有对于双机热备的方案，数据库连接方案，也写了简单的操作方法，就是修改连接字符串，实现自动切换故障数据库。<br>3.<a target="_blank" rel="noopener" href="https://www.w3xue.com/exp/article/20193/23553.html">Microsoft SQL Server 双机热备份，实时同步</a> 和第一篇文章差不多，不过这里说的更加的详细一点，把截图上该注意的地方都标红了。<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/linybo/article/details/47417315">SQL Server 2008 R2的发布订阅配置实践</a> 快照复制、事务复制、具有可更新订阅的事务发布、合并复制这几个发布的不同选项。<br>5.<a target="_blank" rel="noopener" href="https://support.huaweicloud.com/bestpractice-rds/rds_04_0008.html">Microsoft SQL Server发布与订阅</a> 这里的”配置本地端订阅之前，需要将云上信息配置在本地”，也就是通过别名的方式进行连接远程服务器，但是这个特别的地方，就是使用了select  @@SERVERNAME 获取到了别名，然后进行的设置，这个别名，是包含实例名称的</div>
+<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h2><p>使用的SQL Server 2008 的发布订阅模式，主要有以下几个步骤：</p>
+<p>(1) 一台服务器在数据库复制中，创建发布。<br>(2) 另一台服务器在同样数据库版本的复制中，创建订阅</p>
+<p><strong>注意：</strong><br>(1) 从订阅服务器创建订阅时需要用用户名密码的方式登录到发布服务器，这个时候的用户要有数据库 sysadmin 权限。<br>(2) 在发布服务器上进行发布后，要将发布后的日志文件，拷贝到订阅服务器上，并右键修改订阅服务器的订阅中的快照文件夹，指向该日志文件所在的位置。</p>
+<p><strong>缺点</strong><br>使用发布订阅模式其实只是实现了数据库的复制和备份，但是无法实现高可用，也就是数据库一个发生了故障，另一个切换为主节点。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/robbinluobo/p/8294740.html">MySQL高可用方案zookeeper</a></div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(1) 创建本地发布的时候出现无法登录问题<br>当我右键复制，创建发布的时候，出现了这个问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_1.png" lay-src="/posts/8bae660/err_1.png" class="" title="数据库错误">
+
+<p>解决方法，就是重新使用计算机名称连接，而不是使用localhost进行数据库连接。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_3.png" lay-src="/posts/8bae660/err_3.png" class="" title="数据库错误">
+
+<p>上面的图是我目前计算机的名称，作为服务名称，使用的Windows身份认证方法进行登录的，原先我使用的是localhost登录名， 使用Windows进行身份认证登录的。</p>
+<hr>
+<p>(2) SQL Server无法将 xxx 配置为分发服务器<br>按照参考文章一步步的做，最后还是出现了错误，“设置连接字符串后无法更改或者读取属性LoginSecure”,</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_2.png" lay-src="/posts/8bae660/err_2.png" class="" title="双机热备错误">
+
+
+<p>首先，查看服务名称是否一致。我执行了之后，计算机名称和服务名称两个名称一致，所以就不需要进行服务名称的修改，需要找另外的方法</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> @<span class="variable">@SERVERNAME</span>,SERVERPROPERTY(<span class="string">'SERVERNAME'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">--或者，下面的命令，两个结果都一样</span></span><br><span class="line">use master</span><br><span class="line">go</span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@servername</span>;</span><br><span class="line"><span class="keyword">select</span> serverproperty(<span class="string">'servername'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">--执行修改命令，将"服务器名", 修改为正确的计算机名</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_dropserver <span class="string">'服务器名[/命名实例名]'</span>;  <span class="comment">-- 即旧的计算机名</span></span><br><span class="line">GO</span><br><span class="line"><span class="keyword">EXEC</span> sp_addserver <span class="string">'计算机名[/命名实例名]'</span>, <span class="keyword">local</span>; <span class="comment">-- 即新的计算机名</span></span><br><span class="line"></span><br><span class="line">go</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解决方法：因为我第一个问题没有解决，所以有了第二个问题，其实我先解决了第一个问题，那么第二个就不存在了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012087785/article/details/38038679">sqlserver 无法将xxx配置为分发服务器</a> 查看服务器名称是否一致<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/huyu107/article/details/51097053">“SQLServer复制需要有实际的服务器名称才能连接到服务器,请指定实际的服务器名”</a> 这里还有一个就是使用别名的方式进行服务器连接,也就是修改hosts文件，指向服务地址<br>3.<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/90219802">SQL Server 无法将“xxx”配置为分发服务器</a> 这里说是权限不够</div>
+<hr>
+<p>(3) 对象名syservers无效<br>这个问题真的非常的奇怪，奇怪到我在网上都找不到相关的文章，我搜sysserver这个关键字，也没有相关的信息，似乎没有人遇到过啊。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_4.png" lay-src="/posts/8bae660/err_4.png" class="" title="数据库错误">
+
+<ul>
+<li><p>第一次尝试:数据库降级<br>我创建本地发布的SQL Server版本为2008,但是我另一台服务器创建本地订阅的服务器安装的是2019,我怀疑是这个问题，于是就进行了数据库降级。但是我降级之后，在另一台虚拟机中安装了同样的2008,进行本地订阅的创建，还是出现了这个问题，也就是说，不是数据库版本的问题。</p>
+</li>
+<li><p>第二次尝试:同样的数据库版本<br>我在两台虚拟机中创建了sql server2008进行订阅和发布，也还是会出现这个问题。</p>
+</li>
+</ul>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/320147762">SQL SERVER 2005 提示 对象名 ‘MASTER.DBO.SYSSERVERS’ 无效</a> 这里有人说是权限问题，但是没有人说的清楚，到底该如何解决这个权限问题。<br>2.<a target="_blank" rel="noopener" href="https://www.thinbug.com/q/12189320">无效的对象名称sysservers </a> “您不应再使用sysservers - 这是一个2000系统表，仅出于向后兼容性原因而仍然提供。您应该使用sys.servers，并且您可能希望明确指出在哪里找到它.” 这是答案，但是因为我是创建订阅的时候出现的这个问题，我没发进行语句的修改。<br>3.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sql/relational-databases/errors-events/mssqlserver-208-database-engine-error?view=sql-server-ver15">MSSQLSERVER_208</a> 官方提供的有关208错误的相关信息<br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sdadx/p/6418871.html">SQLServer 中发布与订阅</a> 这里的发布订阅都是很顺利的，没有出现syservers无效的情况，但是我的订阅过程中，就是会出现这样的情况<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wo13145219/article/details/84527226">在MSSQL2000里面 对象名 ‘sys.servers’ 无效 服务器: 消息 208，级别 16，状态 1，行 1…</a> 这里说，在sql2000里面是sysservers，而且mssql2008里面是sys.servers<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/SJF0115/article/details/23948471">SQL 2008升级SQL 2008 R2完全教程或者10.00.1600升级10.50.1600</a> 我想，会不会是因为版本的问题呢？我进行数据库发布的版本是SQL Server2008，而订阅的数据库版本是2008 R2。数据库版本说明:10.00.1600其实就是SQL 2008, 10.50.1600其实就是SQL 2008 R2, 10.50.2500其实就是SQL 2008 R2 SP1。查看数据库版本的sql语句:</div>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">SERVERPROPERTY(<span class="string">'servername'</span>) <span class="keyword">AS</span> 实例名,</span><br><span class="line">SERVERPROPERTY(<span class="string">'ProductVersion'</span>) <span class="keyword">AS</span> 实例版本,</span><br><span class="line">SERVERPROPERTY(<span class="string">'Edition'</span>) <span class="keyword">AS</span> 产品版本,</span><br><span class="line">SERVERPROPERTY(<span class="string">'ProductLevel'</span>) <span class="keyword">AS</span> 版本级别,</span><br><span class="line">@<span class="variable">@VERSION</span> <span class="keyword">AS</span> 版本信息</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<ul>
+<li>第三次尝试:管理工具的统一<br>我梳理了自己安装的程序，在一台服务器上叫A吧，sql server和管理工具(在SQL Server安装介质中安装的)都是Sql Server2008，在另外的两台服务器上，安装的是Sql Server 2008 R2，管理工具安装的是SSMS 18.9.1,独立在<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15">官网(SSMS)</a>上下的管理工具,没有使用sql server 2008R2 里面自带的管理工具。<img src="/images/loadimg.png" data-original="/posts/8bae660/err_5.png" lay-src="/posts/8bae660/err_5.png" class="" title="数据库错误">
+
+</li>
+</ul>
+<p>其实很早我就怀疑过了，错误提示说是：” 无效的对象名称sysservers “,那会不会是在创建sql语句是产生的选择语句不同呢？于是，这一次，我将默认的管理工具安装上了(刚开始我也不知道自带了一个管理工具)，然后再次从同一个机器上，进行发布和订阅的尝试，果然好用了。</p>
+<p><strong>我忘记在哪篇文章中看到的了，说是进行订阅和发布时不能隔两代，我的理解就是，SQL Server2008不能和SQL Server2016进行相互订阅和发布</strong></p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/huyu107/article/details/51097700#comments_17043057">SQL SERVER 2008 利用发布订阅方式实现数据库同步</a> 这里的作者回复了我的问题，虽然他也没有遇到过，但是还是感谢他回复吧。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/icecoola_/article/details/79651666">SqlServer_查看SQLServer版本信息</a><br>3.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sql/relational-databases/replication/replication-backward-compatibility?view=sql-server-ver15">复制的向后兼容性</a> 分发服务器的版本可以是高于或等于发布服务器版本的任何版本;发布服务器的版本可以是低于或等于分发服务器版本的任何版本;订阅服务器版本取决于发布的类型：用于事务发布的订阅服务器版本可以是两个发布服务器版本中的任何一个版本,合并发布的订阅服务器可以是等于或低于发布服务器版本的所有版本，而发布服务器版本是生命周期支持周期支持的版本。</div>
+<p>(4) SQL Server复制需要有实际的服务器名称才能连接到服务器。不支持通过服务器别名、IP地址或者任何其他备用名称进行连接<br>这个问题更加的奇怪，我在使用SSMS18.9进行订阅的时候，可以使用ip地址进行连接，但是使用了SQL Server2008 R2自带的管理工具，进行连接的时候，就会出现这个问题，但是如果不用ip地址的话，怎么连接远程地址呢？如果还配置服务器名称呢？这不是让人蛋疼的事情吗？如果我知道服务器名称，那不就是本机了吗？</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_6.png" lay-src="/posts/8bae660/err_6.png" class="" title="数据库错误">
+
+<p>我在SQL Server配置管理工具中，添加了别名，在系统的hosts中添加了对应的别名地址，还是不行(简直令人头大)。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_7.png" lay-src="/posts/8bae660/err_7.png" class="" title="数据库错误">
+
+<p>因为我的两台计算机是虚拟机，复制出来的，所以计算机名称一样，于是我尝试了修改其中的一台计算机名称，和服务名称</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ren6370/article/details/89148672">SQL Server复制需要实际的服务器名称才能连接服务器问题</a>  首先通过查看数据库注册服务器名与实际服务器名是否相符；如果数据库服务器名称是别名，通过修改操作系统hosts文件的格式。如果数据库注册名与实际服务名称不符，建议首先修改数据库中被注册的服务器名称。修改完以上操作，重启数据库服务，然后在尝试是否解决此问题；否则通过sa用户登录到数据库中查看 数据库实例下用户 servername/username 对应的权限是否是否合适，如果有问题分配相应的角色权限即可。<br>2.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/485483">“SQLServer复制需要有实际的服务器名称才能连接到服务器,请指定实际的服务器名”转</a> 有两种情况，就是一种是修改过了服务器名称和计算机名称，一种是使用了为远程服务器添加别名的方式进行连接。我没有改过服务器名称，就是和计算机名称相同。但是我使用别名进行连接的时候，还是出现问题。<br>3.<a target="_blank" rel="noopener" href="http://m.lanhusoft.com/Article/404.html">sql server2008发布-订阅实现异地热备份总结及常见问题分析 </a> 这里有很多的问题，”由于出现操作系统错误 3，进程无法读取文件”、”对带有“$”符号的共享文件夹的访问被拒绝”、”用服务器名连接服务器的时候报无法生成SSPI上下文，但是用IP地址可以用客户端登陆”,其中也包括了无法连接的服务器的问题，在hosts文件中增加一行，数据库服务器对应ip，但是我还是不可用<br>4.<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/370084648">SQL2008 发布/订阅，非默认端口下连接发布服务器问题</a> 这里的讨论是针对于非默认端口进行订阅的问题，楼主的解决方法：就是设一个别名和发布服务器同样名称，这样就可以查找到了<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kk185800961/article/details/51800247">SQL Server 命名实例更改端口进行发布订阅</a> 这里在设置别名的时候，要填入实例的名称，不知道管不管用，但是我自己使用的时候，是不管用的<br>6.<a target="_blank" rel="noopener" href="https://social.technet.microsoft.com/Forums/windowsserver/fr-FR/3709a5b7-48ad-49ca-aded-5d2f01d988d1/sqlserver22312203512999221457240673574638405211513302126102652922?forum=sqlserverzhchs">sqlserver在使用发布订阅功能时，如果使用了非默认IP会连不上发布服务器</a> 他的解决方法是，把32位和64位的别名都配置上，但是我本身就是已经配置上了的，还是不能使用。<br>7.<a target="_blank" rel="noopener" href="https://www.shuzhiduo.com/A/rV577D695P/">超详细SQL SERVER 2016跨网段和局域网发布订阅配置图解和常见问题</a></div>
+<p>(5) 仍有对服务器 ‘xxx’ 的远程登录或链接登录。<br>在进行服务器名称和计算机名称修改时出现的错误，我修改了计算机名称，但是进行sql server服务器名称修改的时候，总是不成功，提示：仍有对服务器 的远程登录或链接登录。解决方法如下：</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 1.查询服务名和计算机名</span></span><br><span class="line">use master </span><br><span class="line">go </span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@servername</span></span><br><span class="line"><span class="keyword">select</span> serverproperty(<span class="string">'servername'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2.删除所有之前配置的publishers（'old_server_name'为之前的服务名）</span></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> msdb.dbo.MSdistpublishers</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> msdb.dbo.MSdistpublishers</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> msdb.dbo.MSdistpublishers</span><br><span class="line"><span class="keyword">exec</span> sp_droplinkedsrvlogin <span class="string">'old_server_name'</span>,<span class="keyword">null</span></span><br><span class="line"><span class="keyword">exec</span> sp_dropserver <span class="string">'old_server_name'</span>, <span class="string">'droplogins'</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行完后，重启SQL Server服务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3.配置计算机名与服务名一致</span></span><br><span class="line">USE master</span><br><span class="line"> GO</span><br><span class="line"> if serverproperty(<span class="string">'servername'</span>) <span class="operator">&lt;&gt;</span> @<span class="variable">@servername</span>   </span><br><span class="line"><span class="keyword">begin</span>   </span><br><span class="line"><span class="keyword">declare</span> <span class="variable">@server</span> sysname   </span><br><span class="line"><span class="keyword">set</span>   <span class="variable">@server</span> <span class="operator">=</span> @<span class="variable">@servername</span>   </span><br><span class="line"><span class="keyword">exec</span> sp_dropserver <span class="variable">@server</span> <span class="operator">=</span> <span class="variable">@server</span>   </span><br><span class="line"><span class="keyword">set</span>   <span class="variable">@server</span> <span class="operator">=</span> <span class="built_in">cast</span>(serverproperty(<span class="string">'servername'</span>) <span class="keyword">as</span> sysname)   </span><br><span class="line"><span class="keyword">exec</span> sp_addserver <span class="variable">@server</span> <span class="operator">=</span> <span class="variable">@server</span> , <span class="variable">@local</span> <span class="operator">=</span> <span class="string">'LOCAL'</span>   </span><br><span class="line"><span class="keyword">end</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">-- 执行完后，重启SQL Server服务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4.再次查看</span></span><br><span class="line">sp_helpserver</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.huaweicloud.com/articles/d78c6376da9d157ccba2d4253fc1d4fd.html">无法修改SQL Server 服务名称</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qixinlei/article/details/79212952">SQL server 更改计算机名后造成未找到或无法访问服务器解决方法</a> 这篇文章比较有用</div>
+<p>(6) 没有将”xxx”配置为远程服务器<br>当我重新修改了一台服务器的名称之后，然后将两台服务器连接入同一个局域网中，虽然在查找服务器的时候，可以查找到这台服务器，但是选择连接这台服务器的时候，出现了这个问题：没有将”xxx”配置为远程服务器。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_8.png" lay-src="/posts/8bae660/err_8.png" class="" title="数据库错误">
+
+<p>解决方法：因为我修改了计算机名和sql server服务器名，但是复制还是保留着以前的服务器。可以右键复制-&gt;然后选择”禁用发布和分发”，然后就可以删除这个发布了。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_9.png" lay-src="/posts/8bae660/err_9.png" class="" title="数据库错误">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.51cto.com/soulful/804649">装完sql server 后修改计算机名后不能进行发布的订阅的解决办法</a><br>2.<a target="_blank" rel="noopener" href="https://www.huaweicloud.com/articles/7dcb45ec60b834205c11ba8519a59fe5.html">安装完sql server 后修改计算机名后不能进行发布的订阅的解决办法</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/JiangHuai_J/article/details/62229423">sqlserver 无法删除链接服务器，因为该服务器用作复制过程中的分发服务器</a> 这个帮了大忙了，这里第一步就是删除distribution数据库，但是这个数据库是在系统数据库中的，我找不到删除的地方</div>
+<p>(6) 无法启动代理，因为该作业已应 用户 sa 的请求正在运行。该作业尚未完成就被 用户 sa 停止。  启动顺序 0 调用了该作业<br>在自动发布的时候，出现了这个问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_10.png" lay-src="/posts/8bae660/err_10.png" class="" title="数据库错误">
+
+<p>更进一步的消息：进程无法连接到Subscriber</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_11.png" lay-src="/posts/8bae660/err_11.png" class="" title="数据库错误">
+
+<p>这个问题其实我也不知道怎么解决，只是说，删除了发布和订阅，然后重新创建了发布和订阅。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://kb.cnblogs.com/page/71979/">SQL Server 2008 数据库复制实现数据同步常见问题</a> 这里也列举了进行订阅和发布的时候的几个问题：订阅状态显示”请求共享代理程序失败”， “进程未能连接到distributor…”;全部重新创建发布和订阅成功，执行却又出现”发布内容 null”的提示;</div>
+<p>(7) 用户登录失败<br>在进行订阅的时候，我选择了在订阅服务器上运行代理，打开复制监视器，出现了了 “xxx” 用户登录失败的问题，但是我也很奇怪，我没有 phems 这个用户，所有的订阅和发布订阅的时候，唯一和phems相关的就是用户phems_test的名称，难道是因为直接将后面的短线忽略掉了吗？</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_12.png" lay-src="/posts/8bae660/err_12.png" class="" title="数据库错误">
+
+<p>解决方法：我把订阅和发布都删除了，然后把phems这个用户也删除了，最后重新进行发布和订阅。</p>
+<p>(8) 由于出现操作系统错误 3，进程无法读取文件“xxx.pre”<br>这个问题是由于无法读取文件造成的，<a target="_blank" rel="noopener" href="http://m.lanhusoft.com/Article/404.html">sql server2008发布-订阅实现异地热备份总结及常见问题分析 </a> 这篇文章中的最后给了建议。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_13.png" lay-src="/posts/8bae660/err_13.png" class="" title="数据库错误">
+
+<p>解决方法：</p>
+<ul>
+<li><p>在发布服务器上，右键发布，打开属性，找到快照,然后找打快照的存在位置，然后拷贝文件夹下的全部文件，这里是unc文件。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_14.png" lay-src="/posts/8bae660/err_14.png" class="" title="数据库错误">
+</li>
+<li><p>在订阅服务器上，右键订阅，打开属性，找到快照位置，改为备用文件夹，然后设置快照文件夹和发布服务器上的快照路径一致，这里为：“D:\sqlserver_data\Microsoft SQL Server\MSSQL10_50.MSSQLSERVER\MSSQL\ReplData”，然后，将发布服务器上的快照存放位置处的文件夹都拷贝到该文件夹中，这里是unc文件。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_15.png" lay-src="/posts/8bae660/err_15.png" class="" title="数据库错误">
+
+</li>
+</ul>
+<p>(9) 远程服务器 “IZ23TFQL1HVZ” 不存在，未被指定为有效的发布服务器，或您无权查看可用的发布服务器。<br>这是在A服务器上进行发布，然后B服务器上订阅的结果，因为A服务器上的端口号为5433,所以需要使用别名和hosts文件进行配置，即便是配置了hosts和别名，还是出现了错误。</p>
+<p>解决方法:创建登录用户时，授予用户服务器角色： sysadmin </p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_16.png" lay-src="/posts/8bae660/err_16.png" class="" title="数据库错误">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kk185800961/article/details/47033073">SQLServer 远程服务器不存在，未被指定为有效的发布服务器，或您无权查看可用的发布服务器</a></div>
+<p>(10) 对象 WxUser 中的列 UserBill 包含类型 VarCharMax，此类型不受目标服务器版本 SQL Server 2000 支持。<br>这个错误，是我在sql server 2008上进行发布，然后sql server 2008 r2上进行订阅时出现的问题。</p>
+<p>我查看了自己的数据表，发现真的有一个UserBill 字段的类型为varchar(MAX)，索性就直接改掉好了,将varchar(MAX)改为了varchar(5000)。除了这个之外，还有就是time类型，也出现了不兼容,我暂时不知道这个问题怎么处理，除了修改项目类型之外，还有其他的方法吗？因为我发布使用的是SQL Server2008，订阅服务器安装的是SQL Server2008 R2啊，没有SQL Server 2000。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_17.png" lay-src="/posts/8bae660/err_17.png" class="" title="数据库错误">
+
+<p>当我查看初始化的设置时，发现了一个：将发布服务器数据库兼容级别设置为80,这才找到了为什么是不兼容2000的原因了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/OpenCoder/p/11179267.html">SQL Server中VARCHAR(MAX)和NVARCHAR(MAX)使用时要注意的问题（转载）</a><br>2.<a target="_blank" rel="noopener" href="https://www.codenong.com/2572649/">关于sql server：在表中使用VARCHAR(MAX)是否有缺点？</a><br>3.<a target="_blank" rel="noopener" href="https://www.codenong.com/737755/">varchar(max)MS SQL Server 2000，有问题吗？</a><br>4.<a target="_blank" rel="noopener" href="https://www.sqlservercentral.com/forums/topic/difference-between-varcharmax-and-varchar8000">Difference between varchar(max) and varchar(8000)</a><br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ljhdo/p/4791256.html">SQL Server 日期和时间类型</a> 这里提到了time这种数据类型<br>6.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sql/t-sql/functions/date-and-time-data-types-and-functions-transact-sql?view=sql-server-ver15">日期和时间数据类型及函数 (Transact-SQL)</a> 官网上关于日期和时间的类型的说明</div>
+<hr>
+<p>当我查看初始化的设置时，发现了一个：将发布服务器数据库兼容级别设置为80,这才找到了为什么是不兼容2000的原因了。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_18.png" lay-src="/posts/8bae660/err_18.png" class="" title="数据库错误">
+
+<p>但是修改发布兼容性级别，这个只在发布类型为合并复制的时候才有的选项，事务性发布没有修改兼容性级别的地方。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_20.png" lay-src="/posts/8bae660/err_20.png" class="" title="数据库错误">
+
+<p>我是用下面的语句，查看数据的兼容级别，发现我复制的数据库的兼容性级别被改为了80,我想能不能进行兼容性级别的改变呢？</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取全部的数据库兼容性级别</span></span><br><span class="line"><span class="keyword">SELECT</span> name, compatibility_level <span class="keyword">FROM</span> sys.databases; </span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_21.png" lay-src="/posts/8bae660/err_21.png" class="" title="数据库错误">
+
+
+<p>根据参考文章4，修改数据库的兼容性级别如下</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 获取数据库兼容级别</span></span><br><span class="line"><span class="keyword">SELECT</span> name ,compatibility_level ,recovery_model_desc <span class="keyword">FROM</span> sys.databases <span class="keyword">WITH</span>(NOLOCK)</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 将用户设置为单用户访问模式</span></span><br><span class="line"><span class="keyword">ALTER</span> DATABASE test <span class="keyword">SET</span> SINGLE_USER</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 修改数据库的兼容级别</span></span><br><span class="line"><span class="keyword">ALTER</span> DATABASE TEST</span><br><span class="line"><span class="keyword">SET</span> COMPATIBILITY_LEVEL <span class="operator">=</span> <span class="number">90</span></span><br><span class="line"><span class="comment">-- or</span></span><br><span class="line"><span class="keyword">EXEC</span> sp_dbcmptlevel TEST, <span class="number">90</span>;</span><br><span class="line">GO</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 将用户设置为多用户访问模式</span></span><br><span class="line"><span class="keyword">ALTER</span> DATABASE test <span class="keyword">SET</span> MULTI_USER</span><br></pre></td></tr></tbody></table></figure>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sql/relational-databases/replication/subscriber-types?view=sql-server-ver15">订阅服务器类型</a> 这里说，创建发布快照之后，可以在 “发布属性” 对话框的 “常规” 页上提高发布兼容级别（使其更为严格）；无法降低兼容级别。但是我的发布属性的常规页面种，没有这个发布兼容级别选项</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_19.png" lay-src="/posts/8bae660/err_19.png" class="" title="数据库错误">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sql/relational-databases/replication/publish/set-the-compatibility-level-for-merge-publications?view=sql-server-ver15">设置合并发布的兼容级别</a> 这是官方提供的几种方式，使用 SQL Server Management Studio：在新建发布向导的 “订阅服务器类型” 页上，选择发布应支持的订阅服务器类型、；使用 Transact-SQL进行合并复制。<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jinanxiaolaohu/p/10030021.html">[微软官方]SQLSERVER的兼容级别</a> 这里说了各个版本的兼容性级别，80指2000，2008是100，还有查看数据库兼容性级别的方法<br>3.<a target="_blank" rel="noopener" href="https://blog.51cto.com/yataigp/2049654">更改数据库的兼容模式</a> 更改数据库的兼容性的方法<br>4.<a target="_blank" rel="noopener" href="https://www.eefocus.com/communication/192495">浅析SQL Server复制的向后兼容性 </a><br>5.<a target="_blank" rel="noopener" href="https://qastack.cn/dba/25099/impact-of-changing-the-db-compatibility-level-for-a-published-replicated-db-from">将已发布的复制数据库的数据库兼容性级别从90更改为100的影响</a></div>
+<p>(11) 由于被引用对象或列在订阅服务器上不存在，因此无法复制视图或函数。<br>使用事务进行复制的时候，不支持视图的复制。</p>
+<p>(12) 订阅已在订阅数据库中<br>这个问题，是因为我手贱，先是把数据库删除了，然后再删除的订阅，最后订阅删除不了了，但是也新键不了，蛋疼。</p>
+<img src="/images/loadimg.png" data-original="/posts/8bae660/err_22.png" lay-src="/posts/8bae660/err_22.png" class="" title="数据库错误">
+
+<p>解决方法，就是把订阅关连的数据库整个的都删掉就可以了。</p>
+<div class="reference">参考文章:<br>1<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/sql/relational-databases/replication/delete-a-pull-subscription?view=sql-server-ver15">删除请求订阅</a> 官方提供的使用TSQL语句进行删除的操作，其实也还是不可以。<br>2.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/678930">SQL Server元数据损坏(metadata corruption)修复</a> 没有用到</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/82957b8a.html" rel="next" title="SQLServer集群搭建三">
+                      <i class="iconfont icon-prev"></i> SQLServer集群搭建三
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/c35d6ad7.html" rel="prev" title="SQLServer运维二">
+                      SQLServer运维二 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SQL-Server%E9%9B%86%E7%BE%A4%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">1.SQL Server集群可行性分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux"><span class="toc-number">3.</span> <span class="toc-text">Linux</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%8C%E6%9C%BA%E7%83%AD%E5%A4%87-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">2.双机热备(发布订阅模式)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">3.总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">5.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/8bae660.html';
+      this.page.identifier = 'posts/8bae660.html';
+      this.page.title = 'SQLServer集群搭建';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：SQLServer集群搭建 链接地址:https://bibichuan.github.io/posts/8bae660.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'SQLServer集群搭建',
+		url: 'https://bibichuan.github.io/posts/8bae660.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'SQLServer集群搭建',
+			isTipVisibility: true,
+			tip: 'SQLServer集群搭建',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

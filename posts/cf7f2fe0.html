@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium加载MVT数据</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Cesium加载MVT数据</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Cesium/">Cesium</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-05-31 02:29:24
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:39
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>MVT数据格式，就是Mapbox开发的一种矢量数据格式，可以自定义矢量数据样式，自定义丰富的地图风格。Cesium的标准是3dtile，主打的就是三维数据格式。关于Cesium加载Mvt格式的方法，其实网上并不是很多，而且Cesium对于支持MVT格式的热情也不是很高，主要的精力还是研究 3dtiles 格式。</p>
+<ul>
+<li>1.cesium+mapbox，这个方法解析和加载的速度都很快，不过只支持3857和900913，不支持2000坐标系。</li>
+<li>2.cesium+openlayer，利用openlayer的方法将mvt绘制到canvas上，然后传给cesium进行渲染，这个方法不限制坐标系，支持4490,4326,3857,900913等。</li>
+<li>3.使用超图封装的cesium加载。</li>
+</ul>
+<p>根据我的理解，其实使用cesium+openlayer的方式更加的舒服，虽然不如cesium+mapbox的性能更好，但是openlayer可以模块化开发，需要什么模块，只需要引入 render 就可以了，但是 mapbox 要想单独提取render,还需要使用自定义构建，比如 <a target="_blank" rel="noopener" href="https://github.com/landtechnologies/Mapbox-vector-tiles-basic-js-renderer">Mapbox-vector-tiles-basic-js-renderer</a> 这个仓库。或者是在 两个 MVTImageryProvider 参考中，都需要一个 mapboxRenderer ,这个就是独立定制的了。</p>
+<p>所以最终我决定改造 ol 版本的，因为 mars3d 提供的 ol 版本不是最新的，我想着先尝试修改一下。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tufeibobo/article/details/120672595">Cesium 加载mapboxgl最新失量切片(mvt)</a> 这篇借助于Openlayer进行了加载，和 mars3d 的加载方式差不多,里面也做了变换。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/D_bel/article/details/130253297?spm=1001.2101.3001.6650.2&amp;utm_medium=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-130253297-blog-120672595.235%5Ev36%5Epc_relevant_default_base3&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~YuanLiJiHua~Position-2-130253297-blog-120672595.235%5Ev36%5Epc_relevant_default_base3&amp;utm_relevant_index=5">cesium加载geoserver发布的mvt服务</a><br>3.<a target="_blank" rel="noopener" href="https://gitee.com/marsgis/mars3d-link-supermap">mars3d-link-supermap </a> Mars3d中使用Supmap Cesium进行兼容的仓库。<br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chilli-with-fish/p/16557859.html">mapbox 扩展 </a></div>
+<h1 id="2-MVT格式"><a href="#2-MVT格式" class="headerlink" title="2.MVT格式"></a>2.MVT格式</h1><p>MVT图层包括以下几个主要的部分。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://gdal.org/drivers/vector/mvt.html">MVT: Mapbox Vector Tiles</a><br>2.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7025531423318605831">矢量瓦片</a> extent说明：瓦片的extent只是指明了瓦片的范围，并不是瓦片的渲染之后的大小。例如一张extent为4096的矢量瓦片，并不意味着最终渲染出来的是一张4096 X 4096大小的图片。渲染出的图片大小并不由extent决定，通常会被渲染为256 X 256或512 X 512大小的图片。假设将一张extent为4096的矢量瓦片渲染为256 X 256大小的图片，那么(0, 0)~(16, 16)坐标范围内的点都将被综合到图片上的(0, 0)像素点。<br>3.<a target="_blank" rel="noopener" href="https://github.com/jingsam/vector-tile-spec/blob/master/2.1/README_zh.md">矢量瓦片标准</a> 图层必须包含一个extent字段，表示瓦片的宽度和高度，以整数表示。矢量瓦片中的几何坐标可以超出extent定义的范围。超出extent范围的几何要素被经常用来作为缓冲区，以渲染重叠在多块相邻瓦片上的要素。<br>4.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/45518647">浅谈Mapbox开源技术</a><br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/flying-birds-xyg/p/16001131.html">02. 矢量瓦片并行构建与分布式存储模型研究</a><br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44265800/article/details/118721407?spm=1001.2014.3001.5502">python爬取pbf格式的矢量瓦片并转换为shp使用</a> 这篇文章用python下载了pbf的格式文件，并进行了拼接。</div>
+<h1 id="3-瓦片原理"><a href="#3-瓦片原理" class="headerlink" title="3.瓦片原理"></a>3.瓦片原理</h1><p>瓦片原理，就是通过一张张图片进行贴图，但是不同的坐标系有不同的计算方法。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/363654824">WMTS服务及地图瓦片原理</a><br>2.<a target="_blank" rel="noopener" href="https://xcsf.github.io/blog/2020/06/12/%E7%93%A6%E7%89%87Tile%E8%A1%8C%E5%88%97%E5%8F%B7%E8%AE%A1%E7%AE%97%E6%96%B9%E6%B3%95/">瓦片(Tile)行列号计算方法 </a><br>3.<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv16290321/">GIS开发：切片格式说明（翻译）-wgs84 </a> wgs84的坐标系范围是：[-180,-90,180,90]，单位是度。<a target="_blank" rel="noopener" href="https://github.com/wclwksn/gdal2tiles/blob/master/gdal2tiles/gdal2tiles.py">gdal2tiles地图切片</a><br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/charlee44/p/16610510.html"> WMTS地图服务每一层级分辨率</a> 这里没有给出计算公式，直接列举了 3857 和 4326 坐标系的瓦片分辨率</div>
+<h2 id="1-Cesium"><a href="#1-Cesium" class="headerlink" title="1.Cesium"></a>1.Cesium</h2><p>经过不断的学习和探索，还是没有明白地图瓦片的原理，但是在 <a target="_blank" rel="noopener" href="https://github.com/CesiumGS/cesium/blob/1.105.1/packages/engine/Source/Scene/UrlTemplateImageryProvider.js#L1243">UrlTemplateImageryProvider.js</a> 中，有这么一段代码</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> longitudeLatitudeProjectedScratch = <span class="keyword">new</span> <span class="title class_">Cartesian3</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">computeIJ</span>(<span class="params">imageryProvider, x, y, level, longitude, latitude, format</span>) {</span><br><span class="line">  <span class="keyword">if</span> (ijScratchComputed) {</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  <span class="title function_">computeLongitudeLatitudeProjected</span>(</span><br><span class="line">    imageryProvider,</span><br><span class="line">    x,</span><br><span class="line">    y,</span><br><span class="line">    level,</span><br><span class="line">    longitude,</span><br><span class="line">    latitude</span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">const</span> projected = longitudeLatitudeProjectedScratch;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> rectangle = imageryProvider.<span class="property">tilingScheme</span>.<span class="title function_">tileXYToNativeRectangle</span>(</span><br><span class="line">    x,</span><br><span class="line">    y,</span><br><span class="line">    level,</span><br><span class="line">    rectangleScratch</span><br><span class="line">  );</span><br><span class="line">  ijScratch.<span class="property">x</span> =</span><br><span class="line">    ((imageryProvider.<span class="property">tileWidth</span> * (projected.<span class="property">x</span> - rectangle.<span class="property">west</span>)) /</span><br><span class="line">      rectangle.<span class="property">width</span>) |</span><br><span class="line">    <span class="number">0</span>;</span><br><span class="line">  ijScratch.<span class="property">y</span> =</span><br><span class="line">    ((imageryProvider.<span class="property">tileHeight</span> * (rectangle.<span class="property">north</span> - projected.<span class="property">y</span>)) /</span><br><span class="line">      rectangle.<span class="property">height</span>) |</span><br><span class="line">    <span class="number">0</span>;</span><br><span class="line">  ijScratchComputed = <span class="literal">true</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fuckgiser/p/5913437.html">Cesium原理篇：5最长的一帧之影像</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhoulujun/p/13057836.html"> Cesium笔记(3):基本控件简介—ImageryProvider地图瓦片地图配</a> 这里讲了多种 provider 的用法，每一个Provider都对应一个tilingScheme，支持经纬度和墨卡托两种投影方式，默认是全球范围，用户也可以指定其范围。<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/feifei2211/article/details/93872868">cesium加载坐标系为4490的arcgis瓦片图</a> 这里有几个地方，一个就是 _tilingScheme，一个就是 GeographicTilingScheme.prototype.getNumberOfXTilesAtLevel<br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/dullfish/p/17187531.html">cesium加载arcgis离线松散瓦片(EPSG:4326, EPSG:4490)</a> 这里使用Cesium.UrlTemplateImageryProvider自定义瓦片规则进行加载。重写了 customTags 和 tilingScheme 。<br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wq805/p/16592251.html">ImageryLayerCollection类</a> Cesium.ImageryProvider类及其子类封装了加载各种影像图层的方法，其中Cesium.ImageryProvider类是抽象类、基类或者可将其理解为接口，它不能被直接实例化。上图中Cesium.ImageryLayer的第一个参数就是需要的图层数据，我们可以把ImageryProvider看作是影像图层的数据源（包裹在ImageryLayer类内部），我们想使用哪种影像图层数据或服务就用对应的ImageryProvider子类去加载<br>6.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/study3d/p/15012219.html">Cesium 4490 解决方案</a> 2000.xml 和2000天地图切片方案（5-16级).xml 区别在于2000有21级切片,2000天地图只有20级切片，2000的切片方案第0级是多出来的一级，其他级别与2000天地图一致。1.修改Cesium 源码WebMapTileServiceImageryProvider,判断WMTS服务的切片级别，请求数据时调整级别，这个方案比较麻烦，对源码的理解要比较深入，才能修改，暂时没用这种方式。2.修改数据。3.互联网2000的切片方案，原点是400，-400,似乎也加载不了，有数据的时候可以测试下。</div>
+<h2 id="OpenLayer"><a href="#OpenLayer" class="headerlink" title="OpenLayer"></a>OpenLayer</h2><p>使用 openlayer 进行 mvt 的渲染，在官网上也有很多的例子。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36226553/article/details/121018478">openlayers6：入门基础（二）之加载图层</a> 地图容器（Map）与图层（Layer）的渲染有Canvas、WebGL两种类型，分别由ol.renderer.Map与ol.renderer.Layer实现。<br>2.<a target="_blank" rel="noopener" href="https://linwei.xyz/ol3-primer/ch05/05-12.html">openlayers3瓦片加载的源码浅析与小结</a> 这里有瓦片渲染的原理解析。getTileRangeForExtentAndResolution获取可视范围内的瓦片范围；calculateTileRanges-&gt;循环遍历resolutions，调用 getTileRangeForExtentAndZ，根据extent计算瓦片范围；getTileRangeForExtentAndResolution计算瓦片的范围。这里还有TMS瓦片、WMTS瓦片加载、百度地图瓦片、腾讯地图瓦片<br>3.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/72316089">OpenLayers教程十：多源数据加载之瓦片地图原理二</a><br>4.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042653695">OpenLayers6学习笔记（三）—— 瓦片地图基础知识</a> 这篇文章我觉得写的挺好的，还有TileDebug,比例尺=0.0254÷(分辨率×96)。在WebGIS中使用的在线瓦片地图采用Web墨卡托（Mercator）投影坐标系（OpenLayers默认使用EPSG:3857）,经过投影后整个地球是一个正方形，范围为经度[-180°, 180°]，纬度[-85°, 85°]，单位为度。对应的Web墨卡托投影坐标系的范围为x[-20037508.3427892, 20037508.3427892]、y[-20037508.3427892, 20037508.3427892]，x、y方向上的各层级瓦片地图分辨率计算公式可以归纳为：resolution = rang÷(256×2^z).</div>
+<h1 id="4-插件封装"><a href="#4-插件封装" class="headerlink" title="4.插件封装"></a>4.插件封装</h1><p>插件的封装，就是用符合 Cesium 的标准进行的二次开发，比如如果要自定义 ImageryProvider， 可以<a target="_blank" rel="noopener" href="https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Scene/ImageryProvider.js">查看官方的代码</a> 但是这个官方的代码，没有使用es6模块进行类的定义，还在使用使用 ES5 的方式进行类的扩展。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/HelsingWang/p/14261695.html">Cesium深入浅出之插件封装</a></div>
+<h1 id="5-样式解析"><a href="#5-样式解析" class="headerlink" title="5.样式解析"></a>5.样式解析</h1><p>可以使用 <a target="_blank" rel="noopener" href="https://github.com/openlayers/ol-mapbox-style/tree/main"> openlayers / ol-mapbox-style </a> 这个库进行mapbox的样式解析，但是这个只适用于 openlayer 。</p>
+<p>(1) 而且无法解析 mapbox style 中的 glyphs 属性。“ol-mapbox-style cannot use PBF/SDF glyphs for text-font layout property, as defined in the Mapbox Style specification. Instead, it relies on web fonts. A ol:webfonts metadata property can be set on the root of the Style object to specify a location for webfonts, e.g.”</p>
+<p>(2) stylefunction 函数中的 spriteData 参数无效，必须要通过 spriteimageUrl 指定精灵图的地址，才能使 精灵图生效。styleFunction 会下载图片，并调用 oenlayer 图层的 change 方法修改图层。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://docs.mapbox.com/mapbox-gl-js/style-spec/root/#glyphs">glyphs</a> 这是对 mapbox 字体的解释。<br>2.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31419736">Mapbox GL JS学习笔记六：Mapbox样式字体本地化方法</a> 使用python语言将字体进行了本地化部署</div>
+<h1 id="6-加载示例"><a href="#6-加载示例" class="headerlink" title="6.加载示例"></a>6.加载示例</h1><p>下面是我研究的几个源码，最后我选择了着重研究 cesium + openlayer</p>
+<h2 id="cesium-mvtimageryprovider"><a href="#cesium-mvtimageryprovider" class="headerlink" title="cesium-mvtimageryprovider"></a>cesium-mvtimageryprovider</h2><p><a target="_blank" rel="noopener" href="https://github.com/kikitte/MVTImageryProvider/tree/master"> kikitte / MVTImageryProvider </a></p>
+<h2 id="mvt-imagery-provider"><a href="#mvt-imagery-provider" class="headerlink" title="mvt-imagery-provider"></a>mvt-imagery-provider</h2><p><a target="_blank" rel="noopener" href="https://github.com/hongfaqiu/MVTImageryProvider">hongfaqiu / MVTImageryProvider</a> 这是另外的一个MVTImageProvider的改造</p>
+<h2 id="mars3d-PbfLayer"><a href="#mars3d-PbfLayer" class="headerlink" title="mars3d-PbfLayer"></a>mars3d-PbfLayer</h2><p><a target="_blank" rel="noopener" href="http://mars3d.cn/editor-vue.html?id=layer-tile/type/pbf-mapbox">mars3d-mapbox</a> 这个地方是 mars3d 改造的 mapbox-gl 的例子，但是没有运行起来。我查了下资料，找到了<a target="_blank" rel="noopener" href="https://github.com/landtechnologies/Mapbox-vector-tiles-basic-js-renderer/tree/master">landtechnologies / Mapbox-vector-tiles-basic-js-renderer</a>,也就是所有基于mapbox在cesium中渲染mvt的，都需要引入这个库。这里主要就是 重载了 src/basic/renderer.js 这个代码，实现了独立渲染。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/liyan_gis/article/details/126059785">Cesium加载mapbox矢量瓦片源码实测可用</a> 这里也用了一个 Mapbox.BasicRender 的东西，其实是一个库。</div>
+<h2 id="mars3d-PbfolLayer"><a href="#mars3d-PbfolLayer" class="headerlink" title="mars3d-PbfolLayer"></a>mars3d-PbfolLayer</h2><p><a target="_blank" rel="noopener" href="http://mars3d.cn/editor-vue.html?id=layer-tile/type/pbf-ol">pbf-ol</a> 这里借助于 openlayer 实现的 pbf 加载。但是我查看了源码之后，发现有些方法在最新的openlayer中并不存在，比如 ol.render.canvas.ReplayGroup 这个方法，只在 <a target="_blank" rel="noopener" href="https://openlayers.org/en/v5.3.0/apidoc/">5.1.3</a> 版本中存在。</p>
+<p>(1) openlayer的styleFunction,渲染的是一个openlayer图层，而不是一个feature，所以不能使用 ol-mapbox-style 这个库。</p>
+<p>后来我还是极力的把这个库给用上了。</p>
+<p>(2) 重写 ImageProvider 的 requestImage 方法，获取每一个切片。 ImageProvider是一个虚基类，所有的 Provider 都是重写了这个类。<a target="_blank" rel="noopener" href="https://github.com/CesiumGS/cesium/blob/ea8ba5eadd08dcf4c23fcc7f3c34c549af01eee2/packages/engine/Source/Scene/ImageryLayer.js">ImageryLayer.js</a> 源码中调用了 ImageProvider的requestImage方法。ImageryLayer.prototype._requestImagery 实现了 doRequest()、success()、和 failure() 方法，分别实现了请求切片，和请求切片失败时的处理。</p>
+<p>函数中需要一个 imager 参数，路径在 engine/Source/Scene/Imagery.js,可以通过这个类，继续的深入的探讨关于如何绘制一个瓦片的过程。</p>
+<p>(3) 然后使用 openlayer 提供的方法，将其渲染为一个 canvas 并返回，这里同样有两种方法，比较简单的一种就是使用 ol.render.toContext方法。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"canvas"</span>)</span><br><span class="line">canvas.<span class="property">width</span> = that.<span class="property">_tileWidth</span></span><br><span class="line">canvas.<span class="property">height</span> = that.<span class="property">_tileHeight</span></span><br><span class="line"><span class="keyword">var</span> vectorContext = canvas.<span class="title function_">getContext</span>(<span class="string">"2d"</span>)</span><br><span class="line"><span class="keyword">var</span> features = that.<span class="property">_mvtParser</span>.<span class="title function_">readFeatures</span>(arrayBuffer)</span><br><span class="line"><span class="keyword">var</span> styleFun = that.<span class="property">_styleClass</span>.<span class="title function_">getStyle</span>()</span><br><span class="line"><span class="keyword">var</span> extent = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">4096</span>, <span class="number">4096</span>]</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; features.<span class="property">length</span>; i++) {</span><br><span class="line"><span class="keyword">var</span> feature = features[i]</span><br><span class="line"><span class="keyword">var</span> styles = <span class="title function_">styleFun</span>(features[i], that.<span class="property">_resolutions</span>[level])</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; styles.<span class="property">length</span>; j++) {</span><br><span class="line">    <span class="keyword">const</span> render = <span class="title function_">toContext</span>(vectorContext);</span><br><span class="line">    render.<span class="title function_">drawFeature</span>(feature,styles[j]);</span><br><span class="line">}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (that.<span class="property">_tileQueue</span>.<span class="property">count</span> &gt; that.<span class="property">_cacheSize</span>) {</span><br><span class="line">    <span class="title function_">trimTiles</span>(that.<span class="property">_tileQueue</span>, that.<span class="property">_cacheSize</span> / <span class="number">2</span>)</span><br><span class="line">}</span><br><span class="line">canvas.<span class="property">xMvt</span> = x</span><br><span class="line">canvas.<span class="property">yMvt</span> = y</span><br><span class="line">canvas.<span class="property">zMvt</span> = level+<span class="number">2</span></span><br><span class="line">that.<span class="property">_tileQueue</span>.<span class="title function_">markTileRendered</span>(canvas)</span><br><span class="line"><span class="keyword">return</span> canvas</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里同样有一个问题，就是读取的数据如何绘制到一个没有坐标系的 cavas 上。 后来我经过尝试，发现这个 canvas</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/apidoc/module-ol_render.html#.toContext">toContext</a> Binds a Canvas Immediate API to a canvas context, to allow drawing geometries to the context’s canvas. 我发现了这个函数更加的简单，就是把一个feature，渲染到一个 canvas 上面<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35732147/article/details/85052581">OpenLayers官方示例详解十一之在自定义canvas元素上渲染OpenLayers的几何图形（Render geometries to a canvas）</a></div>
+<p>(4) 这里需要有一个地方注意，就是在使用 format.MVT 进行转换的时候，还有一个坐标系的问题。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> features = that.<span class="property">_mvtParser</span>.<span class="title function_">readFeatures</span>(arrayBuffer,{</span><br><span class="line">  <span class="attr">dataProjection</span>: <span class="keyword">new</span> <span class="title class_">Projection</span>({</span><br><span class="line">    <span class="attr">code</span>: <span class="string">'TILE_PIXELS'</span>,</span><br><span class="line">    <span class="attr">units</span>: <span class="string">'tile-pixels'</span>,</span><br><span class="line">    <span class="attr">extent</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">4096</span>, <span class="number">4096</span>]</span><br><span class="line">  }),</span><br><span class="line">  <span class="attr">featureProjection</span>:<span class="keyword">new</span> <span class="title class_">Projection</span>({</span><br><span class="line">    <span class="attr">code</span>: <span class="string">'TILE_PIXELS'</span>,</span><br><span class="line">    <span class="attr">units</span>: <span class="string">'tile-pixels'</span>,</span><br><span class="line">    <span class="attr">extent</span>: [<span class="number">0</span>, <span class="number">0</span>, <span class="number">256</span>, <span class="number">256</span>]</span><br><span class="line">  })</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我经过大量的实验，发现在创建 canvas 的时候，使用宽高 4096 可以基本解决我的问题。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/examples/geojson-vt.html">geojson-vt integration</a> 这里用的是geojson进行解析的，还有dataProjection的设置。<br>2.<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/apidoc/module-ol_proj_Projection-Projection.html">ol/proj/Projection~Projection </a></div>
+<p>(5) 还有一种方法，就是使用 openlayer 源码中提供的方法，这个具体的原理还是有些厉害的,<a target="_blank" rel="noopener" href="https://github.com/openlayers/openlayers/blob/v7.4.0/src/ol/renderer/canvas/VectorTileLayer.js">VectorTileLayer.js</a>,但是比较复杂，我看到的多数的目前的代码，都是以这种形式展开的。我也尝试过，目前是可以的。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="variable constant_">MVT</span> <span class="keyword">from</span> <span class="string">'ol/format/MVT.js'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">CanvasBuilderGroup</span> <span class="keyword">from</span> <span class="string">'ol/render/canvas/BuilderGroup.js'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">CanvasExecutorGroup</span> <span class="keyword">from</span> <span class="string">'ol/render/canvas/ExecutorGroup.js'</span>;</span><br><span class="line"><span class="keyword">import</span> {renderFeature} <span class="keyword">from</span> <span class="string">'ol/renderer/vector.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">MvtImageryProvider</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">requestImage</span> = <span class="keyword">function</span> (<span class="params">x, y, level, request</span>) {</span><br><span class="line">  <span class="comment">// .... 省略很多代码</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> builderGroup = <span class="keyword">new</span> <span class="title class_">CanvasBuilderGroup</span>(<span class="number">0</span>,extent,resolution,<span class="variable language_">this</span>.<span class="property">_pixelRatio</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; features.<span class="property">length</span>; i++) {</span><br><span class="line">    <span class="keyword">var</span> feature = features[i]</span><br><span class="line">    <span class="keyword">var</span> styles = <span class="title function_">styleFun</span>(features[i], that.<span class="property">_resolutions</span>[level])</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; styles.<span class="property">length</span>; j++) {</span><br><span class="line">        <span class="comment">// ol.renderer.vector.renderFeature_(_replayGroup, feature, styles[j], 16)</span></span><br><span class="line">        <span class="title function_">renderFeature</span>(builderGroup,feature,styles[j],<span class="number">16</span>)</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">  <span class="comment">// _replayGroup.finish()</span></span><br><span class="line">  <span class="keyword">const</span> executorGroupInstructions=builderGroup.<span class="title function_">finish</span>();</span><br><span class="line">  <span class="keyword">const</span> renderingReplayGroup = <span class="keyword">new</span> <span class="title class_">CanvasExecutorGroup</span>(extent,resolution,<span class="variable language_">this</span>.<span class="property">_pixelRatio</span>,<span class="literal">null</span>,executorGroupInstructions);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//this._pixelRatio = 1</span></span><br><span class="line">  <span class="comment">// this._transform = [0.125, 0, 0, 0.125, 0, 0]，这是512x512点瓦片，</span></span><br><span class="line">  renderingReplayGroup.<span class="title function_">execute</span>(vectorContext,that.<span class="property">_pixelRatio</span>, that.<span class="property">_transform</span>,<span class="number">0</span>,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// .... 省略很多代码</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://github.com/openlayers/openlayers/issues/9215">ol5 ReplayGroup</a> 这里遇到了一样的问题。<br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36189731/openlayers-3-how-to-garbage-collect-canvas-replaygroup-objects">Openlayers 3 - How to garbage collect Canvas ReplayGroup objects?</a><br>3.<a target="_blank" rel="noopener" href="https://github.com/openlayers/openlayers/issues/13397">Static Image is not cleared when change projection</a> 这里有 resolutionsFromExtent 的源码，可以借鉴。<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013240519/article/details/111597890">Openlayers源码阅读（八）：要素Feature渲染过程</a> 这里讲了openlayer渲染feature的过程。</div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>(1) missing required property “version”<br>除了上面的问题，还有就是 ”missing required property ‘layers’“、”missing required property ‘sources’“，都是一起冒出来的</p>
+<p>(2) requestImage 请求切片z不正确<br>在我使用代码调用在重写 requestImage 方法的时候，我请求的是4490的坐标系，这个level必须要在原有基础上进行 +2 处理，这个操作让我始终无法理解，但是我最后还是实验出来了这个方法，算是瞎猫碰上了死耗子。因为我对比了使用mapbox加载矢量切片的路径，还有使用Cesium进行矢量切片的路径，发现7级、8级的时候，切片的x和y总是非常的大，这让我非常的郁闷。后来我干脆就直接输出了在地图上绘制了瓦片信息，进行问题查找。我在这个函数中进行了方里网格的绘制，代码如下。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">MVTImageryProvider</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">requestImage</span> = <span class="keyword">function</span> (<span class="params">x, y, level, request</span>) {</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> url = <span class="variable language_">this</span>.<span class="property">_url</span></span><br><span class="line">  <span class="comment">// 这里不知道为什么，如果直接写level的话，那么我的4326的坐标系，就无法获取正确的图层</span></span><br><span class="line">  level=level+<span class="number">2</span></span><br><span class="line">  <span class="keyword">var</span> reverseY = <span class="variable language_">this</span>.<span class="property">_tilingScheme</span>.<span class="title function_">getNumberOfYTilesAtLevel</span>(level)-y-<span class="number">1</span>;</span><br><span class="line">  <span class="comment">// 拼接url</span></span><br><span class="line">  url = url.<span class="title function_">replace</span>(<span class="string">"{x}"</span>, x).<span class="title function_">replace</span>(<span class="string">"{y}"</span>, y).<span class="title function_">replace</span>(<span class="string">"{reverseY}"</span>, reverseY).<span class="title function_">replace</span>(<span class="string">"{z}"</span>, level).<span class="title function_">replace</span>(<span class="string">"{k}"</span>, <span class="variable language_">this</span>.<span class="property">_key</span>)</span><br><span class="line">  <span class="keyword">var</span> resource = <span class="title class_">Cesium</span>.<span class="property">Resource</span>.<span class="title function_">createIfNeeded</span>(url)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ... 省略部分代码</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"canvas"</span>)</span><br><span class="line">  <span class="comment">// 这里的width为什么是 4096，暂时没有理论支撑，不太清楚。</span></span><br><span class="line">  canvas.<span class="property">width</span> = <span class="number">4096</span></span><br><span class="line">  canvas.<span class="property">height</span> = <span class="number">4096</span></span><br><span class="line">  <span class="keyword">var</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">"2d"</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 绘制方里网格</span></span><br><span class="line">  ctx.<span class="title function_">moveTo</span>( <span class="number">0</span>, <span class="number">0</span> );  <span class="comment">//起点</span></span><br><span class="line">  ctx.<span class="title function_">lineTo</span>( <span class="number">0</span>, that.<span class="property">_tileWidth</span>);</span><br><span class="line">  ctx.<span class="title function_">lineTo</span>( that.<span class="property">_tileWidth</span>, that.<span class="property">_tileHeight</span> );</span><br><span class="line">  ctx.<span class="title function_">lineTo</span>( that.<span class="property">_tileHeight</span>, <span class="number">0</span> );  </span><br><span class="line">  <span class="comment">// 颜色设置，必须放在绘制之前</span></span><br><span class="line">  ctx.<span class="property">strokeStyle</span> = <span class="string">'red'</span>;</span><br><span class="line">  <span class="comment">// 线宽设置，必须放在绘制之前</span></span><br><span class="line">  ctx.<span class="property">lineWidth</span> = <span class="number">1</span>;</span><br><span class="line">  ctx.<span class="title function_">stroke</span>();  <span class="comment">//描边(绘制)</span></span><br><span class="line">  <span class="comment">// 绘制文本</span></span><br><span class="line">  ctx.<span class="property">font</span> = <span class="string">"30px serif"</span>;</span><br><span class="line">  <span class="comment">//2. 使用`fillStyle`设置字体颜色。</span></span><br><span class="line">  ctx.<span class="property">fillStyle</span> = <span class="string">"#00AAAA"</span>;</span><br><span class="line">  <span class="comment">//3. 使用`fillText()`方法显示字体。</span></span><br><span class="line">  <span class="keyword">let</span> text=<span class="string">"z:"</span>+level+<span class="string">",x:"</span>+x+<span class="string">",y:"</span>+y</span><br><span class="line">  ctx.<span class="title function_">fillText</span>(text,<span class="number">0</span>,<span class="number">50</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> canvas;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wokao253615105/article/details/123462643">Cesium 之加载ArcGIS Server 4490切片服务（含orgin -400 400）</a> ArcGisMapServerImageryProvider直接加载CGCS2000的4490坐标系，虽然可以使用WebMapTileServiceImageryProvider加载符合OGC标准的WMTS类型，但只能针对于原点在orgin X: -180.0Y: 90.0的情况，对于原点在orgin X: -400.0Y: 400.0时还是无法正常加载，为了能够实现加载，以下通过修改源码方式来达到目的。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wenyeqv/article/details/129252600">Cesium加载矢量数据探索——从geojson到矢量切片</a> 目中提供的mapbox-gl并不是真正的mapbox项目中的mapbox-gl.js文件，而是由另一位大神，根据mapbox源码中的渲染方式进行改进，从而可以实现基于mapbox的方式加载矢量切片的图层,该项目最终打包命名为mapbox-gl.js</div>
+<p>(3) loseContext: context lost<br>通过自定义 imageryprovider,然后添加到 layers中，直接将内存撑爆了:Out of Memory。下面的代码看起来没有毛病。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> provider = <span class="keyword">new</span> <span class="title class_">MvtImageryProvider</span>({</span><br><span class="line">    <span class="attr">url</span>: <span class="string">"https://map.hongjing.fpi-inc.site:8081/maps/tdt_jj/{z}/{x}/{y}.mvt"</span>,</span><br><span class="line">    <span class="attr">styleConfig</span>: sourceConfig[<span class="string">"osm_jj"</span>].<span class="property">styleConfig</span>,</span><br><span class="line">    <span class="attr">minimumLevel</span>: <span class="number">4</span>,</span><br><span class="line">    <span class="attr">maximumLevel</span>: <span class="number">20</span></span><br><span class="line">})</span><br><span class="line"><span class="keyword">let</span> cesium = mars3d.<span class="property">Cesium</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(cesium)</span><br><span class="line"><span class="keyword">const</span> viewer = <span class="variable language_">this</span>.<span class="property">map</span>.<span class="property">viewer</span></span><br><span class="line"><span class="comment">//通过imageryLayers获取图层列表集合</span></span><br><span class="line"><span class="keyword">const</span> imageryLayers = viewer.<span class="property">scene</span>.<span class="property">imageryLayers</span>;</span><br><span class="line">imageryLayers.<span class="title function_">addImageryProvider</span>(provider);     </span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>这个问题也是让我非常的郁闷，等我关了电脑，第二天放弃使用 ToDesk 远程桌面进行远程开发之后，这个问题就没有出现了。另外非常的郁闷，上一次也是出现了这个问题，vscode 总是崩溃，而且远程调试的时候，无论是chrome还是firefox，都会出现问题。</p>
+<p>这个问题我记得我上一个星期在进行远程开发的时候也遇到过了，《{ post_link Tensorflow实战之常见问题 Tensorflow实战之常见问题 }》这篇文章中也出现的类似的现象，就是vscode总是崩溃，总是显示OOM，关闭之后，重启也没有用，解决方法也是类似，我头天晚上关机，关了远程，然后第二天到电脑实地进行训练，结果不再出现这个问了,真的非常的令人头疼。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41364246/article/details/115008282">Cesium学习之添加基本图层(adding Imagery Layers))</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lovefengruoqing/article/details/121615278">cesium 解决 WebGLRenderingContext 丢失问题</a> 一般情况下，一个 viewer 对应着一个 webgl context，如果有多个就会存在多个 WebGLRenderingContext。<br>3.<a target="_blank" rel="noopener" href="https://community.cesium.com/t/cesium-losing-webgl-context-in-chrome/6258">Cesium losing webgl context in Chrome</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/92963af5.html" rel="next" title="Cesium加载MVT数据三">
+                      <i class="iconfont icon-prev"></i> Cesium加载MVT数据三
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/55652da4.html" rel="prev" title="Cesium加载Dem数据">
+                      Cesium加载Dem数据 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-MVT%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">2.MVT格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%93%A6%E7%89%87%E5%8E%9F%E7%90%86"><span class="toc-number">3.</span> <span class="toc-text">3.瓦片原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Cesium"><span class="toc-number">3.1.</span> <span class="toc-text">1.Cesium</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OpenLayer"><span class="toc-number">3.2.</span> <span class="toc-text">OpenLayer</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%8F%92%E4%BB%B6%E5%B0%81%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">4.插件封装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%A0%B7%E5%BC%8F%E8%A7%A3%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">5.样式解析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%8A%A0%E8%BD%BD%E7%A4%BA%E4%BE%8B"><span class="toc-number">6.</span> <span class="toc-text">6.加载示例</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cesium-mvtimageryprovider"><span class="toc-number">6.1.</span> <span class="toc-text">cesium-mvtimageryprovider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mvt-imagery-provider"><span class="toc-number">6.2.</span> <span class="toc-text">mvt-imagery-provider</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mars3d-PbfLayer"><span class="toc-number">6.3.</span> <span class="toc-text">mars3d-PbfLayer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mars3d-PbfolLayer"><span class="toc-number">6.4.</span> <span class="toc-text">mars3d-PbfolLayer</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/cf7f2fe0.html';
+      this.page.identifier = 'posts/cf7f2fe0.html';
+      this.page.title = 'Cesium加载MVT数据';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Cesium加载MVT数据 链接地址:https://bibichuan.github.io/posts/cf7f2fe0.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Cesium加载MVT数据',
+		url: 'https://bibichuan.github.io/posts/cf7f2fe0.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Cesium加载MVT数据',
+			isTipVisibility: true,
+			tip: 'Cesium加载MVT数据',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

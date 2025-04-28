@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue3入门之Typescript</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Vue3入门之Typescript</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-02-21 01:16:54
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>使用vite可以创建vue-ts模板</p>
+<h2 id="1-项目创建"><a href="#1-项目创建" class="headerlink" title="1.项目创建"></a>1.项目创建</h2><p>使用pnpm可以方便的创建vue-ts的模板，选择vue，选择vue-ts即可。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 根据要求选择vue-ts模板</span></span><br><span class="line">pnpm create vite</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6989475484551610381">2021年了，vite能投入生产了吗？vite.config.js配置踩坑 </a><br>2.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6910014283707318279">备战2021：vite工程化实践，建议收藏 </a></div>
+<h2 id="2-修改typescript版本"><a href="#2-修改typescript版本" class="headerlink" title="2.修改typescript版本"></a>2.修改typescript版本</h2><p>在使用 vite 创建vue-ts的模板之后，什么代码都没有改</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装</span></span><br><span class="line">pnpm install</span><br><span class="line"><span class="comment">## 运行</span></span><br><span class="line">pnpm dev</span><br></pre></td></tr></tbody></table></figure>
+<p>安装运行之后，还是可以允许的，就是报错，打开vscode,出现了vscode报错的情况,一片一片的红，比如：Cannot find name ‘defineProps’ </p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/vue3_2.png" lay-src="/posts/a0924bab/vue3_2.png" class="" title="vue3入门">
+
+<p>[解决]<br>最新版本可能没有这个问题了，遇到就按下面这么做好了，而且输入type，也没有了Volar这个选项了，不知道为什么，要是遇到了再说好了。<br>(1) 在VS code 中，按F1键，输入框中输入 “typescript: select Typescript version”</p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/vue3_3.png" lay-src="/posts/a0924bab/vue3_3.png" class="" title="vue3入门">
+
+<p>(2) 选择 workspace 下的 typescript 即可</p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/vue3_4.png" lay-src="/posts/a0924bab/vue3_4.png" class="" title="vue3入门">
+
+<p>为什么会出现这样的情况，暂时不清楚，反正就是这么解决了，要是报错，我就浑身难受，虽然不影响开发，但是就是想解决。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://github.com/zockbell/vue3.0">vue3.0.0 初体验</a><br>2.<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/features.html">Vite 官方中文文档</a><br>3.<a target="_blank" rel="noopener" href="https://www.talktocomputer.site/blogs/151/">使用vite来新建vue3项目，配置vuex、vue-router</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/peade/article/details/121436104">vue vite项目报ts错误</a><br>5.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fabbcc385ee6">vue3.0+vite (二) vite.config.js基本配置</a><br>6.<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/config/">配置 Vite</a></div>
+<h2 id="3-配置src别名"><a href="#3-配置src别名" class="headerlink" title="3.配置src别名"></a>3.配置src别名</h2><p>以前的vue的时候，经常用 @ 符号代替 src 目录，这样可以少些一些代码，也不用写相对路径了，这样更加的方便。主要有两步<br>(1) 增加 “allowSyntheticDefaultImports”:true<br>引入path路径的时候，需要在tsconfig.node.json中compilerOptions节点下添加：”allowSyntheticDefaultImports”:true。</p>
+<p>有些参考文章是在tsconfig.json中的compilerOptions，我在这个文件中修改没有用。修改alias的别名(可以把tsconfig.node.json删除，把tsconfig.json中的 “references”: [{ “path”: “./tsconfig.node.json” }] 删除 )。</p>
+<p>(2) 安装依赖</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装依赖</span></span><br><span class="line">pnpm add @types/node -D </span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">npm install @types/node --save-dev</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 配置 vite.config.js 文件<br>编写 vite.config.js 文件，增加如下内容：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { defineConfig } <span class="keyword">from</span> <span class="string">'vite'</span>;</span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">'@vitejs/plugin-vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">'path'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>({</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">vue</span>()],</span><br><span class="line">  <span class="attr">resolve</span>: {</span><br><span class="line">      <span class="attr">alias</span>: {</span><br><span class="line">        <span class="string">'@'</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">'src'</span>),</span><br><span class="line">      }</span><br><span class="line">  },</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样做之后，虽然可以编译通过，但是vscode还是提示找不到模块。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.shuzhiduo.com/A/lk5a8RWaJ1/">vue3.0+vite+ts项目搭建–vite.config.ts配置(三)</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/gaoxiaoba/article/details/117818662">找不到模块“path”或其相应的类型声明</a> npm install @types/node –save-dev<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42164539/article/details/113973004">此模块是使用 “export =“ 声明的，只能在使用 “allowSyntheticDefaultImports“ 标志时进行默认导入。</a>  tsconfig.json中compilerOptions对象下添加设置allowSyntheticDefaultImports为true就可以了<br>4.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1798d57ecdab">vs code 中路径别名（@）提示和转定义等问题。</a><br>5.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000020791298">vscode vue+ts 提示找不到模块但是程序正常运行</a> 我在这里写了答案<br>6.<a target="_blank" rel="noopener" href="https://www.typescriptlang.org/zh/docs/handbook/tsconfig-json.html">tsconfig.json 是什么</a><br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/itdian666/article/details/123209521">模块 “path“只能在使用 “allowSyntheticDefaultImports“ 标志时进行默认导入，使用 “export =“ 声明的，只能使用 “allowSyntheticDefau“</a></div>
+<p>(4) 修改 tsconfig.node.json 文件<br>我写了一个api模块，是一个js文件，但是在引入的时候，总是会报错找不到模块：Cannot find module ‘@/api/gas.js’ or its corresponding type declarations.。</p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/vue3_5.png" lay-src="/posts/a0924bab/vue3_5.png" class="" title="vue3入门">
+
+<p>【解决】<br>在tsconfig.json中添加如下的内容，增加@别名。注意，就是不能写成 “@”，需要带着后面的 “@/*”</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"compilerOptions"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="comment">// ++ 这里加上baseUrl 和 path即可 ++</span></span><br><span class="line">    <span class="attr">"baseUrl"</span><span class="punctuation">:</span> <span class="string">"./"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"paths"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">	  <span class="comment">// 根据别名配置相关路径</span></span><br><span class="line">      <span class="attr">"@/*"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"./src/*"</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904112354492429">ts文件中引入js模块 </a> 使用require引入js模块<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/letterTiger/article/details/80596369">为TypeScript引用的JS写声明文件</a> 这里的内容还是挺多的，<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42068550/article/details/120361671">ts中引入js文件以及使用全局js方法报错问题</a> 无法找到模块“@/xxx/xxx”的声明文件。“xxx.js”隐式拥有 “any” 类型。const { encryptionJump,decryptJump } = require(“@/utils/rsa”)<br>4.<a target="_blank" rel="noopener" href="https://jkchao.github.io/typescript-book-chinese/project/modules.html#%E5%85%A8%E5%B1%80%E6%A8%A1%E5%9D%97">深入理解 TypeScript</a><br>5.<a target="_blank" rel="noopener" href="https://github.com/microsoft/vscode/issues/1915">Show error “Cannot find module” although I have typings folder </a> 这个讨论没看明白<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chendf__/article/details/115515736">vite+ts vscode无法识别别名路径</a> 这个可以借鉴一下</div>
+<h2 id="5-开发环境和生产环境"><a href="#5-开发环境和生产环境" class="headerlink" title="5.开发环境和生产环境"></a>5.开发环境和生产环境</h2><p>vite在 import.meta.env 对象上暴露环境变量，替代了 process.env。.env.production用于生产环境，.env.development 用于生产环境。在.env文件中的以 VITE_开头的变量，可以在 import.meta.env 上使用。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7047447121510793223">Vue3+Vite+TypeScript多环境项目搭建 </a> 在根目录下创建 .env.dev文件和 .env.prod文件,分别代表开发、测试环境,文件内容如下,注意这里边的变量需要已VITE_开头。在package.json修改scripts里的dev命令为vite –force –mode dev，新建prod命令”prod”: “vite –mode prod”<br>2.<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/guide/env-and-mode.html">环境变量和模式 </a><br>3.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7023636850182996005">vite+vue3+ts+vant搭建项目 </a> 1.babel.config.js文件需要对vant框架需做额外插件处理;2.ts配置时需要去除掉node_modules, 避免对依赖项进行校验，额外增加项目编译时间;3.项目引用路径的简写除了在webpack文件中需要配置，tsconfig.json也需要额外配置;4.在vite.config.js的plugins中处理vant框架的引入，在配置文件中还有对less的处理；5.vite-ssr服务配置</div>
+<h2 id="6-编写ts模块"><a href="#6-编写ts模块" class="headerlink" title="6.编写ts模块"></a>6.编写ts模块</h2><h3 id="router"><a href="#router" class="headerlink" title="router"></a>router</h3><figure class="highlight typescript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { createRouter, createWebHistory, <span class="title class_">RouteRecordRaw</span> } <span class="keyword">from</span> <span class="string">'vue-router'</span>;</span><br><span class="line"><span class="keyword">import</span> { defineAsyncComponent } <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">routes</span>: <span class="title class_">Array</span>&lt;<span class="title class_">RouteRecordRaw</span>&gt; = [</span><br><span class="line">    {</span><br><span class="line">      <span class="attr">path</span>: <span class="string">'/'</span>,</span><br><span class="line">      <span class="attr">redirect</span>: <span class="string">'/home'</span></span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      <span class="attr">path</span>: <span class="string">'/home'</span>,</span><br><span class="line">      <span class="attr">name</span>: <span class="string">'home'</span>,</span><br><span class="line">      <span class="attr">component</span>: <span class="function">() =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/pages/home/index.vue'</span>)</span><br><span class="line">    }</span><br><span class="line">  ]</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> router = <span class="title function_">createRouter</span>({</span><br><span class="line">    <span class="attr">history</span>: <span class="title function_">createWebHistory</span>(),</span><br><span class="line">    routes</span><br><span class="line">  })</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">default</span> router</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3><figure class="highlight typescript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { createStore } <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个新的 store 实例</span></span><br><span class="line"><span class="keyword">const</span> store = <span class="title function_">createStore</span>({</span><br><span class="line">  <span class="title function_">state</span> () {</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">      <span class="attr">token</span>: <span class="literal">null</span></span><br><span class="line">    }</span><br><span class="line">  },</span><br><span class="line">  <span class="attr">mutations</span>: {</span><br><span class="line">    <span class="title function_">increment</span> (<span class="attr">state</span>:<span class="built_in">any</span>) {</span><br><span class="line">      state.<span class="property">count</span>++</span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> store;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/137856912">浅谈TypeScript的模块导入导出</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000039373891">vue3 + ts 初体验</a> 包含了路由配置、组建创建，还有组件编写。在 vue-router4.0 中，提供了两种创建 history 的方式，分别是 createWebHistory 和 createWebHashHistory。由于采用了 typescript 编码，在定义 routes 常量时，需要声明类型为 Array<routerecordraw>。<br>3.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040753312">VSCode 中，TS 提示 ”无法找到 *.vue 声明文件“ 的解决方案</a></routerecordraw></div>
+<h3 id="引入组件"><a href="#引入组件" class="headerlink" title="引入组件"></a>引入组件</h3><p>在 script setup 中，引入的组件可以直接使用，无需再通过components进行注册，并且无法指定当前组件的名字，它会自动以文件名为主，也就是不用再写name属性了。而且需要将Vetur插件，换成Volar插件，这样就不会报找不到组件的问题了。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;HelloWorld /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script setup&gt;</span><br><span class="line">import HelloWorld from "./components/HelloWorld.vue"; // 此处使用 Vetur 插件会报红</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7009282373476941831">Vue3 script setup 语法糖详解 </a> 组件自动注册，组件核心 API 的使用，父子组件通信，定义响应变量、函数、监听、计算属性computed 等等内容。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/segegefe/article/details/123367845">vscode使用vue3 setup语法引入组件时波浪线问题</a> 用Volar,再把之前的Vetur 禁用掉，波浪线解除</div>
+<h2 id="7-配置二级目录"><a href="#7-配置二级目录" class="headerlink" title="7.配置二级目录"></a>7.配置二级目录</h2><p>路由模式使用了 history 模式，使用 nginx 进行转发，配置为二级目录，页面现实空白。比如我这里的二级目录为 test,主要解决方法包括下面几个步骤</p>
+<p>(1) 配置vite.config.js中的 base 配置为 ”/test“，可以用 mode===’production’?’/test’:’’ 配置</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(<span class="function">(<span class="params">{ mode, command }</span>) =&gt;</span> {</span><br><span class="line">    <span class="keyword">return</span> {</span><br><span class="line">        <span class="comment">// 部署生产环境和开发环境下的URL。</span></span><br><span class="line">        <span class="comment">// 默认情况下，vite 会假设你的应用是被部署在一个域名的根路径上</span></span><br><span class="line">        <span class="comment">// 例如 https://www.ruoyi.vip/。如果应用被部署在一个子路径上，你就需要用这个选项指定这个子路径。例如，如果你的应用被部署在 https://www.ruoyi.vip/admin/，则设置 baseUrl 为 /admin/。</span></span><br><span class="line">        <span class="attr">base</span>: mode === <span class="string">'production'</span> ? <span class="string">'/test'</span> : <span class="string">'/'</span>,</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 修改route中的history: createWebHistory(“/test”)，可以用变量：import.meta.env.VITE_BASE_URL 替代，这里需要在.env.producation文件中定义 VITE_BASE_URL</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> baseUrl=process.<span class="property">env</span>.<span class="property">NODE_ENV</span> == <span class="string">'development'</span> ?<span class="string">"/"</span>:<span class="string">"/test"</span>;</span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title function_">createRouter</span>({</span><br><span class="line">	<span class="attr">history</span>:<span class="title function_">createWebHistory</span>(baseUrl),</span><br><span class="line">	<span class="attr">routes</span>:[</span><br><span class="line">	]</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>(3) 配置nginx,指向二级目录</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 用汽申报</span></span><br><span class="line"><span class="section">location</span><span class="regexp"> ^~</span> /test {</span><br><span class="line">        <span class="attribute">alias</span> /cloud/test/dist;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ /test/index.html;</span><br><span class="line">        <span class="attribute">index</span> index.html;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://python.iitter.com/other/303615.html">Vite + Vue3 + Ts 解决打包生成的index.html页面显示空白、报资源跨域、找不到资源、404-Page Not Found等错误</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Demi1024w/article/details/107753762">VUE3 造轮子之 打包构建配置二级目录</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zzxiaoguo/p/15009923.html">Vue 3使用二级目录部署(Nginx)</a> Vue项目中route关键配置如下：</div>
+<h2 id="8-配置局域网访问"><a href="#8-配置局域网访问" class="headerlink" title="8.配置局域网访问"></a>8.配置局域网访问</h2><p>在vite.config.js文件中添加server配置。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server</span>: {</span><br><span class="line">    <span class="attr">open</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">host</span>: <span class="string">'0.0.0.0'</span>,</span><br><span class="line">    <span class="attr">port</span>: <span class="number">8080</span></span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ee286a5e7a67">vite启动的服务默认不能通过ip地址访问</a></div>
+<h2 id="9-引入js文件"><a href="#9-引入js文件" class="headerlink" title="9.引入js文件"></a>9.引入js文件</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7229877486170439740">深入理解shims-vue.d.ts和declare module </a></div>
+<h2 id="10-在html中使用环境变量"><a href="#10-在html中使用环境变量" class="headerlink" title="10.在html中使用环境变量"></a>10.在html中使用环境变量</h2><p>我这里有一个使用高德地图密钥的配置，这里我想着在这个script的标签里面，使用环境变量，如果直接输出，就会出现 ：Uncaught SyntaxError: import.meta may only appear in a module 错误。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">env</span>.<span class="property">VITE_END_POINT</span>);</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">window</span>.<span class="property">_AMapSecurityConfig</span> = {</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">serviceHost</span>:<span class="string">'/_AMapService'</span></span></span><br><span class="line"><span class="language-javascript">    }</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"module"</span> <span class="attr">src</span>=<span class="string">"/src/main.ts"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>经过一番的折腾，我放弃了,直接写到了 模块的代码里面。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zxuqian.cn/how-to-import-env-variables-in-vite-2-0-projects/">如何在 Vite 2.0 项目中导入环境变量</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35411656/article/details/122621814">vite 使用 env 环境变量</a> 这里安装了一个 vite-plugin-html 插件，但是我这里没有显示：模块“”vite-plugin-html””没有导出的成员“injectHtml”</div>
+<h2 id="11-script-setup-lang-”ts”"><a href="#11-script-setup-lang-”ts”" class="headerlink" title="11.script setup lang=”ts”"></a>11.script setup lang=”ts”</h2><p>直接引入其他的组件，然后在模板中使用就可以了。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;Foo&gt;&lt;/Foo&gt;</span><br><span class="line">    &lt;foo-item&gt;&lt;/foo-item&gt;</span><br><span class="line">    &lt;component :is="Foo" /&gt;</span><br><span class="line">    &lt;component :is="someCondition ? Foo : FooItem" /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script setup lang="ts"&gt;</span><br><span class="line">import Foo from "./Foo.vue"</span><br><span class="line">import FooItem from "./FooItem.vue"</span><br><span class="line">const someCondition = false</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>引入的组件会自动注册的。需要注意的是，使用动态组件的时候，应该使用动态的 :is 来绑定</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;component :is="Foo" /&gt;</span><br><span class="line">    &lt;component :is="someCondition ? Foo : FooItem" /&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script setup lang="ts"&gt;</span><br><span class="line">import Foo from "./Foo.vue"</span><br><span class="line">import FooItem from "./FooItem.vue"</span><br><span class="line">const someCondition = false</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7031565983269519367">Vue3中 <script setup="" lang="ts"> 使用总结 </a><br>2.<a target="_blank" rel="noopener" href="https://cn.vuejs.org/guide/typescript/composition-api.html">TypeScript 与组合式 API</a> 这个有说明如何引入其他组件<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/M1512415/article/details/121350663">＜script lang=“ts“ setup＞使用setup语法糖引入组件爆红问题</a><br>4.<a target="_blank" rel="noopener" href="https://fe-blog.workplus.io/vue3-script-setup"> <script setup>是什么？</a></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1) TypeScript Property ‘XXX‘ does not exist on type ‘never‘.<br>使用了typescript模板，但是在进行遍历的时候，特别使用 v-for 语法的时候回报错。在开发过程中，虽然报错，但是能运行，但是打包的时候，就直接报错了，打包不了。</p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/vue3_5.png" lay-src="/posts/a0924bab/vue3_5.png" class="" title="vue3入门">
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">v-for</span>=<span class="string">&quot;item in datapage.records&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;item.id&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;&#x27;disabled&#x27;:!item.editeabled,&#x27;data-item&#x27;:true&#125;&quot;</span></span></span><br><span class="line"><span class="tag">     @<span class="attr">click</span>=<span class="string">&quot;dataClickHandle(item)&quot;</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.time&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.create_time&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.applicant&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.total&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>[解决]<br>由点语法改为了括号语法。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">tbody</span> <span class="attr">class</span>=<span class="string">&quot;data-list&quot;</span> <span class="attr">v-if</span>=<span class="string">&quot;datapage.records&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">v-for</span>=<span class="string">&quot;item in datapage.records&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;item[&#x27;id&#x27;]&quot;</span> <span class="attr">:class</span>=<span class="string">&quot;&#123;&#x27;disabled&#x27;:!item[&#x27;editeabled&#x27;],&#x27;data-item&#x27;:true&#125;&quot;</span></span></span><br><span class="line"><span class="tag">        @<span class="attr">click</span>=<span class="string">&quot;dataClickHandle(item)&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item[&#x27;time&#x27;]&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item[&#x27;create_time&#x27;]&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item[&#x27;applicant&#x27;]&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item[&#x27;total&#x27;]&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">&quot;color:#888383;&quot;</span>&gt;</span></span><br><span class="line">            ~~没有更多内容了~~</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/EsquireY/article/details/109562054">TypeScript Property ‘XXX‘ does not exist on type ‘never‘.</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000019642429">typescript如何解决类型“never”上不存在属性’xxx’问题？</a><br>3.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44147937/property-does-not-exist-on-type-never">‘Property does not exist on type ‘never’</a> I had the same error and replaced the dot notation with bracket notation to suppress it.</p>
+<p>(2) Failed to load module script: Expected a JavaScript module script but the server responded with a MIME type of “text/html”. Strict MIME type checking is enforced for module scripts per HTML spec.<br>vite打包之后，部署到服务器上，访问是出现了这个问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/vue3_7.png" lay-src="/posts/a0924bab/vue3_7.png" class="" title="vue3入门">
+
+<p>[解决]<br>在进行配置的时候，使用不同的配置模式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;vite&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> vue <span class="keyword">from</span> <span class="string">&#x27;@vitejs/plugin-vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> styleImport, &#123; <span class="title class_">VantResolve</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;vite-plugin-style-import&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;path&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://vitejs.dev/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(<span class="function">(<span class="params">&#123; command, mode &#125;</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    <span class="attr">base</span>:mode===production?<span class="string">&#x27;&#x27;</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">      <span class="title function_">vue</span>(),</span><br><span class="line">      <span class="title function_">styleImport</span>(&#123;</span><br><span class="line">        <span class="attr">resolves</span>: [<span class="title class_">VantResolve</span>()],</span><br><span class="line">      &#125;),</span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// 这里是将src目录配置别名为 /@ 方便在项目中导入src目录下的文件</span></span><br><span class="line">    <span class="attr">resolve</span>: &#123;</span><br><span class="line">      <span class="attr">alias</span>: &#123;</span><br><span class="line">        <span class="string">&quot;@&quot;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">        <span class="string">&quot;@/api&quot;</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;src/api&#x27;</span>),</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xingorg/article/details/120537203">关于vite build后访问报错：Expected a JavaScript module script but the server responded with a MIME type of “</a><br>2.<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/config/#conditional-config">情景配置</a> 官网的说明，增加情景模式</p>
+<p>(3) 对象可能为“未定义”<br>在使用axios的时候，出现了对象可能为定义的错误提示</p>
+<p>【解决】<br>变量前加一个!，告诉ts这个东西是一定存在的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line">config.<span class="property">headers</span>[<span class="string">&#x27;Database&#x27;</span>] = dbname;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line">config.<span class="property">headers</span>![<span class="string">&#x27;Database&#x27;</span>] = dbname;</span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39649806/article/details/122320287">ts+axios+vue3封装请求头加token报错</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000020878503">typescript报错，类型{}不存在属性，这是为什么?</a></p>
+<p>(4) 无法找到qs模块<br>在封装axios时，出现了这个问题</p>
+<p>【解决】<br>直接在src文件目录下创建一个 vue.d.ts 文件，在里面写入模块定义。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare module &#x27;qs&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/feibiubiu/p/12603807.html">已安装对应模块，但报无法找到模块“XXX”的声明文件的解决方案</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/35742227738e">TypeScript 引入第三方包，报无法找到模块错误</a></p>
+<p>(5) windows上挂着属性<br>在windows上挂载属性，就会报错，虽然也是不影响编译，但是还是想要解决。</p>
+<p>【解决】<br>在src目录下，编写vue.d.ts文件</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * window上挂载属性</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Window</span> &#123;</span><br><span class="line">    <span class="attr">mainmap</span>: <span class="built_in">string</span>; <span class="comment">// 你要在windows上挂载的属性</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903861828730888">Typescript给window对象添加全局变量 </a> 建了一个声明文件<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43860703/article/details/108752174">Vue项目导入typescript后使用window全局变量</a></p>
+<p>(6) 无法找到名称<br>这里以引入高德的api为例，我这里使用了高德的加载器加载了高德AMap,还有一个Loca是通过在 AMapLoader.load 对象中配置 loca 这个属性实现的，这个加载器会把Loca这个类加载到全局的对象中，所以你可以直接使用 new Loca 来使用，虽然编译的时候不会报错，但是编译器会提示错误，提示无法找到名称 Loca。</p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/err_1.png" lay-src="/posts/a0924bab/err_1.png" class="" title="错误">
+
+<p>【解决】<br>在vue.d.ts文件中声明全局变量</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 声明全局变量，高德的 Loca</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> <span class="title class_">Loca</span>:<span class="built_in">any</span></span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6898710177969602574">typescript 全局变量声明文件和模块声明文件那些事儿 </a> declare 在声明文件中，最常看见的语法之一。用来全局声明变量、常量、类、全局对象等等，前提是该文件不是模块声明文件（后面会讲）。在使用declare声明类型的时候，并不能去定义具体的实现过程。如果不加export {}，会报「全局范围的扩大仅可直接嵌套在外部模块中或环境模块声明中」错误。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/candyguy242/article/details/84619884">TypeScript 引入js库</a> 如果要使用现有的js文件的话，需要对编译器增加–allowJS参数。可以修改tsconfig.json中的compilerOptions，将其中的”allowJs”设为true，如： “allowJs”: true，没有该字段的话增加该字段即可。另外在tsconfig中的”include”字段中将js文件的路径添加进去。<br>3.<a target="_blank" rel="noopener" href="https://ts.xcatliu.com/basics/declaration-files.html">声明文件</a> 入门教程中的一章，还是应该好好的看看入门教程，要不又问题都不知道从哪里找。<br>4.<a target="_blank" rel="noopener" href="https://www.daimajiaoliu.com/daima/481070c15900408">javascript – Typescript – 找不到名称’fetch’(通用库)</a></p>
+<p>(7) Cannot access ambient const enums when the ‘–isolatedModules’ flag is provided<br>执行 pnpm build 打包时，出现了错误</p>
+<img src="/images/loadimg.png" data-original="/posts/a0924bab/err_2.png" lay-src="/posts/a0924bab/err_2.png" class="" title="错误">
+
+<p>【解决】<br>在tsconfig.json设置跳过检查。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;skipLibCheck&quot;</span>: <span class="literal">true</span>, <span class="comment">// 针对lib的ts打包校验</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.csdn.net/tags/OtTaQg3sNDA4MTAtYmxvZwO0O0OO0O0O.html">vite+ts+element-plus打包报错</a> “skipLibCheck”: true, // 针对element-puls的ts打包校验<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ToBeBest/p/15597961.html">vue3.0+vite+ts项目搭建(报错处理)</a> 把tsconfig.json中的isolatedModules设置为false</p>
+<p>(4) 静态资源404<br>我在public目录下，有一个img文件夹，里面放了一张bg.webp图片,引用的是</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;&#x27;/img/bg.webp&#x27;&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>vite.config.js中配置的路径是</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">base</span>: <span class="string">&#x27;./&#x27;</span>,</span><br><span class="line"><span class="attr">publicDir</span>: mode === <span class="string">&#x27;development&#x27;</span> ?<span class="string">&#x27;&#x27;</span>:<span class="string">&#x27;/village/&#x27;</span>,</span><br><span class="line"><span class="attr">build</span>:&#123;</span><br><span class="line">  <span class="attr">assetsDir</span>: <span class="string">&quot;./&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>结果总是提示找不到这个bg.webp文件。如果把上面的vite.config.js中的配置去掉，就可以找到图片了。</p>
+<p>【解决】<br>配置vite.config.js文件路径,最后的静态文件就会输出到static文件夹下了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">base</span>: mode === <span class="string">&#x27;production&#x27;</span> ?<span class="string">&#x27;/village/&#x27;</span>:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line"><span class="attr">build</span>:&#123;</span><br><span class="line">  <span class="attr">assetsDir</span>: <span class="string">&quot;static&quot;</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>这里总结一下:<br>(1) base 指资源的访问路径，指定后所有资源的路径都将据此配置重写，举例来说，不指定，访问的路径为 /index.html,如果指定为 test,那么访问路径就是 /test/index.html,在使用nginx配置为二级目录的时候，需要设置。<br>(1) publicDir 指静态资源存放的目录，默认是项目目录下的 public 目录，可以指定相对路径，可以指定绝对路径，如果前面不带斜杠，就是相对路径，带了斜杠就是就是绝对路径。<br>(2) build.outDir 指打包输出路径，默认是项目根路径下的 dist 目录<br>(3) build.assetsDir 指静态资源输出目录，指定时不要加路径最前面不要加斜杠，就是相对于 dist 目录输出，比如指定了 static ,那么输出就是 dist/static，如果指定了 /static,就是系统的绝对目录，可能报错。</p>
+<p>参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/hbiao68/article/details/108973601">Vue3 如何引入静态资源——打包代码和源代码运行区分（六）</a><br>2.<a target="_blank" rel="noopener" href="https://cn.vitejs.dev/config/#publicdir">publicDir </a> 作为静态资源服务的文件夹。该目录中的文件在开发期间在 / 处提供，并在构建期间复制到 outDir 的根目录，并且始终按原样提供或复制而无需进行转换。</p></script></a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/12c9b035.html" rel="next" title="Vue3入门之三">
+                      <i class="iconfont icon-prev"></i> Vue3入门之三
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/e930893f.html" rel="prev" title="Vue3入门">
+                      Vue3入门 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA"><span class="toc-number">1.</span> <span class="toc-text">1.项目创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9typescript%E7%89%88%E6%9C%AC"><span class="toc-number">2.</span> <span class="toc-text">2.修改typescript版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AEsrc%E5%88%AB%E5%90%8D"><span class="toc-number">3.</span> <span class="toc-text">3.配置src别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8C%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83"><span class="toc-number">4.</span> <span class="toc-text">5.开发环境和生产环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%BC%96%E5%86%99ts%E6%A8%A1%E5%9D%97"><span class="toc-number">5.</span> <span class="toc-text">6.编写ts模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#router"><span class="toc-number">5.1.</span> <span class="toc-text">router</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vuex"><span class="toc-number">5.2.</span> <span class="toc-text">vuex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E7%BB%84%E4%BB%B6"><span class="toc-number">5.3.</span> <span class="toc-text">引入组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%85%8D%E7%BD%AE%E4%BA%8C%E7%BA%A7%E7%9B%AE%E5%BD%95"><span class="toc-number">6.</span> <span class="toc-text">7.配置二级目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E9%85%8D%E7%BD%AE%E5%B1%80%E5%9F%9F%E7%BD%91%E8%AE%BF%E9%97%AE"><span class="toc-number">7.</span> <span class="toc-text">8.配置局域网访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%BC%95%E5%85%A5js%E6%96%87%E4%BB%B6"><span class="toc-number">8.</span> <span class="toc-text">9.引入js文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E5%9C%A8html%E4%B8%AD%E4%BD%BF%E7%94%A8%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">9.</span> <span class="toc-text">10.在html中使用环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-script-setup-lang-%E2%80%9Dts%E2%80%9D"><span class="toc-number">10.</span> <span class="toc-text">11.script setup lang&#x3D;”ts”</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/a0924bab.html';
+      this.page.identifier = 'posts/a0924bab.html';
+      this.page.title = 'Vue3入门之Typescript';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Vue3入门之Typescript 链接地址:https://bibichuan.github.io/posts/a0924bab.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Vue3入门之Typescript',
+		url: 'https://bibichuan.github.io/posts/a0924bab.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Vue3入门之Typescript',
+			isTipVisibility: true,
+			tip: 'Vue3入门之Typescript',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

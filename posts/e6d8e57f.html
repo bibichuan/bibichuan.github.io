@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AzureDevOps备份和还原</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">AzureDevOps备份和还原</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Azure/">Azure</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-04-16 02:34:14
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:39
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-数据备份"><a href="#1-数据备份" class="headerlink" title="1.数据备份"></a>1.数据备份</h2><p>AzureDevops支持数据备份，虽然备份的时候要一个网络地址。<br>(1) 我在安装了AzureDevopsServer的机器上新建了一个文件夹，然后打开了共享，设置了EveryOne可读取写入,然后这个文件夹就有了网络路径(其实是本机文件夹)</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_3.png" lay-src="/posts/e6d8e57f/azure_3.png" class="" title="azure备份">
+
+<p>(2) 然后立即执行了备份计划，最后将数据成功备份到了本机上。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_4.png" lay-src="/posts/e6d8e57f/azure_4.png" class="" title="azure备份">
+
+<p>(3) 备份成功。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_5.png" lay-src="/posts/e6d8e57f/azure_5.png" class="" title="azure备份">
+
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>AzureDevops支持数据备份，但是备份有一个限制，就是要备份到网络文件夹上。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_1.png" lay-src="/posts/e6d8e57f/azure_1.png" class="" title="azure备份">
+
+<p>但是这个文件要对AzureDevops的安装账号及SQL Server服务账号有读写的权限，否则就会报错。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_2.png" lay-src="/posts/e6d8e57f/azure_2.png" class="" title="azure备份">
+
+<p>我尝试了以下步骤：<br>(1) 打开网络共享中心 – 更改高级共享设置 – 公用 关闭了密码保护共享</p>
+<p>(2) 组合键 win+r ,输入 gpedit.msc 进入本地组策略编辑器-&gt;计算机配置 – windows设置 – 安全设置 – 本地策略 – 安全选项 – 网络访问：本地账户的共享和安全模型 修改为仅来宾</p>
+<p>(3) 文件夹属性 – 共享 – 共享 – 添加 – Everyone – 共享</p>
+<p>最后测试，SQL Server账号还是无法访问。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://docs.devopshub.cn/mdwiki/#!docs/tfs/sysadmin/index.md">数据备份方案</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sunroyi666/article/details/51869937">SQL Server对文件访问的权限</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_17783559/article/details/83379710">Windows系统设置局域网共享（无密码+有密码）</a><br>4.<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/b2c186c83a1642c46ef6ffc2.html">windows共享文件夹，局域网访问</a><br>5.<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/54611829.html">怎么让限制用户只能访问指定的文件夹</a><br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34192966/article/details/78288241">Win10如何获取文件/文件夹权限？Win10操作文件无权限的解决方法</a><br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/long_20140901/article/details/77039810">windows 共享文件夹（不需要输账户密码）</a><br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28719743/article/details/85065033">windows 文件夹设置 everyone 共享</a></div>
+<h2 id="3-数据还原"><a href="#3-数据还原" class="headerlink" title="3.数据还原"></a>3.数据还原</h2><p>我在另一台虚拟机电脑上重新安装了Azure Devops Server，如果是新装的，为了避免出现问题，可能需要将创建的数据库删除掉，删除方法见下面的解决方法。<br>(1) 将备份文件从旧机器移动到新的的机器上，修改BackupSets.xml中的计算机名，为新的本机的计算机名称</p>
+<p>(2) 打开新的AzureDevops管理控制台，选择新的部署</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/bak_1.png" lay-src="/posts/e6d8e57f/bak_1.png" class="" title="数据还原">
+
+<p>(3) 选择高级，设置好之后，需要的话可能重启电脑</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/bak_2.png" lay-src="/posts/e6d8e57f/bak_2.png" class="" title="数据还原">
+
+<p>(4) 打开控制台，选择计划的备份</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_6.png" lay-src="/posts/e6d8e57f/azure_6.png" class="" title="azure备份">
+
+<p>(5) 选择还原数据库，备份的网络路径文件夹，这个直接复制共享文件夹路径就好了，然后点击后面的列表备份，列出可以还原的文件。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_7.png" lay-src="/posts/e6d8e57f/azure_7.png" class="" title="azure备份">
+
+<p>(6) 选择要还原的数据库实例，这个实例，要选择本机的数据库实例，默认的是备份数据时所备份的数据库实例</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_8.png" lay-src="/posts/e6d8e57f/azure_8.png" class="" title="azure备份">
+
+<p>(7) 执行验证之后，就可以还原数据库</p>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>(1) 数据实例的名字是本机的计算机名+实例名,右键开始菜单，计算机管理-&gt;服务-&gt;SQL Server,可以看到实例的名字，默认为数据实例的名字是MSSQLSERVER。计算机名，可以右键 系统菜单栏-&gt;系统 进行查看。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_9.png" lay-src="/posts/e6d8e57f/azure_9.png" class="" title="azure备份">
+
+<p>所以实例的最终的名字为 计算机名\MSSQLSERVER。</p>
+<p><strong>当然,即便我改了实例的名字，最后还是报错了。</strong></p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/azure_10.png" lay-src="/posts/e6d8e57f/azure_10.png" class="" title="azure备份">
+
+<p>(2) 查看日志，出现了： TF246017: Azure DevOps Server 未能连接到数据库。请验证是否已正确指定实例，承载数据库的服务器是否能够正常运行，且没有网络问题阻止与服务器进行通信。<br>刚开始我改了备份文件中的BackupSettings.xml配置文件，然后将涉及到的数据库实例名，改为本机的SQL Server实例，尝试了一下，不可以。</p>
+<p>(3) 我怀疑是否是因为我虽然安装了 Azure Devops Server,但是还没有运行过配置向导，所以需要先运行一下配置向导，连接数据库。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013719339/article/details/79206261">查看SQL Server的实例名</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/danzhang/p/10575143.html">还原Azure DevOps Server (TFS)中误删除的生成流水线</a></div>
+<p>(4) 果然，不出所料，真的运行了配置向导之后，连接了数据库，还是不行啊,还是没有权限。</p>
+<h3 id="终极解决方法"><a href="#终极解决方法" class="headerlink" title="终极解决方法"></a>终极解决方法</h3><p>(1) 再次尝试解决，首先在新装的AzureDevops上，备份一遍数据库，然后将旧的备份文件夹中的文件，除BackupSets.xml和BackupSettings.xml两个文件之外的文件夹，都拷贝到新的备份文件夹中。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_2.png" lay-src="/posts/e6d8e57f/backup_2.png" class="" title="azure备份">
+
+<p>(2) 打开计算机管理-&gt;服务-&gt;停止Azure DevOps Server 后台作业代理和 Azure DevOps Ssh Service两个服务,不停止这两个服务器，就会出现下面的数据库占用问题</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_3.png" lay-src="/posts/e6d8e57f/backup_3.png" class="" title="azure备份">
+
+<p>停止IIS中的Azure Devops网站(还原之后再打开)</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_8.png" lay-src="/posts/e6d8e57f/backup_8.png" class="" title="azure备份">
+
+<p>(3) 然后打开SQL Server数据库管理工具，删除AzureDevOps_Configuration和AzureDevOps_DefaultCollection两个数据库，。删除数据库之后，重启上面两个服务</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_1.png" lay-src="/posts/e6d8e57f/backup_1.png" class="" title="azure备份">
+
+<p>(4) 修改新的备份文件夹目录下的BackupSets.xml文件，将旧的备份文件夹下的BackupSets.xml，文件的内容复制到新的文件中。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_4.png" lay-src="/posts/e6d8e57f/backup_4.png" class="" title="azure备份">
+
+<p>(5) 重新打开Azure DevOps Server Administration Console 管理控制台，执行还原数据库</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_5.png" lay-src="/posts/e6d8e57f/backup_5.png" class="" title="azure备份">
+
+<p>(6) 选择新的备份文件夹(这个文件夹要是共享文件夹)</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_6.png" lay-src="/posts/e6d8e57f/backup_6.png" class="" title="azure备份">
+
+<p>(7) 下一步，下一步，检查，验证，终于都绿了。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_7.png" lay-src="/posts/e6d8e57f/backup_7.png" class="" title="azure备份">
+
+<p>(8) 点击还原，等待还原结果，最后还原成功</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/backup_9.png" lay-src="/posts/e6d8e57f/backup_9.png" class="" title="azure备份">
+
+<h3 id="副作用"><a href="#副作用" class="headerlink" title="副作用"></a>副作用</h3><p>千辛万苦搞定了数据库还原，结果打开新的站点，出现了错误：TF30046: 实例信息不匹配。找不到 Azure DevOps 需要的 caa455c5-2cc2-4971-ad0c-b10f5ed043e7。请与 Azure DevOps Server 管理员联系。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_1.png" lay-src="/posts/e6d8e57f/error_1.png" class="" title="azure备份">
+
+<p>无奈啊，只能重新卸载，安装AzureDevops了。</p>
+<p><strong>20200415更新</strong><br>经过一夜的修整，今天再次来奋战DevOps的备份和还原。(有什么我就在思考，我这样执着的意义，到底是什么？这项工作明明可以不做，或者是以后需要的时候，在做，或者让专门的运维去做，我为什么还要这么折磨自己，已经弄了快一天了。甚至明明就可以将全部的仓库和配置都可以重新上传的啊，这么简单和高效的做法，为什么不采用，而我却非得要装了卸，卸了再装，这样不断的重复。)</p>
+<hr>
+<p>还原的时候，我少还原了一个数据库，出现了下面的问题：</p>
+<pre><code>TF246083: Azure DevOps Server 的配置无效。必须重新映射数据库以修复配置。从服务器收到以下错误: TF246064: 找不到以下主机的数据库: Document。该主机具有以下 ID: cdb41e9f-b2b9-4c13-81e9-3fd4cd6b4a49。若要修复此问题，请使用 TFSConfig RemapDBs 命令行工具，并确保指定包含此数据库的 SQL Server 实例。
+</code></pre>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_4.png" lay-src="/posts/e6d8e57f/error_4.png" class="" title="azure备份">
+<p>也就是提示我少还原了一个数据库。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48475270/could-not-find-the-partition-for-host-when-accessing-tfs-project">could-not-find-the-partition-for-host-when-accessing-tfs-project</a><br>2.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/admin/backup/restore-data-different-instance?view=azure-devops">Restore data to a different server than the current one</a><br>3.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/admin/backup/back-up-restore?view=azure-devops#diff-server">Restore data to a different server</a><br>4.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/admin/backup/manually-backup-tfs?view=azure-devops">Manually back up Azure DevOps Server</a><br>5.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/command-line/tfsconfig-cmd?view=azure-devops-2019&amp;viewFallbackFrom=azure-devops#remapdbs">RemapDBs</a></div>
+<h2 id="4-执行命令行TfsConfig"><a href="#4-执行命令行TfsConfig" class="headerlink" title="4.执行命令行TfsConfig"></a>4.执行命令行TfsConfig</h2><p>发现了一个神奇的工具，打开 C:\Program Files\Azure DevOps Server 2019\Tools 文件夹，可以执行 TFSConfig 命令，这个命令包含了很多的有用的命令。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_5.png" lay-src="/posts/e6d8e57f/error_5.png" class="" title="azure备份">
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 修改changeServerID，执行过程中可能出现卡住，关闭命令行，重新执行一遍就好了。其中的WIN-C7341PBVGMN为计算机名,出现的提示：只应对没有配置应用层的一组 Azure DevOps Server 数据库运行 ChangeServerId 命令，输入y即可，不要输入Yes。如果命令执行出错了，没关系，关闭命令行，再执行一遍好了。</span></span><br><span class="line">TfsConfig changeServerID /sqlInstance:WIN-C7341PBVGMN /databaseName:AzureDevOps_Configuration</span><br><span class="line"></span><br><span class="line"><span class="comment">## 将Azure DevOps Server重定向到远程集合数据库</span></span><br><span class="line">TFSConfig remapDBs /DatabaseName:WIN-C7341PBVGMN;AzureDevOps_Configuration /SQLInstances:WIN-C7341PBVGMN</span><br><span class="line"></span><br><span class="line"><span class="comment">## 注册已还原数据库的位置</span></span><br><span class="line">TFSconfig registerDB /sqlInstance:WIN-C7341PBVGMN /databaseName:AzureDevOps_Configuration</span><br><span class="line"></span><br><span class="line"><span class="comment">## 重启服务</span></span><br><span class="line">TFSServiceControl unquiesce</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除了缓存文件_tfs_data</span></span><br><span class="line">E:\soft\AzureDevOpsData\ApplicationTier\_tfs_data</span><br></pre></td></tr></tbody></table></figure>
+
+<p>以 changeServerId 为例，changeServerId命令的作用主要是： 使用新的实例 ID 对Azure DevOps Server 实例及其所有集合重新进行标记。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_6.png" lay-src="/posts/e6d8e57f/error_6.png" class="" title="azure备份">
+
+<p>命令的格式(蛋疼的格式，我光参考这个格式就用了很长时间)：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## /sqlInstance是命令行参数的名字，这个参数的含义是要输入数据库的实例，冒号后面是参数的值;/databaseName是数据库的参数名，冒号后面是值，参数名，有些是必须输入的，就原样写就好了，也可以首字母大小比如写成/SQLInstance也是正确的，写/DatabaseName也是正确的。</span></span><br><span class="line">TfsConfig changeServerID /sqlInstance:&lt;serverName&gt; /databaseName:&lt;configurationDatabaseName&gt;</span><br><span class="line">	[/projectCollectionsOnly] [/configDBOnly] [/collectionName]</span><br><span class="line"></span><br><span class="line"><span class="comment">## 例如：</span></span><br><span class="line">TfsConfig changeServerID /sqlInstance:WIN-C7341PBVGMN /databaseName:AzureDevOps_Configuration</span><br></pre></td></tr></tbody></table></figure>
+
+
+<h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><p>(1) 数据库实例名是:计算机名<br>这里有一个问题，就是/sqlInstance这个参数，我无论指定MSSQLSERVER数据库实例名，还是计算机名\实例名，都会报错：TF246017: Azure DevOps Server 未能连接到数据库。请验证是否已正确指定实例，承载数据库的服务器是否能够正常运行，且没有网络问题阻止与服务器进行通信。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_8.png" lay-src="/posts/e6d8e57f/error_8.png" class="" title="azure备份">
+
+<p>后来我以为是我的数据库还原时出错了，然后又重新还原了一遍，发现了数据库实例名是:计算机名，于是我重新用这个计算机名尝试。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_7.png" lay-src="/posts/e6d8e57f/error_7.png" class="" title="azure备份">
+
+<p>果然，这个实例名 serverName 竟然是计算机的名字，输入y，进行下一步，最终命令执行成功。 </p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_9.png" lay-src="/posts/e6d8e57f/error_9.png" class="" title="azure备份">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/command-line/tfsconfig-cmd?view=azure-devops-2019#changeserverid">ChangeServerID</a><br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45129042/tf246017-team-foundation-server-could-not-connect-to-the-database">TF246017: team foundation server could not connect to the database</a><br>3.<a target="_blank" rel="noopener" href="https://www.ganshani.com/alm/tfs/visual%20studio/solved-tf246017-team-foundation-server-could-not-connect-to-the-database/">[Solved] TF246017: Team Foundation Server could not connect to the database</a><br>4.<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/393180352?list=67157170">【TFS2015】请问切换域控时报错“TF246017: Team Foundation Server 未能连接到数据库。请验证是否</a></div>
+<hr>
+<p>(2) 当我执行了下面一系列操作之后，提示错误改变了：TF401054: 请求的服务级别属性 TFS_SERVICE_LEVEL 与所需值不匹配。Azure DevOps Server 需要 Dev17.M153.5 服务级别，但数据库当前实现的是 Dev17.M143.6。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_10.png" lay-src="/posts/e6d8e57f/error_10.png" class="" title="azure备份">
+
+<p>根据错误提示: TF401054: 请求的服务级别属性 TFS_SERVICE_LEVEL 与所需值不匹配。Azure DevOps Server 需要 Dev17.M153.5 服务级别，但数据库当前实现的是 Dev17.M143.6。<br>意思是数据库不匹配？在参考文章2中，有这样一段话：</p>
+<pre><code>The version of SQL Server that you install must exactly match the version on the original server that hosted the databases. This requirement includes the service-pack level, the collation settings, and the language edition. If the match is not exact, you may not be able to restore the data, or Azure DevOps Server may not operate correctly even if you can restore the data.
+</code></pre>
+<p>意思就是要在新安装AzureDevops上还原数据，数据库的版本要和原先的数据库版本完全一致，否则可能无法还原数据库或者是AzureDevops可能不能正常工作。我的旧的AzureDevops是安装的SQL Server2017数据库，新的AzureDevops是SQL Server2019,我怀疑是这个问题。</p>
+<p>好蛋疼啊，只能重新安装了吗?微软这步操作也做的太坑了吧，使用新的数据库还不行，必须使用旧的数据库才能完成备份和还原啊。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/admin/backup/restore-data-different-instance?view=azure-devops">Restore data to a different server than the current one</a><br>2.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/admin/backup/restore-data-different-instance?view=azure-devops#step-2-install-and-configure-sql-server-on-the-new-hardware">Install and configure SQL Server on the new hardware</a><br>3.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/46151504/tfs-2017-error-tf401054">TFS 2017 Error: TF401054</a><br>4.<a target="_blank" rel="noopener" href="https://www.codeproject.com/Questions/1242101/Migrate-to-TFS-to-issue">Migrate to TFS 2015 to 2018 issue</a><br>5.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/admin/move-clone-hardware?view=tfs-2015">Move or clone from one hardware to another for Azure DevOps on-premises</a></div>
+<hr>
+<p><strong>20200416更新</strong><br>又是能量满满的一天。<br>(1) 我将新的AzureDevops的SQL Server2019数据库，换回了旧版AzureDevops使用的SQL Server2017数据库版本。然后重新执行第(3)步的TfsConfig changeServerID、TFSConfig remapDBs、TFSconfig registerDB等命令。</p>
+<p>见证奇迹的时刻了，还是不行呢？还是出现了错误：“TF401054: The requested service level property TFS_SERVICE_LEVEL did not match the expected value. Azure DevOps Server requires the Dev17.M153.5 service level but the database currently implements Dev17.M143.6.”</p>
+<p>(2) 我又重新查看了原先服务器上安装的AzureDevops版本，发现了在旧的服务器上安装的AzureDevops版本是：azuredevopsserver2019.0.1.exe，而新的服务器上安装的最新版：azuredevopsserver2019.1.1.exe。应该是这个问题。那么就应该使用的是升级AzureDevops版本的操作。</p>
+<p>后来找到了TfsPreUpgrade.exe 这个工具，据官网说是可以进行升级的工具，死马当活马医吧。<a target="_blank" rel="noopener" href="https://www.microsoft.com/download/details.aspx?id=48263">下载</a>-&gt;解压，然后再解压后的目录中运行以下命令</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## TfsPreUpgrade.exe Run /TargetDatabaseNames:"{SQL Instance};{Collection Database Name}",其中{SQL Instance}为实例名，默认的实例是：计算机名，我这里是WIN-C7341PBVGMN，{Collection Database Name} 是集合数据库的名字,我这里第一次尝试使用了 AzureDevOps_Configuration</span></span><br><span class="line">TfsPreUpgrade.exe Run /TargetDatabaseNames:<span class="string">"WIN-C7341PBVGMN;AzureDevOps_Configuration"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果失败了：“TfsPreUpgrade cannot be run on these databases. The deployment is already at or beyond Team Foundation Server 2015 - this build of TfsPreUpgrade is not relevant to these versions.”</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_11.png" lay-src="/posts/e6d8e57f/error_11.png" class="" title="azure备份">
+
+<p>意思是版本不对？</p>
+<p>(3) 于是我在备份还原数据库之后，又重新卸载了AzureDevops2019.1.1版本，然后重新安装了老版本AzureDevops2019.0.1。</p>
+<p>其实我有点搞不懂官方的升级文档，官网的<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/upgrade/get-started?view=azure-devops">升级文档</a>中只是提了升级前的准备，然后清理数据，然后是各种先前版本的2018、2017的升级等，但是就是没有说明白如何进行升级，就算下载了TfsPreUpgrade.exe工具，还是不可以的，因为这个工具只针对老版本进行的升级操作。下面有句话就是说，安装新版本，然后执行升级。难不成是直接安装最新版，覆盖旧版本就可以了吗？在安装完旧版之后，可以进行尝试使用升级的方式进行升级。</p>
+<pre><code>After you finish your preparation, install the new version. Get the binaries and run through the installation process to upgrade your servers.
+</code></pre>
+<p>安装完AzureDevops2019.0.1之后，自动打开配置中心-&gt;启动向导-&gt;选择现有的数据库-&gt;高级，然后一项项的和安装的时候进行的一模一样。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_12.png" lay-src="/posts/e6d8e57f/error_12.png" class="" title="azure备份">
+
+<p>(4) 虽然能成功的启动网站了，但是貌似还是有些问题，无法访问页面</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_13.png" lay-src="/posts/e6d8e57f/error_13.png" class="" title="azure备份">
+
+<p>要在管理控制台上将集合启动，才能正常访问网站。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_14.png" lay-src="/posts/e6d8e57f/error_14.png" class="" title="azure备份">
+
+<p>可喜可贺啊，可喜可贺啊。项目都在，用户都在。终于完成了数据的备份和还原。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/upgrade/get-started?view=azure-devops">Upgrade your deployment to the latest version of Azure DevOps Server</a><br>2.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/requirements?view=azure-devops#sql-server">Requirements for Azure DevOps on-premises</a><br>3.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/server/release-notes/azuredevops2019u1?view=azure-devops">Azure DevOps Server 2019 Update 1 Release Notes</a><br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/danzhang/p/11075094.html">微软 Azure DevOps Server 2019 Update 1 (TFS 2019.1)</a></div>
+<hr>
+<p>(3) 关于数据备份时文件夹权限的问题</p>
+<p>我对比了两个能成功部署的文件夹权限，发现其中都添加了数据库实例用户的名字。所以数据实例对这个文件夹具有访问权限。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_2.png" lay-src="/posts/e6d8e57f/error_2.png" class="" title="azure备份">
+
+<p>但是当我们点击编辑-&gt;点击添加权限的时候，是找不到这个用户的，这就是问题所在。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/error_3.png" lay-src="/posts/e6d8e57f/error_3.png" class="" title="azure备份">
+
+<hr>
+<p>(4) TF30046: 实例信息不匹配。找不到 Azure DevOps 需要的 65ed6567-e33d-4c10-a36b-84aa8bf0ea5b。请与 Azure DevOps Server 管理员联系。</p>
+<h2 id="5-剩余步骤"><a href="#5-剩余步骤" class="headerlink" title="5.剩余步骤"></a>5.剩余步骤</h2><p>(1) 修改公共url<br>在管理控制台中，修改公共的url路径。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/bak_3.png" lay-src="/posts/e6d8e57f/bak_3.png" class="" title="Azure还原">
+
+<p>(2) 添加本机用户为:管理控制台用户，至于其他的用户，因为AzureDevops的认证，似乎是借助于Windows自带的认证，所以相关的人员配置也要在新的电脑上，创建新的用户，然后配置权限，否在登录不上去。</p>
+<img src="/images/loadimg.png" data-original="/posts/e6d8e57f/bak_4.png" lay-src="/posts/e6d8e57f/bak_4.png" class="" title="Azure还原">
+
+<p>虽然用户名密码不重新配置无法使用，但是曾经使用过的ssh方式进行连接，似乎还是可以的，使用ssh进行代码推送拉取等操作不受影响，但是你在配置ssh密钥的时候，又找不到这些已经配置了的key。</p>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h2><p>经过进两天的间断尝试，我终于完成了AzureDevops的备份和还原，总结一下。</p>
+<p>(1) 备份时要设置备份计划，并且要备份到网络文件夹中，这个文件夹要能被SQL Server实例所访问。对这个网络文件夹设置用户权限的时候，执行立即搜索，没有SQL Server实例的用户怎么办？可以通过备份到本机的一个共享目录上，然后将里面的内容，拷贝到另一台机器上，然后重新设置这个目录进行共享，这样在新机器上，就可以使用这个文件夹里面的备份内容进行恢复了。</p>
+<p>(2) 还原时，需要注意，就是AzureDevOps的版本要一致，否则就会出现问题。</p>
+<p>(3) 还原数据库之后，要执行 TFSconfig 的一系列命令，才能使AzureDevops实现正常的数据库访问。</p>
+<p>(4) 数据库还原成功，AzureDevops重新配置成功，还要注意集合要启动之后，网站才能正常访问。</p>
+<p>(5) 升级的步骤：升级AzureDevops，备份数据库，然后卸载重新安装数据库。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/408a614b.html" rel="next" title="AzureDevOps学习笔记二">
+                      <i class="iconfont icon-prev"></i> AzureDevOps学习笔记二
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/b893460f.html" rel="prev" title="AzureDevOps发布和打包Springboot程序">
+                      AzureDevOps发布和打包Springboot程序 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%A4%87%E4%BB%BD"><span class="toc-number">1.</span> <span class="toc-text">1.数据备份</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E8%BF%98%E5%8E%9F"><span class="toc-number">2.</span> <span class="toc-text">3.数据还原</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">2.1.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">终极解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%AF%E4%BD%9C%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">副作用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E8%A1%8CTfsConfig"><span class="toc-number">3.</span> <span class="toc-text">4.执行命令行TfsConfig</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2"><span class="toc-number">3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%89%A9%E4%BD%99%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.</span> <span class="toc-text">5.剩余步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">6.总结</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/e6d8e57f.html';
+      this.page.identifier = 'posts/e6d8e57f.html';
+      this.page.title = 'AzureDevOps备份和还原';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：AzureDevOps备份和还原 链接地址:https://bibichuan.github.io/posts/e6d8e57f.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'AzureDevOps备份和还原',
+		url: 'https://bibichuan.github.io/posts/e6d8e57f.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'AzureDevOps备份和还原',
+			isTipVisibility: true,
+			tip: 'AzureDevOps备份和还原',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

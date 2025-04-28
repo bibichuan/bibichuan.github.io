@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器运维之阿里云</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">服务器运维之阿里云</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-02-25 07:30:06
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-ssl证书申请"><a href="#1-ssl证书申请" class="headerlink" title="1.ssl证书申请"></a>1.ssl证书申请</h1><p>自2021年起，申请阿里云免费的ssl证书，要到 <a target="_blank" rel="noopener" href="https://common-buy.aliyun.com/?spm=5176.13785142.commonbuy2container.9.3afc778bei8t4T&amp;commodityCode=cas_dv_public_cn&amp;request=%7B%22ord_time%22:%221:Year%22,%22order_num%22:1,%22product%22:%22free_product%22,%22certCount%22:%2220%22%7D">证书资源包</a> 下进行申请了，</p>
+<p>(1) 每个实名主体个人/企业，一个自然年内可以领取一次数量为20的免费证书资源包，免费资源包到自然年结束时，会自动清除未签发的数量（每个自然年12月31日24:00）<br>(2) 免费证书扩容包用于一个实名主体下免费证书额度用尽后补充证书额度的资源包类型,免费证书不支持续费补齐时间</p>
+<p>购买之后，可以进行证书申请，其实也挺简单的，<a target="_blank" rel="noopener" href="https://yundunnext.console.aliyun.com/?spm=a2c4g.11186623.0.0.7d752109VdKSwr&amp;p=cas">SSL证书控制台</a></p>
+<p>(1) 证书资源包，点击证书申请</p>
+<img src="/images/loadimg.png" data-original="/posts/8b022a81/ssl_1.png" lay-src="/posts/8b022a81/ssl_1.png" class="" title="ssl证书">
+
+<p>(2) 点击证书申请，按要求进行填写</p>
+<img src="/images/loadimg.png" data-original="/posts/8b022a81/ssl_2.png" lay-src="/posts/8b022a81/ssl_2.png" class="" title="ssl证书">
+
+<p>(3) 到dns控制台，按上一步的要求进行解析记录的添加</p>
+<p>(4) 下载对应服务器的key和pem，按相关步骤进行服务器配置，比如下载nginx，需要配置如下内容</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">        listen 443  ssl;</span><br><span class="line">        server_name  xxx;</span><br><span class="line">        ssl on;</span><br><span class="line">        ssl_certificate //cloud/dev/ssl/ssl.pem;</span><br><span class="line">        ssl_certificate_key //cloud/dev/ssl/ssl.key;</span><br><span class="line">        ssl_session_timeout 5m;</span><br><span class="line">        ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">        ssl_prefer_server_ciphers on;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/28542.html?spm=5176.14113079.8_detail.0.7f7e56a7IF3osV.7f7e56a7IF3osV">证书选型和购买</a><br>【2】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/video_detail/54216.html?spm=5176.13910061.sslink.1.77db63439lwyo7&amp;accounttraceid=d1e5af04389f4baebca29e0a6e5aa323xitv">SSL数字证书Nginx配置部署指导</a> (这个就是在nginx中配置ssl证书的官方指导，还配了视频)<br>【3】.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000009220479">使用阿里云免费SSL证书实现全站HTTPS化</a> 这里步骤挺详细的<br>【4】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/875508">2022阿里云免费SSL证书申请全过程</a><br>【5】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ssl-certificate/user-guide/upgrade-a-free-certificate-upgrade-a-free-certificate?spm=a2c4g.11186623.0.i2">免费版SSL证书升级指南</a> 您的免费证书为待申请、审核失败和即将过期（到期前30个自然日）状态。在SSL 证书页面，单击免费证书页签，定位到目标证书，在操作列，单击升级。在证书升级面板，选择升级的方案。</div>
+<h1 id="2-云盘在线扩容"><a href="#2-云盘在线扩容" class="headerlink" title="2.云盘在线扩容"></a>2.云盘在线扩容</h1><p>高效磁盘每40G每月14块，现在ECS2上系统盘只有40G，2021年11月19日到期，扩容到60G,需要47块钱，扩容到80G需要95块钱。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cn.aliyun.com/price/detail/disk">块存储（云盘与快照） 详细价格信息</a> (普通云盘、高效云盘、SSD云盘价格不同，地区也不同)<br>2.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25451.html">在线扩容云盘（Windows系统）</a> (这里是在线扩容的教程，虽然会推荐扩容前，先进行快照备份，但是快照备份也是要钱的啊。)</div>
+<h2 id="更新-RedHat-VirtIO-驱动"><a href="#更新-RedHat-VirtIO-驱动" class="headerlink" title="更新 RedHat VirtIO 驱动"></a>更新 RedHat VirtIO 驱动</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/113322.html?spm=5176.2020520165.help.dexternal.36cb7029K2ppKu#concept-v4p-2xs-dhb">Windows实例更新RedHat VirtIO驱动</a></div>
+<h2 id="重启服务器"><a href="#重启服务器" class="headerlink" title="重启服务器"></a>重启服务器</h2><p>这个重启，不能再虚拟机机里自己手动重启，要在阿里云控制台进行重启，否在重启之后，还是不能识别新增的磁盘。</p>
+<h1 id="3-互联互通"><a href="#3-互联互通" class="headerlink" title="3.互联互通"></a>3.互联互通</h1><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/25385.html?spm=5176.21213303.J_6704733920.7.4d7d3edaO3Du1J&amp;scm=20140722.S_help@@%E6%96%87%E6%A1%A3@@25385.S_os+hot.ID_25385-RL_%E5%86%85%E7%BD%91%E4%BA%92%E9%80%9A-OR_helpmain-V_2-P0_0">内网</a></div>
+<h1 id="4-阿里云监控"><a href="#4-阿里云监控" class="headerlink" title="4.阿里云监控"></a>4.阿里云监控</h1><p>在一台阿里云2008的服务器上，没有业务java程序，但是运行了一个java程序，查看程序的目录，发现了 CloudMonitor 这个目录，一查是阿里云监控软件。</p>
+<img src="/images/loadimg.png" data-original="/posts/8b022a81/aliyun_1.png" lay-src="/posts/8b022a81/aliyun_1.png" class="" title="阿里云">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/260818.html">如何卸载云监控插件</a><br>2.<a target="_blank" rel="noopener" href="https://www.vpsgo.com/uninstall-aliyundun.html">阿里云如何完全卸载阿里云盾（安骑士）并屏蔽阿里云盾IP</a><br>3.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/35170.html?spm=a2c4g.11174283.0.0.4a7a229f4zmiD2">什么是云监控</a></div>
+<h1 id="6-阿里云带宽"><a href="#6-阿里云带宽" class="headerlink" title="6.阿里云带宽"></a>6.阿里云带宽</h1><p>一般记住这个公式换算关系就可以了。1Mbps带宽=128kb/s的速度，所以一般来说的话5M带宽最快的理论速度是640kb/s，上传速度为1.25M/秒。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/ask/153758">阿里云的5m带宽，用户下载和上传能达到多少速度</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.bidianbao.com/990.html">阿里云服务器带宽下载上传速度表1M/2M/3M/5M/10M/20/50M/100M/200M…</a> N小于等于10M，上传速度1.25M/秒；当带宽大于10M，上传和下载速度持平</div>
+<h1 id="7-docker镜像加速器"><a href="#7-docker镜像加速器" class="headerlink" title="7.docker镜像加速器"></a>7.docker镜像加速器</h1><p>由于神秘原因，大部分的国内 Docker 镜像源也不能访问了，但是阿里云有一个获取加速镜像地址的方法。ACR会为每一个账号（阿里云账号或RAM用户）生成一个镜像加速器地址，配置镜像加速器前，您需要获取镜像加速器地址。</p>
+<p>登录容器镜像服务控制台，在左侧导航栏选择镜像工具 &gt; 镜像加速器，在镜像加速器页面获取加速器地址。</p>
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/acr/user-guide/accelerate-the-pulls-of-docker-official-images?spm=a2c4g.11186623.0.i1">官方镜像加速</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.wangdu.site/course/2109.html">国内DockerHub镜像加速器还有哪些可用？(2024年8月21日)</a> DockerHub国内镜像源列表。国内DockerHub镜像加速器。如何自建DockerHub。使用DockerHub Proxy，以下以 hub.uuuadc.top 为例：可以根据列表自行替换<br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yfeil/p/18075114">Docker 仓库国内镜像加速源（2024年3月21日）</a> 这里我到没有设置</div>
+<h1 id="8-docker镜像仓库"><a href="#8-docker镜像仓库" class="headerlink" title="8.docker镜像仓库"></a>8.docker镜像仓库</h1><p>我本来只是想要一个镜像源的，后来莫名其妙的开了一个镜像仓库。</p>
+<p>（1）.首先登陆阿里云，进入控制台，打开主菜单，找到“容器镜像服务”<br>（2）.仓库实例有个人版和企业版，个人版是免费，企业版收费<br>（3）.进入个人实例，可以看到这个仓库的摘要信息<br>（4）.进入仓库，这个时候镜像为空，你可以自己push上来docker镜像<br>（5）.在本机把我自己的进项上传上来，命令很简单，主要docker login 和docker push</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login -u=阿里云账号 registry.cn-beijing.aliyuncs.com</span><br><span class="line">docker push registry.cn-beijing.aliyuncs.com/xufangbo/goapp:v1.0.1</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Netsharp/p/15465081.html">使用阿里云私有docker镜像（个人版）</a> dockerhub的私有库是收费的，阿里云镜像有一个人版是私有镜像库，因为是免费的所有有300个镜像数量的限制，但是个人研究也就足够了<br>【2】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/695268">docker使用阿里云镜像仓库</a> 进去注册帐号后，点击自己的管理中心。在管理中心点击加速器，右边面板会有你的加速地址，右边面板下面有详细设置步骤。</div>
+<h1 id="9-阿里短信"><a href="#9-阿里短信" class="headerlink" title="9.阿里短信"></a>9.阿里短信</h1><p>执行短信发送的时候，出现了报错：com.aliyuncs.exceptions.ClientException: NoPermission : You are not authorized to do this operation. Action: dysms:SendSms;Resource: acs:dysms::1112460952376664</p>
+<p>新建一个 RAM 用户，配置权限</p>
+<p>【解决方案】<br>后来解决方案好像就是因为我的代码部分写错了，accesskey 和 sercet 有问题。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qsd1530/article/details/106811284">关于调用阿里云短信平台，返回没有访问权限的解决办法</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40779215/article/details/109747884">阿里云STS临时授权时出现“You are not authorized to do this action. You should be authorized by RAM“报错</a> 1.代码中使用的AccessKey和AccessKeySecret是主账号的，并非RAM用户的。2.没有为RAM用户添加AliyunSTSAssumeRoleAccess系统策略。3.代码中使用的RoleARN参数对应的角色不是用户角色，而是服务角色。</div>
+<h1 id="10-CDN"><a href="#10-CDN" class="headerlink" title="10.CDN"></a>10.CDN</h1><p>cdn的CNAME配置以 w.kunlunaq.com 结尾。<br>配置 cdn 顶级域名的时候，DNS中应该以 @ 开头。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/cdn/add-a-cname-record-for-a-domain-name">配置CNAME</a></div>
+<h1 id="11-全站加速"><a href="#11-全站加速" class="headerlink" title="11.全站加速"></a>11.全站加速</h1><p>全站加速的域名，CNAME配置以 w.kunluncan.com 结尾</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/4233006c.html" rel="next" title="服务器运维之阿里云ECS">
+                      <i class="iconfont icon-prev"></i> 服务器运维之阿里云ECS
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/d308f748.html" rel="prev" title="服务器运维之跳板机">
+                      服务器运维之跳板机 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-ssl%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7"><span class="toc-number">1.</span> <span class="toc-text">1.ssl证书申请</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BA%91%E7%9B%98%E5%9C%A8%E7%BA%BF%E6%89%A9%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">2.云盘在线扩容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-RedHat-VirtIO-%E9%A9%B1%E5%8A%A8"><span class="toc-number">2.1.</span> <span class="toc-text">更新 RedHat VirtIO 驱动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%90%AF%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">2.2.</span> <span class="toc-text">重启服务器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E4%BA%92%E8%81%94%E4%BA%92%E9%80%9A"><span class="toc-number">3.</span> <span class="toc-text">3.互联互通</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E9%98%BF%E9%87%8C%E4%BA%91%E7%9B%91%E6%8E%A7"><span class="toc-number">4.</span> <span class="toc-text">4.阿里云监控</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E9%98%BF%E9%87%8C%E4%BA%91%E5%B8%A6%E5%AE%BD"><span class="toc-number">5.</span> <span class="toc-text">6.阿里云带宽</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-docker%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F%E5%99%A8"><span class="toc-number">6.</span> <span class="toc-text">7.docker镜像加速器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-docker%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93"><span class="toc-number">7.</span> <span class="toc-text">8.docker镜像仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E9%98%BF%E9%87%8C%E7%9F%AD%E4%BF%A1"><span class="toc-number">8.</span> <span class="toc-text">9.阿里短信</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-CDN"><span class="toc-number">9.</span> <span class="toc-text">10.CDN</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E5%85%A8%E7%AB%99%E5%8A%A0%E9%80%9F"><span class="toc-number">10.</span> <span class="toc-text">11.全站加速</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/8b022a81.html';
+      this.page.identifier = 'posts/8b022a81.html';
+      this.page.title = '服务器运维之阿里云';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：服务器运维之阿里云 链接地址:https://bibichuan.github.io/posts/8b022a81.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '服务器运维之阿里云',
+		url: 'https://bibichuan.github.io/posts/8b022a81.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '服务器运维之阿里云',
+			isTipVisibility: true,
+			tip: '服务器运维之阿里云',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

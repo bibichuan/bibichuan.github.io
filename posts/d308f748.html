@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器运维之跳板机</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">服务器运维之跳板机</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-03-30 06:07:47
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跳板机和堡垒机的区别，我这里不再提了。跳板机就是一台服务器，运维人员在维护过程中首先要统一登录到这台服务器，然后再登录到目标设备进行维护和操作。这篇文章我主要介绍使用 MobaXterm 和 fiallshell 两种工具配置跳板机，并介绍了我其中遇到的问题。</p>
+<h1 id="1-MobaXterm"><a href="#1-MobaXterm" class="headerlink" title="1.MobaXterm"></a>1.MobaXterm</h1><p>主要有三台机器，一台本地机器安装FinalShell(windows机器A),目标机器的ip内网地址： 172.24.148.4 (C机器)，跳转机的ip内网ip地址：172.24.148.5（B机器），外网ip地址：xx.xx.xx.1 (B机器)。就是实现从机器A,通过跳转机B，访问目标机C</p>
+<p>(1) 新建一个ssh链接，输入目标地址：172.24.148.4，用户名为目标地址的用户名。</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/MobaXterm_1.jpg" lay-src="/posts/d308f748/MobaXterm_1.jpg" class="" title="MobaXterm">
+
+<p>(2) 选择网络配置，增加一个 SSH gateway,输入跳转机机的外网ip地址：xx.xx.xx.1，以及用户名</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/MobaXterm_2.jpg" lay-src="/posts/d308f748/MobaXterm_2.jpg" class="" title="MobaXterm">
+
+<p>(3) 确定后，双击新建的ssh链接，进行链接，输入跳转机的密码，接受协议</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/MobaXterm_3.jpg" lay-src="/posts/d308f748/MobaXterm_3.jpg" class="" title="MobaXterm">
+
+<p>(4) 打开ssh链接，接受并保存相关的认证key之类的东西，输入目标计算机的密码，就可以实现通过跳转机进行链接了。</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/MobaXterm_4.jpg" lay-src="/posts/d308f748/MobaXterm_4.jpg" class="" title="MobaXterm">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/43a0ab131ad9">MobaXterm通过跳板机连接内网</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/liuliqun520/article/details/102896210">mobaxterm通过跳板机访问远程服务器（跳板机使用秘钥）</a> MobaXterm 使用 ssh 直接连接远程主机，或者通过跳板机登陆远程服务器可能会出现一段时候不操作就会自动关闭连接。要解决这个过一会就断开连接的问题，我们需要在勾选 Setting 下的 SSH Keepalive 选项。注意任何配置修改后都需要重启下 MobaXterm，否则不会生效。问题是这里也没有提示从那里获取到的密钥。<br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/278b3db672bd">常用的linux 命令&amp;&amp;ssh&amp;&amp;跳板机</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41746725/article/details/125268104">MobaXterm关于多层跳板机的操作步骤</a> 这里从A（本机）=&gt; B(40) =&gt; C(79) =&gt;D(98)，这里说了如何配置用户名和密码，但是我尝试之后，还是无法连接。<br>6.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/CliY/p/16096390.html">远程服务器连接（密钥验证，跳板机）</a> 这里有配置密钥，进行远程连接，还有在VSCode中进行连接的方法。<br>7.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2d7b8ce2c8bc">MobaXterm作为跳板机连接内网机器（使用私钥）</a> (1) 新建session;（2）建立ssh连接;（3）填入跳板机的公网地址，用户名，端口号等;（4）设置主机的私钥。问题是这里没有说明的就是这个私钥的配置方法，所以我使用起来还是非常的费力。<br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37649431/article/details/109181903">MobaXterm建立有跳板机/堡垒机的SSH session（会话）</a> 这个就是一个跳板机跳转到目标服务器上的操作。</div>
+<h1 id="2-finallshell"><a href="#2-finallshell" class="headerlink" title="2.finallshell"></a>2.finallshell</h1><p>主要有三台机器，一台本地机器安装FinalShell(windows机器A),目标机器的ip内网地址： 172.24.148.4 (C机器)，跳转机的ip内网ip地址：172.24.148.5（B机器），外网ip地址：xx.xx.xx.1 (B机器)。就是实现从机器A,通过跳转机B，访问目标机C。</p>
+<p>(1) 新建ssh链接，目标地址为 xx.xx.xx.1,端口号和用户名密码为B机器的用户名密码和ssh端口号。</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/finalshell_1.jpg" lay-src="/posts/d308f748/finalshell_1.jpg" class="" title="finalshell">
+
+<p>(2) 在上一步的基础上，选择隧道，新建隧道，本地端口填上20024，地址填上127.0.0.1，目标地址填入 172.24.148.4 (C机器) 的地址和端口。</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/finalshell_2.jpg" lay-src="/posts/d308f748/finalshell_2.jpg" class="" title="finalshell">
+
+<p>(3) 在新建一个ssh链接，目标地址为 127.0.0.1，端口为上一步填入的端口 20024端口，用户名密码为机器C的用户名密码</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/finalshell_3.jpg" lay-src="/posts/d308f748/finalshell_3.jpg" class="" title="finalshell">
+
+<p>(4) 先打开第一步的ssh链接，然后在打开第三步的ssh链接，这样就可以了。</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/finalshell_4.jpg" lay-src="/posts/d308f748/finalshell_4.jpg" class="" title="finalshell">
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41634885/article/details/108240343">finallshell配置跳板机连接主机</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/cainiao1412/article/details/123877658">FinalShell设置跳板机作为代理访问真实机器</a><br>3.<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/791209">如何通过跳板机无缝连接需要跳转的服务器？</a> 先搭建 本机 - A 的隧道（ SSH / VPN 均可）<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/w139074301/article/details/116590829">FinalShell配置隧道</a><br>5.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/601630927">ssh 工具教程</a> 假设你的本地机器是 host2, 可以通过 ssh 访问 host3, 但是无法直接访问 host4 上开在 9000 端口的 http 服务, 而 host3 可以访问 host4, 此时就可以利用 ssh 隧道通过 host3 访问 host4 的服务。虽然应用场景非常的正确，但是这个转发的模版配置的感觉不对，因为这个host3并没有定义。<br>6.<a target="_blank" rel="noopener" href="https://www.hoscen.cn/blog/hao/articles/252495889807966208.html">finalshell建立服务器内网其他IP端口的隧道</a><br>7.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/shayue/p/14215082.html">通过跳板机连接公司内网办法</a> 主要配置监听端口，可以随意选取合法的端口数字，以及目标地址，目标端口固定为22。这样做之后，每次连接跳板机，本地的6000端口便会等价于内网服务器的22端口。之后便可以通过访问本地6000端口，连接到服务器。</div>
+<h1 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h1><p>接下来我就是记录了我在配置 MobaXterm 和 FinalShell 作为跳板机的时候，遇到的问题，有些问题解决了，有些问题没有解决，可能也不需要解决，但是最后的就是通过</p>
+<h2 id="1-MobaXterm网络无法连接"><a href="#1-MobaXterm网络无法连接" class="headerlink" title="1.MobaXterm网络无法连接"></a>1.MobaXterm网络无法连接</h2><p>我在另外的一个网络中，内网网络中，进行了同样的操作。我尝试使用MobaXterm作为跳板机进行跳转，但是尝试了很多次，配置了网络链接，配置了用户名密码，最后还是显示：Remote side unexpectedly closed network connection。有些文章是使用的私钥的配置方法，有些使用的是用户名密码的方法，我这里就是无法确定到底该填入那个机器的私钥，以及填入用户名密码的顺序和规则。我怀疑是网络的问题，因为这个目标网络的所有端口都不通。</p>
+<p>【尝试】<br>(1) 在指定用户名密码的时候，配置了多个用户名和密码，无效。<br>(2) 在多篇文章中，还用了一个Setting的keepalive的选项，无效。<br>(3) 配置网络代理的时候，使用User SSH key，无效。</p>
+<h2 id="2-FinallShell网络无法连接"><a href="#2-FinallShell网络无法连接" class="headerlink" title="2.FinallShell网络无法连接"></a>2.FinallShell网络无法连接</h2><p>上面的MobaXterm无法实现跳转机登录的时候，我就尝试使用FinallShell进行跳转机配置，配置了隧道，连接了跳转机，最后还是无法从本机到目标网络。我怀疑也同样是网络的问题。</p>
+<p>理论上配置的方法就是：<br>1.先配置从本机到跳板机的连接，在该连接配置中，增加了一个隧道，指定目标机地址。该隧道创建为本地ip。<br>2.新建一个连接，从本机，连接到隧道的本地ip地址，<br>3.这样就实现了，从本机经过隧道，然后连接到了目标主机的ssh连接。</p>
+<p>【尝试】<br>我尝试了网上的很多的方法，最后还是显示：“connection is closed by foreign host”<br>1.修改防火墙配置，无效。<br>2.配置隧道，然后通过隧道连接目标主机，无效。<br>3.我还尝试使用建立隧道之后，使用命令行的方式进行链接，进行ssh -v的debug模式，无效。</p>
+<p>尝试无效</p>
+<h2 id="3-connection-is-closed-by-foreign-host"><a href="#3-connection-is-closed-by-foreign-host" class="headerlink" title="3.connection is closed by foreign host"></a>3.connection is closed by foreign host</h2><p>当我配置好了FinalShell隧道之后，进行链接的时候，出现了这个问题。刚开始我编辑了 /etc/ssh/sshd_config 配置文件，配置了下面的两个参数，结果还是无法跳转。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ClientAliveInterval 60</span><br><span class="line">ClientAliveCountMax 3</span><br></pre></td></tr></tbody></table></figure>
+
+<p>因为我在一个网络中尝试成功了，另外的一个网络中没有尝试成功，我后来查看了 /etc/ssh/sshd_config 里面的配置，发现了一些不同之处。在无法使用隧道链接的网络中，我发现了下面几个参数基本上都设置了no,于是我尝试着查询这几个参数。</p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StrictModes yes</span><br><span class="line">AllowTcpForwarding no</span><br><span class="line">AllowAgentForwarding no</span><br><span class="line">PermitTunnel no</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方法】<br>根据我对资料的理解，我需要的就是要把这个 AllowTcpForwarding 进行打开，但是我干脆就直接把全部的都打开好了,然后关闭 FinallShell，之后重新配置隧道，最后终于可以实现通过隧道作为跳板机跳转到目标机上了。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">StrictModes no</span><br><span class="line">AllowTcpForwarding yes</span><br><span class="line">AllowAgentForwarding yes</span><br><span class="line">PermitTunnel yes</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41538097/article/details/107412272">阿里云服务器shell：Connection closed by foreign host，finalshell：java.net.SocketException: Connection reset</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43688472/article/details/122430427">shell中Connection closed by foreign host问题解决</a> ip冲突导致连接中断,换成wifi连接<br>3.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1624298">解决mac中finalshell隧道功能无法使用本地80端口问题</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tojohnonly/article/details/79746588">解决 SSH Connection closed by foreign host 问题</a> ClientAliveInterval 60;ClientAliveCountMax 3 配置<br>5.<a target="_blank" rel="noopener" href="https://ishm.idv.tw/?p=70">SSH Port Forwarding 安全連線通道</a><br>6.<a target="_blank" rel="noopener" href="http://linuxperf.com/?p=30">ssh端口转发</a> ssh是个多用途的工具，不仅可以远程登录，还可以搭建socks代理、进行内网穿透，这是利用它的端口转发功能来实现的。<br>7.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hugetong/p/10038780.html">比端口转发更高级的ssh device tunnel转发</a><br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tojohnonly/article/details/79746588">解决 SSH Connection closed by foreign host 问题</a></div>
+<h2 id="4-kex-exchange-identification-read-Connection-reset"><a href="#4-kex-exchange-identification-read-Connection-reset" class="headerlink" title="4.kex_exchange_identification: read: Connection reset"></a>4.kex_exchange_identification: read: Connection reset</h2><p>我建立了隧道之后，在命令行中使用ssh命令链接： ssh <a href="mailto:root@127.0.0.1">root@127.0.0.1</a> -p 6000，结果出现了这个问题。</p>
+<p>【尝试】<br>我尝试更新了指纹，还是不行</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## XXX.XXX.XXX.XXX 为要登陆主机的IP地址</span></span><br><span class="line">ssh-keygen -R XXX.XXX.XXX.XXX</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yangluo1683/article/details/118907066">解决ssh登录问题kex_exchange_identification: read: Connection reset by peer</a></div>
+<h2 id="5-Authorized-users-only-All-activities-may-be-monitored-and-reported"><a href="#5-Authorized-users-only-All-activities-may-be-monitored-and-reported" class="headerlink" title="5.Authorized users only.All activities may be monitored and reported"></a>5.Authorized users only.All activities may be monitored and reported</h2><p>这个应该是安装了某一个监控软件弹出的内容。</p>
+<img src="/images/loadimg.png" data-original="/posts/d308f748/finalshell_5.jpg" lay-src="/posts/d308f748/finalshell_5.jpg" class="" title="finalshell"></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/8b022a81.html" rel="next" title="服务器运维之阿里云">
+                      <i class="iconfont icon-prev"></i> 服务器运维之阿里云
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/b24fa962.html" rel="prev" title="服务器运维之路由器配置">
+                      服务器运维之路由器配置 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-MobaXterm"><span class="toc-number">2.</span> <span class="toc-text">1.MobaXterm</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-finallshell"><span class="toc-number">3.</span> <span class="toc-text">2.finallshell</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">3.问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-MobaXterm%E7%BD%91%E7%BB%9C%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.1.</span> <span class="toc-text">1.MobaXterm网络无法连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-FinallShell%E7%BD%91%E7%BB%9C%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5"><span class="toc-number">4.2.</span> <span class="toc-text">2.FinallShell网络无法连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-connection-is-closed-by-foreign-host"><span class="toc-number">4.3.</span> <span class="toc-text">3.connection is closed by foreign host</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-kex-exchange-identification-read-Connection-reset"><span class="toc-number">4.4.</span> <span class="toc-text">4.kex_exchange_identification: read: Connection reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Authorized-users-only-All-activities-may-be-monitored-and-reported"><span class="toc-number">4.5.</span> <span class="toc-text">5.Authorized users only.All activities may be monitored and reported</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/d308f748.html';
+      this.page.identifier = 'posts/d308f748.html';
+      this.page.title = '服务器运维之跳板机';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：服务器运维之跳板机 链接地址:https://bibichuan.github.io/posts/d308f748.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '服务器运维之跳板机',
+		url: 'https://bibichuan.github.io/posts/d308f748.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '服务器运维之跳板机',
+			isTipVisibility: true,
+			tip: '服务器运维之跳板机',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

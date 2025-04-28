@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geoserver的WFS服务</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Geoserver的WFS服务</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Geoserver/">Geoserver</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-05-07 07:44:26
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-空间查询"><a href="#1-空间查询" class="headerlink" title="1.空间查询"></a>1.空间查询</h2><p>geoserver提供了强大的cql_filter查询语言，通过它可进行简单的控件查询，比如点在圆内，图形是否相交等。使用axios.js进行get请求，然后构造cql_filter语句即可。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">ajax</span>({</span><br><span class="line">  <span class="attr">method</span>: <span class="string">'get'</span>,</span><br><span class="line">  <span class="attr">url</span>: <span class="string">'http://localhost:8080/geoserver/wfs'</span>,</span><br><span class="line">  <span class="attr">param</span>: {</span><br><span class="line">    <span class="attr">service</span>: <span class="string">'WFS'</span>,</span><br><span class="line">    <span class="attr">version</span>: <span class="string">'2.0'</span>,</span><br><span class="line">    <span class="attr">request</span>: <span class="string">'GetFeature'</span>,</span><br><span class="line">    <span class="attr">typeName</span>: <span class="string">'sports:sports'</span>,</span><br><span class="line">    <span class="attr">outputFormat</span>: <span class="string">'application/json'</span>,</span><br><span class="line">    <span class="attr">cql_filter</span>: <span class="string">'WITHIN(the_geom,POLYGON ((120.16423419 30.260509218, 120.183486934 30.260187265)))'</span></span><br><span class="line">  }</span><br><span class="line">}).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+<p>但是对于复杂的图形，cql_filter中的POLYGON会变的很大，超过了浏览器Get请求中url的最大4k限制，就需要使用POST请求，奇怪的是，geoserver的wfs不支持直接的post请求,需要直接发送一个filter的xml文件,示例xml如下</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- http://localhost:8080/geoserver/sports/wfs --&gt;</span></span><br><span class="line"><span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">wfs:GetFeature</span> <span class="attr">service</span>=<span class="string">"WFS"</span> <span class="attr">version</span>=<span class="string">"2.0.0"</span> <span class="attr">outputFormat</span>=<span class="string">"JSON"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:wfs</span>=<span class="string">"http://www.opengis.net/wfs/2.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:fes</span>=<span class="string">"http://www.opengis.net/fes/2.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:gml</span>=<span class="string">"http://www.opengis.net/gml/3.2"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:sf</span>=<span class="string">"http://www.openplans.org/spearfish"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.opengis.net/wfs/2.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                        http://schemas.opengis.net/wfs/2.0/wfs.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">                        http://www.opengis.net/gml/3.2</span></span></span><br><span class="line"><span class="string"><span class="tag">                        http://schemas.opengis.net/gml/3.2.1/gml.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">wfs:Query</span> <span class="attr">typeNames</span>=<span class="string">"sports:sports"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">fes:Filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fes:Within</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">fes:ValueReference</span>&gt;</span>sports:the_geom<span class="tag">&lt;/<span class="name">fes:ValueReference</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">gml:Polygon</span> <span class="attr">srsName</span>=<span class="string">'http://www.opengis.net/def/crs/EPSG/0/26713'</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">gml:exterior</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">gml:LinearRing</span>&gt;</span></span><br><span class="line">                  <span class="comment">&lt;!-- pairs must form a closed ring --&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">gml:posList</span>&gt;</span>120.16423419 30.260509218 120.183486934 30.260187265 120.181412762 30.24883114 120.192881569 30.245103859 120.209696214 30.232216593 120.200896773 30.22410574 120.161972271 30.202492748 120.13462608 30.195389205 120.133982646 30.206557789 120.138751065 30.207865783 120.13480825 30.215837435 120.142587795 30.21482398 120.148572037 30.2200362 120.150019211 30.218123308 120.155348218 30.226250085 120.155248216 30.233308076 120.149367654 30.237859255 120.149904021 30.24344476 120.157804711 30.253641127 120.153225436 30.260573061 120.16423419 30.260509218<span class="tag">&lt;/<span class="name">gml:posList</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">gml:LinearRing</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">gml:exterior</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">gml:Polygon</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fes:Within</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">fes:Filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">wfs:Query</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">wfs:GetFeature</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>Filter也可以组合与嵌套</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">wfs:GetFeature</span> <span class="attr">service</span>=<span class="string">"WFS"</span> <span class="attr">version</span>=<span class="string">"2.0.0"</span> <span class="attr">outputFormat</span>=<span class="string">"JSON"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:wfs</span>=<span class="string">"http://www.opengis.net/wfs/2.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:fes</span>=<span class="string">"http://www.opengis.net/fes/2.0"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:gml</span>=<span class="string">"http://www.opengis.net/gml/3.2"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:sf</span>=<span class="string">"http://www.openplans.org/spearfish"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.opengis.net/wfs/2.0</span></span></span><br><span class="line"><span class="string"><span class="tag">                        http://schemas.opengis.net/wfs/2.0/wfs.xsd</span></span></span><br><span class="line"><span class="string"><span class="tag">                        http://www.opengis.net/gml/3.2</span></span></span><br><span class="line"><span class="string"><span class="tag">                        http://schemas.opengis.net/gml/3.2.1/gml.xsd"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">wfs:Query</span> <span class="attr">typeNames</span>=<span class="string">"sports:sports"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fes:Filter</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">fes:And</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fes:Within</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">fes:ValueReference</span>&gt;</span>sports:the_geom<span class="tag">&lt;/<span class="name">fes:ValueReference</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">gml:Polygon</span> <span class="attr">srsName</span>=<span class="string">'http://www.opengis.net/gml/srs/epsg.xml#4490'</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">gml:exterior</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">gml:LinearRing</span>&gt;</span></span><br><span class="line">                      <span class="comment">&lt;!-- pairs must form a closed ring --&gt;</span></span><br><span class="line">                      <span class="tag">&lt;<span class="name">gml:posList</span>&gt;</span><span class="tag">&lt;/<span class="name">gml:posList</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">gml:LinearRing</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">gml:exterior</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">gml:Polygon</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fes:Within</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fes:Within</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">fes:ValueReference</span>&gt;</span>sports:the_geom<span class="tag">&lt;/<span class="name">fes:ValueReference</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">gml:Polygon</span> <span class="attr">srsName</span>=<span class="string">'http://www.opengis.net/gml/srs/epsg.xml#4490'</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">gml:exterior</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;<span class="name">gml:LinearRing</span>&gt;</span></span><br><span class="line">                      <span class="comment">&lt;!-- pairs must form a closed ring --&gt;</span></span><br><span class="line">                      <span class="tag">&lt;<span class="name">gml:posList</span>&gt;</span><span class="tag">&lt;/<span class="name">gml:posList</span>&gt;</span></span><br><span class="line">                  <span class="tag">&lt;/<span class="name">gml:LinearRing</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;/<span class="name">gml:exterior</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;/<span class="name">gml:Polygon</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">fes:Within</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">fes:And</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">fes:Filter</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">wfs:Query</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">wfs:GetFeature</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>注意</strong><br>1.在使用ajax发送xml时，应将headers的请求头中的Content-Type设置为text/xml格式。</p>
+<p>2.GetFeature节点属性中可以添加任何get请求时的参数，比如：outputFormat=”JSON”</p>
+<p>3.进行空间查询时srsName应设置正确，比如上例中使用了4490坐标系，则srsName=’<a target="_blank" rel="noopener" href="http://www.opengis.net/gml/srs/epsg.xml#4490">http://www.opengis.net/gml/srs/epsg.xml#4490</a>‘,如果不知道如何设置srsName,可以在geoserver的图层预览时擦看GML格式的数据，其中有srsName的描述，获知直接 <code>http://localhost:8080/geoserver/sports/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=sports:sports&amp;maxFeatures=50</code>, 其中typeName应填写自己的工作空间和图层名。</p>
+<p>还有一种更加简洁的方式，openlayers3中提供了WFS这么一个类，以及filter函数，借助于XMLSerializer().serializeToString()可以将更加方便的构造上面的xml请求，详情请观看：<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/examples/vector-wfs-getfeature.html">vector-wfs-getfeature</a> ，当然构造出的xml和上面的差不多，唯一的区别就是不需要学习gml语法了，只需要专注于openlayers提供的filter就可以了。举个例子:</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { <span class="variable constant_">WFS</span> } <span class="keyword">from</span> <span class="string">'ol/format.js'</span>;</span><br><span class="line"><span class="keyword">import</span> { within <span class="keyword">as</span> withinFilter } <span class="keyword">from</span> <span class="string">'ol/format/filter.js'</span>;</span><br><span class="line"><span class="keyword">var</span> featureRequest = <span class="keyword">new</span> <span class="title function_">WFS</span>().<span class="title function_">writeGetFeature</span>({</span><br><span class="line">  <span class="attr">srsName</span>: <span class="string">'EPSG:4326'</span>,</span><br><span class="line">  <span class="attr">featurePrefix</span>: <span class="string">'sports'</span>,</span><br><span class="line">  <span class="attr">featureNS</span>: <span class="string">'sports'</span>,</span><br><span class="line">  <span class="attr">featureTypes</span>: [<span class="string">'sports'</span>],</span><br><span class="line">  <span class="attr">outputFormat</span>: <span class="string">'application/json'</span>,</span><br><span class="line">  <span class="attr">filter</span>:<span class="title function_">withinFilter</span>(<span class="string">'the_geom'</span>, polygonGeom)</span><br><span class="line">});</span><br><span class="line"><span class="keyword">let</span> filter=<span class="keyword">new</span> <span class="title class_">XMLSerializer</span>().<span class="title function_">serializeToString</span>(featureRequest);</span><br><span class="line"><span class="title function_">ajax</span>({</span><br><span class="line">  <span class="attr">method</span>: <span class="string">'post'</span>,</span><br><span class="line">  <span class="attr">dataType</span>: <span class="string">'xml'</span>,</span><br><span class="line">  <span class="attr">url</span>: <span class="string">'http://localhost:8080/geoserver/wfs'</span>,</span><br><span class="line">  <span class="attr">data</span>: filter</span><br><span class="line">}).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意</strong><br>1.应该使用filter里面的withinFilter,而不是“import Within from ‘ol/format/filter/Within’;”,具体为什么，不得而知，但是使用Within会报错：Cannot set property ‘tagName_’ of undefined</p>
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_2.png" lay-src="/posts/fd67337a/geoserver_wfs_2.png" class="" title="geoserver_wfs_2">
+
+<p>2.withinFilter中的srsName为坐标系，withinFilter中的坐标系要写正确：</p>
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_3.png" lay-src="/posts/fd67337a/geoserver_wfs_3.png" class="" title="geoserver_wfs_3">
+
+<p>3.还有一个问题就是说最好把withinFilter中的srsName空着，如果写了EPSG:4326的坐标系，被序列化后，坐标串是纬度在前，精度在后，不写的化，就是精度在前，纬度在后。这涉及到一个坐标方向的问题，可以通过 <a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/apidoc/module-ol_proj_Projection-Projection.html#getAxisOrientation">getAxisOrientation</a> 查看一个坐标系的坐标方向。</p>
+<p>4.featureNS表示什么意思不太清楚，可以不写，featurePrefix是geoserver中的工作区的名字，featureTypes是geoserver中的图层名字，最终会形成 typeName=’sports:sports’的字样。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/examples/vector-wfs-getfeature.html">vector-wfs-getfeature</a><br>2.<a target="_blank" rel="noopener" href="https://gis.stackexchange.com/questions/197687/what-is-the-purpose-of-featurens-in-geoserver">What is the purpose of featureNS in Geoserver</a><br>3.<a target="_blank" rel="noopener" href="http://osgeo-org.1560.x6.nabble.com/What-is-the-featurePrefix-td5010713.html">What is the featurePrefix</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mengdong_zy/article/details/52171149">GeoServer的WFS空间查询</a> 这里介绍了几种xml<br>5.<a href="moz-extension://fc2356c2-9bd7-4dd2-9dae-2b9a4d030e5a/pdf-viewer/web/viewer.html?file=https%3A%2F%2Fwww.idee.es%2Fresources%2Fdocumentos%2FRD_wfs_v2_0.pdf">Grupo de Trabajo de la Infraestructura de Datos Espaciales deEspañaCONSEJOSUPERIORGEOGRÁFICOGT IDEEServicio de descarga, WFS2021-06-18Página 1de 32Servicio de descarga (WFS) Versión 2.0</a> 这是一个pdf文件，里面有关于post的例子。</div>
+<h2 id="2-属性查询"><a href="#2-属性查询" class="headerlink" title="2.属性查询"></a>2.属性查询</h2><p>属性查询的方法是直接构造cql_filter,比如name=’’,”address like ‘’”,但是像下面这中写法，是会报错的。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">ajax</span>({</span><br><span class="line">  <span class="attr">method</span>: <span class="string">'get'</span>,</span><br><span class="line">  <span class="attr">url</span>: <span class="string">'http://121.41.28.227:8080/geoserver/wfs'</span>,</span><br><span class="line">  <span class="attr">data</span>: {</span><br><span class="line">    <span class="attr">service</span>: <span class="string">'WFS'</span>,</span><br><span class="line">    <span class="attr">version</span>: <span class="string">'2.0'</span>,</span><br><span class="line">    <span class="attr">request</span>: <span class="string">'GetFeature'</span>,</span><br><span class="line">    <span class="attr">typeName</span>: <span class="string">'sports:sports'</span>,</span><br><span class="line">    <span class="attr">outputFormat</span>: <span class="string">'application/json'</span>,</span><br><span class="line">    <span class="attr">cql_filter</span>: <span class="string">'"name"="s"'</span></span><br><span class="line">  }</span><br><span class="line">}).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+<p>错误提示：</p>
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_1.png" lay-src="/posts/fd67337a/geoserver_wfs_1.png" class="" title="geoserver_wfs_1">
+
+<p>正确的姿势是：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">ajax</span>({</span><br><span class="line">  <span class="attr">method</span>: <span class="string">'get'</span>,</span><br><span class="line">  <span class="attr">url</span>: <span class="string">'http://121.41.28.227:8080/geoserver/wfs'</span>,</span><br><span class="line">  <span class="attr">data</span>: {</span><br><span class="line">    <span class="attr">service</span>: <span class="string">'WFS'</span>,</span><br><span class="line">    <span class="attr">version</span>: <span class="string">'2.0'</span>,</span><br><span class="line">    <span class="attr">request</span>: <span class="string">'GetFeature'</span>,</span><br><span class="line">    <span class="attr">typeName</span>: <span class="string">'sports:sports'</span>,</span><br><span class="line">    <span class="attr">outputFormat</span>: <span class="string">'application/json'</span>,</span><br><span class="line">    <span class="attr">cql_filter</span>: <span class="string">'name=\'s\''</span></span><br><span class="line">  }</span><br><span class="line">}).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(res);</span><br><span class="line">})</span><br><span class="line"><span class="comment">//也不能写</span></span><br><span class="line"><span class="comment">//cql_filter: 'name="s"'</span></span><br><span class="line"><span class="comment">//cql_filter: '"name"="s"'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/naaoveGIS/p/5508882.html">GeoServer中WMS、WFS的请求规范</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jackliuy/article/details/52234938">Ajax POST请求调用Geoserver的WFS服务</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mengdong_zy/article/details/52171149">GeoServer的WFS空间查询:</a><br>4.<a target="_blank" rel="noopener" href="https://docs.geoserver.org/stable/en/user/styling/sld/reference/filters.html">Logical operators</a><br>5.<a target="_blank" rel="noopener" href="http://www.datypic.com/sc/niem21/s-gml-oasis.xsd.html">gml图形</a><br>6.<a target="_blank" rel="noopener" href="https://docs.geoserver.org/stable/en/user/filter/index.html">Geoserver Filtering</a><br>7.<a target="_blank" rel="noopener" href="https://docs.geoserver.org/2.12.2/user/filter/ecql_reference.html#filter-ecql-reference">ECQL_Filter</a><br>8.<a target="_blank" rel="noopener" href="https://docs.geoserver.org/master/en/user/services/wfs/reference.html">WFS reference</a> 这里有几个关于xml的语法说明，CreateStoredQuery、DropStoredQuery、ListStoredQueries</div>
+<h2 id="3-Geoserver开启jsonp访问"><a href="#3-Geoserver开启jsonp访问" class="headerlink" title="3.Geoserver开启jsonp访问"></a>3.Geoserver开启jsonp访问</h2><p>有些时候，我们使用到了jsonp请求geoserver的wfs服务，比如：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vectorSource = <span class="keyword">new</span> ol.<span class="property">source</span>.<span class="title class_">Vector</span>({</span><br><span class="line">        <span class="attr">format</span>: <span class="keyword">new</span> ol.<span class="property">format</span>.<span class="title class_">GeoJSON</span>(),</span><br><span class="line">        <span class="attr">features</span>: <span class="keyword">new</span> ol.<span class="title class_">Collection</span>()</span><br><span class="line">    });</span><br><span class="line"><span class="keyword">var</span> callName = <span class="string">"parseResponse"</span> + <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line"><span class="keyword">var</span> url = <span class="string">'http://localhost:8080/geoserver/jdyj/wfs?service=WFS&amp;'</span> +</span><br><span class="line">  <span class="string">'version=2.0.0&amp;request=GetFeature&amp;typename=jdyj:xzc&amp;'</span> +</span><br><span class="line">  <span class="string">'outputFormat=text/javascript&amp;format_options=callback:'</span> + callName + <span class="string">'&amp;srsname=EPSG:4490&amp;'</span>;</span><br><span class="line">$.<span class="title function_">ajax</span>({</span><br><span class="line">    <span class="attr">url</span>: url,</span><br><span class="line">    <span class="attr">dataType</span>: <span class="string">'jsonp'</span>,</span><br><span class="line">    <span class="attr">jsonpCallback</span>: callName,</span><br><span class="line">    <span class="attr">jsonp</span>: <span class="literal">false</span></span><br><span class="line">}).<span class="title function_">done</span>(<span class="keyword">function</span> (<span class="params">response</span>) {</span><br><span class="line">    <span class="keyword">var</span> format = <span class="keyword">new</span> ol.<span class="property">format</span>.<span class="title class_">GeoJSON</span>();</span><br><span class="line">    <span class="keyword">var</span> features = format.<span class="title function_">readFeatures</span>(response);</span><br><span class="line">    vectorSource.<span class="title function_">addFeatures</span>(features);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>但是默认的geoserver是没有开启jsonp服务的，所以找到geoserver的配置文件：/tomcat/webapps/geoserver/WEB-INF/web.xml，如果是geoserver独立安装的，可能路径为：GeoServer 2.13.0\webapps\geoserver\WEB-INF\web.xml,找到：</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>ENABLE_JSONP<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>本来这段代码是被注释掉的，把前后的注释符去掉就好了，如果没有这个内容，就手动添加也是可以的,然后重启geoserver服务就好了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://gis.stackexchange.com/questions/57494/geoserver-2-3-how-to-enable-jsonp">GeoServer 2.3 how to enable jsonp</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/naaoveGIS/p/8418414.html">解决Geoserver请求跨域的几种思路</a></div>
+<h2 id="4-Geoserver开启跨域访问"><a href="#4-Geoserver开启跨域访问" class="headerlink" title="4.Geoserver开启跨域访问"></a>4.Geoserver开启跨域访问</h2><p>在请求wfs时，往往会出现跨域访问限制：</p>
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_4.png" lay-src="/posts/fd67337a/geoserver_wfs_4.png" class="" title="geoserver_wfs_4">
+
+<p>（1）一种方式是像上面一样，用jsonp请求，还有一直方式，就是配置geoserver的跨域请求。配置跨域请求时需要到 <code>https://search.maven.org/search</code> 下载cors-filter.jar，java-property-utils.jar,版本最新的就好了</p>
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_5.png" lay-src="/posts/fd67337a/geoserver_wfs_5.png" class="" title="geoserver跨域">
+
+
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_6.png" lay-src="/posts/fd67337a/geoserver_wfs_6.png" class="" title="geoserver跨域">
+<p>（3）然后将两个jar放到tomcat目录的lib下。</p>
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_7.png" lay-src="/posts/fd67337a/geoserver_wfs_7.png" class="" title="geoserver跨域">
+<p>（3）修改webapps目录下的geoserver\WEB-INF\web.xml，添加如下代码</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span>         </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CORS<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.thetransactioncompany.cors.CORSFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>cors.allowOrigin<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>*<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>cors.supportedMethods<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>GET, POST, HEAD, PUT, DELETE<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">     <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>cors.supportedHeaders<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>Accept, Origin, X-Requested-With, Content-Type, Last-Modified<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>cors.exposedHeaders<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>Set-Cookie<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>cors.supportsCredentials<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>true<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span>  </span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>CORS<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>重启tomcat即可。不再出现跨域问题：</p>
+<img src="/images/loadimg.png" data-original="/posts/fd67337a/geoserver_wfs_8.png" lay-src="/posts/fd67337a/geoserver_wfs_8.png" class="" title="geoserver跨域">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/baobaodong/p/6768950.html">GeoServer配置CORS(跨域资源共享)</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/naaoveGIS/p/8418414.html">解决Geoserver请求跨域的几种思路</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jin80506/article/details/79903845">Geoserver 安装及CORS跨域资源访问配置</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/d8eb058f.html" rel="next" title="Geoserver自定义图层样式">
+                      <i class="iconfont icon-prev"></i> Geoserver自定义图层样式
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/dcacf387.html" rel="prev" title="Geoserver安装和配置">
+                      Geoserver安装和配置 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A9%BA%E9%97%B4%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.</span> <span class="toc-text">1.空间查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%B1%9E%E6%80%A7%E6%9F%A5%E8%AF%A2"><span class="toc-number">2.</span> <span class="toc-text">2.属性查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Geoserver%E5%BC%80%E5%90%AFjsonp%E8%AE%BF%E9%97%AE"><span class="toc-number">3.</span> <span class="toc-text">3.Geoserver开启jsonp访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Geoserver%E5%BC%80%E5%90%AF%E8%B7%A8%E5%9F%9F%E8%AE%BF%E9%97%AE"><span class="toc-number">4.</span> <span class="toc-text">4.Geoserver开启跨域访问</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/fd67337a.html';
+      this.page.identifier = 'posts/fd67337a.html';
+      this.page.title = 'Geoserver的WFS服务';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Geoserver的WFS服务 链接地址:https://bibichuan.github.io/posts/fd67337a.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Geoserver的WFS服务',
+		url: 'https://bibichuan.github.io/posts/fd67337a.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Geoserver的WFS服务',
+			isTipVisibility: true,
+			tip: 'Geoserver的WFS服务',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

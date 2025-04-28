@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技术研究之RTMP</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">技术研究之RTMP</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-05-22 03:51:16
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>早期的视频直播用的技术都是 声网 的直播平台，总是遇到费用的问题，于是就准备研究下rtmp的技术路线，看看能不能走通。基于NGINX的媒体流服务器: nginx 和 nginx-rtmp-module 功能:</p>
+<ul>
+<li>RTMP、HLS、MPEG-DASH 直播</li>
+<li>RTMP视频点播FLV/MP4，本地文件或HTTP播放</li>
+<li>支持分布式串流：推流拉流 (可多推多拉)</li>
+<li>支持H264/AAC</li>
+<li>支持FFmpeg在线转码</li>
+<li>在某些事件上运行外部程序(exec)，主要用来使用FFmpeg转码推流到其他平台，可推多平台</li>
+<li>HTTP控制模块，用于录制音频/视频和投放客户端</li>
+<li>HTTP回调(发布/播放/记录/更新等)</li>
+<li>将统计数据存储在方便机器和人类可读的XML/XSL中</li>
+<li>先进的缓冲技术，将内存分配保持在最低水平，以实现更快的流媒体和低内存占用</li>
+<li>支持 Linux/FreeBSD/MacOS/Windows 系统</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://juejin.cn/s/videojs%20%E6%92%AD%E6%94%BErtmp">videojs 播放rtmp</a><br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/558275483">【rtmp】搭建流媒体服务器+obs推流直播</a></div>
+<h1 id="2-nginx配置rtmp"><a href="#2-nginx配置rtmp" class="headerlink" title="2.nginx配置rtmp"></a>2.nginx配置rtmp</h1><p>因为我原先安装了nginx,现在只能是重新安装，但是如何增加，这个我倒是没有尝试过。<br>(1) <a target="_blank" rel="noopener" href="https://github.com/arut/nginx-rtmp-module">下载</a><br>下载 nginx-rtmp-module 模块，直接源码下载就好了。</p>
+<p>(2) 安装<br>将下载的模块上传到服务器 /homo/soft 目录并解压</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入源码目录，可能是nginx-1.24.0</span></span><br><span class="line"><span class="built_in">cd</span> nginx-1.24.0</span><br><span class="line"><span class="comment"># 配置</span></span><br><span class="line">./configure \</span><br><span class="line">    --prefix=/usr/local/nginx \</span><br><span class="line">    --sbin-path=/usr/local/nginx/sbin/nginx \</span><br><span class="line">    --conf-path=/usr/local/nginx/conf/nginx.conf \</span><br><span class="line">    --error-log-path=/usr/local/nginx/logs/error.log \</span><br><span class="line">    --pid-path=/usr/local/nginx/logs/nginx.pid \</span><br><span class="line">    --lock-path=/usr/local/nginx/lock/nginx.lock \</span><br><span class="line">    --with-http_ssl_module \</span><br><span class="line">    --with-http_stub_status_module \</span><br><span class="line">    --with-http_realip_module \</span><br><span class="line">    --with-threads \</span><br><span class="line">    --with-http_gzip_static_module \</span><br><span class="line">	--add-module=/home/soft/nginx-rtmp-module-master</span><br><span class="line"><span class="comment"># 执行安装</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 配置<br>在nginx.conf的配置文件中，增加rtmp模块配置</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">rtmp {</span><br><span class="line">    server {</span><br><span class="line">        listen 10009;  <span class="comment"># RTMP默认监听端口</span></span><br><span class="line">        chunk_size 4096;  <span class="comment"># 设置数据块的大小</span></span><br><span class="line"></span><br><span class="line">        application live {</span><br><span class="line">            live on;</span><br><span class="line">            record off;  <span class="comment"># 不录制视频</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果需要hls模块，可以添加hls，这样配置 http 就可以直接在浏览器端用 hls 播放器播放 m3u8 的视频了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">rtmp {</span><br><span class="line">    server {</span><br><span class="line">        listen 10009;  <span class="comment"># RTMP默认监听端口</span></span><br><span class="line">        chunk_size 4096;  <span class="comment"># 设置数据块的大小</span></span><br><span class="line"></span><br><span class="line">        application live {</span><br><span class="line">            live on;</span><br><span class="line">            record off;  <span class="comment"># 不录制视频</span></span><br><span class="line">            hls on;</span><br><span class="line">            hls_path /usr/local/nginx/rtmp/live;</span><br><span class="line">            hls_fragment 5s;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 推流<br>打开 OBS Stadio 进行推流。打开 文件 -&gt; 设置 -&gt; 直播，选择自定义，填写服务器地址,rtmp://xxxx:10009/live</p>
+<img src="/images/loadimg.png" data-original="/posts/b6f6d63e/rtmp_1.png" lay-src="/posts/b6f6d63e/rtmp_1.png" class="" title="RTMP直播">
+
+<p>推流码也可以随便定义，如果定义了推流码，拉流的时候的地址就变成了：rtmp://xxxx:10009/live/推流码</p>
+<p>(5) 播放<br>我这里用了 <a target="_blank" rel="noopener" href="https://github.com/EasyDarwin/EasyPlayerPro-Win?tab=readme-ov-file">easyplay</a> 进行了简单的测试，使用了上面的直播，然后定义了自己的直播地址，发现可以直播了。</p>
+<img src="/images/loadimg.png" data-original="/posts/b6f6d63e/rtmp_2.png" lay-src="/posts/b6f6d63e/rtmp_2.png" class="" title="RTMP直播">
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33833327/article/details/109154307">在已经安装Nginx的基础上增加 Nginx-rtmp-module 模块</a> 这个是在已有的nginx的软件上增加了 nginx-module-rtmp 方法<br>【2】.<a target="_blank" rel="noopener" href="https://codersamz.github.io/2018/03/28/%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%B4%E6%92%AD%E6%9C%8D%E5%8A%A1%E5%99%A8(nginx%20+%20RTMP)/">搭建自己的直播服务器(nginx + RTMP) </a> 1.下载 nginx 和 nginx-rtmp-module；2.配置nginx服务器；3.配置hls。最后还用了<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sunyuhua_keyboard/article/details/135975528">搭建nginx的RTMP服务器的步骤</a><br>【4】.<a target="_blank" rel="noopener" href="https://www.linkedin.com/advice/0/what-pros-cons-rtmp-vs-hls-live-streaming-skills-live-streaming">What are the pros and cons of RTMP vs HLS for live streaming?</a><br>【5】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/spacelit/p/1808645">配置Nginx以支持RTMP直播及HLS流播放</a> 在RTMP URL中通过添加特定路径或标识（即推流密钥），用以区分不同的推流源。这在Nginx配置文件中不直接定义，而是通过推流软件（如OBS）在推流时指定。推流URL格式通常为：rtmp://your_server_ip/live/STREAM_KEY，其中STREAM_KEY为自定义的推流密钥。</div>
+<h1 id="3-鉴权"><a href="#3-鉴权" class="headerlink" title="3.鉴权"></a>3.鉴权</h1><p>搭建了rtmp地址之后，就可以直接使用服务器地址进行直播推流和拉流了，如何鉴权还需要额外的操作。我经过资料查找，在rtmp模块的配置中，可以配置一个 on_play 参数，在 on_play处添加Java验证服务的地址，Nginx-rtmp会在发送直播流前，访问这个地址进行验证，若验证成功该地址返回200，失败则返回401等异常状态码。参数key也会被转发给这个地址。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">rtmp {</span><br><span class="line">    server {</span><br><span class="line">        listen 10009;  # RTMP默认监听端口</span><br><span class="line">        chunk_size 4096;  # 设置数据块的大小</span><br><span class="line"></span><br><span class="line">        application live {</span><br><span class="line">            live on;</span><br><span class="line">            record off;  # 不录制视频</span><br><span class="line">            on_play http://localhost:8081/check; #Java验证服务的地址</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/string_kai/article/details/101038941">基于Nginx-rtmp+Java的直播拉流鉴权方案</a> 用户在web端登陆成功后，Java服务端将用户的id、密码，当前时间等信息合并成一个字符串，使用RSA算法公钥加密该字符串，生成一个密文key。把这个密文key作为前端直播流地址的一个参数，发送给Nginx-rtmp服务器。Nginx-rtmp再将参数转发给Java后台的验证服务,验证通过则可正常播放。Nginx-rtmp的默认url长度值过小(默认256)，故url过长时会被截断。而RSA加密后的密文又很长。这个问题需要通过修改Nginx-rtmp的源代码来解决，即修改url参数长度最大值。<br>【2】.<a target="_blank" rel="noopener" href="https://github.com/illuspas/nginx-rtmp-win32/issues/25">推流的时候能加帐号密码吗？</a> 目前是没有用户名密码这套验证机制的,不过可以采用推流与播放使用不同app_name的方式，并开启鉴权功能<br>刚刚我测试发现一个问题，等我修复一下<br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/vipzhou/p/8420808.html">使用auth_request模块实现nginx端鉴权控制</a><br>【4】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1607286">NGINX如何实现rtmp推流服务–鉴权篇</a> 推流的限制:on_publish;拉流的限制:on_play;</div>
+<h1 id="4-前端播放"><a href="#4-前端播放" class="headerlink" title="4.前端播放"></a>4.前端播放</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/likely/5501753">H5视频之video.js播放rtmp直播源和hls直播源</a><br>【2】.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/2822804">Video.js播放RTMP流媒体</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44504531/article/details/127191712">VUE–播放视频(RTMP、FLV、HLS、Webrtc)</a><br>【4】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/ask/515493">请问有办法rtmp的推流转成webrtc吗？是不是利用webrtc技术三端就都可以播放了？</a></div>
+<h1 id="5-配置"><a href="#5-配置" class="headerlink" title="5.配置"></a>5.配置</h1><p>常用的直播配置</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">events {</span><br><span class="line">    use epoll;# 选择epoll模型可以达到最佳的IO性能</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">rtmp {                <span class="comment">#RTMP服务</span></span><br><span class="line">    server {</span><br><span class="line">       listen 1935;  <span class="comment">#//服务端口</span></span><br><span class="line">       chunk_size 4096;   <span class="comment">#//数据传输块的大小</span></span><br><span class="line">       application vod {</span><br><span class="line">           play /opt/video; <span class="comment">#//视频文件存放位置。</span></span><br><span class="line">       }</span><br><span class="line">       application rtmplive {</span><br><span class="line">          live on;</span><br><span class="line">          <span class="comment">#为 rtmp 引擎设置最大连接数。默认为 off</span></span><br><span class="line">          max_connections 1024;</span><br><span class="line">       }</span><br><span class="line">       application live{ <span class="comment">#直播</span></span><br><span class="line">           live on;</span><br><span class="line">           hls on; <span class="comment">#这个参数把直播服务器改造成实时回放服务器。</span></span><br><span class="line">           wait_key on; <span class="comment">#对视频切片进行保护，这样就不会产生马赛克了。</span></span><br><span class="line">           hls_path /opt/video/hls; <span class="comment">#切片视频文件存放位置。</span></span><br><span class="line">           hls_fragment  600s;     <span class="comment">#设置HLS片段长度。</span></span><br><span class="line">           hls_playlist_length 10m;  <span class="comment">#设置HLS播放列表长度，这里设置的是10分钟。</span></span><br><span class="line">           hls_continuous on; <span class="comment">#连续模式。</span></span><br><span class="line">           hls_cleanup on;    <span class="comment">#对多余的切片进行删除。</span></span><br><span class="line">           hls_nested on;     <span class="comment">#嵌套模式。</span></span><br><span class="line">       }</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>启用 hls 支持</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  rtmp.52itstyle.com;</span><br><span class="line"></span><br><span class="line">    location /stat {</span><br><span class="line">        rtmp_stat all;</span><br><span class="line">        rtmp_stat_stylesheet stat.xsl;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    location /stat.xsl {</span><br><span class="line">        root /home/nginx-rtmp-module-master/;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    location / {</span><br><span class="line">        root   html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">    }</span><br><span class="line">    location /live {  <span class="comment">#这里也是需要添加的字段。</span></span><br><span class="line">        types {  </span><br><span class="line">            application/vnd.apple.mpegurl m3u8;  </span><br><span class="line">            video/mp2t ts;  </span><br><span class="line">        }</span><br><span class="line">        <span class="built_in">alias</span> /opt/video/hls;</span><br><span class="line">        expires -1;</span><br><span class="line">        add_header Cache-Control no-cache; </span><br><span class="line">        add_header Access-Control-Allow-Origin *;</span><br><span class="line">    }  </span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html {</span><br><span class="line">        root   html;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/cheenbee/article/details/108489157">NGINX-RTMP 直播服务部署</a> 1.推多路配置(多个应用程序或监听不同的端口) server{ } 块内配置多个 application 可以实现，由于都是监听一个端口，同一时间内只有一路有画面。2.重新编码（转码）可以在 application{ } 块内运行 exec 命令(注意不支持windows系统),可以将接收到的 RTMP 流传给视频处理器进行编码转码,如 ffmpeg，3.可以使用 push 语句将 application 接收的流推送到其他流接收平台，当然也可以使用 exec 运行 ffmpeg 将接收到的流推送至其他平台。<br>【2】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2212849">使用 Nginx-RTMP 搭建简单的流媒体服务器</a> 该配置下，推流地址为 rtmp://IP_ OR_DOMAIN/live/，当使用 live 为推流码进行推流时，播放地址为 rtmp://IP_ OR_DOMAIN/live/live。这里还用了 ffmpeg 进行了转码， apt install ffmpeg -y<br>【3】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1550924">Nginx学习之配置RTMP模块搭建推流服务</a> PC 直播流程非常简单，主要步骤：1.通过RTMP自定义一个推流地址，解决往哪推流的问题；2.采用第三方的推流软件，设置推流音视频源以及编码参数，解决推什么内容的问题；3.观众就可以使用我们提供的 RTMP DEMO 通过设置播放地址即可进行观看，解决内容触达到观众那里的问题。这里还用了 TcPlayer 进行了播放<br>【4】.<a target="_blank" rel="noopener" href="https://www.jibing57.com/2020/08/01/advanced-configure-of-nginx-rtmp/">Nginx RTMP服务器配置</a> 1.配置stat;2.配置转码,新建专门用于播放流的application vod,将原先的live设置为只接收推流, 再设置使用ffmpeg将源流进行转化，再推到对应的专门播放application vod中。3.记录原始流,nginx-rtmp-module提供了record模块，来保存接收到的流。4.ffmpeg调节横竖屏resize;5.访问allow和deny;6.HLS中生成的m3u8中ts数量。7.rtmp流为什么播放时也会有延迟，主要是客户端缓存导致的。为了避免网络抖动导致的播放卡顿，很多RTMP播放器都会在收到一段时间的RTMP流后才开始播放。这样就导致了播放的延迟。</div>
+<h1 id="6-SRS"><a href="#6-SRS" class="headerlink" title="6.SRS"></a>6.SRS</h1><p>之所以会有这个想法，将RTMP转为 webrtc，是因为大疆用的是 rtmp 进行的直播，但是最后我看示例代码中，播放的竟然是使用 jswebrtc.min.js 的 webrtc 进行播放的，不晓得到底是为什么，于是就尝试了一下这个技术。经过不断的查询，我发现其实他们用了一种叫 srs 的流媒体技术，而不是我刚开始用的 nginx-rtmp 服务器。SRS(Simple RTMP Server) 是国人写的一款非常优秀的开源流媒体服务器软件。</p>
+<p>（1）<a target="_blank" rel="noopener" href="https://gitee.com/ossrs/srs.git">下载</a><br>克隆源码到服务器</p>
+<p>（2）安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> srs/trunk</span><br><span class="line">./configure</span><br><span class="line">make</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）启动</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CANDIDATE=<span class="string">"192.168.1.10"</span></span><br><span class="line">./objs/srs -c conf/rtmp2rtc.conf</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://bashell.nodemedia.cn/archives/webrtc-research-series-2-get-through-webrtc-and-rtmp.html">WebRTC 研究系列 二、打通webrtc与rtmp</a> WebRTC先使用ICE技术连接STUN/TURN，得到自己的连接信息。再绑定音视频设备获取媒体信息，拼装为SDP信令。两个客户端通过任意方式交换信令，建立客户端直接的连接，再使用RTP发送和接收媒体数据。<br>【2】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/877670">尝鲜：如何搭建一个简单的webrtc服务器</a> 基于 WebRTC 的 1v1 视频实时通话架构:1.WebRTC 终端,负责音视频采集、编解码、NAT 穿越、音视频数据传输;2. Signal 服务器,负责信令处理，如加入房间、离开房间、媒体协商消息的传递等;3. STUN/TURN 服务器,负责获取 WebRTC 终端在公网的 IP 地址，以及 NAT 穿越失败后的数据中转。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37705525/article/details/124519205">SRS中RTC和RTMP流互相转换</a> TCP在网络抖动时，延迟会变大。一般消息（弹幕）的延迟比较小，这时就会出现消息比画面更快的情况。同步：不同客户端的播放进度不同步，有些延迟大，有些延迟小。比如直播答题，或者直播拍卖，需要同步播放器的场景，就会造成问题。SRS+FFmpeg，SRS将WebRTC流转RTMP，FFmpeg将多路RTMP合流。优势：延迟小，音质好；缺点是命令行难度高。SRS+OBS，方案和SRS+FFmpeg一样，不过用OBS来实现合流。优势：图形化界面更友好，音质好；缺点是延迟大有不同步风险较大。</div>
+<p>【4】.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/9b044bf71e33">SRS学习笔记(2) - rtmp / http-flv / hls 协议配置 及跨域问题</a><br>【5】.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/3319476">SRS流媒体服务器与WebRTC推拉流技术深度解析</a><br>【6】.<a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/c56118163069ca772ca8f1e8f">开源流媒体服务器 SRS 学习笔记 - 安装、推流、拉流</a><br>【7】.<a target="_blank" rel="noopener" href="https://www.tiocloud.com/2/blog/1394464586735951872">SRS4.0：环境搭建（推流、服务器配置、拉流测试）</a> 我们这里先使用srs.conf，支持rtmp推流，支持rtmp、hls、http-flv拉流。测试了使用 obs 进行推流。    1935端口对应的是rtmp服务， 1985对应的是http api服务，8080对应的是http-flv、hls的服务器端口<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15255121/article/details/115905631">本机搭建SRS服务器——–37</a> 在这里需要注意不需要执行make install。</p>
+<h1 id="7-docker-启动-srs"><a href="#7-docker-启动-srs" class="headerlink" title="7.docker 启动 srs"></a>7.docker 启动 srs</h1><p>使用 docker 启动 srs 流媒体服务，我也是经历了一番波折，开始的操作步骤都是错误的，然后我尝试了下面的几个步骤，终于弄出来了启动和测试。<br>（1）在阿里云打开端口 1935、1985、8080 还有udp 8000端口，使用下面的命令打开 srs服务器,xx.xx.xx.xx 为服务器外网地址。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --<span class="built_in">rm</span> -it -p 1935:1935 -p 1985:1985 -p 8080:8080 \</span><br><span class="line">    --<span class="built_in">env</span> CANDIDATE=xx.xx.xx.xx -p 8000:8000/udp \</span><br><span class="line">    registry.cn-hangzhou.aliyuncs.com/ossrs/srs:5 ./objs/srs -c conf/rtmp2rtc.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）在 obs 中设置直播地址 rtmp://xx.xx.xx.xx:1935/live/livestream，推流码为空，开启直播</p>
+<p>（3）打开 <code>http://xx.xx.xx.xx:8080/players/srs_player.html</code> 页面，在 LivePlayer 选项卡中，URL地址栏中中输入 ：<code>http://xx.xx.xx.xx:8080/live/livestream.flv</code> 测试直播画面。</p>
+<img src="/images/loadimg.png" data-original="/posts/b6f6d63e/rtmp_3.png" lay-src="/posts/b6f6d63e/rtmp_3.png" class="" title="rtmp测试">
+
+<p>（4）使用 jswebrtc 进行测试的时候</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="string">'webrtc://47.97.116.4/live/livestream'</span>;</span><br><span class="line">    <span class="keyword">const</span> videoElement = videowebrtc.<span class="property">value</span>;</span><br><span class="line">    <span class="keyword">new</span> jswebrtc.<span class="title class_">Player</span>(url, {</span><br><span class="line">    <span class="attr">video</span>: videoElement,</span><br><span class="line">    <span class="attr">autoplay</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">onPlay</span>: <span class="function">(<span class="params">obj: any</span>) =&gt;</span> {</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'开始直播：'</span>, obj);</span><br><span class="line">    },</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<hr>
+<p>（5）经过我的尝试，有下面几个点需要注意</p>
+<ul>
+<li>udp 端口必须开，默认的是 8000 端口，8080 可以不需要</li>
+<li></li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46371752/article/details/132182255">SRS视频媒体服务器-docker启动：更换默认端口时的错误</a> 1.启动srs容器:宿主机端口和容器端口映射时，保持端口一致;2.配置srs配置文件：使用宿主机端口启动;<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zzugyl/p/15779404.html"> srs更改端口号导致webrtc播放异常</a> 这里通过nginx，将 rtc 的播放端口改为了 41985<br>【3】.<a target="_blank" rel="noopener" href="https://www.psvmc.cn/article/2021-01-21-webrtc-srs.html">WebRTC服务搭建(使用SRS)</a> 配置域名和HTTPS，HTTP在Chrome浏览器快捷方式中添加，本地推流：ffmpeg。流播放：RTMP流，FLV流</div>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><h3 id="Response-to-preflight-request-doesn’t-pass-access-control-check-Redirect-is-not-allowed-for-a-preflight-request"><a href="#Response-to-preflight-request-doesn’t-pass-access-control-check-Redirect-is-not-allowed-for-a-preflight-request" class="headerlink" title="Response to preflight request doesn’t pass access control check: Redirect is not allowed for a preflight request."></a>Response to preflight request doesn’t pass access control check: Redirect is not allowed for a preflight request.</h3><p>当我用 nginx 代理srs 1985 端口的时候，前端播放的时候，就出现了这个奇怪的问题。或者说，如果使用 ip 地址访问 webrtc 进行播放，没有问题，但是使用域名就无法用，其中 test.tech 指向 xx.xx.xx.xx.xx</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">webrtc</span>:<span class="comment">//xx.xx.xx.xx.xx/live/livestream</span></span><br><span class="line"><span class="comment">// 错误</span></span><br><span class="line"><span class="attr">webrtc</span>:<span class="comment">//test.tech/live/livestream</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>【尝试方案】<br>我尝试了很多的方法，修改了多次 nginx 配置<br>（1）增加了 always 配置<br>（2）增加了 option 过滤配置</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">location /rtc/ {</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$request_method</span> = OPTIONS) {</span><br><span class="line">            add_header Access-Control-Allow-Origin <span class="variable">$http_origin</span>;</span><br><span class="line">            add_header Access-Control-Allow-Headers *;</span><br><span class="line">            add_header Access-Control-Allow-Methods GET,POST,OPTIONS;</span><br><span class="line">            <span class="comment">#add_header Access-Control-Allow-Credentials true;</span></span><br><span class="line">            <span class="built_in">return</span> 200;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    add_header Access-Control-Allow-Origin <span class="variable">$http_origin</span>;</span><br><span class="line">    add_header Access-Control-Allow-Headers *;</span><br><span class="line"></span><br><span class="line">    proxy_pass http://127.0.0.1:1985;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>（3）我以为是nginx配置的问题，后来我还是先把原先的 1985 端口开开了，我直接用了 webrtc://xx.xx.xx.xx:1985 进行连接了，结果还是不行<br>（4）后来我无意间发现了一个问题，使用 webrtc 推流必须用 https。<br>（5）修改nginx配置，这样也不起作用，Access to XMLHttpRequest at ‘<a target="_blank" rel="noopener" href="http://xx:10015/rtc/v1/play/'">http://xx:10015/rtc/v1/play/'</a> from origin ‘<a target="_blank" rel="noopener" href="http://localhost:3100'">http://localhost:3100'</a> has been blocked by CORS policy: Response to preflight request doesn’t pass access control check: Redirect is not allowed for a preflight request.</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 配置webrtc播放地址</span></span><br><span class="line">location /rtc/ {</span><br><span class="line">    proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">    proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">    proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_pass http://127.0.0.1:1985/rtc/;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>（6）修改nginx配置，增加了 live 的配置，结果也是不行</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">http {</span><br><span class="line">    server {</span><br><span class="line">        listen 10090;</span><br><span class="line">        server_name _;</span><br><span class="line"> </span><br><span class="line">        <span class="comment"># WebRTC拉流时，需要调用API：/rtc/v1/play/</span></span><br><span class="line">        location /rtc {</span><br><span class="line">            proxy_pass http://localhost:1985;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment"># WebRTC拉流地址前缀匹配</span></span><br><span class="line">        location /live {</span><br><span class="line">            proxy_pass http://localhost:1985;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（7）我还尝试了，直接使用 ip + 端口号的形式，也是可以的,10015为nginx的端口，用上面的方法进行了 rtc 的代理，也就是说，端口可以不是 1985，但是一定要是 ip 地址。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">webrtc</span>:<span class="comment">//xx.xx.xx.xx:10015/live/livestream</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（8）问题的原因其实是因为 OPTIONS 总是返回 307，而不是 200，所以预检请求无法通过</p>
+<p>（9）后来我放弃了，解决不了域名和ip地址的问题，我只能去解决这个http和https的问题了。后来我发现，解决了https之后，这个域名也就自然而然的解决了，使用https的时候，就可以使用域名了，而使用 http 的时候，就不能用域名。</p>
+<p>后来我又想明白了，要是前端部署到含有域名的网站，或者是同域名的情况下，是不是也不会出现这个问题呢？我将https换成了http尝试了一下，确实也可以使用nginx进行代理，最后也能实现直播，也就是说在不同源的情况下，问题就会发生了。</p>
+<p>【解决方案】<br>最后用了 <a target="_blank" rel="noopener" href="https://blog.csdn.net/tangyajun_168/article/details/102951699">HSTS 307重定向跨域问题</a> 这里的解决方案：在浏览器中输入 chrome://net-internals/#hsts，将访问的域名从HSTS中删除</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ANG_shifeng/article/details/82886408">SRS跨域播放问题</a> 这里直接改了源码了<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39286701/article/details/118937948">关于跨域 Response to preflight request doesn‘t pass access control check</a> 我注意到后面有一句Redirect is not allowed for a preflight request：重定向不允许preflight request请求。我寻思着我这也没重定向啊。<br>【3】.<a target="_blank" rel="noopener" href="https://developer.baidu.com/article/details/2926767">WebRTC基础面试题</a> 在浏览器下使用WebRTC必须要使用HTTPS服务。这是因为WebRTC需要使用STUN/TURN服务器来进行网络地址转换和数据传输，而浏览器为了安全性限制了使用WebRTC的请求必须来自安全的上下文，即使用HTTPS协议的页面。如果没有使用HTTPS，浏览器会阻止WebRTC的功能。<br>【4】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cnpolaris/p/17292445.html">SRS+Docker部署教程</a> 可能会出现docker中http回调127.0.0.1或者localhost时无法访问鉴权服务器, 将鉴权服务器改成0.0.0.0运行<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/daze_scarecrow/article/details/135340806">SRS服务器RTMP2WebRTC外网拉流配置</a> 这里加了一个 live 配置，但是最后还是用的ip地址作为 webrtc 的地址，外网拉流地址：webrtc://10.172.59.42:33333/live/20240102<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Lemon_D1999/article/details/128702447">SRS解决WebRTC黑屏问题，包括内网、公网环境黑屏</a><br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tangyajun_168/article/details/102951699">HSTS 307重定向跨域问题</a> 这个方案可以了<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jtbrian/article/details/78183433">nginx options请求失败</a><br>【9】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46496355/article/details/123706879">nginx 配置跨域 status code 200，但是报错CORS error，实际还是跨域了</a><br>【10】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ATadpole/article/details/109185390">nginx 跨域踩坑及解决–OPTIONS请求处理</a><br>【11】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44987346/article/details/122674108">Redirect is not allowed for a preflight request 跨域问题的一个解决思路</a> 在Delete domain security policies中输入对应域名，点击delete，即可正常访问。但是这种方法是治标不治本的，最终的解决办法还是将你的后台统一为http或者https。</div>
+<h1 id="8-后台启动"><a href="#8-后台启动" class="headerlink" title="8.后台启动"></a>8.后台启动</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 后台启动</span></span><br><span class="line">docker run -itd --name my-redis2 redis bash</span><br><span class="line"><span class="comment">## 查看容器id</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment">## 进入容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it container_name bash</span><br><span class="line"><span class="comment">## 后台启动srs</span></span><br><span class="line">docker run --<span class="built_in">rm</span> -itd -p 10009:1935 -p 1985:1985     --<span class="built_in">env</span> CANDIDATE=xx.xx.xx.xx  -p 8000:8000/udp     registry.cn-hangzhou.aliyuncs.com/ossrs/srs:5 ./objs/srs -c conf/rtmp2rtc.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/davis12/p/14456227.html">docker容器之后台运行</a><br>【2】.<a target="_blank" rel="noopener" href="https://ossrs.net/lts/zh-cn/docs/v6/doc/webrtc">WebRTC</a></div>
+<h1 id="9-srs配置https访问"><a href="#9-srs配置https访问" class="headerlink" title="9.srs配置https访问"></a>9.srs配置https访问</h1><p>因为我的网站是 https 的，所以我使用 jswebrtc 进行播放的时候，总是出现 https 无法调用 http 的问题。<br>【尝试方案】<br>（8）我尝试把全部的 http 全部转成 https，结果无效，因为我发现了原来是 jswebrtc.min.js 中，将http写死了。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Security-Policy"</span> <span class="attr">content</span>=<span class="string">"upgrade-insecure-requests"</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>我的完整的 nginx https 配置如下，其实就是多加了一个 rtc 的访问，转移到了 1985 端口上。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">    listen       80;</span><br><span class="line">    listen       443 ssl http2;</span><br><span class="line">    server_name  _;</span><br><span class="line">    ssl_certificate      /usr/local/srs/conf/server.crt;</span><br><span class="line">    ssl_certificate_key  /usr/local/srs/conf/server.key;</span><br><span class="line">​</span><br><span class="line">    <span class="comment"># For SRS homepage, console and players</span></span><br><span class="line">    <span class="comment">#   http://r.ossrs.net/console/</span></span><br><span class="line">    <span class="comment">#   http://r.ossrs.net/players/</span></span><br><span class="line">    location / {</span><br><span class="line">        proxy_pass http://127.0.0.1:8080/;</span><br><span class="line">    }</span><br><span class="line">    location /live/ {</span><br><span class="line">        proxy_pass http://127.0.0.1:8080/live/;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment"># For SRS streaming, for example:</span></span><br><span class="line">    <span class="comment">#   http://r.ossrs.net/live/livestream.flv</span></span><br><span class="line">    <span class="comment">#   http://r.ossrs.net/live/livestream.m3u8</span></span><br><span class="line">    location ~ /.+/.*\.(flv|m3u8|ts|aac|mp3)$ {</span><br><span class="line">        proxy_pass http://127.0.0.1:8080<span class="variable">$request_uri</span>;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment"># For SRS backend API for console.</span></span><br><span class="line">    location /api/ {</span><br><span class="line">        proxy_pass http://127.0.0.1:1985/api/;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment"># For SRS WebRTC publish/play API.</span></span><br><span class="line">    location /rtc/ {</span><br><span class="line">        proxy_pass http://127.0.0.1:1985/rtc/;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/w741852961/article/details/123473710">SRS4.0.85流媒体搭建及HTTPS代理</a> location ~ /.+/.*.(flv|m3u8|ts|aac|mp3)$ { proxy_pass <a href="http://127.0.0.1:8080$request_uri;}">http://127.0.0.1:8080$request_uri;}</a></div>
+<h1 id="10-在线测试"><a href="#10-在线测试" class="headerlink" title="10.在线测试"></a>10.在线测试</h1><p>安装并配置好了 SRS ，可以进行在线测试,在测试网站中测试 flv。我在测试的时候，发现 flv 的延迟要十几秒的时间。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://xxx:10015/live/test.flv</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://ossrs.net/players/srs_player.html">srs_player</a><br>【2】.<a target="_blank" rel="noopener" href="https://video.aliyuncs.com/player/setting/setting.html?spm=a2c4g.11186623.2.17.52686782JpdzLD">Aliplayer</a></div>
+<h1 id="11-直播卡顿"><a href="#11-直播卡顿" class="headerlink" title="11.直播卡顿"></a>11.直播卡顿</h1><p>在我使用 SRS 作为服务器的时候，直播画面在小窗口的时候还是可以接受的，但是在大窗口就变得模糊了。</p>
+<p>【尝试方案】<br>（1）尝试扩大缓存,结果无效</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vi /etc/sysctl.conf</span></span><br><span class="line">net.core.rmem_max=16777216</span><br><span class="line">net.core.rmem_default=16777216</span><br><span class="line">net.core.wmem_max=16777216</span><br><span class="line">net.core.wmem_default=16777216</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）重新配置了 webrtc 进行了转发，结果无效</p>
+<p>【解决方案】<br>修改了配置文件，增加了低延时播放。经过测试，我发现 flv 播放，还是会有 1-3 秒到延迟时间。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">listen              1935;</span><br><span class="line">vhost __defaultVhost__ {</span><br><span class="line">    tcp_nodelay     on;</span><br><span class="line">    min_latency     on;</span><br><span class="line">    play {</span><br><span class="line">        gop_cache       off;</span><br><span class="line">        queue_length    10;</span><br><span class="line">        mw_latency      100;</span><br><span class="line">    }</span><br><span class="line"> </span><br><span class="line">    publish {</span><br><span class="line">        mr off;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39711867/article/details/110654405">ffmpeg rtmp 不清晰_rtmp与srs初识</a><br>【2】.<a target="_blank" rel="noopener" href="https://ossrs.net/lts/zh-cn/blog/Live-Transcoding">Oryx - 直播转码降低带宽并节约成本</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lgbisha/article/details/127981482">简单易懂srs webrtc 部署优化方案</a> 对srs的优化，因为webrtc是使用的udp缓存，因此linux的udp缓存参数得增大，不然会因为本地udp缓存不够大，连本地上传的缓存都不够，导致掉帧。<br>【5】.<a target="_blank" rel="noopener" href="https://wenku.csdn.net/answer/9e58c30aa72041a6bd686dfdb69b30b9">如何提高SRS服务器的RTMP视频传输效率</a> 服务器配置优化，网络带宽优化，SRS服务器配置优化，使用硬件加速技术，优化视频编码参数，使用CDN进行加速。<br>【6】.<a target="_blank" rel="noopener" href="https://ossrs.net/lts/zh-cn/docs/v4/doc/low-latency">低延时直播应用</a> 这里是官方的一系列的文章描述<br>【7】.<a target="_blank" rel="noopener" href="https://ossrs.net/players/srs_player.html">在线SRS播放器</a><br>【8】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/vod/developer-reference/online-trial-and-source-code-of-demos">在线体验及Demo源码</a><br>【9】.<a target="_blank" rel="noopener" href="https://www.modou.tv/?p=1709">直播视频流需要多大的上传带宽？</a><br>【10】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7176234814407147581">新版本浏览器播放rtmp流媒体替代方案 </a> 1.更换流媒体服务器播放协议，如：HTTP-FLV、HLS等协议。2.安装支持flash插件的低版本浏览器。3.nginx-http-flv-module。4.webrtc。<br>【11】.<a href="%E6%8E%92%E6%9F%A5SRS%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%80%EF%BC%88RTMP%E6%8E%A8%E6%B5%81%EF%BC%8CRTC%E6%92%AD%E6%94%BE%E5%8D%A1%E4%BD%8F%EF%BC%89">排查SRS问题记录一（RTMP推流，RTC播放卡住）</a><br>【12】.<a target="_blank" rel="noopener" href="https://www.cuplayer.com/player/PlayerCode/SRS/2016/0107/2246.html">[SRS流媒体]SRS rtmp http-flv流低延时设置、测试</a><br>【13】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6996664571117174798">SRS RTMP/HLS低延时模式 </a> 延时影响因素:1.GOP:SRS可以关闭GOP的cache来避免这个影响。2.服务器性能太低：服务器来不及发送数据。3.播放端：譬如flash客户端的NetStream.bufferTime设置为10秒，那么延迟至少10秒以上。4.推流端：GOP、Profile、Tune等编码参数。RTMP延时特点：RTMP延时特点、有累积延迟<br>【14】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/cai742925624/article/details/125081655">SRS低延时配置分析</a> 1.tcp_nodelay：tcp关闭 Nagle算法，不再缓存发送。2.min_latency：开启最小延迟模式。3.queue_length： 设置队列大小。4.gop_cache： 关闭两个IDR帧间的数据缓存。5.mw_latency： merge wirte混合写的延迟。6.mr off：merge read关闭混合度<br>【15】.<a target="_blank" rel="noopener" href="https://www.xqtt29.com/articles/2021/07/08/1625715820424.html">基于srs的低延迟直播平台搭建 </a> 1.全平台直播，小荷才露尖尖角。只需要上图的Encoders(FFmpeg/OBS)推送RTMP到SRS；一台SRS Origin(不需要Cluster)，转封装成HTTP-FLV流、转封装成HLS；Players根据平台的播放器可以选HTTP-FLV或HLS流播放。2.WebRTC通话业务，一对一通话，多人通话，会议室等。WebRTC是SRS4引入的关键和核心的能力，从1到3秒延迟，到100到300毫秒延迟，绝对不是数字的变化，而是本质的变化。3.监控和广电上云，各行业风起云涌。除了使用FFmpeg主动拉取流到SRS，还可以广电行业SRT协议推流，或监控行业GB28181协议推流，SRS转换成互联网的协议观看。4.直播低延迟和互动，聚变近在咫尺。RTMP转WebRTC播放降低播放延迟，还能做直播连麦，或者使用WebRTC推流，未来还会支持WebTransport直播等等。5.大规模业务，带你装逼带你飞。如果业务快速上涨，可以通过Edge Cluster支持海量Players，或者Origin Cluster支持海量Encoders，当然可以直接平滑迁移到视频云。未来还会支持RTC的级联和集群。<br>【17】.<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1LS4y187xU">SRS导致WebRTC丢帧如何排查</a></div>
+<h1 id="12-开启m3u8"><a href="#12-开启m3u8" class="headerlink" title="12.开启m3u8"></a>12.开启m3u8</h1><p>(1) 配置 hls 低延时</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">listen              1935;</span><br><span class="line">max_connections     1000;</span><br><span class="line">vhost __defaultVhost__ {</span><br><span class="line">    hls {</span><br><span class="line">        enabled            on;</span><br><span class="line">        hls_path           ./objs/nginx/html;</span><br><span class="line">        hls_fragment       0.2;</span><br><span class="line">        hls_window         2;</span><br><span class="line">        hls_wait_keyframe  off;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) OBS直播参数调优<br>GOP = 1；Profile = baseline； Tune = zerolatency (主要是GOP编码参数)，例如OBS的编码设置如下： 设置 -&gt; 输出 -&gt; 高级，CPU使用预设：fast,配置Profile:baseline,微调Tune:zerolatency。这样配置之后，m3u8 的延迟可以达到 3-5 秒</p>
+<p>(3) 配置nginx</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /live/ {</span><br><span class="line">    proxy_pass http://127.0.0.1:8080/live/;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/aoshilang2249/article/details/110144952">《直播从零开始》SRS RTMP/HLS低延时模式</a> 这里有参数调优，我就是用的这个方法</div>
+<h1 id="13-无法播放"><a href="#13-无法播放" class="headerlink" title="13.无法播放"></a>13.无法播放</h1><p>我换了服务器之后，结果没有配置了，前端使用 jswebrtc 进行播放，结果就是一直播放不出来。</p>
+<p>【解决方案】<br>我多次尝试重新配置，后来发现 <strong>服务器防火墙配置了tcp 8000,但是没有配置 udp 8000</strong></p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Lemon_D1999/article/details/128702447">SRS解决WebRTC黑屏问题，包括内网、公网环境黑屏</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/3206839b.html" rel="next" title="技术研究之SRS">
+                      <i class="iconfont icon-prev"></i> 技术研究之SRS
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/2e68ac04.html" rel="prev" title="技术研究之OpenDroneMap">
+                      技术研究之OpenDroneMap <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-nginx%E9%85%8D%E7%BD%AErtmp"><span class="toc-number">2.</span> <span class="toc-text">2.nginx配置rtmp</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%89%B4%E6%9D%83"><span class="toc-number">3.</span> <span class="toc-text">3.鉴权</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%89%8D%E7%AB%AF%E6%92%AD%E6%94%BE"><span class="toc-number">4.</span> <span class="toc-text">4.前端播放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">5.配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-SRS"><span class="toc-number">6.</span> <span class="toc-text">6.SRS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-docker-%E5%90%AF%E5%8A%A8-srs"><span class="toc-number">7.</span> <span class="toc-text">7.docker 启动 srs</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.1.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Response-to-preflight-request-doesn%E2%80%99t-pass-access-control-check-Redirect-is-not-allowed-for-a-preflight-request"><span class="toc-number">7.1.1.</span> <span class="toc-text">Response to preflight request doesn’t pass access control check: Redirect is not allowed for a preflight request.</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%90%8E%E5%8F%B0%E5%90%AF%E5%8A%A8"><span class="toc-number">8.</span> <span class="toc-text">8.后台启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-srs%E9%85%8D%E7%BD%AEhttps%E8%AE%BF%E9%97%AE"><span class="toc-number">9.</span> <span class="toc-text">9.srs配置https访问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95"><span class="toc-number">10.</span> <span class="toc-text">10.在线测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E7%9B%B4%E6%92%AD%E5%8D%A1%E9%A1%BF"><span class="toc-number">11.</span> <span class="toc-text">11.直播卡顿</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E5%BC%80%E5%90%AFm3u8"><span class="toc-number">12.</span> <span class="toc-text">12.开启m3u8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-%E6%97%A0%E6%B3%95%E6%92%AD%E6%94%BE"><span class="toc-number">13.</span> <span class="toc-text">13.无法播放</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/b6f6d63e.html';
+      this.page.identifier = 'posts/b6f6d63e.html';
+      this.page.title = '技术研究之RTMP';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：技术研究之RTMP 链接地址:https://bibichuan.github.io/posts/b6f6d63e.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '技术研究之RTMP',
+		url: 'https://bibichuan.github.io/posts/b6f6d63e.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '技术研究之RTMP',
+			isTipVisibility: true,
+			tip: '技术研究之RTMP',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

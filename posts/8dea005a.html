@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>软件研究之Ffmpeg</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">软件研究之Ffmpeg</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-01-13 06:48:32
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>最近遇到的项目就是利用网站播放视频，于是我研究了 流媒体 技术，其中较多的就是利用 ffempeg 将mp4转换为m3u8格式。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d541b317f71c">FFmpeg常用推流命令</a><br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/275739125">网站播放视频较慢，利用mp4转m3u8解决</a><br>【3】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/live/developer-reference/what-resolutions-and-bitrates-does-apsaravideo-live-support">视频直播支持的分辨率和对应合适的码率</a> 1920×1080：500 kbps~4000 kbps。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/y534560449/article/details/121543262">FFMPEG之视频编码那些事儿</a> 视频压缩：帧内压缩（Intraframe compression）、帧间压缩(Interframe compression)、GOP（Group Of Picture）</div>
+<h1 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h1><h2 id="2-1-windows"><a href="#2-1-windows" class="headerlink" title="2.1.windows"></a>2.1.windows</h2><p>(1) <a target="_blank" rel="noopener" href="https://github.com/BtbN/FFmpeg-Builds/releases">下载</a><br>(2) 解压之后，配置环境变量</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -version</span><br></pre></td></tr></tbody></table></figure>
+<p>(3) 使用</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i E:\demo\demo.MP4 -profile:v baseline -level 3.0 -s 640x360 -start_number 0 -hls_time 10 -hls_list_size 0 -f hls E:\demo\demo.m3u8</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenthe1/article/details/131008271">windows使用ffmpeg将MP4转m3u8使用参数详解，视频添加水印和压缩</a> 这里从<br>【2】.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fb4d81cfe14d">mp4转m3u8 格式视频</a></div>
+<h2 id="2-2-linux"><a href="#2-2-linux" class="headerlink" title="2.2.linux"></a>2.2.linux</h2><p>最新版的  ffmpeg-master-latest-linux64-gpl.tar.xz 版本，可以不用编译，直接下载解压配置环境变量就可以使用了。</p>
+<p>(1) <a target="_blank" rel="noopener" href="https://github.com/BtbN/FFmpeg-Builds/releases">下载</a> </p>
+<p>(2) 解压</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一步</span></span><br><span class="line">xz -d ffmpeg-master-latest-linux64-gpl.tar.xz</span><br><span class="line"><span class="comment"># 第二步</span></span><br><span class="line">tar -xvf ffmpeg-master-latest-linux64-gpl.tar.xz</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）配置环境变量</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> PATH=/usr/local/ffmpeg/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（4）查看是否安装成功</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -version</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（5）执行命令生成<br>和windows上一样，也是可以直接使用命令执行的。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1711770">linux下安装ffmpeg的详细教程</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yjk13703623757/article/details/79848878">linux下解压tar.xz方法</a></div>
+<h1 id="3-Java"><a href="#3-Java" class="headerlink" title="3.Java"></a>3.Java</h1><p>其实不安装ffmpeg的二进制，直接使用java也是可以的。<br>（1）引入依赖</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Optional GPL builds with (almost) everything enabled --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.bytedeco<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ffmpeg-platform-gpl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.0-1.5.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.bytedeco<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>ffmpeg<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>6.0-1.5.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.bytedeco<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>javacv-platform<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42753310/article/details/120642292">Maven相关依赖</a></div>
+<p>（2）核心代码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * mp4, m3u8</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> filePathName       需要转换文件</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> toFilePath 需要转换的文件路径</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">mp4ToM3u8</span><span class="params">(String filePathName, String toFilePath)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line"></span><br><span class="line">        avutil.av_log_set_level(avutil.AV_LOG_INFO);</span><br><span class="line">        FFmpegLogCallback.set();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//加载文件</span></span><br><span class="line">        <span class="type">FFmpegFrameGrabber</span> <span class="variable">grabber</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FFmpegFrameGrabber</span>(filePathName);</span><br><span class="line">        <span class="comment">//grabber.setAudioChannels(1);</span></span><br><span class="line">        grabber.start();</span><br><span class="line">        <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> FileNameUtil.getName(filePathName);</span><br><span class="line">        fileName=fileName.substring(<span class="number">0</span>,fileName.indexOf(<span class="string">"."</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(!FileUtil.isDirectory(toFilePath)){</span><br><span class="line">            FileUtil.mkdir(toFilePath);</span><br><span class="line">        }</span><br><span class="line">        <span class="type">File</span> <span class="variable">tempFile3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(toFilePath, fileName + <span class="string">".m3u8"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">FFmpegFrameRecorder</span> <span class="variable">recorder</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FFmpegFrameRecorder</span>(tempFile3, grabber.getImageWidth(),</span><br><span class="line">                grabber.getImageHeight(), grabber.getAudioChannels());</span><br><span class="line"><span class="comment">//        格式方式</span></span><br><span class="line">        recorder.setFormat(<span class="string">"hls"</span>);</span><br><span class="line">        <span class="comment">//关于hls_wrap的说明，hls_wrap表示重复覆盖之前ts切片，这是一个过时配置，ffmpeg官方推荐使用hls_list_size 和hls_flags delete_segments代替hls_wrap</span></span><br><span class="line">        <span class="comment">//设置单个ts切片的时间长度（以秒为单位）。默认值为2秒</span></span><br><span class="line">        File fromFile=<span class="keyword">new</span> <span class="title class_">File</span>(filePathName);</span><br><span class="line">        Long fileSize=fromFile.length();</span><br><span class="line">        String hlsTime=<span class="string">"10"</span>; <span class="comment">// 切片时间</span></span><br><span class="line">        <span class="type">long</span> G=<span class="number">1024</span>*<span class="number">1024</span>*<span class="number">1024</span>;</span><br><span class="line">        <span class="keyword">if</span>(fileSize&gt;=<span class="number">0.2</span>*G){</span><br><span class="line">            hlsTime=<span class="string">"1"</span>;</span><br><span class="line">        }</span><br><span class="line">        recorder.setOption(<span class="string">"hls_time"</span>, hlsTime);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//不根据gop间隔进行切片,强制使用hls_time时间进行切割ts分片</span></span><br><span class="line">        recorder.setOption(<span class="string">"hls_flags"</span>, <span class="string">"split_by_time"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//设置播放列表条目的最大数量。如果设置为0，则列表文件将包含所有片段，默认值为5</span></span><br><span class="line">        <span class="comment">// 当切片的时间不受控制时，切片数量太小，就会有卡顿的现象</span></span><br><span class="line">        recorder.setOption(<span class="string">"hls_list_size"</span>, <span class="string">"0"</span>);</span><br><span class="line">        <span class="comment">//自动删除切片，如果切片数量大于hls_list_size的数量，则会开始自动删除之前的ts切片，只保留hls_list_size个数量的切片</span></span><br><span class="line">        recorder.setOption(<span class="string">"hls_flags"</span>, <span class="string">"delete_segments"</span>);</span><br><span class="line">        <span class="comment">//ts切片自动删除阈值，默认值为1，表示早于hls_list_size+1的切片将被删除</span></span><br><span class="line">        recorder.setOption(<span class="string">"hls_delete_threshold"</span>, <span class="string">"1"</span>);</span><br><span class="line">        <span class="comment">/*hls的切片类型：</span></span><br><span class="line"><span class="comment">         * 'mpegts'：以MPEG-2传输流格式输出ts切片文件，可以与所有HLS版本兼容。</span></span><br><span class="line"><span class="comment">         * 'fmp4':以Fragmented MP4(简称：fmp4)格式输出切片文件，类似于MPEG-DASH，fmp4文件可用于HLS version 7和更高版本。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        recorder.setOption(<span class="string">"hls_segment_type"</span>, <span class="string">"mpegts"</span>);</span><br><span class="line">        <span class="comment">//指定ts切片生成名称规则，按数字序号生成切片,例如'file%03d.ts'，就会生成file000.ts，file001.ts，file002.ts等切片文件</span></span><br><span class="line">        <span class="comment">//recorder.setOption("hls_segment_filename", toFilePath + "-%03d.ts");</span></span><br><span class="line">        recorder.setOption(<span class="string">"hls_segment_filename"</span>, toFilePath + File.separator + fileName + <span class="string">"-%5d.ts"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//加密，生成加密key</span></span><br><span class="line"><span class="comment">//        String prefixName = toFilePath + File.separator + fileName;</span></span><br><span class="line"><span class="comment">//        String secureFileName = prefixName + ".key";</span></span><br><span class="line"><span class="comment">//        byte[] secureRandom = getSecureRandom();</span></span><br><span class="line"><span class="comment">//        FileUtil.writeBytes(secureRandom,secureFileName);</span></span><br><span class="line"><span class="comment">//        String toHex = Convert.toHex(secureRandom);</span></span><br><span class="line"><span class="comment">//        String keyInfoPath = toFilePath + File.separator +"key.keyinfo";</span></span><br><span class="line"><span class="comment">//        //写入加密文件</span></span><br><span class="line"><span class="comment">//        writeKeyInfo(keyInfoPath,fileName + ".key",secureFileName,toHex);</span></span><br><span class="line"><span class="comment">//        recorder.setOption("hls_key_info_file", keyInfoPath);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 设置第一个切片的编号</span></span><br><span class="line"><span class="comment">//        recorder.setOption("start_number", String.valueOf(tsCont));</span></span><br><span class="line"><span class="comment">//        recorder.setPixelFormat(avutil.AV_PIX_FMT_YUV420P);</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 转码</span></span><br><span class="line">        log.info(<span class="string">"{} | 启动Hls转码录制器……"</span>, toFilePath);</span><br><span class="line">        <span class="comment">//      设置零延迟</span></span><br><span class="line">        <span class="comment">//recorder.setVideoOption("tune", "zerolatency");</span></span><br><span class="line">        recorder.setVideoOption(<span class="string">"tune"</span>, <span class="string">"fastdecode"</span>);</span><br><span class="line">        <span class="comment">// 快速</span></span><br><span class="line">        recorder.setVideoOption(<span class="string">"preset"</span>, <span class="string">"ultrafast"</span>);</span><br><span class="line"><span class="comment">//        recorder.setVideoOption("crf", "26");</span></span><br><span class="line">        recorder.setVideoOption(<span class="string">"threads"</span>, <span class="string">"12"</span>);</span><br><span class="line">        recorder.setVideoOption(<span class="string">"vsync"</span>, <span class="string">"2"</span>);</span><br><span class="line">        recorder.setFrameRate(grabber.getFrameRate());<span class="comment">// 设置帧率</span></span><br><span class="line"><span class="comment">//        recorder.setGopSize(25);// 设置gop,与帧率相同，相当于间隔1秒chan's一个关键帧</span></span><br><span class="line"><span class="comment">//		recorder.setVideoBitrate(100 * 1000);// 码率500kb/s</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        recorder.setPixelFormat(avutil.AV_PIX_FMT_YUV420P);</span></span><br><span class="line">        <span class="comment">// 设置编码</span></span><br><span class="line">        recorder.setAudioCodec(avcodec.AV_CODEC_ID_AAC);</span><br><span class="line">        recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果想截取规定时间段视频</span></span><br><span class="line"><span class="comment">//        recorder.start();</span></span><br><span class="line"><span class="comment">//        Frame frame;</span></span><br><span class="line"><span class="comment">//        while ((frame = grabber.grabImage()) != null) {</span></span><br><span class="line"><span class="comment">//            try {</span></span><br><span class="line"><span class="comment">//                recorder.record(frame);</span></span><br><span class="line"><span class="comment">//            } catch (FrameRecorder.Exception e) {</span></span><br><span class="line"><span class="comment">//                log.error("转码异常：{}", e);</span></span><br><span class="line"><span class="comment">//            }</span></span><br><span class="line"><span class="comment">//        }</span></span><br><span class="line">        recorder.start(grabber.getFormatContext());</span><br><span class="line">        AVPacket packet;</span><br><span class="line">        <span class="keyword">while</span> ((packet = grabber.grabPacket()) != <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                recorder.recordPacket(packet);</span><br><span class="line">            } <span class="keyword">catch</span> (FrameRecorder.Exception e) {</span><br><span class="line">                log.error(<span class="string">"转码异常：{}"</span>, e);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        recorder.setTimestamp(grabber.getTimestamp());</span><br><span class="line">        recorder.stop();</span><br><span class="line">        recorder.release();</span><br><span class="line">        grabber.stop();</span><br><span class="line">        grabber.release();</span><br><span class="line"></span><br><span class="line">        <span class="type">File</span> <span class="variable">dest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(filePathName);</span><br><span class="line">        <span class="keyword">if</span> (dest.isFile() &amp;&amp; dest.exists()) {</span><br><span class="line">            dest.delete();</span><br><span class="line">            log.warn(<span class="string">"临时文件 {}已删除"</span>, dest.getName());</span><br><span class="line">        }</span><br><span class="line">        log.info(<span class="string">"转码m3u8：{}"</span>, tempFile3.getAbsolutePath());</span><br><span class="line">        <span class="keyword">return</span> tempFile3.getAbsolutePath();</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43548590/article/details/131910127">Java使用FFmpeg实现mp4转m3u8</a> 这里从安装到 java 调用，讲到都非常的详细。<br>【2】.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000039782685">在 java 中使用 ffmpeg 的四个阶段</a> 阶段一：字符串阶段；阶段二：封装阶段；阶段三：工具类阶段；阶段四：最终阶段<br>【3】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213466/7247750">javacv ffmpeg 本地还需要装ffmpeg吗</a><br>【4】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7271259103472435239"> Java整合ffmpeg视频处理的正确使用方式 </a> 最后还是使用了命令行的形式进行的。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/laow1314/article/details/128797915">springboot 通过javaCV 实现mp4转m3u8 上传oss</a> 这是主要的代码。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/cucgyfjklx/article/details/123133555">java中File转为MultipartFile的四种方式</a><br>【7】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/374716294">如果通过javacv来调用ffmpeg解析mp4视频为m3u8,内存式hls切片.通过流的方式来保存？</a> 这里还提供了利用 chrome 进行测试的方法，安装Play HLS M3u8 插件，如果没有，那么自己找个离线可以播m3u8的软件即可<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42910468/article/details/123332685">Java实现视频加密及播放</a> 这里使用了 nginx 进行了转发。</div>
+<h1 id="5-前端播放"><a href="#5-前端播放" class="headerlink" title="5.前端播放"></a>5.前端播放</h1><p>可以使用 hls.js 进行播放，还可以使用 xgplay-hls 进行播放。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://v3.h5player.bytedance.com/plugins/extension/xgplayer-hls.html#%E5%AE%89%E8%A3%85">xgplayer-hls</a> hls 播放插件，H264 和 H265 编码格式(H265支持解析，能否播放取决于浏览器是否支持H265编码格式)</div>
+<h1 id="6-编码加密"><a href="#6-编码加密" class="headerlink" title="6.编码加密"></a>6.编码加密</h1><p>因为我在设置的时候，总是无法编码成 h264 格式，所以就想着去尝试下其他的方式，不知道行不行的。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.nxrte.com/jishu/11365.html">chrome 如何开启HEVC硬件解码</a> 前期chrome官方版本一直未支持H265，因此前期只能通过自己编译chrome源码来生成H265定制浏览器，但是不支持硬解码的缺陷一直是一个大坑，我们一度准备放弃chrome浏览器，前几天忽然听说chrome 105以上的稳定版本已经集成了HEVC解码并且支持硬解<br>【2】.<a target="_blank" rel="noopener" href="https://bbs.itzmx.com/thread-96148-1-1.html">ffmpeg 用显卡转码切片hls m3u8文件的方法 key加密</a> ffmpeg 无损HLS切片参数例如，注意压制时关键帧设置1秒</div>
+<h1 id="7-视频压缩"><a href="#7-视频压缩" class="headerlink" title="7.视频压缩"></a>7.视频压缩</h1><p>我有几个文件，1080p的文件，没有压缩之前达到了3.7G的大小，就算是用1s钟进行分片，结果还是无法打开播放。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">FRAME_RATE</span> <span class="operator">=</span> <span class="number">30</span>; <span class="comment">// 帧率</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">VIDEO_BITRATE</span> <span class="operator">=</span> <span class="number">1024</span>*<span class="number">1024</span>; <span class="comment">// 比特率</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">COMPRESS_WIDTH</span> <span class="operator">=</span> <span class="number">1080</span>; <span class="comment">// 视频宽高</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 在使用时发现视频压缩和视频时长有关系</span></span><br><span class="line"><span class="comment">     * 一个9M的56s的视频压缩后视频7M多</span></span><br><span class="line"><span class="comment">     * 一个22M的5s的视频压缩后视频624K</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> inputMp4Path</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">compressionVideo</span><span class="params">(String inputMp4Path)</span> {</span><br><span class="line">        File file=<span class="keyword">new</span> <span class="title class_">File</span>(inputMp4Path);</span><br><span class="line"></span><br><span class="line">        <span class="type">FFmpegFrameGrabber</span> <span class="variable">frameGrabber</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FFmpegFrameGrabber</span>(file.getAbsolutePath());</span><br><span class="line">        <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">Frame</span> <span class="variable">captured_frame</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">FFmpegFrameRecorder</span> <span class="variable">recorder</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            frameGrabber.start();</span><br><span class="line">            fileName = file.getAbsolutePath().replace(<span class="string">".MP4"</span>, <span class="string">"_edited.mp4"</span>);</span><br><span class="line">            log.info(<span class="string">"wight:{},height:{}"</span>,frameGrabber.getImageWidth(), frameGrabber.getImageHeight());</span><br><span class="line"></span><br><span class="line">            <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> frameGrabber.getImageHeight();</span><br><span class="line">            <span class="type">int</span> <span class="variable">widht</span> <span class="operator">=</span> frameGrabber.getImageWidth();</span><br><span class="line">            <span class="keyword">if</span>(needCompress(file.length())){</span><br><span class="line">                height = calculateHeight(frameGrabber.getImageWidth(), frameGrabber.getImageHeight(), COMPRESS_WIDTH);</span><br><span class="line">                widht = COMPRESS_WIDTH;</span><br><span class="line">                log.info(<span class="string">"new wight:{},height:{}"</span>,widht, height);</span><br><span class="line">            }</span><br><span class="line">            recorder = <span class="keyword">new</span> <span class="title class_">FFmpegFrameRecorder</span>(fileName, widht, height, frameGrabber.getAudioChannels());</span><br><span class="line">            recorder.setFrameRate(FRAME_RATE);</span><br><span class="line">            <span class="comment">//下面这行打开就报错</span></span><br><span class="line">            <span class="comment">//recorder.setSampleFormat(frameGrabber.getSampleFormat());</span></span><br><span class="line">            recorder.setSampleRate(frameGrabber.getSampleRate());</span><br><span class="line">            <span class="comment">//recorder.setAudioChannels(1);</span></span><br><span class="line">            recorder.setVideoOption(<span class="string">"preset"</span>, <span class="string">"veryfast"</span>);</span><br><span class="line">            <span class="comment">// yuv420p,像素</span></span><br><span class="line">            recorder.setPixelFormat(avutil.AV_PIX_FMT_YUV420P);</span><br><span class="line">            recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);</span><br><span class="line">            recorder.setAudioCodec(avcodec.AV_CODEC_ID_AAC);</span><br><span class="line">            recorder.setVideoBitrate(VIDEO_BITRATE);</span><br><span class="line">            recorder.setFormat(<span class="string">"mp4"</span>);</span><br><span class="line">            <span class="comment">//比特</span></span><br><span class="line">            <span class="comment">//recorder.setVideoBitrate(VIDEO_BITRATE);</span></span><br><span class="line">            recorder.start();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>) {</span><br><span class="line">                <span class="keyword">try</span> {</span><br><span class="line">                    captured_frame = frameGrabber.grabFrame();</span><br><span class="line">                    <span class="keyword">if</span> (captured_frame == <span class="literal">null</span>) {</span><br><span class="line">                        System.out.println(<span class="string">"!!! end cvQueryFrame"</span>);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    }</span><br><span class="line">                    recorder.setTimestamp(frameGrabber.getTimestamp());</span><br><span class="line">                    recorder.record(captured_frame);</span><br><span class="line">                } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            recorder.stop();</span><br><span class="line">            recorder.release();</span><br><span class="line">            frameGrabber.stop();</span><br><span class="line">        } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//file.delete();</span></span><br><span class="line">        <span class="keyword">return</span> fileName;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 是否需要压缩，大于3MB</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> length</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">needCompress</span><span class="params">(<span class="type">long</span> length)</span>{</span><br><span class="line">        log.info(<span class="string">"video size:{}"</span>, length);</span><br><span class="line">        <span class="keyword">return</span> length &gt;= <span class="number">3145728</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 等比计算新高度</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> w</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> h</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> nw</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">calculateHeight</span><span class="params">(<span class="type">int</span> w, <span class="type">int</span> h, <span class="type">int</span> nw)</span>{</span><br><span class="line">        <span class="type">double</span> <span class="variable">s</span> <span class="operator">=</span> Integer.valueOf(h).doubleValue() / Integer.valueOf(w).doubleValue();</span><br><span class="line">        <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> (<span class="type">int</span>) (nw * s);</span><br><span class="line">        <span class="comment">//如果宽和高不是偶数recorder.start();会报错</span></span><br><span class="line">        <span class="keyword">if</span>(height % <span class="number">2</span> !=<span class="number">0</span>){</span><br><span class="line">            height += <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> height;</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/SeniorShen/article/details/113246990">JAVA，实现视频压缩(最全)</a> Java压缩视频大小，10M视频压缩完成后大约是1M,用时大约2S<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/laotan/p/12767843.html">Java 压缩视频（无需安装插件）</a> 这里用了 jave-nativebin-osx64 这个东西。<br>【3】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/**107191253">为什么我的带有Hls.js视频播放器的应用程序在3-4个小时后就会结冰呢？</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yu540135101/article/details/84346146">ffmpeg实例，比特率码率（-b）、帧率（-r）和文件大小（-fs）相关操作</a> 帧率（Frame rate）也叫帧频率，帧率是视频文件中每一秒的帧数，肉眼想看到连续移动图像至少需要15帧。码率也叫比特率（Bit rate）(也叫数据率)是一个确定整体视频/音频质量的参数，秒为单位处理的字节数，码率和视频质量成正比，在视频文件中中比特率用bps来表达。控制输出文件大小。<br>【5】.<a target="_blank" rel="noopener" href="https://www.mmzsblog.cn/articles/2020/09/13/1600003340761.html">JavaCV开发详解之4：本地音频(话筒设备)和视频(摄像头)抓取、混合并推送(录制)到服务器(本地) </a> 这个的代码里面的注释倒是挺多的，比如比特率、质量、音频等的设置。还包括了一些视频抓取之类的东西。<br>【6】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/nmcc33/p/12325889.html">javacv FFmpeg 视频压缩</a> 这里的代码还是挺好用的，进行了视频压缩重采样，好用。<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xindoo/article/details/130186891">使用ffmpeg缩小视频体积的几种方式</a> 调整视频的分辨率；调整视频的码率；使用更高效的视频编码格式；<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44835297/article/details/116305230">java实现，无损视频大小压缩</a> 这里用了这个插件 it.sauronsoftware</div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="（1）av-interleaved-write-frame-error-2-while-writing-interleaved-audio-packet"><a href="#（1）av-interleaved-write-frame-error-2-while-writing-interleaved-audio-packet" class="headerlink" title="（1）av_interleaved_write_frame() error -2 while writing interleaved audio packet"></a>（1）av_interleaved_write_frame() error -2 while writing interleaved audio packet</h2><p>这个问题就是启用了 加密，如果把加密的地方注销掉，就会出现这个问题，下面的代码就是，可以不加密，但是不能没有加密文件。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成加密key</span></span><br><span class="line"><span class="type">String</span> <span class="variable">prefixName</span> <span class="operator">=</span> toFilePath + File.separator + fileName;</span><br><span class="line"><span class="type">String</span> <span class="variable">secureFileName</span> <span class="operator">=</span> prefixName + <span class="string">".key"</span>;</span><br><span class="line"><span class="type">byte</span>[] secureRandom = getSecureRandom();</span><br><span class="line">FileUtil.writeBytes(secureRandom,secureFileName);</span><br><span class="line"><span class="type">String</span> <span class="variable">toHex</span> <span class="operator">=</span> Convert.toHex(secureRandom);</span><br><span class="line"><span class="type">String</span> <span class="variable">keyInfoPath</span> <span class="operator">=</span> toFilePath + File.separator +<span class="string">"key.keyinfo"</span>;</span><br><span class="line"><span class="comment">//写入加密文件</span></span><br><span class="line">writeKeyInfo(keyInfoPath,fileName + <span class="string">".key"</span>,secureFileName,toHex);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加密</span></span><br><span class="line">recorder.setOption(<span class="string">"hls_key_info_file"</span>, keyInfoPath);</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="（2）hls-js-播放黑屏，只有声音"><a href="#（2）hls-js-播放黑屏，只有声音" class="headerlink" title="（2）hls.js 播放黑屏，只有声音"></a>（2）hls.js 播放黑屏，只有声音</h2><p>大部分的文章都是因为 h265 编码的问题，但是我设置的编码格式是 h264的编码格式啊。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置编码格式</span></span><br><span class="line">recorder.setAudioCodec(avcodec.AV_CODEC_ID_AAC);</span><br><span class="line">recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【尝试方案】<br>(1) 修改编码方式，多次重新编译。</p>
+<p>【解决方案】<br>最后的解决方案是将 hls_segment_type 设置为 fmp4 而不是 mpegts。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*hls的切片类型：</span></span><br><span class="line"><span class="comment">* 'mpegts'：以MPEG-2传输流格式输出ts切片文件，可以与所有HLS版本兼容。</span></span><br><span class="line"><span class="comment">* 'fmp4':以Fragmented MP4(简称：fmp4)格式输出切片文件，类似于MPEG-DASH，fmp4文件可用于HLS version 7和更高版本。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// 原先</span></span><br><span class="line">recorder.setOption(<span class="string">"hls_segment_type"</span>, <span class="string">"mpegts"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 改为</span></span><br><span class="line">recorder.setOption(<span class="string">"hls_segment_type"</span>, <span class="string">"fmp4"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.volcengine.com/theme/5793380-C-7-1">从s3存储桶播放.m3u8文件时出现视频黑屏和仅有声音的问题 </a> 这里加了一个 X-Amz-Meta-File-Range-Start=0 请求参数<br>【2】.<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/485043920">hls.js播放m3u8为什么黑屏，控制台的log正常，ts文件也一直在解析？</a> 大概率是因为H.265导致的。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ppinecone/article/details/126100400">主流视频编码器特点、优缺点归纳和比较（H.264、HEVC、VP9、AV1）</a> High Efficiency Video Coding，又称H.265/HEVC，是一种新的视频压缩标准，用来扩充H.264/AVC编码标准，2013年1月26号，HEVC正式成为国际标准，收取版税。为了应对互联网流媒体、通信、视频会议、数字存储媒体和电视广播等各种应用对运动图像更高压缩率的日益增长的需求而开发的。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m350058411/article/details/120887096">m3u8流文件在html视频播放器中播放有声音无画面问题</a> 故视频解码时无法正常解码，所以只需要在海康的摄像头中更改流媒体格式为H264，那么视频就可以正常播放了<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45189427/article/details/119143624">JAVA ~ FFmpegFrameRecorder用H264编码封装mp4 有声音无图像</a> 这里设置了 avcodec.AV_CODEC_ID_H264，并设置了 setFormat(“mp4”)，但是对我没有效果。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zj850324/article/details/126767682">java网络摄像头播放、截图、rtsp转m3u8</a> 这里提供了 rtsp转m3u8，具体的方法和前面的差不多。</div>
+<h2 id="（3）无法加密"><a href="#（3）无法加密" class="headerlink" title="（3）无法加密"></a>（3）无法加密</h2><p>当设置了 recorder.setOption(“hls_segment_type”, “fmp4”)，但是就无法进行加密了，recorder.setOption(“hls_key_info_file”, keyInfoPath)，否则就会报错。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*hls的切片类型：</span></span><br><span class="line"><span class="comment">    * 'mpegts'：以MPEG-2传输流格式输出ts切片文件，可以与所有HLS版本兼容。</span></span><br><span class="line"><span class="comment">    * 'fmp4':以Fragmented MP4(简称：fmp4)格式输出切片文件，类似于MPEG-DASH，fmp4文件可用于HLS version 7和更高版本。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">recorder.setOption(<span class="string">"hls_segment_type"</span>, <span class="string">"fmp4"</span>);</span><br><span class="line"><span class="comment">//加密</span></span><br><span class="line"><span class="comment">//        recorder.setOption("hls_key_info_file", keyInfoPath);</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>最后我也没有解决，尝试了很多次，结果也都是这个样子的，没有什么意外，只能先放弃了。</p>
+<h2 id="（4）设置-hls-time-不能按时间进行分片，有的多有的少"><a href="#（4）设置-hls-time-不能按时间进行分片，有的多有的少" class="headerlink" title="（4）设置 hls_time 不能按时间进行分片，有的多有的少"></a>（4）设置 hls_time 不能按时间进行分片，有的多有的少</h2><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cn.v2ex.com/t/866400">关于 javacv hls 切片结果很模糊的为</a> recorder.setGopSize(2 * frameRate);//设置 gop<br>【2】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/eguid/4990954"> 流媒体直播实时视频延迟时间排查和剖析：gop关键帧间隔导致延迟，流媒体和播放器缓存，B帧等导致的延迟 原创 </a><br>【3】.<a target="_blank" rel="noopener" href="https://loyolife.com/730.html">使用FFmpeg命令进行hls切片，得到的ts文件时长不准确，如何精确控制m3u8切片时长 </a><br>【4】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/vod/product-overview/terms-1">基本概念</a> 为便于您更好的理解视频点播产品，您可以在使用前了解视频格式、视频编码、视频转码等基本概念。</div>
+<h2 id="（5）moov-atom-not-found"><a href="#（5）moov-atom-not-found" class="headerlink" title="（5）moov atom not found"></a>（5）moov atom not found</h2><p>有些视频文件可以被压缩，有些视频不能压缩，不知道什么原因，压缩的时候报错：[libx264 @ 0x7fc7497d9d00] non-strictly-monotonic PTS。“Application provided invalid, non monotonically increasing dts to muxer in stream 0”</p>
+<img src="/images/loadimg.png" data-original="/posts/8dea005a/err_1.png" lay-src="/posts/8dea005a/err_1.png" class="" title="Ffempeg">
+
+<p>【解决方法】<br>经过我多方的测试和查找，后来我发现这个原始视频的帧率有些不正确，原视频的帧率是29.53fps,后来我统一改成了 30.0 fps。</p>
+<img src="/images/loadimg.png" data-original="/posts/8dea005a/err_2.png" lay-src="/posts/8dea005a/err_2.png" class="" title="Ffempeg">
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">recorder.setFrameRate(FRAME_RATE);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://repairit.wondershare.com/video-repair/moov-atom-not-found.html">How to Fix Video ‘Moov Atom Not Found’ Error?</a><br>【2】.<a target="_blank" rel="noopener" href="https://huifu.wondershare.cn/repair/10070811.html">3个方案解决视频“Moov Atom Not Found”错误问题</a> 方法 1. 使用万兴易修的视频修复功能修复视频错误。方法 2. 使用 qtfaststart 修复 FFMPEG “Moov Atom Not Found”。方法 3. 使用 MP4box 解决“Moov Atom Not Found”视频错误。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/meng_tianshi/article/details/49365771">ffmpeg使用libx264编码时，为何一直出现x264 [warning]: non-strictly-monotonic PTS？</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dontla/article/details/128007140">FFmpeg h.264 mp4编码告警：non-strictly-monotonic PTS</a> 选用ABR需要注意两个设置，fps和输出帧pts计算。切换到h.265编码倒没这个警告，<br>【5】.<a target="_blank" rel="noopener" href="https://fed.taobao.org/blog/taofed/do71ct/web-player-h265/">Web端H.265播放器研发解密</a> 音视频编解码对于前端工程师是一个比较少涉足的领域，涉及到流媒体技术中的文本、图形、图像、音频和视频多种理论知识的学习，才能够应用到具体实践中，我们自研web播放器并支持h.265解码，在码率优化的大背景下（保持画质不变情况下，应用图像增强、roi区域检测、智能场景分类和h265编解码等多种技术能力，将码流降低50%。</div>
+<h2 id="6-invalid-DTS-PTS-is-less-than-DTS"><a href="#6-invalid-DTS-PTS-is-less-than-DTS" class="headerlink" title="(6) invalid DTS: PTS is less than DTS"></a>(6) invalid DTS: PTS is less than DTS</h2><p>有些视频进行压缩的时候，就出现了问题。出现这种错误是由于视频pts大于dts。解释是：pts是视频播放时间，dts是送入解码器解码时间。所以一帧视频播放时间必须在解码时间点之后。<br>【尝试方案】<br>(1).使用packet进行压缩，结果没有效果。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (; (avPacket = frameGrabber.grabPacket()) != <span class="literal">null</span>;) {</span><br><span class="line">    <span class="comment">// 封装/复用</span></span><br><span class="line">    recorder.recordPacket(avPacket);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2).在while循环中的合适位置添加if(pkt.pts &lt; pkt.dts) continue; 这个方法没有搞定。</p>
+<p>(3).取消了时间戳设置</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">recorder.setTimestamp(frameGrabber.getTimestamp()); <span class="comment">// 注释掉了</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 使用只存储关键帧的方法</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(captured_frame.keyFrame){</span><br><span class="line">    recorder.setTimestamp(frameGrabber.getTimestamp());</span><br><span class="line">    recorder.record(captured_frame);</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方法】<br>最后的解决方法让我非常的崩溃,只是注释了 recorder.setTimestamp(frameGrabber.getTimestamp()); 这句话，让解码器自动计算时间戳。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> recorder.start();</span><br><span class="line"><span class="type">Frame</span> <span class="variable">captured_frame</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">while</span> (<span class="literal">true</span>) {</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        captured_frame = frameGrabber.grabFrame();</span><br><span class="line">        <span class="keyword">if</span> (captured_frame == <span class="literal">null</span>) {</span><br><span class="line">            System.out.println(<span class="string">"!!! end cvQueryFrame"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 主要就是删除了这句话</span></span><br><span class="line">        <span class="comment">//  recorder.setTimestamp(frameGrabber.getTimestamp());</span></span><br><span class="line">        recorder.record(captured_frame);</span><br><span class="line">    } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">        log.error(<span class="string">"captured_frame"</span>,e);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30885821/article/details/113726927">【FFmpeg】关于对错误pts () ＜ dts () in stream的解决方法</a> 在while循环中的合适位置添加 if(pkt.pts &lt; pkt.dts) continue;<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/justgg/article/details/95437747">PTS 和 DTS 理解</a><br>【3】.<a target="_blank" rel="noopener" href="https://21xrx.com/Articles/read_article/253491">深入理解FFmpeg的Packet和Frame数据结构</a> Packet是FFmpeg中用于封装音视频数据的基本单元。Frame是FFmpeg中用于存储解码后的音视频数据的数据结构。在解码阶段，解码器会将解码后的音视频数据填充到Frame中。一个Frame中包含了一帧完整的音视频数据，通过Frame的成员变量可以获取到这些数据的相关信息，如宽度、高度、采样率等。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/eguid/4894370">如何跨平台调用ffmpeg？史上最简单基于JavaCV跨平台执行ffmpeg命令</a> 这里有一个地方就是使用<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/gao_yuwushengchu/article/details/123893769">java 视频转码 视频压缩</a> 这里有视频大小分辨率建议码率，还有码率公式。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/JOJOYYDSA/article/details/122143983">JavaCV 之音视频基础概念 I帧、B帧、P帧、DTS、PTS了解</a> AVFrame是已解码的帧数据，需重新编码才能正常保存为视频文件;AVPacket是解码前的原始数据，无需重新编码也能正常保存<br>【7】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213360/9502530">javacv 获取 I帧间隔</a> 通过 Frame 类的 keyFrame 属性，我们可以判断是否为I帧<br>【8】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7226993037905068088">java cv流媒体处理高频抓帧 </a> FFmpegFrameGrabber 提供了一系列方法来设置视频源、读取视频帧、获取视频信息等操作。通过FFmpegFrameGrabber 类，我们可以获取视频流、抓取视频帧并进行处理。<br>【9】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175511/6771032">javacv I帧转图片</a> 总共有六个步骤：1.导入所需的javacv库；2.初始化视频文件；3.读取视频帧；4.获取帧；5.将帧转为图片；6.保存图片。获取P帧，</div>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(frame.image!=<span class="literal">null</span>){</span><br><span class="line">    <span class="keyword">if</span>(frame.image.depth()==IPL_DEPTH_BU &amp;&amp; frame.image.nChannels()==<span class="number">3</span>){</span><br><span class="line">        <span class="comment">// 处理 I 帧</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【10】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Dug_Zhang/article/details/121732837">javacv之视频和音频的合并</a> 当视频长度大于音频长度时,进行和成。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/c7b4ef9e.html" rel="next" title="软件研究之GDAL">
+                      <i class="iconfont icon-prev"></i> 软件研究之GDAL
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/b9b7fac6.html" rel="prev" title="软件研究之Eva">
+                      软件研究之Eva <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2.安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-windows"><span class="toc-number">2.1.</span> <span class="toc-text">2.1.windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-linux"><span class="toc-number">2.2.</span> <span class="toc-text">2.2.linux</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Java"><span class="toc-number">3.</span> <span class="toc-text">3.Java</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%89%8D%E7%AB%AF%E6%92%AD%E6%94%BE"><span class="toc-number">4.</span> <span class="toc-text">5.前端播放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%BC%96%E7%A0%81%E5%8A%A0%E5%AF%86"><span class="toc-number">5.</span> <span class="toc-text">6.编码加密</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E8%A7%86%E9%A2%91%E5%8E%8B%E7%BC%A9"><span class="toc-number">6.</span> <span class="toc-text">7.视频压缩</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%881%EF%BC%89av-interleaved-write-frame-error-2-while-writing-interleaved-audio-packet"><span class="toc-number">7.1.</span> <span class="toc-text">（1）av_interleaved_write_frame() error -2 while writing interleaved audio packet</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89hls-js-%E6%92%AD%E6%94%BE%E9%BB%91%E5%B1%8F%EF%BC%8C%E5%8F%AA%E6%9C%89%E5%A3%B0%E9%9F%B3"><span class="toc-number">7.2.</span> <span class="toc-text">（2）hls.js 播放黑屏，只有声音</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E6%97%A0%E6%B3%95%E5%8A%A0%E5%AF%86"><span class="toc-number">7.3.</span> <span class="toc-text">（3）无法加密</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E8%AE%BE%E7%BD%AE-hls-time-%E4%B8%8D%E8%83%BD%E6%8C%89%E6%97%B6%E9%97%B4%E8%BF%9B%E8%A1%8C%E5%88%86%E7%89%87%EF%BC%8C%E6%9C%89%E7%9A%84%E5%A4%9A%E6%9C%89%E7%9A%84%E5%B0%91"><span class="toc-number">7.4.</span> <span class="toc-text">（4）设置 hls_time 不能按时间进行分片，有的多有的少</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%885%EF%BC%89moov-atom-not-found"><span class="toc-number">7.5.</span> <span class="toc-text">（5）moov atom not found</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-invalid-DTS-PTS-is-less-than-DTS"><span class="toc-number">7.6.</span> <span class="toc-text">(6) invalid DTS: PTS is less than DTS</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/8dea005a.html';
+      this.page.identifier = 'posts/8dea005a.html';
+      this.page.title = '软件研究之Ffmpeg';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：软件研究之Ffmpeg 链接地址:https://bibichuan.github.io/posts/8dea005a.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '软件研究之Ffmpeg',
+		url: 'https://bibichuan.github.io/posts/8dea005a.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '软件研究之Ffmpeg',
+			isTipVisibility: true,
+			tip: '软件研究之Ffmpeg',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

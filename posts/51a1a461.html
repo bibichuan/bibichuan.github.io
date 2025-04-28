@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StarRocks数据库安装测试</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">StarRocks数据库安装测试</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-12-22 14:10:43
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>StarRocks原名叫DorisDB，和Apache Doris不是一个东西，反正就是Apache Doris的一个分支，又增加了自己的一些技术，开源之前蹭了很多Apache Doris的流量，导致两家闹的不可开交，这里我就不讲两者的渊源了，反正可能StarRocks的人缘不是很好，但是也不影响我使用这个数据进行基本的查询。</p>
+<p>我的基本环境是Hyper-V虚拟出的配置好开发环境的CentOS8,安装了mysql8.0,具体安装可以查看 <a href="#">Post not found: MySql安装 MySql安装</a> ，ip地址为 192.168.1.95</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.starrocks.com/zh-CN/blog/haoweilai">好未来 | 全新实时数仓实践，深入释放实时数据价值</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/DorisDB/article/details/119459952">StarRocks 性能调优实战（一）</a></div>
+<h2 id="2-下载"><a href="#2-下载" class="headerlink" title="2.下载"></a>2.下载</h2><p>去官方下载 <a target="_blank" rel="noopener" href="https://www.starrocks.com/zh-CN/download/community">安装包</a></p>
+<h2 id="3-安装"><a href="#3-安装" class="headerlink" title="3.安装"></a>3.安装</h2><p>我这里测试了单机安装，为了不必要的麻烦，我将下载的安装包，解压到了 /usr/local/starroces-1.19.4 目录下，编辑了 /etc/profile 文件，添加了 STARROCKS_HOME=/usr/local/starroces-1.19.4 环境变量。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/robots2/p/15041553.html">Doris端口列表</a> 对默认的端口有一个概念，可能会和hadoop的部分端口重合</div>
+<h3 id="1-启动fe"><a href="#1-启动fe" class="headerlink" title="1.启动fe"></a>1.启动fe</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## fe端口</span></span><br><span class="line">ss -antpl|grep -E <span class="string">'8030|9010|9020|9030'</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 进入fe目录</span></span><br><span class="line"><span class="built_in">cd</span> fe</span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建元数据目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p meta</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动fe，以服务的方式进行启动</span></span><br><span class="line">bin/start_fe.sh --daemon</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看启动，java进程确认"StarRocksFe"存在</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 使用mysql客户端链接，这里默认root用户密码为空，端口为fe/conf/fe.conf中的query_port配置项，默认为9030</span></span><br><span class="line">mysql -h 127.0.0.1 -P9030 -uroot</span><br><span class="line"><span class="comment">## 查看FE状态</span></span><br><span class="line">mysql&gt; SHOW PROC <span class="string">'/frontends'</span>\G</span><br><span class="line"></span><br><span class="line"><span class="comment">## 停止</span></span><br><span class="line">bin/stop_fe.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/1712">StarRocks BE服务常见问题处理看这篇就够了</a> 查看端口占用情况，修改fe.conf或be.conf中的配置</div>
+<h3 id="2-启动be"><a href="#2-启动be" class="headerlink" title="2.启动be"></a>2.启动be</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看端口占用，修改be.conf</span></span><br><span class="line">ss -antpl|grep -E <span class="string">'9060|9050|8040|8060'</span>*</span><br><span class="line"></span><br><span class="line"><span class="comment">## 进入be目录</span></span><br><span class="line"><span class="built_in">cd</span> be</span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p storage</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动be，以服务的方式进行启动</span></span><br><span class="line">bin/start_be.sh --daemon</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 使用mysql客户端链接，这里默认root用户密码为空，端口为fe/conf/fe.conf中的query_port配置项，默认为9030</span></span><br><span class="line">mysql -h 127.0.0.1 -P9030 -uroot</span><br><span class="line"></span><br><span class="line"><span class="comment">## 添加节点，链接fe，P地址为和priority_networks设置匹配的IP，portheartbeat_service_port，默认为9050</span></span><br><span class="line">mysql&gt; ALTER SYSTEM ADD BACKEND <span class="string">"192.168.1.95:9050"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除节点</span></span><br><span class="line">alter system decommission backend <span class="string">"be_host:be_heartbeat_service_port"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看状态,如果isAlive为true，则说明BE正常接入集群。如果BE没有正常接入集群，请查看log目录下的be.WARNING日志文件确定原因。</span></span><br><span class="line">mysql&gt; SHOW PROC <span class="string">'/backends'</span>\G</span><br><span class="line"></span><br><span class="line"><span class="comment">## 停止</span></span><br><span class="line">bin/stop_be.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-创建用户并授权"><a href="#3-创建用户并授权" class="headerlink" title="3.创建用户并授权"></a>3.创建用户并授权</h2><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">---- 登录,默认是没有用户名密码的</span></span><br><span class="line">mysql <span class="operator">-</span>h <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="operator">-</span>P9030 <span class="operator">-</span>uroot</span><br><span class="line"></span><br><span class="line"><span class="comment">---- 创建一个有密码用户，允许从 任何地方登录</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> jack@<span class="string">'%'</span> IDENTIFIED <span class="keyword">BY</span> <span class="string">'123456'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">---- 授予所有库和表的只读权限给用户</span></span><br><span class="line"><span class="keyword">GRANT</span> SELECT_PRIV <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">'jack'</span>@<span class="string">'%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">---- 授予所有库和表的创建数据库、表、视图的权限</span></span><br><span class="line"><span class="keyword">GRANT</span> Create_priv <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">'jack'</span>@<span class="string">'%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">---- 授予多个权限</span></span><br><span class="line"><span class="keyword">GRANT</span> SELECT_PRIV,LOAD_PRIV,ALTER_PRIV,CREATE_PRIV,DROP_PRIV <span class="keyword">ON</span> <span class="operator">*</span>.<span class="operator">*</span> <span class="keyword">TO</span> <span class="string">'jack'</span>@<span class="string">'%'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">---- 删除用户</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">USER</span> jack;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.saoniuhuo.com/article/detail-30558.html">StarRocks用户权限</a><br>2.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/administration/User_privilege">用户权限</a> 官方文档的用户权限配置<br>3.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/sql-reference/sql-statements/account-management/GRANT">GRANT</a> 官方文档关于GRANT语句的使用</div>
+<h2 id="4-创建数据库和数据表"><a href="#4-创建数据库和数据表" class="headerlink" title="4.创建数据库和数据表"></a>4.创建数据库和数据表</h2><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 使用mysql客户端链接，这里默认root用户密码为空，端口为fe/conf/fe.conf中的query_port配置项，默认为9030</span></span><br><span class="line">mysql -h 127.0.0.1 -P9030 -uroot</span><br><span class="line"><span class="comment">## 使用用户名密码登陆</span></span><br><span class="line">mysql -h 127.0.0.1 -P9030 -uroot -p123</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看所有数据库</span></span><br><span class="line">show databases;</span><br><span class="line"><span class="comment">## 创建数据库db_</span></span><br><span class="line">create database db_;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 进入数据库</span></span><br><span class="line">use db_;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建一个 olap 表，使用 HASH 分桶，使用列存，相同key的记录进行聚合</span></span><br><span class="line">CREATE TABLE realtime</span><br><span class="line">(</span><br><span class="line">    SiteNo int NOT NULL,</span><br><span class="line">	RecordTime datetime NOT NULL,</span><br><span class="line">	Alarm int NULL,</span><br><span class="line">)</span><br><span class="line">ENGINE=olap</span><br><span class="line">COMMENT <span class="string">"realtime"</span></span><br><span class="line">DISTRIBUTED BY HASH(RecordTime) BUCKETS 10</span><br><span class="line">PROPERTIES (<span class="string">"storage_type"</span>=<span class="string">"column"</span>,<span class="string">"replication_num"</span>=<span class="string">"1"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1)  Failed to find enough host in all backends. need: 3<br>StarRocks的副本数是不能大于BE节点数的，由于当前仅有一个BE节点，我们建表时务必注意指定数据为单副本,也就是在建表的时候，要增加 “replication_num”=”1”</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE TABLE</span> customer (</span><br><span class="line">    c_custkey <span class="type">INT</span>,</span><br><span class="line">    c_name <span class="type">VARCHAR</span>(<span class="number">26</span>),</span><br><span class="line">    c_city <span class="type">VARCHAR</span>(<span class="number">11</span>)</span><br><span class="line">)</span><br><span class="line">DUPLICATE KEY(c_custkey)</span><br><span class="line">DISTRIBUTED <span class="keyword">BY</span> HASH (c_custkey) BUCKETS <span class="number">10</span></span><br><span class="line">PROPERTIES (</span><br><span class="line">  "replication_num"<span class="operator">=</span>"1"</span><br><span class="line">);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31866793/article/details/109337746">记录apache doris使用过程中出现的问题</a><br>2.<a target="_blank" rel="noopener" href="https://copyfuture.com/blogs-details/202112141604385322">第1.3章 StarRocks部署–单机部署</a> 这个写了好多需要注意的事项</div>
+<p>(2) java.sql.SQLException: No suitable driver found</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yuanziwoxin/article/details/72668860">出现java.sql.SQLException: No suitable driver的几种解决办法</a></div>
+<p>(3) LOAD command denied to user ‘default_cluster:ztzn’@’192.168.1.1’ for table ‘siteinfo’</p>
+<p>这个问题，主要是用户的权限不足导致的。</p>
+<p>(4) primary key tablet do not support delete statement yet<br>意思是不支持单个的删除，可以使用TRUNCATE TABLE 命令 删除该表所有数据。</p>
+<p>【解决】<br>我这里的问题，注意就是字段不存在的问题。</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">---- 清空 example_db 下的表 tbl</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> example_db.tbl;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/1308">primary key tablet do not support delete statement yet</a><br>2.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/sql-reference/sql-statements/data-definition/TRUNCATE%20TABLE">TRUNCATE TABLE</a></div>
+<p>(5)  Key columns should be a ordered prefix of the schema<br>建表时UNIQUE KEY必须放在所有字段前面声明且保证有序</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/epitomizelu/article/details/121591995">doris &amp; StarRocks 错题本</a></div>
+<h2 id="5-DataX导入数据"><a href="#5-DataX导入数据" class="headerlink" title="5.DataX导入数据"></a>5.DataX导入数据</h2><p>我这里只是测试了使用阿里开源的DataX将SQL Server中的数据导入到starrocks中，遇到的问题，关于DataX的安装，可以查看 <a href="#">Post not found: 工具使用之数据同步 工具使用之数据同步</a> 文章。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/1303">Load from mysql to StarRocks</a></div>
+<h3 id="1-安装starrockswriter插件"><a href="#1-安装starrockswriter插件" class="headerlink" title="1.安装starrockswriter插件"></a>1.安装starrockswriter插件</h3><p>将starrockswriter插件下载，并放到datax/plugin/writer目录下。</p>
+<h3 id="2-编写json文件"><a href="#2-编写json文件" class="headerlink" title="2.编写json文件"></a>2.编写json文件</h3><figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"job"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">        <span class="attr">"setting"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">            <span class="attr">"speed"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                <span class="attr">"channel"</span><span class="punctuation">:</span> <span class="number">128</span> </span><br><span class="line">            <span class="punctuation">}</span></span><br><span class="line">        <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"content"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">{</span></span><br><span class="line">            <span class="attr">"reader"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                <span class="attr">"name"</span><span class="punctuation">:</span> <span class="string">"sqlserverreader"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"parameter"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                    <span class="attr">"username"</span><span class="punctuation">:</span> <span class="string">"xxx"</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">"password"</span><span class="punctuation">:</span> <span class="string">"xxx"</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">"column"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"*"</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                    <span class="attr">"connection"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">{</span></span><br><span class="line">                        <span class="attr">"table"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"realtime"</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"jdbcUrl"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"jdbc:sqlserver://192.168.1.99:1433;databasename=phhlgypvc"</span><span class="punctuation">]</span></span><br><span class="line">                    <span class="punctuation">}</span><span class="punctuation">]</span></span><br><span class="line">                <span class="punctuation">}</span></span><br><span class="line">        <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"writer"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                <span class="attr">"name"</span><span class="punctuation">:</span> <span class="string">"starrockswriter"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"parameter"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">                        <span class="attr">"username"</span><span class="punctuation">:</span> <span class="string">"xxx"</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"password"</span><span class="punctuation">:</span> <span class="string">"xxx"</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"database"</span><span class="punctuation">:</span> <span class="string">"phhlgypvc"</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"table"</span><span class="punctuation">:</span> <span class="string">"realtime"</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"column"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"*"</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"preSql"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"postSql"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span> </span><br><span class="line">                        <span class="attr">"jdbcUrl"</span><span class="punctuation">:</span> <span class="string">"jdbc:mysql://192.168.1.95:9030/"</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"loadUrl"</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">"192.168.1.95:8030"</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">                        <span class="attr">"loadProps"</span><span class="punctuation">:</span> <span class="punctuation">{</span><span class="punctuation">}</span></span><br><span class="line">                    <span class="punctuation">}</span></span><br><span class="line">            <span class="punctuation">}</span></span><br><span class="line">        <span class="punctuation">}</span><span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/loading/DataX-starrocks-writer">StarRocksWriter 插件</a><br>2.<a target="_blank" rel="noopener" href="https://doris.apache.org/master/zh-CN/extending-doris/datax.html#%E5%85%B3%E4%BA%8E-datax">DataX doriswriter</a> 这是starrocks同源的Apache Doris的writer。</div>
+<h3 id="3-执行导入"><a href="#3-执行导入" class="headerlink" title="3.执行导入"></a>3.执行导入</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python /usr/local/datax/bin/datax.py /usr/local/datax/job/full_starrocks.json</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-运行成功"><a href="#4-运行成功" class="headerlink" title="4.运行成功"></a>4.运行成功</h3><img src="/images/loadimg.png" data-original="/posts/51a1a461/starrocks_1.png" lay-src="/posts/51a1a461/starrocks_1.png" class="" title="starrocks数据库">
+
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>(1)  Request failed with code:401<br>在执行导入操作的时候，返回了401错误：Unable to flush data to StarRocks: unknown result status.</p>
+<img src="/images/loadimg.png" data-original="/posts/51a1a461/err_1.png" lay-src="/posts/51a1a461/err_1.png" class="" title="starrocks错误">
+
+<p>[解决]<br>这个问题主要是因为认证引起的，我使用了新创建的bibi帐号，虽然授予了权限，但是无法登录：<code>http://192.168.1.95:8030/</code> 网站，所以就会导致了在执行：Executing stream load to: ‘<a target="_blank" rel="noopener" href="http://192.168.1.95:8030/api/phhlgypvc/realtime/_stream_load'%EF%BC%8C%E8%BF%99%E4%B8%80%E9%83%A8%E5%88%86%E7%9A%84%E5%86%85%E5%AE%B9%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E5%87%BA%E7%8E%B0%E4%BA%86401">http://192.168.1.95:8030/api/phhlgypvc/realtime/_stream_load'，这一部分的内容的时候，出现了401</a> 错误。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://issueexplorer.com/issue/StarRocks/starrocks/1467">streamload 返回认证失败</a></div>
+<h2 id="6-手动数据导入"><a href="#6-手动数据导入" class="headerlink" title="6.手动数据导入"></a>6.手动数据导入</h2><h3 id="1-insert-into语句"><a href="#1-insert-into语句" class="headerlink" title="1.insert into语句"></a>1.insert into语句</h3><p>小批量的数据导入，使用insert into语句不合适。如果你非要执行insert into语句，请查看参考文章5。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ult_me/article/details/122823687">第3.1章：StarRocks数据导入–Insert into</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yuan_CSDF/article/details/122182297">StarRocks（三）数据导入与查询</a><br>3.<a target="_blank" rel="noopener" href="https://www.saoniuhuo.com/article/detail-30236.html">StarRocks数据导入和查询</a> Broker Load 通过 Broker 进程访问并读取外部数据源，然后采用 MySQL 协议向 StarRocks 创建导入作业。Spark Load 通过外部的 Spark 资源实现对导入数据的预处理，提高 StarRocks 大数据量的导入性能并且节省 StarRocks 集群的计算资源。Stream Load是一种同步执行的导入方式。用户通过 HTTP 协议发送请求将本地文件或数据流导入到 StarRocks中，并等待系统返回导入的结果状态，从而判断导入是否成功。Routine Load（例行导入）提供了一种自动从指定数据源进行数据导入的功能。用户通过 MySQL 协议提交例行导入作业，生成一个常驻线程，不间断的从数据源（如 Kafka）中读取数据并导入到 StarRocks 中。类似 MySQL 中的 Insert 语句，StarRocks 提供 INSERT INTO tbl SELECT …; 的方式从 StarRocks 的表中读取数据并导入到另一张表。或者通过 INSERT INTO tbl VALUES(…); 插入单条数据。数据源有DataX/DTS、Kettle/Informatic、StarRocks本身。<br>4.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/loading/Loading_intro">导入</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ult_me/article/details/122823687">第3.1章：StarRocks数据导入–Insert into</a></div>
+<h3 id="2-Steam-Load"><a href="#2-Steam-Load" class="headerlink" title="2.Steam Load"></a>2.Steam Load</h3><p>所有的参数都放到请求的header中，数据放到请求的body里面。使用python3进行测试的时候，需要先安装 requests 模块</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># Copyright (c) 2021 Beijing Dingshi Zongheng Technology Co., Ltd. All rights reserved.</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"># Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="string"># you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="string"># You may obtain a copy of the License at</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string">#     http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="string">#</span></span><br><span class="line"><span class="string"># Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="string"># distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="string"># See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="string"># limitations under the License.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> requests <span class="keyword">import</span> Session</span><br><span class="line"><span class="keyword">import</span> base64</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LoadSession</span>(<span class="title class_ inherited__">Session</span>):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">rebuild_auth</span>(<span class="params">self, prepared_request, response</span>):</span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        No code here means requests will always preserve the Authorization</span></span><br><span class="line"><span class="string">        header when redirected.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Stream load Demo with Standard Lib requests</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    username, password = <span class="string">''</span>, <span class="string">''</span></span><br><span class="line">    headers={</span><br><span class="line">        <span class="string">"Content-Type"</span>:  <span class="string">"text/html; charset=UTF-8"</span>,</span><br><span class="line">        <span class="comment">#"Content-Type":  "application/octet-stream",  # file upload</span></span><br><span class="line">        <span class="string">"connection"</span>: <span class="string">"keep-alive"</span>,</span><br><span class="line">        <span class="string">"max_filter_ratio"</span>: <span class="string">"0.2"</span>,</span><br><span class="line">        <span class="string">"columns"</span>: <span class="string">"k,v"</span>,</span><br><span class="line">        <span class="string">"column_separator"</span>: <span class="string">','</span>,</span><br><span class="line">        <span class="string">"Expect"</span>: <span class="string">"100-continue"</span>,</span><br><span class="line">    }</span><br><span class="line">    payload = <span class="string">'''1000,test1\n1001,test2\n1002,test3'''</span></span><br><span class="line">    database = <span class="string">'d'</span></span><br><span class="line">    tablename = <span class="string">'d'</span></span><br><span class="line">    api = <span class="string">'http://192.168.1.95:8030/api/%s/%s/_stream_load'</span> % (database, tablename)</span><br><span class="line">    session = LoadSession()</span><br><span class="line">    session.auth = (username, password)</span><br><span class="line">    response = session.put(url=api, headers=headers, data=payload)</span><br><span class="line">    <span class="comment">#response = session.put(url=api, headers=headers, data= open("a.csv","rb")) # file upload</span></span><br><span class="line">    <span class="built_in">print</span>(response.json())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/408622.html">Stream Load</a><br>2.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/loading/StreamLoad">Stream load</a> 官方的文档，还有事例。</div>
+<h3 id="3-Http"><a href="#3-Http" class="headerlink" title="3.Http"></a>3.Http</h3><p>使用http的方式，就是使用的SteamLoad的方式，下面是导入一个csv文件</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 导入文件</span></span><br><span class="line">curl --location-trusted -u <span class="built_in">test</span>:123456 -T table1_data.csv -H <span class="string">"label: table1_20170707"</span> -H <span class="string">"column_separator:,"</span> http://127.0.0.1:8030/api/example_db/table1/_stream_load</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意</strong></p>
+<p>(1) 在使用postman进行测试的时候，不能选择POST方式，要选择PUT方式进行提交数据，否在会返回：{“status”:”FAILED”,”msg”:”Not implemented”}。<br>(2) 请求头中要包括 Authorization，内容为 Basic 用户名密码的base64编码，比如我的用户名为 test，密码为 1234，则需要对 test:1234，进行编码，结果为 dGVzdDoxMjM0，那么 Authorization:dGVzdDoxMjM0,其他的属性，可以按照官网的要求进行填写。<br>(3) columns为列名<br>(4) label是一个唯一标志符，标明此次的提交记录。<br>(5) 请求地址：<code>http://127.0.0.1:8030/api/数据库名/表名/_stream_load</code></p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Content-Type:text/html; charset=UTF-8</span><br><span class="line">connection:keep-alive</span><br><span class="line">max_filter_ratio:0.2</span><br><span class="line">columns:SiteNo,RecordTime,Alarm</span><br><span class="line">column_separator:,</span><br><span class="line">Expect:100-continue</span><br><span class="line">Authorization:Basic dGVzdDoxMjM0</span><br><span class="line">label:39c25a5c-7000-496e-a98e-348a264c81de</span><br></pre></td></tr></tbody></table></figure>
+
+<p>请求体Body里面，可以选择类型为Text,按行分割要填入的数据</p>
+<img src="/images/loadimg.png" data-original="/posts/51a1a461/starrocks_4.png" lay-src="/posts/51a1a461/starrocks_4.png" class="" title="starrocks测试">
+
+<p>数据插入成功：</p>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.saoniuhuo.com/article/detail-30236.html">StarRocks数据导入和查询</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yuan_CSDF/article/details/122182297">StarRocks（三）数据导入与查询</a><br>3.<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/HTTP%E5%9F%BA%E6%9C%AC%E8%AE%A4%E8%AF%81">HTTP基本认证</a> 请求的HTTP头字段会包含Authorization字段，形式如下： Authorization: Basic &lt;凭证&gt;，该凭证是用户和密码的组和的base64编码。 </div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/286fe9af.html" rel="next" title="StarRocks数据库运维">
+                      <i class="iconfont icon-prev"></i> StarRocks数据库运维
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/76eb5ccc.html" rel="prev" title="SpringSecurity问题汇总">
+                      SpringSecurity问题汇总 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">2.下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">3.安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8fe"><span class="toc-number">3.1.</span> <span class="toc-text">1.启动fe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%90%AF%E5%8A%A8be"><span class="toc-number">3.2.</span> <span class="toc-text">2.启动be</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%B9%B6%E6%8E%88%E6%9D%83"><span class="toc-number">4.</span> <span class="toc-text">3.创建用户并授权</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8C%E6%95%B0%E6%8D%AE%E8%A1%A8"><span class="toc-number">5.</span> <span class="toc-text">4.创建数据库和数据表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-DataX%E5%AF%BC%E5%85%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">7.</span> <span class="toc-text">5.DataX导入数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85starrockswriter%E6%8F%92%E4%BB%B6"><span class="toc-number">7.1.</span> <span class="toc-text">1.安装starrockswriter插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%BC%96%E5%86%99json%E6%96%87%E4%BB%B6"><span class="toc-number">7.2.</span> <span class="toc-text">2.编写json文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%89%A7%E8%A1%8C%E5%AF%BC%E5%85%A5"><span class="toc-number">7.3.</span> <span class="toc-text">3.执行导入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%BF%90%E8%A1%8C%E6%88%90%E5%8A%9F"><span class="toc-number">7.4.</span> <span class="toc-text">4.运行成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">7.5.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%89%8B%E5%8A%A8%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%85%A5"><span class="toc-number">8.</span> <span class="toc-text">6.手动数据导入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-insert-into%E8%AF%AD%E5%8F%A5"><span class="toc-number">8.1.</span> <span class="toc-text">1.insert into语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Steam-Load"><span class="toc-number">8.2.</span> <span class="toc-text">2.Steam Load</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Http"><span class="toc-number">8.3.</span> <span class="toc-text">3.Http</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/51a1a461.html';
+      this.page.identifier = 'posts/51a1a461.html';
+      this.page.title = 'StarRocks数据库安装测试';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：StarRocks数据库安装测试 链接地址:https://bibichuan.github.io/posts/51a1a461.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'StarRocks数据库安装测试',
+		url: 'https://bibichuan.github.io/posts/51a1a461.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'StarRocks数据库安装测试',
+			isTipVisibility: true,
+			tip: 'StarRocks数据库安装测试',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

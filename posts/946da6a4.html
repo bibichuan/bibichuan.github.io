@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot之Shiro入门</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Spring Boot之Shiro入门</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Springboot/">Springboot</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Java/">Java</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-06-12 07:44:11
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>这是shiro入门的第二篇文章，第一篇文(<a href="#">Post not found: Spring Boot集成shiro步骤 Spring Boot集成shiro步骤</a>)章使用的还是比较老的shiro-spring依赖，这一篇，使用了shiro-spring-boot-web-starter,写法和思路还是有些差别的。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7055498336039600142">SpringSecurity能否吊打Shiro？</a> 如果开发的项目是Spring这一套，用Spring Security我觉得更合适一些，他们本身就是一套东西，顺畅，可能略微复杂一些，但是学会了就是自己的。如果开发项目比较紧张，Shiro可能更合适，容易上手，也足够用，Spring Security中有的，Shiro也基本都有，没有的部分网上也有大批的解决方案。如果项目没有使用Spring这一套，不用考虑，直接Shiro。同时要考虑团队成员的技术栈，更加熟悉使用哪个，在选型上，也要尽量避免给同行增加不必要的学习成本！</div>
+<h2 id="1-引入依赖"><a href="#1-引入依赖" class="headerlink" title="1.引入依赖"></a>1.引入依赖</h2><dependency>
+    <groupid>org.apache.shiro</groupid>
+    <artifactid>shiro-spring-boot-web-starter</artifactid>
+    <version>1.5.3</version>
+</dependency>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 2.提供一个Realm实现</span><br><span class="line">比如我的</span><br><span class="line">``` java</span><br><span class="line">@Bean</span><br><span class="line">public Realm realm() {</span><br><span class="line">    DatabaseRealm databaseRealm=new DatabaseRealm();</span><br><span class="line">    return databaseRealm;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+其中DatabaseRealm代码
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.proheng.gis.Entity.UserInfo;</span><br><span class="line"><span class="keyword">import</span> com.proheng.gis.Reposities.UserInfoRepository;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.AuthenticationException;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.AuthenticationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.AuthenticationToken;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authc.SimpleAuthenticationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.AuthorizationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.authz.SimpleAuthorizationInfo;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.realm.AuthorizingRealm;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.subject.PrincipalCollection;</span><br><span class="line"><span class="keyword">import</span> org.apache.shiro.util.ByteSource;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Created by zjch on 2017/5/16.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DatabaseRealm</span> <span class="keyword">extends</span> <span class="title class_">AuthorizingRealm</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(<span class="built_in">this</span>.getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserInfoRepository userInfoService;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 认证信息.(身份验证)</span></span><br><span class="line"><span class="comment">     * :</span></span><br><span class="line"><span class="comment">     * Authentication 是用来验证用户身份</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> token</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> AuthenticationException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> AuthenticationInfo <span class="title function_">doGetAuthenticationInfo</span><span class="params">(AuthenticationToken token)</span> <span class="keyword">throws</span> AuthenticationException {</span><br><span class="line">        <span class="comment">//获取用户的输入的账号.</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> (String)token.getPrincipal();</span><br><span class="line">        <span class="comment">//通过username从数据库中查找 User对象，如果找到，没找到.</span></span><br><span class="line">        <span class="comment">//实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法</span></span><br><span class="line">        <span class="type">UserInfo</span> <span class="variable">userInfo</span> <span class="operator">=</span> userInfoService.findByUsername(username);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(userInfo == <span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 获取权限信息:这里没有进行实现，</span></span><br><span class="line"><span class="comment">         * 请自行根据UserInfo,Role,Permission进行实现；</span></span><br><span class="line"><span class="comment">         * 获取之后可以在前端for循环显示所有链接;</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">//userInfo.setPermissions(userService.findPermissions(User));</span></span><br><span class="line">        <span class="comment">//加密方式;</span></span><br><span class="line">        <span class="comment">//交给AuthenticatingRealm使用CredentialsMatcher进行密码匹配，如果觉得人家的不好可以自定义实现</span></span><br><span class="line">        <span class="keyword">try</span>{</span><br><span class="line">            <span class="type">SimpleAuthenticationInfo</span> <span class="variable">authenticationInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleAuthenticationInfo</span>(</span><br><span class="line">                    userInfo.getUsername(), <span class="comment">//用户名</span></span><br><span class="line">                    userInfo.getPassword(), <span class="comment">//密码</span></span><br><span class="line">                    getName()  <span class="comment">//realm name</span></span><br><span class="line">            );</span><br><span class="line">            authenticationInfo.setCredentialsSalt(ByteSource.Util.bytes(userInfo.getCredentialsSalt()));</span><br><span class="line">            <span class="keyword">return</span> authenticationInfo;</span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            System.out.println(<span class="string">"授权失败"</span>);</span><br><span class="line">            logger.error(<span class="string">"doGetAuthenticationInfo"</span>,userInfo);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">//明文: 若存在，将此用户存放到登录认证info中，无需自己做密码对比，Shiro会为我们进行密码对比校验</span></span><br><span class="line"><span class="comment">//      SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(</span></span><br><span class="line"><span class="comment">//    		  userInfo.getName(), //用户名</span></span><br><span class="line"><span class="comment">//    		  userInfo.getPassword(), //密码</span></span><br><span class="line"><span class="comment">//             getName()  //realm name</span></span><br><span class="line"><span class="comment">//      );</span></span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 此方法调用  hasRole,hasPermission的时候才会进行回调.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * 权限信息.(授权):</span></span><br><span class="line"><span class="comment">     * 1、如果用户正常退出，缓存自动清空；</span></span><br><span class="line"><span class="comment">     * 2、如果用户非正常退出，缓存自动清空；</span></span><br><span class="line"><span class="comment">     * 3、如果我们修改了用户的权限，而用户不退出系统，修改的权限无法立即生效。</span></span><br><span class="line"><span class="comment">     * （需要手动编程进行实现；放在service进行调用）</span></span><br><span class="line"><span class="comment">     * 在权限修改后调用realm中的方法，realm已经由spring管理，所以从spring中获取realm实例，</span></span><br><span class="line"><span class="comment">     * 调用clearCached方法；</span></span><br><span class="line"><span class="comment">     * :Authorization 是授权访问控制，用于对用户进行的操作授权，证明该用户是否允许进行当前操作，如访问某个链接，某个资源文件等。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> principals</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> AuthorizationInfo <span class="title function_">doGetAuthorizationInfo</span><span class="params">(PrincipalCollection principals)</span> {</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 当没有使用缓存的时候，不断刷新页面的话，这个代码会不断执行，</span></span><br><span class="line"><span class="comment">         * 当其实没有必要每次都重新设置权限信息，所以我们需要放到缓存中进行管理；</span></span><br><span class="line"><span class="comment">         * 当放到缓存中时，这样的话，doGetAuthorizationInfo就只会执行一次了，</span></span><br><span class="line"><span class="comment">         * 缓存过期之后会再次执行。</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="type">SimpleAuthorizationInfo</span> <span class="variable">authorizationInfo</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleAuthorizationInfo</span>();</span><br><span class="line">        <span class="comment">//实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> authorizationInfo;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="3-定义一个ShiroFilterChainDefinition"><a href="#3-定义一个ShiroFilterChainDefinition" class="headerlink" title="3.定义一个ShiroFilterChainDefinition"></a>3.定义一个ShiroFilterChainDefinition</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> ShiroFilterChainDefinition <span class="title function_">shiroFilterChainDefinition</span><span class="params">()</span> {</span><br><span class="line">    <span class="type">DefaultShiroFilterChainDefinition</span> <span class="variable">chainDefinition</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DefaultShiroFilterChainDefinition</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// logged in users with the 'admin' role</span></span><br><span class="line">    chainDefinition.addPathDefinition(<span class="string">"/admin/**"</span>, <span class="string">"authc, roles[admin]"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// logged in users with the 'document:read' permission</span></span><br><span class="line">    chainDefinition.addPathDefinition(<span class="string">"/docs/**"</span>, <span class="string">"authc, perms[document:read]"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// all other paths require a logged in user</span></span><br><span class="line">    chainDefinition.addPathDefinition(<span class="string">"/**"</span>, <span class="string">"authc"</span>);</span><br><span class="line">    <span class="keyword">return</span> chainDefinition;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>简直太简单了有没有？下面的步骤，可以做，也可以不做，都没有关系的，反正上面三步就已经完成了大部分的内容，下面的只是根据需要做一些完善。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://shiro.apache.org/spring-boot.html">Integrating Apache Shiro into Spring-Boot Applications</a> (这是shiro官方文档)<br>2.<a target="_blank" rel="noopener" href="https://juejin.im/post/5cff0cfc5188250d28510681">Spring Boot 整合 Shiro ，两种方式全总结！</a></div>
+<h2 id="4-配置过滤器"><a href="#4-配置过滤器" class="headerlink" title="4.配置过滤器"></a>4.配置过滤器</h2><p>配置过滤器，在完成了上面的几个步骤的时候，如果还要进一步的做一些其他的东西，比如设置未登录的跳转页面，在拦截ajax请求的时候，返回json字符串，而不是一个login.jsp页面，就需要配置过滤器了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置shrio拦截器</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> ShiroFilterFactoryBean <span class="title function_">shiroFilterFactoryBean</span><span class="params">(SecurityManager securityManager)</span> {</span><br><span class="line">    <span class="type">ShiroFilterFactoryBean</span> <span class="variable">shiroFilterFactoryBean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShiroFilterFactoryBean</span>();</span><br><span class="line">    <span class="comment">// 必须设置SecuritManager</span></span><br><span class="line">    shiroFilterFactoryBean.setSecurityManager(securityManager);</span><br><span class="line">    Map&lt;String, Filter&gt; filters = shiroFilterFactoryBean.getFilters();</span><br><span class="line">    <span class="comment">//配置拦截器,实现无权限返回401,而不是跳转到登录页</span></span><br><span class="line"><span class="comment">//        filters.put("authc", new FormLoginFilter());</span></span><br><span class="line">    <span class="comment">// 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面</span></span><br><span class="line">    shiroFilterFactoryBean.setLoginUrl(<span class="string">"/"</span>);</span><br><span class="line">    <span class="comment">// 登录成功后要跳转的链接</span></span><br><span class="line">    shiroFilterFactoryBean.setSuccessUrl(<span class="string">"/index"</span>);</span><br><span class="line">    <span class="comment">// 未授权界面;</span></span><br><span class="line">    shiroFilterFactoryBean.setUnauthorizedUrl(<span class="string">"/403"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拦截器</span></span><br><span class="line">    <span class="comment">// Map&lt;String, String&gt; filterChainDefinitionMap = new LinkedHashMap&lt;String, String&gt;();</span></span><br><span class="line">    <span class="comment">// // 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边</span></span><br><span class="line">    <span class="comment">// // authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问</span></span><br><span class="line">    <span class="comment">// filterChainDefinitionMap.put("/**", "authc");</span></span><br><span class="line">    <span class="comment">// shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> shiroFilterFactoryBean;</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000013630601">springboot整合shiro使用shiro-spring-boot-web-starter</a> (这个讲了如何加入过滤器链,这里有个坑，就是过滤器的名字必须是shiroFilterFactoryBean，而不能是shiroFilter)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhang_Red/article/details/81301066">使用shiro-spring-boot-web-starter时，报错： required a bean named ‘authorizer’ that could not be found.</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/insaneXs/p/11028286.html">Shiro踩坑记（一）：关于shiro-spring-boot-web-starter自动注解无法注入authorizer的问题</a> (这个文章倒是将了很多，连如何进行debug的操作都讲到了)</div>
+<p><strong>注意</strong><br>过滤器的名字不能是shiroFilter而必须是shiroFilterFactoryBean，否则启动的时候就会报错</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> ShiroFilterFactoryBean <span class="title function_">shiroFilter</span><span class="params">(SecurityManager securityManager)</span> {</span><br><span class="line">        <span class="type">ShiroFilterFactoryBean</span> <span class="variable">shiroFilterFactoryBean</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ShiroFilterFactoryBean</span>();</span><br><span class="line">        <span class="comment">// 必须设置SecuritManager</span></span><br><span class="line">        shiroFilterFactoryBean.setSecurityManager(securityManager);</span><br><span class="line">        Map&lt;String, Filter&gt; filters = shiroFilterFactoryBean.getFilters();</span><br><span class="line">        <span class="comment">//配置拦截器,实现无权限返回401,而不是跳转到登录页</span></span><br><span class="line"><span class="comment">//        filters.put("authc", new FormLoginFilter());</span></span><br><span class="line">        <span class="comment">// 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面</span></span><br><span class="line">        shiroFilterFactoryBean.setLoginUrl(<span class="string">"/"</span>);</span><br><span class="line">        <span class="comment">// 登录成功后要跳转的链接</span></span><br><span class="line">        shiroFilterFactoryBean.setSuccessUrl(<span class="string">"/index"</span>);</span><br><span class="line">        <span class="comment">// 未授权界面;</span></span><br><span class="line">        shiroFilterFactoryBean.setUnauthorizedUrl(<span class="string">"/403"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//        // 拦截器</span></span><br><span class="line">        Map&lt;String, String&gt; filterChainDefinitionMap = <span class="keyword">new</span> <span class="title class_">LinkedHashMap</span>&lt;String, String&gt;();</span><br><span class="line">        <span class="comment">// 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边</span></span><br><span class="line">        <span class="comment">// authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问</span></span><br><span class="line">        filterChainDefinitionMap.put(<span class="string">"/**"</span>, <span class="string">"authc"</span>);</span><br><span class="line"></span><br><span class="line">        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);</span><br><span class="line">        <span class="keyword">return</span> shiroFilterFactoryBean;</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/946da6a4/springboot_1.png" lay-src="/posts/946da6a4/springboot_1.png" class="" title="shiro入门">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/dbe441dcdbcf">[Shiro]Shiro整合Spring Boot 自动化配置</a> (这里提到了继承ShiroWebFilterConfiguration并重写ShiroFilterFactoryBean方法，达到自定义过滤器链的方法)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhang_Red/article/details/81301066">使用shiro-spring-boot-web-starter时，报错： required a bean named ‘authorizer’ that could not be found.</a></div>
+<h3 id="关于x-requested-with的作用以及用法详解"><a href="#关于x-requested-with的作用以及用法详解" class="headerlink" title="关于x-requested-with的作用以及用法详解"></a>关于x-requested-with的作用以及用法详解</h3><p>很多的时候，都是在写Shiro的时候，会出现一个判断请求是否是ajax请求的功能，通过自定义Filter，判断如果请求是Ajax请求，就返回一个json字符串，如果不是ajax请求，就直接返回一个页面。大部分的说明都是请求头中是否携带x-requested-with选项作为是否是ajax的请求，但是这个选项只是jquery等前端库自己添加的，并不是标准的请求头，所以有时候通过这个请求头并不能判断这是一个ajax请求，比如原生的XMLHTTPRequest，比如fetch等，都没有这个请求头。所以在判断是否是ajax请求的时候，还是选择其他的方式吧。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jokeMqc/article/details/78739677">x-requested-with的作用以及用法详解</a><br>2.<a target="_blank" rel="noopener" href="http://wxb.github.io/2017/03/08/%E6%9C%89%E6%97%B6%E5%80%99%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9C%9F%E7%9A%84%E6%B2%A1%E6%B3%95%E7%A1%AE%E5%AE%9A%E8%BF%99%E6%98%AF%E4%B8%80%E6%AC%A1Ajax%E8%AF%B7%E6%B1%82.html">有时候服务端真的没法确定这是一次Ajax请求</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/9339da07.html" rel="next" title="Spring Boot从一到二">
+                      <i class="iconfont icon-prev"></i> Spring Boot从一到二
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/7f6a7fd8.html" rel="prev" title="Spring Boot之Shiro中Session丢失问题">
+                      Spring Boot之Shiro中Session丢失问题 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">1.</span> <span class="toc-text">1.引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAShiroFilterChainDefinition"><span class="toc-number">2.</span> <span class="toc-text">3.定义一个ShiroFilterChainDefinition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AE%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">4.配置过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8Ex-requested-with%E7%9A%84%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.1.</span> <span class="toc-text">关于x-requested-with的作用以及用法详解</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/946da6a4.html';
+      this.page.identifier = 'posts/946da6a4.html';
+      this.page.title = 'Spring Boot之Shiro入门';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Spring Boot之Shiro入门 链接地址:https://bibichuan.github.io/posts/946da6a4.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Spring Boot之Shiro入门',
+		url: 'https://bibichuan.github.io/posts/946da6a4.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Spring Boot之Shiro入门',
+			isTipVisibility: true,
+			tip: 'Spring Boot之Shiro入门',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

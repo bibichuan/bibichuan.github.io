@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringBoot之WebSocket</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">SpringBoot之WebSocket</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-06-29 09:15:03
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>最近在弄这个 大疆机场 的东西，需要用到了 websocket 进行通讯，于是就在源码的基础上研究了下这个 websocket 的东西。</p>
+<p>WebSocket 是一种基于 TCP 协议的全双工通信协议，它允许客户端和服务器之间建立持久的、双向的通信连接。相比传统的 HTTP 请求 - 响应模式，WebSocket 提供了实时、低延迟的数据传输能力。通过 WebSocket，客户端和服务器可以在任意时间点互相发送消息，实现实时更新和即时通信的功能。WebSocket 协议经过了多个浏览器和服务器的支持，成为了现代 Web 应用中常用的通信协议之一。它广泛应用于聊天应用、实时数据更新、多人游戏等场景，为 Web 应用提供了更好的用户体验和更高效的数据传输方式。</p>
+<h1 id="2-集成"><a href="#2-集成" class="headerlink" title="2.集成"></a>2.集成</h1><p>集成的方式有很两种：</p>
+<ul>
+<li><p>（1）是使用由 Jakarta EE 规范提供的 Api，也就是 jakarta.websocket 包下的接口。</p>
+</li>
+<li><p>（2）是使用 spring 提供的支持，也就是 spring-websocket 模块。前者是一种独立于框架的技术规范，而后者是 Spring 生态系统的一部分，可以与其他 Spring 模块（如 Spring MVC、Spring Security）无缝集成，共享其配置和功能。我觉得也就是 stomp 的方式，因为我看一些文章中提到了这个 stomp 的名称。</p>
+</li>
+</ul>
+<h2 id="2-1-添加依赖"><a href="#2-1-添加依赖" class="headerlink" title="2.1.添加依赖"></a>2.1.添加依赖</h2><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-websocket<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-2-Jakarta-EE-规范"><a href="#2-2-Jakarta-EE-规范" class="headerlink" title="2.2.Jakarta EE 规范"></a>2.2.Jakarta EE 规范</h2><p>(1) 开发 ServerEndpoint 端点<br>@ServerEndpoint：将目前的类定义成一个websocket服务器端，注解的值将被用于监听用户连接的终端访问URL地址，客户端可以通过这个URL来连接到WebSocket服务器端<br>@OnOpen：当WebSocket建立连接成功后会触发这个注解修饰的方法。<br>@OnClose：当WebSocket建立的连接断开后会触发这个注解修饰的方法。<br>@OnMessage：当客户端发送消息到服务端时，会触发这个注解修改的方法。<br>@OnError：当WebSocket建立连接时出现异常会触发这个注解修饰的方法。</p>
+<p>(2) 配置 ServerEndpointExporter<br>定义好端点后，需要在配置类中通过定义 ServerEndpointExporter Bean 进行注册。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebSocketConfiguration</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span>  </span><br><span class="line">    <span class="keyword">public</span> ServerEndpointExporter <span class="title function_">serverEndpointExporter</span> <span class="params">()</span>{</span><br><span class="line">        </span><br><span class="line">        <span class="type">ServerEndpointExporter</span> <span class="variable">exporter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServerEndpointExporter</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 手动注册 WebSocket 端点</span></span><br><span class="line">        exporter.setAnnotatedEndpointClasses(EchoChannel.class);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> exporter;</span><br><span class="line">    }  </span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://springdoc.cn/spring-boot-websocket/">在 Spring Boot 中整合、使用 WebSocket</a> 1.添加依赖。2.开发 ServerEndpoint 端点。3.配置 ServerEndpointExporter。 这个就是上面的方法。<br>【2】.<a target="_blank" rel="noopener" href="https://spring.io/guides/gs/messaging-stomp-websocket">Using WebSocket to build an interactive web application</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38263083/article/details/131811502">springBoot使用webSocket的几种方式以及在高并发出现的问题及解决</a> 1.第一种方式-原生注解（tomcat内嵌）;2.第二种方式-Spring封装;3.第三种方式-TIO;4.第四种方式-STOMP。</div>
+<h2 id="2-3-spring-websocket方式"><a href="#2-3-spring-websocket方式" class="headerlink" title="2.3.spring-websocket方式"></a>2.3.spring-websocket方式</h2><p>(1) 配置 WebSocket 配置类</p>
+<ul>
+<li><p>@EnableWebSocketMessageBroker：用于开启stomp协议，这样就能支持@MessageMapping注解，类似于@requestMapping一样，同时前端可以使用Stomp客户端进行通讯；</p>
+</li>
+<li><p>registerStompEndpoints实现：主要用来注册端点地址、开启跨域授权、增加拦截器、声明SockJS，这也是前端选择SockJS的原因，因为spring项目本身就支持；</p>
+</li>
+<li><p>configureMessageBroker实现：主要用来设置客户端订阅消息的路径(可以多个)、点对点订阅路径前缀的设置、访问服务端@MessageMapping接口的前缀路径、心跳设置等；</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSocketMessageBroker</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebsocketConfig</span> <span class="keyword">implements</span> <span class="title class_">WebSocketMessageBrokerConfigurer</span> {</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 注册stomp端点</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> registry stomp端点注册对象</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerStompEndpoints</span><span class="params">(StompEndpointRegistry registry)</span> {</span><br><span class="line">      registry.addEndpoint(WsConstants.WEBSOCKET_PATH)</span><br><span class="line">            .setAllowedOrigins(<span class="string">"*"</span>)</span><br><span class="line">            .withSockJS();</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 配置消息代理</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> registry 消息代理注册对象</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureMessageBroker</span><span class="params">(MessageBrokerRegistry registry)</span> {</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 配置服务端推送消息给客户端的代理路径</span></span><br><span class="line">      registry.enableSimpleBroker(WsConstants.BROKER.BROKER_QUEUE, WsConstants.BROKER.BROKER_TOPIC);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 定义点对点推送时的前缀为/queue</span></span><br><span class="line">      registry.setUserDestinationPrefix(WsConstants.BROKER.BROKER_QUEUE);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 定义客户端访问服务端消息接口时的前缀</span></span><br><span class="line">      registry.setApplicationDestinationPrefixes(WsConstants.WS_PERFIX);</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 消息接口<br>消息接口使用@MessageMapping注解，前面讲的配置类@EnableWebSocketMessageBroker注解开启后才能使用这个。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping("/api")</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MsgController</span> {</span><br><span class="line"></span><br><span class="line">   <span class="keyword">private</span> <span class="keyword">final</span> SimpMessagingTemplate messagingTemplate;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span> <span class="title function_">MsgController</span><span class="params">(SimpMessagingTemplate messagingTemplate)</span> {</span><br><span class="line">      <span class="built_in">this</span>.messagingTemplate = messagingTemplate;</span><br><span class="line">   }</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 发送广播消息</span></span><br><span class="line"><span class="comment">    * -- 说明：</span></span><br><span class="line"><span class="comment">    *       1）、<span class="doctag">@MessageMapping</span>注解对应客户端的stomp.send('url')；</span></span><br><span class="line"><span class="comment">    *       2）、用法一：要么配合<span class="doctag">@SendTo</span>("转发的订阅路径")，去掉messagingTemplate，同时return msg来使用，return msg会去找<span class="doctag">@SendTo</span>注解的路径；</span></span><br><span class="line"><span class="comment">    *       3）、用法二：要么设置成void，使用messagingTemplate来控制转发的订阅路径，且不能return msg，个人推荐这种。</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> msg 消息</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="meta">@MessageMapping("/send")</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendAll</span><span class="params">(<span class="meta">@RequestParam</span> String msg)</span> {</span><br><span class="line"></span><br><span class="line">      log.info(<span class="string">"[发送消息]&gt;&gt;&gt;&gt; msg: {}"</span>, msg);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 发送消息给客户端</span></span><br><span class="line">      messagingTemplate.convertAndSend(WsConstants.BROKER.BROKER_TOPIC, msg);</span><br><span class="line">   }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fulongyuanjushi/p/16102628.html">【Java分享客栈】SpringBoot整合WebSocket+Stomp搭建群聊项目</a> 这个也是上面的方法<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013749113/article/details/131455579">Spring Boot 中的 STOMP 是什么，原理，如何使用</a> 在 Spring Boot 中，STOMP 是一种简单的文本协议，用于在客户端和服务器之间进行实时消息传递。它是 WebSocket 协议的一种扩展，可以在 WebSocket 上运行。STOMP（Simple Text Oriented Messaging Protocol）是一种简单的文本协议，用于在客户端和服务器之间进行实时消息传递。它是一种基于文本的协议，易于理解和使用。STOMP 是 WebSocket 协议的一种扩展，可以在 WebSocket 上运行。在 Spring Boot 中，STOMP 是通过 Spring WebSocket 模块来实现的。在 Spring Boot 中，STOMP 是通过 WebSocket 进行实现的。WebSocket 是一种双向通信协议，可以在客户端和服务器之间建立持久化的连接。在 WebSocket 连接建立后，客户端和服务器之间可以通过发送和接收消息来进行实时通信。<br>【3】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/953288">Springboot 整合 WebSocket ，使用STOMP协议 ，前后端整合实战 （一）</a> 1.后端整合websocket （STOMP协议）;2.群发、指定单发;3.前端简单页面示例（接收、发送消息）,前端页面也用了 socketjs。</div>
+<h1 id="3-单点推送"><a href="#3-单点推送" class="headerlink" title="3.单点推送"></a>3.单点推送</h1><p>单点推送的含义就是说只针对某些应用进行推送，其他的一些应用不进行推动，也就是 一对一 的进行推送。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaoguangtouqiang/article/details/89328336">Springboot+websocket 单点推送</a></div>
+<h1 id="4-认证"><a href="#4-认证" class="headerlink" title="4.认证"></a>4.认证</h1><p>有两种认证授权的方式，一种是使用连接地址,请求地址中带参数；一种是使用协议头.</p>
+<h2 id="4-1-基于请求地址"><a href="#4-1-基于请求地址" class="headerlink" title="4.1.基于请求地址"></a>4.1.基于请求地址</h2><p>基于请求头的认证，就是将 token 携带到 websocket 的请求 url 中<br>（1）前端代码</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> { getToken } <span class="keyword">from</span> <span class="string">'/@/utils/auth'</span>;</span><br><span class="line"><span class="keyword">const</span> websocketURL = <span class="keyword">import</span>.<span class="property">meta</span>.<span class="property">env</span>.<span class="property">VITE_WEBSOCKET_URL</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">getWebsocketUrl</span>(<span class="params"></span>) {</span><br><span class="line">  <span class="keyword">const</span> <span class="attr">token</span>: string = <span class="title function_">getToken</span>() || (<span class="string">''</span> <span class="keyword">as</span> string);</span><br><span class="line">  <span class="keyword">const</span> url = websocketURL + <span class="string">'?token='</span> + <span class="built_in">encodeURI</span>(token);</span><br><span class="line">  <span class="keyword">return</span> url;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）后端代码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AuthInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">PARAM_TOKEN</span> <span class="operator">=</span> <span class="string">"x-auth-token"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">TOKEN_CLAIM</span> <span class="operator">=</span> <span class="string">"customClaim"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="type">String</span> <span class="variable">uri</span> <span class="operator">=</span> request.getRequestURI();</span><br><span class="line">        log.debug(<span class="string">"request uri: {}, IP: {}"</span>, uri, request.getRemoteAddr());</span><br><span class="line">        <span class="comment">// The options method is passed directly.</span></span><br><span class="line">        <span class="keyword">if</span> (HttpMethod.OPTIONS.matches(request.getMethod())) {</span><br><span class="line">            response.setStatus(HttpStatus.OK.value());</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> request.getHeader(PARAM_TOKEN);</span><br><span class="line">        <span class="comment">// Check if the token exists.</span></span><br><span class="line">        <span class="keyword">if</span> (!StringUtils.hasText(token)) {</span><br><span class="line">            response.setStatus(HttpStatus.UNAUTHORIZED.value());</span><br><span class="line">            log.error(CommonErrorEnum.NO_TOKEN.getMessage());</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Check if the current token is valid.</span></span><br><span class="line">        Optional&lt;CustomClaim&gt; customClaimOpt = JwtUtil.parseToken(token);</span><br><span class="line">        <span class="keyword">if</span> (customClaimOpt.isEmpty()) {</span><br><span class="line">            response.setStatus(HttpStatus.UNAUTHORIZED.value());</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Put the custom data from the token into the request.</span></span><br><span class="line">        request.setAttribute(TOKEN_CLAIM, customClaimOpt.get());</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler,</span></span><br><span class="line"><span class="params">                           ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="comment">// Delete the custom data in the request after the request ends.</span></span><br><span class="line">        request.removeAttribute(TOKEN_CLAIM);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-2-基于协议头的方式"><a href="#4-2-基于协议头的方式" class="headerlink" title="4.2.基于协议头的方式"></a>4.2.基于协议头的方式</h2><p>基于协议头的方式，那就是讲认证信息放到了 header 的 Sec-WebSocket-Protocol 中。<br>（1）前端代码</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> token = (<span class="title function_">getToken</span>() || <span class="string">''</span>) <span class="keyword">as</span> string;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">_socket</span> = <span class="keyword">new</span> <span class="title class_">ReconnectingWebSocket</span>(<span class="variable language_">this</span>.<span class="property">_url</span>, [token], {</span><br><span class="line">   <span class="attr">maxReconnectionDelay</span>: <span class="number">20000</span>, <span class="comment">// 断开后最大的重连时间： 20s，每多一次重连，会增加 1.3 倍，5 * 1.3 * 1.3 * 1.3...</span></span><br><span class="line">   <span class="attr">minReconnectionDelay</span>: <span class="number">5000</span>, <span class="comment">// 断开后最短的重连时间： 5s</span></span><br><span class="line">   <span class="attr">maxRetries</span>: <span class="number">5</span>,</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）后端代码<br>如果基于协议头传递了参数，后端响应的时候header也需要带上协议头参数。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebsocketFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">TOKEN_KEY</span> <span class="operator">=</span> <span class="string">"Sec-WebSocket-Protocol"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> CommonAPI commonApi;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> RedisUtil redisUtil;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException {</span><br><span class="line">        <span class="keyword">if</span> (commonApi == <span class="literal">null</span>) {</span><br><span class="line">            commonApi = SpringContextUtils.getBean(CommonAPI.class);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (redisUtil == <span class="literal">null</span>) {</span><br><span class="line">            redisUtil = SpringContextUtils.getBean(RedisUtil.class);</span><br><span class="line">        }</span><br><span class="line">        <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> (HttpServletRequest)servletRequest;</span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> request.getHeader(TOKEN_KEY);</span><br><span class="line"></span><br><span class="line">        log.debug(<span class="string">"Websocket连接 Token安全校验，Path = {}，token:{}"</span>, request.getRequestURI(), token);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            TokenUtils.verifyToken(token, commonApi, redisUtil);</span><br><span class="line">        } <span class="keyword">catch</span> (Exception exception) {</span><br><span class="line">            <span class="comment">//log.error("Websocket连接 Token安全校验失败，IP:{}, Token:{}, Path = {}，异常：{}", oConvertUtils.getIpAddrByRequest(request), token, request.getRequestURI(), exception.getMessage());</span></span><br><span class="line">            log.debug(<span class="string">"Websocket连接 Token安全校验失败，IP:{}, Token:{}, Path = {}，异常：{}"</span>, oConvertUtils.getIpAddrByRequest(request), token, request.getRequestURI(), exception.getMessage());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 带上协议头参数</span></span><br><span class="line">        <span class="type">HttpServletResponse</span> <span class="variable">response</span> <span class="operator">=</span> (HttpServletResponse)servletResponse;</span><br><span class="line">        response.setHeader(TOKEN_KEY, token);</span><br><span class="line">        filterChain.doFilter(servletRequest, servletResponse);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yztezhl/article/details/125480587">headers.put(“token”</a><br>【2】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7268161969575477259">Spring中的Websocket身份验证和授权 </a><br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/caozz/p/ws-intercepter.html">springboot+websocket认证授权思路</a> 创建自定义拦截器，实现HandshakeInterceptor接口<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yztezhl/article/details/125480587">websocket-js连接如何携带token验证</a> 1.请求地址中带参数;2.基于协议头:websocket请求头中可以包含Sec-WebSocket-Protocol这个属性，该属性是一个自定义的子协议。它从客户端发送到服务器并返回从服务器到客户端确认子协议。我们可以利用这个属性添加token。如果基于协议头传递了参数，后端响应的时候header也需要带上协议头参数。<br>【5】.<a target="_blank" rel="noopener" href="http://doc.jeecg.com/2044163">WebSocket的集成</a> JEECG BOOT 增加websocket 旨在服务端主动向客户端推送数据，实现系统向在线用户推送消息，可群发，可对指定用户发送<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35757427/article/details/134080100">websocket增加鉴权整合springboot</a> 这里基于协议的授权，就是在 header 中增加了一个 Sec-WebSocket-Protocol 头。</div>
+<h1 id="5-wss"><a href="#5-wss" class="headerlink" title="5.wss"></a>5.wss</h1><p>除了使用 nginx 的配置，在测试的时候，如何启动 wss 呢？<br>在我本地测试 https 或者 wss，就需要先配置，不用通过 nginx 等工具。<br>(1) 生成签名</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -genkeypair -<span class="built_in">alias</span> tomcat -keyalg RSA -keystore D:\keystore.jks</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 配置</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">9099</span></span><br><span class="line">  <span class="comment"># 这里有问题，我这么配置总是找不到文件</span></span><br><span class="line">  <span class="attr">ssl:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">key-store:</span> <span class="string">D:\zlc\drone\resources\keystore.jks</span></span><br><span class="line">    <span class="attr">key-store-password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">key-password:</span> <span class="number">123456</span></span><br><span class="line">    <span class="attr">key-alias:</span> <span class="string">tomcat</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://jueee.github.io/2021/12/2021-12-17-Springboot%E5%90%AF%E7%94%A8https%E5%AE%89%E5%85%A8%E5%8D%8F%E8%AE%AE/">Springboot 启用 https 安全协议 </a> 1.生成证书；2.导入证书;3.配置文件.<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45953673/article/details/135878526">SpringBoot项目配置SSL后，WebSocket连接失败的解决方案</a><br>【3】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1171968">记一次网站全站http升级为https的过程，websocket ： ws升级为wss遇到的问题等</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Stubborn_bull/article/details/123741731">2.WebSocketConfig配置</a><br>【5】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7111132777394733064">【Spring Boot】WebSocket 的 6 种集成方式 </a></div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-SpringCloudAlibaba-应用webSocket，解决连接成功后会立刻断开等问题"><a href="#1-SpringCloudAlibaba-应用webSocket，解决连接成功后会立刻断开等问题" class="headerlink" title="1.SpringCloudAlibaba 应用webSocket，解决连接成功后会立刻断开等问题"></a>1.SpringCloudAlibaba 应用webSocket，解决连接成功后会立刻断开等问题</h2><p>【尝试方案】<br>（1）我尝试了修改配置，去掉认证，无效</p>
+<p>（2）尝试了连接 jeecgboot 的websocket ，结果不行</p>
+<p>（3）认证的时候携带了 token, 也绕过了 shiro，不行</p>
+<p>（4）尝试找出错误，但是连报错都没有，什么原因都不知道</p>
+<p>（5）去掉了 registry.addEndpoint(“/dronews”).setAllowedOriginPatterns(“*”).setHandshakeHandler(handshakeHandler) 中的 handshakeHandler 问题。</p>
+<p>（6）后来发现了有新的错误提示了： Closing session due to exception for StandardWebSocketSession[id=9374f3ce-119f-693c-a327-a730435bc74d, uri=ws://localhost:8080/hjkj/dronews]java.lang.NullPointerException: Cannot invoke “java.security.Principal.getName()” because “principal” is null</p>
+<p>（7）后来我在 <a target="_blank" rel="noopener" href="http://coolaf.com/tool/chattest">在线测试</a> 上测试我本地的 websocket 地址，好像是可以的，可以直连，不断开。那么问题就出在了我的客户端上了。</p>
+<p>【解决方案】<br>经过我上面的不断的尝试，最后终于找到了原因，那就是是我的配置问题。我本来用了 websocket 的 token 的方式进行，但是我也同时用了协议的方式，增加了 [token], 结果就出现了问题。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误配置</span></span><br><span class="line"><span class="keyword">const</span> token = (<span class="title function_">getToken</span>() || <span class="string">''</span>) <span class="keyword">as</span> string;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">_socket</span> = <span class="keyword">new</span> <span class="title class_">ReconnectingWebSocket</span>(<span class="variable language_">this</span>.<span class="property">_url</span>, [token], {</span><br><span class="line">   <span class="attr">maxReconnectionDelay</span>: <span class="number">20000</span>, <span class="comment">// 断开后最大的重连时间： 20s，每多一次重连，会增加 1.3 倍，5 * 1.3 * 1.3 * 1.3...</span></span><br><span class="line">   <span class="attr">minReconnectionDelay</span>: <span class="number">5000</span>, <span class="comment">// 断开后最短的重连时间： 5s</span></span><br><span class="line">   <span class="attr">maxRetries</span>: <span class="number">5</span>,</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确配置</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">_socket</span> = <span class="keyword">new</span> <span class="title class_">ReconnectingWebSocket</span>(<span class="variable language_">this</span>.<span class="property">_url</span>, [], {</span><br><span class="line">   <span class="attr">maxReconnectionDelay</span>: <span class="number">20000</span>, <span class="comment">// 断开后最大的重连时间： 20s，每多一次重连，会增加 1.3 倍，5 * 1.3 * 1.3 * 1.3...</span></span><br><span class="line">   <span class="attr">minReconnectionDelay</span>: <span class="number">5000</span>, <span class="comment">// 断开后最短的重连时间： 5s</span></span><br><span class="line">   <span class="attr">maxRetries</span>: <span class="number">5</span>,</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiao_nxy/article/details/128870800">SpringCloudAlibaba 应用webSocket，解决连接成功后会立刻断开等问题</a> 权限认真把子路径也要加上去<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ruisasaki/article/details/131072417">【解决】websocket ws连不上或无法连接</a> 因为我写的是@ServerEndpoint的方式。需要注入ServerEndpointExporter，这个bean会自动注册使用了@ServerEndpoint注解声明的Websocket endpoint。要注意，如果使用独立的servlet容器，而不是直接使用springboot的内置容器，就不要注入ServerEndpointExporter，因为它将由容器自己提供和管理。<br>【3】.<a target="_blank" rel="noopener" href="https://github.com/jeecgboot/JeecgBoot/issues/2106">Websocket 总是断开重连</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21191657/article/details/115874084">SpringBoot集成websocket时出现的异常断开问题</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36259655/article/details/114564241">java websocket 断线_WebSocket断开原因分析，再也不怕为什么又断开了</a> 这里写了状态码，也就是断开的原因<br>【6】.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/2896746">WebSocket连接失败的原因与解决方案</a><br>【7】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianxiaoPro/p/14336412.html">java springboot websocket 服务 服务器主动关闭连接 导致 抛出java.io.EOFException异常</a><br>【8】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903976727494669">【websocket】spring boot 集成 websocket 的四种方式 </a> 1. 原生注解;2. Spring封装;3. TIO;4.STOMP<br>【9】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/huic/p/15878201.html">WebSocket之Sec-WebSocket-Protocol (带token发起连接)</a> protocols对应的就是发起ws连接时, 携带在请求头中的Sec-WebSocket-Protocol属性, 服务端可以获取到此属性的值用于通信逻辑(即通信子协议,当然用来进行token认证也是完全没问题的)</div>
+<h2 id="2-连接总是断开"><a href="#2-连接总是断开" class="headerlink" title="2.连接总是断开"></a>2.连接总是断开</h2><p>本地测试没有问题，使用nginx部署之后，配置了 wss,结果总是断开重连的情况。</p>
+<p>【尝试方案】<br>（1）我检查了我的websocket链接，服务端打印了，已经能够建立连接了，但是最后还是没有连接上。<br>（2）我尝试输出了断开的错误码，结果显示 1006，还是服务器关闭了，到底为什么关闭了，我不晓得，除了配置文件不同之外，其他的没有什么不同的啊，我已经反反复复的检查了相关的配置。<br>（3）尝试测试prod这个配置文件，结果在本地的时候，这个配置文件没有问题，可以正常启动<br>（4）尝试将 yml 配置文件包含到主模块中，这个也没有用，我看了jar文件，打包后到模块里面包含了子模块的配置文件<br>（5）尝试通过frp将远程端口引导到本地开发环境进行测试，结果显示开始能建立连接，但是过后就直接断开了<br>（6）我尝试将 https 转成了 http，结果也还是不行<br>（7）我尝试直接通过 ip+端口 的方式，直接访问 websocket 服务，不通过nginx。刚开始总是出现各种莫名其妙的问题，还是不行，后来我在本地测试的时候，解决了各种个样的问题，最后到也还是能连通了。现在最大的问题，就是落在了那个 nginx 配置上面。<br>（8）尝试修改nginx配置，对着网上的东西，一点点的对，一点点的对。<br>（9）我一直以为是我配置了rtmp之后，导致的问题，后来发现去掉之后，还是不行。</p>
+<p>【总结问题】<br>经过长时间的测试，总结<br>（1）使用 http 协议，ws 协议,不通过nginx代理，直接访问应用程序暴漏的端口，可以建立 websocket 连接。<br>（2）同样使用 http 协议，ws 协议，通过nginx代理后，访问应用程序暴漏的端口，结果就无法建立 websocket 连接。<br>（3）上面两部的 应用程序都是同一个，端口也都相同，没有修改，既然出现这样的情况，那么就有可能是 nginx 配置不正确。</p>
+<p>【解决方案】<br>经过我长达一天的努力解决，最后竟然发现问题，修改前的nginx配置</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> /hjkj/ {</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$request_method</span> = OPTIONS) {</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Origin <span class="variable">$http_origin</span>;</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Headers *;</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Methods GET,POST,OPTIONS;</span><br><span class="line">        <span class="comment">#add_header Access-Control-Allow-Credentials true;</span></span><br><span class="line">        <span class="attribute">return</span> <span class="number">200</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">## add_header Access-Control-Allow-Origin $http_origin;</span></span><br><span class="line">    <span class="attribute">add_header</span> Access-Control-Allow-Headers *;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Connection <span class="string">"Upgrade"</span>;</span><br><span class="line">    <span class="comment">## 保持长时间连接</span></span><br><span class="line">    <span class="attribute">proxy_read_timeout</span> <span class="number">3600s</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">proxy_set_header</span>    Host             <span class="variable">$host</span>;<span class="comment">#保留代理之前的host</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span>    X-Real-IP        <span class="variable">$remote_addr</span>;<span class="comment">#保留代理之前的真实客户端ip</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span>    X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span>    HTTP_X_FORWARDED_FOR <span class="variable">$remote_addr</span>;<span class="comment">#在多级代理的情况下，记录每次代理之前的客户端真实ip</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Forwarded-Proto <span class="variable">$scheme</span>; <span class="comment">#表示客户端真实的协议（http还是https）</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span> Referer <span class="variable">$scheme</span>://<span class="variable">$server_name</span><span class="variable">$request_uri</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 本地</span></span><br><span class="line">    <span class="comment"># proxy_pass http://localhost:9099/hjkj/;</span></span><br><span class="line">    <span class="comment"># 内网</span></span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:10022/hjkj/;</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>修改后的 nginx如下，内容其实差不多。</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> /hjkj/ {</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$request_method</span> = OPTIONS) {</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Origin <span class="variable">$http_origin</span>;</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Headers *;</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Methods GET,POST,OPTIONS;</span><br><span class="line">        <span class="comment">#add_header Access-Control-Allow-Credentials true;</span></span><br><span class="line">        <span class="attribute">return</span> <span class="number">200</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="attribute">add_header</span> Access-Control-Allow-Origin <span class="variable">$http_origin</span>;</span><br><span class="line">    <span class="comment">#add_header Access-Control-Allow-Headers *;</span></span><br><span class="line"></span><br><span class="line">    <span class="attribute">proxy_set_header</span> Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Connection <span class="variable">$connection_upgrade</span>;</span><br><span class="line">    <span class="comment">## 保持长时间连接</span></span><br><span class="line">    <span class="attribute">proxy_read_timeout</span> <span class="number">3600s</span>;</span><br><span class="line">    <span class="comment"># 主要加了这个配置</span></span><br><span class="line">    <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span>    Host             <span class="variable">$host</span>;<span class="comment">#保留代理之前的host</span></span><br><span class="line">    <span class="comment"># 内网</span></span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:10022/hjkj/;</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>总结，就是非常的扯淡，我足足浪费了一天的时间，但是解决问题的过程却特别的曲折，真是令人难过。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30916811/article/details/121773111">webSocket配置wss访问</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lsoxvxe/article/details/132156778">WebSocket协议状态码1006：探索与解析</a> 状态码1006表示连接已关闭，无法建立连接。具体含义如下：1.当客户端或服务器在建立WebSocket连接时发生异常，连接将被关闭，状态码1006将被返回。2.通常情况下，状态码1006表示网络连接中断、服务器宕机或其他无法建立连接的错误。与其他状态码相比，状态码1006的特点是无法建立连接，通常是由于网络问题或服务器故障引起的。解决状态码1006的常见方法包括：检查网络连接是否正常、检查服务器是否正常运行、检查服务器配置是否正确。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhuwei_clark/article/details/83744023">Nginx代理webSocket经常中断的解决方案, 如何保持长连接</a> nginx等待你 第一次通讯和第二次通讯的时间差，超过了它设定的最大等待时间，简单来说就是，超时，所以就啪的一声断了，开始上解决步骤。<br>【4】.<a target="_blank" rel="noopener" href="https://tutorials.tinkink.net/zh-hans/nginx/nginx-websocket-reverse-proxy.html">Nginx配置WebSocket反向代理 </a> 这里我照着一点点的配置，最后还是找到了问题的所在</div>
+<h2 id="3-1015问题"><a href="#3-1015问题" class="headerlink" title="3.1015问题"></a>3.1015问题</h2><p>在我使用 springboot 配置了 https 之后，由 ws 改为 wss，结果测试的时候，总是出现：1015 TLS_HANDSHAKE</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://wstool.js.org/">websocket在线测试</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/99e92512.html" rel="next" title="SpringBoot之二维码生成">
+                      <i class="iconfont icon-prev"></i> SpringBoot之二维码生成
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/859fdb03.html" rel="prev" title="SpringBoot之Swagger使用">
+                      SpringBoot之Swagger使用 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%9B%86%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">2.集成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="toc-number">2.1.</span> <span class="toc-text">2.1.添加依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-Jakarta-EE-%E8%A7%84%E8%8C%83"><span class="toc-number">2.2.</span> <span class="toc-text">2.2.Jakarta EE 规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-spring-websocket%E6%96%B9%E5%BC%8F"><span class="toc-number">2.3.</span> <span class="toc-text">2.3.spring-websocket方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%8D%95%E7%82%B9%E6%8E%A8%E9%80%81"><span class="toc-number">3.</span> <span class="toc-text">3.单点推送</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%AE%A4%E8%AF%81"><span class="toc-number">4.</span> <span class="toc-text">4.认证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E5%9F%BA%E4%BA%8E%E8%AF%B7%E6%B1%82%E5%9C%B0%E5%9D%80"><span class="toc-number">4.1.</span> <span class="toc-text">4.1.基于请求地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E5%9F%BA%E4%BA%8E%E5%8D%8F%E8%AE%AE%E5%A4%B4%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">4.2.</span> <span class="toc-text">4.2.基于协议头的方式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-wss"><span class="toc-number">5.</span> <span class="toc-text">5.wss</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-SpringCloudAlibaba-%E5%BA%94%E7%94%A8webSocket%EF%BC%8C%E8%A7%A3%E5%86%B3%E8%BF%9E%E6%8E%A5%E6%88%90%E5%8A%9F%E5%90%8E%E4%BC%9A%E7%AB%8B%E5%88%BB%E6%96%AD%E5%BC%80%E7%AD%89%E9%97%AE%E9%A2%98"><span class="toc-number">6.1.</span> <span class="toc-text">1.SpringCloudAlibaba 应用webSocket，解决连接成功后会立刻断开等问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%BF%9E%E6%8E%A5%E6%80%BB%E6%98%AF%E6%96%AD%E5%BC%80"><span class="toc-number">6.2.</span> <span class="toc-text">2.连接总是断开</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1015%E9%97%AE%E9%A2%98"><span class="toc-number">6.3.</span> <span class="toc-text">3.1015问题</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/883135e5.html';
+      this.page.identifier = 'posts/883135e5.html';
+      this.page.title = 'SpringBoot之WebSocket';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：SpringBoot之WebSocket 链接地址:https://bibichuan.github.io/posts/883135e5.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'SpringBoot之WebSocket',
+		url: 'https://bibichuan.github.io/posts/883135e5.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'SpringBoot之WebSocket',
+			isTipVisibility: true,
+			tip: 'SpringBoot之WebSocket',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

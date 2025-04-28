@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器运维之群晖NAS</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">服务器运维之群晖NAS</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-11-16 01:33:31
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>老板买了一个群晖DS1621+，作为NAS。说实话，我以前倒是听过NAS这个东西，但是从来都没有实际的操作过，这次是船新的开始。型号：DS1821+ 序列号：2180SKRV2Y17J</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.koolcenter.com/article/reviews/network/synology-ds1621-nas/">Synology 群晖 DS1621+ 六盘位NAS 开箱拆解评测</a> 从开箱、拆机到部分软件的安装，非常的全</div>
+<h1 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h1><p>将买来的设备，通上电，用网线将设备连接到路由器上，然后开机。</p>
+<h1 id="2-设置"><a href="#2-设置" class="headerlink" title="2.设置"></a>2.设置</h1><p>浏览器输入：<code>http://find.synology.com</code>, 会自动寻找局域网内的NAS设备，找到之后，同意协议，就可以进行设置了。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_1.png" lay-src="/posts/a3162ad0/synology_1.png" class="" title="群晖NAS配置">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="http://baijiahao.baidu.com/s?id=1660508025244578337">群晖nas使用教程固定IP怎么设置</a></div>
+<h1 id="3-安装DSM"><a href="#3-安装DSM" class="headerlink" title="3.安装DSM"></a>3.安装DSM</h1><p>DSM是群晖的管理系统，安装时会格式化掉磁盘上的全部数据。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_2.png" lay-src="/posts/a3162ad0/synology_2.png" class="" title="群晖NAS配置">
+
+<h1 id="4-创建用户名密码"><a href="#4-创建用户名密码" class="headerlink" title="4.创建用户名密码"></a>4.创建用户名密码</h1><p>安装DSM之后，创建用户名密码，同意相关协议，然后就可以进入到系统中了。</p>
+<h1 id="5-创建存储池"><a href="#5-创建存储池" class="headerlink" title="5.创建存储池"></a>5.创建存储池</h1><p>进入之后，就发现要求立即创建存储池，创建存储池之后，才能进行套件的安装和配置。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_5.png" lay-src="/posts/a3162ad0/synology_5.png" class="" title="群晖NAS配置">
+
+<p>我选了一个新手的RAID模式SHR,在选择硬盘的时候，我这里有一个硬盘兼容性问题。我到HDD/SSD中进行了立即更新，还是出现了问题，说是兼容性问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_6.png" lay-src="/posts/a3162ad0/synology_6.png" class="" title="群晖NAS配置">
+
+<p>最后还是强行继续了，一路nxet，其实也挺快的，也非常的简单，没有遇到什么问题。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/help/DSM/StorageManager/storage_pool_what_is_raid?version=7">选择 RAID 类型</a></div>
+<h1 id="6-设置空间和文件格式"><a href="#6-设置空间和文件格式" class="headerlink" title="6.设置空间和文件格式"></a>6.设置空间和文件格式</h1><p>选择创建的存储池的大小</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_7.png" lay-src="/posts/a3162ad0/synology_7.png" class="" title="群晖NAS配置">
+
+<p>选择存储池所用的文件系统</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_8.png" lay-src="/posts/a3162ad0/synology_8.png" class="" title="群晖NAS配置">
+
+<p>这两项，根据个人需要我觉得可以自行设置。</p>
+<p>设置完成之后，会有一个长时间的后台优化。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_9.png" lay-src="/posts/a3162ad0/synology_9.png" class="" title="群晖NAS配置">
+
+
+<h1 id="7-邮箱"><a href="#7-邮箱" class="headerlink" title="7.邮箱"></a>7.邮箱</h1><p>使用邮箱服务器，原先我有配置过hMailServer,现在换成了群晖软件。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_mail.png" lay-src="/posts/a3162ad0/synology_mail.png" class="" title="群晖NAS配置">
+
+<p>套件中心显示四个邮件相关套件：</p>
+<ul>
+<li>Mail Station(Web邮箱管理工具) 和 Synology Mail Server(邮件服务) 配套</li>
+<li>Synology MailPlus(Web邮箱管理工具) 和 Synology MailPlus Server(邮件服务) 配套</li>
+</ul>
+<p>两者的区别是Plus版的是面向企业用户的,安全性更强,不过只有5个免费账户, 多了要付费 . 一般家庭用户使用Synology Mail Server即可,如果你不需要web邮箱管理 Mail Station可以不用安装. 因为目前无论windows、mac、android、ios 系统都有自带的邮件客户端程序,所以我们只需要配置我们的邮箱账户就能使用了.</p>
+<p><strong>注意</strong><br>(1) 在创建邮箱账号的时候，homes文件夹的权限不能选择为拒绝，要设置为系统默认，其他的文件夹权限都可以设置为拒绝，否在登录不上。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.leavo.cn/308.html">群晖Synology 上配置mailplus邮件服务器</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/dsm/feature/mailplus">Synology MailPlus</a> 官网上关于MailPlus的介绍<br>【3】.<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/akmr2mn8/">群晖搭建邮件服务器新手指南（mailplus server套件）</a><br>【4】.<a target="_blank" rel="noopener" href="https://www.pianshen.com/article/92691355854/">群晖之邮件服务器搭建</a></div>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>(1) 首先到主菜单-&gt;控制台-&gt;使用者帐号，启用家目录,点击应用</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_mail_2.png" lay-src="/posts/a3162ad0/synology_mail_2.png" class="" title="群晖NAS配置">
+
+<p>(2) 启用SMTP和POP3，设置主机名，我这里以：bibichuan.com 为例</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_mail_6.png" lay-src="/posts/a3162ad0/synology_mail_6.png" class="" title="群晖NAS配置">
+
+<p>(3) 路由器配置端口转发，25、465、587、143、993、995转发到内网中，我这里的路由器配置了 独立的外网ip地址，如果没有独立的外网ip地址，可能需要借助于其他的方法进行映射</p>
+<p>协议    SMTP    POP3    IMAP    IMAPS    POP3S<br>端口    25        110        143        993        995<br>注意    IMAPS：通过 SSL/TLS 加密的 IMAP 连接<br>POP3S：通过 SSL/TLS 加密的 POP3</p>
+<p>(4) 创建用户<br>由于不同系统配置有差异,所以这里提供配置所需要的参数。假设群晖的登录名为 admin   你的域名为bibichuan.com  那邮件账户为<a href="mailto:admin@bibichuan.com">admin@bibichuan.com</a>。密码是你群晖admin的密码。发送邮件服务器、接收邮件服务器 均为 mail.bibichuan.com 接收协议pop、imap均可</p>
+<p>(5) 阿里云域名解析<br>创建一条记录类型为A的记录，mail.bibichua.com指向路由器外网ip地址，或者是NAS外网地址，然后分别创建记录类型为MX的@记录，记录类型为CNAME的smtp、pop和pop3指向maii.bibichuan.com</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_mail_7.png" lay-src="/posts/a3162ad0/synology_mail_7.png" class="" title="群晖NAS配置">
+
+<p>(6) 使用foxmail进行测试就可以了。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_mail_8.png" lay-src="/posts/a3162ad0/synology_mail_8.png" class="" title="群晖NAS配置">
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/help/MailServer/mailserver_desc?version=7">Synology Mail Server</a> 官方对Mail Server界面的各个功能进行了介绍<br>【2】.<a target="_blank" rel="noopener" href="https://www.chiphell.com/thread-582181-1-1.html">【DSM企业篇】-企业邮件服务器Mail Server</a> 这个是Mail Server的配置，挺实用的</div>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1) 总是显示账号或者密码错误<br>【问题描述】<br>1.路由器有独立的外网ip地址，搭建了MailPlus Server之后，在路由器上进行了25端口转发，从外网转发到内网。使用telnet 内网NAS的地址，可以访问25端口，但是telnet使用外网ip地址时，无法访问这个端口,出现了“221 2.7.0 Error: 192.168.1.1 is blocked” 错误。</p>
+<p>2.在配置了NAS的110端口的内外网转发之后，通过外网ip进行110端口的telnet测试，竟然能正确返回响应信息：+OK Dovecot ready。这更加的让我迷惑了，如果我假设移动公司将25端口封掉了，那么我是不是可以将110端口转发到25端口进行测试呢？因为110端口测试是有正确响应的，没有被封的，但是显然并不是我想要的结果，进行转发之后，还是报错。</p>
+<p>3.还有一个例子，就是我用同样的外网端口转发到内网的一台安装了hmailserver服务器的内网机器的25端口，在使用外网ip进行telnet的时候，这个端口也是有正确的响应的，同样在路由器上进行了端口转发配置，使用hMailServer搭建的服务器，在使用telenet进行测试时，内网和外网都可以在25端口收到正确的响应。</p>
+<p>4.外网访问群晖的110、993、995端口都正常返回了相关的信息，但是25、465和587端口返回的信息不正常。</p>
+<p>这几个条件，让我不得不认为，这并不是路由器或者移动公司的问题了。现在只是解决，为什么telnet 25端口，返回的是221响应，如果没有开放25端口，连221响应都不应该有的啊？</p>
+<p>【尝试方法】<br>因为我的路由器上有固定ip，所以我使用了路由器自带的端口转发工具，进行了端口转发。在内网中，使用了 telnet 192.168.1.20 25 等端口，都能正确的返回信息，但是当我使用外网的ip进行telnet 的时候，总是返回的是：221 2.7.0 Error: 192.168.1.1 is blocked. (这个192.168.1.1是路由器的内网地址) 但是测试端口 110 的时候，竟然能返回正确的响应，无论是内网还是外网。我都不知道是内网的问题还是外网被封了的问题了。</p>
+<p>(1) 使用测试命令：telnet 192.168.1.20(内网ip) 25(端口)，测试内网的连通性,结果返回：220 OK。<br>(2) 使用测试命令：telnet 外网ip 25(端口)，测试外网的连通性,结果返回：221 2.7.0 Error: 192.168.1.1 is blocked。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_mail_4.png" lay-src="/posts/a3162ad0/synology_mail_4.png" class="" title="群晖NAS配置">
+
+
+<p>(3) 内网测试110端口，返回：+OK Dovecot ready。<br>(4) 外网测试110端口，返回：+OK Dovecot ready。<br>(5) 修改路由器的端口映射，将外网2000映射到内网25上，继续测试，还是返回的是 blocked。<br>(6) 直接使用telnet命令，测试内网 192.168.1.20 的465端口，界面进入了黑屏，并有光标闪烁，测试了587端口，返回：220 OK<br>(7) 修改路由器的端口映射，分别测试了465，587转发到内网中，都是返回 blocked 错误 。<br>(8) 修改路由器的端口映射，将外网端口2000映射到内网的 192.168.1.241 上的25端口，因为241上使用hmailServer搭建了一个邮件服务器，返回的结果是：220 Hello World。<br>(9) 修改路由器的端口映射，将外网端口25映射到内网的 192.168.1.241 上的25端口，因为241上使用hmailServer搭建了一个邮件服务器，返回的结果是：220 Hello World ,证明外网ip并没有封锁25端口。</p>
+<p>(10) 修改foxmail配置，还是报错误</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_mail_3.png" lay-src="/posts/a3162ad0/synology_mail_3.png" class="" title="群晖NAS配置">
+
+<p>(11) 提交工单支持<br>工单特别的慢，我在线咨询之后，客服解决不了，说我的网络有问题，我的网络没有问题啊，最后打回工单了，但是工单要一两天才能回复我。</p>
+<p>(12) 设置路由器<br>我打开了控制面板-&gt;外部网络-&gt;路由器设置</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_10.png" lay-src="/posts/a3162ad0/synology_10.png" class="" title="群晖NAS配置">
+
+<p>进行了下面的检查</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_11.png" lay-src="/posts/a3162ad0/synology_11.png" class="" title="群晖NAS配置">
+
+<p>(13) 修改NAS的ip地址<br>根据在线客服的描述，怀疑我的网络有问题，于是我在 控制面板-&gt;网络-&gt;网络界面,修改了NAS的静态IP地址，把原先的20改为了192.168.1.12,重新做了端口映射，结果还是外网访问25端口显示 blocked，但是110端口正常访问了。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/synology_12.png" lay-src="/posts/a3162ad0/synology_12.png" class="" title="群晖NAS配置">
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/exchange/use-telnet-to-test-smtp-communication-exchange-2013-help">使用 Telnet 测试 SMTP 通信</a> 这是微软提供的使用telnet工具进行SMTP通讯的测试，有详细的步骤，但是我第一个就卡在了 open 命令上<br>【2】.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/tutorial/How_to_set_up_MailPlus_Server_on_your_Synology_NAS">如何设置 Synology MailPlus Server？</a> 官方设置MailPlus Server的步骤<br>【3】.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/tutorial/Why_cant_my_MailPlus_client_users_receive_their_emails">我的 MailPlus 用户无法接收电子邮件。我该怎么办？ </a><br>【4】.<a target="_blank" rel="noopener" href="https://www.91nas.com/newsinfo/1685119.html?templateId=1133604">群晖NAS作邮件服务器设置</a><br>【5】.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/tutorial/What_network_ports_are_used_by_Synology_services#x_anchor_id8">DSM 服务使用哪些网络端口？</a> 列出了NAS需要的端口<br>【6】.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/tutorial/Whether_TCP_port_is_open_or_closed">如何确定 TCP 端口是打开还是关闭？</a></div>
+<hr>
+<p>【尝试方法】<br>[如何提供远程连线]<br>1.请前往 DSM 左上角选单 &gt; 技术支持中心 &gt; 支援服务，勾选「启用远程访问」选项，以文字的形式在此支持请求中提供「技术支持识别密钥」。<br>2.请前往控制面板 &gt; 终端机 &amp; SNMP &gt; 启动 SSH 服务。<br>3.由于许多设定与操作都需要管理者权限，并出于安全性考量，请提供 admin 以外的管理员帐号及密码给我们。</p>
+<ul>
+<li>若您使用不同的端口，也请提供相关资料给我们。<br>注意1: 出于安全性考量，请提供 admin 以外的其他管理员帐号。<br>注意2: 请勿使用太简单的临时密码，且密码中须包含数字及字母。<br>为增加系统安全性，请前往 控制台 &gt; 安全性 启用自动封锁功能。<br>注意3: 若有开启两步骤验证功能，请先停用否则我们无法登录。</li>
+</ul>
+<p>我再次联系了客服，催促尽快的联系我，我言辞非常的严厉，最后终于工单回复我快了点。<br>(14) 在工单回复过程中，他在外网用telenet工具进行了25端口的测试，竟然可以返回正确的响应，这让我很奇怪，我于是在阿里云上自己尝试了一下，telenet这个路由器所在的外网地址，发现竟让真的可以有正确的响应。</p>
+<p>(15) 因为工单要求，打开远程协助，我提供了远程联系，但是工单说，无法通过 “技术支持识别密钥” 联系到我，让我提供外网网络访问，这个时候我进行了路由器的往往映射，将5000和5001端口映射出去了，但是在登录的时候，发现此ip被禁止登录了，但是我从来没有登录过啊，这个问题，让我找到了：控制面板-&gt;安全性-&gt;防护-&gt;允许/封锁名单，发现了一个192.168.1.1的ip地址被永远的禁止了，我才发现了一切的问题根源，为什么会在内部网络中，使用telenet 测试外部ip地址，出现25端口响应的信息是221,但是直接在外部网络中，telnet这个外网ip，返回了正确的220响应，因为内网的通讯要经过网关，但是这个网关的地址已经被NAS禁止掉了，所以就会出现Blocked这个错误，而外网直接telnet，不经过网关，可以返回正确的信息。我真是醉了。</p>
+<p>【解决方法】<br>控制面板-&gt;安全性-&gt;防护-&gt;允许/封锁名单，将192.168.1.1这个ip地址删除，主要就是因为这个路由器所在的内网ip地址192.168.1.1网关，被自动加载到了永远禁止这一行列，所以外网通过这个路由器，就无法登录了，把这条记录删掉就好了。</p>
+<hr>
+<p>(2) PIPELININGSIZE<br>这个不太明显，别人给我发了一个截图，就像下面这个样子，我用了这个PIPELINEINGSIZE去检索，大致的意思应该是邮件的附件超出了大小限制。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/mail_err_1.png" lay-src="/posts/a3162ad0/mail_err_1.png" class="" title="邮箱">
+
+<p>这个可以在SMTP中，进行修改。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/mail_err_2.png" lay-src="/posts/a3162ad0/mail_err_2.png" class="" title="邮箱">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://forums.cpanel.net/threads/smtp-error-from-remote-mail-server-after-pipelined-mail-550-5-7-1.651569/">SMTP error from remote mail server after pipelined MAIL 550 5.7.1</a><br>【2】.<a target="_blank" rel="noopener" href="https://community.fortinet.com/t5/Fortinet-Forum/Receiving-Attachment-Size/m-p/77474">Receiving Attachment Size </a></div>
+<h1 id="8-文件共享"><a href="#8-文件共享" class="headerlink" title="8.文件共享"></a>8.文件共享</h1><p>(1) 启用文件服务器SMB</p>
+<p>原生的配置，打开控制面板，找到文件服务器，启用SMB</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/file_2.png" lay-src="/posts/a3162ad0/file_2.png" class="" title="群晖NAS配置">
+
+<p>(2) 新建共享文件夹<br>打开控制面板-&gt;找到共享文件夹-&gt;新建相应的文件夹</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/file_3.png" lay-src="/posts/a3162ad0/file_3.png" class="" title="群晖NAS配置">
+
+<p>(3) 设置用户及其权限<br>打开控制面板-&gt;找到用户和群组，新增用户</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/file_4.png" lay-src="/posts/a3162ad0/file_4.png" class="" title="群晖NAS配置">
+
+<p>设定相应的文件夹权限和套件权限</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/file_5.png" lay-src="/posts/a3162ad0/file_5.png" class="" title="群晖NAS配置">
+
+<p>(4) 连接<br>在Windows系统文件夹窗口中，输入：\NAS名称 (我这里是phkj),或者是ip地址，比如：192.168.1.122,输入用户名密码，既可以查看创建的共享文件夹了，还可以进行文件的读取和操作。</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/file_6.png" lay-src="/posts/a3162ad0/file_6.png" class="" title="群晖NAS配置">
+
+<p>在Mac系统中(Finder)，输入：afp://NAS(NAS名称).local,或者就是直接找到网络，会显示相关的NAS服务器的图标，输入连接身份就可以链接了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.suncan.com.cn/archives/5806">如何使用群晖NAS备份文件服务器的文件</a><br>【2】.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/help/DSM/MainMenu/get_started?version=7">Synology知识库</a> 这里是官方的文档的帮助文档，有各个组件的说明<br>【3】.<a target="_blank" rel="noopener" href="https://www.synology.cn/zh-cn/dsm/feature/drive">Synology Drive</a><br>【4】.<a target="_blank" rel="noopener" href="https://www.cnzzzj.com/1171.html">群晖NAS如何取消HOME文件夹的共享或者隐藏！</a> 通过取消启用家目录，可以关闭或者隐藏用户的home文件夹的共享权限</div>
+<h1 id="9-File-Station"><a href="#9-File-Station" class="headerlink" title="9.File Station"></a>9.File Station</h1><p>NAS的主要的工作就是作为一个文件共享服务器，如何才能让其他人在局域网内访问到相关的文件夹并进行存储文件呢？</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/file_1.png" lay-src="/posts/a3162ad0/file_1.png" class="" title="群晖NAS配置">
+
+
+<h1 id="10-virtual-Machine-Manager"><a href="#10-virtual-Machine-Manager" class="headerlink" title="10.virtual Machine Manager"></a>10.virtual Machine Manager</h1><p>虚拟机管理器</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/virtual_1.png" lay-src="/posts/a3162ad0/virtual_1.png" class="" title="群晖NAS配置">
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装</span></span><br><span class="line">yum install -y qemu-guest-agent</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动</span></span><br><span class="line">systemctl start qemu-guest-agent</span><br><span class="line"></span><br><span class="line"><span class="comment">## 永久启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> --now qemu-guest-agent</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://docs.openshift.com/container-platform/4.7/virt/virtual_machines/virt-installing-qemu-guest-agent.html">Installing QEMU guest agent on a Linux virtual machine</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3155820a7126">qemu-guest-agent—介绍及安装</a><br>3.<a target="_blank" rel="noopener" href="https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html/container-native_virtualization/cnv-installing-qemu-guest-agent">2.12. 在虚拟机上安装 QEMU 客户机代理</a><br>4.<a target="_blank" rel="noopener" href="https://kb.synology.cn/zh-cn/DSM/tutorial/How_to_install_Synology_Guest_Agent_for_VMM_on_your_virtual_machine">如何在虚拟机上安装Synology Guest Tool？ </a></div>
+<h1 id="11-DDNS"><a href="#11-DDNS" class="headerlink" title="11.DDNS"></a>11.DDNS</h1><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/a5kl4g93/">NAS 篇七：群晖自带DDNS最简单内网穿透方法及如何如何判断是否为公网ip </a> 如何使用Synology提供的外网方法方法</div>
+<h1 id="12-SMB外网访问"><a href="#12-SMB外网访问" class="headerlink" title="12.SMB外网访问"></a>12.SMB外网访问</h1><p>(1) 路由器设置端口映射，137-139和445端口映射到外网<br>(2) 在控制面板&gt;文件服务&gt;启用SMB服务<br>(3) 如果有固定的公网IP，那可以在外网通过\公网IP来直接访问SMB共享。<br>(4) 如果是动态的公网IP，群晖提供免费的域名申请，可以通过访问\域名来访问SMB共享。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="http://www.taserver.com.cn/synolog_support/252.html">群晖NAS实现在外网磁盘映射访问 </a> 需要在路由器上做SMB相关端口的映射，将137-139和445端口映射到外网。</div>
+<h1 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h1><p>(1) 使用路由器进行外网映射之后，登录不了:此IP地址已被封锁<br>进行外网映射之后，出现此ip地址已被封锁</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/err_2.png" lay-src="/posts/a3162ad0/err_2.png" class="" title="群晖NAS配置">
+
+<p>但是进入到控制面板-&gt;安全性-&gt;防护-&gt;允许/封锁名单,里面没有这个ip</p>
+<img src="/images/loadimg.png" data-original="/posts/a3162ad0/err_1.png" lay-src="/posts/a3162ad0/err_1.png" class="" title="群晖NAS配置">
+
+<p>【解决方法】<br>主要就是因为这个路由器所在的内网ip地址192.168.1.1网关，被自动加载到了永远禁止这一行列，所以外网通过这个路由器，就无法登录了，把这条记录删掉就好了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="http://www.nasyun.com/thread-63474-1-1.html">此IP地址已被封锁。。</a> 这个问题和我的一模一样</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/bdb864bd.html" rel="next" title="服务器运维之群晖NAS二">
+                      <i class="iconfont icon-prev"></i> 服务器运维之群晖NAS二
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/a15dd29e.html" rel="prev" title="服务器运维之网络设备">
+                      服务器运维之网络设备 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">1.安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">2.设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85DSM"><span class="toc-number">4.</span> <span class="toc-text">3.安装DSM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">4.创建用户名密码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%88%9B%E5%BB%BA%E5%AD%98%E5%82%A8%E6%B1%A0"><span class="toc-number">6.</span> <span class="toc-text">5.创建存储池</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E8%AE%BE%E7%BD%AE%E7%A9%BA%E9%97%B4%E5%92%8C%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F"><span class="toc-number">7.</span> <span class="toc-text">6.设置空间和文件格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E9%82%AE%E7%AE%B1"><span class="toc-number">8.</span> <span class="toc-text">7.邮箱</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">8.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">8.2.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB"><span class="toc-number">9.</span> <span class="toc-text">8.文件共享</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-File-Station"><span class="toc-number">10.</span> <span class="toc-text">9.File Station</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-virtual-Machine-Manager"><span class="toc-number">11.</span> <span class="toc-text">10.virtual Machine Manager</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-DDNS"><span class="toc-number">12.</span> <span class="toc-text">11.DDNS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-SMB%E5%A4%96%E7%BD%91%E8%AE%BF%E9%97%AE"><span class="toc-number">13.</span> <span class="toc-text">12.SMB外网访问</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">14.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/a3162ad0.html';
+      this.page.identifier = 'posts/a3162ad0.html';
+      this.page.title = '服务器运维之群晖NAS';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：服务器运维之群晖NAS 链接地址:https://bibichuan.github.io/posts/a3162ad0.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '服务器运维之群晖NAS',
+		url: 'https://bibichuan.github.io/posts/a3162ad0.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '服务器运维之群晖NAS',
+			isTipVisibility: true,
+			tip: '服务器运维之群晖NAS',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

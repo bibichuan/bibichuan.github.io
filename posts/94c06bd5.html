@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>目标检测之Tensorflow环境搭建</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">目标检测之Tensorflow环境搭建</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-08-31 04:03:27
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>最近有一个项目就是实现视频识别的，于是就空闲的时候把这个东西弄一下了。我在网上弄了很久，尝试了很久，解决了不知道多少个问题，最后终于算是找到了一个可以实现的例子，大部分也都是官方的指导方案进行操作的，期间还是解决了不少的问题的。还有<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ttweixiao-IT-program/p/17928952.html">TensorFlow Object Detection API —— 开箱即用的目标检测API</a>这篇文章也是很有用的，这里还提供了一个视频检测代码，整个过程和代码写的比较详细，但是也是让我费了很久的力气，才把问题搞定了。如果不进行尝试下，都不知道这个到底有多难。我主要是在 window 上测试的，linux上的步骤应该差不多了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html#install-the-object-detection-api">TensorFlow Object Detection API Installation</a> 这是官方指导文档</div>
+<h1 id="2-创建虚拟环境"><a href="#2-创建虚拟环境" class="headerlink" title="2.创建虚拟环境"></a>2.创建虚拟环境</h1><p>必要的时候，创建一个虚拟环境</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">conda info --envs</span><br><span class="line"><span class="comment"># 创建虚拟环境</span></span><br><span class="line">conda create --name tf python=3.9</span><br><span class="line"><span class="comment"># 激活</span></span><br><span class="line">activate tf</span><br><span class="line"><span class="comment"># 切换</span></span><br><span class="line">conda activate tf</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="3-安装tensorflow"><a href="#3-安装tensorflow" class="headerlink" title="3.安装tensorflow"></a>3.安装tensorflow</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">pip install --ignore-installed --upgrade tensorflow==2.5.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试</span></span><br><span class="line">python -c <span class="string">"import tensorflow as tf;print(tf.reduce_sum(tf.random.normal([1000, 1000])))"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="4-安装GPU"><a href="#4-安装GPU" class="headerlink" title="4.安装GPU"></a>4.安装GPU</h1><p>（1）安装 英伟达的驱动</p>
+<p>（2）找到驱动对应的 CUDA Toolkit <a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-toolkit-archive">安装</a>，使用: nvcc -V 命令查看</p>
+<p>（3）找到对应的 cuDNN <a target="_blank" rel="noopener" href="https://developer.nvidia.com/cudnn-archive">安装</a>,<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">官方</a> 可查对应版本。解压刚才下载的cuDNN压缩包，得到三个文件夹，复制上面红框中的三个文件夹，并粘贴到CUDA的安装目录下，即刚才装CUDA的位置，配置cuDNN的环境变量。</p>
+<p>（4）配置环境变量<br>配置如下的环境变量，就是 上面的几个安装路径，这里我暂时没有修改，其实应该改成自己的路径。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;INSTALL_PATH&gt;\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin</span><br><span class="line">&lt;INSTALL_PATH&gt;\NVIDIA GPU Computing Toolkit\CUDA\v11.2\libnvvp</span><br><span class="line">&lt;INSTALL_PATH&gt;\NVIDIA GPU Computing Toolkit\CUDA\v11.2\include</span><br><span class="line">&lt;INSTALL_PATH&gt;\NVIDIA GPU Computing Toolkit\CUDA\v11.2\extras\CUPTI\lib64</span><br><span class="line">&lt;INSTALL_PATH&gt;\NVIDIA GPU Computing Toolkit\CUDA\v11.2\cuda\bin</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（5）安装pytorch-cuda<br>每一个虚拟环境都需要安装，可以直接使用命令进行安装，这里注意 cudnn 的版本，<a target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally/">Pytorch下载官网</a> 里面有针对不同的版本提供的命令，比如我使用 “nvidia-smi” 命令查看到的 cuda 版本是 12.1 版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 pytorch</span></span><br><span class="line">conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个是仅安装 cudatookit</span></span><br><span class="line">conda install cudatoolkit=12.1 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/linux-64/</span><br><span class="line">conda install cudnn=8.9.7 -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/linux-64/</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（6）查看 gpu 是否可用。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 如果报错可以加下面两行</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">"KMP_DUPLICATE_LIB_OK"</span>] = <span class="string">"TRUE"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="built_in">print</span>(torch.__version__)</span><br><span class="line"><span class="built_in">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41010198/article/details/84566800">conda创建虚拟环境 和 用conda创建GPU的cuda、cudnn使用环境</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013952812/article/details/107992988">conda安装gpu版pytorch后cuda调用失败</a> conda卸载pytorch,pip安装gpu版pytorch<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_37707670/article/details/121451114">ubuntu将虚拟环境中的cuda版本加入环境变量</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/suiyueruge1314/article/details/120471480">如何查看 ananconda 的环境(虚拟环境)安装包位置</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43402278/article/details/131357678">Windows11安装GPU版本的pytorch环境</a> 1.查看电脑是否有最新显卡驱动并确定已安装。2.安装CUDA（需要找准GPU驱动版本与CUDA版本的对应关系进行选择）。3.安装cuDNN。4.安装anaconda及pycharm及配置。5.安装pytorch（一定要对应CUDA、CUDAA、Python的版本版本）。6.测试培养pytorch是否安装成功。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/AI_dataloads/article/details/133043869">CUDA安装教程（超详细Windows版）</a> 输入  nvidia-smi   回车得到以下窗口,这里的12.2就是驱动对应的最高版本，我们所安装的CUDA版本小于等于它即可,COUA下载官网（点击跳转）      选择任意版本号小于等于上述最高版本的即可。输入  nvcc -V （注意-前有空格）回车得到以下窗口，安装成功了！<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40968179/article/details/128996692">【保姆级教程】Windows安装CUDA及cuDNN</a> 查看是否存在CUDA的环境变量，如果没有，则添加，添加的内容就是刚才安装CUDA的位置；如果已经存在环境变量，则不用添加。 在cuDNN Archive界面下，查找适合CUDA11.6的cuDNN版本，如下，我选择的是cuDNN v.8.5.0版本，然后单击左键下载对应的压缩包即可。<br>【8】.<a target="_blank" rel="noopener" href="https://www.jb51.net/article/278793.htm">如何在conda虚拟环境中配置cuda+cudnn+pytorch深度学习环境</a> 1.查看CUDA版本:nvidia-smi命令查看cuda版本号.2.安装CUDATookit。3.安装Pytorch。<br>【9】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/367740437">在conda虚拟环境中安装cuda和cudnn，解决pip install or python setup.py install 将安装包安装到全局环境中的问题（1.2部分）。</a> conda install cudatoolkit=10.1,conda install cudnn=7.6.5<br>【10】.<a target="_blank" rel="noopener" href="https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html#gpu-support-optional">GPU Support (Optional)</a> 1.Install CUDA Toolkit;2.Install CUDNN;3.Environment Setup;4.Update your GPU drivers (Optional);</div>
+<h1 id="5-下载源码"><a href="#5-下载源码" class="headerlink" title="5.下载源码"></a>5.下载源码</h1><p>从代码仓库，<a target="_blank" rel="noopener" href="https://github.com/tensorflow/models/tree/master/research/object_detection">下载</a> 代码库，解压 models-master 到 models，放到 Tensorflow 目录下。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TensorFlow/</span><br><span class="line">└─ models/</span><br><span class="line">   ├─ community/</span><br><span class="line">   ├─ official/</span><br><span class="line">   ├─ orbit/</span><br><span class="line">   ├─ research/</span><br><span class="line">   └── ...</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="6-安装protobuf"><a href="#6-安装protobuf" class="headerlink" title="6.安装protobuf"></a>6.安装protobuf</h1><p>下载和安装<a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf/releases">protoc</a>,下载相应版本的软件，这里我折腾了很久，下载了 protoc-3.19.6-win64.zip 。解压后配置环境变量Path，增加 C:\Soft\protoc-28.0-win64\bin 目录。在工程object_detection文件夹中，找到文件夹protos，把这些proto文件转换为py文件。在 TensorFlow\models\research 目录开启 cmd，执行：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> TensorFlow/models/research/</span><br><span class="line"><span class="comment"># 执行</span></span><br><span class="line">protoc object_detection/protos/*.proto --python_out=.</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在window下的 TensorFlow/models/research/ 目录下执行</span></span><br><span class="line">Get-ChildItem object_detection/protos/*.proto | foreach {protoc <span class="string">"object_detection/protos/<span class="subst">$($_.Name)</span>"</span> --python_out=.}</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意，为了避免错误，最好安装的 protoc 的版本就是 3.19.6 版本</strong></p>
+<h1 id="7-安装-COCO-API"><a href="#7-安装-COCO-API" class="headerlink" title="7.安装 COCO API"></a>7.安装 COCO API</h1><p>请注意，根据包的说明，必须安装 Visual C++ 2015 构建工具并位于您的路径上。如果没有，请确保从此处安装它们,可以从 <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/details.aspx?id=48159">这里</a> 下载安装。我用官方的提示，还是失败了，没有安装成功，只能通过参考文章中的连接，获取了离线安装包，然后才安装成功的。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pip install cython</span><br><span class="line"><span class="comment"># 如果网络好的话，就执行这个</span></span><br><span class="line">pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI</span><br><span class="line"></span><br><span class="line"><span class="comment"># 入股网络不好的话，就执行</span></span><br><span class="line">pip install pycocotools</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://wenku.csdn.net/answer/3wo25phxa7">环境变量配置</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Zhou_Yulong/article/details/117264550">（已解决）win10安装visual studio C++ build tools 提示安装包丢失或毁坏</a> 使用离线安装 – 解决,提示安装包丢失或毁坏。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_56197703/article/details/125650001">解决visual studio C++ build tools时安装包缺失或损坏的问题（亲测绝对有用！！！）</a><br>【4】.<a target="_blank" rel="noopener" href="https://github.com/cocodataset/cocoapi/issues/345">i did ‘’pip install git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&amp;subdirectory=PythonAPI’’</a><br>【5】.<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv17496264/">电脑离线安装pycocotools cocoapi </a></div>
+<h1 id="8-安装目标检测API"><a href="#8-安装目标检测API" class="headerlink" title="8.安装目标检测API"></a>8.安装目标检测API</h1><p>到目录 models\research，复制 object_detection/packages/tf2/setup.py 至目前目录 models/research，然后执行依赖安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># From within TensorFlow/models/research/</span></span><br><span class="line"><span class="built_in">cp</span> object_detection/packages/tf2/setup.py .</span><br><span class="line">python -m pip install .</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这里可能会有问题，需要解决相关的问题，才能解决。</span></span><br><span class="line">python -m pip install . </span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果有问题，先执行下面的代码，然后再执行上面的代码</span></span><br><span class="line">pip install <span class="string">"cython&lt;3.0.0"</span> wheel</span><br><span class="line">pip install <span class="string">"pyyaml==5.4.1"</span> --no-build-isolation</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="9-测试"><a href="#9-测试" class="headerlink" title="9.测试"></a>9.测试</h1><p>执行测试步骤，如果输出 ok，说明就可以了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># From within TensorFlow/models/research/</span></span><br><span class="line">python object_detection/builders/model_builder_tf2_test.py</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45055172/article/details/140100679">基于tensorflow2的目标检测完整实现过程</a> 这里有部分自定义数据集的说明，还有自行标注的说明。1.数据准备：目标检测公开数据集、自行标注。2.环境准备及目标检测API安装；3.模型训练及调用：数据格式转换、模型训练、模型调用。标注文件格式转换：txt_to_xml、xml_to_txt<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mbdong/article/details/121661462">Window环境运行Tensorflow目标识别示例程序</a> Tensorflow提供了目标识别的API来支持通过各种深度学习网络实现目标识别的功能。通过访问Github项目<a target="_blank" rel="noopener" href="https://github.com/tensorflow/models">https://github.com/tensorflow/models</a> 可以看到Tensorflow目前支持的各种神经网络的模型实现，包括Resnet，Fast R-CNN，SSD等。其中包含的一些子目录内容如下。<br>【3】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1366125">目标检测第1步-运行tensorflow官方示例</a> 这里的路径可能不正确需要修改。<br>【4】.<a target="_blank" rel="noopener" href="https://github.com/jupyter/notebook/issues/5364">object_detection_tutorial.ipynb </a> 这里遇到了一个问题，那就是 %%bash 这个不存在</div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-error-subprocess-exited-with-error-Collecting-pyyaml-lt-6-0-gt-5-1"><a href="#1-error-subprocess-exited-with-error-Collecting-pyyaml-lt-6-0-gt-5-1" class="headerlink" title="1.error: subprocess-exited-with-error,Collecting pyyaml<6.0,>=5.1"></a>1.error: subprocess-exited-with-error,Collecting pyyaml&lt;6.0,&gt;=5.1</h2><p>在安装软件的时候，出现了这个问题</p>
+<p>【尝试方案】<br>（1）尝试方案</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyyaml --pre</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）还有一个方案,这个我倒是没有尝试</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install cython 和 pip install git+https://github.com/philferriere/cocoapi.git#subdirectory=PythonAPI</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install <span class="string">"cython&lt;3.0.0"</span> wheel</span><br><span class="line">pip install <span class="string">"pyyaml==5.4.1"</span> --no-build-isolation</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新执行依赖安装    </span></span><br><span class="line">python -m pip install .</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lw_2352/article/details/93754485">用protoc编译.proto文件遇到的问题</a> 怕自己打目录出错，就在proto文件夹下编译。目录层太低了，直接在research文件夹下运行就行。<br>【2】。<a target="_blank" rel="noopener" href="https://github.com/tensorflow/models/issues/11192">cannot import name ‘runtime_version’ from ‘google.protobuf’</a><br>【3】.<a target="_blank" rel="noopener" href="https://github.com/yaml/pyyaml/issues/724">Error installing Pyyaml==5.4, Cython_sources </a> 不少人说了这个有用：pip install “cython&lt;3.0.0” &amp;&amp; pip install –no-build-isolation pyyaml==5.4.1<br>【4】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/76707475/issue-importing-pyyaml-cltk">Issue importing PyYAML, cltk</a> 升级到 6.0.1<br>【5】.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/models/issues/11051">Installation error.</a></div>
+<h2 id="2-Could-not-install-packages-due-to-an-OSError-WinError-5-拒绝访问"><a href="#2-Could-not-install-packages-due-to-an-OSError-WinError-5-拒绝访问" class="headerlink" title="2.Could not install packages due to an OSError: [WinError 5] 拒绝访问"></a>2.Could not install packages due to an OSError: [WinError 5] 拒绝访问</h2><p>我在安装的时候，出现了这个问题。</p>
+<p>【尝试方案】<br>（1）增加了 –user 参数<br>（2）使用管理员运行<br>（3）设置 C:\Users\hjkj\AppData\Roaming\Python\Python310\site-packages 文件夹权限<br>（4）修改了文件夹的权限，改为了 Every One,无效<br>（5）使用 –user 参数，无效<br>（6）更换pip版本，无效<br>（7）以管理员身份运行，无效</p>
+<p>【解决方案】<br>重新创建了一个虚拟环境，解决了这个问题。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">conda info --envs</span><br><span class="line"><span class="comment"># 激活</span></span><br><span class="line">activate tensorflow</span><br><span class="line"><span class="comment"># 切换</span></span><br><span class="line">conda activate tensorflow</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2130208">【Python问题解决】—- ERROR: Could not install packages due to an OSError: [WinError 5] 拒绝访问。</a> 使用管理员身份运行 cmd<br>【2】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2352276">解决Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问</a> 1.方法一：使用管理员权限运行；2.更改文件夹权限；3.使用虚拟环境。<br>【3】.<a target="_blank" rel="noopener" href="https://wenku.csdn.net/answer/3ra9ppgmvd">tensoerflow安装拒绝</a> 1.防火墙或者代理设置。2.端口冲突。3.权限限制。4.Tensorflow版本问题。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42294077/article/details/131128224">解决无法成功安装tensorflow包时 拒绝访问的问题</a> pip install –user package_name<br>【5】.<a target="_blank" rel="noopener" href="https://developer.baidu.com/article/details/2740160">ERROR: Could not install packages due to an OSError: [WinError 5] 拒绝访问</a> 1.以管理员身份运行命令提示符或终端;2.使用—user选项安装包;3.检查文件路径的权限;4.更换pip版本;5.检查环境变量<br>【6】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2130208">【Python问题解决】—- ERROR: Could not install packages due to an OSError: [WinError 5] 拒绝访问。</a> 已管理员身份重新安装pip<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43939159/article/details/109165715">完美解决：ERROR: Could not install packages due to an EnvironmentError: [WinError 5] 拒绝访问</a> 添加 –user选项赋予权限就可以搞定 python -m pip install –upgrade pip -i <a target="_blank" rel="noopener" href="https://pypi.douban.com/simple">https://pypi.douban.com/simple</a> –user<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/LUCKY_SANTA/article/details/111189498">win下用conda切换python环境</a><br>【9】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/AIHUBEI/article/details/104513825">Anaconda查看、创建、切换虚拟环境</a> 你的本地创建了多个虚拟环境之后，加之又在不同的虚拟环境中安装了不同的第三方package，这样一来，虚拟环境的切换就很重要了。否则，当你再次打开jupyter notebook，通过import命令试图导入某个package的时候，总是会得到如期的错误<strong>Cannot import module. “No module named …”</strong><br>【10】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37598092/article/details/123652853">使用pip安装Cartopy库时，出现报错：Getting requirements to build wheel did not run successfully.</a> pip install –user pyshp-2.2.0-py3-none-any.whl</div>
+<h2 id="3-cannot-import-name-‘builder’-from-‘google-protobuf-internal’"><a href="#3-cannot-import-name-‘builder’-from-‘google-protobuf-internal’" class="headerlink" title="3.cannot import name ‘builder’ from ‘google.protobuf.internal’"></a>3.cannot import name ‘builder’ from ‘google.protobuf.internal’</h2><p>【尝试方案】<br>（1）升级版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pip install protobuf==3.20</span><br><span class="line"></span><br><span class="line">pip install protobuf==3.9.2</span><br><span class="line"></span><br><span class="line">pip install protobuf==3.19.6</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>就是升级protobuf的版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade protobuf</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/71759248/importerror-cannot-import-name-builder-from-google-protobuf-internal">ImportError: cannot import name ‘builder’ from ‘google.protobuf.internal’</a> 升级protobuf,pip install –upgrade protobuf<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45476428/article/details/128439426">protobuf 的bug：ImportError_ cannot import name ‘builder‘ from ‘google.protobuf.internal‘</a></div>
+<h2 id="4-No-module-named-‘tensorflow-python-distribute-distribution-strategy-context’"><a href="#4-No-module-named-‘tensorflow-python-distribute-distribution-strategy-context’" class="headerlink" title="4.No module named ‘tensorflow.python.distribute.distribution_strategy_context’"></a>4.No module named ‘tensorflow.python.distribute.distribution_strategy_context’</h2><p>在执行 python 训练的时候，结果就是报错了</p>
+<p>【尝试方案】<br>（1）尝试安装 tensorflow,结果无效</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install tensorflow</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>安装指定版本的 tensorflow</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow==2.15.0</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/springcoder/article/details/82504254">解决pip安装tensorflow中出现的no module named tensorflow.python 问题</a><br>【2】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/77881310/fix-modulenotfounderror-no-module-named-tensorflow-python-distribute-distribut">fix ModuleNotFoundError: No module named ‘tensorflow.python.distribute.distribution_strategy_context’</a> tensorflow.python.distribute.distribution_strategy_context seems to be a bug within tensorflow 2.16.1, downgrading to ver. 2.15.0 (pip install tensorflow==2.15.0) solved the issue for me.</div>
+<h2 id="5-cannot-import-name-‘runtime-version’-from-‘google-protobuf’"><a href="#5-cannot-import-name-‘runtime-version’-from-‘google-protobuf’" class="headerlink" title="5.cannot import name ‘runtime_version’ from ‘google.protobuf’"></a>5.cannot import name ‘runtime_version’ from ‘google.protobuf’</h2><p>【尝试方案】<br>（1）安装了 numpy，结果无效</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install numpy==1.26.4</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）尝试降级 protobuf，无效</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install protobuf==3.12.3</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>保证 protobuf 版本和 pip 版本一直</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">pip uninstall protobuf</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">pip install --upgrade protobuf</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/78671850/importerror-cannot-import-name-runtime-version-from-google-protobuf">ImportError: cannot import name ‘runtime_version’ from ‘google.protobuf’</a>  Downgrading protobuf less than 5 produces the error and upgrading it above 5 fixes it.<br>【2】.<a target="_blank" rel="noopener" href="https://discuss.ai.google.dev/t/importerror-cannot-import-name-runtime-version-from-google-protobuf/22770">ImportError: cannot import name ‘runtime_version’ from ‘google.protobuf’</a> For my object detection project version 3.12.3 is working fine.<br>【3】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7399235372406456383">Ubuntu 22安装最新的protoc，并解决python运行报错ImportError: cannot import name ‘runtime_version’ from ‘google.pro </a>  从错误信息来看，<code>ImportError: cannot import name 'runtime_version' from 'google.protobuf'</code> 说明你可能使用了不兼容版本的 <code>protobuf</code> Python 库。为了修复这个问题，请确保你使用的是最新版本的 <code>protobuf</code> 库，并且与所安装的 <code>protoc</code> 版本兼容。你可以按照以下步骤来解决这个问题：首先，卸载现有的 <code>protobuf</code> 库，然后，安装最新版本的 <code>protobuf</code> 库，如果你之前使用旧版本的 <code>protoc</code> 生成了 <code>.py</code> 文件，可能需要清理这些文件并使用最新的 <code>protoc</code> 重新生成。通过上述步骤，你应该能够解决<code>ImportError</code>的问题，并确保你的系统使用最新版本的 <code>protoc</code> 和 <code>protobuf</code> 库。如果问题依然存在，请检查并确认所有步骤都正确执行。</div>
+<h2 id="6-No-module-named-‘official’"><a href="#6-No-module-named-‘official’" class="headerlink" title="6.No module named ‘official’"></a>6.No module named ‘official’</h2><p>【解决方案】<br>重新安装 tf-models-official</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tf-models-official</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/models/issues/8291">ModuleNotFoundError: No module named ‘official’</a> 这里有人提到了 pip install tf-models-official 方法</div>
+<h2 id="7-If-this-call-came-from-a-pb2-py-file-your-generated-code-is-out-of-date-and-must-be-regenerated-with-protoc-gt-3-19-0"><a href="#7-If-this-call-came-from-a-pb2-py-file-your-generated-code-is-out-of-date-and-must-be-regenerated-with-protoc-gt-3-19-0" class="headerlink" title="7.If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc >= 3.19.0"></a>7.If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc &gt;= 3.19.0</h2><p>If you cannot immediately regenerate your protos, some other possible workarounds are： Downgrade the protobuf package to 3.20.x or lower</p>
+<p>【解决方案】<br>在命令行运行的时候，我重新创建了一个 虚拟环境</p>
+<h2 id="8-module-‘keras-tf-keras-keras-layers’-has-no-attribute-‘experimental’"><a href="#8-module-‘keras-tf-keras-keras-layers’-has-no-attribute-‘experimental’" class="headerlink" title="8.module ‘keras._tf_keras.keras.layers’ has no attribute ‘experimental’"></a>8.module ‘keras._tf_keras.keras.layers’ has no attribute ‘experimental’</h2><p>【尝试方案】<br>（1）降级tensorflow ,但是这就是一个死循环了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install tensorflow==2.13.1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）后来又想着升级tensorflow,结果还是不行</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade tensorflow</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）尝试限制 tensorflow 的版本，重新执行安装，结果无效</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'tf-models-official &gt;=2.5.1, &lt;2.16.0'</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>我尝试将相关的代码进行修改了，models\research\object_detection\core\freezable_sync_batch_norm.py，里面的 class FreezableSyncBatchNorm(tf.keras.layers.experimental.SyncBatchNormalization):进行修改，改为了 class FreezableSyncBatchNorm(tf.keras.layers.BatchNormalization):</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/74792455/module-keras-layers-has-no-attribute-experimental">module ‘keras.layers’ has no attribute ‘experimental’</a> pip install tensorflow==2.13.1<br>【2】.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/issues/56889">AttributeError: module ‘keras.layers’ has no attribute ‘experimental’: M1 Mac Tensorflow Metal </a> ‘tf-models-official &gt;=2.5.1, &lt;2.16.0’,<br>【3】.<a target="_blank" rel="noopener" href="https://github.com/tensorflow/tensorflow/issues/65463">Unable to run Object Detection API i.e. AttributeError: module ‘keras._tf_keras.keras.layers’ has no attribute ‘experimental’</a> The temporary workaround for the issue is Could you please try to limit the versions of tf-models-official &gt;=2.5.1, &lt;2.16.0 and comment out keras in the research/object_detection/packages/tf2/setup.py. By default tensorflow v2.16.1 import keras3.0.<br>【4】.<a target="_blank" rel="noopener" href="https://forums.developer.apple.com/forums/thread/710942">AttributeError: module ‘keras.layers’ has no attribute ‘experimental’ </a> keras.layers.experimental.preprocessing instead of layers.experimental.preprocessing.</div>
+<h2 id="9-No-module-named-‘tensorflow-python-keras-layers-preprocessing’"><a href="#9-No-module-named-‘tensorflow-python-keras-layers-preprocessing’" class="headerlink" title="9.No module named ‘tensorflow.python.keras.layers.preprocessing’"></a>9.No module named ‘tensorflow.python.keras.layers.preprocessing’</h2><p>【尝试方案】<br>（1）我尝试把 python 去掉，结果不行，找不到 tensorflow.keras.layers.preprocessing<br>（2）尝试修改代码</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 源代码</span></span><br><span class="line"><span class="comment"># from tensorflow.python.keras.layers.preprocessing import image_preprocessing as image_ops</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试改为，结果无效</span></span><br><span class="line">from keras.preprocessing import image_preprocessing as image_ops</span><br><span class="line"></span><br><span class="line"><span class="comment"># 尝试更改为</span></span><br><span class="line">from tensorflow.keras.layers.preprocessing import image_preprocessing as image_ops</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）尝试升级 tf-models-official 版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install --upgrade tf-models-official</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>这个问题最后我也没有解决，也就只能这么算了，重新从头开始测试整个的流程好了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/71598862/modulenotfounderror-no-module-named-keras-layers-preprocessing">ModuleNotFoundError: No module named ‘keras.layers.preprocessing’</a><br>【2】.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/2702206">解决 ‘No module named ‘tensorflow.keras’’ 报错：理解 TensorFlow 与 Keras 的关系</a><br>【3】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/77848266/no-module-named-tensorflow-python-keras-layers-preprocessing">No module named ‘tensorflow.python.keras.layers.preprocessing’</a> Kindly check the version of Tensorflow what your using make sure it should be compatible with the version of the object detection API. And check all required modules installed in your environment. If there are missing Modules like ‘official.legacy’ or ‘tensorflow.python.keras.layers.preprocessing’, please install by using pip.<br>【4】.<a target="_blank" rel="noopener" href="https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/">TensorFlow 2 Object Detection API tutorial</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_47056525/article/details/126363351">ModuleNotFoundError: No module named ‘tensorflow.python.keras.preprocessing‘</a> 因为是跟着教学视频敲的，没有意识到版本可能不一样，还查了很多办法。谁知道把.python去掉就可以了。<br>【6】.<a target="_blank" rel="noopener" href="https://github.com/keras-team/autokeras/issues/1296">ImportError: cannot import name ‘image_preprocessing’ from tensorflow.python.keras.layers.preprocessing import image_preprocessing as image_ops</a><br>【7】.<a target="_blank" rel="noopener" href="https://wenku.csdn.net/answer/bt750myszc">‘tensorflow.python.keras.layers.preprocessing’</a> 在较新的版本中2.4.0及更高版本中，tensorflow.python.keras 已经简化为了 tensorflow.keras<br>【8】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/107223336/answer/132326377">ModuleNotFoundError:没有名为“tensorflow.python.ops.numpy_ops”的模块</a></div>
+<h2 id="1-Initializing-libiomp5md-dll-but-found-libiomp5md-dll-already-initialized"><a href="#1-Initializing-libiomp5md-dll-but-found-libiomp5md-dll-already-initialized" class="headerlink" title="1.Initializing libiomp5md.dll, but found libiomp5md.dll already initialized"></a>1.Initializing libiomp5md.dll, but found libiomp5md.dll already initialized</h2><p>安装完成python-cuda之后，结果出现这个问题。</p>
+<p>【尝试方案】<br>（1）找到 libiomp5md.dll，删除其中一个。我这里有两个，我把第一个删除了，这个好像不管用</p>
+<ul>
+<li>C:\Soft\anaconda3\Library\bin</li>
+<li>C:\Soft\anaconda3\pkgs\intel-openmp-2021.4.0-haa95532_3556\Library\bin</li>
+</ul>
+<p>（2）删除 pip 安装的 torch<br>因为我用 conda 和 pip 同时安装了 torch，我尝试卸载一个，这个导致了另外的问题，就是 gpu 无法使用，最后我只能切换虚拟环境，重新安装了环境，才解决了这个问题。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip uninstall torch torchvision</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>（1）代码前加入两行如下代码即可，这种方式可以解决，但是好像不好用。</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.environ[<span class="string">"KMP_DUPLICATE_LIB_OK"</span>] = <span class="string">"TRUE"</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45266796/article/details/109028605">解决 OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already initialized.</a><br>【2】.<a target="_blank" rel="noopener" href="https://discuss.pytorch.org/t/ran-into-this-issue-while-executing/101460">Ran into this issue while executing</a> os.environ[“KMP_DUPLICATE_LIB_OK”]=”TRUE”<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/EricWang789/article/details/124036400">yolov5中OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already initialized.</a> 1.提前删除libiomp5md.dll。2.设置环境变量以允许程序继续进行`。<br>【4】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/20554074/sklearn-omp-error-15-initializing-libiomp5md-dll-but-found-mk2iomp5md-dll-a">sklearn OMP: Error #15 (“Initializing libiomp5md.dll, but found mk2iomp5md.dll already initialized.”) when fitting models</a> I tried manually deleting the old libiomp5md.dll file. This file is in your anaconda3/lib directory. You should remove the old libiomp5.dll file. Then it should work.<br>【5】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Flat-White/p/14678858.html">【深度学习】OMP Error #15 Initializing libiomp5md.dll, but found libiomp5md.dll already initialized 报错提示完美解决方案 </a> Everything 搜索 libiomp5md.dll,发现有Anaconda目录下存在两个libiomp5md.dll。第一个路径是conda虚拟环境下的，第二个路径是torch下的，建议先备份路径，然后把第一个路径中的 libiomp5md.dll 剪切到其他地方问题完美解决</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/c77a3547.html" rel="next" title="目标检测之Tensorflow视频检测">
+                      <i class="iconfont icon-prev"></i> 目标检测之Tensorflow视频检测
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/e48859f1.html" rel="prev" title="目标检测之Tensorflow图像检测">
+                      目标检测之Tensorflow图像检测 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83"><span class="toc-number">2.</span> <span class="toc-text">2.创建虚拟环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85tensorflow"><span class="toc-number">3.</span> <span class="toc-text">3.安装tensorflow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85GPU"><span class="toc-number">4.</span> <span class="toc-text">4.安装GPU</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%B8%8B%E8%BD%BD%E6%BA%90%E7%A0%81"><span class="toc-number">5.</span> <span class="toc-text">5.下载源码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%AE%89%E8%A3%85protobuf"><span class="toc-number">6.</span> <span class="toc-text">6.安装protobuf</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%AE%89%E8%A3%85-COCO-API"><span class="toc-number">7.</span> <span class="toc-text">7.安装 COCO API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%AE%89%E8%A3%85%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8BAPI"><span class="toc-number">8.</span> <span class="toc-text">8.安装目标检测API</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E6%B5%8B%E8%AF%95"><span class="toc-number">9.</span> <span class="toc-text">9.测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">10.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-error-subprocess-exited-with-error-Collecting-pyyaml-lt-6-0-gt-5-1"><span class="toc-number">10.1.</span> <span class="toc-text">1.error: subprocess-exited-with-error,Collecting pyyaml&lt;6.0,&gt;&#x3D;5.1</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Could-not-install-packages-due-to-an-OSError-WinError-5-%E6%8B%92%E7%BB%9D%E8%AE%BF%E9%97%AE"><span class="toc-number">10.2.</span> <span class="toc-text">2.Could not install packages due to an OSError: [WinError 5] 拒绝访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-cannot-import-name-%E2%80%98builder%E2%80%99-from-%E2%80%98google-protobuf-internal%E2%80%99"><span class="toc-number">10.3.</span> <span class="toc-text">3.cannot import name ‘builder’ from ‘google.protobuf.internal’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-No-module-named-%E2%80%98tensorflow-python-distribute-distribution-strategy-context%E2%80%99"><span class="toc-number">10.4.</span> <span class="toc-text">4.No module named ‘tensorflow.python.distribute.distribution_strategy_context’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-cannot-import-name-%E2%80%98runtime-version%E2%80%99-from-%E2%80%98google-protobuf%E2%80%99"><span class="toc-number">10.5.</span> <span class="toc-text">5.cannot import name ‘runtime_version’ from ‘google.protobuf’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-No-module-named-%E2%80%98official%E2%80%99"><span class="toc-number">10.6.</span> <span class="toc-text">6.No module named ‘official’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-If-this-call-came-from-a-pb2-py-file-your-generated-code-is-out-of-date-and-must-be-regenerated-with-protoc-gt-3-19-0"><span class="toc-number">10.7.</span> <span class="toc-text">7.If this call came from a _pb2.py file, your generated code is out of date and must be regenerated with protoc &gt;&#x3D; 3.19.0</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-module-%E2%80%98keras-tf-keras-keras-layers%E2%80%99-has-no-attribute-%E2%80%98experimental%E2%80%99"><span class="toc-number">10.8.</span> <span class="toc-text">8.module ‘keras._tf_keras.keras.layers’ has no attribute ‘experimental’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-No-module-named-%E2%80%98tensorflow-python-keras-layers-preprocessing%E2%80%99"><span class="toc-number">10.9.</span> <span class="toc-text">9.No module named ‘tensorflow.python.keras.layers.preprocessing’</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Initializing-libiomp5md-dll-but-found-libiomp5md-dll-already-initialized"><span class="toc-number">10.10.</span> <span class="toc-text">1.Initializing libiomp5md.dll, but found libiomp5md.dll already initialized</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/94c06bd5.html';
+      this.page.identifier = 'posts/94c06bd5.html';
+      this.page.title = '目标检测之Tensorflow环境搭建';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：目标检测之Tensorflow环境搭建 链接地址:https://bibichuan.github.io/posts/94c06bd5.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '目标检测之Tensorflow环境搭建',
+		url: 'https://bibichuan.github.io/posts/94c06bd5.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '目标检测之Tensorflow环境搭建',
+			isTipVisibility: true,
+			tip: '目标检测之Tensorflow环境搭建',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

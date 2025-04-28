@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitLab服务器搭建</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">GitLab服务器搭建</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Git/">Git</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-12-23 03:02:22
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>搭建与使用过微软的AzureDevops之后，我还尝试了Jenkins，现在准备尝试GitLab。AzureDevops三个月的试用期，之后就要收费了，价格也是很高的。Jenkins虽然功能非常的强大，而且免费，但是操作起来还是有些麻烦，特别是下载安装插件，我都不知道我自己那里有问题，而且，明明设置了清华的镜像，还是下载很慢，暂时就搁置了。最后，是GitLab，最近刚刚听说，也准备要上手了。<br>GitLab分为社区版和企业版，推荐安装企业版，即使不想花钱，但是依然可以在企业版的基础上使用社区版的功能，如果哪一天想要贡献点力量或者企业做大了，稍微花点钱买服务，也不是不用费什么事，直接就申请开通企业账户就行了，省事。</p>
+<p>我一直想找到官方网站的安装指导，在首页上点击try gitlab free,结果总会跳到注册登录页面</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_1.png" lay-src="/posts/6a854b3a/gitlab_1.png" class="" title="gitlab安装">
+
+<p>最后是在Resources条目下找到<a target="_blank" rel="noopener" href="https://about.gitlab.com/install/">GitLab Installation</a>的，我打开的方式不对。</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_2.png" lay-src="/posts/6a854b3a/gitlab_2.png" class="" title="gitlab安装">
+
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/laokaizzz/article/details/87004206">gitlab 社区版或企业版 的区别</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.mimvp.com/article/6115.html">GitLab 搭建自己的私有 GitHub</a><br>【3】.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/windows.html">Install GitLab Runner on Windows</a><br>【4】.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/omnibus/manual_install.html">Manually Downloading and Installing a GitLab Package</a><br>【5】.<a target="_blank" rel="noopener" href="https://gitlab.cn/why-jh/">关于极狐GitLab版本说明</a> GitLab 有三个版本：企业版（EE）、社区版（CE）和极狐版（JH）,极狐GitLab（JH）是建立在社区版之上的企业级中国发行版，在此基础上增加了额外的特性和功能。<br>【6】.<a target="_blank" rel="noopener" href="https://www.atlassian.com/zh/devops/devops-tools/cicd-tools">2024 年适合 DevOps 团队的 5 款最佳 CI/CD 工具 </a> 1.Bitbucket;2.Bamboo;3.Jira Software;4.Confluence;5.Bitbucket Pipelines</div>
+<h1 id="2-安装依赖"><a href="#2-安装依赖" class="headerlink" title="2.安装依赖"></a>2.安装依赖</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install -y curl policycoreutils-python openssh-server</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> sshd</span><br><span class="line"><span class="built_in">sudo</span> systemctl start sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">## 以下命令按需执行,像我firewall-cm --status查看防火墙状态，直接关闭了。</span></span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --permanent --add-service=http</span><br><span class="line"><span class="built_in">sudo</span> firewall-cmd --permanent --add-service=https</span><br><span class="line"><span class="built_in">sudo</span> systemctl reload firewalld</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32596527/article/details/83617638">在CentOS 7 1804 中 安装 使用 GitLab 11.4.3-ee （企业版、社区版最新版、或任意版本）</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/musuny/article/details/78548868">CentOS 7安装gitlab-ee企业版</a><br>3.<a target="_blank" rel="noopener" href="http://fwhyy.com/2018/04/CentOS7-install-GitLab/">CentOS7安装GitLab</a></div>
+<h1 id="3-安装邮件服务器"><a href="#3-安装邮件服务器" class="headerlink" title="3.安装邮件服务器"></a>3.安装邮件服务器</h1><p>根据自己的需求，是否安装邮件服务器，可以发送邮件通知给个人。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> yum install postfix</span><br><span class="line"><span class="built_in">sudo</span> systemctl <span class="built_in">enable</span> postfix</span><br><span class="line"><span class="built_in">sudo</span> systemctl start postfix</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="4-添加GitLab仓库"><a href="#4-添加GitLab仓库" class="headerlink" title="4.添加GitLab仓库"></a>4.添加GitLab仓库</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.rpm.sh | <span class="built_in">sudo</span> bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2024年09月07日</span></span><br><span class="line">curl -fsSL https://get.gitlab.cn | <span class="built_in">sudo</span> /bin/bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑repo文件</span></span><br><span class="line">vi /etc/yum.repos.d/gitlab-jh.repo</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入以下内容</span></span><br><span class="line">[gitlab-jh]</span><br><span class="line">name=JiHu GitLab</span><br><span class="line">baseurl=https://packages.gitlab.cn/repository/el/8/</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=https://packages.gitlab.cn/repository/raw/gpg/public.gpg.key</span><br><span class="line">priority=1</span><br><span class="line">enabled=1</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yulei_qq/article/details/53134654">GitLab服务器IP地址设置</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013377887/article/details/73717729">Gitlab 服务器url修改后，项目path的修改</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37014456/article/details/140463264">学习笔记：记录UOS Server V20 1070e安装极狐GitLab过程</a> UOS不能用以上办法配置，需要手工配置yum源。和Centos一样，UOS的e版本也是用yum工具安装软件包的，在/etc/yum.repo.d/目录中创建gitlab-jh.repo文件</div>
+<h1 id="5-安装"><a href="#5-安装" class="headerlink" title="5.安装"></a>5.安装</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTERNAL_URL=<span class="string">"http://192.168.1.60"</span> yum install -y gitlab-ee</span><br></pre></td></tr></tbody></table></figure>
+<p>没有问题的化，结果安装成功。</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_4.png" lay-src="/posts/6a854b3a/gitlab_4.png" class="" title="gitlab安装">
+
+<p>如果yum安装不成功的话,可能需要 <a target="_blank" rel="noopener" href="https://docs.gitlab.com/omnibus/manual_install.html">手工下载</a> 安装,<a target="_blank" rel="noopener" href="https://packages.gitlab.com/gitlab/gitlab-ee">GitLab EE</a> 仓库,可以选择自己需要的版本。</p>
+<h1 id="6-系统配置"><a href="#6-系统配置" class="headerlink" title="6.系统配置"></a>6.系统配置</h1><p>(1) 安装成功后，就可以在浏览器中输入EXTERNAL_URL中填入的url地址，进入系统了。 Use the default account’s username root to login.使用默认的账户root进行登录,他会让你修改密码，你可以直接输入新的密码，确认就可以了。</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_5.png" lay-src="/posts/6a854b3a/gitlab_5.png" class="" title="gitlab安装">
+
+<p>(2) 设置了root用户的密码之后，就可以直接使用用户名root和刚刚设置的密码进行登录了。</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_6.png" lay-src="/posts/6a854b3a/gitlab_6.png" class="" title="gitlab安装">
+
+<p>(3) 创建用户<br>这些简单的操作其实也没必要花费经历去做了,自己摸索，看看界面都会的吧。</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_7.png" lay-src="/posts/6a854b3a/gitlab_7.png" class="" title="gitlab安装">
+
+<p>上面这张图是我已经使用管理员账户登入系统，并创建了一个用户和一个项目之后的控制面板，如果是一个刚安装的gitlab，首页不是长这样的。</p>
+<p>(4) 端口配置<br>gitlab的配置文件在：/etc/gitlab/gitlab.rb,</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 为服务器对外的地址或域</span></span><br><span class="line">external_url=<span class="string">"http://192.168.1.8:10007"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## Advanced settings</span></span><br><span class="line"><span class="comment"># unicorn['listen'] = '127.0.0.1'</span></span><br><span class="line"><span class="comment"># unicorn['port'] = 8082</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 后来不知道怎么回事，上面的配置失效了，也找不到这个 unicorn 配置了，只能找nginx这个配置了。</span></span><br><span class="line">nginx[<span class="string">'listen_port'</span>] = 10007</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后使用，命令重新加载配置。</span></span><br><span class="line">gitlab-ctl reconfigure </span><br></pre></td></tr></tbody></table></figure>
+
+<p>（5）获取登陆密码</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux安装包方式：</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">cat</span> /etc/gitlab/initial_root_password</span><br><span class="line"></span><br><span class="line"><span class="comment"># Docker Engine安装方式：</span></span><br><span class="line"><span class="built_in">sudo</span> docker <span class="built_in">exec</span> -it gitlab grep <span class="string">'Password:'</span> /etc/gitlab/initial_root_password</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（6）修改git ssh端口<br>默认的gitlab ssh端口是22，但是如果直接使用的话，会出现问题,特别是修改了服务器的ssh端口号：ssh: connect to host 192.168.1.8 port 22: Connection refused。修改了/etc/gitlab/gitlab.rb中的</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gitlab_rails[<span class="string">'gitlab_shell_ssh_port'</span>]= 10014</span><br></pre></td></tr></tbody></table></figure>
+
+<p>修改仓库地址：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add gitlab ssh://git@192.168.1.8:10014/zjhjkj/drone-cloud.git</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhaolulu916/article/details/120775466">gitlab 修改访问端口</a> nginx[‘listen_port’] = 8000<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Solo_Andy/article/details/123333669">CentOS7.9安装gitlab最新版本，并修改端口配置邮件-记录一下</a> nginx[‘listen_port’] = 8081<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangyy130/article/details/85633303">linux安装gitlab并修改gitlab默认端口号</a> 这里提到了 unicorn[‘port’],但是我好像没有找到<br>【4】.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-org/omnibus-gitlab/-/issues/1155">Changing unicorn port in /etc/gitlab/gitlab.rb does not work</a><br>【5】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ifme/p/12851748.html">gitlab修改ssh端口</a> 这里是修改 gitlab 的ssh端口<br>【6】.<a target="_blank" rel="noopener" href="https://worktile.com/kb/ask/209861.html">git 如何指定ssh端口</a> 这里修改了 ~/.ssh/config 配置文件<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/A694543965/article/details/128170030">git拉取和推送如何指定远程服务器的ssh端口</a> git remote set-url origin ssh://git@11.22.33.44:9999/home/git/work.git<br>【8】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ifme/p/12851748.html">gitlab修改ssh端口</a> 这里修改了端口号，给了截图<br>【9】.<a target="_blank" rel="noopener" href="https://gitlab.cn/docs/jh/administration/operations/puma.html">从 Unicorn 切换到 Puma</a> 从 13.0 版本开始，Puma 是默认的 Web 服务器，并且 Unicorn 已被禁用。 在 14.0 版本中，Unicorn 已从 Linux 包中删除，不再受支持<br>【10】.<a target="_blank" rel="noopener" href="https://gitlab.cn/docs/jh/administration/package_information/defaults.html">软件包默认值</a> 除非在 /etc/gitlab/gitlab.rb 文件中指定配置，软件包将采用如下所述的默认值</div>
+<h1 id="7-编辑CI-CD"><a href="#7-编辑CI-CD" class="headerlink" title="7.编辑CI/CD"></a>7.编辑CI/CD</h1><p>使用GitLab有一点不好的地方，就是如果要创建管道，也就是使用pipeline，需要自己手动写一些任务和阶段，而像AzureDevops发扬了其一贯的作风，虽然也提供了yml方式的配置文件，但是也提供了可视化配置页面。</p>
+<pre><code>GitLab提供持续集成服务。如果添加一个.gitlab-ci.yml文件到项目根目录，并配置GitLab项目使用某个Runner，然后每一次提交或者是推送都会触发CI pipeline.
+</code></pre>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000012989919">开始使用GitLab CI/CD</a><br>2.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1157187">自建 GitLab 似乎很简单？这些坑也许你不知道</a></div>
+<h1 id="8-其他操作"><a href="#8-其他操作" class="headerlink" title="8.其他操作"></a>8.其他操作</h1><p>可以在命令行中直接输入:gitlab-ctl命令，可以查询基本的命令有哪些。</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_8.png" lay-src="/posts/6a854b3a/gitlab_8.png" class="" title="gitlab安装">
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 启动</span></span><br><span class="line">gitlab-ctl start</span><br><span class="line"><span class="comment">## 重启</span></span><br><span class="line">gitlab-ctl restart</span><br><span class="line"><span class="comment">## 停止</span></span><br><span class="line">gitlab-ctl stop</span><br></pre></td></tr></tbody></table></figure>
+<h1 id="9-卸载"><a href="#9-卸载" class="headerlink" title="9.卸载"></a>9.卸载</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 停止</span></span><br><span class="line"><span class="built_in">sudo</span> gitlab-ctl stop</span><br><span class="line"><span class="comment">## 卸载</span></span><br><span class="line"><span class="built_in">sudo</span> rpm -e gitlab-ce</span><br><span class="line"><span class="comment">## 查看进程</span></span><br><span class="line">ps -aux | grep gitlab</span><br><span class="line"><span class="comment">## 杀死进程</span></span><br><span class="line"><span class="built_in">kill</span> -9 进程<span class="built_in">id</span></span><br><span class="line"><span class="comment">## 删除文件</span></span><br><span class="line">find / -name gitlab|xargs <span class="built_in">rm</span> -rf</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除gitlab-ctl uninstall时自动在root下备份的配置文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf /root/gitlab-cleanse</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除用户(gitlab安装时会自动创建用户git,根据情况是否要删除)</span></span><br><span class="line">userdel -r git</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4dd47d1f1c76">彻底完美卸载Gitlab</a></div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-获取-GPG-密钥失败"><a href="#1-获取-GPG-密钥失败" class="headerlink" title="1.获取 GPG 密钥失败"></a>1.获取 GPG 密钥失败</h2><p>[Errno 12] Timeout on <a target="_blank" rel="noopener" href="https://packages.gitlab.com/gitlab/gitlab-ee/gpgkey">https://packages.gitlab.com/gitlab/gitlab-ee/gpgkey</a>: (28, ‘Resolving timed out after 30547 milliseconds’)</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/gitlab_3.png" lay-src="/posts/6a854b3a/gitlab_3.png" class="" title="gitlab安装">
+<p>也没有解决，只是又重新执行了:yum install,把程序安装了一遍，结果问题就解决了。</p>
+<h2 id="2-ssh连接很慢GSS-failure解决办法"><a href="#2-ssh连接很慢GSS-failure解决办法" class="headerlink" title="2.ssh连接很慢GSS failure解决办法"></a>2.ssh连接很慢GSS failure解决办法</h2><p>编辑/etc/ssh/ssh_config，找到：GSSAPIAuthentication no 这一行，去掉前面的#符号。(不起作用)</p>
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wenwenxiong/article/details/48685723">ssh连接很慢GSS failure解决办法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/GX_1_11_real/article/details/80423409">ssh 登录时常出现的几种错误以及解决方法（Linux）</a></div>
+<h2 id="3-git-clone-报错：git-upload-pack-command-not-found"><a href="#3-git-clone-报错：git-upload-pack-command-not-found" class="headerlink" title="3.git clone 报错：git-upload-pack: command not found"></a>3.git clone 报错：git-upload-pack: command not found</h2><p>(1) 查找gitlab安装的git目录</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name git</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后设置软连接：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ln</span> -s /opt/gitlab/embedded/libexec/git-core/git/git-upload-pack /usr/bin/git-upload-pack</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/love__coder/article/details/7775470">Linux git clone 报错：git-upload-pack: command not found</a></div>
+<h2 id="4-安装时卡住"><a href="#4-安装时卡住" class="headerlink" title="4.安装时卡住"></a>4.安装时卡住</h2><p>卸载了gitlab之后，安装时总是卡在这里。</p>
+
+<p>(1) 第一次尝试</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -f /var/lib/rpm/__db*</span><br><span class="line">rpm -vv --rebuilddb</span><br><span class="line"></span><br><span class="line">yum clean all</span><br><span class="line">yum update</span><br></pre></td></tr></tbody></table></figure>
+<p>(2) 第二次找到了一篇文章参考文章3,介绍的方法</p>
+<pre><code>1、没关系上趟厕所多等一会（10分钟）
+2、按住CTRL+C强制结束
+3、运行：sudo systemctl restart gitlab-runsvdir
+4、再次执行：sudo gitlab-ctl reconfigure
+</code></pre>
+<p>好像出现了错误：STDERR: sysctl: cannot open “/etc/sysctl.d/90-omnibus-gitlab-kernel.sem.conf”: No such file or directory</p>
+
+
+<p>(3) 虽然不知道这两句化的含义但是还是照着做了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> /opt/gitlab/embedded/etc/90-omnibus-gitlab-kernel.sem.conf</span><br><span class="line"><span class="built_in">touch</span> /opt/gitlab/embedded/etc/90-omnibus-gitlab-net.core.somaxconn.conf</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011641865/article/details/75043634">yum无响应问题</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jiedushi/article/details/7496940">yum卡住/rpm -qa卡住的解决方法</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/huhuhuemail/article/details/80519433">CentOs 7 安装 GitLab、完全卸载GitLab</a> (这个比较实用)<br>4.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-org/omnibus-gitlab/issues/4840">STDERR: sysctl: cannot open “/etc/sysctl.d/90-omnibus-gitlab-kernel.sem.conf”: No such file or directory</a><br>5.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-org/omnibus-gitlab/issues/4826">Installing problem</a></div>
+<h2 id="5-占用资源过高"><a href="#5-占用资源过高" class="headerlink" title="5.占用资源过高"></a>5.占用资源过高</h2><p>自从装了 gitlab 之后，服务器的cpu就一直在满载状态,导致了我很多其他的服务基本上无法使用了。</p>
+<img src="/images/loadimg.png" data-original="/posts/6a854b3a/err_1.png" lay-src="/posts/6a854b3a/err_1.png" class="" title="Gitlab">
+
+<p>【解决方案】<br>后来还是通过修改配置文件解决了这个东西。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/gitlab/gitlab.rb</span><br><span class="line">$ vim /etc/gitlab/gitlab.rb</span><br><span class="line"></span><br><span class="line">gitlab_rails[<span class="string">'time_zone'</span>] = <span class="string">'Asia/Shanghai'</span></span><br><span class="line">puma[<span class="string">'worker_processes'</span>] = 2</span><br><span class="line">sidekiq[<span class="string">'concurrency'</span>] = 8</span><br><span class="line">postgresql[<span class="string">'shared_buffers'</span>] = <span class="string">"128MB"</span></span><br><span class="line">postgresql[<span class="string">'max_worker_processes'</span>] = 4</span><br><span class="line">prometheus_monitoring[<span class="string">'enable'</span>] = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重新配置</span></span><br><span class="line">gitlab-ctl reconfigure</span><br><span class="line">gitlab-ctl restart</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-com/gl-infra/production/-/issues/18087">2024-05-31: KAS behaving abnormally, huge CPU usage</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/51core/articles/15305816.html">gitlab部署+cpu使用过高调优</a> 这里使用了docker部署的gitlab仓库，系统是2核4G的。主要调整的是限制内存的使用，调整postgresql的缓存以及进程，关闭prometheus监控。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Teddy_Husky/article/details/113882844">记录gitlab仓库占用CPU和内存过高问题解决</a> 2核16G云服务器上架着的gitlab总是占用着80%以上的CPU资源, 并且内存占用量总是会缓慢的升高, 每天都要重启服务很烦躁, 今天找到了大神的配置, 效果显著<br>【4】.<a target="_blank" rel="noopener" href="https://www.tabll.cn/2021/high-cpu-consumption-of-gitlab/">解决 GitLab CPU 占用偏高</a> 于是接下来彻底关闭 Prometheus<br>【5】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/760745">GitLab内存占用过高的解决方法</a> postgresql[‘shared_buffers’] //减少数据库缓存(默认为256MB 改为128MB),postgresql[‘max_worker_processes’] //减少数据库并发数(默认为8 改为4）,sidekiq[‘concurrency’] //减少sidekiq并发数（默认为25 改为 15）</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/b2ff4be5.html" rel="next" title="GitLab问题汇总">
+                      <i class="iconfont icon-prev"></i> GitLab问题汇总
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/287b7cd7.html" rel="prev" title="GitLab基本操作">
+                      GitLab基本操作 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">1.概述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">2.</span> <span class="toc-text">2.安装依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">3.安装邮件服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%B7%BB%E5%8A%A0GitLab%E4%BB%93%E5%BA%93"><span class="toc-number">4.</span> <span class="toc-text">4.添加GitLab仓库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85"><span class="toc-number">5.</span> <span class="toc-text">5.安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE"><span class="toc-number">6.</span> <span class="toc-text">6.系统配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E7%BC%96%E8%BE%91CI-CD"><span class="toc-number">7.</span> <span class="toc-text">7.编辑CI&#x2F;CD</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%85%B6%E4%BB%96%E6%93%8D%E4%BD%9C"><span class="toc-number">8.</span> <span class="toc-text">8.其他操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%8D%B8%E8%BD%BD"><span class="toc-number">9.</span> <span class="toc-text">9.卸载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">10.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E8%8E%B7%E5%8F%96-GPG-%E5%AF%86%E9%92%A5%E5%A4%B1%E8%B4%A5"><span class="toc-number">10.1.</span> <span class="toc-text">1.获取 GPG 密钥失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-ssh%E8%BF%9E%E6%8E%A5%E5%BE%88%E6%85%A2GSS-failure%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">10.2.</span> <span class="toc-text">2.ssh连接很慢GSS failure解决办法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-git-clone-%E6%8A%A5%E9%94%99%EF%BC%9Agit-upload-pack-command-not-found"><span class="toc-number">10.3.</span> <span class="toc-text">3.git clone 报错：git-upload-pack: command not found</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85%E6%97%B6%E5%8D%A1%E4%BD%8F"><span class="toc-number">10.4.</span> <span class="toc-text">4.安装时卡住</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8D%A0%E7%94%A8%E8%B5%84%E6%BA%90%E8%BF%87%E9%AB%98"><span class="toc-number">10.5.</span> <span class="toc-text">5.占用资源过高</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/6a854b3a.html';
+      this.page.identifier = 'posts/6a854b3a.html';
+      this.page.title = 'GitLab服务器搭建';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：GitLab服务器搭建 链接地址:https://bibichuan.github.io/posts/6a854b3a.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'GitLab服务器搭建',
+		url: 'https://bibichuan.github.io/posts/6a854b3a.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'GitLab服务器搭建',
+			isTipVisibility: true,
+			tip: 'GitLab服务器搭建',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

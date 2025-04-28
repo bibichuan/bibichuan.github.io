@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高德地图API使用笔记</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">高德地图API使用笔记</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-10-27 08:40:18
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:42
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>这几天，我在研究使用高德地图API,因为已有的项目使用的高德API是1.4，Loca是1.3，我这里直接升级到了API 2.0,Loca 2.0了,并且没有使用vue-amap，直接使用了原生的api进行创建。首先我这里有一个问题，如果你看Loca 2.0 的参考,会发现没有地方进行数据的绑定，下面是layer的全部方法：</p>
+<img src="/images/loadimg.png" data-original="/posts/8af2216b/api_1.png" lay-src="/posts/8af2216b/api_1.png" class="" title="高德api">
+
+<p>其实还有一个方法就是setSource(),它接受一个 Loca.GeoJSONSource 对象，可以设置相关的数据源。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://lbs.amap.com/api/loca-v2/intro">概述 </a> Loca的教程，这里有Loca 2.0的引入<br>2.<a target="_blank" rel="noopener" href="https://a.amap.com/Loca/static/loca-v2/doc/html/index.html#layer">Loca </a> 这是Loca 2.0的api参考文档<br>3.<a target="_blank" rel="noopener" href="https://developer.amap.com/demo/loca-v2/demos/cat-view-control/view-control">Loca 2.0的示例</a> Loca 2.0的示例<br>4.<a target="_blank" rel="noopener" href="https://lbs.amap.com/api/jsapi-v2/summary/">地图 JS API v2.0 正式版</a> js api教程<br>5.<a target="_blank" rel="noopener" href="https://lbs.amap.com/api/jsapi-v2/documentation">地图 JSAPI 2.0</a> js api参考文档<br>6.<a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/javascript-api/example/marker/set-marker-text-label">JS API 示例</a> 官方的js API示例<br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xlp789/article/details/128387749?spm=1001.2014.3001.5501">基于高德地图js v1.4.15绘制三维户室效果</a></div>
+<h2 id="2-图层点击"><a href="#2-图层点击" class="headerlink" title="2.图层点击"></a>2.图层点击</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/loca-v2/demos/cat-point/gdp">大小点—中国城市人口数量及GDP排行</a></div>
+<h2 id="3-绘制虚线"><a href="#3-绘制虚线" class="headerlink" title="3.绘制虚线"></a>3.绘制虚线</h2><p>在官方的文档中，其实有说明，LineLayer 图层是支持 虚线 配置的，但是实际上并没有这个参数的说明。我后来在 示例中找到了dashArray这个参数的使用，</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 高德配置</span></span><br><span class="line"><span class="attr">dashArray</span>: [<span class="number">10</span>, <span class="number">0</span>, <span class="number">10</span>, <span class="number">0</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 释义 "1"是第一段虚线长度，"2"紧跟着的间隔，"3"是第二段虚线的长度，"4"是第二段虚线后边的间隔</span></span><br><span class="line"><span class="attr">lineDash</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>官方开发人员在群里说，下一个版本会改成 dash 参数，我当前用的版本是Loca 2.0。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhongguogangkou/article/details/105637103">OpenLayers 画虚线 lineDash及lineDashOffset用法</a> openlayer中的虚线的配置及其说明。<br>2.<a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/loca-v2/demos/cat-line/bj-bus">北京部分公共交通线路</a></div>
+<h2 id="4-问题汇总"><a href="#4-问题汇总" class="headerlink" title="4.问题汇总"></a>4.问题汇总</h2><p>我这里的问题，都是基于 JS API 2.0 和 Loca API 2.0的，后期官方可能会修复部分的问题。</p>
+<p>(1) 地图切换后无法渲染要素<br>使用vue的时候，在路由中第一次进入的时候可以显示绘制的图层，但是切换到其他的路由，再切换回来之后，地图可以显示，也可以打印出来地图和loca变量，但是上面的图层没有显示出来，没有报错，图层也加上了，这是什么原因？</p>
+<p>【解决方案】<br>官方给出的答案，是在路由切换的时候，将组件进行销毁操作，这个问题，后期官方会进行修改。</p>
+<hr>
+<p>(2) 无法在同一个位置绘制点<br>我监听地图函数，点击点时候创建了一个Marker，并在这个marker周围用new AMap.Circle 绘制了一个圆，当我从地图上移除了这个marker和circle之后，再次点击同一个位置，地图的click就不会响应了，但是在这个圆之外，就可以响应地图点击事件，再次创建一个marker和圆，感觉是地图上的circle没有清除，但是实际上，地图上已经没有了这个圆。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除图像和marker</span></span><br><span class="line">map.<span class="title function_">remove</span>(state.<span class="property">marker</span>);</span><br><span class="line">state.<span class="property">marker</span>=<span class="literal">null</span>;</span><br><span class="line">state.<span class="property">circle</span>.<span class="title function_">destroy</span>();</span><br><span class="line">map.<span class="title function_">remove</span>(state.<span class="property">circle</span>);</span><br><span class="line">state.<span class="property">circle</span>=<span class="literal">null</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>群里的大佬给出的方案，就是不要将地图上的对象放到响应式的数据中。</p>
+<p>(3) 地图上的infowindows中的滚动条滚动时导致地图缩放<br>在使用infowindows的时候，如果infowindows中有滚动条，使用鼠标滚轮滚动的时候，就会导致地图也滚动。</p>
+<p>【解决方法】<br>还是高德钉钉群里的大佬说的，就是监听鼠标滚轮事件，然后禁止事件冒泡，我这里使用的时el-scroll，并且是vue 3.0，主要代码如下：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info-wrap"</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"name"</span>&gt;</span>{{currAttr.JZMC}}<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">el-scrollbar</span> <span class="attr">style</span>=<span class="string">"height: 200px;"</span> <span class="attr">class</span>=<span class="string">"scroll-wrap"</span> <span class="attr">ref</span>=<span class="string">"scrollbar"</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">el-scrollbar</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> {</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">setup</span>(<span class="params"></span>){</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">const</span> scrollbar = <span class="title function_">ref</span>();  <span class="comment">// scrollbar是页面ref后面对应的名字</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 组件挂载时执行</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">onMounted</span>(<span class="function">()=&gt;</span>{</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="title function_">nextTick</span>(<span class="function">()=&gt;</span>{</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="comment">// 监听鼠标滚轮事件，禁止冒泡，解决高德info穿透的bug</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> scrollWrap=scrollbar.<span class="property">value</span>.<span class="property">scrollbar</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        scrollWrap.<span class="title function_">addEventListener</span>(<span class="string">"wheel"</span>,<span class="keyword">function</span>(<span class="params">e</span>){</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            e.<span class="title function_">stopPropagation</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">return</span> <span class="literal">false</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        })</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      })</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    });</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">return</span> {</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      scrollbar,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    }</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  }</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">}</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-数据解析"><a href="#5-数据解析" class="headerlink" title="5.数据解析"></a>5.数据解析</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.52pojie.cn/thread-1492577-1-1.html">某德地图矢量瓦片逆向(快速wasm逆向)，c/c++/c#可调用，执行wasm2c翻译出来的c代码一</a> 执行wasm2c翻译出来的c代码，快速wasm逆向，c/c++/c#/python可调用<br>2.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzU2ODYzNzc4OQ==&amp;mid=2247485914&amp;idx=1&amp;sn=30522e73d364eef0b5d2194cec647f7f&amp;chksm=fc8ba9e8cbfc20fe0a2cd972113666665011a45bc30d3527525742557b980d143fb60cdd55a6&amp;mpshare=1&amp;scene=23&amp;srcid=1102nQo4930xeJdoVT5eSVSt&amp;sharer_sharetime=1635827978266&amp;sharer_shareid=29524b9036a85111f61771705e669eff#rd">地图数据下载技术集合 </a></div>
+<h2 id="6-绘制区域"><a href="#6-绘制区域" class="headerlink" title="6.绘制区域"></a>6.绘制区域</h2><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示行政区</span></span><br><span class="line"><span class="keyword">var</span> disLayer=<span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="property">DistrictLayer</span>.<span class="title class_">Province</span>({</span><br><span class="line">    <span class="attr">zIndex</span>:<span class="number">9</span>,</span><br><span class="line">    <span class="attr">adcode</span>:[<span class="string">'330110'</span>],</span><br><span class="line">    <span class="attr">depth</span>:<span class="number">2</span>,</span><br><span class="line">    <span class="attr">styles</span>:{</span><br><span class="line">        <span class="string">'fill'</span>:<span class="string">'rgba(0,0,0,0.6)'</span>,</span><br><span class="line">        <span class="string">'province-stroke'</span>:<span class="string">'cornflowerblue'</span>,</span><br><span class="line">        <span class="string">'city-stroke'</span>: <span class="string">'white'</span>,<span class="comment">//中国地级市边界</span></span><br><span class="line">        <span class="string">'county-stroke'</span>: <span class="string">'rgba(255,255,255,1)'</span>,<span class="comment">//中国区县边界</span></span><br><span class="line">        <span class="string">'stroke-width'</span>:<span class="number">2</span>,</span><br><span class="line">    }</span><br><span class="line">});</span><br><span class="line"><span class="comment">// 添加到地图上</span></span><br><span class="line">mainmap.<span class="title function_">addLayer</span>(disLayer);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2a74dc759462">高德地图绘制区域边界线</a></div>
+<h2 id="6-Deepin上的浏览器显示版本过低"><a href="#6-Deepin上的浏览器显示版本过低" class="headerlink" title="6.Deepin上的浏览器显示版本过低"></a>6.Deepin上的浏览器显示版本过低</h2><p>我在Deepin上进行开发，无论使用自带的浏览器，还是使用最新的deb安装的谷歌浏览器，都出现了问题。显示：浏览器版本过低，请升级最新版本的浏览器，或使用高版本火狐、谷歌等浏览器。</p>
+<img src="/images/loadimg.png" data-original="/posts/8af2216b/err_1.png" lay-src="/posts/8af2216b/err_1.png" class="" title="浏览器版本过低">
+
+<p>我以为是自己浏览器版本不对，从官方下载了谷歌，也下载了火狐，都是显示这个错误，我的谷歌的浏览器：版本 96.0.4664.45（正式版本） （64 位）。</p>
+<p>[尝试]<br>经过高德钉钉开发群里的 @吴桐 进行了点播，输出了浏览器的显卡信息：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">    <span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">'canvas'</span>),</span><br><span class="line">        gl = canvas.<span class="title function_">getContext</span>(<span class="string">'experimental-webgl'</span>),</span><br><span class="line">        debugInfo = gl.<span class="title function_">getExtension</span>(<span class="string">'WEBGL_debug_renderer_info'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(gl.<span class="title function_">getParameter</span>(debugInfo.<span class="property">UNMASKED_RENDERER_WEBGL</span>));</span><br><span class="line">})();</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 结果输出了</span></span><br><span class="line"><span class="comment">// ANGLE (Intel, Mesa Intel(R) UHD Graphics 630 (CFL GT2), OpenGL 4.6 (Core Profile) Mesa 20.3.4)</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>[解决]<br>在加载js代码的以前，强制开启GPU,这个问题同样出现在手机端浏览器中，在电脑端会显示出地形渲染，在手机端就会显示一片空白，也是通过在脚本加载之前 forceWebGL 进行处理。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="property">forceWebGL</span> = <span class="literal">true</span>; <span class="comment">// 强制启动WebGL </span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.sysgeek.cn/chrome-hardware-acceleration/">如何启用或禁用 Chrome 硬件加速功能</a> 使用 chrome://gpu/ 查看是否开启了硬件加速</div>
+<h2 id="7-手机无法开启地形渲染"><a href="#7-手机无法开启地形渲染" class="headerlink" title="7.手机无法开启地形渲染"></a>7.手机无法开启地形渲染</h2><p>我在2.1Bate版本中开启了地形，用了上面的 forceWebGL 属性，出现的问题就是在地图放大到一定的级别的时候，会有地形显示，但是缩小到一定的范围之后，就是空白。手机是iphone6s，无论是在谷歌浏览器，还是safari浏览器，还是钉钉、微信自带的浏览器都是这个问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/8af2216b/err_2.png" lay-src="/posts/8af2216b/err_2.png" class="" title="地形渲染">
+
+<p>我做了很多测试，都是不行的，这是手机上不同分辨率下的截图，可以看到，缩小到一定的级别，连道路网都没有了，这可以排除网络的问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/8af2216b/err_3.png" lay-src="/posts/8af2216b/err_3.png" class="" title="地形渲染">
+
+<p>当我关闭地形显示，重新部署，虽然缩小地图不再出现空白了，但是只渲染了注记层，有时候渲染出来了地图道路图层，但是当移动地图的时候，发现只有注记层跟着移动，底图道路面等不跟着移动。而且我自己使用Loca加载的geojson也会复制一份跟随注记移动，但是会原始的那一份还是不动。</p>
+<img src="/images/loadimg.png" data-original="/posts/8af2216b/err_3.png" lay-src="/posts/8af2216b/err_3.png" class="" title="地形渲染">
+
+<p>最初的问题，就是开启了地形显示之后，手机上就是一片空白，然后我开启了window.forceWebGL = true; 地图缩小到一定的级别，还是空白，但是放大到十几二十几级，地形和底图什么的都先显示了，我后来关闭了地形显示，再次测试，还是出现了问题。重新部署，虽然缩小地图不再出现空白了，但是只渲染了注记层，有时候渲染出来了地图道路图层，但是当移动地图的时候，发现只有注记层跟着移动，底图道路面等不跟着移动。而且我自己使用Loca加载的geojson也会复制一份跟随注记移动，但是会原始的那一份还是不动。手机是iphone6s,浏览器无论是用谷歌浏览器，还是safari浏览器，还是在钉钉里面用钉钉直接打开这个网址，都是同样的问题。</p>
+<p>我怀疑jssdk 2.1Beta 和loca 2.0是不是不兼容呢，只要不使用loca加载json，就不会出现问题。如果使用了loca加载了数据，就会出现缩小到一定的级别，就会出现空白的现象。在高德开发者交流群里，官方给出的回应是，现在不支持，结果就没有了下文了，看来，只能等到官方自己修复了。</p>
+<h2 id="8-配置密钥"><a href="#8-配置密钥" class="headerlink" title="8.配置密钥"></a>8.配置密钥</h2><p>浙政钉里面的地图无法显示自定义样式，已经开启了 window.forceWebGL = true;  这怎么解决？ 群里有人说要配置密钥，于是我就尝试了配置密钥。其实我以前配置过一次，后来忘记了。</p>
+<p>前端配置：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在使用 AMapLoader.load API加载高德地图之前</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">_AMapSecurityConfig</span> = { <span class="comment">// 加载密钥</span></span><br><span class="line">    <span class="attr">serviceHost</span>:<span class="string">'https://openmap.tech/_AMapService'</span></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>后端配置</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义地图服务代理</span></span><br><span class="line"><span class="section">location</span> /_AMapService/v4/map/styles {</span><br><span class="line">    <span class="attribute">set</span> <span class="variable">$args</span> <span class="string">"<span class="variable">$args</span>&amp;jscode=密钥"</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> https://webapi.amap.com/v4/map/styles;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># 海外地图服务代理</span></span><br><span class="line"><span class="section">location</span> /_AMapService/v3/vectormap {</span><br><span class="line">    <span class="attribute">set</span> <span class="variable">$args</span> <span class="string">"<span class="variable">$args</span>&amp;jscode=ccaa0ac9b3067bef75f9d32ee853a78c"</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> https://fmap01.amap.com/v3/vectormap;</span><br><span class="line">}</span><br><span class="line"><span class="comment"># Web服务API 代理</span></span><br><span class="line"><span class="section">location</span> /_AMapService/ {</span><br><span class="line">    <span class="attribute">set</span> <span class="variable">$args</span> <span class="string">"<span class="variable">$args</span>&amp;jscode=ccaa0ac9b3067bef75f9d32ee853a78c"</span>;</span><br><span class="line">    <span class="attribute">proxy_pass</span> https://restapi.amap.com/;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://lbs.amap.com/api/jsapi-v2/guide/abc/load">JSAPI 的加载 </a></div>
+<h2 id="9-浙政钉上无法显示自定义样式"><a href="#9-浙政钉上无法显示自定义样式" class="headerlink" title="9.浙政钉上无法显示自定义样式"></a>9.浙政钉上无法显示自定义样式</h2><p>在火狐浏览器中，在其他的一些浏览器中，都是可以显示自定义的样式，但是在浙政钉上，确实显示不了。官方没有答案，就在高德开发者群里的交流圈问了，刚开始让我配置密钥，可是我配置了密钥也不行。有人回答说：“window.forceWebGLBaseRender = true 试试”，结果试来试去，都不行。最后回答说：“那就没办法了，没有硬件加速，用不了自定义地图和3D地图”</p>
+<p>高德地图在浙政钉中有如下问题：</p>
+<ul>
+<li>1.无法使用影像地图</li>
+<li>2.无法使用loca模块</li>
+</ul>
+<p>【解决方案】<br>我问了高德的开发人员，他说没有GPU加速，无法使用自定义地图和3D地图。我问了钉钉的开发人员，他说目前钉钉内置的浏览器不支持GPU加速，我参考了钉钉的开发文档，没有方法能直接调用系统默认的浏览器打开外部页面。现在只能是说检测到钉钉环境，就弹出一个窗口，说让用户自己在浏览器中打开页面。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/30208acf.html" rel="next" title="高德地图API使用笔记二">
+                      <i class="iconfont icon-prev"></i> 高德地图API使用笔记二
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/a2bfeac2.html" rel="prev" title="高德地图API之问题汇总">
+                      高德地图API之问题汇总 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%9B%BE%E5%B1%82%E7%82%B9%E5%87%BB"><span class="toc-number">2.</span> <span class="toc-text">2.图层点击</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E7%BB%98%E5%88%B6%E8%99%9A%E7%BA%BF"><span class="toc-number">3.</span> <span class="toc-text">3.绘制虚线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">4.</span> <span class="toc-text">4.问题汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%95%B0%E6%8D%AE%E8%A7%A3%E6%9E%90"><span class="toc-number">5.</span> <span class="toc-text">5.数据解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%BB%98%E5%88%B6%E5%8C%BA%E5%9F%9F"><span class="toc-number">6.</span> <span class="toc-text">6.绘制区域</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Deepin%E4%B8%8A%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E6%98%BE%E7%A4%BA%E7%89%88%E6%9C%AC%E8%BF%87%E4%BD%8E"><span class="toc-number">7.</span> <span class="toc-text">6.Deepin上的浏览器显示版本过低</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%89%8B%E6%9C%BA%E6%97%A0%E6%B3%95%E5%BC%80%E5%90%AF%E5%9C%B0%E5%BD%A2%E6%B8%B2%E6%9F%93"><span class="toc-number">8.</span> <span class="toc-text">7.手机无法开启地形渲染</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5"><span class="toc-number">9.</span> <span class="toc-text">8.配置密钥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%B5%99%E6%94%BF%E9%92%89%E4%B8%8A%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F"><span class="toc-number">10.</span> <span class="toc-text">9.浙政钉上无法显示自定义样式</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/8af2216b.html';
+      this.page.identifier = 'posts/8af2216b.html';
+      this.page.title = '高德地图API使用笔记';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：高德地图API使用笔记 链接地址:https://bibichuan.github.io/posts/8af2216b.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '高德地图API使用笔记',
+		url: 'https://bibichuan.github.io/posts/8af2216b.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '高德地图API使用笔记',
+			isTipVisibility: true,
+			tip: '高德地图API使用笔记',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

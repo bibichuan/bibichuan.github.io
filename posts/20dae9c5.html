@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue标准eslint规则修改</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Vue标准eslint规则修改</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Vue/">Vue</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Javascript/">Javascript</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-03-05 02:33:07
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-单独的文件"><a href="#1-单独的文件" class="headerlink" title="1.单独的文件"></a>1.单独的文件</h2><p>通过查看vue-cli 3.0项目生成的package.json文件，在devDependencies选项中有”@vue/eslint-config-standard”: “^4.0.0”,表明使用的是eslint标准配置,打开项目目录下的node_modules/@vue/eslint-config-standard/index.js,其中require.resolve(‘eslint-config-standard’)，表明eslint引用了这个文件，打开node_modules/eslint-config-standard/eslintrc.json,可以查看全部的eslint规则。如果安装了其他的Airbnb或者Prettier，可以使用类似方法寻找。通过覆盖项目文件夹下的.eslintrc.js文件中的rules规则，可以达到覆盖规则的目的。不同的标准，所采用的规则也不一样。根据个人需要修改。<br>1.”space-infix-ops”: “error”,<br>默认是在操作符周围必须有空格的，比如“=”前后都要有一个空格，使用”space-infix-ops”: ‘off’关闭</p>
+<p>2.”no-trailing-spaces”: “error”,<br>默认是最多只能有一个空行相邻，通过 “no-trailing-spaces”: [“error”,{“skipBlankLines”: true}], 跳过空行，allows trailing whitespace on empty lines(允许在空行上尾随空行)</p>
+<p>3.”eol-last”: “error”,<br>默认是在文件的最后必须有且仅有一个空白行，通过”eol-last”: ‘off’关闭检查。</p>
+<p>4.”no-unused-vars”: [“error”, { “vars”: “all”, “args”: “none”, “ignoreRestSiblings”: true }],<br>默认是不允许出现声明后未使用的变量的。</p>
+<p>5.”spaced-comment”:<br>默认的注释斜杠之后必须有一个空格的，”spaced-comment”: ‘off’关掉</p>
+<p>6.”semi”: [“error”, “never”],<br>默认的javascript语句的结尾是不允许有分号的。是不是需要分号，官网有这么一个解释，有说必须加，有人说不能家，不一而足。<br>“In the debate over ASI, there are generally two schools of thought. The first is that we should treat ASI as if it didn’t exist and always include semicolons manually. The rationale is that it’s easier to always include semicolons than to try to remember when they are or are not required, and thus decreases the possibility of introducing an error.”<br>如果想关掉这个注释就用 “semi”: “off”,如果想要结尾必须加上一个分号就用 “semi”: [“error”, “always”]</p>
+<p>7.”semi-spacing”: [“error”, { “before”: false, “after”: true }],<br>默认在分号前后强制间距（半间距）,关闭就用：”semi-spacing”: ‘off’</p>
+<p>8.”comma-dangle”<br>require or disallow trailing commas(要求或禁止使用尾随逗号)。错误表现：”Unexpected trailing comma(意外的尾随逗号).”</p>
+<p>9.”space-before-function-paren”: [“error”, “always”]<br>Require or disallow a space before function parenthesis (space-before-function-paren)，在函数括号之前需要或不允许空格（space-before-function-paren）</p>
+<p>10.”key-spacing”<br>enforce consistent spacing between keys and values in object literal properties (key-spacing).在对象文字属性（键间距）中强制键和值之间的一致间距</p>
+<p>11.”keyword-spacing”<br>enforce consistent spacing before and after keywords(在关键字前后强制执行一致的间距)，关键字之后强制空一格。</p>
+<p>12.”no-multiple-empty-lines”<br>disallow multiple empty lines(禁止多个空行)</p>
+<p>13.”no-tabs”<br>disallow all tabs(禁止所有标签),某些样式指南根本不允许使用制表符，包括注释中的字符。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43810973/article/details/104867878">vue eslint 去掉 no-tabs 语法检测</a> ‘indent’:0, ‘no-tabs’:0, ‘no-mixed-spaces-and-tabs’: 0, 这三个参数，但是不起作用。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42349568/article/details/108466197">关闭eslink：报错：Unexpected tab character no-tabs</a> lintOnSave: false，直接关闭了验证<br>3.<a target="_blank" rel="noopener" href="https://eslint.org/docs/latest/rules/no-tabs">no-tabs</a></div>
+<p>14.”space-before-blocks”<br>Require Or Disallow Space Before Blocks(在块之前需要或不允许空间)，此规则将强制执行块之前的间距一致性，它仅适用于不在新行上开始的块。</p>
+<p>15.”indent”: [“error”, 2] or “indent”: [“error”, “tab”]<br>enforce consistent indentation(强制执行一致的缩进),这个操作还是比较不好做的，特别是在VScode中，就算你设置了用空格代替tab键，还是不行，老老实实的用两个空格写代码吧。设置方法：<br>方法一： command + shift + p ，然后输入indent  usingspace 并可以修改 sapce 大小，将tab替换为space的大小可以修改设置里的  tabSize 参数。<br>方法二： 或者直接在下方视图点击空格修改。<br>方法三：点击设置-&gt;输入tab -&gt;光标移动到 “editor.tabSize”: 4,这一行-&gt;点击左侧的笔图标-&gt;点击在设置中替换，右侧个人设置中就会自动添加 “editor.tabSize”:</p>
+<p>16.”quotes”<br>enforce the consistent use of either backticks, double, or single quotes(强制一致使用反引号，双引号或单引号),”double”、”single”、”backtick”</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Mrx_Nh/article/details/78232616">VS Code 将tab缩进修改为空格缩进</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zgy12512/article/details/76410273">vscode 设置tab转空格并设置数量</a></div>
+<p>17.”no-extra-semi”<br>disallow unnecessary semicolons(不允许使用不必要的分号)</p>
+<p>18.”semi”<br>require or disallow semicolons instead of ASI(要求或不允许使用分号而不是ASI)</p>
+<p>19.”import/newline-after-import”<br>这个是airbnb这个规则自己添加的，”Enforces having one or more empty lines after the last top-level import statement or require call. +(fixable) The –fix option on the [command line] automatically fixes problems reported by this rule.”，大意是：强制在最后一个顶级导入语句或需要调用之后有一个或多个空行。错误提示：Expected 1 empty line after import statement not followed by another import (import/newline-after-import)，要想去掉这个错误，在import语句的前后，都要加入一行空行</p>
+<p>20.”comma-spacing”<br>Enforces spacing around commas(强制逗号旁边的间距),Spacing around commas improve readability of a list of items. Although most of the style guidelines for languages prescribe adding a space after a comma and not before it, it is subjective to the preferences of a project.</p>
+<p>21.”func-names”<br>Require or disallow named function expressions(要求或禁止命名的函数表达式)</p>
+<p>22.”object-shorthand”<br>Require Object Literal Shorthand Syntax(需要对象文字速记语法),”ECMAScript 6 provides a concise form for defining object literal methods and properties. This syntax can make defining complex object literals much cleaner.”ECMAScript 6提供了一种用于定义对象文字方法和属性的简明形式,此语法可以使定义复杂的对象文字更加清晰.</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = {</span><br><span class="line">    <span class="attr">a</span>: <span class="keyword">function</span>(<span class="params"></span>) {},</span><br><span class="line">    <span class="attr">b</span>: <span class="keyword">function</span>(<span class="params"></span>) {}</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="comment">//修改为</span></span><br><span class="line"><span class="keyword">var</span> foo = {</span><br><span class="line">    <span class="title function_">a</span>(<span class="params"></span>) {},</span><br><span class="line">    <span class="title function_">b</span>(<span class="params"></span>) {}</span><br><span class="line">};</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>23.”import/no-extraneous-dependencies”<br> 症状：’electron’ should be listed in the project’s dependencies, not devDependencies (import/no-extraneous-dependencies)。解决：import/no-extraneous-dependencies: [error, { devDependencies: true }]</p>
+<div class="reference"> 参考文章：<br> 1.<a target="_blank" rel="noopener" href="https://github.com/benmosher/eslint-plugin-import/issues/422">[no-extraneous-dependencies] Add exceptions?</a><br> 2.<a target="_blank" rel="noopener" href="https://github.com/SimulatedGREG/electron-vue/issues/423">‘electron’ should be listed in the project’s dependencies, not devDependencies</a></div>
+<p>24.”prefer-const”<br>Suggest using const(建议使用const).”If a variable is never reassigned, using the const declaration is better.const declaration tells readers, “this variable is never reassigned,” reducing cognitive load and improving maintainability.”(如果永远不会重新赋值变量，那么使用const声明会更好。const声明告诉读者，“这个变量永远不会被重新分配”，减少了认知负担并提高了可维护性。)</p>
+<p>25.”prefer-destructuring”<br>Prefer destructuring from arrays and objects(更喜欢从数组和对象中解构).”With JavaScript ES6, a new syntax was added for creating variables from an array index or object property, called destructuring. This rule enforces usage of destructuring instead of accessing a property through a member expression.”(使用JavaScript ES6，添加了一种新语法，用于从数组索引或对象属性创建变量，称为解构。此规则强制使用解构而不是通过成员表达式访问属性。)<br>例如：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误的做法（ES5语法）</span></span><br><span class="line"><span class="keyword">var</span> foo = object.<span class="property">bar</span>;</span><br><span class="line"><span class="comment">//正确的做法（ES6语法）</span></span><br><span class="line"><span class="keyword">var</span> { <span class="attr">bar</span>: foo } = object;</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误</span></span><br><span class="line"><span class="keyword">const</span> $el=<span class="variable language_">this</span>.<span class="property">$el</span>;</span><br><span class="line"><span class="comment">//正确</span></span><br><span class="line"><span class="keyword">const</span> { $el } = <span class="variable language_">this</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>26.”padded-blocks”<br>require or disallow padding within blocks(在块内要求或禁止填充).”Some style guides require block statements to start and end with blank lines. The goal is to improve readability by visually separating the block content and the surrounding code.”(某些样式指南要求块语句以空行开头和结尾。目标是通过可视地分离块内容和周围代码来提高可读性)。把块内多余的空行删除。 </p>
+<p>27.”object-curly-newline”<br>enforce consistent line breaks inside braces(在括号内强制执行一致的换行符).”A number of style guides require or disallow line breaks inside of object braces and other tokens.(许多样式指南要求或禁止对象括号和其他令牌内的换行符。)”,”Expected a line break before this closing brace.(预计在这个闭合支撑之前有一个换行符)”,这里提醒以下，airbnb的规则是，如果超过了三个逗号，就要出现换行符。<br>例如：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//错误的写法</span></span><br><span class="line"><span class="keyword">import</span> { <span class="title class_">Button</span>, <span class="title class_">Container</span>, <span class="title class_">Header</span>, <span class="title class_">Main</span> } <span class="keyword">from</span> <span class="string">'element-ui'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//正确的写法</span></span><br><span class="line"><span class="comment">//而且还要注意第一个括号后面不能有空格，第二个空格前面不能有空格，每一行的结尾要有逗号结尾，之后不能有空格。</span></span><br><span class="line"><span class="comment">//有时候你在编辑器中看起来可能没有个空格，但是实际上会有空格，最好的方法就是把鼠标移动相应位置，通过del键或者back键删除相应的空格。</span></span><br><span class="line"><span class="keyword">import</span> {</span><br><span class="line">  <span class="title class_">Button</span>, <span class="title class_">Container</span>, <span class="title class_">Header</span>,</span><br><span class="line">  <span class="title class_">Main</span>,</span><br><span class="line">} <span class="keyword">from</span> <span class="string">'element-ui'</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/section/1135795">云社区</a><br>2.<a target="_blank" rel="noopener" href="https://cn.eslint.org/docs/rules/object-curly-newline">ESLint规则</a></div>
+<p>28.”max-len”<br>enforce a maximum line length (强制执行最大行长度).”Very long lines of code in any language can be difficult to read. In order to aid in readability and maintainability many coders have developed a convention to limit lines of code to X number of characters (traditionally 80 characters).(任何语言的代码都很长，难以阅读。为了有助于可读性和可维护性，许多编码人员已经开发出一种约定将代码行限制为X个字符（传统上为80个字符）的约定。)”</p>
+<p>28.”prefer-promise-reject-errors”<br>“require using Error objects as Promise rejection reasons.(要求使用 Error 对象作为 Promise 拒绝的原因)”。主要表现：”Expected the Promise rejection reason to be an Error.”。<br>“It is considered good practice to only pass instances of the built-in Error object to the reject() function for user-defined errors in Promises. Error objects automatically store a stack trace, which can be used to debug an error by determining where it came from. If a Promise is rejected with a non-Error value, it can be difficult to determine where the rejection occurred.”(在 Promise 中只传递内置的 Error 对象实例给 reject() 函数作为自定义错误，被认为是个很好的实践。Error 对象会自动存储堆栈跟踪，在调试时，通过它可以用来确定错误是从哪里来的。如果 Promise 使用了非 Error 的值作为拒绝原因，那么就很难确定 reject 在哪里产生。)</p>
+<p>29.”quote-props”<br>“require quotes around object literal property names (quote-props)”(要求对象字面量属性名称使用引号 (quote-props)).错误表现：”Unnecessarily quoted property ‘访问用户’ found (quote-props)”.我觉得这个应该设置为consistent</p>
+<p>30.”linebreak-style”<br>“enforce consistent linebreak style (linebreak-style)”(强制使用一致的换行符风格。)linux和widows换行符不一样，通过设置’linebreak-style’:0 强制一样。</p>
+<p>31.”no-restricted-globals”<br>“Disallow specific global variables (no-restricted-globals)”(如果要通过启用环境来允许一组全局变量，但仍希望禁止其中某些变量，则禁止使用特定的全局变量非常有用。)意思就是说，你不能直接使用：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误</span></span><br><span class="line">history.<span class="title function_">pushState</span>(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">'#gk'</span>);</span><br><span class="line"><span class="comment">// 正确</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">history</span>.<span class="title function_">pushState</span>(<span class="literal">null</span>, <span class="literal">null</span>, <span class="string">'#gk'</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>32.”prefer-template”<br>“Suggest using template literals instead of string concatenation. (prefer-template)” 建议使用模板文字而不是字符串连接。下面是正确的例子：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*eslint prefer-template: "error"*/</span></span><br><span class="line"><span class="comment">/*eslint-env es6*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Hello World!"</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">`Hello, <span class="subst">${name}</span>!`</span>;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">`Time: <span class="subst">${<span class="number">12</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>}</span>`</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This is reported by `no-useless-concat`.</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">"Hello, "</span> + <span class="string">"World!"</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>33.”no-param-reassign”<br>“Disallow Reassignment of Function Parameters (no-param-reassign)“禁止对函数参数再赋值 (no-param-reassign)。”Assignment to variables declared as function parameters can be misleading and lead to confusing behavior, as modifying function parameters will also mutate the arguments object. Often, assignment to function parameters is unintended and indicative of a mistake or programmer error.” 对函数参数中的变量进行赋值可能会误导读者，导致混乱，也会改变 arguments 对象。通常，对函数参数进行赋值并非有意为之，更多的是程序员的书写错误做成的。当函数参数被修改时，该规则也可能会失效。由此造成的副作用可能导致不直观的执行流程，使错误难以跟踪。</p>
+<p><strong>比较常见的编码规范</strong><br><strong>1.Strings must use singlequote (quotes)，字符串必须要用一个单引号表示。</strong><br><strong>2.space-before-blocks,在代码块之前必须要有一个空格，即‘{}’的前面和前面的符合之间必须要空一个格。</strong><br><strong>3.key-spacing（Strings must use singlequote），在对象键冒号之后和值之间要有一个空格。</strong><br><strong>4.no-tabs，最好用两个空格代替tab键的输入。</strong><br><strong>5.no-trailing-spaces（Trailing spaces not allowed），文件的最后，要有一个空行，多了不行，少了不行,对象中括号中间也不要有莫名奇妙的空行。</strong><br><strong>6.Missing semicolon (semi)，要在对象的最后中括号结束之后加入分号，在对象键值对的最后一个加入一个额外的逗号，在import语句最后加入分号</strong><br><strong>7.’TitleBar’ is defined but never used (no-unused-vars),不要有声明了但是未使用的变量</strong><br><strong>8.在import语句集中的地方的最前面和最后面都加入一行空行</strong><br><strong>9.在逗号之后，括号之后添加一个空格</strong><br><strong>10.在vue文件中，定义函数时，使用a(){},代替a:function(){},这是ES6定义的新规则</strong><br><strong>11.尽量用const代替let</strong><br><strong>12.一行代码不要太长</strong><br><strong>13.在if语句等判断时使用===代替==</strong></p>
+<p><strong>注意：如果修改了eslintrc.js文件后不生效，请重启yare serve</strong></p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000008742240">摆脱令人抓狂的ESlint 语法检测配置说明</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ad1e46faaea2">Eslint 超简单入门教程</a></div>
+<p>如果是从外部复制的js文件，可以禁用eslint校验，在代码顶部添加一行注释<code>/* eslint-disable */</code>，还可以在注释后加入详细规则，这样就能避开指定的校验规则了 <code>/* eslint-disable no-new */</code></p>
+<h2 id="2-集成在package-json中"><a href="#2-集成在package-json中" class="headerlink" title="2.集成在package.json中"></a>2.集成在package.json中</h2><p>有人创建工程的时候，直接把eslint的配置放到了package.json中，这个时候package.json中就会多出一个eslintConfig配置项：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"eslintConfig"</span>: {</span><br><span class="line">   <span class="string">"root"</span>: <span class="literal">true</span>,</span><br><span class="line">   <span class="string">"env"</span>: {</span><br><span class="line">     <span class="string">"node"</span>: <span class="literal">true</span></span><br><span class="line">   },</span><br><span class="line">   <span class="string">"extends"</span>: [</span><br><span class="line">     <span class="string">"plugin:vue/essential"</span>,</span><br><span class="line">     <span class="string">"eslint:recommended"</span></span><br><span class="line">   ],</span><br><span class="line">   <span class="string">"parserOptions"</span>: {</span><br><span class="line">     <span class="string">"parser"</span>: <span class="string">"babel-eslint"</span>      </span><br><span class="line">   },</span><br><span class="line">   <span class="string">"rules"</span>: {</span><br><span class="line">     <span class="string">"no-tabs"</span>: <span class="string">"off"</span>,</span><br><span class="line">     <span class="string">"indent"</span>: [<span class="number">2</span>, <span class="number">2</span>] <span class="comment">// 代码缩进风格</span></span><br><span class="line">   }</span><br><span class="line"> },</span><br></pre></td></tr></tbody></table></figure>
+
+<p>于是就可以在rules针对需要的内容进行规则配置</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wisewrong/p/7209772.html">针对单个 js 文件禁用 ESLint 语法校验</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000008742240">摆脱令人抓狂的ESlint 语法检测配置说明</a> (这里有常见的规则列表的说明)<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/shaleilei/article/details/89668801">vue-cli3 取消关闭eslint 校验代码</a> (vue-cli3中取消eslint检查，主要就是extents中删掉 “@vue/prettier”，我这里好像没有 )</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/3cc7515d.html" rel="next" title="win10无法安装更新正在重启尝试解决">
+                      <i class="iconfont icon-prev"></i> win10无法安装更新正在重启尝试解决
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/9919a51.html" rel="prev" title="uniapp开发">
+                      uniapp开发 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8D%95%E7%8B%AC%E7%9A%84%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">1.单独的文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%9B%86%E6%88%90%E5%9C%A8package-json%E4%B8%AD"><span class="toc-number">2.</span> <span class="toc-text">2.集成在package.json中</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/20dae9c5.html';
+      this.page.identifier = 'posts/20dae9c5.html';
+      this.page.title = 'Vue标准eslint规则修改';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Vue标准eslint规则修改 链接地址:https://bibichuan.github.io/posts/20dae9c5.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Vue标准eslint规则修改',
+		url: 'https://bibichuan.github.io/posts/20dae9c5.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Vue标准eslint规则修改',
+			isTipVisibility: true,
+			tip: 'Vue标准eslint规则修改',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

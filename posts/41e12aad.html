@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实用工具之TIS数据同步</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">实用工具之TIS数据同步</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-01-06 14:28:50
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h1><p>安装挺简单的，按照官方的文档进行安装就可以了，但是有问题。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 下载</span></span><br><span class="line">wget http://mirror.qlangtech.com/3.4.0/tis/tis-uber.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment">## 解压</span></span><br><span class="line">tar xvf tis-uber.tar.gz -C ./</span><br><span class="line"></span><br><span class="line"><span class="comment">## 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> tis-uber</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动</span></span><br><span class="line">./bin/tis start</span><br><span class="line"><span class="comment">## 重新启动</span></span><br><span class="line">./bin/tis restart</span><br><span class="line"><span class="comment">## 停止</span></span><br><span class="line">./bin/tis stop</span><br><span class="line"></span><br><span class="line"><span class="comment">## 浏览器打开 http://localhost:8080</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="http://www.tis.pub/docs/install/uber/">单机版安装</a></div>
+<h1 id="2-使用"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用</h1><p>操作起来其实挺简单的，就算没有文档，自己摸索摸索也就可以了，就是创建数据源，然后创建数据库管道</p>
+<h2 id="1-创建数据源"><a href="#1-创建数据源" class="headerlink" title="1.创建数据源"></a>1.创建数据源</h2><p>这里我就简单的说一下创建starrocks数据源的时候，下面两个地方如何进行填写</p>
+<ul>
+<li><p>loadUrl配置<br>loadurl中要配置 [‘192.168.1.95:8030’]，192.168.1.95为starrock地址，8030为 steamload 的端口号</p>
+</li>
+<li><p>节点描述<br>节点描述里面要填写 starrocks 的地址：192.168.1.95 。</p>
+</li>
+</ul>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="http://www.tis.pub/docs/example/mysql-syn-starrocks/">基于TIS快速实现MySQL到StarRocks的实时数据同步方案</a></div>
+<h2 id="2-创建数据管道"><a href="#2-创建数据管道" class="headerlink" title="2.创建数据管道"></a>2.创建数据管道</h2><p>打开实例页面，点击右侧的添加，选择数据管道，创建读写数据管道，然后进行保存。</p>
+<h2 id="3-批量构建"><a href="#3-批量构建" class="headerlink" title="3.批量构建"></a>3.批量构建</h2><p>创建了数据源，创建了读写实例，就可以进行批量构建了。只需要在批量构建页面，触发构建就可以了。</p>
+<img src="/images/loadimg.png" data-original="/posts/41e12aad/tis_2.png" lay-src="/posts/41e12aad/tis_2.png" class="" title="tis错误">
+
+<h1 id="3-其他数据同步方案"><a href="#3-其他数据同步方案" class="headerlink" title="3.其他数据同步方案"></a>3.其他数据同步方案</h1><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://tapdata.net/real-time-synchronization-application-scenarios.html">解锁5大应用场景，最新实时同步实现方案分享</a> Tapdata Cloud<br>2.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/777502">基于 Flink SQL CDC 的实时数据同步方案</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/a934079371/article/details/106184493">两万字讲全数据实时同步方案(附代码及架构图)(建议收藏)</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/inrgihc/article/details/114000246">各种开源数据库同步工具汇总</a> OGG、Canal、otter、DataX、kettle、Porter<br>5.<a target="_blank" rel="noopener" href="https://xie.infoq.cn/article/fa762bfa99a637fd7a5e04f57">Flink CDC 实时数据同步详细解析</a></div>
+<h1 id="4-docker-compose方式安装"><a href="#4-docker-compose方式安装" class="headerlink" title="4.docker-compose方式安装"></a>4.docker-compose方式安装</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 克隆代码,如果没有v,那就是大写的V</span></span><br><span class="line">git <span class="built_in">clone</span> git@github.com:datavane/tis.git -b V4.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置文件,持久化数据库,数据库文件：https://github.com/qlangtech/tis-ansible/blob/v4.0.0/tis_console_mysql.sql</span></span><br><span class="line">vi docker-compose/config/config.properties</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改端口，修改了flink端口：9081，web端口：10002，这里有一点需要注意，就是这个数据库的url，不能是127.0.0.1，我尝试过很多次，最后都是无效的。</span></span><br><span class="line">vi docker-compose.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line"><span class="built_in">cd</span> ./docker-compose</span><br><span class="line">docker compose -f docker-compose.yaml up -d</span><br><span class="line"><span class="comment"># 关闭</span></span><br><span class="line">docker compose -f docker-compose.yaml down</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看是否启动</span></span><br><span class="line">docker-compose -f docker-compose.yaml ps</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据初始化 </span></span><br><span class="line">http://192.168.1.8:10002</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://tis.pub/docs/install/tis/docker-compose">基于Docker Compose</a></div>
+<h1 id="5-MySQl实时同步"><a href="#5-MySQl实时同步" class="headerlink" title="5.MySQl实时同步"></a>5.MySQl实时同步</h1><p>（1）创建数据源<br>增加两个数据源，一个是读数据，一个是写入数据。</p>
+<p>（2）创建实例<br>创建一个实例，这里没有什么可以注意点地方，就是一步步的往下，把读和写数据库和数据表配置上，还有字段配置上，然后选择创建就可以了。</p>
+<p>（3）配置增量引擎</p>
+<img src="/images/loadimg.png" data-original="/posts/41e12aad/tis_4.png" lay-src="/posts/41e12aad/tis_4.png" class="" title="TIS">
+
+<p>（4）配置flink<br>通过新增，创建一个flink通道。</p>
+<img src="/images/loadimg.png" data-original="/posts/41e12aad/tis_3.png" lay-src="/posts/41e12aad/tis_3.png" class="" title="TIS">
+
+<p>（5）配置 source/sink<br>这里我其实不知道到底什么意思，就是安装了插件，然后全部默认的配置。</p>
+<img src="/images/loadimg.png" data-original="/posts/41e12aad/tis_5.png" lay-src="/posts/41e12aad/tis_5.png" class="" title="TIS">
+
+<p><strong>问题</strong><br>（1）虽然看上去配置挺简单的，但是经常会配置错误，配置错误，就要重启下，甚至要重新删除重新配置。<br>（2）在配置实时同步的时候，最好能先用DataX构建一下，看看能不能进行手动同步。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://tis.pub/docs/4.0.0-rc1/install/tis/docker-compose#tis%E4%B8%AD%E8%BF%9E%E6%8E%A5standalone-flink">TIS中连接Standalone Flink</a></div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-IncompatibleClassChangeError-Method-‘java-lang-String-com-qlangtech-tis-datax-IDataxGlobalCfg-getDefaultTemplate-’-must-be-InterfaceMethodref-constant"><a href="#1-IncompatibleClassChangeError-Method-‘java-lang-String-com-qlangtech-tis-datax-IDataxGlobalCfg-getDefaultTemplate-’-must-be-InterfaceMethodref-constant" class="headerlink" title="1.IncompatibleClassChangeError: Method ‘java.lang.String com.qlangtech.tis.datax.IDataxGlobalCfg.getDefaultTemplate()’ must be InterfaceMethodref constant"></a>1.IncompatibleClassChangeError: Method ‘java.lang.String com.qlangtech.tis.datax.IDataxGlobalCfg.getDefaultTemplate()’ must be InterfaceMethodref constant</h2><p>在创建实例时，选择添加数据管道，显示了上面的错误。</p>
+<img src="/images/loadimg.png" data-original="/posts/41e12aad/tis_1.png" lay-src="/posts/41e12aad/tis_1.png" class="" title="tis错误">
+
+<p>【解决方案】<br>在3.3.0版本之前，作者说先用1.8的jdk，等待以后更新。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/1980452/what-causes-java-lang-incompatibleclasschangeerror">What causes java.lang.IncompatibleClassChangeError?</a></div>
+<h2 id="2-Your-open-file-limit-is-currently-1024"><a href="#2-Your-open-file-limit-is-currently-1024" class="headerlink" title="2.Your open file limit is currently 1024."></a>2.Your open file limit is currently 1024.</h2><p>[解决]</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑limits.conf文件</span></span><br><span class="line"><span class="built_in">sudo</span> vim /etc/security/limits.conf</span><br><span class="line"><span class="comment">## 增加下面四行</span></span><br><span class="line">* hard nofile 65535</span><br><span class="line">* soft nofile 65535</span><br><span class="line">* hard <span class="built_in">nproc</span> 65535</span><br><span class="line">* soft <span class="built_in">nproc</span> 65535 </span><br></pre></td></tr></tbody></table></figure>
+
+<p>重启电脑生效。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/live41/p/15819680.html">Solr报警告Your open file limit is currently 1024和Your Max Processes Limit is currently 47448的解决方法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bitterliquor/article/details/103502939">取消启动solr时提示的file limit和Max Processes Limit 的限制</a></div>
+<hr>
+<h2 id="3-数据库名称不支持中文"><a href="#3-数据库名称不支持中文" class="headerlink" title="3.数据库名称不支持中文"></a>3.数据库名称不支持中文</h2><p>数据库名称填入中文的时候，出现了这个问题：必须由小写字母，大写字母，数字、下划线、减号组成</p>
+<p>【解决方案】<br>开发者说：先随便填一个，先保存下来，然后到data目录里 grep -r “” .找一下对应的ds的配置文件，直接进去改掉，然后tis重启一下。比如我保存的实例名称为 zsjm_sqlserver</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入目录</span></span><br><span class="line"><span class="built_in">cd</span> data</span><br><span class="line"><span class="comment">## 在文件中查找</span></span><br><span class="line">grep -r <span class="string">"zsjm_sqlserver"</span> .</span><br><span class="line"><span class="comment">## 显示文件</span></span><br><span class="line">./cfg_repo/tis_plugin_config/db/zsjm_sqlserver/com.qlangtech.tis.plugin.ds.DataSourceFactory.xml:</span><br><span class="line"><span class="comment">## 打开文件，修改其中的 &lt;dbName&gt;PhEMS_zsjm&lt;/dbName&gt; 配置，改为中文</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 重新启动，就可以看到数据库的名称已经改变了。</span></span><br><span class="line">./bin/tis restart</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-Writing-records-to-Doris-failed-Connection-reset"><a href="#4-Writing-records-to-Doris-failed-Connection-reset" class="headerlink" title="4.Writing records to Doris failed , Connection reset"></a>4.Writing records to Doris failed , Connection reset</h2><p>在使用 DataX 工具进行数据导入的时候，也不是DataX工具，是一个叫TIS的数据导入工具，版本：tis-uber-3.5.0 ，这里面集成了DataX。在导入数据的时候出现了这个问题，导入不到starrocks2.3.0中，以前没有找个问题：“ 往您配置的写入表中写入数据时失败. java.lang.RuntimeException: Writing records to Doris failed ”</p>
+<p>作者给出的答案是：以前用的是doris进行数据导入，以后可能需要单独的开发一个starrocks的插件了。听到这个，我就爱莫能助了，毕竟我也处理不了了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://doris.apache.org/docs/dev/faq/data-faq/">https://doris.apache.org/docs/dev/faq/data-faq/</a><br>2.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/3258">starrocks 【2.3】版本 streamload每次导入fe都报Connection reset by peer警告?</a><br>3.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/1641">Caused by: java.io.IOException: java.io.IOException: Failed to flush data to doris.</a></div>
+<h2 id="5-Public-Key-Retrieval-is-not-allowed"><a href="#5-Public-Key-Retrieval-is-not-allowed" class="headerlink" title="5.Public Key Retrieval is not allowed"></a>5.Public Key Retrieval is not allowed</h2><p>因为我是使用的 8.0 的数据库，所以连接的时候，但是tis支持5.7的数据库。大部分的文章都是 客户端的驱动连接参数中增加：allowPublicKeyRetrieval=true&amp;useSSL=false，但是因为Tis的连接参数，我无法修改，只能换一个方案了。</p>
+<p>【解决方案】</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 登陆</span></span><br><span class="line">mysql -u root -p</span><br><span class="line"><span class="comment"># 使用传统密码方式创建用户</span></span><br><span class="line">mysql&gt; CREATE USER <span class="string">'tis'</span>@<span class="string">'%'</span> IDENTIFIED WITH mysql_native_password BY <span class="string">'xxx'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 赋予 tis_console 全部权限</span></span><br><span class="line">mysql&gt; GRANT ALL ON tis_console.* TO tis;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 刷新权限</span></span><br><span class="line">flush privileges;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lusaisai/p/13372763.html">Cannot create PoolableConnectionFactory (Public Key Retrieval is not allowed)</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/interdrp/p/17213664.html">MySQL 8.0 Public Key Retrieval is not allowed 错误的原因及解决方法</a> 方式一：客户端的驱动连接参数中增加：allowPublicKeyRetrieval=true&amp;useSSL=false。方式二：之前我在修改mysql的root用户的时候直接使用的语句是：alter user ‘root’@’localhost’ identified by ‘xxx’； 所以mysql默认使用sha_256加密了。现在修改mysql账号的密码，使用其他的加密方式，直接修改账号密码：ALTER USER ‘root’@’localhost’ IDENTIFIED WITH mysql_native_password BY ‘xxx’;<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013360850/article/details/80373604">MySQL 8.0 Public Key Retrieval is not allowed 错误的解决方法</a> 但是需要注意的是 AllowPublicKeyRetrieval=True可能会导致恶意的代理通过中间人攻击(MITM)获取到明文密码，所以默认是关闭的，必须显式开启<br>【4】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lusaisai/p/13372763.html">MySQL8 提示Public Key Retrieval is not allowed错误解决方法</a></div>
+<h2 id="6-创建了实例，但是实例列表里面没有"><a href="#6-创建了实例，但是实例列表里面没有" class="headerlink" title="6.创建了实例，但是实例列表里面没有"></a>6.创建了实例，但是实例列表里面没有</h2><p>4.0.0版本，我提交了<a target="_blank" rel="noopener" href="https://github.com/datavane/tis/issues/357">issues</a>.</p>
+<h2 id="7-服务端获取不到该Job状态信息，可能是因为Flink-Cluster重启导致"><a href="#7-服务端获取不到该Job状态信息，可能是因为Flink-Cluster重启导致" class="headerlink" title="7.服务端获取不到该Job状态信息，可能是因为Flink-Cluster重启导致"></a>7.服务端获取不到该Job状态信息，可能是因为Flink-Cluster重启导致</h2><p>我已经成功创建了一个 flink-cdc 实例，可以实现数据实时同步，但是当我创建第二个同步实例的时候，总是不成功，尝试了很多次，都不行，报错：服务端获取不到该Job状态信息，可能是因为Flink-Cluster重启导致，请手动恢复。我多次删除增量实例，重新创建，一次也不成功。</p>
+<p>【解决方案】<br>因为我用 docker compose 安装的，所以需要修改 flink 比较麻烦</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入</span></span><br><span class="line"><span class="built_in">cd</span> /usr/local/tis/docker-compose</span><br><span class="line"><span class="comment"># 查看 flink 容器</span></span><br><span class="line">docker ps </span><br><span class="line"><span class="comment"># 拷贝文件</span></span><br><span class="line">docker <span class="built_in">cp</span> 96e2b782084:/opt/flink/conf/flink-conf.yaml ./config/flink-conf.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑 flink-conf.yml</span></span><br><span class="line">vi config/flink-conf.yaml</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line">taskmanager.numberOfTaskSlots: 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 编辑 docker-compose.yml</span></span><br><span class="line">vi docker-compose.yaml </span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加文件映射</span></span><br><span class="line">services:</span><br><span class="line">  flink:</span><br><span class="line">    image: registry.cn-hangzhou.aliyuncs.com/tis/flink:4.0.0</span><br><span class="line">    hostname: flink</span><br><span class="line">    mem_limit: 2048m</span><br><span class="line">    cpus: <span class="string">'1.0'</span></span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">"9081:8081"</span></span><br><span class="line">    <span class="built_in">command</span>: [<span class="string">"/bin/bash"</span>,<span class="string">"-c"</span>,<span class="string">"./bin/start-cluster.sh &amp;&amp; tail -f ./log/flink--standalonesession-0-*.log"</span>]</span><br><span class="line">    environment:</span><br><span class="line">      - TZ=Asia/Shanghai</span><br><span class="line">    depends_on:</span><br><span class="line">      - tis-console</span><br><span class="line">      <span class="comment"># 增加映射</span></span><br><span class="line">    volumes:</span><br><span class="line">      - <span class="variable">${PWD}</span>/config/flink-conf.yaml:/opt/flink/conf/flink-conf.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭</span></span><br><span class="line">docker compose -f docker-compose.yaml down</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">docker compose -f docker-compose.yaml up -d</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://tis.pub/docs/install/flink-cluster/standalone#1-could-not-acquire-the-minimum-required-resources">Could not acquire the minimum required resources</a><br>【2】.<a target="_blank" rel="noopener" href="https://nightlies.apache.org/flink/flink-docs-master/zh/docs/deployment/config/">配置参数 #</a> 这是作者给的解决方案。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/skh2015java/article/details/80229930">进入docker容器的四种方法</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_46940224/article/details/137138712">docker-compose 文件路径映射</a> 下面是一个简单的例子，演示了如何在 docker-compose.yml 文件中设置路径映射<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39378657/article/details/108995290">docker cp: 从容器中复制文件到本地</a></div>
+<h2 id="8-flink经常挂掉"><a href="#8-flink经常挂掉" class="headerlink" title="8.flink经常挂掉"></a>8.flink经常挂掉</h2><p>我遇到的问题就是，创建了实时通道之后，开始是好的，后来同步同步之后，就不行了。<a target="_blank" rel="noopener" href="https://github.com/datavane/tis/issues/363">实时同步运行一段时间后挂掉 </a>。查看日志：The last packet sent successfully to the server was 63,622,446 milliseconds ago. is longer than the server configured value of ‘wait_timeout’. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts, or using the Connector/J connection property ‘autoReconnect=true’ to avoid this problem.</p>
+<p>mysql连接闲置时间超过配置的：wait_timeout，但是连接池还去用那个连接，所以就报连接已经过时</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">---- 查看超时设置</span></span><br><span class="line"><span class="keyword">show</span> variables <span class="keyword">like</span> <span class="string">'%timeout%'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>【尝试方案】<br>（1）作者给出的答案就是在数据源那里，增加一个附加参数：autoReconnect=true。但是我配置了这个参数，在读写的数据源上都配置了，但是最后还是无法生效，超过一天没有数据同步，那么就无法同步了。<br>（2）尝试在数据源管理里面，增加了附加参数：autoReconnect=true&amp;timeBetweenEvictionRunsMillis=26400&amp;testWhileIdle=true&amp;validationQuery=SELECT&amp;nbsp1,因为这个转义符的问题，还是无法通过校验配置。<br>（3）尝试找到数据库的配置文件 /usr/local/tis/docker-compose/data/cfg_repo/tis_plugin_config/db 目录，里面有各个数据库的配置文件，修改其中的xml,修改其中的 extraParams 参数，然后重启 tis，结果也是报错了：XmlPullParserException: entity reference name can not contain character =’ (position: START_TAG seen</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">autoReconnect=<span class="literal">true</span>&amp;timeBetweenEvictionRunsMillis=26400&amp;testWhileIdle=<span class="literal">true</span>&amp;validationQuery=SELECT%201</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wwrzyy/article/details/112993803">mysql: using the Connector/J connection property ‘autoReconnect=true‘ to avoid this problem</a> 1.修改 wait_timeout 的值大一些，一般不这么做，这里记录下来修改命令.2.修改my.cnf.3.设置autoConnect 为 true，不过该方案只对4之前的版本有效。4.依赖于连接池，我用的是：druid，yml中配置参数：test-on-borrow: true ， 用的时候先检查<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chihirotan/p/6253175.html">关于MySQL的wait_timeout连接超时问题报错解决方案</a> MySQL连接时，服务器默认的“wait_timeout”是8小时，也就是说一个connection空闲超过8个小时，Mysql将自动断开该connection。connections如果空闲超过8小时，Mysql将其断开，而DBCP连接池并不知道该connection已经失效，如果这时有Client请求connection，DBCP将该失效的Connection提供给Client，将会造成异常。解决方案：1.增加 MySQL 的 wait_timeout 属性的值（不推荐）。2.减少连接池内连接的生存周期。3.定期使用连接池内的连接，附上dbcp和c3p0的标准配置。<br>【3】.<a target="_blank" rel="noopener" href="https://www.onekbit.com/ViewBlog/blog/BID20190427100123">解决dbcp连接Mysql数据库wait_timeout连接超时报错的问题</a> 一是增加MySQL的’wait_timeout’时长；二是保证连接在MySQL的’wait_timeout’时间内，至少访问一次数据库。该方法实现也很简单，只需配置dbcp的三个配置项timeBetweenEvictionRunsMillis、testWhileIdle与validationQuery即可。<br>【4】.<a href="JDBC%E8%BF%9E%E6%8E%A5%E6%B1%A0%E7%9A%84testQuery/validationQuery%E8%AE%BE%E7%BD%AE">JDBC连接池的testQuery/validationQuery设置</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Lionel_SSL/article/details/115484132">Application.xml在配置jdbcUrl时的转义字符问题</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/5bc14a20.html" rel="next" title="实用工具之kettle分批作业">
+                      <i class="iconfont icon-prev"></i> 实用工具之kettle分批作业
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/2fbee273.html" rel="prev" title="实用工具之Kettle数据处理">
+                      实用工具之Kettle数据处理 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">1.安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">2.使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-number">2.1.</span> <span class="toc-text">1.创建数据源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E7%AE%A1%E9%81%93"><span class="toc-number">2.2.</span> <span class="toc-text">2.创建数据管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%89%B9%E9%87%8F%E6%9E%84%E5%BB%BA"><span class="toc-number">2.3.</span> <span class="toc-text">3.批量构建</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%85%B6%E4%BB%96%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">3.其他数据同步方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-docker-compose%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85"><span class="toc-number">4.</span> <span class="toc-text">4.docker-compose方式安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-MySQl%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5"><span class="toc-number">5.</span> <span class="toc-text">5.MySQl实时同步</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-IncompatibleClassChangeError-Method-%E2%80%98java-lang-String-com-qlangtech-tis-datax-IDataxGlobalCfg-getDefaultTemplate-%E2%80%99-must-be-InterfaceMethodref-constant"><span class="toc-number">6.1.</span> <span class="toc-text">1.IncompatibleClassChangeError: Method ‘java.lang.String com.qlangtech.tis.datax.IDataxGlobalCfg.getDefaultTemplate()’ must be InterfaceMethodref constant</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Your-open-file-limit-is-currently-1024"><span class="toc-number">6.2.</span> <span class="toc-text">2.Your open file limit is currently 1024.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%90%8D%E7%A7%B0%E4%B8%8D%E6%94%AF%E6%8C%81%E4%B8%AD%E6%96%87"><span class="toc-number">6.3.</span> <span class="toc-text">3.数据库名称不支持中文</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Writing-records-to-Doris-failed-Connection-reset"><span class="toc-number">6.4.</span> <span class="toc-text">4.Writing records to Doris failed , Connection reset</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Public-Key-Retrieval-is-not-allowed"><span class="toc-number">6.5.</span> <span class="toc-text">5.Public Key Retrieval is not allowed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%88%9B%E5%BB%BA%E4%BA%86%E5%AE%9E%E4%BE%8B%EF%BC%8C%E4%BD%86%E6%98%AF%E5%AE%9E%E4%BE%8B%E5%88%97%E8%A1%A8%E9%87%8C%E9%9D%A2%E6%B2%A1%E6%9C%89"><span class="toc-number">6.6.</span> <span class="toc-text">6.创建了实例，但是实例列表里面没有</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%8E%B7%E5%8F%96%E4%B8%8D%E5%88%B0%E8%AF%A5Job%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%8F%AF%E8%83%BD%E6%98%AF%E5%9B%A0%E4%B8%BAFlink-Cluster%E9%87%8D%E5%90%AF%E5%AF%BC%E8%87%B4"><span class="toc-number">6.7.</span> <span class="toc-text">7.服务端获取不到该Job状态信息，可能是因为Flink-Cluster重启导致</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-flink%E7%BB%8F%E5%B8%B8%E6%8C%82%E6%8E%89"><span class="toc-number">6.8.</span> <span class="toc-text">8.flink经常挂掉</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/41e12aad.html';
+      this.page.identifier = 'posts/41e12aad.html';
+      this.page.title = '实用工具之TIS数据同步';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：实用工具之TIS数据同步 链接地址:https://bibichuan.github.io/posts/41e12aad.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '实用工具之TIS数据同步',
+		url: 'https://bibichuan.github.io/posts/41e12aad.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '实用工具之TIS数据同步',
+			isTipVisibility: true,
+			tip: '实用工具之TIS数据同步',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

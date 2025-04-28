@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GIS风场及其相关技术研究一</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">GIS风场及其相关技术研究一</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-10-25 07:44:06
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>这篇文章，是一篇探究性的文章，不见得有什么结果，就是要写篇文章记录下。先上一张图：</p>
+<img src="/images/loadimg.png" data-original="/posts/31f106a4/gis_1.png" lay-src="/posts/31f106a4/gis_1.png" class="" title="gis">
+
+<p>一看这张图，有没有觉得就很炫，很牛逼，也很实用？这是一种动态图，上面的小点都是可以流动的，描述了全球大气的运动情况，看动图，可以去找：<a target="_blank" rel="noopener" href="https://earth.nullschool.net/zh-cn/#current/wind/surface/level/orthographic=-185.26,44.32,734/loc=85.622,19.275">earth.nullschool.net</a></p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://earth.nullschool.net/">风、气象、海洋状况的全球地图</a><br>2.<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10196539">[Day 21] 在WebGIS加入風場圖</a><br>3.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/55301363">openlayers4 入门开发系列之风场图篇</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/GISShiXiSheng/article/details/78130113">Openlayers4中风场的实现</a><br>5.[可视化之Earth NullSchool]](<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fuckgiser/p/6952122.html">https://www.cnblogs.com/fuckgiser/p/6952122.html</a>)<br>6.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1149110">可视化之Earth NullSchool</a><br>7.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzA5MDcyOTE5Nw==&amp;mid=401075436&amp;idx=1&amp;sn=1d71f9a968a2b1238c9db15d6591cd0c&amp;scene=21#wechat_redirect">数据可视化之风向图</a><br>8.<a target="_blank" rel="noopener" href="https://www.windy.com/">Windy</a></div>
+<p>有一些比较有名的风场、流体常的网站，比如：windy.com和earth.nullschool.net</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/39744249">利用原生canvas在浏览器端绘制风场动画</a><br>2.<a target="_blank" rel="noopener" href="https://meteowise.com/windy/">根据上面的内容实现的网站</a> (里面可以F12看源码)<br>2.<a target="_blank" rel="noopener" href="http://www.popodv.com/dv/ddc5141528647861070.html">使用自定义数据绘制风场图</a> (这里是使用echart实现的风场效果)</div>
+<p>根据上面 <a target="_blank" rel="noopener" href="https://meteowise.com/windy/">windy</a> 这个网站，通过查看他的源代码，然后自己实验，出现了一个简单的动画效果。</p>
+<img src="/images/loadimg.png" data-original="/posts/31f106a4/gis_2.png" lay-src="/posts/31f106a4/gis_2.png" class="" title="风场效果"> 
+
+<p>主页代码：其中的加载了</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>风场测试<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"../lib/ol/ol.css"</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/ol/ol.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>  <span class="attr">src</span>=<span class="string">"https://code.jquery.com/jquery-3.4.1.min.js"</span>  <span class="attr">integrity</span>=<span class="string">"sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="</span> <span class="attr">crossorigin</span>=<span class="string">"anonymous"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">        <span class="selector-tag">body</span>,<span class="selector-tag">html</span>{</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">margin</span>:<span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">padding</span>:<span class="number">0</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>:absolute;</span></span><br><span class="line"><span class="language-css">        }</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.map</span>{</span></span><br><span class="line"><span class="language-css">            <span class="attribute">width</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">height</span>:<span class="number">100%</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>:absolute;</span></span><br><span class="line"><span class="language-css">        }</span></span><br><span class="line"><span class="language-css">        <span class="selector-class">.save</span>{</span></span><br><span class="line"><span class="language-css">            <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">left</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">            <span class="attribute">z-index</span>: <span class="number">10</span>;</span></span><br><span class="line"><span class="language-css">        }</span></span><br><span class="line"><span class="language-css">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">style</span>=<span class="string">"position: absolute; z-index: 10; pointer-events: none;"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"map"</span> <span class="attr">id</span>=<span class="string">"map"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> myView={</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">modalSelect</span>:<span class="string">'gfs'</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> asideVue={</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">projection</span>: <span class="string">"EPSG:3857"</span></span></span><br><span class="line"><span class="language-javascript">        }</span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./js/wind.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> <span class="variable constant_">DARK_BLUE</span> = <span class="keyword">new</span> ol.<span class="property">source</span>.<span class="title function_">XYZ</span>({</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">url</span>: <span class="string">"http://map.geoq.cn/ArcGIS/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}"</span></span></span><br><span class="line"><span class="language-javascript">        });</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> basicMap = <span class="keyword">new</span> ol.<span class="property">layer</span>.<span class="title class_">Tile</span>({<span class="attr">source</span>: <span class="variable constant_">DARK_BLUE</span>});</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> projection = <span class="string">"EPSG:3857"</span>; <span class="comment">// "EPSG:3857"; //"EPSG:10035";</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> center = <span class="keyword">new</span> ol.<span class="property">proj</span>.<span class="title function_">fromLonLat</span>([<span class="number">110</span>, <span class="number">24</span>], projection);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> mapExtent = ol.<span class="property">proj</span>.<span class="title function_">transformExtent</span>([-<span class="number">180</span>, -<span class="number">85</span>, <span class="number">180</span>, <span class="number">85</span>],<span class="string">'EPSG:4326'</span>, projection);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> monitorMap = <span class="keyword">new</span> ol.<span class="title class_">Map</span>({</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">controls</span>: ol.<span class="property">control</span>.<span class="title function_">defaults</span>({</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">attributionOptions</span>:</span></span><br><span class="line"><span class="language-javascript">                    ({</span></span><br><span class="line"><span class="language-javascript">                        <span class="attr">collapsible</span>: <span class="literal">false</span></span></span><br><span class="line"><span class="language-javascript">                    })</span></span><br><span class="line"><span class="language-javascript">            }),</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">layers</span>:[basicMap],</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">target</span>: <span class="string">'map'</span>,</span></span><br><span class="line"><span class="language-javascript">            <span class="attr">view</span>: <span class="keyword">new</span> ol.<span class="title class_">View</span>({</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">projection</span>: projection,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">center</span>: center,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">extent</span>: mapExtent,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">zoom</span>: <span class="number">4</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">maxZoom</span>: <span class="number">15</span>,</span></span><br><span class="line"><span class="language-javascript">                <span class="attr">minZoom</span>: <span class="number">3</span>,</span></span><br><span class="line"><span class="language-javascript">            })</span></span><br><span class="line"><span class="language-javascript">        });</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> display = <span class="keyword">new</span> <span class="title class_">MotionDisplay</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">'canvas'</span>), <span class="keyword">new</span> <span class="title class_">VectorField</span>([[]], -<span class="number">179.5</span>, <span class="number">89.5</span>, <span class="number">179.5</span>, -<span class="number">89.5</span>));</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// display.start();</span></span></span><br><span class="line"><span class="language-javascript">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./js/wind2.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>其中引用的wind.js代码</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> 利用地图框架openlayer和canvas API实现了动画效果</span></span><br><span class="line"><span class="comment"> 栅格数据后端定时处理，发布到服务器，跨域调用，前端提取渲染</span></span><br><span class="line"><span class="comment"> 动画会耗费大量计算资源，为了达到流畅效果</span></span><br><span class="line"><span class="comment"> 涉及到很多JavaScript性能调优，</span></span><br><span class="line"><span class="comment"> 为了达到显示的美观，涉及到插值的算法</span></span><br><span class="line"><span class="comment"> 风场图的粒子速度在不同缩放级别下的移动速度</span></span><br><span class="line"><span class="comment"> 作者：崔叶孟( email: 2270172201<span class="doctag">@qq</span>.com )</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Vector</span> = <span class="keyword">function</span>(<span class="params">x, y</span>) {</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">x</span> = x;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">y</span> = y;</span><br><span class="line">};</span><br><span class="line"><span class="title class_">Vector</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">length</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	<span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">sqrt</span>(<span class="variable language_">this</span>.<span class="property">x</span> * <span class="variable language_">this</span>.<span class="property">x</span> + <span class="variable language_">this</span>.<span class="property">y</span> * <span class="variable language_">this</span>.<span class="property">y</span>);</span><br><span class="line">};</span><br><span class="line"><span class="title class_">Vector</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">setLength</span> = <span class="keyword">function</span>(<span class="params">length</span>) {</span><br><span class="line">	<span class="keyword">var</span> current = <span class="variable language_">this</span>.<span class="title function_">length</span>();</span><br><span class="line">	<span class="keyword">if</span> (current) {</span><br><span class="line">		<span class="keyword">var</span> scale = length / current;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">x</span> *= scale;</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">y</span> *= scale;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="variable language_">this</span>;</span><br><span class="line">};</span><br><span class="line"><span class="keyword">var</span> <span class="title class_">Particle</span> = <span class="keyword">function</span>(<span class="params">x, y, age</span>) {</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">x</span> = x;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">y</span> = y;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">oldX</span> = -<span class="number">1</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">oldY</span> = -<span class="number">1</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">rnd</span> = <span class="title class_">Math</span>.<span class="title function_">random</span>();</span><br><span class="line">};</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">field</span></span></span><br><span class="line"><span class="comment"> *            2D array of Vectors</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * next params are corners of region.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">x0</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">y0</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">x1</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> <span class="variable">y1</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">VectorField</span> = <span class="keyword">function</span>(<span class="params">field, x0, y0, x1, y1</span>) {</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">x0</span> = x0;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">x1</span> = x1;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">y0</span> = y0;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">y1</span> = y1;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">field</span> = field;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">w</span> = field.<span class="property">length</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">h</span> = field[<span class="number">0</span>].<span class="property">length</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">maxLength</span> = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> mx = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> my = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">w</span>; i++) {</span><br><span class="line">	  <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="variable language_">this</span>.<span class="property">h</span>; j++) {</span><br><span class="line">			<span class="keyword">if</span> (field[i][j].<span class="title function_">length</span>() &gt; <span class="variable language_">this</span>.<span class="property">maxLength</span>) {</span><br><span class="line">				mx = i;</span><br><span class="line">				my = j;</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">if</span>(!<span class="built_in">isNaN</span>(field[i][j].<span class="title function_">length</span>())){</span><br><span class="line">				<span class="variable language_">this</span>.<span class="property">maxLength</span> = <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="variable language_">this</span>.<span class="property">maxLength</span>, field[i][j].<span class="title function_">length</span>());</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	mx = (mx / <span class="variable language_">this</span>.<span class="property">w</span>) * (x1 - x0) + x0;</span><br><span class="line">	my = (my / <span class="variable language_">this</span>.<span class="property">h</span>) * (y1 - y0) + y0;</span><br><span class="line">	</span><br><span class="line">};</span><br><span class="line"><span class="title class_">VectorField</span>.<span class="property">read</span> = <span class="keyword">function</span>(<span class="params">data</span>) {</span><br><span class="line">	<span class="keyword">var</span> field = [];</span><br><span class="line">	<span class="keyword">var</span> w = data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">nx</span>;</span><br><span class="line">	<span class="keyword">var</span> h = data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">ny</span>;</span><br><span class="line">	<span class="keyword">var</span> n = <span class="number">2</span> * w * h;</span><br><span class="line">	<span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> weight = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="number">0</span>; x &lt; w; x++) {</span><br><span class="line">		field[x] = [];</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> y = <span class="number">0</span>; y &lt; h; y++) {</span><br><span class="line">			<span class="keyword">var</span> vx = data[<span class="number">0</span>].<span class="property">data</span>[w*y+x];</span><br><span class="line">			<span class="keyword">var</span> vy = data[<span class="number">1</span>].<span class="property">data</span>[w*y+x];</span><br><span class="line">			<span class="keyword">var</span> v = <span class="keyword">new</span> <span class="title class_">Vector</span>(vx, vy);</span><br><span class="line">			<span class="keyword">var</span> ux = x / (w - <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">var</span> uy = y / (h - <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">var</span> lon =  data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">lo1</span> * (<span class="number">1</span> - ux) + data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">lo2</span> * ux;</span><br><span class="line">			<span class="keyword">var</span> lat =  data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">la1</span> * (<span class="number">1</span> - uy) + data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">la2</span> * uy;</span><br><span class="line">			<span class="keyword">var</span> m = <span class="title class_">Math</span>.<span class="property">PI</span> * lat / <span class="number">180</span>;</span><br><span class="line">			<span class="keyword">var</span> length = v.<span class="title function_">length</span>();</span><br><span class="line">			<span class="keyword">if</span> (length) {</span><br><span class="line">			    total += length * m;</span><br><span class="line">			    weight += m;</span><br><span class="line">	    	}</span><br><span class="line">			v.<span class="property">x</span> /= <span class="title class_">Math</span>.<span class="title function_">cos</span>(m);</span><br><span class="line">			v.<span class="title function_">setLength</span>(length);</span><br><span class="line">			field[x].<span class="title function_">push</span>(v);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">var</span> result = <span class="keyword">new</span> <span class="title class_">VectorField</span>(field, data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">lo1</span>, data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">la1</span>, data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">lo2</span>, data[<span class="number">0</span>].<span class="property">header</span>.<span class="property">la2</span>);</span><br><span class="line">  <span class="comment">// window.console.log('total = ' + total);</span></span><br><span class="line">	<span class="comment">// window.console.log('weight = ' + weight);</span></span><br><span class="line">  <span class="keyword">if</span> (total &amp;&amp; weight) {</span><br><span class="line"></span><br><span class="line">	  result.<span class="property">averageLength</span> = total / weight;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> result;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title class_">VectorField</span>.<span class="property">readImg</span> = <span class="keyword">function</span>(<span class="params">datau,datav</span>) {</span><br><span class="line">	<span class="keyword">if</span> (datav &amp;&amp; datau) {</span><br><span class="line">		<span class="keyword">var</span> field = [];</span><br><span class="line">		<span class="keyword">var</span> w = <span class="number">720</span>;</span><br><span class="line">		<span class="keyword">var</span> h = <span class="number">360</span>;</span><br><span class="line">		<span class="keyword">var</span> n = <span class="number">2</span> * w * h;</span><br><span class="line">		<span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">var</span> weight = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="number">0</span>; x &lt; w; x++) {</span><br><span class="line">			field[x] = [];</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">var</span> y = <span class="number">0</span>; y &lt; h; y++) {</span><br><span class="line">				<span class="keyword">var</span> vx = (datau[(w*y+x)*<span class="number">4</span>]-<span class="number">128</span>)/<span class="number">1.6</span>;</span><br><span class="line">				<span class="keyword">var</span> vy = (datav[(w*y+x)*<span class="number">4</span>]-<span class="number">128</span>)/<span class="number">1.6</span>;</span><br><span class="line">				<span class="keyword">var</span> v = <span class="keyword">new</span> <span class="title class_">Vector</span>(vx, vy);</span><br><span class="line">				<span class="keyword">var</span> ux = x / (w - <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">var</span> uy = y / (h - <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">var</span> lon =  -<span class="number">179.5</span> * (<span class="number">1</span> - ux) + <span class="number">179.5</span> * ux;</span><br><span class="line">				<span class="keyword">var</span> lat =  <span class="number">89.5</span> * (<span class="number">1</span> - uy) + -<span class="number">89.5</span> * uy;</span><br><span class="line">				<span class="keyword">var</span> m = <span class="title class_">Math</span>.<span class="property">PI</span> * lat / <span class="number">180</span>;</span><br><span class="line">				<span class="keyword">var</span> length = v.<span class="title function_">length</span>();</span><br><span class="line">				<span class="keyword">if</span> (length) {</span><br><span class="line">				    total += length * m;</span><br><span class="line">				    weight += m;</span><br><span class="line">		    	}</span><br><span class="line">				v.<span class="property">x</span> /= <span class="title class_">Math</span>.<span class="title function_">cos</span>(m);</span><br><span class="line">				v.<span class="title function_">setLength</span>(length);</span><br><span class="line">				field[x].<span class="title function_">push</span>(v);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">var</span> result = <span class="keyword">new</span> <span class="title class_">VectorField</span>(field, -<span class="number">179.5</span>, <span class="number">89.5</span>, <span class="number">179.5</span>, -<span class="number">89.5</span>);</span><br><span class="line">	  <span class="comment">// window.console.log('total = ' + total);</span></span><br><span class="line">		<span class="comment">// window.console.log('weight = ' + weight);</span></span><br><span class="line">	  <span class="keyword">if</span> (total &amp;&amp; weight) {</span><br><span class="line"></span><br><span class="line">		  result.<span class="property">averageLength</span> = total / weight;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	}</span><br><span class="line">	</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="title class_">VectorField</span>.<span class="property">readImgArr</span> = <span class="keyword">function</span>(<span class="params">imageArr</span>) {</span><br><span class="line">		<span class="keyword">var</span> field = [];</span><br><span class="line">		<span class="keyword">var</span> w = <span class="number">720</span>;</span><br><span class="line">		<span class="keyword">var</span> h = <span class="number">360</span>;</span><br><span class="line">		<span class="keyword">var</span> n = <span class="number">2</span> * w * h;</span><br><span class="line">		<span class="keyword">var</span> i = <span class="number">0</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">var</span> total = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">var</span> weight = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> x = <span class="number">0</span>; x &lt; w; x++) {</span><br><span class="line">			field[x] = [];</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">var</span> y = <span class="number">0</span>; y &lt; h; y++) {</span><br><span class="line">				<span class="keyword">var</span> vx = (imageArr[(w*y+x)*<span class="number">4</span>+<span class="number">0</span>]-<span class="number">128</span>)/<span class="number">1.6</span>;</span><br><span class="line">				<span class="keyword">var</span> vy = (imageArr[(w*y+x)*<span class="number">4</span>+<span class="number">1</span>]-<span class="number">128</span>)/<span class="number">1.6</span>;</span><br><span class="line">				<span class="keyword">var</span> v = <span class="keyword">new</span> <span class="title class_">Vector</span>(vx, vy);</span><br><span class="line">				<span class="keyword">var</span> ux = x / (w - <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">var</span> uy = y / (h - <span class="number">1</span>);</span><br><span class="line">				<span class="keyword">var</span> lon =  -<span class="number">179.5</span> * (<span class="number">1</span> - ux) + <span class="number">179.5</span> * ux;</span><br><span class="line">				<span class="keyword">var</span> lat =  <span class="number">89.5</span> * (<span class="number">1</span> - uy) + -<span class="number">89.5</span> * uy;</span><br><span class="line">				<span class="keyword">var</span> m = <span class="title class_">Math</span>.<span class="property">PI</span> * lat / <span class="number">180</span>;</span><br><span class="line">				<span class="keyword">var</span> length = v.<span class="title function_">length</span>();</span><br><span class="line">				<span class="keyword">if</span> (length) {</span><br><span class="line">				    total += length * m;</span><br><span class="line">				    weight += m;</span><br><span class="line">		    	}</span><br><span class="line">				v.<span class="property">x</span> /= <span class="title class_">Math</span>.<span class="title function_">cos</span>(m);</span><br><span class="line">				v.<span class="title function_">setLength</span>(length);</span><br><span class="line">				field[x].<span class="title function_">push</span>(v);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">var</span> result = <span class="keyword">new</span> <span class="title class_">VectorField</span>(field, -<span class="number">179.5</span>, <span class="number">89.5</span>, <span class="number">179.5</span>, -<span class="number">89.5</span>);</span><br><span class="line">	  <span class="comment">// window.console.log('total = ' + total);</span></span><br><span class="line">		<span class="comment">// window.console.log('weight = ' + weight);</span></span><br><span class="line">	  <span class="keyword">if</span> (total &amp;&amp; weight) {</span><br><span class="line"></span><br><span class="line">		  result.<span class="property">averageLength</span> = total / weight;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title class_">VectorField</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">inBounds</span> = <span class="keyword">function</span>(<span class="params">x, y</span>) {</span><br><span class="line">	<span class="keyword">return</span> x &gt;= -<span class="number">1</span> &amp;&amp; x &lt; <span class="variable language_">this</span>.<span class="property">width</span> &amp;&amp; y &gt;= -<span class="number">1</span> &amp;&amp; y &lt; <span class="variable language_">this</span>.<span class="property">height</span>;</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title class_">VectorField</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">bilinear</span> = <span class="keyword">function</span>(<span class="params">coord, a, b</span>) {</span><br><span class="line">	<span class="keyword">while</span> (a&lt;-<span class="number">360</span>) {</span><br><span class="line">		a += <span class="number">720</span></span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">while</span> (a&gt;<span class="number">360</span>){</span><br><span class="line">        a -= <span class="number">720</span></span><br><span class="line">	}</span><br><span class="line">    <span class="keyword">while</span> (b&lt;-<span class="number">180</span>) {</span><br><span class="line">        a += <span class="number">360</span></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">while</span> (b&gt;<span class="number">180</span>){</span><br><span class="line">        a -= <span class="number">360</span></span><br><span class="line">    }</span><br><span class="line">  <span class="keyword">var</span> na = <span class="title class_">Math</span>.<span class="title function_">floor</span>(a);</span><br><span class="line">  <span class="keyword">var</span> nb = <span class="title class_">Math</span>.<span class="title function_">floor</span>(b);</span><br><span class="line">  <span class="keyword">var</span> ma = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(a);</span><br><span class="line">  <span class="keyword">var</span> mb = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(b);</span><br><span class="line">  <span class="keyword">var</span> fa = a - na;</span><br><span class="line">  <span class="keyword">var</span> fb = b - nb;</span><br><span class="line">  <span class="keyword">try</span> {</span><br><span class="line">	  <span class="keyword">var</span> value= <span class="variable language_">this</span>.<span class="property">field</span>[na+<span class="number">360</span>][<span class="number">180</span>-nb][coord] * (<span class="number">1</span> - fa) * (<span class="number">1</span> - fb) +</span><br><span class="line">	   			 <span class="variable language_">this</span>.<span class="property">field</span>[ma+<span class="number">360</span>][<span class="number">180</span>-nb][coord] * fa * (<span class="number">1</span> - fb) +</span><br><span class="line">		    	 <span class="variable language_">this</span>.<span class="property">field</span>[na+<span class="number">360</span>][<span class="number">180</span>-mb][coord] * (<span class="number">1</span> - fa) * fb +</span><br><span class="line">		    	 <span class="variable language_">this</span>.<span class="property">field</span>[ma+<span class="number">360</span>][<span class="number">180</span>-mb][coord] * fa * fb;</span><br><span class="line">	  <span class="keyword">return</span> value</span><br><span class="line">} <span class="keyword">catch</span> (e) {</span><br><span class="line">	 <span class="comment">// return ;</span></span><br><span class="line">	<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></span><br><span class="line">}</span><br><span class="line">};</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getValue</span>(<span class="params">data, coord</span>){</span><br><span class="line">	<span class="keyword">var</span> a = coord[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">var</span> b = coord[<span class="number">1</span>];</span><br><span class="line">	<span class="keyword">var</span> na = <span class="title class_">Math</span>.<span class="title function_">floor</span>(a)&lt;-<span class="number">360</span>?na+=<span class="number">720</span>:<span class="title class_">Math</span>.<span class="title function_">floor</span>(a);</span><br><span class="line">	<span class="keyword">var</span> nb = <span class="title class_">Math</span>.<span class="title function_">floor</span>(b)&lt;-<span class="number">180</span>?nb+=<span class="number">360</span>:<span class="title class_">Math</span>.<span class="title function_">floor</span>(b);</span><br><span class="line">	<span class="keyword">var</span> ma = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(a)&gt;<span class="number">360</span>?ma-=<span class="number">720</span>:<span class="title class_">Math</span>.<span class="title function_">ceil</span>(a);</span><br><span class="line">	<span class="keyword">var</span> mb = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(b)&gt;<span class="number">180</span>?mb-=<span class="number">360</span>:<span class="title class_">Math</span>.<span class="title function_">ceil</span>(b);</span><br><span class="line">	<span class="keyword">var</span> fa = a - na;</span><br><span class="line">	<span class="keyword">var</span> fb = b - nb;</span><br><span class="line">	<span class="keyword">var</span> index = ((<span class="number">90</span>-nb)*<span class="number">2</span>*<span class="number">720</span>+(na+<span class="number">180</span>)*<span class="number">2</span>);</span><br><span class="line">	<span class="keyword">var</span> value= data[((<span class="number">90</span>-nb)*<span class="number">2</span>*<span class="number">720</span>+(na+<span class="number">180</span>)*<span class="number">2</span>)] * (<span class="number">1</span> - fa) * (<span class="number">1</span> - fb) +</span><br><span class="line">		data[((<span class="number">90</span>-nb)*<span class="number">2</span>*<span class="number">720</span>+(ma+<span class="number">180</span>)*<span class="number">2</span>)] * fa * (<span class="number">1</span> - fb) +</span><br><span class="line">		data[((<span class="number">90</span>-mb)*<span class="number">2</span>*<span class="number">720</span>+(na+<span class="number">180</span>)*<span class="number">2</span>)] * (<span class="number">1</span> - fa) * fb +</span><br><span class="line">		data[((<span class="number">90</span>-mb)*<span class="number">2</span>*<span class="number">720</span>+(ma+<span class="number">180</span>)*<span class="number">2</span>)] * fa * fb;</span><br><span class="line">	<span class="keyword">return</span> value;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="title class_">VectorField</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getValue</span> = <span class="keyword">function</span>(<span class="params">x, y, opt_result</span>) {</span><br><span class="line">	<span class="keyword">var</span> vx = <span class="variable language_">this</span>.<span class="title function_">bilinear</span>(<span class="string">'x'</span>, x*<span class="number">2</span>, y*<span class="number">2</span>);</span><br><span class="line">	<span class="keyword">var</span> vy = <span class="variable language_">this</span>.<span class="title function_">bilinear</span>(<span class="string">'y'</span>, x*<span class="number">2</span>, y*<span class="number">2</span>);</span><br><span class="line">	<span class="keyword">if</span> (opt_result) {</span><br><span class="line">		opt_result.<span class="property">x</span> = vx;</span><br><span class="line">		opt_result.<span class="property">y</span> = vy;</span><br><span class="line">		<span class="keyword">return</span> opt_result;</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Vector</span>(vx, vy);</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> <span class="title class_">MotionDisplay</span> = <span class="keyword">function</span>(<span class="params">canvas, field, numParticles</span>) {</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">canvas</span> = canvas;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">field</span> = field;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">numParticles</span> = numParticles||<span class="number">3224.55</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">first</span> = <span class="literal">true</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">maxLength</span> = field.<span class="property">maxLength</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">speedScale</span> = <span class="number">1</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">renderState</span> = <span class="string">'normal'</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">x0</span> = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">x0</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">x1</span> = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">x1</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">y0</span> = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">y0</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">y1</span> = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">y1</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">state</span> = <span class="string">'startMove'</span>;</span><br><span class="line">	<span class="comment">//this.makeNewParticles(null, true);</span></span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">colors</span> = [];</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">rgb</span> = <span class="string">'40, 40, 40'</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">background</span> = <span class="string">'rgb('</span> + <span class="variable language_">this</span>.<span class="property">rgb</span> + <span class="string">')'</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">backgroundAlpha</span> = <span class="string">'rgba('</span> + <span class="variable language_">this</span>.<span class="property">rgb</span> + <span class="string">', 0.02)'</span>;</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">outsideColor</span> = <span class="string">'#fff'</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">256</span>; i++) {</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">colors</span>[i] = <span class="string">'rgb('</span> + i + <span class="string">','</span> + i + <span class="string">','</span> + i + <span class="string">')'</span>;</span><br><span class="line">	}</span><br><span class="line">};</span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">makeParticle</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	<span class="keyword">var</span> dx =  <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> dy =  <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> scale = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">var</span> safecount = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (;;) {</span><br><span class="line">		<span class="keyword">var</span> a = <span class="title class_">Math</span>.<span class="title function_">random</span>();</span><br><span class="line">		<span class="keyword">var</span> b = <span class="title class_">Math</span>.<span class="title function_">random</span>();</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * var x = a * this.x0 + (1 - a) * this.x1; var y = b * this.y0 + (1 - b) *</span></span><br><span class="line"><span class="comment"> * this.y1;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">        <span class="keyword">var</span> x1 = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">x0</span>+ (<span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">x1</span>-<span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">x0</span>)*a;</span><br><span class="line">        <span class="keyword">var</span> y1 =  <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">y0</span>+ (<span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">y1</span>-<span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">y0</span>)*b;</span><br><span class="line">		<span class="keyword">var</span> v = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="title function_">getValue</span>(x1, y1);</span><br><span class="line">		<span class="keyword">var</span> m = v.<span class="title function_">length</span>() / <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">maxLength</span>;</span><br><span class="line">		<span class="comment">// The random factor here is designed to ensure that</span></span><br><span class="line">		<span class="comment">// more particles are placed in slower areas; this makes the</span></span><br><span class="line">		<span class="comment">// overall distribution appear more even.</span></span><br><span class="line">		<span class="keyword">if</span> ((v.<span class="property">x</span> || v.<span class="property">y</span>) &amp;&amp; (++safecount &gt; <span class="number">10</span> || <span class="title class_">Math</span>.<span class="title function_">random</span>() &gt; m * <span class="number">.9</span>)) {</span><br><span class="line">			<span class="comment">// var proj = this.projection.project(x, y);</span></span><br><span class="line">			<span class="comment">// var proj = map.getPixelFromCoordinate(new</span></span><br><span class="line">			<span class="comment">// ol.proj.fromLonLat([x,y]))</span></span><br><span class="line">			<span class="keyword">var</span> sx = x1 * scale + dx;</span><br><span class="line">			<span class="keyword">var</span> sy = y1 * scale + dy;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Particle</span>(x1, y1, <span class="number">1</span> + <span class="number">40</span> * <span class="title class_">Math</span>.<span class="title function_">random</span>());</span><br><span class="line">			<span class="keyword">if</span> (++safecount &gt; <span class="number">10</span> || !(sx &lt; <span class="number">0</span> || sy &lt; <span class="number">0</span> || sx &gt; <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">width</span> || sy &gt; <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">height</span>)) {</span><br><span class="line">	     		 <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Particle</span>(x1, y1, <span class="number">1</span> + <span class="number">40</span> * <span class="title class_">Math</span>.<span class="title function_">random</span>());</span><br><span class="line">     		 }	</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">};</span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">makeNewParticles</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">particles</span> = [];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">numParticles</span>; i++) {</span><br><span class="line">		<span class="variable language_">this</span>.<span class="property">particles</span>.<span class="title function_">push</span>(<span class="variable language_">this</span>.<span class="title function_">makeParticle</span>());</span><br><span class="line">	}</span><br><span class="line">};</span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">start</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	monitorMap.<span class="title function_">updateSize</span>();</span><br><span class="line">	<span class="keyword">var</span> self = <span class="variable language_">this</span>;</span><br><span class="line">	<span class="keyword">function</span> <span class="title function_">go</span>(<span class="params"></span>) {</span><br><span class="line">		self.<span class="title function_">loop</span>();</span><br><span class="line">        self.<span class="property">animationId</span> = <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(go);</span><br><span class="line">	}</span><br><span class="line">	<span class="title function_">go</span>();</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">stop</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">cancelAnimationFrame</span>(<span class="variable language_">this</span>.<span class="property">animationId</span>)</span><br><span class="line">};</span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">loop</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	<span class="variable language_">this</span>[<span class="variable language_">this</span>.<span class="property">state</span>].<span class="title function_">call</span>(<span class="variable language_">this</span>, <span class="variable language_">this</span>)</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">animate</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	<span class="variable language_">this</span>.<span class="title function_">moveThings</span>();</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">draw</span>();</span><br><span class="line">};</span><br><span class="line"></span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">startMove</span>  = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">    <span class="keyword">var</span> mapSize = monitorMap.<span class="title function_">getSize</span>();</span><br><span class="line">	<span class="keyword">var</span> width = mapSize[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">var</span> height = mapSize[<span class="number">1</span>];</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">width</span> = width;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">height</span> = height;</span><br><span class="line">	<span class="keyword">var</span> zoom = monitorMap.<span class="title function_">getView</span>().<span class="title function_">getZoom</span>();</span><br><span class="line">	<span class="variable language_">this</span>.<span class="property">numParticles</span> = myView.<span class="property">modalSelect</span> == <span class="string">"gfs"</span>? <span class="number">75</span>:<span class="number">0</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">numParticles</span> &gt;=<span class="number">5000</span>? <span class="number">5000</span>:<span class="variable language_">this</span>.<span class="property">numParticles</span>;</span><br><span class="line">	<span class="keyword">var</span> extent = monitorMap.<span class="title function_">getView</span>().<span class="title function_">calculateExtent</span>(mapSize);</span><br><span class="line">    <span class="keyword">var</span> ext2 = <span class="keyword">new</span> ol.<span class="property">proj</span>.<span class="title function_">transformExtent</span>(extent,asideVue.<span class="property">projection</span>, <span class="string">'EPSG:4326'</span> );</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">x0</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(ext2[<span class="number">0</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">y0</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(ext2[<span class="number">1</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">x1</span> = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(ext2[<span class="number">2</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">field</span>.<span class="property">y1</span> = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(ext2[<span class="number">3</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">x0</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(ext2[<span class="number">0</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">y0</span> = <span class="title class_">Math</span>.<span class="title function_">floor</span>(ext2[<span class="number">1</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">x1</span> = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(ext2[<span class="number">2</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">y1</span> = <span class="title class_">Math</span>.<span class="title function_">ceil</span>(ext2[<span class="number">3</span>]);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">width</span>=width;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">height</span>=height;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">fillColor</span> =  <span class="string">"rgba(0, 0, 0, 0.9406060606060607)"</span>;<span class="comment">//默认0.92</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">strokeStyle</span> =  <span class="string">"#ededed"</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">moveSpeed</span> =<span class="number">75</span>;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">windThick</span> = <span class="number">0.5</span>;</span><br><span class="line">	<span class="comment">// canvas.getContext("2d").clearRect(0,0,width,height)</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">makeNewParticles</span>(<span class="literal">null</span>, <span class="literal">true</span>);</span><br><span class="line">};</span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">moveThings</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">    <span class="keyword">var</span> resolution = monitorMap.<span class="title function_">getView</span>().<span class="title function_">getResolution</span>();</span><br><span class="line">    <span class="keyword">var</span> speed = <span class="variable language_">this</span>.<span class="property">moveSpeed</span>*resolution/ <span class="number">3E7</span>;</span><br><span class="line">	<span class="comment">// console.log(this.state+"&gt;&gt;"+this.particles.length)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">particles</span>.<span class="property">length</span>; i++) {</span><br><span class="line">		<span class="keyword">var</span> p = <span class="variable language_">this</span>.<span class="property">particles</span>[i];</span><br><span class="line">		<span class="keyword">if</span> (p.<span class="property">age</span> &gt; <span class="number">0</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">field</span>.<span class="title function_">inBounds</span>(p.<span class="property">oldX</span>, p.<span class="property">oldY</span>)) {</span><br><span class="line">		  <span class="keyword">var</span> a = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="title function_">getValue</span>(p.<span class="property">x</span>, p.<span class="property">y</span>);	</span><br><span class="line">			p.<span class="property">x</span> += speed * a.<span class="property">x</span>;</span><br><span class="line">			p.<span class="property">y</span> += speed * a.<span class="property">y</span>;</span><br><span class="line">			p.<span class="property">age</span>--;</span><br><span class="line">		} <span class="keyword">else</span> {</span><br><span class="line">			<span class="variable language_">this</span>.<span class="property">particles</span>[i] = <span class="variable language_">this</span>.<span class="title function_">makeParticle</span>();</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">};</span><br><span class="line"><span class="title class_">MotionDisplay</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">draw</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	<span class="keyword">var</span> g = <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="title function_">getContext</span>(<span class="string">'2d'</span>);</span><br><span class="line">	<span class="keyword">var</span> w = <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">width</span>;</span><br><span class="line">	<span class="keyword">var</span> h = <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">height</span>;</span><br><span class="line">	 g.<span class="property">fillStyle</span> = <span class="variable language_">this</span>.<span class="property">fillColor</span>;</span><br><span class="line">		<span class="comment">// g.fillStyle = this.backgroundAlpha;</span></span><br><span class="line">	<span class="keyword">var</span> dx = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> dy = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">var</span> scale = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Fade existing particle trails.</span></span><br><span class="line">    <span class="keyword">var</span> prev = g.<span class="property">globalCompositeOperation</span>;</span><br><span class="line">    g.<span class="property">globalCompositeOperation</span> = <span class="string">"destination-in"</span>;</span><br><span class="line">    g.<span class="title function_">fillRect</span>(dx, dy, w * scale,h * scale);</span><br><span class="line">    g.<span class="property">globalCompositeOperation</span> = prev;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">var</span> proj = <span class="keyword">new</span> <span class="title class_">Vector</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">var</span> val = <span class="keyword">new</span> <span class="title class_">Vector</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	g.<span class="property">lineWidth</span> = <span class="variable language_">this</span>.<span class="property">windThick</span>;</span><br><span class="line">	<span class="comment">// console.log(this.particles.length)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">particles</span>.<span class="property">length</span>; i++) {</span><br><span class="line">		<span class="keyword">var</span> p = <span class="variable language_">this</span>.<span class="property">particles</span>[i];</span><br><span class="line">		<span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">field</span>.<span class="title function_">inBounds</span>(p.<span class="property">oldX</span>, p.<span class="property">oldY</span>)) {</span><br><span class="line">			p.<span class="property">age</span> = -<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">continue</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="comment">// this.projection.project(p.x, p.y, proj);</span></span><br><span class="line">		proj = monitorMap.<span class="title function_">getPixelFromCoordinate</span>(<span class="keyword">new</span> ol.<span class="property">proj</span>.<span class="title function_">fromLonLat</span>([p.<span class="property">x</span>, p.<span class="property">y</span>] ,asideVue.<span class="property">projection</span>));</span><br><span class="line">		proj[<span class="number">0</span>] = <span class="title class_">Math</span>.<span class="title function_">round</span>(proj[<span class="number">0</span>]) * scale + dx;</span><br><span class="line">		proj[<span class="number">1</span>] = <span class="title class_">Math</span>.<span class="title function_">round</span>(proj[<span class="number">1</span>]) * scale + dy;</span><br><span class="line">		<span class="keyword">if</span> (proj[<span class="number">0</span>] &lt; <span class="number">0</span> || proj[<span class="number">1</span>] &lt; <span class="number">0</span> || proj[<span class="number">0</span>] &gt; w || proj[<span class="number">1</span>] &gt; h) {</span><br><span class="line">			p.<span class="property">age</span> = -<span class="number">2</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span> (p.<span class="property">oldX</span> !== -<span class="number">1</span>) {</span><br><span class="line">			<span class="keyword">var</span> wind = <span class="variable language_">this</span>.<span class="property">field</span>.<span class="title function_">getValue</span>(p.<span class="property">x</span>, p.<span class="property">y</span>, val);</span><br><span class="line">			g.<span class="property">strokeStyle</span> = <span class="variable language_">this</span>.<span class="property">strokeStyle</span>;</span><br><span class="line">			g.<span class="title function_">beginPath</span>();</span><br><span class="line">			g.<span class="title function_">moveTo</span>(p.<span class="property">oldX</span>, p.<span class="property">oldY</span>);</span><br><span class="line">			g.<span class="title function_">lineTo</span>(proj[<span class="number">0</span>], proj[<span class="number">1</span>]);</span><br><span class="line">			g.<span class="title function_">stroke</span>();</span><br><span class="line">	  }</span><br><span class="line">		p.<span class="property">oldX</span> = proj[<span class="number">0</span>];</span><br><span class="line">		p.<span class="property">oldY</span> = proj[<span class="number">1</span>];</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+<p>wind2.js中的代码主要作用是加载了数据</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//var utcNow =new Date( myView.datetime.getTime())</span></span><br><span class="line"><span class="comment">//utcNow.setHours(myView.time)</span></span><br><span class="line"><span class="comment">//utcNow = new Date(utcNow.getTime()-8*60*60*1000)</span></span><br><span class="line"><span class="keyword">var</span> imguv = <span class="keyword">new</span> <span class="title class_">Image</span>();</span><br><span class="line">imguv.<span class="property">crossOrigin</span> = <span class="string">"anonymous"</span>;</span><br><span class="line">imguv.<span class="property">src</span>=<span class="string">"./img/06.jpg"</span></span><br><span class="line"><span class="comment">//imguv.src =myView.dataSource+"/GFS/win/"+utcNow.Format("yyyy/MM/dd/hh")+".jpg"; // "http://www.meteowise.msns.cn:28083/GFS/win/2017/05/01/01.jpg";//"getImageForecastData?path="+utcNow.Format("yyyy/MM/dd")+"/icon/whole_world/hour_"+utcNow.Format("hh")+"/icon_vitr_u_10_m_"+utcNow.Format("yyyyMMdd_hh")+".jpg"</span></span><br><span class="line"></span><br><span class="line">imguv.<span class="property">onerror</span>= <span class="keyword">function</span>(<span class="params"></span>){</span><br><span class="line">    <span class="keyword">if</span>(myView.<span class="property">modalSelect</span>===<span class="string">"gfs"</span>){</span><br><span class="line">        myView.<span class="property">$Notice</span>.<span class="title function_">error</span>({ <span class="attr">title</span>: <span class="string">'未找到该时次数据'</span>,<span class="attr">desc</span>:<span class="string">"可能是时间超出范围，也有可能是网络错误"</span>})</span><br><span class="line">    }</span><br><span class="line">};</span><br><span class="line"><span class="keyword">var</span> winspeed = [];</span><br><span class="line">imguv.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">	<span class="keyword">var</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">'canvas'</span>);</span><br><span class="line">    canvas.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">width</span>;</span><br><span class="line">    canvas.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">height</span>;</span><br><span class="line">    <span class="keyword">var</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">"2d"</span>);</span><br><span class="line">    ctx.<span class="title function_">drawImage</span>(<span class="variable language_">this</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">	<span class="keyword">var</span> imageData = ctx.<span class="title function_">getImageData</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">width</span>, <span class="variable language_">this</span>.<span class="property">height</span>).<span class="property">data</span>;</span><br><span class="line">	<span class="keyword">var</span> field = <span class="title class_">VectorField</span>.<span class="title function_">readImgArr</span>(imageData);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">720</span>; i++) {</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; <span class="number">360</span>; j++) {</span><br><span class="line">			<span class="keyword">var</span> vector = field.<span class="property">field</span>[i][j];</span><br><span class="line">			<span class="keyword">var</span> speed = <span class="title class_">Math</span>.<span class="property">sqrt</span> (<span class="title class_">Math</span>.<span class="title function_">pow</span>(vector.<span class="property">x</span>,<span class="number">2</span>)+<span class="title class_">Math</span>.<span class="title function_">pow</span>(vector.<span class="property">y</span>,<span class="number">2</span>));</span><br><span class="line">			winspeed[(j*<span class="number">720</span>+i)*<span class="number">4</span>] = speed;</span><br><span class="line">			winspeed[(j*<span class="number">720</span>+i)*<span class="number">4</span>+<span class="number">1</span>] = speed;</span><br><span class="line">			winspeed[(j*<span class="number">720</span>+i)*<span class="number">4</span>+<span class="number">2</span>] = speed;</span><br><span class="line">			winspeed[(j*<span class="number">720</span>+i)*<span class="number">4</span>+<span class="number">3</span>] = speed</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">// canvasLayer.setSource(new ol.source.ImageCanvas({</span></span><br><span class="line">	<span class="comment">// 	canvasFunction : canvasFunction,</span></span><br><span class="line">	<span class="comment">// 	ratio : 1,</span></span><br><span class="line">	<span class="comment">// 	projection : "epsg:3857"</span></span><br><span class="line">	<span class="comment">// }))</span></span><br><span class="line">	display.<span class="property">field</span> = field;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(display);</span><br><span class="line">	<span class="keyword">if</span> (display.<span class="property">first</span>) {</span><br><span class="line">		display.<span class="title function_">start</span>();</span><br><span class="line">        monitorMap.<span class="title function_">on</span>(<span class="string">'movestart'</span>, <span class="keyword">function</span>(<span class="params"></span>){</span><br><span class="line">            display.<span class="property">state</span> =<span class="string">"startMove"</span>;</span><br><span class="line">            });</span><br><span class="line">        monitorMap.<span class="title function_">on</span>(<span class="string">'moveend'</span>, <span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">            display.<span class="property">state</span> =<span class="string">"animate"</span>;</span><br><span class="line">        });</span><br><span class="line">        <span class="comment">//monitorMap.on('pointermove',pointmove)</span></span><br><span class="line">        display.<span class="property">first</span>=<span class="literal">false</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="built_in">setTimeout</span>(<span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">		display.<span class="property">state</span> =<span class="string">"animate"</span></span><br><span class="line">	}, <span class="number">100</span>);</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<p>具体的原理应该是：<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1149061">风场原理</a> 这篇文章中说明的，我看着这里面的代码也是按这篇文章写的，我就不罗嗦了，具体的内容，可以查阅相关参考文献，至于其他的代码优化，抽取，等下一篇文章继续写吧。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/f4e8bf5.html" rel="next" title="GIS风场及其相关技术研究三">
+                      <i class="iconfont icon-prev"></i> GIS风场及其相关技术研究三
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/d3ef60ea.html" rel="prev" title="GIS开发之GeoTool">
+                      GIS开发之GeoTool <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/31f106a4.html';
+      this.page.identifier = 'posts/31f106a4.html';
+      this.page.title = 'GIS风场及其相关技术研究一';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：GIS风场及其相关技术研究一 链接地址:https://bibichuan.github.io/posts/31f106a4.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'GIS风场及其相关技术研究一',
+		url: 'https://bibichuan.github.io/posts/31f106a4.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'GIS风场及其相关技术研究一',
+			isTipVisibility: true,
+			tip: 'GIS风场及其相关技术研究一',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

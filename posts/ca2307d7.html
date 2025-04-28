@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调研报告之Protobuf数据格式</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">调研报告之Protobuf数据格式</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-03-31 03:28:25
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>如果要问你，前后端交互的数据格式有哪些？哪种数据格式更加通用？哪种数据格式更加的高效？有没有二级制数据格式？</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_11990719/3112870">HTTP传输二进制初探</a> 从第一次接触http协议的时候，不知是怎么回事，形成了这么一个错误的观点，认为http协议是个纯ASCII字符协议，也就是说在http流里是看不到二进制流的0x00值的。其实答案是：http协议里的content可以是纯二进制流。<br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/72108f0aefca">protobuf为什么那么快</a> 首先，对于我们系统当中的一些大数据传输，显然用protobuf是可以获得很大的改善的，如果你这么干了，领导一定会想给你涨工资的。第二，给我们优化数据传输提供了一种思路，通过提供更多的数据元数据（数据类型，长度等），我们可以大幅度提高解析数据，比如在nodejs当中就有一个框架叫fastify，通过给json设计了schema来提供更快的解析速度，</div>
+<p>作者：张柳哥<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/72108f0aefca">https://www.jianshu.com/p/72108f0aefca</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h3 id="1-Protobuf格式"><a href="#1-Protobuf格式" class="headerlink" title="1.Protobuf格式"></a>1.Protobuf格式</h3><p>Protocol buffers 是一种语言中立，平台无关，可扩展的序列化数据的格式，可用于通信协议，数据存储等。Protocol buffers 在序列化数据方面，它是灵活的，高效的。相比于 XML 来说，Protocol buffers 更加小巧，更加快速，更加简单。一旦定义了要处理的数据的数据结构之后，就可以利用 Protocol buffers 的代码生成工具生成相关的代码。甚至可以在无需重新部署程序的情况下更新数据结构。只需使用 Protobuf 对数据结构进行一次描述，即可利用各种不同语言或从各种不同数据流中对你的结构化数据轻松读写。Protocol buffers 很适合做数据存储或 RPC 数据交换格式。可用于通讯协议、数据存储等领域的语言无关、平台无关、可扩展的序列化结构数据格式。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.infoq.cn/article/json-is-5-times-faster-than-protobufc">Protobuf 有没有比 JSON 快 5 倍？</a><br>2.<a target="_blank" rel="noopener" href="https://colobu.com/2017/03/16/Protobuf3-language-guide/">[转]Protobuf3 语法指南</a> Protobuf3的语法说明<br>3.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/86790661">GitHub 标星 6.2k+！前 Google 工程师出品，最佳开发工具大全！</a> 1.大数据处理工具:MapReduce,替代品：Apache Hadoop、Spark。1.序列化工具:Google 内部：Protocol Buffer；外部替代品：Protobuf、Thrift、Avro。3.大型集群管理系统：Google 内部：Borg；外部替代品：Kubernetes、Apache Mesos、HashiCorp Nomad。4.其他开发工具。<br>4.<a target="_blank" rel="noopener" href="https://halfrost.com/protobuf_encode/">高效的数据压缩编码方式 Protobuf</a> proto3 定义 message;proto3 定义 Services;Protocol Buffer 编码原理;Protocol Buffer 命名规范<br>5.<a target="_blank" rel="noopener" href="https://www.eet-china.com/mp/a63366.html">长文图解Google的protobuf思考、设计、应用</a></div>
+<h3 id="2-Pbf格式"><a href="#2-Pbf格式" class="headerlink" title="2.Pbf格式"></a>2.Pbf格式</h3><p>这个格式，其实是mapbox实现的一种 Protobuf Buffer 的读取，可以用在浏览器端，典型的例子就是早期的矢量切片数据就是以.pbf格式传输的，可以参考 <a href="/posts/64d735d1.html" title="调研报告之矢量切片">调研报告之矢量切片</a> 。</p>
+<h3 id="3-解析"><a href="#3-解析" class="headerlink" title="3.解析"></a>3.解析</h3><p>不同语言都实现了protobuf文件的序列化和返序列化。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/da48fb06b29f">protobufjs</a> protobuf.js是一个纯JavaScript实现，支持Node.js和浏览器的TypeScript，它容易使用速度快速，可以直接反射.proto文件，不需要生成任何文件。<br>2.<a target="_blank" rel="noopener" href="https://ifun.dev/post/protobuf-in-browser/">浏览器中使用Protobuf</a> 总体来说，在前端使用 protobuf 并不是太成熟，很可能会遇到一些问题，可以在 Protobuf 的 Github issues 页面搜寻一下相关解决方案或提出你的问题。<br>3.<a target="_blank" rel="noopener" href="https://www.shuzhiduo.com/A/B0zqLD23dv/">前后端数据交互利器–Protobuf</a> Protobuf 是 Google 开源的一款用于处理前后端数据交互格式的工具。通常来讲前后端使用的编程语言是不同的，使用 Protobuf无需多虑，前后端只管约定通信协议，之后就可以使用 pb 工具生成代码。</div>
+<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2.安装"></a>2.安装</h2><p>我这里没有用windows系统，用的是Deepin系统，从<a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf/releases">官网</a> 下载安装包 protobuf-all-3.20.0.tar.gz ，使用命令行执行编译安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装依赖包，如果没有安装的话</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install autoconf automake libtool curl make g++ unzip</span><br><span class="line"><span class="comment">## 编译，并指定安装位置</span></span><br><span class="line">./configure --prefix=/soft/protobuf</span><br><span class="line">make</span><br><span class="line">make check</span><br><span class="line"><span class="comment">## 执行安装</span></span><br><span class="line"><span class="built_in">sudo</span> make install</span><br><span class="line"><span class="built_in">sudo</span> ldconfig</span><br><span class="line"></span><br><span class="line"><span class="comment">## 配置环境变量</span></span><br><span class="line">vi /etc/profile</span><br><span class="line"><span class="comment">## 添加下面两行脚本</span></span><br><span class="line"><span class="built_in">export</span> PROTOC_HOME=/soft/protobuf</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PROTOC_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line"><span class="comment">## 重载环境变量</span></span><br><span class="line"><span class="built_in">source</span> /etc/profile</span><br><span class="line"><span class="comment">## 查看</span></span><br><span class="line">protoc --version</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41347419/article/details/107118752">安装Protobuf 编译生成java对象</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/05e91bb8506f">linux 安装protobuf</a><br>3.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_13870740/3444284">Linux环境安装Protobuf</a></div>
+<h2 id="3-定义消息类型"><a href="#3-定义消息类型" class="headerlink" title="3.定义消息类型"></a>3.定义消息类型</h2><p>编写模式文件</p>
+<figure class="highlight protobuf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">option</span> java_package = <span class="string">"com.example.demo.protobuf"</span>;</span><br><span class="line"><span class="keyword">option</span> java_outer_classname = <span class="string">"MessageUser"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">message </span><span class="title class_">MessageUserLogin</span> {</span><br><span class="line">    <span class="type">string</span> access_token = <span class="number">1</span>;</span><br><span class="line">    <span class="type">string</span> username = <span class="number">2</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用protoc生成类文件，执行命令之后，会在当前文件夹生成一个com文件夹，就是我们常用的java类的文件夹了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">protoc --java_out=./ user.proto</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-Java端"><a href="#4-Java端" class="headerlink" title="4.Java端"></a>4.Java端</h2><p>废话不多说，这里我测试一个<a target="_blank" rel="noopener" href="https://gitee.com/bibichuan/springboot-protobuf">简单的例子</a>。后端使用 java 生成 protobuf 格式数据，传递给前端，前端进行解析并打印。我这里直接到<a target="_blank" rel="noopener" href="https://start.spring.io/">springboot</a>官网，生成一个基本的springboot工程，然后通过添加依赖，添加生成的代码，然后编写控制器接口的方法进行工程的创建。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1504965">Protobuf介绍和整合SpringBoot</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/baby123/p/12653608.html">ProtoBuf及整合到SpringBoot</a> 这个比较简单,可以借鉴，比较好上手<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/haoxiaoyong1014/article/details/90614250">SpringBoot整合Netty并使用Protobuf进行数据传输</a></div>
+<h3 id="4-1-添加依赖"><a href="#4-1-添加依赖" class="headerlink" title="4.1.添加依赖"></a>4.1.添加依赖</h3><p>在pom.xml中添加依赖，因为我安装的protoc是3.20版本的，所以protobuf-java依赖也要用3.20版本的。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.protobuf<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>protobuf-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.20.0-rc-1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.googlecode.protobuf-java-format<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>protobuf-java-format<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-2-添加protobuf序列化支持"><a href="#4-2-添加protobuf序列化支持" class="headerlink" title="4.2.添加protobuf序列化支持"></a>4.2.添加protobuf序列化支持</h3><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.http.converter.protobuf.ProtobufHttpMessageConverter;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.client.RestTemplate;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CommonConfig</span> {</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * protobuf 序列化</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    ProtobufHttpMessageConverter <span class="title function_">protobufHttpMessageConverter</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ProtobufHttpMessageConverter</span>();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * protobuf 反序列化</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    RestTemplate <span class="title function_">restTemplate</span><span class="params">(ProtobufHttpMessageConverter protobufHttpMessageConverter)</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>(Collections.singletonList(protobufHttpMessageConverter));</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-3-添加控制器"><a href="#4-3-添加控制器" class="headerlink" title="4.3.添加控制器"></a>4.3.添加控制器</h3><p>将使用protoc工具生成的java端代码，拷贝到工程的相应目录中，并解决依赖等问题，编写控制器，输出数据。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.demo.protobuf.MessageUser;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.UUID;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoController</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = "/test", produces = "application/x-protobuf")</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> MessageUser.MessageUserLogin <span class="title function_">getProto</span><span class="params">()</span> {</span><br><span class="line">        MessageUser.MessageUserLogin.<span class="type">Builder</span> <span class="variable">builder</span> <span class="operator">=</span>  MessageUser.MessageUserLogin.newBuilder();</span><br><span class="line">        builder.setAccessToken(UUID.randomUUID().toString()+<span class="string">"_res"</span>);</span><br><span class="line">        builder.setUsername(<span class="string">"abc"</span>);</span><br><span class="line">        <span class="keyword">return</span> builder.build();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="4-4-启动测试"><a href="#4-4-启动测试" class="headerlink" title="4.4.启动测试"></a>4.4.启动测试</h3><p>使用 GET 访问 <a target="_blank" rel="noopener" href="http://127.0.0.1:8080/test%EF%BC%8C%E6%9F%A5%E7%9C%8B%E7%BB%93%E6%9E%9C%EF%BC%9A">http://127.0.0.1:8080/test，查看结果：</a>(8d4ac2c5-0a69-4811-a16e-ebd6769eb69f_resabc</p>
+<h2 id="5-Javascript端"><a href="#5-Javascript端" class="headerlink" title="5.Javascript端"></a>5.Javascript端</h2><p>使用起来还是有点费劲的，需要先生成commonjs模块，然后使用browserify进行编译，最后集成到html中。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34060299/article/details/88599472">基于http协议使用protobuf进行前后端交互</a> 这是一个前后端分离的使用proto进行交互的例子，这里有使用axios进行后台数据请求<br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41951307/convert-a-json-object-to-buffer-and-buffer-to-json-object-back">Convert a JSON Object to Buffer and Buffer to JSON Object back</a><br>3.<a target="_blank" rel="noopener" href="https://javascript.ruanyifeng.com/tool/browserify.html">Browserify：浏览器加载Node.js模块</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010138825/article/details/85245995">Protobuf之proto js生成</a> 这个对于使用browerify生成最终的js，有描述</div>
+<h3 id="5-1生成js文件"><a href="#5-1生成js文件" class="headerlink" title="5.1生成js文件"></a>5.1生成js文件</h3><p>使用protoc工具，根据user.proto配置，生成js文件,会在当前 . 目录下生成一个user_pb.js文件，用于 nodejs 端加载和显示，如果要想进一步的在浏览器中进行加载和展示，还需要通过browserify工具进行打包</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 生成commonjs模块的文件</span></span><br><span class="line">protoc --js_out=import_style=commonjs,binary:. user.proto</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-2-编译打包"><a href="#5-2-编译打包" class="headerlink" title="5.2.编译打包"></a>5.2.编译打包</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装需要的依赖</span></span><br><span class="line">npm install -g require</span><br><span class="line">npm install -g browserify</span><br><span class="line">npm install google-protobuf</span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者</span></span><br><span class="line">pnpm add -g require</span><br><span class="line">npm add -g browserify</span><br><span class="line"><span class="comment">## 当前目录安装</span></span><br><span class="line">npm add google-protobuf</span><br><span class="line"></span><br><span class="line"><span class="comment">## 执行编译</span></span><br><span class="line">browserify user_pb.js &gt; user.js</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="5-3-编写html"><a href="#5-3-编写html" class="headerlink" title="5.3.编写html"></a>5.3.编写html</h3><p>将生成的user.js嵌入到html中，使用axios进行数据请求，然后进行数据解析，在接收的时候，使用二级制进行数据接收和反序列化就可以了。</p>
+<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>测试protobuf<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"js/user.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"application/javascript"</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">/**</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">     * 前端使用</span></span></span><br><span class="line"><span class="comment"><span class="language-javascript">     */</span></span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(axios);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> message= <span class="keyword">new</span> proto.<span class="title class_">MessageUserLogin</span>();</span></span><br><span class="line"><span class="language-javascript">    message.<span class="title function_">setAccessToken</span>(<span class="number">1</span>);</span></span><br><span class="line"><span class="language-javascript">    message.<span class="title function_">setUsername</span>(<span class="number">2</span>);</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> bytes = message.<span class="title function_">serializeBinary</span>();</span></span><br><span class="line"><span class="language-javascript">    <span class="variable language_">console</span>.<span class="title function_">log</span>(bytes);</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="comment">// 请求后台数据，并序列话</span></span></span><br><span class="line"><span class="language-javascript">    <span class="title function_">axios</span>({</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">method</span>:<span class="string">'get'</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">url</span>: <span class="string">'/test'</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">headers</span>: { <span class="string">'contentType'</span>:<span class="string">'application/x-protobuf'</span>},</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">responseType</span>:<span class="string">'arraybuffer'</span> <span class="comment">// 要使用二级制数据接收</span></span></span><br><span class="line"><span class="language-javascript">    }).<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> {</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// 二级制解析</span></span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> data = <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(res.<span class="property">data</span>);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> result = proto.<span class="property">MessageUserLogin</span>.<span class="title function_">deserializeBinary</span>(data)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> username = result.<span class="title function_">getUsername</span>()</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(username) <span class="comment">// username。解析出来就是后端传过来的abc</span></span></span><br><span class="line"><span class="language-javascript">        </span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> pm = proto.<span class="property">MessageUserLogin</span>.<span class="title function_">deserializeBinary</span>(data)</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">let</span> protoBuf = pm.<span class="title function_">toObject</span>()</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'protoBuf: '</span>, protoBuf) <span class="comment">// 打印出来是一个对象</span></span></span><br><span class="line"><span class="language-javascript">    }).<span class="title function_">catch</span>(<span class="function">(<span class="params">error</span>) =&gt;</span> {</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">console</span>.<span class="title function_">log</span>(error)</span></span><br><span class="line"><span class="language-javascript">    })</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903854706786312">axios使用protobuf进行通讯</a> 这里我得到了启发，就是使用 arraybuffer 进行数据的接收<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/amadeus_liu2/article/details/114107977">ProtoBuf: ByteString和String转换</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zmx729618/article/details/53023157">httpclient ＋protobuf 实现数据传输</a> content-type 设置为 application/octet-stream,后端使用的是通过httpclient的post请求传输protobuf二进制流</div>
+<h2 id="6-总结"><a href="#6-总结" class="headerlink" title="6.总结"></a>6.总结</h2><p>(1) 当使用字符串类型的时候，不会有多么大的压缩，会被浏览器原生体现，如果使用了数字类型，那么就是二级制类型。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/31f2efec.html" rel="next" title="调研报告之VR虚拟现实">
+                      <i class="iconfont icon-prev"></i> 调研报告之VR虚拟现实
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/a1e51305.html" rel="prev" title="调研报告之OLAP数据库">
+                      调研报告之OLAP数据库 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Protobuf%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">1.Protobuf格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Pbf%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.2.</span> <span class="toc-text">2.Pbf格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">3.解析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">2.安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%9A%E4%B9%89%E6%B6%88%E6%81%AF%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">3.定义消息类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Java%E7%AB%AF"><span class="toc-number">4.</span> <span class="toc-text">4.Java端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="toc-number">4.1.</span> <span class="toc-text">4.1.添加依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%B7%BB%E5%8A%A0protobuf%E5%BA%8F%E5%88%97%E5%8C%96%E6%94%AF%E6%8C%81"><span class="toc-number">4.2.</span> <span class="toc-text">4.2.添加protobuf序列化支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%B7%BB%E5%8A%A0%E6%8E%A7%E5%88%B6%E5%99%A8"><span class="toc-number">4.3.</span> <span class="toc-text">4.3.添加控制器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="toc-number">4.4.</span> <span class="toc-text">4.4.启动测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Javascript%E7%AB%AF"><span class="toc-number">5.</span> <span class="toc-text">5.Javascript端</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E7%94%9F%E6%88%90js%E6%96%87%E4%BB%B6"><span class="toc-number">5.1.</span> <span class="toc-text">5.1生成js文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E7%BC%96%E8%AF%91%E6%89%93%E5%8C%85"><span class="toc-number">5.2.</span> <span class="toc-text">5.2.编译打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E7%BC%96%E5%86%99html"><span class="toc-number">5.3.</span> <span class="toc-text">5.3.编写html</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">6.总结</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/ca2307d7.html';
+      this.page.identifier = 'posts/ca2307d7.html';
+      this.page.title = '调研报告之Protobuf数据格式';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：调研报告之Protobuf数据格式 链接地址:https://bibichuan.github.io/posts/ca2307d7.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '调研报告之Protobuf数据格式',
+		url: 'https://bibichuan.github.io/posts/ca2307d7.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '调研报告之Protobuf数据格式',
+			isTipVisibility: true,
+			tip: '调研报告之Protobuf数据格式',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器运维之MinIO</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">服务器运维之MinIO</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-12-17 04:36:05
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>MinIO 是一个基于 Apache License v2.0 开源协议的对象存储服务。它兼容亚马逊S3云存储服务接口，非常适合于存储大容量非结构化的数据，例如图片、视频、日志文件、备份数据和容器/虚拟机镜像等，而一个对象文件可以是任意大小，从几kb到最大5T不等。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/awk2l3lg/">装在笔记本里的私有云环境：网络存储篇（上）</a> 在我们熟悉的公有云平台上，网络存储类型一般会分为：块存储、对象存储、文件存储三类。其他更多的品类，则更多是基于这三类进行了一些不同侧重功能的场景定制，赋予了更强的业务能力。<br>【2】.<a target="_blank" rel="noopener" href="https://post.smzdm.com/p/a20d98q7/">一个docker容器搞定存储与图床——minio </a> 这篇文章讲了使用docker部署minio的问题，还讲了一些坑的避免<br>【3】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103803549">开源分布式对象存储-MinIO</a><br>【4】.<a target="_blank" rel="noopener" href="https://www.hxstrive.com/subject/minio/572.htm">MinIO 教程</a> 从简单搭建，到复杂的教程，基本上都能有一个大致的描述，是一个系列教程。<br>【5】.<a target="_blank" rel="noopener" href="https://www.minio.org.cn/">AI数据基础设施的对象存储</a><br>【6】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7162040763801894943"> MinIO 介绍 与 FastDFS 对比 </a> 这里有一个简单的对比，FastDFS 暂时无法和 Minio 进行比较，毕竟很少有人去维护了。</div>
+<h1 id="2-名次解释"><a href="#2-名次解释" class="headerlink" title="2.名次解释"></a>2.名次解释</h1><h1 id="3-单机安装"><a href="#3-单机安装" class="headerlink" title="3.单机安装"></a>3.单机安装</h1><p>(1) <a target="_blank" rel="noopener" href="https://min.io/download">下载</a></p>
+<p>(2) 安装<br>下载解压之后，直接将 minio 程序放到 /usr/local/minio/bin 目录下</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> -p /data/server/minio/{bin,data,config,<span class="built_in">log</span>}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 启动脚本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置MinIO的配置参数</span></span><br><span class="line"><span class="built_in">export</span> MINIO_ROOT_USER=admin</span><br><span class="line"><span class="built_in">export</span> MINIO_ROOT_PASSWORD=minioadmin</span><br><span class="line"><span class="comment">#设置MinIO端口</span></span><br><span class="line"><span class="comment">#S3-API端口</span></span><br><span class="line"><span class="built_in">export</span> MINIO_ADDRESS=<span class="string">":6900"</span></span><br><span class="line"><span class="comment">#Console端口</span></span><br><span class="line"><span class="built_in">export</span> MINIO_CONSOLE_ADDRESS=<span class="string">":6901"</span></span><br><span class="line"><span class="comment">#设置MinIO安装路径</span></span><br><span class="line"><span class="built_in">export</span> MINIO_PATH_DIR=<span class="string">"/usr/local/minio"</span></span><br><span class="line"><span class="comment">#设置MinIO配置文件路径</span></span><br><span class="line"><span class="built_in">export</span> MINIO_CONFIG_DIR=<span class="string">"/usr/local/minio/config"</span></span><br><span class="line"><span class="comment"># 设置数据存储路径</span></span><br><span class="line"><span class="built_in">export</span> MINIO_DATA_DIR=<span class="string">"/home/data/minio"</span></span><br><span class="line"><span class="comment"># 启动MinIO服务器</span></span><br><span class="line"><span class="built_in">nohup</span> <span class="variable">$MINIO_PATH_DIR</span>/bin/minio server --address <span class="variable">$MINIO_ADDRESS</span> --console-address <span class="variable">$MINIO_CONSOLE_ADDRESS</span> --config-dir <span class="variable">$MINIO_CONFIG_DIR</span> <span class="variable">$MINIO_DATA_DIR</span> &gt; <span class="variable">$MINIO_PATH_DIR</span>/log/minio.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 关闭脚本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Stopping minio"</span></span><br><span class="line">pid=`ps -ef | grep <span class="string">'minio server'</span> | grep -v grep | awk <span class="string">'{print $2}'</span>`</span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$pid</span>"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line"><span class="built_in">kill</span> -9 <span class="variable">$pid</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"Stop Success!"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(5) 自启动<br>有了开启和关闭脚本之后，我还想着要用自动启动的方式进行开机启动，但是好像写的总是不对。</p>
+<p>经过多次尝试，最后修改成了 /usr/lib/systemd/system/minio.service 的启动脚本如下，其中 /bin/bash /usr/local/minio/bin/start.sh 比较关键</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Minio Service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=root</span><br><span class="line">Group=root</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/bin/bash /usr/local/minio/bin/start.sh</span><br><span class="line">ExecStop=/bin/bash /usr/local/minio/bin/shutdown.sh</span><br><span class="line">PrivateTmp=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></tbody></table></figure>
+
+<p>有了自启动脚本，就可以实现开机启动了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动</span></span><br><span class="line">systemctl start minio</span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">systemctl stop minio</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2260544">linux配置minio通过服务单机启动</a> 1.直接启动；2.后台启动；3.定制服务启动，加入系统自动启动。<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pinghengxing/p/13599707.html">linux 下安装minio并配置</a><br>【3】.<a target="_blank" rel="noopener" href="https://www.osyunwei.com/archives/13709.html">Linux下MinIO单节点安装部署</a> 这里提供了启动脚本和关闭脚本,就是我上面列出的东西<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36415230/article/details/122154943">linux minio 安装 并设置开机自启动</a> 这里主要是使用了 vim /usr/lib/systemd/system/minio.service 配置了开机启动，没有用启动脚本<br>【5】.<a target="_blank" rel="noopener" href="https://www.kancloud.cn/yuanrun/linux/734848">编写systemctl启动脚本</a> 编写了httpd、nginx、php-fpm脚本。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35112567/article/details/131915729">单机部署MinIo并设置开机自启</a> 这里的启动脚本也是直接使用的：ExecStart=/home/minio/bin/minio server –address :9010 –console-address :9011 /home/minio/data<br>【7】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yychuyu/p/13095732.html">Linux系统如何设置开机自动运行脚本？</a> 方法一：修改 /etc/rc.d/rc.local 文件;方法二：使用 crontab;方法三：使用 systemd 服务<br>【8】.<a target="_blank" rel="noopener" href="https://github.com/minio/minio/issues/6772">Unable to start Minio Service</a> 这里是官方的一个讨论，但是最后到底如何解决的，我没有看出来。<br>【9】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_32523999/article/details/116662128">linux强行退出脚本执行,linux – Systemd退出bash脚本,执行导致失败的命令,而不是继续…</a></div>
+<h1 id="5-配置"><a href="#5-配置" class="headerlink" title="5.配置"></a>5.配置</h1><p>早期使用MINIO_ACCESS_KEY 和 MINIO_SECRET_KEY 配置密钥，后来提示： MINIO_ACCESS_KEY and MINIO_SECRET_KEY are deprecated. Please use MINIO_ROOT_USER and MINIO_ROOT_PASSWORD。浏览器打开 <code>http://192.168.1.8:6900/</code> 可以访问 minio web页面。</p>
+<p>（1）新建用户<br>通过控制台-&gt;Identity-&gt;Users可以创建用户。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44723773/article/details/131636730">MinIO的配置与安装</a> 这里也是写成了服务的形式。<br>【2】.<a target="_blank" rel="noopener" href="https://www.hxstrive.com/subject/minio/581.htm">MinIO 自定义 Access Key 和 Secret Key</a>在启动 MinIO 时指定自定义 Access Key 和 Secret Key； 使用 Docker secrets 进行 MinIO Access 和 Secret 密钥自定义<br>【3】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15466961/8529708">minio创建用户获取秘钥</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_63922888/article/details/131436114">minio中的安装启动地址问题</a> –address参数：用于指定MinIO服务器监听的S3 API访问地址。–console-address参数：用于指定MinIO服务器控制台的访问地址。<br>【5】.<a target="_blank" rel="noopener" href="https://www.hxstrive.com/subject/minio/669.htm">MinIO 服务器配置（区域）</a> MinIO 中可以使用区域来表示当前服务器的位置。</div>
+<h1 id="6-文件上传"><a href="#6-文件上传" class="headerlink" title="6.文件上传"></a>6.文件上传</h1><p>文件上传，很多的库都实现了这个功能，比如jeecgboot里面的，这里我把源码贴出来。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MinioUtil</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String minioUrl;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String minioName;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String minioPass;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String bucketName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setMinioUrl</span><span class="params">(String minioUrl)</span> {</span><br><span class="line">        MinioUtil.minioUrl = minioUrl;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setMinioName</span><span class="params">(String minioName)</span> {</span><br><span class="line">        MinioUtil.minioName = minioName;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setMinioPass</span><span class="params">(String minioPass)</span> {</span><br><span class="line">        MinioUtil.minioPass = minioPass;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">setBucketName</span><span class="params">(String bucketName)</span> {</span><br><span class="line">        MinioUtil.bucketName = bucketName;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getMinioUrl</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> minioUrl;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getBucketName</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> bucketName;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">MinioClient</span> <span class="variable">minioClient</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 上传文件</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">upload</span><span class="params">(MultipartFile file, String bizPath, String customBucket)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="type">String</span> <span class="variable">fileUrl</span> <span class="operator">=</span> <span class="string">""</span>;</span><br><span class="line">        <span class="comment">//update-begin-author:wangshuai date:20201012 for: 过滤上传文件夹名特殊字符，防止攻击</span></span><br><span class="line">        bizPath = StrAttackFilter.filter(bizPath);</span><br><span class="line">        <span class="comment">//update-end-author:wangshuai date:20201012 for: 过滤上传文件夹名特殊字符，防止攻击</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//update-begin-author:liusq date:20210809 for: 过滤上传文件类型</span></span><br><span class="line">        SsrfFileTypeFilter.checkUploadFileType(file);</span><br><span class="line">        <span class="comment">//update-end-author:liusq date:20210809 for: 过滤上传文件类型</span></span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">newBucket</span> <span class="operator">=</span> bucketName;</span><br><span class="line">        <span class="keyword">if</span>(oConvertUtils.isNotEmpty(customBucket)){</span><br><span class="line">            newBucket = customBucket;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            initMinio(minioUrl, minioName,minioPass);</span><br><span class="line">            <span class="comment">// 检查存储桶是否已经存在</span></span><br><span class="line">            <span class="keyword">if</span>(minioClient.bucketExists(BucketExistsArgs.builder().bucket(newBucket).build())) {</span><br><span class="line">                log.info(<span class="string">"Bucket already exists."</span>);</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                <span class="comment">// 创建一个名为ota的存储桶</span></span><br><span class="line">                minioClient.makeBucket(MakeBucketArgs.builder().bucket(newBucket).build());</span><br><span class="line">                log.info(<span class="string">"create a new bucket."</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">stream</span> <span class="operator">=</span> file.getInputStream();</span><br><span class="line">            <span class="comment">// 获取文件名</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">orgName</span> <span class="operator">=</span> file.getOriginalFilename();</span><br><span class="line">            <span class="keyword">if</span>(<span class="string">""</span>.equals(orgName)){</span><br><span class="line">                orgName=file.getName();</span><br><span class="line">            }</span><br><span class="line">            orgName = CommonUtils.getFileName(orgName);</span><br><span class="line"><span class="comment">//            String objectName = bizPath+"/"</span></span><br><span class="line"><span class="comment">//                                +( orgName.indexOf(".")==-1</span></span><br><span class="line"><span class="comment">//                                   ?orgName + "_" + System.currentTimeMillis()</span></span><br><span class="line"><span class="comment">//                                   :orgName.substring(0, orgName.lastIndexOf(".")) + "_" + System.currentTimeMillis() + orgName.substring(orgName.lastIndexOf("."))</span></span><br><span class="line"><span class="comment">//                                 );</span></span><br><span class="line">            <span class="comment">// 不进行重新命名</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">objectName</span> <span class="operator">=</span> bizPath+<span class="string">"/"</span>+orgName;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 使用putObject上传一个本地文件到存储桶中。</span></span><br><span class="line">            <span class="keyword">if</span>(objectName.startsWith(SymbolConstant.SINGLE_SLASH)){</span><br><span class="line">                objectName = objectName.substring(<span class="number">1</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="type">PutObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> PutObjectArgs.builder().object(objectName)</span><br><span class="line">                    .bucket(newBucket)</span><br><span class="line">                    .contentType(<span class="string">"application/octet-stream"</span>)</span><br><span class="line">                    .stream(stream,stream.available(),-<span class="number">1</span>).build();</span><br><span class="line">            minioClient.putObject(objectArgs);</span><br><span class="line">            stream.close();</span><br><span class="line">            fileUrl = minioUrl+newBucket+<span class="string">"/"</span>+objectName;</span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            log.error(e.getMessage(), e);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> fileUrl;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 文件上传</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> file</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bizPath</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">upload</span><span class="params">(MultipartFile file, String bizPath)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="keyword">return</span> upload(file,bizPath,<span class="literal">null</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取文件流</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> InputStream <span class="title function_">getMinioFile</span><span class="params">(String bucketName,String objectName)</span>{</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            initMinio(minioUrl, minioName, minioPass);</span><br><span class="line">            <span class="type">GetObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> GetObjectArgs.builder().object(objectName)</span><br><span class="line">                    .bucket(bucketName).build();</span><br><span class="line">            inputStream = minioClient.getObject(objectArgs);</span><br><span class="line">        } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">            log.info(<span class="string">"文件获取失败"</span> + e.getMessage());</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> inputStream;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 删除文件</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">removeObject</span><span class="params">(String bucketName, String objectName)</span> {</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            initMinio(minioUrl, minioName,minioPass);</span><br><span class="line">            <span class="type">RemoveObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> RemoveObjectArgs.builder().object(objectName)</span><br><span class="line">                    .bucket(bucketName).build();</span><br><span class="line">            minioClient.removeObject(objectArgs);</span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            log.info(<span class="string">"文件删除失败"</span> + e.getMessage());</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取文件外链</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> objectName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> expires</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getObjectUrl</span><span class="params">(String bucketName, String objectName, Integer expires)</span> {</span><br><span class="line">        initMinio(minioUrl, minioName,minioPass);</span><br><span class="line">        <span class="keyword">try</span>{</span><br><span class="line">            <span class="comment">//update-begin---author:liusq  Date:20220121  for：获取文件外链报错提示method不能为空，导致文件下载和预览失败----</span></span><br><span class="line">            <span class="type">GetPresignedObjectUrlArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> GetPresignedObjectUrlArgs.builder().object(objectName)</span><br><span class="line">                    .bucket(bucketName)</span><br><span class="line">                    .expiry(expires).method(Method.GET).build();</span><br><span class="line">            <span class="comment">//update-begin---author:liusq  Date:20220121  for：获取文件外链报错提示method不能为空，导致文件下载和预览失败----</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> minioClient.getPresignedObjectUrl(objectArgs);</span><br><span class="line">            <span class="keyword">return</span> URLDecoder.decode(url,<span class="string">"UTF-8"</span>);</span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            log.info(<span class="string">"文件路径获取失败"</span> + e.getMessage());</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 初始化客户端</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> minioUrl</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> minioName</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> minioPass</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MinioClient <span class="title function_">initMinio</span><span class="params">(String minioUrl, String minioName,String minioPass)</span> {</span><br><span class="line">        <span class="keyword">if</span> (minioClient == <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">try</span> {</span><br><span class="line">                minioClient = MinioClient.builder()</span><br><span class="line">                        .endpoint(minioUrl)</span><br><span class="line">                        .credentials(minioName, minioPass)</span><br><span class="line">                        .build();</span><br><span class="line">            } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> minioClient;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 上传文件到minio</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> stream</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> relativePath</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">upload</span><span class="params">(InputStream stream,String relativePath)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        initMinio(minioUrl, minioName,minioPass);</span><br><span class="line">        <span class="keyword">if</span>(minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build())) {</span><br><span class="line">            log.info(<span class="string">"Bucket already exists."</span>);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="comment">// 创建一个名为ota的存储桶</span></span><br><span class="line">            minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());</span><br><span class="line">            log.info(<span class="string">"create a new bucket."</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="type">PutObjectArgs</span> <span class="variable">objectArgs</span> <span class="operator">=</span> PutObjectArgs.builder().object(relativePath)</span><br><span class="line">                .bucket(bucketName)</span><br><span class="line">                .contentType(<span class="string">"application/octet-stream"</span>)</span><br><span class="line">                .stream(stream,stream.available(),-<span class="number">1</span>).build();</span><br><span class="line">        minioClient.putObject(objectArgs);</span><br><span class="line">        stream.close();</span><br><span class="line">        <span class="keyword">return</span> minioUrl+bucketName+<span class="string">"/"</span>+relativePath;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 批量删除文件</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> bucketName bucket</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> keys       需要删除的文件列表</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">removeObjects</span><span class="params">(String bucketName, List&lt;String&gt; keys)</span> {</span><br><span class="line">        initMinio(minioUrl, minioName,minioPass);</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            List&lt;DeleteObject&gt; objects = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">            <span class="keyword">for</span> (String objectName:keys){</span><br><span class="line">                objects.add(<span class="keyword">new</span> <span class="title class_">DeleteObject</span>(objectName));</span><br><span class="line">            }</span><br><span class="line">            Iterable&lt;Result&lt;DeleteError&gt;&gt; results =</span><br><span class="line">                    minioClient.removeObjects(RemoveObjectsArgs.builder().bucket(bucketName).objects(objects).build());</span><br><span class="line">            <span class="keyword">for</span> (Result&lt;DeleteError&gt; result : results) {</span><br><span class="line">                <span class="type">DeleteError</span> <span class="variable">error</span> <span class="operator">=</span> result.get();</span><br><span class="line">                log.error(<span class="string">"Error in deleting object "</span> + error.objectName() + <span class="string">"; "</span> + error.message());</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">            log.error(<span class="string">"removeObjects"</span>,e);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** * 下载文件 * * <span class="doctag">@param</span> fileUrl 文件绝对路径 * <span class="doctag">@param</span> response * <span class="doctag">@throws</span> IOException */</span></span><br><span class="line">    <span class="meta">@GetMapping("downloadFile")</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">downloadFile</span><span class="params">(String fileUrl, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException { </span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isBlank(fileUrl)) { </span><br><span class="line">    </span><br><span class="line">            response.setHeader(<span class="string">"Content-type"</span>, <span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">"文件下载失败"</span>;</span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">ps</span> <span class="operator">=</span> response.getOutputStream();</span><br><span class="line">            ps.write(data.getBytes(<span class="string">"UTF-8"</span>));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">try</span> { </span><br><span class="line">    </span><br><span class="line">            <span class="comment">// 拿到文件路径</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> fileUrl.split(<span class="string">"9000/"</span>)[<span class="number">1</span>];</span><br><span class="line">            <span class="comment">// 获取文件对象</span></span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">object</span> <span class="operator">=</span> minioUtils.getObject(MinioConst.MINIO_BUCKET, url.substring(url.indexOf(<span class="string">"/"</span>) + <span class="number">1</span>));</span><br><span class="line">            <span class="type">byte</span> buf[] = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">            <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">            response.reset();</span><br><span class="line">            response.setHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;filename="</span> + URLEncoder.encode(url.substring(url.lastIndexOf(<span class="string">"/"</span>) + <span class="number">1</span>), <span class="string">"UTF-8"</span>));</span><br><span class="line">            response.setContentType(<span class="string">"application/octet-stream"</span>);</span><br><span class="line">            response.setCharacterEncoding(<span class="string">"UTF-8"</span>);</span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> response.getOutputStream();</span><br><span class="line">            <span class="comment">// 输出文件</span></span><br><span class="line">            <span class="keyword">while</span> ((length = object.read(buf)) &gt; <span class="number">0</span>) { </span><br><span class="line">    </span><br><span class="line">                outputStream.write(buf, <span class="number">0</span>, length);</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">// 关闭输出流</span></span><br><span class="line">            outputStream.close();</span><br><span class="line">        } <span class="keyword">catch</span> (Exception ex) { </span><br><span class="line">    </span><br><span class="line">            response.setHeader(<span class="string">"Content-type"</span>, <span class="string">"text/html;charset=UTF-8"</span>);</span><br><span class="line">            <span class="type">String</span> <span class="variable">data</span> <span class="operator">=</span> <span class="string">"文件下载失败"</span>;</span><br><span class="line">            <span class="type">OutputStream</span> <span class="variable">ps</span> <span class="operator">=</span> response.getOutputStream();</span><br><span class="line">            ps.write(data.getBytes(<span class="string">"UTF-8"</span>));</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42584411/article/details/104163381">上传文件到minio文件大小限制</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43148691/article/details/120344054">Minio工具类</a> 这里基本上包括了所有的方法了，可以作为参考，这里很多的代码。<br>【3】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/376350512">minio文件存储</a> 删除多个文件<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/CSDNwangshaopeng/article/details/125365769">MinioUtils中removeObjects批量删除无效的解决办法</a> 原来是因为没有遍历结果的原因，源码方法的上面有一句注释（但是我没找到这句注释），大致意思就是删除后一定要遍历结果，至于为啥这么做，我们稍后见。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/daodfs111/article/details/124547781">一次恶心的删除minio文件之旅</a> 1.最快的方式，一定是在服务器上用linux命令删除;2.写java代码,可是minio的java客户端只支持按完整的对象路径删除;3.<br>【6】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2106183">写给大忙人看的 – Java中从MinIO服务器中下载文件（3）[通俗易懂]</a></div>
+<h1 id="7-其他"><a href="#7-其他" class="headerlink" title="7.其他"></a>7.其他</h1><h2 id="7-1-扩容"><a href="#7-1-扩容" class="headerlink" title="7.1.扩容"></a>7.1.扩容</h2><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://tech.hiofd.com/how-to-expand-minio/">MinIO如何扩容</a></div>
+<h2 id="7-2-用户管理"><a href="#7-2-用户管理" class="headerlink" title="7.2.用户管理"></a>7.2.用户管理</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mikelv01/article/details/108757698">MinIO多用户权限管理</a><br>2.<a target="_blank" rel="noopener" href="https://www.ctyun.cn/developer/article/418569012924485">使用mc client对minio进行多用户设置及访问权限控制</a></div>
+<h2 id="7-3-压缩和解压"><a href="#7-3-压缩和解压" class="headerlink" title="7.3.压缩和解压"></a>7.3.压缩和解压</h2><p>我有很多的小文件，但是一个个的上传感觉特别的浪费时间，我想着能不能实现先压缩然后到minio上再解压呢？或者有没有其他的方法，能解决大量小文件上传的问题呢？</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1027217">minio对象存储工具</a> 这个是安装方法<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40986713/article/details/117558429">Java实现minio文件服务web在线解压上传工具类</a><br>【3】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/434780987">对象存储——海量小文件存储之道</a></div>
+<h2 id="7-4-多文件上传"><a href="#7-4-多文件上传" class="headerlink" title="7.4.多文件上传"></a>7.4.多文件上传</h2><p>我利用了 ffmpeg 切出来了很多的小文件，最后我还是用了多文件上传的技术进行了文件上传，这样可以保证上传的效率。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ExecutorService executorService= Executors.newFixedThreadPool(NUM_THREADS);</span><br><span class="line"><span class="keyword">for</span>(File f:fs){</span><br><span class="line">    executorService.submit(()-&gt;{</span><br><span class="line">        uploadMinio(f,bizPath);</span><br><span class="line">    });</span><br><span class="line">}</span><br><span class="line">executorService.shutdown();</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013891584/article/details/80520692">多线程实战（多线文件上传）</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/boonya/article/details/50634400">Java 读取多个文件流合并操作</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ooo123lll/article/details/131670446">java实现大文件多线程上传案例</a> 以上代码实现了将大文件分片上传的逻辑。通过使用线程池管理并发上传任务，每个任务负责上传一个片段。在上传过程中，通过随机访问文件方式，避免将整个文件加载到内存中，从而避免内存溢出的问题。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175436/6621578">如何实现Java 多线程上传多文件的具体操作步骤</a> 和上一篇文章差不多，用了 ExecutorService executorService= Executors.newFixedThreadPool(NUM_THREADS);</div>
+<h1 id="8-nginx配置"><a href="#8-nginx配置" class="headerlink" title="8.nginx配置"></a>8.nginx配置</h1><p>前置条件:在启动minio服务前指定以下环境变量，MINIO_SERVER_URL为 minio-api 的地址，MINIO_BROWSER_REDIRECT_URL为 minioconsole 的地址。可以按照实际需求配置。</p>
+<p>(1) 配置启动参数<br>这里的 MINIO_SERVER_URL 为API接口地址，不能带二级域名，不能是  <a target="_blank" rel="noopener" href="https://xxx.com/file%E3%80%82MINIO_BROWSER_REDIRECT_URL%E4%B8%BA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B5%8F%E8%A7%88%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%8F%AF%E4%BB%A5%E5%B8%A6">https://xxx.com/file。MINIO_BROWSER_REDIRECT_URL为浏览器浏览地址，可以带</a> 二级目录。经过尝试，也就是说，其实这个 api 访问接口，不能配置子目录，只能配置域名加上端口，或者是子域名加端口，不能加后面的路径，但是网页管理端口就是可以的。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 配置二级目录</span></span><br><span class="line"><span class="built_in">export</span> MINIO_SERVER_URL=https://xxx.com:10014</span><br><span class="line"><span class="built_in">export</span> MINIO_BROWSER_REDIRECT_URL=https://xxx.com:10014/filebrowser</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) nginx配置<br>在nginx中配置，就要注意，下面给出了一个可以正常登录的 https 配置</p>
+<ul>
+<li><p>第一个就是 minio 的 api 端口，必须是一级目录，不能是二级目录</p>
+</li>
+<li><p>第二个要注意的就是，api端口和console端口，要在同一个端口下面</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">    listen       10014 ssl;</span><br><span class="line">    listen  [::]:10014 ssl;</span><br><span class="line">    server_name openmap.tech;</span><br><span class="line"></span><br><span class="line">    ssl_certificate      <span class="string">"./conf/xxx.com.pem"</span>;</span><br><span class="line">    ssl_certificate_key  <span class="string">"./conf/xxx.com.key"</span>;</span><br><span class="line"></span><br><span class="line">    ssl_session_cache    shared:SSL:1m;</span><br><span class="line">    ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">    ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Allow special characters in headers</span></span><br><span class="line">    ignore_invalid_headers off;</span><br><span class="line">    <span class="comment"># Allow any size file to be uploaded.</span></span><br><span class="line">    <span class="comment"># Set to a value such as 1000m; to restrict file size to a specific value</span></span><br><span class="line">    client_max_body_size 0;</span><br><span class="line">    <span class="comment"># Disable buffering</span></span><br><span class="line">    proxy_buffering off;</span><br><span class="line">    proxy_request_buffering off;</span><br><span class="line"></span><br><span class="line">    location / {</span><br><span class="line">        proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line"></span><br><span class="line">        proxy_connect_timeout 300;</span><br><span class="line">        <span class="comment"># Default is HTTP/1, keepalive is only enabled in HTTP/1.1</span></span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Connection <span class="string">""</span>;</span><br><span class="line">        chunked_transfer_encoding off;</span><br><span class="line"></span><br><span class="line">        proxy_pass http://localhost:10012; <span class="comment"># This uses the upstream directive definition to load balance</span></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    location /filebrowser/ {</span><br><span class="line">        rewrite ^/filebrowser/(.*) /<span class="variable">$1</span> <span class="built_in">break</span>;</span><br><span class="line">        proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        proxy_set_header X-NginX-Proxy <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># This is necessary to pass the correct IP to be hashed</span></span><br><span class="line">        real_ip_header X-Real-IP;</span><br><span class="line"></span><br><span class="line">        proxy_connect_timeout 300;</span><br><span class="line"></span><br><span class="line">        <span class="comment"># To support websockets in MinIO versions released after January 2023</span></span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">        proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">        <span class="comment"># Some environments may encounter CORS errors (Kubernetes + Nginx Ingress)</span></span><br><span class="line">        <span class="comment"># Uncomment the following line to set the Origin request to an empty string</span></span><br><span class="line">        <span class="comment"># proxy_set_header Origin '';</span></span><br><span class="line"></span><br><span class="line">        chunked_transfer_encoding off;</span><br><span class="line"></span><br><span class="line">        proxy_pass http://localhost:10013/; <span class="comment"># This uses the upstream directive definition to load balance</span></span><br><span class="line">    }</span><br><span class="line">  }</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<p>（3）单独配置API接口<br>还有一种情况，就是单独配置api接口的https,至于console控制台，可以不用配置。关闭配置 MINIO_SERVER_URL 和 MINIO_BROWSER_REDIRECT_URL，然后将 location 配置为桶的名字，然后去掉 proxy_pass 下的斜杠，如下所示，其中 drone 为我的桶的名字。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">server {</span><br><span class="line">    listen       10014 ssl;</span><br><span class="line">    listen  [::]:10014 ssl;</span><br><span class="line">    server_name openmap.tech;</span><br><span class="line"></span><br><span class="line">    ssl_certificate      <span class="string">"./conf/9254477_www.openmap.tech.pem"</span>;</span><br><span class="line">    ssl_certificate_key  <span class="string">"./conf/9254477_www.openmap.tech.key"</span>;</span><br><span class="line"></span><br><span class="line">    ssl_session_cache    shared:SSL:1m;</span><br><span class="line">    ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">    ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Allow special characters in headers</span></span><br><span class="line">    ignore_invalid_headers off;</span><br><span class="line">    <span class="comment"># Allow any size file to be uploaded.</span></span><br><span class="line">    <span class="comment"># Set to a value such as 1000m; to restrict file size to a specific value</span></span><br><span class="line">    client_max_body_size 0;</span><br><span class="line">    <span class="comment"># Disable buffering</span></span><br><span class="line">    proxy_buffering off;</span><br><span class="line">    proxy_request_buffering off;</span><br><span class="line"></span><br><span class="line">    location /drone {</span><br><span class="line">        proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line"></span><br><span class="line">        proxy_connect_timeout 300;</span><br><span class="line">        <span class="comment"># Default is HTTP/1, keepalive is only enabled in HTTP/1.1</span></span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Connection <span class="string">""</span>;</span><br><span class="line">        chunked_transfer_encoding off;</span><br><span class="line"></span><br><span class="line">        proxy_pass http://localhost:10012; <span class="comment"># This uses the upstream directive definition to load balance</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hahaha111122222/p/15988362.html">为MinIO Server设置Nginx代理</a> 所使用的路径（在本例中为files）按照惯例，应设置为minio所使用的存储桶的名称。<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/caidingyu/p/17754121.html">通过nginx二级目录反向代理访问minio管理界面</a> 在启动minio服务前指定以下环境变量，MINIO_SERVER_URL为minio-api的地址，MINIO_BROWSER_REDIRECT_URL为minioconsole<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/2302_77039238/article/details/134813784">minio分布式搭建，并用nginx代理</a><br>【4】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7163929193330245645">线上Minio部署+反向代理控制台+Java调用 </a><br>【5】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7163929193330245645"> 线上Minio部署+反向代理控制台+Java调用 </a><br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Mou_O/article/details/133991854">解决Nginx代理MinIO出现Access Denied</a> 这里提到了将 location 的名字改为 桶的名字。</div>
+<h1 id="9-https配置"><a href="#9-https配置" class="headerlink" title="9.https配置"></a>9.https配置</h1><p>刚开始的时候，我使用的是nginx进行的配置，结果总是报错 502 ,各种问题，后来我尝试使用 minio 进行配置，结果竟然一集就搞定了。<br>（1）申请ssl证书<br>我这里因为使用的是和 nginx 同一个证书，也就不用这么麻烦了，就将 nginx 的证书 .pem 和 .key 改为了 public.crt 和 private.key</p>
+<p>（2）创建目录<br>我创建一个certs目录，存储这两个证书。</p>
+<p>（3）修改启动脚本<br>把  MINIO_SERVER_URL 和 MINIO_BROWSER_REDIRECT_URL 删除，然后添加了一个 –certs-dir /$MINIO_PATH_DIR/certs/ 配置就可以了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">nohup</span> <span class="variable">$MINIO_PATH_DIR</span>/bin/minio server --certs-dir /<span class="variable">$MINIO_PATH_DIR</span>/certs/ --address <span class="variable">$MINIO_ADDRESS</span> --console-address <span class="variable">$MINIO_CONSOLE_ADDRESS</span> --config-dir <span class="variable">$MINIO_CONFIG_DIR</span> <span class="variable">$MINIO_DATA_DIR</span> &gt; <span class="variable">$MINIO_PATH_DIR</span>/log/minio.log 2&gt;&amp;1 &amp;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（4）最后的启动脚本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置MinIO的配置参数</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MINIO_ROOT_USER=xxx</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MINIO_ROOT_PASSWORD=xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置MinIO端口</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#S3-API端口</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MINIO_ADDRESS=<span class="string">":6900"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#Console端口</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MINIO_CONSOLE_ADDRESS=<span class="string">":6901"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置MinIO安装路径</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MINIO_PATH_DIR=<span class="string">"/usr/local/minio"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#设置MinIO配置文件路径</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MINIO_CONFIG_DIR=<span class="string">"/usr/local/minio/config"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置数据存储路径</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> MINIO_DATA_DIR=<span class="string">"/home/data/minio"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置二级目录</span></span><br><span class="line"><span class="comment">#export MINIO_SERVER_URL=https://openmap.tech:10014</span></span><br><span class="line"><span class="comment">#export MINIO_BROWSER_REDIRECT_URL=https://openmap.tech:10014/filebrowser</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动MinIO服务器</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">nohup</span> <span class="variable">$MINIO_PATH_DIR</span>/bin/minio server --certs-dir /<span class="variable">$MINIO_PATH_DIR</span>/certs/ --address <span class="variable">$MINIO_ADDRESS</span> --console-address <span class="variable">$MINIO_CONSOLE_ADDRESS</span> --config-dir <span class="variable">$MINIO_CONFIG_DIR</span> <span class="variable">$MINIO_DATA_DIR</span> &gt; <span class="variable">$MINIO_PATH_DIR</span>/log/minio.log 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（4）nginx<br>这是一个可选的项，只是作为记录，开始的时候，我总是无法用 nginx 进行 minio 的 https 配置，弄了很久都不行，最后只能通过配置 minio 的certs 选项才可以吼。后来我再次尝试的时候，竟然可以使用了，还真是奇怪，下面是 nginx 的配置：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## minio 的 https 配置</span></span><br><span class="line"> server {</span><br><span class="line">    listen 10003 ssl;</span><br><span class="line">    server_name openmap.tech;</span><br><span class="line"></span><br><span class="line">    ssl_certificate      cert/openmap.tech.pem;</span><br><span class="line">    ssl_certificate_key  cert/openmap.tech.key;</span><br><span class="line"></span><br><span class="line">    ssl_session_cache    shared:SSL:1m;</span><br><span class="line">    ssl_session_timeout  5m;</span><br><span class="line"></span><br><span class="line">    ssl_ciphers  HIGH:!aNULL:!MD5;</span><br><span class="line">    ssl_prefer_server_ciphers  on;</span><br><span class="line"></span><br><span class="line">    add_header X-Frame-Options SAMEORIGIN;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    proxy_set_header Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">    proxy_set_header Connection <span class="string">"upgrade"</span>;</span><br><span class="line">    <span class="comment">## 保持长时间连接</span></span><br><span class="line">    proxy_read_timeout 600s;</span><br><span class="line"></span><br><span class="line">    proxy_set_header    Host             <span class="variable">$host</span>;#保留代理之前的host</span><br><span class="line">    proxy_set_header    X-Real-IP        <span class="variable">$remote_addr</span>;#保留代理之前的真实客户端ip</span><br><span class="line">    proxy_set_header    X-Forwarded-For  <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    proxy_set_header    HTTP_X_FORWARDED_FOR <span class="variable">$remote_addr</span>;#在多级代理的情况下，记录每次代理之前的客户端真实ip</span><br><span class="line">    proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>; <span class="comment">#表示客户端真实的协议（http还是https）</span></span><br><span class="line">    proxy_set_header Referer <span class="variable">$scheme</span>://$server_name<span class="variable">$request_uri</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    include conf.d/*.conf;</span><br><span class="line"></span><br><span class="line">    <span class="comment">#去除多斜杠的配置</span></span><br><span class="line">    merge_slashes off;</span><br><span class="line">    rewrite (.*)//(.*) <span class="variable">$1</span>/<span class="variable">$2</span> permanent;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    index index.html;</span><br><span class="line">    location / {</span><br><span class="line">       proxy_pass http://127.0.0.1:10005/;</span><br><span class="line">    }</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://dlgcy.com/centos-minio-https/">在 CentOS 上搭建 MinIO 对象存储服务并配置 HTTPS</a> 这里还有安装之类的方法。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40461281/article/details/124260888">踩坑记录之MinIO添加HTTPS访问</a> 这里也有些其他的问题，可以作为参考，如果已经有了域名的情况下，可能就不是问题了。<br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cheyunhua/p/17578012.html">minio将http改为https方式访问</a> 这里增加了websocket支持<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/this_is_id/article/details/127314287">nginx 反向代理minio错误排查</a></div>
+<h1 id="10。Docker安装"><a href="#10。Docker安装" class="headerlink" title="10。Docker安装"></a>10。Docker安装</h1><p>配置 http 访问，端口设置为 9000 和 9090</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">{</span><br><span class="line">    <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">        <span class="string">"https://dockerproxy.com"</span>,</span><br><span class="line">        <span class="string">"https://docker.mirrors.ustc.edu.cn"</span>,</span><br><span class="line">        <span class="string">"https://docker.nju.edu.cn"</span></span><br><span class="line">    ]</span><br><span class="line">}</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="comment">## 下载镜像</span></span><br><span class="line">docker pull minio/minio</span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p /home/hj/minio/config</span><br><span class="line"><span class="built_in">mkdir</span> -p /home/hj/minio/data</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动新的容器</span></span><br><span class="line">docker run -p 9000:9000 -p 9090:9090 \</span><br><span class="line">     --net=host \</span><br><span class="line">     --name minio \</span><br><span class="line">     -d --restart=always \</span><br><span class="line">     -e <span class="string">"MINIO_ACCESS_KEY=minioadmin"</span> \</span><br><span class="line">     -e <span class="string">"MINIO_SECRET_KEY=minioadmin"</span> \</span><br><span class="line">     -v /home/minio/data:/data \</span><br><span class="line">     -v /home/minio/config:/root/.minio \</span><br><span class="line">     minio/minio server \</span><br><span class="line">     /data --console-address <span class="string">":9090"</span> -address <span class="string">":9000"</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">## 查询全部容器</span></span><br><span class="line">docker ps </span><br><span class="line"><span class="comment">## 关闭</span></span><br><span class="line">docker stop 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment">## 启动</span></span><br><span class="line">docker start 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment">## 删除</span></span><br><span class="line">docker <span class="built_in">rm</span> 容器<span class="built_in">id</span></span><br><span class="line"><span class="comment">## 配置ssl，创建一个certs目录，存储下载的nginx两个证书 .crt 和 .key，然后指定 --certs-dir 配置</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>我将 nginx 的证书 xxx.pem 改为了 public.crt, xxx.key 改为了 private.key，拷贝到 /home/hj/mimio/config/certs 目录下，配置了 https 访问</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 配置 https 访问</span></span><br><span class="line">docker run -p 10005:10005 -p 10006:10006 \</span><br><span class="line">     --net=host \</span><br><span class="line">     --name minio \</span><br><span class="line">     -d --restart=always \</span><br><span class="line">     -e <span class="string">"MINIO_ACCESS_KEY=xxx"</span> \</span><br><span class="line">     -e <span class="string">"MINIO_SECRET_KEY=xxx"</span> \</span><br><span class="line">     -v /home/hj/minio/data:/data \</span><br><span class="line">     -v /home/hj/minio/config:/root/.minio \</span><br><span class="line">     minio/minio server \</span><br><span class="line">     /data  --console-address <span class="string">":10005"</span> -address <span class="string">":10006"</span> </span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/BThinker/article/details/125412751">Docker 搭建 Minio 容器 (完整详细版)</a> 这里还是很详细的，包括了api操作。<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fengwenzhee/p/17226417.html">记一下docker启动minio</a> 这里大部分的都是 docker 的简单操作。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/shikai12/article/details/134027420">全网最全，基于docker 创建的Minio容器配置Https 访问，不使用第三方服务</a> 将证书配置挂载到minio容器的/root/.minio/certs目录下<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38989725/article/details/122468737">minio docker https 配置 踩坑</a> 私钥需要命名为：private.key 公钥需要命名为：public.crt (如果公钥是以pem格式结尾，可直接改为crt格式)，这里还有其他注意事项。<br>【5】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/988594">在Docker中快速部署MinIO</a></div>
+<h1 id="11-查询"><a href="#11-查询" class="headerlink" title="11.查询"></a>11.查询</h1><p>minio控制台提供的搜索，只能进行文件名的搜索，而且只能是当前文件夹才有效，深一层的文件夹就无效了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zrc_xiaoguo/article/details/135720923">如何实现对存储在MinIO上的数据的高效搜索与查询</a> 1.对象元数据索引;2.Elasticsearch集成;3.日志分析工具;4.对象标签（Object Tags）;5.文件命名规范;<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32419139/article/details/128968608">minio查询桶中文件,桶目录中文件</a> 这里是用了代码实现的<br>【3】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7275978079705022479">minio 支持object搜索方案</a> 因此我们打算将object的对象的数据放到数据库。在数据库中对object进行筛选。</div>
+<h1 id="12-问题汇总"><a href="#12-问题汇总" class="headerlink" title="12.问题汇总"></a>12.问题汇总</h1><p>本章主要就是写了关于 minio 使用过程中的一些问题，后来其实也是解决了。</p>
+<h2 id="1-Unable-to-parse-STS-response"><a href="#1-Unable-to-parse-STS-response" class="headerlink" title="(1) Unable to parse STS response."></a>(1) Unable to parse STS response.</h2><p>MINIO_ADDRESS 地址是 API 监听地址，改为API监听地址就可以了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/74611493/bad-request-with-sts-in-minio">Bad Request with STS in minio</a></div>
+<h2 id="（2）STS-service-failed-with-HTTP-status-code-403"><a href="#（2）STS-service-failed-with-HTTP-status-code-403" class="headerlink" title="（2）STS service failed with HTTP status code 403"></a>（2）STS service failed with HTTP status code 403</h2><p>报错的代码主要是下面的代码，</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> CredentialsToken <span class="title function_">getCredentials</span><span class="params">()</span> {</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="type">AssumeRoleProvider</span> <span class="variable">provider</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AssumeRoleProvider</span>(DroneOssConfiguration.endpoint,</span><br><span class="line">                DroneOssConfiguration.accessKey,</span><br><span class="line">                DroneOssConfiguration.secretKey, Math.toIntExact(DroneOssConfiguration.expire),</span><br><span class="line">                <span class="literal">null</span>, DroneOssConfiguration.region, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>, <span class="literal">null</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">CredentialsToken</span>(provider.fetch(), DroneOssConfiguration.expire);</span><br><span class="line">    } <span class="keyword">catch</span> (NoSuchAlgorithmException e) {</span><br><span class="line">        log.debug(<span class="string">"Failed to obtain sts."</span>);</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【尝试方法】<br>这里除了检查用户名密码之外，还要检查 区域 设置 , 因为我在安装的时候没有配置 区域，于是我就用了默认的 region: us-east-1，就算我不写这个区域，其实也不会出现这个403错误的。</p>
+<p>【解决方法】<br>有一种情况，那就是 关于这个 用户名密码 配置，是启动minio的MINIO_ROOT_USER 用户名 和 MINIO_ROOT_PASSWORD 密码，而不是 在管理客户端配置的 access-key 和 secret-key。我在官方上看到了这么一句话：By default, MinIO denies access to actions or resources not explicitly allowed by an attached or inherited policy. A user with no explicitly assigned or inherited policies cannot perform any S3 or MinIO administrative API operations.</p>
+<p>或者是直接创建一个新的用户</p>
+<img src="/images/loadimg.png" data-original="/posts/d5e521dc/minio_1.png" lay-src="/posts/d5e521dc/minio_1.png" class="" title="Minio">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39237409/article/details/131982015">minio报错 403 Forbidden</a> 在minio中，设置桶的访问策略,Buckets -&gt; Manage -&gt; Summary -&gt; Access Policy。<br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/611761457">MinIO安装配置和使用</a> S3地区: 就填写默认的us-east-1，因为之前创建joplin存储桶的时候没有指定，所以默认地区就是这个,S3访问密钥: 用户名，密钥: 密码<br>【3】.<a target="_blank" rel="noopener" href="https://github.com/minio/minio/issues/13992">Invalid Login 403 Forbidden for root user after initial configuration</a><br>【4】.<a target="_blank" rel="noopener" href="https://min.io/docs/minio/linux/administration/identity-access-management/minio-user-management.html">User Management</a> 这里是关于用户策略的描述：MinIO by default denies access to all actions or resources not explicitly allowed by a user’s assigned or inherited policies. You must either explicitly assign a policy describing the user’s authorized actions and resources or assign the user to groups which have associated policies. See Access Management for more information.<br>【5】.<a target="_blank" rel="noopener" href="https://min.io/docs/minio/linux/administration/identity-access-management.html#minio-access-management">Identity and Access Management</a><br>【6】.<a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/en/oss/support/http-status-code-403?spm=a2c63.p38356.0.0.7ee7157dNtQIm3">HTTP status code 403</a></div>
+<h2 id="（3）控制台登陆-401-问题"><a href="#（3）控制台登陆-401-问题" class="headerlink" title="（3）控制台登陆 401 问题"></a>（3）控制台登陆 401 问题</h2><p>配置了nginx之后，登录结果出现了401错误。</p>
+<p>【解决方法】<br>正确的配置了 nginx 就可以了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://v2ex.com/t/873692">Minio+Nginx+Docker 控制台登陆 401 问题，请问如何解决？</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35115922/article/details/132739045">解决Nginx代理MinIO出现Access Denied及404</a><br>【3】.<a target="_blank" rel="noopener" href="https://lala.im/8564.html">Docker安装新版MinIO（含反代、DNS Bucket、权限设置）</a></div>
+<p>（4）Unsupported or unrecognized SSL message<br>配置了 nginx 反向代理之后，结果调用 API 的时候，就出现了这个问题。</p>
+<p>【解决方法】<br>正确的配置了 https 就可以了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38144121/article/details/111373612">政务外网部署 minio上传下载报错 javax.net.ssl.SSLException: Unrecognized SSL message, plaintext connection?</a> 全局搜索MinioClient，查看在哪里初始化给secure赋值false即可<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42643690/article/details/107466816">解决springboot2.X整合minio出现SSLException: Unrecognized SSL message问题</a> 将之前配置的 secure参数由true改成了false,使用给定的endpoint、port、access key、secret key和一个secure选项（表示的是是否使用https）创建一个Minio client对象。<br>【3】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7021057486404714532">踩坑记录之MinIO添加HTTPS访问 </a><br>【4】.<a target="_blank" rel="noopener" href="https://github.com/minio/minio/issues/13437">endpoint does not allow path </a> No you cannot - hosting S3 APIs other / is not allowed.<br>【5】.<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/873692">Minio+Nginx+Docker 控制台登陆 401 问题，请问如何解决？</a></div>
+<h2 id="（4）配置了-https-访问，导致-minio-总是出现-502-错误"><a href="#（4）配置了-https-访问，导致-minio-总是出现-502-错误" class="headerlink" title="（4）配置了 https 访问，导致 minio 总是出现 502 错误"></a>（4）配置了 https 访问，导致 minio 总是出现 502 错误</h2><p>我配置了 MINIO_SERVER_URL 和 MINIO_BROWSER_REDIRECT_URL，在访问的时候，总是出现 502 网关错误。</p>
+<p>【尝试方案】<br>（1）我删除了 MINIO_SERVER_URL 和 MINIO_BROWSER_REDIRECT_URL 配置，然后只把 api 接口使用了 nginx 进行了 https 配置，控制台通过 ip 地址进行访问。但是这样的方式只能进行读取，不能进行上传了。</p>
+<p>（2）还有就是我的nginx配置的使用的 frp 进行内网穿透做的，猜测会是这样的问题。如果使用 minio 配置https ，还有 nginx 再配置https，这是不是就是两个https解析呢，特别是在我阿里云服务转发到内网的情况下，导致速度更低了。</p>
+<p>【解决方案】<br>最终的解决方案其实就是不要用 nginx 进行 https 的配置，通过minio进行https的配置最好了，方法参照 https 配置。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.v2ex.com/t/838785">nginx 反向代理 minio 的 9090 端口的控制台，报 502 错误</a> 这里也有这个问题</div>
+<h2 id="（5）STS-service-failed-with-HTTP-status-code-405"><a href="#（5）STS-service-failed-with-HTTP-status-code-405" class="headerlink" title="（5）STS service failed with HTTP status code 405"></a>（5）STS service failed with HTTP status code 405</h2><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41463655/article/details/107777698">关于Nginx 配置出现 405 Method Not Allowed 一次血的教训</a></div>
+<h2 id="6-Response-code-400-Content-Type-null-body-Client-sent-an-HTTP-request-to-an-HTTPS-server"><a href="#6-Response-code-400-Content-Type-null-body-Client-sent-an-HTTP-request-to-an-HTTPS-server" class="headerlink" title="(6) Response code: 400, Content-Type: null, body: Client sent an HTTP request to an HTTPS server."></a>(6) Response code: 400, Content-Type: null, body: Client sent an HTTP request to an HTTPS server.</h2><p>我配置了 minio 的https访问，结果使用http请求的时候，就出现了这个问题。</p>
+<p>【解决方案】<br>经过尝试，最后我通过配置了nginx解决了这个问题。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># minio</span></span><br><span class="line">server {</span><br><span class="line">    listen       10012;</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 文件上传大小</span></span><br><span class="line">    client_max_body_size 5G;</span><br><span class="line"></span><br><span class="line">    location / {</span><br><span class="line">        root   html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line"></span><br><span class="line">        proxy_set_header Host <span class="variable">$http_host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">        proxy_connect_timeout 300;</span><br><span class="line">        <span class="comment"># Default is HTTP/1, keepalive is only enabled in HTTP/1.1</span></span><br><span class="line">        proxy_http_version 1.1;</span><br><span class="line">        proxy_set_header Connection <span class="string">""</span>;</span><br><span class="line">        chunked_transfer_encoding off;</span><br><span class="line">        proxy_pass https://localhost:6900; <span class="comment"># This uses the upstream directive definition to load balance</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19671317/400-bad-request-http-error-code-meaning">400 BAD request HTTP error code meaning?</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Zhangsama1/article/details/129800515">Minio出现Non-XML response from server. Response code: 400, Content-Type: text/xml； ch的解决</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_21277357/article/details/110126762">解决:Client sent an HTTP request to an HTTPS server.</a> 把请求路径改为<a href="https://ip:端口去访问">https://ip:端口去访问</a><br>【4】.<a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/oss/support/http-400-status-code">400错误</a> 阿里云的oss错误汇总<br>【5】.<a target="_blank" rel="noopener" href="https://java.isture.com/arch/minio/minio-https.html">Minio部署 - minio配置HTTPS</a></div>
+<h2 id="7-上传慢"><a href="#7-上传慢" class="headerlink" title="(7) 上传慢"></a>(7) 上传慢</h2><p>我在使用内网上传的时候，比如使用 127.0.0.1 上传，结果也还是很慢。我在想，是不是 rclone 的问题，还是minio本身的问题。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tianchao/p/16522489.html">Minio上传文件慢优化</a></div>
+<h2 id="8-Invalid-Request-request-has-multiple-authentication-types-please-use-one"><a href="#8-Invalid-Request-request-has-multiple-authentication-types-please-use-one" class="headerlink" title="(8) Invalid Request (request has multiple authentication types, please use one)"></a>(8) Invalid Request (request has multiple authentication types, please use one)</h2><p>【解决方案】<br>这个问题是因为我在 url 中进行了鉴权，在 header 中由进行了一遍鉴权。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36332085/article/details/131460332">minio上传文件超过5M后文件上传报错request has multiple authentication types, please use one</a></div>
+<h2 id="9-error-pulling-image-configuration-download-failed-after-attempts-6-dial-tcp-108-160-169-46-443-i-o-timeout"><a href="#9-error-pulling-image-configuration-download-failed-after-attempts-6-dial-tcp-108-160-169-46-443-i-o-timeout" class="headerlink" title="(9) error pulling image configuration: download failed after attempts=6: dial tcp 108.160.169.46:443: i/o timeout"></a>(9) error pulling image configuration: download failed after attempts=6: dial tcp 108.160.169.46:443: i/o timeout</h2><p>在阿里云的服务器上安装的时候，没有出现问题，但是在电信云上安装minio总是拉取不下来镜像。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull minio/minio</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【尝试方法】<br>（1）修改为阿里云的镜像<br>（2）修改下面的源，不行</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">{</span><br><span class="line">    <span class="string">"registry-mirrors"</span>: [</span><br><span class="line">        <span class="string">"https://dockerproxy.com"</span>,</span><br><span class="line">        <span class="string">"https://docker.mirrors.ustc.edu.cn"</span>,</span><br><span class="line">        <span class="string">"https://docker.nju.edu.cn"</span></span><br><span class="line">    ]</span><br><span class="line">}</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
+<p>（3）修改为163的源：<a target="_blank" rel="noopener" href="http://hub-mirror.c.163.com,结果不行/">http://hub-mirror.c.163.com,结果不行</a><br>（4）尝试了 bitnami/minio 镜像，不行</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48447848/article/details/122725161">Podman 介绍，安装，基本操作</a> 这是docker替代方案<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_56097487/article/details/139538160">docker 拉取镜像失败</a> 这里用了 <code>https://docker.m.daocloud.io</code> 这个镜像地址，解决了问题。<br>【3】.<a target="_blank" rel="noopener" href="https://www.orcy.net.cn/3998.html">Docker pull国内无法拉取镜像解决办法（代理）</a> 配置了代理：Environment=”HTTP_PROXY=<a href="http://10.24.20.201:7890&quot;">http://10.24.20.201:7890"</a><br>【4】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zHQQQQ/p/12218984.html">Docker测试运行hello-world镜像</a> 测试 hello-world 镜像<br>【5】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7387713802777247795">国内无法访问下载Docker镜像的解决方案</a><br>【6】.<a target="_blank" rel="noopener" href="https://gist.github.com/y0ngb1n/7e8f16af3242c7815e7ca2f0833d3ea6">Docker Hub 镜像加速器</a> 这里三个源，都不行<br>【7】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6988340287559073799">全网最细Docker安装Minio，填满最新版大坑（强烈推荐收藏）</a><br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/QHuanFa/article/details/130728489?ydreferer=aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8=">docker离线部署minio</a><br>【9】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/988594">『MinIO』在Docker中快速部署MinIO</a></div>
+<h2 id="10-Write-failed-Insufficient-number-of-drives-online"><a href="#10-Write-failed-Insufficient-number-of-drives-online" class="headerlink" title="(10). Write failed. Insufficient number of drives online"></a>(10). Write failed. Insufficient number of drives online</h2><p>在我将 minio 进行对外映射之后，数据始终都写入不进去，后来我看了看日志，结果大部分的错误都是这个 Insufficient number of drives online。刷新页面：We encountered an internal error, please try again.: cause(listPathRaw: 0 drives provided),Storage resources are insufficient for the write operation .minio.sys/config/iam/sts/X2KJSM160IUJO1O7XKBU/identity.json (cmd.InsufficientWriteQuorum)</p>
+<p>【尝试方案】<br>（1）查了很久，没有好的解决方案，只能升级minio版本了，但是这个好像不是根本，因为现在只不过是因为我用了 cpolar 进行数据上传导致的问题，但是我以前用 frp 进行处理的时候，类型选择了 tcp 也没有这个问题出现。<br>（2）测试本地内网控制台上传，和内网java上传，都是没有问题的<br>（3）修改了minio配置，升级之后，又出现了：Error: unexpected EOF (*errors.errorString)<br>（4）设置了 MINIO_API_REMOTE_TRANSPORT_DEADLINE：在联合实例之间进行代理时，设置远程传输上的 API 请求的截止日期，例如“2h”（默认值：“2h”）</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set the deadline for API requests waiting to be processed (default: ‘10s’)</span></span><br><span class="line"><span class="built_in">export</span> MINIO_API_REQUESTS_DEADLINE=<span class="string">"2h"</span></span><br><span class="line"><span class="comment"># set the number of transition workers (default: ‘100’)</span></span><br><span class="line"><span class="built_in">export</span> MINIO_API_TRANSITION_WORKERS=<span class="string">"2000"</span></span><br><span class="line"><span class="comment"># set the deadline for API requests on remote transports while proxying between federated instances e.g. “2h” (default: ‘2h’)</span></span><br><span class="line"><span class="built_in">export</span> MINIO_API_REMOTE_TRANSPORT_DEADLINE=<span class="string">"24h"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>(5) 修改了 MINIO_SERVER_URL 结果无效</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37106501/article/details/126745764">minio报错：Unable to use the drive /data: invalid argument</a><br>【2】.<a target="_blank" rel="noopener" href="https://github.com/minio/minio/discussions/17619">Error: Write failed. Insufficient number of disks online (*errors.errorString) </a><br>【3】.<a target="_blank" rel="noopener" href="https://github.com/minio/minio/discussions/17875">Storage resources are insufficient for the write operation after adding additional disk pool.</a> 这里说空间不足导致的<br>【4】.<a target="_blank" rel="noopener" href="https://github.com/halo-dev/plugin-s3/issues/96">自建minio上传失败</a><br>【5】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/73061611/the-error-eof-is-occurred-in-minio-console-login">The Error “EOF” is occurred in Minio console login</a> 这里解决EOF的问题，配置了 MINIO_SERVER_URL<br>【6】.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/community/posts/28481538640921-%E5%AA%92%E4%BD%93%E6%96%87%E4%BB%B6%E4%B8%80%E7%9B%B4%E5%9C%A8%E4%B8%8A%E4%BC%A0minio">媒体文件一直在上传minio</a> 这里和我的问题很像，就是说遇到了 媒体文件一直在上传，媒体文件上传失败是：Error: unexpected EOF (*errors.errorString)<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Pencil107/article/details/127629616">MinIo报错记录及解决方法</a> 防火墙问题，需开发端口或者关闭防火墙.<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43910274/article/details/130337739">关于Minio性能优化 A timeout exceeded while waiting to proceed with the request, please reduce your request</a> 这里有多个环境变量可以配置 MINIO_API_REQUESTS_DEADLINE、MINIO_API_REMOTE_TRANSPORT_DEADLINE、MINIO_API_TRANSITION_WORKERS<br>【9】.<a target="_blank" rel="noopener" href="https://github.com/minio/minio/issues/12832">unexpected EOF (*errors.errorString)</a><br>【10】.<a target="_blank" rel="noopener" href="https://github.com/minio/console/issues/2165">After setting environment variable “MINIO_SERVER_URL”, some interface errors occur.</a></div>
+<h2 id="11-Access-denied"><a href="#11-Access-denied" class="headerlink" title="(11).Access denied"></a>(11).Access denied</h2><p>不知道minio抽了什么风，结果就是登陆进去之后，直接显示空白，控制台显示 Access denied 错误，到底哪里出现了问题。我已经开始觉得崩溃了，明明就是好的</p>
+<p>【尝试方案】<br>（1）同步时间，结果我查了服务器的时间，就是正确的时区<br>（2）对 minio 的数据文件夹实行 chmod 755 -R ，结果数据太多，导致特别的慢，但是最后也没有用<br>（3）当我重新用docker安装和启动的时候，结果也还是一样的问题。</p>
+<p>【解决方案】<br>我不断的变换端口，不断的尝试，最后竟然是因为换了一个浏览器，才解决了这个问题。开始用的谷歌浏览器，后来换成了火狐浏览器，结果就是好的。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://github.com/minio/minio/issues/19190">Access denied when using service account</a><br>【2】.<a target="_blank" rel="noopener" href="https://github.com/dji-sdk/DJI-Cloud-API-Demo/issues/25">使用minio对象存储，媒体文件无法上传 </a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/e968ea89.html" rel="next" title="服务器运维之UOS">
+                      <i class="iconfont icon-prev"></i> 服务器运维之UOS
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/2fbfd567.html" rel="prev" title="服务器运维之Linux">
+                      服务器运维之Linux <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%90%8D%E6%AC%A1%E8%A7%A3%E9%87%8A"><span class="toc-number">2.</span> <span class="toc-text">2.名次解释</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%8D%95%E6%9C%BA%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">3.单机安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">5.配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">5.</span> <span class="toc-text">6.文件上传</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%85%B6%E4%BB%96"><span class="toc-number">6.</span> <span class="toc-text">7.其他</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E6%89%A9%E5%AE%B9"><span class="toc-number">6.1.</span> <span class="toc-text">7.1.扩容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86"><span class="toc-number">6.2.</span> <span class="toc-text">7.2.用户管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B"><span class="toc-number">6.3.</span> <span class="toc-text">7.3.压缩和解压</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E5%A4%9A%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">6.4.</span> <span class="toc-text">7.4.多文件上传</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-nginx%E9%85%8D%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">8.nginx配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-https%E9%85%8D%E7%BD%AE"><span class="toc-number">8.</span> <span class="toc-text">9.https配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10%E3%80%82Docker%E5%AE%89%E8%A3%85"><span class="toc-number">9.</span> <span class="toc-text">10。Docker安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E6%9F%A5%E8%AF%A2"><span class="toc-number">10.</span> <span class="toc-text">11.查询</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">11.</span> <span class="toc-text">12.问题汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Unable-to-parse-STS-response"><span class="toc-number">11.1.</span> <span class="toc-text">(1) Unable to parse STS response.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%882%EF%BC%89STS-service-failed-with-HTTP-status-code-403"><span class="toc-number">11.2.</span> <span class="toc-text">（2）STS service failed with HTTP status code 403</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%883%EF%BC%89%E6%8E%A7%E5%88%B6%E5%8F%B0%E7%99%BB%E9%99%86-401-%E9%97%AE%E9%A2%98"><span class="toc-number">11.3.</span> <span class="toc-text">（3）控制台登陆 401 问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%884%EF%BC%89%E9%85%8D%E7%BD%AE%E4%BA%86-https-%E8%AE%BF%E9%97%AE%EF%BC%8C%E5%AF%BC%E8%87%B4-minio-%E6%80%BB%E6%98%AF%E5%87%BA%E7%8E%B0-502-%E9%94%99%E8%AF%AF"><span class="toc-number">11.4.</span> <span class="toc-text">（4）配置了 https 访问，导致 minio 总是出现 502 错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%EF%BC%885%EF%BC%89STS-service-failed-with-HTTP-status-code-405"><span class="toc-number">11.5.</span> <span class="toc-text">（5）STS service failed with HTTP status code 405</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Response-code-400-Content-Type-null-body-Client-sent-an-HTTP-request-to-an-HTTPS-server"><span class="toc-number">11.6.</span> <span class="toc-text">(6) Response code: 400, Content-Type: null, body: Client sent an HTTP request to an HTTPS server.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E4%B8%8A%E4%BC%A0%E6%85%A2"><span class="toc-number">11.7.</span> <span class="toc-text">(7) 上传慢</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Invalid-Request-request-has-multiple-authentication-types-please-use-one"><span class="toc-number">11.8.</span> <span class="toc-text">(8) Invalid Request (request has multiple authentication types, please use one)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-error-pulling-image-configuration-download-failed-after-attempts-6-dial-tcp-108-160-169-46-443-i-o-timeout"><span class="toc-number">11.9.</span> <span class="toc-text">(9) error pulling image configuration: download failed after attempts&#x3D;6: dial tcp 108.160.169.46:443: i&#x2F;o timeout</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-Write-failed-Insufficient-number-of-drives-online"><span class="toc-number">11.10.</span> <span class="toc-text">(10). Write failed. Insufficient number of drives online</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-Access-denied"><span class="toc-number">11.11.</span> <span class="toc-text">(11).Access denied</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/d5e521dc.html';
+      this.page.identifier = 'posts/d5e521dc.html';
+      this.page.title = '服务器运维之MinIO';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：服务器运维之MinIO 链接地址:https://bibichuan.github.io/posts/d5e521dc.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '服务器运维之MinIO',
+		url: 'https://bibichuan.github.io/posts/d5e521dc.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '服务器运维之MinIO',
+			isTipVisibility: true,
+			tip: '服务器运维之MinIO',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

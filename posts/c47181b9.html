@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调研报告之遥感影像识别</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">调研报告之遥感影像识别</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-03-17 12:15:31
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这里主要讲解的就是遥感影像的识别。<a target="_blank" rel="noopener" href="https://github.com/WangZhenqing-RS/Unet_RSimage_Multi-band_Multi-class"> WangZhenqing-RS /Unet_RSimage_Multi-band_Multi-class Public</a> 这是多波段的遥感影像识别代码，包括了一系列的<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/161925744?utm_source=zhihu&amp;utm_medium=social&amp;utm_oi=832719838752444416">教程</a>,包括环境搭建、语义分割、影像裁剪、数据增强等操作。</p>
+<ul>
+<li>数据集制作</li>
+<li>训练</li>
+<li>预测</li>
+</ul>
+<p>大的影像可以进行先进行分割，将大的tiff分割成小的，然后进行识别后，再合并成一张大的图像。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/161925744">keras遥感图像Unet语义分割(支持多波段&amp;多类)</a> 从环境搭建到制作标签、裁剪学习样本到数据增强，一气呵成。如果将较大的待分类遥感影像直接输入到网络模型中会造成内存溢出，故一般将待分类图像裁剪为一系列较小图像分别输入网络进行预测，然后将预测结果按照裁剪顺序拼接成一张最终结果图像。<br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79204199">语义分割网络 U-Net 详解</a><br>【3】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/593521055">遥感图像识别（标注）软件实现</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/cky_123/article/details/121563722">使用QGIS提取天地图遥感影像中的建筑物轮廓，及AI方案</a>  1.ArcGIS Pro;2.超图 iDesktopX;3.MapBox Robsat;4.MapGIS的辅助矢量化工具;5.商汤科技的sceneEarth;6.武汉大学的珞珈框架;7.阿里达摩院 AI Earth。<br>【5】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/544532092">基于PyTorch深度学习遥感影像地物分类与目标检测、分割及遥感影像问题深度学习优化</a><br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41708916/article/details/132858881">ArcMap对遥感图像进行语义分割标注</a> 这是用 ArcMap 制作分割数据集的方法。<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35918970/article/details/143461789">2024年 · 地表最强的十大遥感影像分割模型</a></div>
+<h1 id="1-AI-Earth"><a href="#1-AI-Earth" class="headerlink" title="1.AI Earth"></a>1.AI Earth</h1><p><a target="_blank" rel="noopener" href="https://engine-aiearth.aliyun.com/">AI Earth</a> 基于达摩院在深度学习、计算机视觉、地理空间分析等方向上的技术积累，结合阿里云强大算力支撑，提供多源遥感对地观测数据的云计算分析服务，用数据感知地球世界，让AI助力科学研究。AI Earth主要分为三大核心功能：目标提取、地物分类、变化检测，值得一提的是在遥感影像智能解译方面涵盖了众多类型，包含了建筑物提取、水体识别、路网提取、大棚提取、飞机提取、舰船提取、运动场提取、地块提取。基于海量公开遥感数据，使用notebook进行在线项目开发，项目数据在开发者模式与工具箱模式中可无缝切换，详见参考案例和API文档。</p>
+<p>标注类型分为以下六类：<br>    目标检测： 支持设定单标签/多标签，通过旋转矩形框框选目标进行标注，适用于目标检测算法训练。<br>    实例分割： 支持设定单标签/多标签，通过多边形沿目标边缘进行标注，对地物进行属性分类标注，相同标签属性的地物目标区分每个个例，适用于实例分割算法训练。<br>    地物识别（原目标提取）： 只包含一个标签，适用于单地物识别的语义分割算法训练。<br>    地物分类： 支持设定单标签/多标签，对地物进行属性分类标注，适用于语义分割算法训练。<br>    通用变化检测： 通过单标签对变化区域进行标注，适用于语义分割算法训练。<br>    多分变化检测： 通过多标签对变化区域进行分类标注，适用于语义分割算法训练。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/210293570">从看图识义到精确提取 -浅谈深度学习在光学遥感图像解译中的应用</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15427664/4576976">遥感AI？！来体验阿里巴巴达摩院的AI Earth</a><br>【3】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/902692">AI Earth 地球科学云平台——用数据感知地球世界（含福利）</a> 截至3月31日，现在注册可以每个月享受10个小时的免费解译，大家抓紧时间注册</div>
+<h1 id="2-TensorFlow"><a href="#2-TensorFlow" class="headerlink" title="2.TensorFlow"></a>2.TensorFlow</h1><p>使用TensorFlow进行遥感图像识别和分类，那就要自己手动写代码了。</p>
+<img src="/images/loadimg.png" data-original="/posts/c47181b9/ai_1.png" lay-src="/posts/c47181b9/ai_1.png" class="" title="遥感影像训练">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://m.fx361.com/news/2022/0619/10467243.html">基于TensorFlow平台的影像地物识别技术应用</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wc781708249/article/details/60141104">遥感影像分类基本流程</a> 这里只有一个流程图，还有一些说明<br>【3】.<a target="_blank" rel="noopener" href="https://github.com/1044197988/Semantic-segmentation-of-remote-sensing-images"> Semantic-segmentation-of-remote-sensing-images</a><br>【4】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/346425293">遥感影像识别-CNN（tensorflow)</a><br>【5】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/579738538">遥感影像目标检测：从CNN（Faster-RCNN）到Transformer（DETR）技术应用</a></div>
+<h1 id="3-Robosat"><a href="#3-Robosat" class="headerlink" title="3.Robosat"></a>3.Robosat</h1><p><a target="_blank" rel="noopener" href="https://github.com/mapbox/robosat">robosat</a> 这是mapbox开源的影像识别代码，但是已经是三年前的仓库了，不再继续的更新了，类似的还有  robosat.pink <a target="_blank" rel="noopener" href="https://github.com/geocompass/robosat_geoc">robosat_geoc</a></p>
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/CsdnWujinming/article/details/113404303">robosat调试</a> 系统准备工作、数据准备工作、训练和建模、从新数据中预测、在3.1节中划分的测试集下预测</div>
+<h1 id="4-mapflow"><a href="#4-mapflow" class="headerlink" title="4.mapflow"></a>4.mapflow</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_36396470/article/details/124210931">qgis自动获取建筑和道路矢量</a></div>
+<h1 id="5-商汤科技的sceneEarth"><a href="#5-商汤科技的sceneEarth" class="headerlink" title="5.商汤科技的sceneEarth"></a>5.商汤科技的sceneEarth</h1><p><a target="_blank" rel="noopener" href="https://rs.sensetime.com/se/#/">sceneEarth</a> 一键式遥感影像智能解译,全方位解锁空间地理信息。提供了一个现成的解译网站，可以上传自己的影像，然后直接选择需要解义的类型，支持：变化监测、水体、植被和建筑物检测，选中需要的范围，然后一键解译就可以识别出需要的建筑物。</p>
+<p>我尝试了用他们提供的图像，绘制一个范围，选择建筑物解译，效果还是不错的。</p>
+<h1 id="6-武汉大学的珞珈框架"><a href="#6-武汉大学的珞珈框架" class="headerlink" title="6.武汉大学的珞珈框架"></a>6.武汉大学的珞珈框架</h1><p><a target="_blank" rel="noopener" href="https://github.com/WHULuoJiaTeam/luojianet">WHULuoJiaTeam / luojianet </a> 遥感专用机器学习框架LuoJiaNET,由武汉大学LuoJiaNET框架团队与华为MindSpore框架研究小组联合打造而成， 是遥感领域首个国产化自主可控的遥感专用机器学习框架，针对遥感数据像幅尺寸大、数据通道多、尺度变化大等特性， 具备内存可扩展、尺度通道灵活创建、数据通道自主优选、框架与数据协同处理的特点。可兼容已有深度学习框架， 并提供用户友好的、可拖拽的交互式网络结构搭建界面的方法。能屏蔽不同硬件设备间差异，同时管理多样化的遥感影像样本库LuoJiaSET， 实现遥多源感影像样本的高效存储管理。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="http://news.whu.edu.cn/info/1015/67330.htm">全球首个遥感影像智能解译专用深度学习框架上线华为昇思社区</a> 武汉大学的新闻，有 LuoJiaSET服务平台、源代码地址。</div>
+<h1 id="7-Segment-Geospatial"><a href="#7-Segment-Geospatial" class="headerlink" title="7.Segment Geospatial"></a>7.Segment Geospatial</h1><p><a target="_blank" rel="noopener" href="https://github.com/opengeos/segment-geospatial">segment-geospatial</a> A Python package for segmenting geospatial data with the Segment Anything Model (SAM) 。用于使用 Segment Anything Model (SAM) 分割地理空间数据的 Python 包。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://tianrun-chen.github.io/SAM-Adaptor/">SAM-Adaptor</a></div>
+<h1 id="8-Segment-Anything"><a href="#8-Segment-Anything" class="headerlink" title="8.Segment Anything"></a>8.Segment Anything</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43476581/article/details/130771457">视觉大模型在遥感领域应用-耕地地块提取</a> 由于遥感场景一般为大尺寸影像，以栅格影像为例，Segment Anything模型应用于栅格图像，首先需解决几个问题：（1）转矢量;（2）需滑窗裁剪进行逐一推理，最后再合并结果;（3）输出结果没有类别信息。综上，SAM模型有以下优势：（1）分割结果精细、准确；（2）泛化性强，具备零样本分割能力。</div>
+<h1 id="8-论文和网站资源"><a href="#8-论文和网站资源" class="headerlink" title="8.论文和网站资源"></a>8.论文和网站资源</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="http://xb.chinasmp.com/article/2021/1001-1595/2021-8-1013.htm">遥感影像智能解译样本库现状与研究 </a><br>【2】.<a target="_blank" rel="noopener" href="http://html.rhhz.net/tis/html/201706078.htm"> 基于卷积神经网络的遥感图像分类研究</a><br>【3】.<a href="moz-extension://11180ca2-f050-3344-8cf5-57df167e5ae2/pdf-viewer/web/viewer.html?file=http%3A%2F%2Fsourcedb.igsnrr.cas.cn%2Fzw%2Flw%2F200906%2FP020090625733952281239.pdf">高分辨率遥感影像信息提取与目标识别技术研究</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42645636/article/details/131072096">20+篇遥感图像分割方向必读论文分享</a> 1.语义分割:SegNet、DeepLab、FCN、ENet、LinkNet、DenseNet、DilatedNet、PixelNet。2.实例感知分割：FCIS、MNS、DeepMask、SharpMask、Mask-RCNN、RIS、FastMast、BlizNet。3.弱监督分割：SEC。4.RNN：ReNet、ReSeg、CRF-RNN。5.GANS：pix2pix、pix2pixHD、Probalistic Unet。<br>【4】.<a target="_blank" rel="noopener" href="https://pdf.hanspub.org/AIRR20220400000_31179009.pdf">深度学习在高分辨率遥感图像语义分割中的算法研究</a> 这篇论文有点深奥，我看不懂，什么多尺度，上采样，下采样之类的。<br>【5】.<a target="_blank" rel="noopener" href="https://www.whu-cveo.com/2018/09/27/paper-sdfcn/"> 基于深度对称密集连接全卷积网络的高分辨率遥感影像语义分割框架 SDFCN </a><br>【6】.<a target="_blank" rel="noopener" href="https://www.ingentaconnect.com/content/tcsae/tcsae/2015/00000031/00000003/art00025?crawler=true">高分辨率遥感影像耕地分层提取方法</a><br>【7】.<a target="_blank" rel="noopener" href="https://www.google.com.hk/url?sa=t&amp;source=web&amp;rct=j&amp;opi=89978449&amp;url=https://ope.lightpublishing.cn/rc-pub/front/front-article/download/40590824/lowqualitypdf/&amp;ved=2ahUKEwinpv6Kl52KAxVRc_UHHUECC4YQFnoECBoQAQ&amp;usg=AOvVaw3tcGfMUXUu389LTKmJ_2jo">基于深度学习的遥感图像舰船目标检测算法综述</a><br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35918970/article/details/143461789">2024年 · 地表最强的十大遥感影像分割模型</a> 1.EfficientPS：高效高精度全景分割算法。2.EfficientSAM：快速分割一切。3.Text2Seg：基于多个大模型的遥感图像分割pipline。4.Samba：基于SSM的遥感高分图像语义分割框架。5.RSAM-Seg：基于SAM和遥感先验信息的分割模型。</div>
+<h1 id="9-数据集"><a href="#9-数据集" class="headerlink" title="9.数据集"></a>9.数据集</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41868601/article/details/115037047">遥感影像语义分割数据集</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/oYeZhou/article/details/115720094">手把手实战教学, 语义分割从0到1：二、使用自己的数据集进行模型训练</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43694096/article/details/134518876">YOLOv8 训练自己的分割数据集</a> 1.数据格式。2.配置环境。3.训练模型。4.评估模型。5.推理模型。</div>
+<h1 id="10-ArcGIS"><a href="#10-ArcGIS" class="headerlink" title="10.ArcGIS"></a>10.ArcGIS</h1><p>ArcGIS 目前也在遥感影像识别方面做了大量的工作。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://doc.arcgis.com/zh-cn/pretrained-models/latest/imagery/introduction-to-text-sam.htm">文本 SAM</a>  Grounding DINO 是一个开集对象检测器，能够根据文本提示识别对象。 Segment Anything Model 可用于细分由边界框或点标识的感兴趣区域中的任意对象。 这两个模型在该深度学习包内依次调用。 Grounding DINO 检测到的对象边界框作为提示传递给 Segment Anything Model，从而生成对象掩膜。 最终，这些掩膜被转换为多边形，以 GIS 要素的形式返回。</div>
+<h1 id="11-工具"><a href="#11-工具" class="headerlink" title="11.工具"></a>11.工具</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/cxyth/rs-segment.pytorch">rs-segment.pytorch</a></li>
+</ul>
+<p>(1) 使用开源模型库segmentation_models_pytorch或自定义模型<br>(2) 在大尺寸遥感影像上进行切片推理和融合拼接<br>(3) 处理大尺寸遥感影像栅格及矢量数据的常用工具（基于GDAL）<br>(4) 使用.yml文件编写配置文件<br>(5) 适用于入门学习，虽然可以用于生产，但计算效率方面并没有做特别的优化</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://aistudio.baidu.com/projectdetail/6439908">遥感解译系统-Remote Scening System</a> 遥感解译系统-Remote Sensing System 是一款功能丰富的遥感影像智能解译工具，致力于实现遥感领域深度学习模型在Gradio平台的快速部署和便捷体验。遥感解译系统-Remote Sensing System是一款集数据处理、模型训练、影像分割和解译、模型可视化于一体的遥感影像智能解译工具。该系统致力于通过使用Enrie-Bot、Segemeng Anything Model和PaddleRS等先进技术，为用户提供高效准确的遥感影像解译服务。<br>【2】.<a target="_blank" rel="noopener" href="https://github.com/PaddlePaddle/PaddleRS/tree/develop">PaddleRS</a> PaddleRS是百度飞桨、遥感科研院所及相关高校共同开发的基于飞桨的遥感影像智能解译开发套件，支持图像分割、目标检测、场景分类、变化检测、图像复原等常见遥感任务。PaddleRS致力于帮助遥感领域科研从业者快速完成算法的研发、验证和调优。同时，PaddleRS也期望助力投身于产业实践的开发者，便捷地实现从数据预处理到模型部署的全流程遥感深度学习应用。</div>
+<h1 id="12-Yolo"><a href="#12-Yolo" class="headerlink" title="12.Yolo"></a>12.Yolo</h1><p> Yolo系列不仅可以用了来进行视频目标检测，还可以进行图像分割。</p>
+<div class="reference"> 参考文章:<br> 【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sixuwuxian/p/17984435">基于YOLOv8/YOLOv7/YOLOv6/YOLOv5的遥感目标检测系统（Python+PySide6界面+训练代码)</a><br> 【2】.<a target="_blank" rel="noopener" href="http://www.tcsae.org/cn/article/pdf/preview/10.11975/j.issn.1002-6819.202403050.pdf">基于改进 YOLOv9 的禁垦陡坡地违规耕种区遥感影像检测方法</a> 将原始影像数据、禁垦陡坡地范围矢量数据导入ArcGIS 中，建立网格，将网格数据和禁垦陡坡地范围矢量数据进行叠加分析，提取其中含有禁垦陡坡地的网格矢量，基于该矢量将卫星影像数据分割成均等的影像切片后，综合考虑不同切片大小对于违规耕种区的特征信息保留情况，切片大小采用 640 像素 × 640 像素。然后将这些切片导出为 JPG 文件和对应记录切片坐标范围的xml 文件。</div>
+<h1 id="13-应用"><a href="#13-应用" class="headerlink" title="13.应用"></a>13.应用</h1><div class="reference"> 参考文章:<br> 【1】.<a target="_blank" rel="noopener" href="http://m.optosky.com/nd.jsp?mid=5&amp;id=588&amp;groupId=9">基于无人机高光谱的湖泊蓝藻监测应用</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/6678fc7b.html" rel="next" title="调研报告之高性能数据库">
+                      <i class="iconfont icon-prev"></i> 调研报告之高性能数据库
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/189189ae.html" rel="prev" title="调研报告之能源管理系统">
+                      调研报告之能源管理系统 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-AI-Earth"><span class="toc-number">2.</span> <span class="toc-text">1.AI Earth</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-TensorFlow"><span class="toc-number">3.</span> <span class="toc-text">2.TensorFlow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Robosat"><span class="toc-number">4.</span> <span class="toc-text">3.Robosat</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-mapflow"><span class="toc-number">5.</span> <span class="toc-text">4.mapflow</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%95%86%E6%B1%A4%E7%A7%91%E6%8A%80%E7%9A%84sceneEarth"><span class="toc-number">6.</span> <span class="toc-text">5.商汤科技的sceneEarth</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%AD%A6%E6%B1%89%E5%A4%A7%E5%AD%A6%E7%9A%84%E7%8F%9E%E7%8F%88%E6%A1%86%E6%9E%B6"><span class="toc-number">7.</span> <span class="toc-text">6.武汉大学的珞珈框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Segment-Geospatial"><span class="toc-number">8.</span> <span class="toc-text">7.Segment Geospatial</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Segment-Anything"><span class="toc-number">9.</span> <span class="toc-text">8.Segment Anything</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E8%AE%BA%E6%96%87%E5%92%8C%E7%BD%91%E7%AB%99%E8%B5%84%E6%BA%90"><span class="toc-number">10.</span> <span class="toc-text">8.论文和网站资源</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-number">11.</span> <span class="toc-text">9.数据集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-ArcGIS"><span class="toc-number">12.</span> <span class="toc-text">10.ArcGIS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-%E5%B7%A5%E5%85%B7"><span class="toc-number">13.</span> <span class="toc-text">11.工具</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#12-Yolo"><span class="toc-number">14.</span> <span class="toc-text">12.Yolo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#13-%E5%BA%94%E7%94%A8"><span class="toc-number">15.</span> <span class="toc-text">13.应用</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/c47181b9.html';
+      this.page.identifier = 'posts/c47181b9.html';
+      this.page.title = '调研报告之遥感影像识别';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：调研报告之遥感影像识别 链接地址:https://bibichuan.github.io/posts/c47181b9.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '调研报告之遥感影像识别',
+		url: 'https://bibichuan.github.io/posts/c47181b9.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '调研报告之遥感影像识别',
+			isTipVisibility: true,
+			tip: '调研报告之遥感影像识别',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

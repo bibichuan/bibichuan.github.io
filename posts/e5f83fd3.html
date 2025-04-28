@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nginx问题汇总</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Nginx问题汇总</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Nginx/">Nginx</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">后台服务</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-09-27 08:19:55
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-unknown-directive-“worker-processes”"><a href="#1-unknown-directive-“worker-processes”" class="headerlink" title="1.unknown directive “worker_processes”"></a>1.unknown directive “worker_processes”</h2><p>出现这个问题，就是修改nginx.conf的编码，改为UTF-8编码。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/JackRen_Developer/article/details/84994609">nginx启动失败 unknown directive “﻿worker_processes”</a> (这个文章给了思路)</div>
+<h2 id="3-403禁止问题解决思路"><a href="#3-403禁止问题解决思路" class="headerlink" title="3.403禁止问题解决思路"></a>3.403禁止问题解决思路</h2><p>这里需要配置两个路由，一个是 /disaster,一个是 /disaster/public ,我需要在 /disaster 下配置 /disaster/public 访问，这个disaster是一个vue项目，这个 /disaster/public 目录是另外一个vue项目。因为disaster配置了 try_files $uri $uri/ /renfang/index.html, 不匹配的路由，统统跳转到了 index.html 页面,防止页面空白。但是这也同时造成了一个问题，就是说 路由到了 /disaster/public 的时候，最后也会跳转到了 /diaster 路由，导致始终无法访问到 /disaster/public目录。</p>
+<p>本来我的目录是 C:/projects/disaster 目录下，还有一个 public 目录，后来查看nginx的访问error.log日志，结果出现了：directory index of “C:/projects/disaster/public” is forbidden 错误，于是我把 public目录移到了 C:/projects/disaster-public/ 目录。</p>
+<p>同时我尝试了设置了用户权限，设置了EveryOne，还是显示403禁止，我尝试了加 斜杠和不加斜杠了，最终都无法访问 /disaster/public 项目。</p>
+<p>【解决方法】<br>经过不断的尝试，不断的试错，经过三个小时的奋斗，最后终于算是解决了这个问题，主要做了下面的几个地方的修改：<br>(1) nginx最后的配置如下：</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span><span class="regexp"> ^~</span> /disaster/public {</span><br><span class="line">    <span class="attribute">alias</span> C:/projects/disaster-public/;</span><br><span class="line"><span class="attribute">autoindex</span> <span class="literal">on</span>;</span><br><span class="line">    	<span class="attribute">index</span> index.html;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="section">location</span> /disaster {</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$request_method</span> = OPTIONS) {</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Origin <span class="variable">$http_origin</span>; </span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Headers *;</span><br><span class="line">        <span class="attribute">add_header</span> Access-Control-Allow-Methods GET,POST,OPTIONS;</span><br><span class="line">        <span class="comment">#add_header Access-Control-Allow-Credentials true;</span></span><br><span class="line">        <span class="attribute">return</span> <span class="number">200</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="attribute">add_header</span> Access-Control-Allow-Origin <span class="variable">$http_origin</span>; </span><br><span class="line">    <span class="attribute">add_header</span> Access-Control-Allow-Headers *;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">alias</span> C:/projects/disaster;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://xxx/disaster/;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">index</span> index.html;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) vue-router增加了一个空的路由，</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 空的目录</span></span><br><span class="line">{</span><br><span class="line">    <span class="attr">path</span>:<span class="string">'/public'</span>,</span><br><span class="line">    <span class="attr">name</span>:<span class="string">"public"</span>,</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 在路由导航中进行判断，如果有public进行跳转。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> whitelist=[<span class="string">'login'</span>,<span class="string">'public'</span>]; <span class="comment">// 路由白名单</span></span><br><span class="line">router.<span class="title function_">beforeEach</span>(<span class="function">(<span class="params">to,<span class="keyword">from</span>,next</span>) =&gt;</span> {</span><br><span class="line">    <span class="comment">// 检查路由</span></span><br><span class="line">	<span class="title function_">checkLogin</span>(to,<span class="keyword">from</span>,next,token);</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 还有一点注意的，可能就是缓存的问题了，清空浏览器缓存，清空钉钉的缓存，重新访问页面。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="http://blog.licess.com/nginx-autoindex/">Nginx打开目录浏览功能(autoindex)</a><br>2.<a target="_blank" rel="noopener" href="https://serverfault.com/questions/558515/another-root-alias-in-location-produces-403">Another root/alias in location produces 403</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_60215634/article/details/124867752">Nginx中location、proxy_pass后方加不加斜杠/的区别</a><br>4.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/19285355/nginx-403-error-directory-index-of-folder-is-forbidden">Nginx 403 error: directory index of [folder] is forbidden</a><br>5.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022315733">一文理清 nginx 中的 location 配置（系列一）</a></div>
+<h2 id="4-nginx-error-while-loading-shared-libraries-libssl-so-1-1"><a href="#4-nginx-error-while-loading-shared-libraries-libssl-so-1-1" class="headerlink" title="4../nginx: error while loading shared libraries: libssl.so.1.1:"></a>4../nginx: error while loading shared libraries: libssl.so.1.1:</h2><p>使用 “./nginx -V” 命令查看nginx版本时，出现这个问题。   </p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看依赖</span></span><br><span class="line">ldd $(<span class="built_in">which</span> /usr/local/nginx/sbin/nginx)</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2038846?from=15425&amp;areaSource=102001.1&amp;traceId=8-rea_tbdxul6VqhhSjqD">Linux下查看Nginx安装目录、版本号信息?</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41847721/article/details/107578711">/nginx: error while loading shared libraries: libcrypto.so.1.1: cannot open shared object file: No</a> 这里是缺少 libcrypto.so.1.1 文件，但是我的是缺少libssl.so.1.1文件。<br>3.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1602967">解决报错libssl.so.1.1: cannot open shared object file: No such file or directory</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39574555/article/details/116970672">linux检测openssl是否安装,Linux下Openssl的安装全过程</a></div>
+<h2 id="5-Request-header-field-content-type-is-not-allowed-by-Access-Control-Allow-Headers-in-preflight-response"><a href="#5-Request-header-field-content-type-is-not-allowed-by-Access-Control-Allow-Headers-in-preflight-response" class="headerlink" title="5.Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response."></a>5.Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response.</h2><p>在前端使用使用ajax请求时，设置了Content-Type:application/json,后台就返回了一个错误。</p>
+
+
+<p>解决方法，在nginx配置文件中增加配置。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.simmzl.cn/2017/10/nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%94%E5%9B%9Ejson%E6%96%87%E4%BB%B6%E6%97%B6contentType%E4%B8%8D%E6%AD%A3%E7%A1%AE%E7%9A%84%E5%9D%91.html">nginx服务器返回json文件时content-type不正确的坑</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/root_miss/article/details/82740399">跨域问题服务端解决办法 Request header field Authorization is not allowed by Access-Control-Allow-Headers</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/caimuqing/p/6733405.html">如何解决出现AXIOS的Request header field Content-Type is not allowed by Access-Control-Allow-Headers in preflight response.</a></div>
+<h2 id="6-windows启动报错"><a href="#6-windows启动报错" class="headerlink" title="6.windows启动报错"></a>6.windows启动报错</h2><p>在windows上启动nginx，需要注意两点<br>(1) 路径不支持中文<br>(2) 路径的格式为D:/soft/www,而不是D:\soft\www</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/dayonglove2018/article/details/106861034">nginx. 启动nginx访问报错</a> (这里有路径格式的说明)</div>
+<h2 id="7-504-Gateway-Time-out"><a href="#7-504-Gateway-Time-out" class="headerlink" title="7.504 Gateway Time-out"></a>7.504 Gateway Time-out</h2><p>config添加配置：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">location ~ \.php {</span><br><span class="line">        fastcgi_pass   127.0.0.1:9000;</span><br><span class="line">        fastcgi_index  index.php;</span><br><span class="line">        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;</span><br><span class="line">        include        fastcgi_params;</span><br><span class="line"></span><br><span class="line">        ## 这一句话是主要的，其他都可以不添加</span><br><span class="line">        proxy_read_timeout 300;</span><br><span class="line"></span><br><span class="line">        fastcgi_read_timeout 600;</span><br><span class="line">        fastcgi_param PATH_INFO $fastcgi_script_name;</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/fdipzone/article/details/79355576">nginx 出现504 Gateway Time-out的解决方法</a></div>
+<h2 id="8-host-not-found-in-upstream"><a href="#8-host-not-found-in-upstream" class="headerlink" title="8.host not found in upstream"></a>8.host not found in upstream</h2><p>nginx 启动错误”nginx: [emerg] host not found in upstream “解决方案。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/WangXiaoMing099/article/details/23443623">nginx 启动错误”nginx: [emerg] host not found in upstream “解决方案</a></div>
+<h2 id="9-413-Request-Entity-Too-Large问题的解决方法"><a href="#9-413-Request-Entity-Too-Large问题的解决方法" class="headerlink" title="9.413 Request Entity Too Large问题的解决方法"></a>9.413 Request Entity Too Large问题的解决方法</h2><p>可以在三个地方通过配置 client_max_body_size   20m; 限制文件传输的大小。<br>（1）第一个是 http{},控制着所有nginx收到的请求。<br>（2）第二个是server{}中，则控制该server收到的请求报文大小。<br>（3）同理，如果配置在location中，则报文大小限制，只对匹配了location 路由规则的请求生效。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/fdipzone/article/details/45544497">nginx 出现413 Request Entity Too Large问题的解决方法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Tim_phper/article/details/51992986">三个思路解决413 Request Entity Too Large报错处理</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/li396864285/article/details/53522828">nginx 更改配置client_max_body_size没有生效</a></div>
+<h2 id="10-请求参数消失"><a href="#10-请求参数消失" class="headerlink" title="10.请求参数消失"></a>10.请求参数消失</h2><p>使用nginx转发请求的时候，导致查询不到后面的值。需要设置以下内容</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> location / {</span><br><span class="line">        proxy_set_header Host $host;   //nginx的变量$host，代表实际的host</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;  //nginx的变量$host，代表实际的address</span><br><span class="line">        proxy_pass http://localhost:8080/$request_uri ;//nginx的变量$host代表实际的主机，$request_uri代表实际的请求链接，也可以用$args代替</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e66fa0983a4b">记Nginx反向代理请求参数</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Fouse_/article/details/90204919">nginx转发请求导致参数丢失</a></div>
+<h2 id="11-woff、ttf访问出现404"><a href="#11-woff、ttf访问出现404" class="headerlink" title="11.woff、ttf访问出现404"></a>11.woff、ttf访问出现404</h2><div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="http://blog.actpi.com/articles/ttf-404.html">nginx 字体文件 404 错误 解决记录</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yimi34/article/details/68942228">linux机上web项目添加font，nginx显示404问题（woff）及svn编码问题</a></div>
+<h2 id="12-The-plain-HTTP-request-was-sent-to-HTTPS-port"><a href="#12-The-plain-HTTP-request-was-sent-to-HTTPS-port" class="headerlink" title="12.The plain HTTP request was sent to HTTPS port"></a>12.The plain HTTP request was sent to HTTPS port</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/peng-zone/p/11833320.html">解决故障码400，“”The plain HTTP request was sent to HTTPS port“”</a> 简单从报错的字面意思上来看，是因为HTTP请求被发送到HTTPS端口，这种报错多出现在Nginx既处理HTTP请求又处理HTTPS请求的情况。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39609993/article/details/124397897">解决The plain HTTP request was sent to HTTPS port</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/e842686a.html" rel="next" title="Nodejs之Restify">
+                      <i class="iconfont icon-prev"></i> Nodejs之Restify
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/242b71d2.html" rel="prev" title="Nginx配置跨域问题">
+                      Nginx配置跨域问题 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-unknown-directive-%E2%80%9Cworker-processes%E2%80%9D"><span class="toc-number">1.</span> <span class="toc-text">1.unknown directive “worker_processes”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-403%E7%A6%81%E6%AD%A2%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">3.403禁止问题解决思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-nginx-error-while-loading-shared-libraries-libssl-so-1-1"><span class="toc-number">3.</span> <span class="toc-text">4..&#x2F;nginx: error while loading shared libraries: libssl.so.1.1:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Request-header-field-content-type-is-not-allowed-by-Access-Control-Allow-Headers-in-preflight-response"><span class="toc-number">4.</span> <span class="toc-text">5.Request header field content-type is not allowed by Access-Control-Allow-Headers in preflight response.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-windows%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99"><span class="toc-number">5.</span> <span class="toc-text">6.windows启动报错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-504-Gateway-Time-out"><span class="toc-number">6.</span> <span class="toc-text">7.504 Gateway Time-out</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-host-not-found-in-upstream"><span class="toc-number">7.</span> <span class="toc-text">8.host not found in upstream</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-413-Request-Entity-Too-Large%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">8.</span> <span class="toc-text">9.413 Request Entity Too Large问题的解决方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E6%B6%88%E5%A4%B1"><span class="toc-number">9.</span> <span class="toc-text">10.请求参数消失</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-woff%E3%80%81ttf%E8%AE%BF%E9%97%AE%E5%87%BA%E7%8E%B0404"><span class="toc-number">10.</span> <span class="toc-text">11.woff、ttf访问出现404</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-The-plain-HTTP-request-was-sent-to-HTTPS-port"><span class="toc-number">11.</span> <span class="toc-text">12.The plain HTTP request was sent to HTTPS port</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/e5f83fd3.html';
+      this.page.identifier = 'posts/e5f83fd3.html';
+      this.page.title = 'Nginx问题汇总';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Nginx问题汇总 链接地址:https://bibichuan.github.io/posts/e5f83fd3.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Nginx问题汇总',
+		url: 'https://bibichuan.github.io/posts/e5f83fd3.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Nginx问题汇总',
+			isTipVisibility: true,
+			tip: 'Nginx问题汇总',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Azure的DevOps发布和打包Springboot程序</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Azure的DevOps发布和打包Springboot程序</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Azure/">Azure</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-11-01 03:14:20
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:39
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>我在代理服务器上安装了maven环境，在部署服务器上只安装了java环境而没有安装maven环境，我的想法是通过代理服务器上使用maven对springboot进行打包，然后将生成的jar包部署到远程服务器上，然后再远程服务器进行部署。理论上应该可以实现自动部署的，结果很折腾。<br>(1) 首先我尝试使用文件复制的方式</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_1.png" lay-src="/posts/b893460f/deploy_1.png" class="" title="部署">
+
+<p>结果不成功，因为文件复制的方式只能是在本地机器上服务，比如再代理服务器上添加任务，那么只能在代理服务器上面来回复制，同理，在部署服务器上添加任务，只能在部署服务器上来回复制，而不管你添加了什么样的变量。</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_2.png" lay-src="/posts/b893460f/deploy_2.png" class="" title="部署">
+
+<p>这几个地方可以添加变量，参考文章中有对预设变量的说明，有些东西只能在代理服务器上，有些变量只能在部署服务器上用（这是我个人理解的），反复实验，都无法使用。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&amp;tabs=yaml">Predefined variables</a></div>
+<p>(2) 第二我尝试使用下载生成项目</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_3.png" lay-src="/posts/b893460f/deploy_3.png" class="" title="部署">
+
+<p>在下载生成项目的参数设置中，我填了很多版本，让我郁闷的是，最后下载到部署服务器上的，都是空的。</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_4.png" lay-src="/posts/b893460f/deploy_4.png" class="" title="部署">
+
+<p>理论上生成了一个项目，我也把管道设置成了管道从生成项目开始，就应该可以将生成的项目下载到部署服务器上了。结果，并不如我意。</p>
+<p>(3) 最后，我通过使用ssh的方式，实现了将生成的项目直接复制到远程服务器上<br>点击项目设置，选择服务连接，选择新建服务连接，添加ssh连接</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_5.png" lay-src="/posts/b893460f/deploy_5.png" class="" title="部署">
+
+<p>添加远程linux主机的地址，用户名密码等内容</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_6.png" lay-src="/posts/b893460f/deploy_6.png" class="" title="部署">
+
+<p>然后添加任务，选择ssh文件复制</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_7.png" lay-src="/posts/b893460f/deploy_7.png" class="" title="部署">
+
+<p>编写复制参数</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/deploy_8.png" lay-src="/posts/b893460f/deploy_8.png" class="" title="部署">
+
+<p>执行生成任务即可</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xxred/p/10639579.html">利用 Azure Devops 创建和发布 Nuget 包</a><br>2.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/zh-cn/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin?view=azure-java-stable">如何使用适用于 Azure Web 应用的 Maven 插件将容器化 Spring Boot 应用部署到 Azure</a><br>3.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/release/variables?view=azure-devops&amp;tabs=batch">Release variables and debugging</a></div>
+<p><strong>总结</strong></p>
+<h2 id="1-新建发布管道"><a href="#1-新建发布管道" class="headerlink" title="1.新建发布管道"></a>1.新建发布管道</h2><p>点击项目左侧的列表，选择发布，然后新建发布管道</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_1.png" lay-src="/posts/b893460f/publish_1.png" class="" title="发布">
+
+<h2 id="2-添加项目"><a href="#2-添加项目" class="headerlink" title="2.添加项目"></a>2.添加项目</h2><p>选择项目，添加项目，选择Azure Repo代码库</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_2.png" lay-src="/posts/b893460f/publish_2.png" class="" title="发布">
+
+<h2 id="3-添加阶段"><a href="#3-添加阶段" class="headerlink" title="3.添加阶段"></a>3.添加阶段</h2><p>在项目后面的阶段中，添加空阶段</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_3.png" lay-src="/posts/b893460f/publish_3.png" class="" title="发布">
+
+<h2 id="4-为阶段添加任务"><a href="#4-为阶段添加任务" class="headerlink" title="4.为阶段添加任务"></a>4.为阶段添加任务</h2><p>点击阶段下面的作业，编辑任务</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_4.png" lay-src="/posts/b893460f/publish_4.png" class="" title="发布">
+
+<h2 id="5-添加打包任务"><a href="#5-添加打包任务" class="headerlink" title="5.添加打包任务"></a>5.添加打包任务</h2><p>在代理作业上点击加号，添加maven打包任务</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_5.png" lay-src="/posts/b893460f/publish_5.png" class="" title="发布">
+
+<h2 id="6-编辑打包任务参数"><a href="#6-编辑打包任务参数" class="headerlink" title="6.编辑打包任务参数"></a>6.编辑打包任务参数</h2><p>填写任务的名称，maven所在的pom.xml文件位置</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_6.png" lay-src="/posts/b893460f/publish_6.png" class="" title="发布">
+
+<h2 id="7-添加ssh任务"><a href="#7-添加ssh任务" class="headerlink" title="7.添加ssh任务"></a>7.添加ssh任务</h2><p>然后再次点击代理作业右边的加号，添加通过ssh复制文件</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_7.png" lay-src="/posts/b893460f/publish_7.png" class="" title="发布">
+
+<h2 id="8-编辑ssh任务参数"><a href="#8-编辑ssh任务参数" class="headerlink" title="8.编辑ssh任务参数"></a>8.编辑ssh任务参数</h2><p>选择ssh服务连接，点击右侧的下拉箭头，选择添加的ssh服务</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_8.png" lay-src="/posts/b893460f/publish_8.png" class="" title="发布">
+
+<p>(1) 源文件目录选择：$(System.DefaultWorkingDirectory)变量代表的文件目录;<br>(2) 内容中可以添加正则表达式，“ ** ”，表示全部文件,或者是*<em>/</em>.war 表示.war文件;<br>(3) 目标目录填写部署服务器的目标目录。<br>(4) 高级选项中，选择精简文件夹和覆盖</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/deploy/copy-files-over-ssh?view=azure-devops">Copy Files Over SSH task</a></div>
+<h2 id="9-保存和发布"><a href="#9-保存和发布" class="headerlink" title="9.保存和发布"></a>9.保存和发布</h2><p>编辑完任务，点击保存和发布</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_9.png" lay-src="/posts/b893460f/publish_9.png" class="" title="发布">
+
+<p>点击创建</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_10.png" lay-src="/posts/b893460f/publish_10.png" class="" title="发布">
+
+<h2 id="10-查看日志"><a href="#10-查看日志" class="headerlink" title="10.查看日志"></a>10.查看日志</h2><p>点击上面的Reles</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_11.png" lay-src="/posts/b893460f/publish_11.png" class="" title="发布">
+
+<p>鼠标放到解决上，点击出现的日志按钮</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_12.png" lay-src="/posts/b893460f/publish_12.png" class="" title="发布">
+
+<h2 id="11-查看每一步的日志"><a href="#11-查看每一步的日志" class="headerlink" title="11.查看每一步的日志"></a>11.查看每一步的日志</h2><p>打开日志列表，可以点击每一步，查看每一步的日志内容。</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_13.png" lay-src="/posts/b893460f/publish_13.png" class="" title="发布">
+
+<p>每一个任务的日志</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_14.png" lay-src="/posts/b893460f/publish_14.png" class="" title="发布">
+
+<p>将文件复制到部署服务器上，就可以在部署服务器上执行其他的命令了</p>
+<h2 id="12-添加部署服务器作业"><a href="#12-添加部署服务器作业" class="headerlink" title="12.添加部署服务器作业"></a>12.添加部署服务器作业</h2><p>右键点击阶级右侧的三个点（鼠标放上去，就显示了），添加部署作业</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_15.png" lay-src="/posts/b893460f/publish_15.png" class="" title="发布">
+
+<p>编辑部署作业，选择部署服务器</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_16.png" lay-src="/posts/b893460f/publish_16.png" class="" title="发布">
+
+<h2 id="13-添加部署作业的任务"><a href="#13-添加部署作业的任务" class="headerlink" title="13.添加部署作业的任务"></a>13.添加部署作业的任务</h2><p>增加完了部署作业，选择完了部署服务器，在部署作业的右侧加号，添加多个任务</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_17.png" lay-src="/posts/b893460f/publish_17.png" class="" title="发布">
+
+<p>可以添加命令行工具，也可以添加其他的任务</p>
+<img src="/images/loadimg.png" data-original="/posts/b893460f/publish_18.png" lay-src="/posts/b893460f/publish_18.png" class="" title="发布">
+
+<p>后面的内容，比如添加哪些脚本，如何自动触发部署，就不具体写了，在其他文章中都写过了，多练习就好了。</p>
+<p>最后保存配置，手动创建新的发布即可。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6eb5e388c112">使用Azure Devops持续集成部署SpringBoot项目</a> 这篇文章是我后来回顾的时候，重新看的一篇文章,这里有一个地方，就是可以借鉴，在使用后台执行java程序的时候，以及删除已有的程序的时候的代码，第一条命令:kill -9 $(netstat -nlp | grep :8080 | awk ‘{print $7}’ | awk -F”/“ ‘{ print $1 }’)是表示查询8080端口的进程id并kill停止它, 以免在发布新版本的时候提示端口被占用, 第二条命令:nohup /usr/java/jdk1.8.0_201/bin/java -jar /tmp/azure-demo-0.0.1-SNAPSHOT.jar &gt; log.file 2&gt;&amp;1 &amp;表示后台启动运行jar文件,并把日志打印到log.file文件中</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/e7ef354c.html" rel="next" title="Azure的DevOps学习笔记">
+                      <i class="iconfont icon-prev"></i> Azure的DevOps学习笔记
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/81d4aff9.html" rel="prev" title="AzureDevops部署组">
+                      AzureDevops部署组 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%96%B0%E5%BB%BA%E5%8F%91%E5%B8%83%E7%AE%A1%E9%81%93"><span class="toc-number">1.</span> <span class="toc-text">1.新建发布管道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B7%BB%E5%8A%A0%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">2.添加项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%B7%BB%E5%8A%A0%E9%98%B6%E6%AE%B5"><span class="toc-number">3.</span> <span class="toc-text">3.添加阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%BA%E9%98%B6%E6%AE%B5%E6%B7%BB%E5%8A%A0%E4%BB%BB%E5%8A%A1"><span class="toc-number">4.</span> <span class="toc-text">4.为阶段添加任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%B7%BB%E5%8A%A0%E6%89%93%E5%8C%85%E4%BB%BB%E5%8A%A1"><span class="toc-number">5.</span> <span class="toc-text">5.添加打包任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%BC%96%E8%BE%91%E6%89%93%E5%8C%85%E4%BB%BB%E5%8A%A1%E5%8F%82%E6%95%B0"><span class="toc-number">6.</span> <span class="toc-text">6.编辑打包任务参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%B7%BB%E5%8A%A0ssh%E4%BB%BB%E5%8A%A1"><span class="toc-number">7.</span> <span class="toc-text">7.添加ssh任务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E7%BC%96%E8%BE%91ssh%E4%BB%BB%E5%8A%A1%E5%8F%82%E6%95%B0"><span class="toc-number">8.</span> <span class="toc-text">8.编辑ssh任务参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E4%BF%9D%E5%AD%98%E5%92%8C%E5%8F%91%E5%B8%83"><span class="toc-number">9.</span> <span class="toc-text">9.保存和发布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%9F%A5%E7%9C%8B%E6%97%A5%E5%BF%97"><span class="toc-number">10.</span> <span class="toc-text">10.查看日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E6%9F%A5%E7%9C%8B%E6%AF%8F%E4%B8%80%E6%AD%A5%E7%9A%84%E6%97%A5%E5%BF%97"><span class="toc-number">11.</span> <span class="toc-text">11.查看每一步的日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E6%B7%BB%E5%8A%A0%E9%83%A8%E7%BD%B2%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%BD%9C%E4%B8%9A"><span class="toc-number">12.</span> <span class="toc-text">12.添加部署服务器作业</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E6%B7%BB%E5%8A%A0%E9%83%A8%E7%BD%B2%E4%BD%9C%E4%B8%9A%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">13.</span> <span class="toc-text">13.添加部署作业的任务</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/b893460f.html';
+      this.page.identifier = 'posts/b893460f.html';
+      this.page.title = 'Azure的DevOps发布和打包Springboot程序';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Azure的DevOps发布和打包Springboot程序 链接地址:https://bibichuan.github.io/posts/b893460f.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Azure的DevOps发布和打包Springboot程序',
+		url: 'https://bibichuan.github.io/posts/b893460f.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Azure的DevOps发布和打包Springboot程序',
+			isTipVisibility: true,
+			tip: 'Azure的DevOps发布和打包Springboot程序',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

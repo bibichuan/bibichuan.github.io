@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高德地图API之海量标注</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">高德地图API之海量标注</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-09-19 00:49:19
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:42
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这篇文章主要探讨了使用高德API加载海量标注点的示例，并针对发现的问题，比如标注点文字和图片共同存在的情况下产生的bug问题复现及其解决过程。</p>
+<p>在<a target="_blank" rel="noopener" href="https://developer.amap.com/demo/javascript-api/example/marker/labelsmarker-mass">官方的海量点</a> 点示例中，展示了如何增加3万个点，但是这个有一个细节，就是没有底图的label标注。在我自己的项目中，虽然标注点不是很多，只有五百多个，但还是会出现卡顿，我并不觉得是我自己的代码问题，可能这是一个官方的bug。</p>
+<p>为了验证我的猜想，我在<a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/loca-v2/demos/cat-icon/icon_traffic">示例</a> 中添加了标注，导致示例特别特别的卡，当不显示标注的时候，倒是可以拖动地图，一旦显示了标注，结果就会连标注都无法拖动了,无论是火狐还是谷歌浏览器，都会出现这个问题。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为了证明数据量的问题，我把生成的数据的量降到了1500</span></span><br><span class="line"><span class="keyword">let</span> _events = events[<span class="number">0</span>].<span class="property">events</span>.<span class="title function_">slice</span>(<span class="number">0</span>,<span class="number">1500</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加载标注图层</span></span><br><span class="line"><span class="keyword">let</span> labelsLayes = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">LabelsLayer</span>({</span><br><span class="line">    <span class="attr">collision</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">opacity</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">zIndex</span>: <span class="number">120</span>,</span><br><span class="line">    <span class="attr">allowCollision</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">zooms</span>: [<span class="number">19</span>, <span class="number">20</span>],</span><br><span class="line">});</span><br><span class="line">labelsLayes.<span class="title function_">setSource</span>(geo);</span><br><span class="line">labelsLayes.<span class="title function_">setStyle</span>({</span><br><span class="line">    <span class="attr">text</span>: {</span><br><span class="line">        <span class="attr">content</span>: <span class="string">"测试"</span>,</span><br><span class="line">        <span class="attr">offset</span>:[<span class="number">0</span>,-<span class="number">5</span>],</span><br><span class="line">        <span class="attr">style</span>:{</span><br><span class="line">            <span class="attr">fillColor</span>:<span class="string">"#fff"</span>,</span><br><span class="line">            <span class="attr">fold</span>:<span class="literal">true</span>,</span><br><span class="line">        },</span><br><span class="line">    },</span><br><span class="line">});</span><br><span class="line">loca.<span class="title function_">add</span>(labelsLayes);</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/ebdabd29/amap_5.jpg" lay-src="/posts/ebdabd29/amap_5.jpg" class="" title="高德地图">
+
+<h2 id="2-测试方法"><a href="#2-测试方法" class="headerlink" title="2.测试方法"></a>2.测试方法</h2><p>官方老师给出的答案，是 Loca.LabelsLayer 封装了 AMap.LabelsLayer,最多承载5000个label，数量过大，就会出现卡顿。为此，我专门做了测试，当时我的测试效果并没有老师给的答案那么明朗，同样还是非常的卡。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成测试数据</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getData</span>(<span class="params"></span>) {</span><br><span class="line">    <span class="keyword">var</span> list = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">500</span>; i++) {</span><br><span class="line">        list.<span class="title function_">push</span>({</span><br><span class="line">            <span class="string">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">            <span class="string">"properties"</span>: {</span><br><span class="line">                <span class="string">"name"</span>: i,</span><br><span class="line">            },</span><br><span class="line">            <span class="string">"geometry"</span>: {</span><br><span class="line">                <span class="string">"type"</span>: <span class="string">"Point"</span>,</span><br><span class="line">                <span class="string">"coordinates"</span>: [<span class="title class_">Number</span>((<span class="number">115.601</span> + i * <span class="number">0.002</span>).<span class="title function_">toFixed</span>(<span class="number">5</span>)), <span class="title class_">Number</span>((<span class="number">40.32</span> + i * <span class="number">0.002</span>).<span class="title function_">toFixed</span>(<span class="number">5</span>))]</span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> data = {</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"FeatureCollection"</span>,</span><br><span class="line">        <span class="string">"features"</span>: list,</span><br><span class="line">    };</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">}</span><br><span class="line"><span class="keyword">var</span> data2 = <span class="title function_">getData</span>();</span><br><span class="line"><span class="keyword">var</span> geo2 = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">GeoJSONSource</span>({</span><br><span class="line">    <span class="attr">data</span>: data2,</span><br><span class="line">});</span><br><span class="line"><span class="keyword">var</span> labelsLayer = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">LabelsLayer</span>({</span><br><span class="line">    <span class="attr">collision</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">opacity</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">zIndex</span>: <span class="number">120</span>,</span><br><span class="line">    <span class="attr">allowCollision</span>: <span class="literal">false</span>,</span><br><span class="line">});</span><br><span class="line">labelsLayer.<span class="title function_">setSource</span>(geo2);</span><br><span class="line">labelsLayer.<span class="title function_">setStyle</span>({</span><br><span class="line">    <span class="attr">text</span>: {</span><br><span class="line">        <span class="attr">content</span>: <span class="string">"测试"</span>,</span><br><span class="line">        <span class="attr">offset</span>:[<span class="number">0</span>,-<span class="number">5</span>],</span><br><span class="line">        <span class="attr">style</span>:{</span><br><span class="line">            <span class="attr">fillColor</span>:<span class="string">"#fff"</span>,</span><br><span class="line">            <span class="attr">fold</span>:<span class="literal">true</span>,</span><br><span class="line">        },</span><br><span class="line">    },</span><br><span class="line">});</span><br><span class="line">loca.<span class="title function_">add</span>(labelsLayer);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我这里测试，同时打开两个页面，一个加了500个label，一个没有加label,非常明显的加了label的会卡，不加label的拖动起来非常的流畅。</p>
+<img src="/images/loadimg.png" data-original="/posts/ebdabd29/amap_3.png" lay-src="/posts/ebdabd29/amap_3.png" class="" title="高德开发">
+
+<p>后来按照老师的要求，进行了谷歌的性能记录，还打开了无痕模式，我虽然还不是很懂这个性能记录，我是这么理解的，每一个函数调用都要六七十毫秒，已经超过了浏览器渲染最小间隔16ms,自然就会产生卡顿的情况。</p>
+<img src="/images/loadimg.png" data-original="/posts/ebdabd29/amap_5.png" lay-src="/posts/ebdabd29/amap_5.png" class="" title="高德开发">
+
+<p>老师说管网的环境可能有问题，他本地测试看看。我自己把官网的例子拿到本地，修改了自己key，进行测试的时候，数量在1100左右就开始有了明显的卡顿了，到1500的时候，已经非常的慢了。</p>
+<img src="/images/loadimg.png" data-original="/posts/ebdabd29/amap_4.png" lay-src="/posts/ebdabd29/amap_4.png" class="" title="高德开发">
+
+<p><strong>最后老师也没有办法了，说是会出一版性能优化，只能通过升级版本来解决了。我用的时候，是loca 2.0和js sdk 2.0</strong></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>根据老师的回答，还有我自己的测试，我总结出来了下面的几种方案。</p>
+<h3 id="1-关闭地图配置的-showLabel"><a href="#1-关闭地图配置的-showLabel" class="headerlink" title="1.关闭地图配置的 showLabel"></a>1.关闭地图配置的 showLabel</h3><p>后来我在<a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/jsapi-v2/example/mass-markers/labelmarker-mass">标注和标注图层-海量点</a> 这个示例里面，发现了奇怪的是，在这个示例中，没有卡顿现象的产生，添加如下内容，为30000个点添加标注，也没有卡顿的情况发生。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> curData = {</span><br><span class="line">    <span class="attr">position</span>: curPosition,</span><br><span class="line">    icon,</span><br><span class="line">    <span class="attr">text</span>:{</span><br><span class="line">        <span class="attr">content</span>:<span class="string">"测试"</span></span><br><span class="line">    }</span><br><span class="line">};</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/ebdabd29/amap_6.png" lay-src="/posts/ebdabd29/amap_6.png" class="" title="高德开发">
+
+<p>直到我修改了地图的配置，将原先的 showLabel: false 改为了 showLabel: true,页面开始卡顿了，说明这个和 LabelsLayer 这个有冲突，目前只能测试到这个程度了。</p>
+<h3 id="2-设置-collision-和-allowCollision"><a href="#2-设置-collision-和-allowCollision" class="headerlink" title="2.设置 collision 和 allowCollision"></a>2.设置 collision 和 allowCollision</h3><p>还有一个点，就是我在代码中设置 collision: false 和 allowCollision: false, 关闭图标避让。也会导致页面卡，不知道是什么问题，需要改为 collision: true 和  allowCollision: true。这里在配置的时候，需要注意。</p>
+<h3 id="3-使用-AMap-LabelsLayer-而不是-Loca-LabelsLayer"><a href="#3-使用-AMap-LabelsLayer-而不是-Loca-LabelsLayer" class="headerlink" title="3.使用 AMap.LabelsLayer 而不是 Loca.LabelsLayer"></a>3.使用 AMap.LabelsLayer 而不是 Loca.LabelsLayer</h3><p>还有一个点需要注意的地方，就是在使用 Loca.LabelsLayer 比使用 AMap.LabelsLayer 要卡，这是我的测试结果，不知道官方活着其他人是不是也是这种情况，因为官方说 Loca.Labelslayer是AMap.LabelsLayerd 封装，我觉得可能还是有性能的损失吧。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cxymm.net/article/sflf36995800/106393077">高德地图 web 端 JS API 遇到的坑及性能优化_YYCCMMKK的博客-程序员秘密</a> LabelMarker 部分点位在地图放大到一定程度后 不再触发click mouseover 等事件，极少量点位会出现这种情况，目测是某些点位附近可能有什么隐藏物吧，总之就是不触发，但是奇怪的是，同样的经纬度有时确是可以正确触发事件，也可能是LabelMarker 有问题。</div>
+<h3 id="4-动态创建和销毁label"><a href="#4-动态创建和销毁label" class="headerlink" title="4.动态创建和销毁label"></a>4.动态创建和销毁label</h3><p>这个思路的意思就是：</p>
+<ul>
+<li>通过将 海量标注 延迟加载（懒加载）的方式，加快页面首屏渲染速度</li>
+<li>检测 海量标注 中的数据项，判断其坐标是否在浏览器视口区域，进行分片渲染</li>
+<li>监听地图缩放及移动事件，先删除原标注图层，再根据第二步渲染新图层</li>
+<li>对 海量标注 中的公共部分进行提取，通过 海量点标记 的方式渲染，减少 DOM 节点数</li>
+<li>针对点击后高亮被选中的标注，单独添加图层进行叠加，减少第三步带来的延迟</li>
+</ul>
+<p>主要代码就是:</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">RfLayer</span>{</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>){</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map_</span>=store.<span class="property">state</span>.<span class="property">map</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">loca_</span>=store.<span class="property">getters</span>.<span class="property">loca</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">rfLabelsLayer</span>=<span class="literal">null</span>; <span class="comment">// 标注图层</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">rfLabelsMarkers</span>=[]; <span class="comment">// 标注点</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">init</span>();</span><br><span class="line">    }</span><br><span class="line">    <span class="title function_">init</span>(<span class="params"></span>){</span><br><span class="line">        <span class="keyword">let</span> map=<span class="variable language_">this</span>.<span class="property">map_</span>;</span><br><span class="line">        <span class="comment">// 监听地图缩放结束后的等级</span></span><br><span class="line">        <span class="keyword">let</span> zoom=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">let</span> that=<span class="variable language_">this</span>;</span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">zoomFun</span>(<span class="params"></span>){</span><br><span class="line">            zoom = map.<span class="title function_">getZoom</span>()</span><br><span class="line">            <span class="keyword">if</span> (zoom &gt;= <span class="number">16</span>) {</span><br><span class="line">                that.<span class="title function_">executeConditionRender</span>()</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        map.<span class="title function_">on</span>(<span class="string">"zoomend"</span>,<span class="function">()=&gt;</span>{</span><br><span class="line">            zoom = map.<span class="title function_">getZoom</span>()</span><br><span class="line">            <span class="keyword">if</span> (zoom &gt;= <span class="number">16</span>) {</span><br><span class="line">                that.<span class="title function_">executeConditionRender</span>()</span><br><span class="line">            }</span><br><span class="line">        })</span><br><span class="line">        <span class="comment">// 防抖</span></span><br><span class="line">        <span class="comment">// map.on('zoomend',_debounce(zoomFun,1000));</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// 监听地图中心点的位置变化</span></span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">moveFun</span>(<span class="params"></span>){</span><br><span class="line">            <span class="keyword">if</span> (zoom &gt;= <span class="number">16</span>) {</span><br><span class="line">                that.<span class="title function_">executeConditionRender</span>()</span><br><span class="line">            }</span><br><span class="line">        }        </span><br><span class="line">        <span class="comment">// 防抖</span></span><br><span class="line">        <span class="comment">// map.on('moveend', _debounce(moveFun,1000))</span></span><br><span class="line">        map.<span class="title function_">on</span>(<span class="string">'moveend'</span>,<span class="function">()=&gt;</span>{</span><br><span class="line">            <span class="keyword">if</span> (zoom &gt;= <span class="number">16</span>) {</span><br><span class="line">                that.<span class="title function_">executeConditionRender</span>()</span><br><span class="line">            }</span><br><span class="line">        })</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 执行条件渲染</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="title function_">executeConditionRender</span>(<span class="params"></span>){</span><br><span class="line">        <span class="keyword">let</span> map=<span class="variable language_">this</span>.<span class="property">map_</span>;</span><br><span class="line">        <span class="keyword">let</span> screenCoordinateRange = map.<span class="title function_">getBounds</span>()</span><br><span class="line">        <span class="keyword">let</span> northEast = [screenCoordinateRange.<span class="property">northEast</span>.<span class="property">lng</span>, screenCoordinateRange.<span class="property">northEast</span>.<span class="property">lat</span>];</span><br><span class="line">        <span class="keyword">let</span> southEast = [screenCoordinateRange.<span class="property">southWest</span>.<span class="property">lng</span>, screenCoordinateRange.<span class="property">northEast</span>.<span class="property">lat</span>];</span><br><span class="line">        <span class="keyword">let</span> southWest = [screenCoordinateRange.<span class="property">southWest</span>.<span class="property">lng</span>, screenCoordinateRange.<span class="property">southWest</span>.<span class="property">lat</span>];</span><br><span class="line">        <span class="keyword">let</span> northWest = [screenCoordinateRange.<span class="property">northEast</span>.<span class="property">lng</span>, screenCoordinateRange.<span class="property">southWest</span>.<span class="property">lat</span>];</span><br><span class="line">        <span class="keyword">let</span> rfdwd_data=store.<span class="property">state</span>.<span class="property">rfdwd_data</span>; <span class="comment">// 数据内容</span></span><br><span class="line">        <span class="keyword">let</span> pointList=rfdwd_data.<span class="property">features</span>;</span><br><span class="line">        <span class="keyword">let</span> screenPointList = pointList.<span class="title function_">filter</span>(<span class="function"><span class="params">item</span> =&gt;</span> {</span><br><span class="line">            <span class="keyword">let</span> coordinates=item.<span class="property">geometry</span>.<span class="property">coordinates</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">AMap</span>.<span class="property">GeometryUtil</span>.<span class="title function_">isPointInRing</span>(coordinates, [northEast, southEast, southWest, northWest])</span><br><span class="line">        })</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(screenPointList.<span class="property">length</span>);</span><br><span class="line">        <span class="comment">// 设置海量标注 具体代码在上面</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">drawRfdwdLabel</span>(screenPointList) </span><br><span class="line">    }</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建图标层和点图层</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="title function_">drawRfdwdPoint</span>(<span class="params"></span>){</span><br><span class="line">        <span class="keyword">let</span> loca=<span class="variable language_">this</span>.<span class="property">loca_</span>;</span><br><span class="line">        <span class="keyword">let</span> geojson=store.<span class="property">state</span>.<span class="property">rfdwd_data</span>;</span><br><span class="line">        <span class="keyword">let</span> dataSource = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">GeoJSONSource</span>({</span><br><span class="line">            <span class="attr">data</span>: geojson,</span><br><span class="line">        });</span><br><span class="line">        <span class="comment">// 创建圆点图层</span></span><br><span class="line">        <span class="keyword">let</span> pointLayer = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">PointLayer</span>({</span><br><span class="line">            <span class="attr">zIndex</span>: <span class="number">10</span>,</span><br><span class="line">            <span class="attr">opacity</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">blend</span>: <span class="string">'lighter'</span>,</span><br><span class="line">            <span class="attr">zooms</span>: [<span class="number">2</span>, <span class="number">16</span>],</span><br><span class="line">        });</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 图层添加数据</span></span><br><span class="line">        pointLayer.<span class="title function_">setSource</span>(dataSource);</span><br><span class="line">        <span class="comment">// 设置样式</span></span><br><span class="line">        pointLayer.<span class="title function_">setStyle</span>({</span><br><span class="line">            <span class="attr">radius</span>: <span class="number">6</span>,</span><br><span class="line">            <span class="attr">color</span>: <span class="string">'rgba(42, 167, 184, 1)'</span>,</span><br><span class="line">            <span class="attr">borderWidth</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">borderColor</span>: <span class="string">'rgba(255,255,255,0.7)'</span>,</span><br><span class="line">            <span class="attr">unit</span>: <span class="string">'px'</span>,</span><br><span class="line">            <span class="attr">zIndex</span>:<span class="number">20</span>,</span><br><span class="line">        });</span><br><span class="line">        <span class="comment">// 添加到地图上</span></span><br><span class="line">        loca.<span class="title function_">add</span>(pointLayer);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 增加图标图层</span></span><br><span class="line">        <span class="keyword">let</span> iconLayer = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">IconLayer</span>({</span><br><span class="line">            <span class="attr">zooms</span>: [<span class="number">16</span>, <span class="number">20</span>],</span><br><span class="line">            <span class="attr">zIndex</span>: <span class="number">10</span>,</span><br><span class="line">            <span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">        });</span><br><span class="line">        iconLayer.<span class="title function_">setSource</span>(dataSource);</span><br><span class="line">        <span class="comment">// 设置样式</span></span><br><span class="line">        iconLayer.<span class="title function_">setStyle</span>({</span><br><span class="line">          <span class="attr">icon</span>: process.<span class="property">env</span>.<span class="property">VUE_APP_URL</span>+<span class="string">"/static/img/renfang.png"</span>,</span><br><span class="line">          <span class="attr">iconSize</span>: [<span class="number">25</span>, <span class="number">25</span>],</span><br><span class="line">        });</span><br><span class="line">        loca.<span class="title function_">add</span>(iconLayer);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 绘制标签</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="title function_">drawRfdwdLabel</span>(<span class="params">features</span>){</span><br><span class="line">        <span class="keyword">let</span> mainmap=<span class="variable language_">this</span>.<span class="property">map_</span>; </span><br><span class="line">        <span class="comment">// 清空数据</span></span><br><span class="line">        <span class="keyword">let</span> labelsLayer =<span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="variable language_">this</span>.<span class="property">rfLabelsLayer</span>){ <span class="comment">// 清空数据</span></span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">rfLabelsLayer</span>.<span class="title function_">remove</span>(<span class="variable language_">this</span>.<span class="property">rfLabelsMarkers</span>);</span><br><span class="line">          labelsLayer=<span class="variable language_">this</span>.<span class="property">rfLabelsLayer</span>;</span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">rfLabelsMarkers</span>=[];</span><br><span class="line">        }<span class="keyword">else</span>{</span><br><span class="line">            <span class="comment">// 创建label</span></span><br><span class="line">            labelsLayer = <span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="title class_">LabelsLayer</span>({</span><br><span class="line">                <span class="attr">collision</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">opacity</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">zIndex</span>: <span class="number">120</span>,</span><br><span class="line">                <span class="attr">allowCollision</span>: <span class="literal">false</span>,</span><br><span class="line">                <span class="attr">zooms</span>: [<span class="number">14</span>, <span class="number">20</span>],</span><br><span class="line">            });</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">rfLabelsLayer</span>=labelsLayer;</span><br><span class="line">            <span class="comment">// 将标注层添加到地图上</span></span><br><span class="line">            mainmap.<span class="title function_">add</span>(labelsLayer);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 加载标注</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = features.<span class="property">length</span>-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--) {</span><br><span class="line">          <span class="keyword">let</span> item=features[i];</span><br><span class="line">          <span class="keyword">let</span> name=item.<span class="property">properties</span>.<span class="property">JZMC</span>;</span><br><span class="line">          <span class="keyword">let</span> geom=item.<span class="property">geometry</span>;</span><br><span class="line">          <span class="keyword">let</span> coordinates=geom.<span class="property">coordinates</span>;</span><br><span class="line">          <span class="keyword">var</span> labelsMarker = <span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="title class_">LabelMarker</span>({</span><br><span class="line">            <span class="attr">name</span>:name,</span><br><span class="line">            <span class="attr">position</span>:<span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="title class_">LngLat</span>(coordinates[<span class="number">0</span>], coordinates[<span class="number">1</span>]),</span><br><span class="line">            <span class="attr">text</span>:{</span><br><span class="line">              <span class="attr">content</span>:name,</span><br><span class="line">              <span class="attr">offset</span>:[<span class="number">0</span>,-<span class="number">5</span>],</span><br><span class="line">              <span class="attr">style</span>:{</span><br><span class="line">                <span class="attr">fillColor</span>:<span class="string">"#fff"</span>,</span><br><span class="line">                <span class="attr">fold</span>:<span class="literal">true</span>,</span><br><span class="line">              },</span><br><span class="line">              <span class="attr">extData</span>:item, <span class="comment">// 自定义数据</span></span><br><span class="line">            }</span><br><span class="line">          });</span><br><span class="line">          labelsLayer.<span class="title function_">add</span>(labelsMarker);</span><br><span class="line">          <span class="comment">// 保存引用</span></span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">rfLabelsMarkers</span>.<span class="title function_">push</span>(labelsMarker);</span><br><span class="line">        }</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意：这个方法也是不行的，在我的vue3.0写的项目中，还是会出现卡顿的问题</strong></p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Marker__/article/details/124321573?share_token=062b4c63-1d11-46b4-b2b0-62822068a225">高德地图「海量点标记 + 海量标注」卡顿问题 解决方案</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/f98cb0f4.html" rel="next" title="高德地图API之获取天气">
+                      <i class="iconfont icon-prev"></i> 高德地图API之获取天气
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/eeeca9e5.html" rel="prev" title="高德地图API之文章汇总">
+                      高德地图API之文章汇总 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">2.测试方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%85%B3%E9%97%AD%E5%9C%B0%E5%9B%BE%E9%85%8D%E7%BD%AE%E7%9A%84-showLabel"><span class="toc-number">3.1.</span> <span class="toc-text">1.关闭地图配置的 showLabel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E7%BD%AE-collision-%E5%92%8C-allowCollision"><span class="toc-number">3.2.</span> <span class="toc-text">2.设置 collision 和 allowCollision</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8-AMap-LabelsLayer-%E8%80%8C%E4%B8%8D%E6%98%AF-Loca-LabelsLayer"><span class="toc-number">3.3.</span> <span class="toc-text">3.使用 AMap.LabelsLayer 而不是 Loca.LabelsLayer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BA%E5%92%8C%E9%94%80%E6%AF%81label"><span class="toc-number">3.4.</span> <span class="toc-text">4.动态创建和销毁label</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/ebdabd29.html';
+      this.page.identifier = 'posts/ebdabd29.html';
+      this.page.title = '高德地图API之海量标注';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：高德地图API之海量标注 链接地址:https://bibichuan.github.io/posts/ebdabd29.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '高德地图API之海量标注',
+		url: 'https://bibichuan.github.io/posts/ebdabd29.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '高德地图API之海量标注',
+			isTipVisibility: true,
+			tip: '高德地图API之海量标注',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

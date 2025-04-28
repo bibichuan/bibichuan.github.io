@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java开发之生成word文档</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Java开发之生成word文档</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-04-26 03:00:10
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/549414360">Java根据word模板生成word文件</a> XDocReport +FreeMarker，该技术组合既简单又高效可实现word模板的编辑，docx和doc均可处理<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/haoming-1/p/18036850">java 实现根据word模板生成word文件 word转pdf</a> 生产wode文档用的是freemarker方式，网上推荐的方式有 itexpdf(失真很厉害用不成);poi包方式（各种包的报错，Poi引用的一些类包里没有，将其他包引入后这些包又有引用类没有，解决不完，用不成）; docx4j（比上面两种好一些，但是也失真厉害达不到生产使用的标准，生成pdf的时间也长）aspose-words(pj 版包，效果不错)<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/niligea/article/details/130967833">java 根据word模板生成word文件</a> Java可以使用Apache POI库来生成Word文件，并且也可以使用freemarker等模板引擎来实现根据Word模板生成Word文件的功能。CTRL+f9生成域——》鼠标右键编辑域——》选择邮件合并—–》在域代码后面加上英文${跟代码内的一致}。<br>【4】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/150676300">Java Apache POI根据 word 模板 template 生成新的 word 文档</a> 要操作 Office Word 文档，就需要先知道是如何进行操作的。Office2003以上，Word可以以XML文本格式存储，这样可以使用外部程序创建Word文件，而不需要使用Word的对象。也能够自由的打开分析Word文件，或者发布到自己的Web页面，或者其他更多应用。</div>
+<h1 id="2-编辑模版"><a href="#2-编辑模版" class="headerlink" title="2.编辑模版"></a>2.编辑模版</h1><p>首先需要准备模版，在 wps 中，依次点击 插入”—“文档部件”—“域”,选择 “邮件合并”，即可。刚开始我插入域的时候，遇到了 “错误!未指定书签”，这玩意用 wps，用 wrod编辑都是一样的，问题还不好找，我修改了域名称，结果无法确定了。</p>
+<img src="/images/loadimg.png" data-original="/posts/d81c1e0d/word_1.png" lay-src="/posts/d81c1e0d/word_1.png" class="" title="Word文档">
+
+<p>后来我知道了，需要直接在 域代码后面添上变量的内容，比如添加一个 name 变量，需要填写: MERGEFIELD ${name}</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.wps.cn/learning/room/d/329977">如何在文档中插入域？</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/pppnext/article/details/131177978">（已解决）wps交叉引用更新所有域后出现“错误！未定义书签。”</a><br>【3】.<a target="_blank" rel="noopener" href="https://plus.wps.cn/blog/p2481.html">WPS文字技巧—如何在WPS文字中快速插入域</a></div>
+<h1 id="3-引入依赖"><a href="#3-引入依赖" class="headerlink" title="3.引入依赖"></a>3.引入依赖</h1><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>fr.opensagres.xdocreport<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fr.opensagres.xdocreport.core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>fr.opensagres.xdocreport<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fr.opensagres.xdocreport.document<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>fr.opensagres.xdocreport<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fr.opensagres.xdocreport.template<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>fr.opensagres.xdocreport<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fr.opensagres.xdocreport.document.docx<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>fr.opensagres.xdocreport<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fr.opensagres.xdocreport.template.freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.freemarker<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.23<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/luck_sheng/article/details/131120863">Java使用XDocReport导出Word（带图片）</a></div>
+<h1 id="3-编写测试代码"><a href="#3-编写测试代码" class="headerlink" title="3.编写测试代码"></a>3.编写测试代码</h1><p>编写测试代码，填入相关参数。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">exportXcbg</span><span class="params">(HttpServletResponse response)</span>{</span><br><span class="line"></span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">ins</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="type">ByteArrayOutputStream</span> <span class="variable">out</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        String fileName=<span class="string">"xxx.docx"</span>;</span><br><span class="line">        <span class="comment">//获取Word模板，模板存放路径</span></span><br><span class="line">        ins = <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(resources+File.separator+fileName);</span><br><span class="line">        <span class="comment">//注册xdocreport实例并加载FreeMarker模板引擎</span></span><br><span class="line">        <span class="type">IXDocReport</span> <span class="variable">report</span> <span class="operator">=</span> XDocReportRegistry.getRegistry().loadReport(ins, TemplateEngineKind.Freemarker);</span><br><span class="line">        <span class="comment">//创建xdocreport上下文对象，用于存放具体数据</span></span><br><span class="line">        <span class="type">IContext</span> <span class="variable">context</span> <span class="operator">=</span> report.createContext();</span><br><span class="line">        <span class="comment">//创建要替换的文本变量</span></span><br><span class="line">        context.put(<span class="string">"name"</span>, <span class="string">"李梅"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 渲染</span></span><br><span class="line">        out=<span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">        report.process(context, out);</span><br><span class="line">        <span class="comment">// 设置强制下载不打开</span></span><br><span class="line">        response.setContentType(<span class="string">"application/octet-stream"</span>);</span><br><span class="line">        response.addHeader(<span class="string">"Content-Disposition"</span>, <span class="string">"attachment;fileName="</span> + <span class="keyword">new</span> <span class="title class_">String</span>(fileName.getBytes(<span class="string">"UTF-8"</span>),<span class="string">"iso-8859-1"</span>));</span><br><span class="line">        response.setContentLength(out.size());</span><br><span class="line"></span><br><span class="line">        ServletOutputStream servletOutputStream=response.getOutputStream();</span><br><span class="line">        out.writeTo(servletOutputStream);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输出</span></span><br><span class="line">        servletOutputStream.flush();</span><br><span class="line">        servletOutputStream.close();</span><br><span class="line">    } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">        log.error(<span class="string">"生成word发生异常"</span>, e);</span><br><span class="line">    } <span class="keyword">finally</span> {</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="keyword">if</span> (ins != <span class="literal">null</span>){</span><br><span class="line">                ins.close();</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (out != <span class="literal">null</span>){</span><br><span class="line">                out.close();</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">catch</span> (IOException e) {</span><br><span class="line">            log.error(<span class="string">"文件流关闭失败"</span>, e);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213385/7921270">java IXDocReport导出word文档</a> 这里是使用了 TemplateEngineKind.Velocity 模版<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_51058053/article/details/136043486">通过IXDocReport 根据word文档模板 生成word文档包含循环图片以及循环数据（表格中）</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175447/9961476">java IXDocReport文档流下载</a> 这里提供了一个方法，就是生成了 ByteArrayOutputStrem，并提供了下载。</div>
+<h1 id="4-插入图片"><a href="#4-插入图片" class="headerlink" title="4.插入图片"></a>4.插入图片</h1><p>(1) 首先编辑模版,在模版中插入一张占位图，然后选中图片，选择 “插入” -&gt; 选择 “书签”，插入一张书签,不需要加入 $ 符号。</p>
+<p>(2) 编写代码<br>创建图片元数据，我加入的是xchdztt这个书签，然后将相关的字段进行填充。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">String fileName=<span class="string">"xxx.docx"</span>;</span><br><span class="line"><span class="comment">//获取Word模板，模板存放路径</span></span><br><span class="line">ins = <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(resources+File.separator+fileName);</span><br><span class="line"><span class="comment">//注册xdocreport实例并加载FreeMarker模板引擎</span></span><br><span class="line"><span class="type">IXDocReport</span> <span class="variable">report</span> <span class="operator">=</span> XDocReportRegistry.getRegistry().loadReport(ins, TemplateEngineKind.Freemarker);</span><br><span class="line"><span class="comment">//创建xdocreport上下文对象，用于存放具体数据</span></span><br><span class="line"><span class="type">IContext</span> <span class="variable">context</span> <span class="operator">=</span> report.createContext();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入图片</span></span><br><span class="line"><span class="type">FieldsMetadata</span> <span class="variable">metadata</span> <span class="operator">=</span> report.createFieldsMetadata();</span><br><span class="line"><span class="type">InputStream</span> <span class="variable">fins</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(resources+File.separator+<span class="string">"word_1.png"</span>));</span><br><span class="line">metadata.addFieldAsImage(<span class="string">"xchdztt"</span>);</span><br><span class="line">context.put(<span class="string">"xchdztt"</span>, <span class="keyword">new</span> <span class="title class_">ByteArrayImageProvider</span>(fins));</span><br><span class="line">report.setFieldsMetadata(metadata);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/549414360">Java根据word模板生成word文件</a> 这里还有插入图片的操作</div>
+<h1 id="5-列表循环"><a href="#5-列表循环" class="headerlink" title="5.列表循环"></a>5.列表循环</h1><p>(1) 编辑模版，插入域，编辑列表头: MERGEFIELD [#list lonlist as item]</p>
+<img src="/images/loadimg.png" data-original="/posts/d81c1e0d/word_4.png" lay-src="/posts/d81c1e0d/word_4.png" class="" title="Word文档">
+
+<p>编辑列表尾：MERGEFIELD [/#list]</p>
+<img src="/images/loadimg.png" data-original="/posts/d81c1e0d/word_5.png" lay-src="/posts/d81c1e0d/word_5.png" class="" title="Word文档">
+
+<p>中间就用：MERGEFIELD ${item.lat}，调用列表中的变量</p>
+<p>(2) 编写代码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">String fileName=<span class="string">"xxx.docx"</span>;</span><br><span class="line"><span class="comment">//获取Word模板，模板存放路径</span></span><br><span class="line">ins = <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(resources+File.separator+fileName);</span><br><span class="line"><span class="comment">//注册xdocreport实例并加载FreeMarker模板引擎</span></span><br><span class="line"><span class="type">IXDocReport</span> <span class="variable">report</span> <span class="operator">=</span> XDocReportRegistry.getRegistry().loadReport(ins, TemplateEngineKind.Freemarker);</span><br><span class="line"><span class="comment">//创建xdocreport上下文对象，用于存放具体数据</span></span><br><span class="line"><span class="type">IContext</span> <span class="variable">context</span> <span class="operator">=</span> report.createContext();</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 插入列表</span></span><br><span class="line">List&lt;JSONObject&gt; lonlist=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">JSONObject temp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">temp.put(<span class="string">"lon"</span>,<span class="number">123.123</span>);</span><br><span class="line">temp.put(<span class="string">"lat"</span>,<span class="number">30.12</span>);</span><br><span class="line">lonlist.add(temp);</span><br><span class="line"></span><br><span class="line">temp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">temp.put(<span class="string">"lon"</span>,<span class="number">112.33</span>);</span><br><span class="line">temp.put(<span class="string">"lat"</span>,<span class="number">31.12</span>);</span><br><span class="line">lonlist.add(temp);</span><br><span class="line"></span><br><span class="line">temp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">temp.put(<span class="string">"lon"</span>,<span class="number">123.083</span>);</span><br><span class="line">temp.put(<span class="string">"lat"</span>,<span class="number">33.12</span>);</span><br><span class="line">lonlist.add(temp);</span><br><span class="line"></span><br><span class="line">context.put(<span class="string">"lonlist"</span>,lonlist);</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213445/8264785">java IXDocReport 循环</a> 这里用了 #foreach 语法，我没有尝试过<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lovling/p/10791139.html">java freemarker + word 模板 生成 word 文档 （变量替换，数据的循环，表格数据的循环，以及图片的替换）</a> 循环的写法 <code>[#list list as item]  [/#list]</code>  依然是要注意两端的中括号，最好两端在加引号括起来<br>【3】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7264761954921250857">基于xdocreport+freemarker导出复杂word文档</a></div>
+<h1 id="6-循环图片"><a href="#6-循环图片" class="headerlink" title="6.循环图片"></a>6.循环图片</h1><p>(1) 修改模版<br>在需要添加列表循环的地方，增加了一个图片的书签，我命名为 listimg，和单独添加图片书签是一样的，列表的域代码 ：[#list lonlist as item]。</p>
+<p>(2) 编写代码<br>这里和普通的列表有两个区别，一个就是增加了 ByteArrayImageProvider 属性，另外一个就是使用了原数据图片转换： metadata.addFieldAsImage(“listimg”,”item.listimg”)，</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 插入列表</span></span><br><span class="line">List&lt;JSONObject&gt; lonlist=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">JSONObject temp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">temp.put(<span class="string">"lon"</span>,<span class="number">123.123</span>);</span><br><span class="line">temp.put(<span class="string">"lat"</span>,<span class="number">30.12</span>);</span><br><span class="line"><span class="type">InputStream</span> <span class="variable">fins1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(resources+File.separator+<span class="string">"word_1.png"</span>));</span><br><span class="line">temp.put(<span class="string">"listimg"</span>,<span class="keyword">new</span> <span class="title class_">ByteArrayImageProvider</span>(fins1));</span><br><span class="line">lonlist.add(temp);</span><br><span class="line"></span><br><span class="line">temp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">temp.put(<span class="string">"lon"</span>,<span class="number">112.33</span>);</span><br><span class="line">temp.put(<span class="string">"lat"</span>,<span class="number">31.12</span>);</span><br><span class="line"><span class="type">InputStream</span> <span class="variable">fins2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(resources+File.separator+<span class="string">"word_2.png"</span>));</span><br><span class="line">temp.put(<span class="string">"listimg"</span>,<span class="keyword">new</span> <span class="title class_">ByteArrayImageProvider</span>(fins2));</span><br><span class="line"></span><br><span class="line">lonlist.add(temp);</span><br><span class="line"></span><br><span class="line">temp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">temp.put(<span class="string">"lon"</span>,<span class="number">123.083</span>);</span><br><span class="line">temp.put(<span class="string">"lat"</span>,<span class="number">33.12</span>);</span><br><span class="line"><span class="type">InputStream</span> <span class="variable">fins3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(resources+File.separator+<span class="string">"word_3.png"</span>));</span><br><span class="line">temp.put(<span class="string">"listimg"</span>,<span class="keyword">new</span> <span class="title class_">ByteArrayImageProvider</span>(fins3));</span><br><span class="line">lonlist.add(temp);</span><br><span class="line"></span><br><span class="line">context.put(<span class="string">"lonlist"</span>,lonlist);</span><br><span class="line"><span class="comment">// 设置图片 和 列表内容转换，这里很重要, 这个item就是模版文件中的那个item变量</span></span><br><span class="line">metadata.addFieldAsImage(<span class="string">"listimg"</span>,<span class="string">"item.listimg"</span>);</span><br><span class="line">report.setFieldsMetadata(metadata);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染</span></span><br><span class="line">out=<span class="keyword">new</span> <span class="title class_">ByteArrayOutputStream</span>();</span><br><span class="line">report.process(context, out);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="http://blog.healerjean.com/utils/2019/08/20/1_IXDocReport_Freemarkder%E5%B0%86Word%E6%A8%A1%E6%9D%BF%E5%8F%98%E9%87%8F%E8%BD%AC%E5%8C%96%E6%88%90pdf/">IXDocReport_Freemarkder将Word模板变量转化成pdf </a><br>【2】.<a target="_blank" rel="noopener" href="https://github.com/opensagres/xdocreport/wiki/DocxReportingJavaMainDynamicImage">Name image different of the context</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_32366329/article/details/128429773">XDocReport使用入门</a><br>【4】.<a target="_blank" rel="noopener" href="http://blog.healerjean.com/utils/2019/08/20/1_IXDocReport_Freemarkder%E5%B0%86Word%E6%A8%A1%E6%9D%BF%E5%8F%98%E9%87%8F%E8%BD%AC%E5%8C%96%E6%88%90pdf/">IXDocReport_Freemarkder将Word模板变量转化成pdf</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_51058053/article/details/136043486">通过IXDocReport 根据word文档模板 生成word文档包含循环图片以及循环数据（表格中）</a> 这里在表格中增加了多个图片，没有说明相关的方法，让我理解不透<br>【6】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/huigee/p/16588247.html">java实现word模板导出</a> 这里用了一个 列表<br>【7】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lovling/p/10791139.html">java freemarker + word 模板 生成 word 文档 （变量替换，数据的循环，表格数据的循环，以及图片的替换）</a></div>
+<h1 id="7-嵌套循环"><a href="#7-嵌套循环" class="headerlink" title="7.嵌套循环"></a>7.嵌套循环</h1><p>除了一层循环之外，就是在循环内嵌套一层循环。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">«[#list pinlist as pinitem]»«[#list pinlist as pinitem]»ddd«[/#list]»东经：«${pinitem.lon}»；北纬：«${pinitem.lat}»。«[/#list]»</span><br></pre></td></tr></tbody></table></figure>
+
+<p>生成的域代码如下：</p>
+<img src="/images/loadimg.png" data-original="/posts/d81c1e0d/word_6.png" lay-src="/posts/d81c1e0d/word_6.png" class="" title="word">
+
+<p>这里有一个比较难的地方，就是关于嵌套循环列表中有图片的问题。我尝试了很多的方法，弄了很久，始终找不到到底如何生成一个嵌套的循环图片。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/a1216701075/article/details/86751764">FreeMaker循环嵌套数据输出</a> 也很简单，就是按照格式多写一个循环。<br>【2】.<a target="_blank" rel="noopener" href="https://www.microfocus.com/documentation/silk-central/206/zh/silkcentral-help-zh/GUID-CD69EF8D-E66A-48B9-A20A-9EAB88E21580.html">Word 报告模板</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/enthan809882/article/details/102880445">freemarker实现多层嵌套循环</a> 直接就是 #list 嵌套，如果不知道有几层就多写几个list。</div>
+<h1 id="8-嵌套循环图片"><a href="#8-嵌套循环图片" class="headerlink" title="8.嵌套循环图片"></a>8.嵌套循环图片</h1><p>(1) 模版<br>修改word模版，创建一个循环嵌套的列表域，如下。这里的图片标签，<strong>一定要定位到图片上，然后再添加书签 xczp。</strong> 我吃亏就吃亏在这里，我尝试了很多方法，弄了很多次，最后都是无法生成word文档，甚至处理了好几天，让我非常的苦恼。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MERGEFIELD [#list pinlist as pinitem]</span><br><span class="line">MERGEFIELD [#list pinitem.imglist as imgitem]</span><br><span class="line">图片书签【xczp】</span><br><span class="line">MERGEFIELD [/#list]</span><br><span class="line">MERGEFIELD [/#list]</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/d81c1e0d/word_7.png" lay-src="/posts/d81c1e0d/word_7.png" class="" title="word">
+
+<p>(2) 代码<br>代码里面就是创建两个循环，一个是 pinlist 列表，一个是 pinitem.imglist 列表，其中关键的代码就是 metadata.addFieldAsImage(“xczp”,”imgitem.xczp”)， 这里的 imgitem 要用内循环的变量，而不是外循环的其他的一些东西。我尝试过 pinitem.imglist.xczp，尝试过其他的东西，基本上也都是不行的。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变量生成打点列表</span></span><br><span class="line">List&lt;JSONObject&gt; pinItemList=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="type">int</span> dwNumber=<span class="number">4</span>; <span class="comment">// 点位编号开始</span></span><br><span class="line"><span class="type">int</span> imgNumber=<span class="number">3</span>; <span class="comment">// 图编号</span></span><br><span class="line"><span class="type">int</span> pinCount=pinList.size();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历打点数据</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> count=<span class="number">0</span>;count&lt;pinCount;count++){</span><br><span class="line">    Pin pin=pinList.get(count);</span><br><span class="line">    JSONObject temp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">    temp.put(<span class="string">"lon"</span>,pin.getLon()); <span class="comment">// 经度</span></span><br><span class="line">    temp.put(<span class="string">"lat"</span>,pin.getLat()); <span class="comment">// 纬度</span></span><br><span class="line">    temp.put(<span class="string">"wtms"</span>,pin.getWtms()); <span class="comment">// 问题描述</span></span><br><span class="line">    temp.put(<span class="string">"dwNumber"</span>,dwNumber); <span class="comment">// 点位编号</span></span><br><span class="line">    dwNumber+=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line"></span><br><span class="line">        String dwtp=pin.getDwtp();</span><br><span class="line">        <span class="keyword">if</span>(!dwtp.isEmpty()){</span><br><span class="line">            InputStream photoImg=MinioUtil.getMinioFile(MinioUtil.getBucketName(),dwtp);</span><br><span class="line">            temp.put(<span class="string">"kjfb"</span>,<span class="keyword">new</span> <span class="title class_">ByteArrayImageProvider</span>(photoImg));</span><br><span class="line">            temp.put(<span class="string">"imgNumber"</span>,imgNumber); <span class="comment">// 点位编号</span></span><br><span class="line">            imgNumber+=<span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 现场照片</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        String xczp=pin.getXczp();</span><br><span class="line">        String[] xczpArray=xczp.split(<span class="string">","</span>);</span><br><span class="line">        <span class="type">int</span> xczpCount=xczpArray.length;</span><br><span class="line">        JSONArray imgList=<span class="keyword">new</span> <span class="title class_">JSONArray</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i=<span class="number">0</span>;i&lt;xczpCount;i++){</span><br><span class="line">            String xczpPath=xczpArray[i];</span><br><span class="line">            <span class="keyword">if</span>(!xczpPath.isEmpty()){</span><br><span class="line">                JSONObject xczpTemp=<span class="keyword">new</span> <span class="title class_">JSONObject</span>();</span><br><span class="line">                <span class="comment">// 现场照片</span></span><br><span class="line">                InputStream photoImg=MinioUtil.getMinioFile(MinioUtil.getBucketName(),xczpPath);</span><br><span class="line">                xczpTemp.put(<span class="string">"xczp"</span>,<span class="keyword">new</span> <span class="title class_">ByteArrayImageProvider</span>(photoImg));</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 内循环图片编号</span></span><br><span class="line">                xczpTemp.put(<span class="string">"number"</span>,imgList.size()+<span class="number">1</span>);</span><br><span class="line">                <span class="comment">// 外循环图片编号</span></span><br><span class="line">                xczpTemp.put(<span class="string">"imgnumber"</span>,imgNumber+imgList.size()+<span class="number">1</span>);</span><br><span class="line">                <span class="comment">// 加入列表</span></span><br><span class="line">                imgList.add(xczpTemp);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        temp.put(<span class="string">"imglist"</span>,imgList);</span><br><span class="line">        temp.put(<span class="string">"imgNumber"</span>,imgNumber); <span class="comment">// 点位编号</span></span><br><span class="line">        imgNumber+=<span class="number">1</span>;</span><br><span class="line">    }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">        log.error(<span class="string">"xczp error"</span>,e);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 生成打点列表</span></span><br><span class="line">    pinItemList.add(temp);</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 现场照片</span></span><br><span class="line">metadata.addFieldAsImage(<span class="string">"xczp"</span>,<span class="string">"imgitem.xczp"</span>);</span><br><span class="line"><span class="comment">// 空间分布照片</span></span><br><span class="line">metadata.addFieldAsImage(<span class="string">"kjfb"</span>,<span class="string">"pinitem.kjfb"</span>);</span><br><span class="line">report.setFieldsMetadata(metadata);</span><br><span class="line"><span class="comment">// 渲染列表</span></span><br><span class="line">context.put(<span class="string">"pinlist"</span>,pinItemList);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://github.com/opensagres/xdocreport.samples/blob/master/samples/fr.opensagres.xdocreport.samples.docxandfreemarker/src/fr/opensagres/xdocreport/samples/docxandfreemarker/DocxProjectWithFreemarkerAndImageList.java">DocxProjectWithFreemarkerAndImageList</a><br>【2】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/sof/1771275">XDocReport无法在生成的文档中显示两个图像</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Marion158/article/details/108057401">使用freemarker循环图片（附demo）</a></div>
+<h1 id="9-循环表格"><a href="#9-循环表格" class="headerlink" title="9.循环表格"></a>9.循环表格</h1><p>我另外一个需求就是，根据列表中的内容，循环生成不同的表格。</p>
+<p>（1）在表格的开头编辑域 @before-row[#list pinlist as pinitem]<br>（2）在表格的结尾编辑域 @after-row[/#list]</p>
+<img src="/images/loadimg.png" data-original="/posts/d81c1e0d/word_8.png" lay-src="/posts/d81c1e0d/word_8.png" class="" title="word">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zi_wu_xian/article/details/16827995">Word动态输出多表格方案（以工资条为例）</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.volcengine.com/theme/11000025-S-7-1">使用xdocreport在表格中填充模板</a><br>【3】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53241829/populating-tables-with-templates-in-xdocreport">Populating tables with templates in xdocreport</a><br>【4】.<a target="_blank" rel="noopener" href="https://github.com/opensagres/xdocreport/wiki/ODTReportingJavaMainListFieldAdvancedTable">ODTReportingJavaMainListFieldAdvancedTable</a> 这里是官方的说明，增加了@before-row @after-row 方法<br>【5】.<a target="_blank" rel="noopener" href="https://www.volcengine.com/theme/9687118-W-7-1">我可以用xdocreport做什么，来合并表中的单元格？</a></div>
+<h1 id="10-判断"><a href="#10-判断" class="headerlink" title="10.判断"></a>10.判断</h1><p>IF 判断的写法，需要三个域，每一个的创建方式和上面相同 内容为   “[#if 1 == 1]”  文档内容  “ [#else]”  文档内容  “ [/#if]”  , 注意要加中括号，两端最好在加上引号。</p>
+<img src="/images/loadimg.png" data-original="/posts/d81c1e0d/word_9.png" lay-src="/posts/d81c1e0d/word_9.png" class="" title="word">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lovling/p/10791139.html">java freemarker + word 模板 生成 word 文档 （变量替换，数据的循环，表格数据的循环，以及图片的替换）</a></div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>(1) InputStream is not a zip.<br>这是我加载一个 doc 文档的时候出现的问题。</p>
+<p>【解决方案】<br>将 doc 文档另存为 docx 文档。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/25266103/xdocreport-cant-create-report-from-inputstream-java-util-zip-zipexeption">XDocReport can’t create report from InputStream java.util.zip.ZipExeption</a> So I suupose you are loading a bad document (perhaps a .doc which is binary files and not a zip which contains xml entries).</div>
+<p>(2) Encountered “[/#if]”, but at this place only this can be closed: “#list”.</p>
+<div class="reference">参考文章:<br>【1】.[Encountered “[/#if]”, but at this place only this can be closed: “#list”.]</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/c1c31803.html" rel="next" title="Java开发环境配置">
+                      <i class="iconfont icon-prev"></i> Java开发环境配置
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/23f142f2.html" rel="prev" title="Java开发之生成pdf文档">
+                      Java开发之生成pdf文档 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%BC%96%E8%BE%91%E6%A8%A1%E7%89%88"><span class="toc-number">2.</span> <span class="toc-text">2.编辑模版</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">3.</span> <span class="toc-text">3.引入依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%BC%96%E5%86%99%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">3.编写测试代码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text">4.插入图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%88%97%E8%A1%A8%E5%BE%AA%E7%8E%AF"><span class="toc-number">6.</span> <span class="toc-text">5.列表循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%BE%AA%E7%8E%AF%E5%9B%BE%E7%89%87"><span class="toc-number">7.</span> <span class="toc-text">6.循环图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF"><span class="toc-number">8.</span> <span class="toc-text">7.嵌套循环</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%B5%8C%E5%A5%97%E5%BE%AA%E7%8E%AF%E5%9B%BE%E7%89%87"><span class="toc-number">9.</span> <span class="toc-text">8.嵌套循环图片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%BE%AA%E7%8E%AF%E8%A1%A8%E6%A0%BC"><span class="toc-number">10.</span> <span class="toc-text">9.循环表格</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E5%88%A4%E6%96%AD"><span class="toc-number">11.</span> <span class="toc-text">10.判断</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">12.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/d81c1e0d.html';
+      this.page.identifier = 'posts/d81c1e0d.html';
+      this.page.title = 'Java开发之生成word文档';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Java开发之生成word文档 链接地址:https://bibichuan.github.io/posts/d81c1e0d.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Java开发之生成word文档',
+		url: 'https://bibichuan.github.io/posts/d81c1e0d.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Java开发之生成word文档',
+			isTipVisibility: true,
+			tip: 'Java开发之生成word文档',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

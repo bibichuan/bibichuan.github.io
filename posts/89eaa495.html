@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios使用笔记</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">axios使用笔记</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Axios/">Axios</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Javascript/">Javascript</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-07-03 08:41:35
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-Axios修改默认的Content-Type"><a href="#1-Axios修改默认的Content-Type" class="headerlink" title="1.Axios修改默认的Content-Type"></a>1.Axios修改默认的Content-Type</h2><p>post传递数据后端无法获取。axios使用，有他便利的地方，也有不便利的地方，我首先遇到的第一个问题就是使用post传递的时候，默认的请求头header是”Content-Type: application/json;charset=UTF-8”，问题是后台不认啊。</p>
+<p>就算我设置了 content-type=application/x-www-form-urlencoded 也不起作用（这似乎是个bug，一直没解决，<a target="_blank" rel="noopener" href="https://github.com/axios/axios/issues/362">讨论地址</a> ，大部分的解决方案好像是引入一个qs库，对参数进行格式化，这有点蛋疼了。 ）</p>
+<img src="/images/loadimg.png" data-original="/posts/89eaa495/axios_1.png" lay-src="/posts/89eaa495/axios_1.png" class="" title="axios的post请求">
+
+<p>错误请求代码：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">defaults</span>.<span class="property">headers</span>.<span class="property">post</span>[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded'</span>;</span><br><span class="line">axios.<span class="title function_">post</span>(<span class="string">'/api/company/'</span>+userid+<span class="string">'/apply'</span>, {</span><br><span class="line">    <span class="attr">accuracyType</span>: <span class="variable language_">this</span>.<span class="property">precision</span>,</span><br><span class="line">    <span class="attr">manageNum</span>: <span class="variable language_">this</span>.<span class="property">number</span>,</span><br><span class="line">    <span class="attr">fromTime</span>: <span class="variable language_">this</span>.<span class="property">startTime</span>,</span><br><span class="line">    <span class="attr">toTime</span>: <span class="variable language_">this</span>.<span class="property">endTime</span>,</span><br><span class="line">    <span class="attr">belongArea</span>: <span class="variable language_">this</span>.<span class="property">region</span>,</span><br><span class="line">    <span class="attr">otherservice</span>: <span class="variable language_">this</span>.<span class="property">increaseResult</span>.<span class="title function_">join</span>(<span class="string">','</span>),</span><br><span class="line">    <span class="attr">usepurpose</span>: <span class="variable language_">this</span>.<span class="property">purpose</span>,</span><br><span class="line">    <span class="attr">licenses</span>: <span class="variable language_">this</span>.<span class="property">certificateImg</span>,</span><br><span class="line">})</span><br><span class="line">.<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">response</span>) {</span><br><span class="line">    <span class="keyword">if</span>(response&amp;&amp;response.<span class="property">code</span>==<span class="number">200</span>){</span><br><span class="line">        dd.<span class="property">device</span>.<span class="property">notification</span>.<span class="title function_">toast</span>({</span><br><span class="line">            <span class="attr">message</span>: <span class="string">'申请提交成功'</span>,</span><br><span class="line">            <span class="attr">duration</span>: <span class="number">4</span></span><br><span class="line">        })</span><br><span class="line">    }</span><br><span class="line">    $btn.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">"disabled"</span>);</span><br><span class="line">})</span><br><span class="line">.<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">error</span>) {</span><br><span class="line">    dd.<span class="property">device</span>.<span class="property">notification</span>.<span class="title function_">toast</span>({</span><br><span class="line">        <span class="attr">message</span>: <span class="string">'申请提交失败'</span>,</span><br><span class="line">        <span class="attr">duration</span>: <span class="number">4</span></span><br><span class="line">    })</span><br><span class="line">    $btn.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">"disabled"</span>);</span><br><span class="line">});</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>最后解决方式是,在配置中添加了transformRequest函数，将data进行了拼接</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">defaults</span>.<span class="property">headers</span>.<span class="property">post</span>[<span class="string">'Content-Type'</span>] = <span class="string">'application/x-www-form-urlencoded'</span>;</span><br><span class="line">axios.<span class="title function_">post</span>(<span class="string">'/api/company/'</span>+userid+<span class="string">'/apply'</span>, {</span><br><span class="line">    <span class="attr">accuracyType</span>: <span class="variable language_">this</span>.<span class="property">precision</span>,</span><br><span class="line">    <span class="attr">manageNum</span>: <span class="variable language_">this</span>.<span class="property">number</span>,</span><br><span class="line">    <span class="attr">fromTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">    <span class="attr">toTime</span>: <span class="keyword">new</span> <span class="title class_">Date</span>(),</span><br><span class="line">    <span class="attr">belongArea</span>: <span class="variable language_">this</span>.<span class="property">region</span>,</span><br><span class="line">    <span class="attr">otherservice</span>: <span class="variable language_">this</span>.<span class="property">increaseResult</span>.<span class="title function_">join</span>(<span class="string">','</span>),</span><br><span class="line">    <span class="attr">usepurpose</span>: <span class="variable language_">this</span>.<span class="property">purpose</span>,</span><br><span class="line">    <span class="attr">licenses</span>: <span class="variable language_">this</span>.<span class="property">certificateImg</span>,</span><br><span class="line">},{</span><br><span class="line">    <span class="attr">transformRequest</span>: [<span class="keyword">function</span> (<span class="params">data</span>) {</span><br><span class="line">        <span class="comment">// Do whatever you want to transform the data</span></span><br><span class="line">        <span class="keyword">let</span> ret = <span class="string">''</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> it <span class="keyword">in</span> data) {</span><br><span class="line">            ret += <span class="built_in">encodeURIComponent</span>(it) + <span class="string">'='</span> + <span class="built_in">encodeURIComponent</span>(data[it]) + <span class="string">'&amp;'</span></span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line">    }]</span><br><span class="line">})</span><br><span class="line">.<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">response</span>) {</span><br><span class="line">    <span class="keyword">if</span>(response&amp;&amp;response.<span class="property">code</span>==<span class="number">200</span>){</span><br><span class="line">        dd.<span class="property">device</span>.<span class="property">notification</span>.<span class="title function_">toast</span>({</span><br><span class="line">            <span class="attr">message</span>: <span class="string">'申请提交成功'</span>,</span><br><span class="line">            <span class="attr">duration</span>: <span class="number">4</span></span><br><span class="line">        })</span><br><span class="line">    }</span><br><span class="line">    $btn.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">"disabled"</span>);</span><br><span class="line">})</span><br><span class="line">.<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">error</span>) {</span><br><span class="line">    dd.<span class="property">device</span>.<span class="property">notification</span>.<span class="title function_">toast</span>({</span><br><span class="line">        <span class="attr">message</span>: <span class="string">'申请提交失败'</span>,</span><br><span class="line">        <span class="attr">duration</span>: <span class="number">4</span></span><br><span class="line">    })</span><br><span class="line">    $btn.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">"disabled"</span>);</span><br><span class="line">});</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用qs函数库的解决方案：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">QueryString</span> <span class="keyword">from</span> <span class="string">"qs"</span>;</span><br><span class="line"><span class="keyword">var</span> data = <span class="title class_">Querystring</span>.<span class="title function_">stringify</span>({ </span><br><span class="line">    <span class="string">"grant_type"</span>: <span class="string">"password"</span>,</span><br><span class="line">    <span class="string">"username"</span>: login,</span><br><span class="line">    <span class="string">"password"</span>: password</span><br><span class="line">});</span><br><span class="line">axios.<span class="title function_">post</span>(<span class="title class_">Urls</span>.<span class="property">login</span>, data);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/small-coder/p/9115972.html">qs.js - 更好的处理url参数</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000008943315">axios设置get请求Content-Type=’application/json;charset=UTF-8’无效</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27626333/article/details/77005911">axios请求接口发起两次请求（OPTIONS 与POST/GET）</a><br>4.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000016040998">关于axios会发送两次请求，有个OPTIONS请求的问题</a><br>5.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000008462977">axios发送post请求，如何提交表单数据？</a><br>6.<a target="_blank" rel="noopener" href="https://github.com/axios/axios#using-applicationx-www-form-urlencoded-format">Using application/x-www-form-urlencoded format</a><br>7.<a target="_blank" rel="noopener" href="https://github.com/axios/axios#browser">Browser</a><br>8.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/41948102">axios用post提交的数据格式</a><br>9.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47630163/axios-post-request-to-send-form-data?tdsourcetag=s_pctim_aiomsg">axios post request to send form data</a></div>
+<h2 id="2-json字符串有一个奇怪的-“d”-null"><a href="#2-json字符串有一个奇怪的-“d”-null" class="headerlink" title="2.json字符串有一个奇怪的{“d”:null}"></a>2.json字符串有一个奇怪的{“d”:null}</h2><p>这倒是挺邪乎的，用打开新标签页的方式请求json数据的时候，一切都很好，但是用axios请求的时候，json解析时总是有错误，在返回的数据中莫名奇妙的多加了一个{“d”:null}。<br>正常的结尾：</p>
+<img src="/images/loadimg.png" data-original="/posts/89eaa495/axios_3.png" lay-src="/posts/89eaa495/axios_3.png" class="" title="axios的post请求">
+
+<p>不正常的结尾：</p>
+<img src="/images/loadimg.png" data-original="/posts/89eaa495/axios_2.png" lay-src="/posts/89eaa495/axios_2.png" class="" title="axios的post请求">
+
+<p>使用其他的jquery请求这个服务就没有问题，但是到了axios这里就不管事了，真是奇了怪了。按参考资料的意思，我可以修改后台，但是这不是解决办法啊。<br>问题出自这里，我自顾自的添加了,</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">axios</span>({</span><br><span class="line">    <span class="attr">url</span>: url,</span><br><span class="line">    <span class="attr">method</span>: method,</span><br><span class="line">    <span class="attr">data</span>: data,</span><br><span class="line">    <span class="attr">headers</span>:{</span><br><span class="line">        <span class="string">"Content-Type"</span>:<span class="string">"application/json"</span></span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//responseType: dataType</span></span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+<p>在请求的时候，请求头就变成了：</p>
+<img src="/images/loadimg.png" data-original="/posts/89eaa495/axios_5.png" lay-src="/posts/89eaa495/axios_5.png" class="" title="axios的post请求">
+
+<p>post请求应该是：</p>
+
+
+<p>所以将自定义请求头去掉，然后结合上一步也就是第一个问题(post发送数据后端接收不到数据)，共同处理，就可以解决这个奇怪的{“d”:null}。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/44303781/having-strange-dnull-in-json-response">Having strange {“d”:null} in JSON response</a><br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33085057/jquery-ajax-appending-to-json-return-data-dnull">jQuery AJAX appending to Json return data “d:null”</a></div>
+<h2 id="3-请求的data不起作用"><a href="#3-请求的data不起作用" class="headerlink" title="3.请求的data不起作用"></a>3.请求的data不起作用</h2><p>data参数，只有在请求类型为post时才会起作用。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// `data` is the data to be sent as the request body</span></span><br><span class="line"><span class="comment">// Only applicable for request methods 'PUT', 'POST', 'DELETE , and 'PATCH'</span></span><br><span class="line"><span class="comment">// When no `transformRequest` is set, must be of one of the following types:</span></span><br><span class="line"><span class="comment">// - string, plain object, ArrayBuffer, ArrayBufferView, URLSearchParams</span></span><br><span class="line"><span class="comment">// - Browser only: FormData, File, Blob</span></span><br><span class="line"><span class="comment">// - Node only: Stream, Buffer</span></span><br><span class="line"><span class="attr">data</span>: {</span><br><span class="line"><span class="attr">firstName</span>: <span class="string">'Fred'</span></span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdn_yudong/article/details/79668655">axios 发 post 请求，后端接收不到参数的解决方案</a><br>2.<a target="_blank" rel="noopener" href="https://github.com/axios/axios">axios</a></div>
+<h2 id="3-设置Content-Type不起作用"><a href="#3-设置Content-Type不起作用" class="headerlink" title="3.设置Content-Type不起作用"></a>3.设置Content-Type不起作用</h2><p>在开发的时候设置get请求头的Content-Type总是失效，后来发现原来是一般get请求不需要设置Content-Type, 所以axios内部会自动删除掉</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000014360170">axios 用application/x-www-form-urlencoded 传参格式不对</a><br>2.<a target="_blank" rel="noopener" href="https://juejin.im/post/5c6fb3f26fb9a049a81fef64">axios 修改Content-Type设置</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012555942/article/details/80080762">axios 全局变量默认Content-Type 无效问题</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Chris__wang/article/details/102485354">axios get请求设置请求头Content-Type不生效，失败</a> (这篇文章说get请求设置content-type不生效)</div>
+<h2 id="4-取消ajax请求"><a href="#4-取消ajax请求" class="headerlink" title="4.取消ajax请求"></a>4.取消ajax请求</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.im/post/6844904056721260558">axios CancelToken 取消频繁发送请求的用法和源码解析</a><br>2.<a target="_blank" rel="noopener" href="https://juejin.im/post/6844903933735878663">Axios取消请求CancelToken</a><br>3.<a target="_blank" rel="noopener" href="https://github.com/axios/axios">github的axios内容</a> (这里其实也提到了如何创建一个可以取消的ajax请求)</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/42a60370.html" rel="next" title="axios配合服务器端设置跨域访问">
+                      <i class="iconfont icon-prev"></i> axios配合服务器端设置跨域访问
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/481b34e8.html" rel="prev" title="XenServer安装与运维二">
+                      XenServer安装与运维二 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Axios%E4%BF%AE%E6%94%B9%E9%BB%98%E8%AE%A4%E7%9A%84Content-Type"><span class="toc-number">1.</span> <span class="toc-text">1.Axios修改默认的Content-Type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-json%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%9C%89%E4%B8%80%E4%B8%AA%E5%A5%87%E6%80%AA%E7%9A%84-%E2%80%9Cd%E2%80%9D-null"><span class="toc-number">2.</span> <span class="toc-text">2.json字符串有一个奇怪的{“d”:null}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%AF%B7%E6%B1%82%E7%9A%84data%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">3.请求的data不起作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E8%AE%BE%E7%BD%AEContent-Type%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">3.设置Content-Type不起作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%8F%96%E6%B6%88ajax%E8%AF%B7%E6%B1%82"><span class="toc-number">5.</span> <span class="toc-text">4.取消ajax请求</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/89eaa495.html';
+      this.page.identifier = 'posts/89eaa495.html';
+      this.page.title = 'axios使用笔记';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：axios使用笔记 链接地址:https://bibichuan.github.io/posts/89eaa495.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'axios使用笔记',
+		url: 'https://bibichuan.github.io/posts/89eaa495.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'axios使用笔记',
+			isTipVisibility: true,
+			tip: 'axios使用笔记',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

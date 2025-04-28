@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器运维之日志审计</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">服务器运维之日志审计</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-05-20 02:24:46
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>最近接了一个等保的项目，除了应用系统的问题修复之外，还要有服务器的防护，比如入侵检测，日志审计，边界检测等，要想不花钱解决问题怎么办呢？</p>
+<p>ELK是Elasticsearch、Logstash、Kibana的简称，简单来说就是一个日志分析管理系统，当然这是最常用的，还有很多高端功能。安装配置的顺序就是Java-&gt;Elasticsearch-&gt;Logstash-&gt;Kibana。</p>
+<p>刚开始我是在windows server 2008 R2上安装了jdk17.0.3.1,elesticsearch-8.2.0，logstash-8.2.0,kibana-8,2.0,结果最后的kibana的node版本不支持2008R2，结果只能降级到了ELK 6.8.23,jdk我重新配置指向了 openjdk 13.0.2，所以有些配置可能就不需要做了，比如 elasticsearch的ssl认证。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45728976/article/details/106129058">Windows最新版ELK日志分析系统搭建教程（附带便捷启动方案）</a><br>2.<a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/system/226033.html">等保测评2.0：Windows安全审计</a><br>3.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000039075336">快速理解ELK</a> 1.elasticsearch是核心负责数据的存储,对数据做索引并提供检索服务.2.logstash是原始数据的传输通道,提供一些高级的功能,比如对原始数据做一些处理将无格式的数据转化为某种格式的数据后提供给elasticsearch。3.beats是数据的采集代理,一般安装在被采集的服务器上,抓取目标服务器的各项数据传输给logstash。4.至于kibana则是前端的展示,用于将elasticsearch的数据直观的呈现出来.</div>
+<h2 id="2-安装JAVA"><a href="#2-安装JAVA" class="headerlink" title="2.安装JAVA"></a>2.安装JAVA</h2><p>下载jdk-17-&gt;解压到本地目录，配置环境变量Path,运行：java -version 测试是否成功。</p>
+<h2 id="3-安装Elasticsearch"><a href="#3-安装Elasticsearch" class="headerlink" title="3.安装Elasticsearch"></a>3.安装Elasticsearch</h2><p>(1) <a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/elasticsearch">下载压缩包</a>,解压到任意目录</p>
+<p>(2) 修改conf下elasticsearch.yml配置文件</p>
+<ul>
+<li>设置ip地址，任意网络均可访问，取消注释：network.host: 0.0.0.0</li>
+</ul>
+<p>下面的内容，是版本 8.2.0 要设置的内容，如果是版本6.8.23 可以不用设置</p>
+<ul>
+<li>关闭 ssl 认证，把 xpack.security.http.ssl:enabled 设置成 false </li>
+<li>关闭windows 的 elasticsearch 账号密码，把 xpack.security.enabled 属性设置为 false 即可，当然也可以设使用 elasticsearch-setup-passwords interactive 设置密码</li>
+<li>设置内存大小，在 config/jvm.options 文件中直接设置就好(追加)：-Xms512m -Xmx2048m</li>
+</ul>
+<p>(3) 到bin目录，执行elasticsearch.bat文件。</p>
+<p>(4) 浏览器打开 locahost:9200 测试</p>
+<p>(5) 设置用户名密码<br>修改 elasticsearch.yml,增加以下内容：</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">http.cors.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">http.cors.allow-origin:</span> <span class="string">"*"</span></span><br><span class="line"><span class="attr">http.cors.allow-headers:</span> <span class="string">Authorization</span></span><br><span class="line"><span class="attr">xpack.security.enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">xpack.security.transport.ssl.enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## windows下使用cmd窗口输入,根据提示生成一系列的密码</span></span><br><span class="line">elasticsearch-setup-passwords interactive</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-stack-security.html">Start the Elastic Stack with security enabled</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013456370/article/details/79563437">Windows下安装Elasticsearch，启动报错，解决方法，访问</a> 这里提供了msi安装到方式进行elasticsearch安装<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43188744/article/details/108096394">ElasticSearch设置账户密码(Docker,Windows,Linux适用)</a></div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(1) UnknownHostException:geoip.elastic.co<br>启动elasticsearch.bat的时候，出现了下面的问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/d480aed9/err_1.png" lay-src="/posts/d480aed9/err_1.png" class="" title="错误">
+
+<p>【解决】<br>修改 config\elasticsearch.yml 文件，增加：ingest.geoip.downloader.enabled: false 配置。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liukx/p/15716358.html">java.net.UnknownHostException: geoip.elastic.co</a> 这里还有些其他的错误，是整个的安装配置过程。</div>
+<p>(2) 9200无法访问<br>我启动elasticsearch.bat之后，访问9200端口，还是无法访问。即便我修改了 config\elasticsearch.yml 文件，增加了 network.host: 0.0.0.0 也不行。</p>
+<img src="/images/loadimg.png" data-original="/posts/d480aed9/err_2.png" lay-src="/posts/d480aed9/err_2.png" class="" title="错误">
+
+<p>显示：[DESKTOP-ASEA1FB] received plaintext http traffic on an https channel, closing connection Netty4HttpChannel{localAddress=/127.0.0.1:9200, remoteAddress=/127.0.0.1:59014}</p>
+<p>【解决】<br>修改配置文件 config\elasticsearch.yml 文件，将 xpack.security.http.ssl:enabled 设置成 false。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanyuge/p/5553993.html">无法访问9200端口的ElasticSearch服务</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/class_brick/article/details/79147921">elasticSearch本地可以访问网页无法访问的解决方法</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/CalledJoker/article/details/122972170">ElasticSearch 爬坑记录</a> 这里给了解决方法，主要就是因为开启了ssl认证，windows 下直接启动 ElasticSearch ，见到 started 为成功启动，访问 htttp://localhost:9200 需要输入密码，是因为开启了密码验证模式。还有 Permission denied 问题，this version of the Java Runtime only recognizes 的java版本问题。<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43188744/article/details/108096394">ElasticSearch设置账户密码(Docker,Windows,Linux适用)</a><br>5.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000040452986">拒绝裸奔，为 Elasticsearch 设置账号密码（qbit）</a><br>6.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/4aa3a8b70bfa">Elasticsearch、Logstash、Kibana手把手教你添加密码设置</a> 这里还有logstash设置密码部分</div>
+<h2 id="4-安装Logstash"><a href="#4-安装Logstash" class="headerlink" title="4.安装Logstash"></a>4.安装Logstash</h2><p>(1) <a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/logstash">下载 Logstash</a></p>
+<p>(2) conf目录下创建logstash.conf文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">input {</span><br><span class="line">  tcp {</span><br><span class="line">    port =&gt; 5044</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">output {</span><br><span class="line">  elasticsearch { </span><br><span class="line">	hosts =&gt; ["localhost:9200"]</span><br><span class="line">	user =&gt; "logstash_system"</span><br><span class="line">	password =&gt; "rf08&amp;ks" </span><br><span class="line">  }</span><br><span class="line">  stdout { codec =&gt; rubydebug }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 打开cmd进入bin目录运行: </p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash -f C:\Soft\logstash-6.8.23.0\config\logstash.conf</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 浏览器打开 locahost:9600 测试，会有版本号输出。</p>
+<p>(5) 用户名密码<br>修改config/logstash.yml配置文件,这个有没有用，其实我有点疑惑，因为我使用了上面的logstash.conf配置启动，可能就不需要这里的配置了。</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">xpack.monitoring.enabled:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">xpack.monitoring.elasticsearch.username:</span> <span class="string">logstash_system</span></span><br><span class="line"><span class="attr">xpack.monitoring.elasticsearch.password:</span> <span class="string">rf08&amp;ks</span></span><br><span class="line"><span class="attr">xpack.monitoring.elasticsearch.hosts:</span> [<span class="string">"https://es1:9200"</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fabfa1ad9d0c">Windows安装logstash</a> 单独安装了logstash<br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000019838495">Windows环境安装Logstash和Logstash-input-jdbc</a><br>3.<a target="_blank" rel="noopener" href="http://www.voycn.com/article/windowshuanjingxialogstash-anzhuangpeizhishiyong">windows环境下Logstash 安装配置使用</a> 使用NSSM将Logstash安装为Windows服务，还介绍了Logstash的工作原理</div>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>(1) Logstash stopped processing because of an error: (SystemExit) exit<br>启动logstash之后，直接报错了。查看日志文件，这里有一个显示：No config files found in path {:path=&gt;”C:/Soft/config/logstash.conf”}，但是我的目录是 C:\Soft\logstash-8.2.0\config</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">C:\Soft\logstash-8.2.0\bin&gt;logstash -f logstash.conf</span><br><span class="line">"Using bundled JDK: C:\Soft\logstash-8.2.0\jdk\bin\java.exe"</span><br><span class="line">OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in ve</span><br><span class="line">rsion 9.0 and will likely be removed in a future release.</span><br><span class="line">Sending Logstash logs to C:/Soft/logstash-8.2.0/logs which is now configured via</span><br><span class="line"> log4j2.properties</span><br><span class="line">[2022-05-22T09:50:09,155][INFO ][logstash.runner          ] Log4j configuration</span><br><span class="line">path used is: C:\Soft\logstash-8.2.0\config\log4j2.properties</span><br><span class="line">[2022-05-22T09:50:09,171][WARN ][logstash.runner          ] The use of JAVA_HOME</span><br><span class="line"> has been deprecated. Logstash 8.0 and later ignores JAVA_HOME and uses the bund</span><br><span class="line">led JDK. Running Logstash with the bundled JDK is recommended. The bundled JDK h</span><br><span class="line">as been verified to work with each specific version of Logstash, and generally p</span><br><span class="line">rovides best performance and reliability. If you have compelling reasons for usi</span><br><span class="line">ng your own JDK (organizational-specific compliance requirements, for example),</span><br><span class="line">you can configure LS_JAVA_HOME to use that version instead.</span><br><span class="line">[2022-05-22T09:50:09,171][INFO ][logstash.runner          ] Starting Logstash {"</span><br><span class="line">logstash.version"=&gt;"8.2.0", "jruby.version"=&gt;"jruby 9.2.20.1 (2.5.8) 2021-11-30</span><br><span class="line">2a2962fbd1 OpenJDK 64-Bit Server VM 11.0.14.1+1 on 11.0.14.1+1 +indy +jit [mswin</span><br><span class="line">32-x86_64]"}</span><br><span class="line">[2022-05-22T09:50:09,186][INFO ][logstash.runner          ] JVM bootstrap flags:</span><br><span class="line"> [-Xms1g, -Xmx1g, -XX:+UseConcMarkSweepGC, -XX:CMSInitiatingOccupancyFraction=75</span><br><span class="line">, -XX:+UseCMSInitiatingOccupancyOnly, -Djava.awt.headless=true, -Dfile.encoding=</span><br><span class="line">UTF-8, -Djruby.compile.invokedynamic=true, -Djruby.jit.threshold=0, -XX:+HeapDum</span><br><span class="line">pOnOutOfMemoryError, -Djava.security.egd=file:/dev/urandom, -Dlog4j2.isThreadCon</span><br><span class="line">textMapInheritable=true, -Djruby.regexp.interruptible=true, --add-opens=java.bas</span><br><span class="line">e/java.security=ALL-UNNAMED, --add-opens=java.base/java.io=ALL-UNNAMED, --add-op</span><br><span class="line">ens=java.base/java.nio.channels=ALL-UNNAMED, --add-opens=java.base/sun.nio.ch=AL</span><br><span class="line">L-UNNAMED, --add-opens=java.management/sun.management=ALL-UNNAMED]</span><br><span class="line">[2022-05-22T09:50:09,233][INFO ][logstash.settings        ] Creating directory {</span><br><span class="line">:setting=&gt;"path.queue", :path=&gt;"C:/Soft/logstash-8.2.0/data/queue"}</span><br><span class="line">[2022-05-22T09:50:09,249][INFO ][logstash.settings        ] Creating directory {</span><br><span class="line">:setting=&gt;"path.dead_letter_queue", :path=&gt;"C:/Soft/logstash-8.2.0/data/dead_let</span><br><span class="line">ter_queue"}</span><br><span class="line">[2022-05-22T09:50:09,342][WARN ][logstash.config.source.multilocal] Ignoring the</span><br><span class="line"> 'pipelines.yml' file because modules or command line options are specified</span><br><span class="line">[2022-05-22T09:50:09,405][INFO ][logstash.agent           ] No persistent UUID f</span><br><span class="line">ile found. Generating new UUID {:uuid=&gt;"ea8fe73b-25e1-410a-a4f4-39d9f4a03f6e", :</span><br><span class="line">path=&gt;"C:/Soft/logstash-8.2.0/data/uuid"}</span><br><span class="line">TimerTask timeouts are now ignored as these were not able to be implemented corr</span><br><span class="line">ectly</span><br><span class="line">TimerTask timeouts are now ignored as these were not able to be implemented corr</span><br><span class="line">ectly</span><br><span class="line">TimerTask timeouts are now ignored as these were not able to be implemented corr</span><br><span class="line">ectly</span><br><span class="line">TimerTask timeouts are now ignored as these were not able to be implemented corr</span><br><span class="line">ectly</span><br><span class="line">[2022-05-22T09:50:14,743][INFO ][logstash.config.source.local.configpathloader]</span><br><span class="line">No config files found in path {:path=&gt;"C:/Soft/logstash-8.2.0/logstash.conf"}</span><br><span class="line">[2022-05-22T09:50:14,776][ERROR][logstash.config.sourceloader] No configuration</span><br><span class="line">found in the configured sources.</span><br><span class="line">[2022-05-22T09:50:14,885][INFO ][logstash.agent           ] Successfully started</span><br><span class="line"> Logstash API endpoint {:port=&gt;9600, :ssl_enabled=&gt;false}</span><br><span class="line">[2022-05-22T09:50:20,339][INFO ][logstash.runner          ] Logstash shut down.</span><br><span class="line">[2022-05-22T09:50:20,354][FATAL][org.logstash.Logstash    ] Logstash stopped pro</span><br><span class="line">cessing because of an error: (SystemExit) exit</span><br><span class="line">org.jruby.exceptions.SystemExit: (SystemExit) exit</span><br><span class="line">        at org.jruby.RubyKernel.exit(org/jruby/RubyKernel.java:747) ~[jruby.jar:</span><br><span class="line">?]</span><br><span class="line">        at org.jruby.RubyKernel.exit(org/jruby/RubyKernel.java:710) ~[jruby.jar:</span><br><span class="line">?]</span><br><span class="line">        at C_3a_.Soft.logstash_minus_8_dot_2_dot_0.lib.bootstrap.environment.&lt;ma</span><br><span class="line">in&gt;(C:\Soft\logstash-8.2.0\lib\bootstrap\environment.rb:91) ~[?:?]</span><br><span class="line"></span><br><span class="line">C:\Soft\logstash-8.2.0\bin&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决】<br>这个问题主要就是配置文件的问题，使用logstash -f 加载配置文件的时候，要代入绝对路径，比如：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logstash -f C:\Soft\logstash-8.2.0\config\logstash.conf</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://discuss.elastic.co/t/logstash-stopped-processing-because-of-an-error-systemexit-exit/275744">Logstash stopped processing because of an error: (SystemExit) exit </a><br>2.<a target="_blank" rel="noopener" href="https://www.elastic.co/guide/en/logstash/current/running-logstash-windows.html">Running Logstash on Windows</a> Write-Host $env:LS_JAVA_HOME;Running Logstash manually;Running Logstash as a service with NSSM<br>3.<a target="_blank" rel="noopener" href="https://www.daxueyiwu.com/post/3857">Elasticsearch、Logstash、Kibana添加密码步骤</a> 这里有相关的密码配置</div>
+<h2 id="5-安装Kibana"><a href="#5-安装Kibana" class="headerlink" title="5.安装Kibana"></a>5.安装Kibana</h2><p>(1) <a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/kibana">下载Kibana</a>,解压到任意目录</p>
+<p>(2) 修改 config目录修改kibana.yml配置文件</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server.port:</span> <span class="number">5601</span></span><br><span class="line"><span class="attr">server.host:</span> <span class="string">"127.0.0.1"</span></span><br><span class="line"><span class="attr">elasticsearche.hosts:</span> [<span class="string">"http://127.0.0.1:9200"</span>]</span><br><span class="line"><span class="comment">## 如果配置了用户名密码，需要填写</span></span><br><span class="line"><span class="attr">elasticsearch.username:</span> <span class="string">"kibana"</span></span><br><span class="line"><span class="attr">elasticsearch.password:</span> <span class="string">"刚才生成的密码"</span></span><br><span class="line"></span><br><span class="line"><span class="attr">i18n.locale:</span> <span class="string">"zh-CN"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 启动bin/kibana.bat </p>
+<p>(4) 测试：localhost:5601，会进入管理控制台</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=YG2u8NJW7Do">ELK Stack Install on Windows Server 2008 R2</a> 视频介绍如何在windows 2008上安装ELK,node-v4.2.2-x64,ELK的版本也是比较老的<br>2.<a target="_blank" rel="noopener" href="https://tmmitblog.blogspot.com/2018/04/elk-stack-install-on-windows-server.html">ELK Stack Install on Windows Server 2008 R2 </a> 这个是上面的文字介绍。</div>
+<h3 id="问题-2"><a href="#问题-2" class="headerlink" title="问题"></a>问题</h3><p>(1) Node.js is only supported on Windows 8.1, Windows Server 2012 R2<br>我是在windows server 2008R2上安装的，结果报了这个错误。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C:\Soft\kibana-8.2.0\bin&gt;kibana.bat</span><br><span class="line">Node.js is only supported on Windows 8.1, Windows Server 2012 R2, or higher.</span><br><span class="line">Setting the NODE_SKIP_PLATFORM_CHECK environment variable to 1 skips this</span><br><span class="line">check, but Node.js might not execute correctly. Any issues encountered on</span><br><span class="line">unsupported platforms will not be fixed.</span><br><span class="line">C:\Soft\kibana-8.2.0\bin&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决】<br>配置了环境变量：NODE_SKIP_PLATFORM_CHECK =1，不再报上面的错误了，但是出现了下面的问题。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_53891873/article/details/120767184">启动Kibana报错 Node.js is only supported on Windows 8.1 Kibana server is not ready yet</a> 这里设置了一个NODE_SKIP_PLATFORM_CHECK变量，还有NODE_PATH变量<br>2.<a target="_blank" rel="noopener" href="https://github.com/nodejs/node/issues/26194">Which version of Node JS supported for “Windows Server 2008 R2 standard” with Service Pack 1(64 bit)? Will Node JS 10.x supported?</a></div>
+<p>(2) A system error occurred: uv_os_gethostname returned ENOSYS</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">C:\Soft\kibana-8.2.0\bin&gt;kibana.bat</span><br><span class="line">node:os:68</span><br><span class="line">      throw new ERR_SYSTEM_ERROR(ctx);</span><br><span class="line">      ^</span><br><span class="line"></span><br><span class="line">SystemError [ERR_SYSTEM_ERROR]: A system error occurred: uv_os_gethostname retur</span><br><span class="line">ned ENOSYS (function not implemented)</span><br><span class="line">    at Object.&lt;anonymous&gt; (C:\Soft\kibana-8.2.0\node_modules\elastic-apm-http-cl</span><br><span class="line">ient\index.js:39:21)</span><br><span class="line">    at Module._compile (node:internal/modules/cjs/loader:1103:14)</span><br><span class="line">    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1157:10)</span><br><span class="line">    at Module.load (node:internal/modules/cjs/loader:981:32)</span><br><span class="line">    at Function.Module._load (node:internal/modules/cjs/loader:822:12)</span><br><span class="line">    at Module.require (node:internal/modules/cjs/loader:1005:19)</span><br><span class="line">    at require (node:internal/modules/cjs/helpers:102:18)</span><br><span class="line">    at Object.&lt;anonymous&gt; (C:\Soft\kibana-8.2.0\node_modules\elastic-apm-node\li</span><br><span class="line">b\config.js:6:28)</span><br><span class="line">    at Module._compile (node:internal/modules/cjs/loader:1103:14)</span><br><span class="line">    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1157:10)</span><br><span class="line">{</span><br><span class="line">  code: 'ERR_SYSTEM_ERROR',</span><br><span class="line">  info: {</span><br><span class="line">    errno: -4054,</span><br><span class="line">    code: 'ENOSYS',</span><br><span class="line">    message: 'function not implemented',</span><br><span class="line">    syscall: 'uv_os_gethostname'</span><br><span class="line">  },</span><br><span class="line">  errno: [Getter/Setter],</span><br><span class="line">  syscall: [Getter/Setter]</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">C:\Soft\kibana-8.2.0\bin&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决】<br>因为我的是windows 2008 R2系统，经过多次尝试，最后改为了 kibana 6.8.23 版本尝试安装。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chuncui2576/article/details/100760124">win 下启动 kibana 启动失败 解决</a> 试着以 管理员身份启动  Kibana.bat;第一次启动 Kibana 可能耗时有点久，特别是 电脑配置不高的情况下，所以当 窗口 没内容的时候，不防等待 5分钟看看 </div>
+<h2 id="6-Winlogbeat"><a href="#6-Winlogbeat" class="headerlink" title="6.Winlogbeat"></a>6.Winlogbeat</h2><p>使用Winlogbeat收集Windows日志，并用ES + Kibana检索的配置方法。<br>(1) 下载 <a target="_blank" rel="noopener" href="https://www.elastic.co/cn/downloads/past-releases#winlogbeat">winlogbeat</a>，解压到任意目录。</p>
+<p>(2) 修改 winlogbeat.yml 配置文件，主要包括下面的内容</p>
+<ul>
+<li>1.在event_logs章节，指定你要监控的event log类型，Winlogbeat默认监控application, security, and system这三种。</li>
+</ul>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">winlogbeat.event_logs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Application</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Security</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">System</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">output.elasticsearch:</span></span><br><span class="line">  <span class="attr">hosts:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">localhost:9200</span></span><br><span class="line">  <span class="attr">username:</span> <span class="string">""</span></span><br><span class="line">  <span class="attr">password:</span> <span class="string">""</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">logging.to_files:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">logging.files:</span></span><br><span class="line">  <span class="comment">## 这里的斜杠我搞不清楚，有的是斜杠，有的是反斜杠，两种都有文章写，我测试了正斜杠和反斜杠，好像两者都可以</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">C:/ProgramData/winlogbeat/Logs</span></span><br><span class="line"><span class="attr">logging.level:</span> <span class="string">info</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>2.如果需要把日志发送到Elasticsearch，output.elasticsearch 这里把IP端口写进去</li>
+<li>3.如果要把日志写到Logstash,需要其他的配置。要将日志通过Logstash写到ES，需要先配置Logstash的转发规则。配置好以后确保Logstash已经启动且运行正常。接下来要配置Winlogbeat将日志发送到Logstash的5044端口</li>
+</ul>
+<p>(3) 测试<br>以管理员身份运行PowerShell,进入到winlogbeat目录，执行下面的命令</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\winlogbeat.exe -c .\winlogbeat.yml -configtest -e</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 安装为系统服务<br>使用PowerShell脚本，就可以将winlogbeat安装为系统服务，在系统的服务里面，可以进行服务启动停止</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 运行安装命令</span></span><br><span class="line">.\install-service-winlogbeat.ps1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(5) 查看数据<br>如何查看数据，这个也是让我废了一番脑筋，毕竟是一个小白，什么都不懂。</p>
+<p>(1) 我打开了kibana的控制台 localhost:5601</p>
+<p>(2) 在菜单栏的管理设置里面，创建了一个索引模式，我用的是winlogbeat*，其他的都是随便选的</p>
+<p>(3) 然后再打开Discover，就可以看到数据了。而且我把 winlogbeat.event_logs 这里面的 ignore_older 参数全部的删除了，这样所有已有的数据应该就是都能接收到了。</p>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/115782">基于ELK实现Windows服务器系统日志监控</a> 这里只是说了如何配置安装Winlogbeat，默认是已经安装了 Elasticsearch、Logstash等组件，可以将日志输出到Elasticsearch,输出到Lgstash等组件。这里还有加载索引模板、加载Kibana仪表盘样例，这里应该是高版本提供的功能，低版本没有 scripts 文件夹，6.8.23 只有一个kibana文件夹，不知道用来干什么的。<br>2.<a target="_blank" rel="noopener" href="https://www.elastic.co/cn/beats/winlogbeat">轻量型 Windows 事件日志采集器</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/gered/p/15540722.html">winlogbeat采集windows系统日志</a> 这个单独的写winlogbeat，很多地方比较详细的,包括下载安装，修改配置文件，启动停止和服务等<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tladagio/article/details/96280617">winlogbeat收集windows系统日志</a> 这个其实挺简单的<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_33910759/article/details/92513029">winlogbeat-收集windows事件日志并启用默认模板、dashboard相关配置</a> 收集并写入kafka相关配置：<br>6.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/michealkai/p/13381389.html">Winlogbeat之配置 4</a> 1. 在事件日志部分，指定要监视的事件日志，默认情况下，Winlogbeat设置为监视应用程序、安全性和系统日志；2.配置输出。Winlogbeat支持多种输出，但通常您可以将事件直接发送到Elasticsearch，或发送到Logstash以进行其他处理；3. 如果计划使用Winlogbeat提供的示例Kibana仪表板，请配置Kibana端点。如果Kibana与Elasticsearch在同一主机上运行，则可以跳过此步骤；4. 如果Elasticsearch和Kibana是安全的，请在winlogbeat.yml在运行设置和启动Winlogbeat的命令之前配置文件。5. 保存配置文件后，使用 .\winlogbeat.exe test config -c .\winlogbeat.yml -e 进行测试。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/6366df7f.html" rel="next" title="服务器运维之硬件">
+                      <i class="iconfont icon-prev"></i> 服务器运维之硬件
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/6098a54.html" rel="prev" title="服务器运维之文件共享">
+                      服务器运维之文件共享 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85JAVA"><span class="toc-number">2.</span> <span class="toc-text">2.安装JAVA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85Elasticsearch"><span class="toc-number">3.</span> <span class="toc-text">3.安装Elasticsearch</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%89%E8%A3%85Logstash"><span class="toc-number">4.</span> <span class="toc-text">4.安装Logstash</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">4.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%AE%89%E8%A3%85Kibana"><span class="toc-number">5.</span> <span class="toc-text">5.安装Kibana</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-2"><span class="toc-number">5.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Winlogbeat"><span class="toc-number">6.</span> <span class="toc-text">6.Winlogbeat</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/d480aed9.html';
+      this.page.identifier = 'posts/d480aed9.html';
+      this.page.title = '服务器运维之日志审计';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：服务器运维之日志审计 链接地址:https://bibichuan.github.io/posts/d480aed9.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '服务器运维之日志审计',
+		url: 'https://bibichuan.github.io/posts/d480aed9.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '服务器运维之日志审计',
+			isTipVisibility: true,
+			tip: '服务器运维之日志审计',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

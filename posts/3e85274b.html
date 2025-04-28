@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java开发之Excel操作</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Java开发之Excel操作</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-05-06 13:44:46
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>最近遇到一个需求，就是将json转成导出到excel中导出,我查了下，主要的工具有apache poi,easypoi和easyexcel,我以前倒是使用过poi，但是当时没有统一的博客，可能在简书，也可能在知乎，最后的代码也不知道弄到那里去了，现在再次拾起来，如何导出excel文件。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wujiaxing/p/14714787.html">poi、easypoi和easyexcel的使用</a> 介绍了poi,easypoi和easyexcel，分别有相应的代码示例，都有自定义数据结构的例子。<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/superlinb/p/14886642.html">java- excel工具类（EasyPoi）</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/x7418520/article/details/122735151">EasyExcel与EasyPoi性能对比</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mn1607823482/article/details/119618752">JAVA-JSON文件转excel文件</a><br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hdwang/p/15749666.html">JAVA使用hutool poi工具读取Excel模板并写值输出文件</a> 这里使用了 hutool 封装的 poi 进行 excel 的读取和写入。</div>
+<h2 id="2-文件生成"><a href="#2-文件生成" class="headerlink" title="2.文件生成"></a>2.文件生成</h2><p>下面的示例代码，主要展示了创建两个表格，并通过浏览器进行下载的功能。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = "exportToExcel")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">exportToExcel</span><span class="params">(String json,HttpServletResponse response)</span>{</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        <span class="comment">//表头</span></span><br><span class="line">        List&lt;List&lt;String&gt;&gt; headList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        headList.add(Lists.newArrayList(<span class="string">"姓名"</span>));</span><br><span class="line">        headList.add(Lists.newArrayList(<span class="string">"年龄"</span>));</span><br><span class="line">        headList.add(Lists.newArrayList(<span class="string">"操作时间"</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//数据体</span></span><br><span class="line">        List&lt;List&lt;Object&gt;&gt; dataList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {</span><br><span class="line">            List&lt;Object&gt; data = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            data.add(<span class="string">"张三"</span> + i);</span><br><span class="line">            data.add(<span class="number">20</span> + i);</span><br><span class="line">            data.add(<span class="keyword">new</span> <span class="title class_">Date</span>(System.currentTimeMillis() + i));</span><br><span class="line">            dataList.add(data);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">            * 直接下载</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">        <span class="comment">// 这里注意 有同学反应使用swagger 会导致各种问题，请直接用浏览器或者用postman</span></span><br><span class="line">        response.setContentType(<span class="string">"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"</span>);</span><br><span class="line">        response.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">// 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> URLEncoder.encode(<span class="string">"测试"</span>, <span class="string">"UTF-8"</span>).replaceAll(<span class="string">"\\+"</span>, <span class="string">"%20"</span>);</span><br><span class="line">        response.setHeader(<span class="string">"Content-disposition"</span>, <span class="string">"attachment;filename*=utf-8''"</span> + fileName + <span class="string">".xlsx"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">ExcelWriter</span> <span class="variable">excelWriter</span> <span class="operator">=</span> EasyExcel.write(response.getOutputStream()).build();</span><br><span class="line">        <span class="type">WriteSheet</span> <span class="variable">writeSheet</span> <span class="operator">=</span> EasyExcel.writerSheet(<span class="number">1</span>, <span class="string">"模版1"</span>).head(headList).build();</span><br><span class="line">        excelWriter.write(dataList,writeSheet);</span><br><span class="line">        <span class="type">WriteSheet</span> <span class="variable">writeSheet2</span> <span class="operator">=</span> EasyExcel.writerSheet(<span class="number">2</span>, <span class="string">"模版2"</span>).head(headList).build();</span><br><span class="line">        excelWriter.write(dataList,writeSheet2);</span><br><span class="line">        <span class="comment">//这一步很关键，不然文件会损坏</span></span><br><span class="line">        excelWriter.finish();</span><br><span class="line"></span><br><span class="line">    }<span class="keyword">catch</span> (Exception e){</span><br><span class="line">        logger.error(<span class="string">"exportToExcel"</span>,e);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40632009/article/details/120068373">EasyExcel将数据库中的多张表数据写入文件的多个sheet</a> 写入多张表格</div>
+<h2 id="3-前端下载"><a href="#3-前端下载" class="headerlink" title="3.前端下载"></a>3.前端下载</h2><p>前端主要使用了axios进行了文件下载。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">axios</span>({</span><br><span class="line">    <span class="attr">method</span>: <span class="string">'post'</span>,</span><br><span class="line">    url,</span><br><span class="line">    data,</span><br><span class="line">    <span class="attr">responseType</span>: <span class="string">'arraybuffer'</span> <span class="comment">// 这个是关键</span></span><br><span class="line">})</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> {</span><br><span class="line">    <span class="comment">// 导出</span></span><br><span class="line">    <span class="keyword">let</span> filename=<span class="string">"测试.xlsx"</span>;</span><br><span class="line">    <span class="keyword">const</span> blob = <span class="keyword">new</span> <span class="title class_">Blob</span>([response.<span class="property">data</span>], { <span class="attr">type</span>: <span class="string">'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'</span>});</span><br><span class="line">    <span class="keyword">const</span> url = <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">createObjectURL</span>(blob);</span><br><span class="line">    <span class="keyword">const</span> a = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">'a'</span>);</span><br><span class="line">    a.<span class="property">href</span> = url;</span><br><span class="line">    a.<span class="property">download</span> = [filename];</span><br><span class="line">    a.<span class="title function_">click</span>();</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">revokeObjectURL</span>(url);</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.programminghunter.com/article/6629304873/">Blob 格式 Excel 文件下载</a> 使用axios设置responseType:’arraybuffer’,借助于Blob实现了excel文件下载</div>
+<h2 id="4-样式和行高"><a href="#4-样式和行高" class="headerlink" title="4.样式和行高"></a>4.样式和行高</h2><p>通过实现自定义的列宽策略，可以设置不同的行和列的样式。主要就是实现 CellWriteHandler 和 RowWriteHandler 接口，在接口中，实现 after 开头的方法，通过 Workbook 创建一个样式，然后编辑这个样式，最后应用到cell上面。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置单元格样式</span></span><br><span class="line"><span class="type">Workbook</span> <span class="variable">workbook</span> <span class="operator">=</span> context.getWriteSheetHolder().getSheet().getWorkbook();</span><br><span class="line"><span class="type">CellStyle</span> <span class="variable">cellStyle</span> <span class="operator">=</span> workbook.createCellStyle();</span><br><span class="line">cellStyle.setAlignment(HorizontalAlignment.CENTER);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 应用样式</span></span><br><span class="line">cell.SetCellStyle(cellStyle);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后将其注册EasyExcel写入的时候</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">EasyExcel.write(outputStream)</span><br><span class="line">    <span class="comment">// 这里放入动态头</span></span><br><span class="line">    .head(headNameList)</span><br><span class="line">    <span class="comment">// java以点分割要转义符</span></span><br><span class="line">    .sheet(fileName.split(<span class="string">"\\."</span>)[<span class="number">0</span>])</span><br><span class="line">    <span class="comment">// 注册策略</span></span><br><span class="line">    .registerWriteHandler(<span class="keyword">new</span> <span class="title class_">SimpleColumnWidthStyleStrategy</span>(<span class="number">25</span>)) <span class="comment">// 简单的列宽策略，列宽20</span></span><br><span class="line">    .registerWriteHandler(<span class="keyword">new</span> <span class="title class_">SimpleRowHeightStyleStrategy</span>((<span class="type">short</span>)<span class="number">25</span>,(<span class="type">short</span>)<span class="number">25</span>)) <span class="comment">// 简单的行高策略：头行高30，内容行高20</span></span><br><span class="line">    .doWrite(datalist);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43931625/article/details/107581421">easyexcel 列宽、行高、样式</a> 这里主要使用的是注解的方式实现的<br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0a4fa34d5221">alibaba easyexcel 自适应（行宽, 行高）</a><br>3.<a target="_blank" rel="noopener" href="https://www.4k8k.xyz/article/weixin_43991241/122079617">EasyExcel 的行高列宽的单位，直接设置行高列宽的大小_坐等夕阳落time的博客-程序员资料_easyexcel 设置单元格高度</a> EasyExcel 注解方式和非注解方式设置行宽列高<br>4.<a target="_blank" rel="noopener" href="https://www.csdn.net/tags/MtTaIgwsNDI0NTYwLWJsb2cO0O0O.html">EasyExcel 批量设置单元格样式（字体样式、背景颜色、边框样式、对齐方式、自动换</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tgvincent/article/details/114821766">POI实现EXCEL单元格合并及边框样式</a></div>
+<h2 id="5-多级表头"><a href="#5-多级表头" class="headerlink" title="5.多级表头"></a>5.多级表头</h2><p>根据网上的一个资料，我成功实现了多级表头</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 生成表头</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">JSONArray header=monthData.getJSONArray(<span class="string">"header"</span>);</span><br><span class="line">List&lt;List&lt;String&gt;&gt; headList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;List&lt;String&gt;&gt;();</span><br><span class="line">String basicInfo=<span class="string">""</span>; <span class="comment">// 第一行空白行</span></span><br><span class="line"><span class="comment">// 第一列</span></span><br><span class="line">headList.add( Lists.newArrayList(basicInfo,<span class="string">"站点名称"</span>,<span class="string">"站点名称"</span> ));</span><br><span class="line"><span class="comment">// 循环生成中间多级表头</span></span><br><span class="line">header.stream().forEach(item-&gt;{</span><br><span class="line">    JSONObject headerItem=(JSONObject) item;</span><br><span class="line">    String label=headerItem.getString(<span class="string">"label"</span>);</span><br><span class="line">    JSONArray children=headerItem.getJSONArray(<span class="string">"children"</span>);</span><br><span class="line">    children.stream().forEach(child-&gt;{</span><br><span class="line">        JSONObject childItem=(JSONObject) child;</span><br><span class="line">        String title=childItem.getString(<span class="string">"label"</span>);</span><br><span class="line">        headList.add( Lists.newArrayList(basicInfo,label ,title) );</span><br><span class="line">    });</span><br><span class="line">});</span><br><span class="line"><span class="comment">// 最后一列</span></span><br><span class="line">headList.add( Lists.newArrayList(basicInfo,<span class="string">"月度统计"</span>,<span class="string">"月度统计"</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成excel表</span></span><br><span class="line"><span class="type">ExcelWriter</span> <span class="variable">excelWriter</span> <span class="operator">=</span> EasyExcel.write(response.getOutputStream()).build();</span><br><span class="line"><span class="type">WriteSheet</span> <span class="variable">writeSheet</span> <span class="operator">=</span> EasyExcel.writerSheet(<span class="number">1</span>, <span class="string">"月度报表"</span>).head(headList).build();</span><br><span class="line">excelWriter.write(dataList,writeSheet);</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/3e85274b/easyexcel_1.png" lay-src="/posts/3e85274b/easyexcel_1.png" class="" title="easyexcel">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pzw23/p/13280707.html">EASYEXCEL的不确定表头（根据数据生成表头）的EXCEL导出和二级表头或多级表头以及设置表头的宽度自适应</a><br>2.<a target="_blank" rel="noopener" href="https://itcn.blog/p/555721900.html">easyExcel的复杂表头多级表头导入</a> 这里虽然写了多级表头，但是代码部分内容很少，都是说明性的，不知道最后的结果到底是什么生成的<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/L1569850979/article/details/123086515">easyExcel复杂表头的设置与样式的设置(非注解)</a> 这里有单表头和多表头的代码。<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39940205/article/details/113938225">EasyExcel自定义多级表头导出</a></div>
+<h2 id="6-合并单元格"><a href="#6-合并单元格" class="headerlink" title="6.合并单元格"></a>6.合并单元格</h2><p>合并单元格主要通过自定义合并策略实现的。这里有多个方向可以实现，根据官方的代码进行分析如下：</p>
+<pre><code>1.官方的 LoopMergeStrategy 实现的是 RowWriteHandler 接口，这个接口里面实现了 afterRowDispose 方法，也就是渲染每一行数据的时候，都会调用的方法，在这个方法里面，可以创建一个 CellRangeAddress 需要合并的区域，包括行号和列号。
+2.官方的 OnceAbsoluteMergeStrategy 合并策略，实现的是 SheetWriteHandler 接口，这个接口里面的 afterSheetCreate 方法，在创建表格的时候会执行一次，并创建一个 CellRangeAddress 合并区域，实现单元格的合并。
+3.官方的 AbstractMergeStrategy 合并策略，实现的是 CellWriteHandler 接口，这个接口里面的 afterCellDispose 方法，在渲染每一个单元格的时候，会进行调用，也是创建一个 合并区域进行合并。
+4.CellRangeAddress 方法包括四个参数，CellRangeAddress(int firstRow, int lastRow, int firstCol, int lastCol) (开始合并行，结束合并行，开始合并列，结束合并列)
+</code></pre>
+<p>总结起来，就是在渲染行或者列或者是数据表的时候，根据一定的条件，创建一个或者是多个CellRangeAddress待合并对象，这样就可以实现单元格的合并了。如果要合并行，可以实现具体实现RowWriteHandler 接口，如果要合并列，可以实现 CellWriteHandler ，这个接口里面可以获取 context.getHeadData() 表头内容，自定义策略步骤：</p>
+<p>1.实现自定义策略，根据需要继承的方法编写自定义合并策略，根据debug的现象来看，这个context中可能没有需要的信息，比如表头是什么，需要额外传入数据进行条件判断。我这里的例子，还做了一个操作，就是把一行中从第二列开始往后的每一个单元格，前一个单元格和后面一个合并，填充的值是后面一个单元格的值。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReportExcelMergeStrategy</span> <span class="keyword">implements</span> <span class="title class_">CellWriteHandler</span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> Logger logger= LoggerFactory.getLogger(ReportExcelMergeStrategy.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> JSONArray data=<span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> dataRowNumber=<span class="number">0</span>; <span class="comment">// 数据开始行号</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ReportExcelMergeStrategy</span><span class="params">(JSONArray datalist)</span> {</span><br><span class="line">        <span class="built_in">this</span>.data=datalist;</span><br><span class="line">    }</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterCellDispose</span><span class="params">(CellWriteHandlerContext context)</span> {</span><br><span class="line">        Integer rowIndex=context.getRowIndex(); <span class="comment">// 获取当前行号</span></span><br><span class="line">        <span class="keyword">if</span> (context.getHead() || rowIndex == <span class="literal">null</span>) {</span><br><span class="line">            dataRowNumber=rowIndex;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 如果数据渲染时遇到了总表记录，需要进行单元格合并</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="type">int</span> dataOffset=rowIndex-dataRowNumber-<span class="number">1</span>; <span class="comment">// 数据偏移量</span></span><br><span class="line">        JSONObject rowData=<span class="built_in">this</span>.data.getJSONObject(dataOffset);</span><br><span class="line">        Integer siteLevel=rowData.getInteger(<span class="string">"SiteLevel"</span>);</span><br><span class="line">        <span class="keyword">if</span>(siteLevel!=<span class="literal">null</span>&amp;&amp;siteLevel==<span class="number">1</span>){</span><br><span class="line">            <span class="type">int</span> cellIndex=context.getColumnIndex(); <span class="comment">// 当前列号</span></span><br><span class="line">            <span class="keyword">if</span>(cellIndex==<span class="number">0</span>){ <span class="comment">// 第一列不参与合并</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span>(cellIndex%<span class="number">2</span>==<span class="number">0</span>) { <span class="comment">// 从第二列开始，偶数列向前合并，奇数列删除</span></span><br><span class="line">                <span class="comment">// 设置单元格样式</span></span><br><span class="line">                <span class="type">Workbook</span> <span class="variable">workbook</span> <span class="operator">=</span> context.getWriteSheetHolder().getSheet().getWorkbook();</span><br><span class="line">                <span class="type">CellStyle</span> <span class="variable">cellStyle</span> <span class="operator">=</span> workbook.createCellStyle();</span><br><span class="line">                cellStyle.setAlignment(HorizontalAlignment.CENTER);</span><br><span class="line">                <span class="comment">// 设置前一个单元格的内容</span></span><br><span class="line">                Cell nowCell=context.getCell();</span><br><span class="line">                Double nowValue=nowCell.getNumericCellValue();</span><br><span class="line">                Row row=context.getRow();</span><br><span class="line">                Cell prevCell=row.getCell(cellIndex-<span class="number">1</span>);</span><br><span class="line">                prevCell.setCellValue(nowValue);</span><br><span class="line">                prevCell.setCellStyle(cellStyle); <span class="comment">// 设置样式</span></span><br><span class="line">                <span class="comment">//添加合并单元格区域</span></span><br><span class="line">                Sheet sheet=context.getWriteSheetHolder().getSheet(); <span class="comment">// 数据表句柄</span></span><br><span class="line">                <span class="type">CellRangeAddress</span> <span class="variable">cellRangeAddress</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CellRangeAddress</span>(rowIndex, rowIndex, cellIndex-<span class="number">1</span>, cellIndex);</span><br><span class="line">                sheet.addMergedRegionUnsafe(cellRangeAddress);</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>2.创建表格的时候，注册 registerWriteHandler 将自定义的写入策略注册进去</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">xcelWriter</span> <span class="variable">excelWriter</span> <span class="operator">=</span> EasyExcel</span><br><span class="line">        .write(response.getOutputStream())</span><br><span class="line">        .registerWriteHandler(<span class="keyword">new</span> <span class="title class_">ReportExcelMergeStrategy</span>())</span><br><span class="line">        .build();</span><br><span class="line"><span class="type">WriteSheet</span> <span class="variable">writeSheet</span> <span class="operator">=</span> EasyExcel.writerSheet(<span class="number">1</span>, <span class="string">"月度报表"</span>).head(headList).build();</span><br><span class="line">excelWriter.write(dataList,writeSheet);</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://liquanhong.com/2022/02/13/easyexcel_customize_the_policy_for_merging_cells/">EasyExcel导出自定义合并单元格的策略</a> 这里实现了 CellWriteHandler 接口<br>2.<a target="_blank" rel="noopener" href="https://codeantenna.com/a/vK5cdYk8uf">EasyExcel 实现批量合并单元格（支持自定义）</a> 这里实现了 AbstractRowWriteHandler 类。<br>3.<a target="_blank" rel="noopener" href="https://github.com/alibaba/easyexcel/blob/master/easyexcel-core/src/main/java/com/alibaba/excel/write/merge/OnceAbsoluteMergeStrategy.java">OnceAbsoluteMergeStrategy</a><br>4.<a target="_blank" rel="noopener" href="https://www.pwztx.vip/archives/easyexcel%E9%9D%9E%E6%B3%A8%E8%A7%A3%E5%BC%8F%E5%AF%BC%E5%87%BA%E5%8D%95%E5%85%83%E6%A0%BC%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A0%B7%E5%BC%8F">EasyExcel非注解式导出、单元格合并策略及自定义样式</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42747210/article/details/113488595">EasyExcel合并单元格（一）</a> 这个主要讲的就是 LoopMergeStrategy 这个合并策略的使用方式<br>6.<a target="_blank" rel="noopener" href="https://poi.apache.org/apidocs/dev/org/apache/poi/ss/util/CellRangeAddress.html">Class CellRangeAddress</a> 这里是 CellRangeAddress 的使用方法</div>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1) 输出的excel文件为空，字节为0字节<br>本地开发的时候没有问题，但是在上传到docker中总是出现问题，不知道为什么，还没有错误消息。</p>
+<p>【解决方法】<br>在dockerfile文件中增加字体配置。</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## alpine-slim，apk类的镜像，下面的部分还包括了设置时区</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> <span class="built_in">echo</span> -e <span class="string">'https://mirrors.aliyun.com/alpine/v3.6/main/\nhttps://mirrors.aliyun.com/alpine/v3.6/community/'</span> &gt; /etc/apk/repositories \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk update \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk upgrade \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk --no-cache add ttf-dejavu fontconfig \</span></span><br><span class="line"><span class="language-bash">    &amp;&amp; apk add --no-cache tzdata</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## centos类的镜像</span></span><br><span class="line"><span class="keyword">RUN</span><span class="language-bash"> yum install dejavu-* fontconfig -y</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6952757445152210951">EasyExcel导出的文件为空/损坏 </a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_48949991/article/details/121520537">踩坑：EasyExcel导出excel导出数据为空</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42809896/article/details/118494311">EasyExcel本地导出没问题，线上环境导出却是0kb,失败!</a> 这里也是本地没有问题，线上有问题，可能是字体的问题<br>4.<a target="_blank" rel="noopener" href="http://blog.fpliu.com/it/data/text/font/dejavu-fonts">dejavu-fonts</a>     Alpine Linux中使用：sudo apk add ttf-dejavu，CentOS系统中使用：sudo yum install -y dejavu-*</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/5d13e093.html" rel="next" title="Java开发之HashMap分析">
+                      <i class="iconfont icon-prev"></i> Java开发之HashMap分析
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/1564491b.html" rel="prev" title="Java将Word转成pdf">
+                      Java将Word转成pdf <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E7%94%9F%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">2.文件生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%89%8D%E7%AB%AF%E4%B8%8B%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">3.前端下载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%A0%B7%E5%BC%8F%E5%92%8C%E8%A1%8C%E9%AB%98"><span class="toc-number">4.</span> <span class="toc-text">4.样式和行高</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%A4%9A%E7%BA%A7%E8%A1%A8%E5%A4%B4"><span class="toc-number">5.</span> <span class="toc-text">5.多级表头</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%90%88%E5%B9%B6%E5%8D%95%E5%85%83%E6%A0%BC"><span class="toc-number">6.</span> <span class="toc-text">6.合并单元格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/3e85274b.html';
+      this.page.identifier = 'posts/3e85274b.html';
+      this.page.title = 'Java开发之Excel操作';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Java开发之Excel操作 链接地址:https://bibichuan.github.io/posts/3e85274b.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Java开发之Excel操作',
+		url: 'https://bibichuan.github.io/posts/3e85274b.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Java开发之Excel操作',
+			isTipVisibility: true,
+			tip: 'Java开发之Excel操作',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

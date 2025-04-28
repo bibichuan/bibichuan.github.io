@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringSecurity问题汇总</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">SpringSecurity问题汇总</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Springboot/">Springboot</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E6%9D%82%E6%96%87/">杂文</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-07-22 03:18:35
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-OPTIONS返回401错误"><a href="#1-OPTIONS返回401错误" class="headerlink" title="1.OPTIONS返回401错误"></a>1.OPTIONS返回401错误</h2><p>在配置了SpringSecurity之后，所有的OPTIONS请求都变成了401。即便我自定义了AccessDeniedHandler，AuthenticationEntryPoint也不走相应的代码。</p>
+<img src="/images/loadimg.png" data-original="/posts/76eb5ccc/err_1.png" lay-src="/posts/76eb5ccc/err_1.png" class="" title="错误">
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">    http</span><br><span class="line">    .authorizeRequests()</span><br><span class="line">    .antMatchers(HttpMethod.OPTIONS).permitAll() <span class="comment">// 对option不校验</span></span><br><span class="line">    .anyRequest().authenticated();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在参考文章中，有两种放行策略：<br>(1) 一种是configure(WebSecurity web) 方法中配置放行。这种是不走过滤器链的。<br>(2) 一种是在 configure(HttpSecurity http) 方法中进行配置。这种是走过滤器链的。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.liuchang.org/spring-security-oauth2-options-qing-qiu-fan-hui-401/">spring security oauth2 options 请求返回 401</a> (不起作用)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012702547/article/details/106395776">Spring Security 两种资源放行策略，千万别用错了！</a></div>
+<h2 id="2-跨域配置"><a href="#2-跨域配置" class="headerlink" title="2.跨域配置"></a>2.跨域配置</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">   http.</span><br><span class="line">    <span class="comment">//设置跨域, 如果不设置, 即使配置了filter, 也不会生效</span></span><br><span class="line">    .cors()</span><br><span class="line">    .and()</span><br><span class="line">    .headers().frameOptions().disable();</span><br><span class="line">}</span><br><span class="line">   </span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://juejin.im/post/5e736b586fb9a07ca24f7191">记使用spring security 后跨域配置失效的问题</a></div>
+<h2 id="3-permitAll不起作用"><a href="#3-permitAll不起作用" class="headerlink" title="3.permitAll不起作用"></a>3.permitAll不起作用</h2><p>当我在配置的时候，准备忽略掉某些请求的时候，使用了permitAll，本以为使用之后，就不再走过滤器链了，可是，当我定义了”/login”, “/index”,”/loginWX”,”/get_auth_access_token”,”/getUserInfoToken”,”/wechatBridge”,”/wxapi/getJsSDK”,这些路由，最后还是会出现在tokenAuthenticationFilter过滤器链中，认证不成功，也还是会返回授权失败的信息。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">    http</span><br><span class="line">            .exceptionHandling()</span><br><span class="line">            .accessDeniedHandler(<span class="keyword">new</span> <span class="title class_">SimpleAccessDeniedHandler</span>())</span><br><span class="line">            .authenticationEntryPoint(<span class="keyword">new</span> <span class="title class_">SimpleAuthenticationEntryPoint</span>())</span><br><span class="line">            .and()</span><br><span class="line">            .authorizeRequests()</span><br><span class="line">            .antMatchers(<span class="string">"/login"</span>, <span class="string">"/index"</span>,<span class="string">"/loginWX"</span>,</span><br><span class="line">            <span class="string">"/get_auth_access_token"</span>,<span class="string">"/getUserInfoToken"</span>,<span class="string">"/wechatBridge"</span>,<span class="string">"/wxapi/getJsSDK"</span>)</span><br><span class="line">            .permitAll()</span><br><span class="line">            .and()</span><br><span class="line">            .authorizeRequests()</span><br><span class="line">            .antMatchers(HttpMethod.OPTIONS).permitAll()</span><br><span class="line">            .and()</span><br><span class="line">            .antMatcher(<span class="string">"/**"</span>)</span><br><span class="line">            .addFilterAfter(tokenAuthenticationFilter, BasicAuthenticationFilter.class)</span><br><span class="line">            .authorizeRequests()</span><br><span class="line">            .anyRequest().hasRole(<span class="string">"WX"</span>)</span><br><span class="line">            .and()</span><br><span class="line">            .csrf()</span><br><span class="line">            .disable()</span><br><span class="line">            .sessionManagement()</span><br><span class="line">            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)</span><br><span class="line">            <span class="comment">// 配置跨域</span></span><br><span class="line">            .and()</span><br><span class="line">            .cors()</span><br><span class="line">            .and()</span><br><span class="line">            .headers().frameOptions().disable();;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>第一种解决方法，使用WebSecurity进行路由忽略</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(WebSecurity web)</span> {</span><br><span class="line">    <span class="comment">//解决静态资源被拦截的问题</span></span><br><span class="line">    web.ignoring().antMatchers(<span class="string">"/login"</span>, <span class="string">"/index"</span>,<span class="string">"/loginWX"</span>,</span><br><span class="line">            <span class="string">"/get_auth_access_token"</span>,<span class="string">"/getUserInfoToken"</span>,<span class="string">"/wechatBridge"</span>,<span class="string">"/wxapi/getJsSDK"</span>,<span class="string">"/checklogin"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里要注意，如果你这样写了，那么就不能使用@Component注解自定义的过滤器，否则，上面的配置还是不起作用，最后所有的请求还是会走自定义的过滤器链。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://stackoverrun.com/cn/q/12390001">Why is permitAll() not working and it asks for authentication object in request?</a><br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/47298079/spring-security-application-of-antmatcher-vs-antmatchers">Spring security application of antMatcher() vs. antMatchers()</a><br>3.<a target="_blank" rel="noopener" href="https://www.coder.work/article/1338367">java - antMatcher()和antMatchers()的Spring安全性应用</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_38936572/article/details/105417487">关于springboot security自定义拦截器 使用 permitAll() 之后仍然会走过滤器的解决方法</a> (这篇文章就是听过使用web配置过滤掉不需要执行过滤器链的方法)<br>5.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39152803/spring-websecurity-ignoring-doesnt-ignore-custom-filter">Spring webSecurity.ignoring() doesn’t ignore custom filter</a> (这里讲了一个要去掉@Component的问题)<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/MAX_xiaowu/article/details/103542164?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase">spring Boot 配置了指定过滤路径却没生效</a> (这里说了为什么会失效的问题)<br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yueloveme/article/details/83142094">web.ignoring()和permitAll的区别</a> (这两个还是有区别的)<br>8.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010645734">spring security运行时配置ignore url</a><br>9.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41492426/article/details/105162636">一文解决Security中访问静态资源和web.ignoring()和perimitAll()不起作用</a> (这个一文，最后也没有解决我的问题，我又想忽略某些路由，又想在filter中使用自动注入)<br>9.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012702547/article/details/79019510">SpringBoot+Vue前后端分离，使用SpringSecurity完美处理权限问题(二)</a><br>10.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangchengaihuiming/article/details/100129838">关于spring boot security设置忽略地址不生效问题</a></div>
+<h2 id="解决web-ignoring-失效及TokenAuthenticationFilter中注入-Autowired注入失败的问题"><a href="#解决web-ignoring-失效及TokenAuthenticationFilter中注入-Autowired注入失败的问题" class="headerlink" title="解决web.ignoring()失效及TokenAuthenticationFilter中注入@Autowired注入失败的问题"></a>解决web.ignoring()失效及TokenAuthenticationFilter中注入@Autowired注入失败的问题</h2><p>那如果我既想忽略相关的路由，又想让filter中的自动注入生效怎么办呢？web应用启动的顺序顺是：listener-&gt;filter-&gt;servlet<br>可以使用构造函数注入法：在filter中新建一个带参数的构造函数，然后将RedisUtils作为参数传入。这里写不写@Autowired，好像都没有关系。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TokenAuthenticationFilter</span> <span class="keyword">extends</span> <span class="title class_">OncePerRequestFilter</span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LoggerFactory.getLogger(TokenAuthenticationFilter.class);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> RedisUtils redisUtils;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TokenAuthenticationFilter</span><span class="params">()</span>{}</span><br><span class="line"></span><br><span class="line"><span class="comment">//    @Autowired</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TokenAuthenticationFilter</span><span class="params">(RedisUtils redisUtils)</span>{</span><br><span class="line">        <span class="built_in">this</span>.redisUtils=redisUtils;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>通过构造函数的方式将需要的Bean注入到TokenAuthenticationFilter。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity</span></span><br><span class="line"><span class="meta">@EnableGlobalMethodSecurity(prePostEnabled = true)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SecurityConfig</span> <span class="keyword">extends</span> <span class="title class_">WebSecurityConfigurerAdapter</span> {</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自动注入bean</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> RedisUtils redisUtils;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(AuthenticationManagerBuilder auth)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        auth.authenticationProvider(<span class="keyword">new</span> <span class="title class_">TokenAuthenticationProvider</span>());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(WebSecurity web)</span> {</span><br><span class="line">        <span class="comment">//解决静态资源被拦截的问题</span></span><br><span class="line">        web.ignoring().antMatchers(<span class="string">"/login"</span>, <span class="string">"/index"</span>,<span class="string">"/loginWX"</span>,</span><br><span class="line">                <span class="string">"/get_auth_access_token"</span>,<span class="string">"/getUserInfoToken"</span>,<span class="string">"/wechatBridge"</span>,<span class="string">"/wxapi/getJsSDK"</span>,<span class="string">"/checklogin"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        http</span><br><span class="line">                .exceptionHandling()</span><br><span class="line">                .accessDeniedHandler(<span class="keyword">new</span> <span class="title class_">SimpleAccessDeniedHandler</span>())</span><br><span class="line">                .authenticationEntryPoint(<span class="keyword">new</span> <span class="title class_">SimpleAuthenticationEntryPoint</span>())</span><br><span class="line">                .and()</span><br><span class="line">                .authorizeRequests()</span><br><span class="line">                .antMatchers(HttpMethod.OPTIONS).permitAll()</span><br><span class="line">                .and()</span><br><span class="line">                .antMatcher(<span class="string">"/**"</span>)</span><br><span class="line">                <span class="comment">// 注入redisUtils</span></span><br><span class="line">                .addFilterAfter(<span class="keyword">new</span> <span class="title class_">TokenAuthenticationFilter</span>(redisUtils), BasicAuthenticationFilter.class)</span><br><span class="line">                .authorizeRequests()</span><br><span class="line">                .anyRequest().hasRole(<span class="string">"WX"</span>)</span><br><span class="line">                .and()</span><br><span class="line">                .csrf()</span><br><span class="line">                .disable()</span><br><span class="line">                <span class="comment">// 配置session，注意下面是无状态的Session</span></span><br><span class="line">                .sessionManagement()</span><br><span class="line">                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)</span><br><span class="line">                <span class="comment">// 配置跨域</span></span><br><span class="line">                .and()</span><br><span class="line">                .cors()</span><br><span class="line">                .and()</span><br><span class="line">                .headers().frameOptions().disable();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zb313982521/article/details/87776676">Spring Security 自定义 AuthenticationProvider无法@Autowired问题</a> (在AuthenticationProvider中使用@Autowired始终为null,使用了return一个新的类的方式)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38522268/article/details/87620835">Springboot注入带参数的构造函数</a> ()<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28587263/article/details/75570745">@Autowired的使用：推荐对构造函数进行注释</a> ()<br>4.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33537388/use-autowired-with-a-filter-configured-in-springboot">Use @Autowired with a Filter configured in SpringBoot</a> (这篇文章中也是用构造函数的方式，注入了SpringBoot的Bean)<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42456466/article/details/89875273">filter过滤器使用Autowired注入Bean为null</a> (使用ServletContext获取相应的Bean,这个我倒是没有尝试过)<br>6.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/57149642d238">SpringBoot Filter中注入Bean</a> (使用构造函数的方式注入Bean)<br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/fmwind/article/details/81235401">Spring Boot配置接口 WebMvcConfigurer</a> (如何配置WebMvcConfigurer)<br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chl191623691/article/details/78657638">如何在Java的Filter中注入Service？？？</a> (也讲了和三种方法在filter中注入Service)<br>9.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/08cc28921fd0">8.6 Spring Boot集成Spring Security</a> (从刚开始的默认自动生成用户名密码到最后的自定义userDetailsService，从数据库中取出数据进行验证，文章非常的长)</div>
+<h2 id="4-session管理"><a href="#4-session管理" class="headerlink" title="4.session管理"></a>4.session管理</h2><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">    http</span><br><span class="line">        <span class="comment">// 配置session，注意下面是无状态的Session</span></span><br><span class="line">        .sessionManagement()</span><br><span class="line">        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zyly/p/12316099.html">Spring Security – session管理(转载)</a></div>
+<h2 id="5-URL-contained-a-potentially-malicious-String-“-“"><a href="#5-URL-contained-a-potentially-malicious-String-“-“" class="headerlink" title="5.URL contained a potentially malicious String “//“"></a>5.URL contained a potentially malicious String “//“</h2><p>双斜杠被返回错误，将spring security部署到服务器上，前端调用总是出现问题：org.springframework.security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String “//“</p>
+<img src="/images/loadimg.png" data-original="/posts/76eb5ccc/err_2.png" lay-src="/posts/76eb5ccc/err_2.png" class="" title="错误">
+
+<p>但是我的请求里面没有双斜杠啊，查看nginx的日志，发现还是一个斜杠啊</p>
+<img src="/images/loadimg.png" data-original="/posts/76eb5ccc/err_3.png" lay-src="/posts/76eb5ccc/err_3.png" class="" title="错误">
+
+<h3 id="使用nginx进行配置"><a href="#使用nginx进行配置" class="headerlink" title="使用nginx进行配置"></a>使用nginx进行配置</h3><p>最后修改了nginx的配置，解决了相关的问题。还有就是通过增加过滤器的方式进行的强制通过，就像下面的两篇文章。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">## 设置跨域白名单</span><br><span class="line">set $cors_origin "";</span><br><span class="line">if ($http_origin ~* "^http://dev.proheng.net") {</span><br><span class="line">        set $cors_origin $http_origin;</span><br><span class="line">}</span><br><span class="line">if ($http_origin ~* "^http://localhost") {</span><br><span class="line">        set $cors_origin $http_origin;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">## 设备扫码后台</span><br><span class="line">location ^~/phdevice {</span><br><span class="line">        client_max_body_size   40m;</span><br><span class="line"></span><br><span class="line">        ## 将这个配置，去掉了一个斜杠</span><br><span class="line">        ##proxy_pass http://localhost:8080/$request_uri;</span><br><span class="line"></span><br><span class="line">        ## 改为了下面的配置</span><br><span class="line">        proxy_pass http://localhost:8080$request_uri;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        proxy_set_header Host $host;</span><br><span class="line">        proxy_set_header X-Real-IP $remote_addr;</span><br><span class="line"></span><br><span class="line">        ## 跨域</span><br><span class="line"></span><br><span class="line">        add_header Access-Control-Allow-Origin $cors_origin;</span><br><span class="line">        add_header Access-Control-Allow-Methods "POST, GET, OPTIONS";</span><br><span class="line">        add_header Access-Control-Allow-Headers "Origin, Authorization,X-Requested-With,Content-Type, Accept";</span><br><span class="line">        add_header Access-Control-Allow-Credentials true;</span><br><span class="line"></span><br><span class="line">        if ($request_method = 'OPTIONS') {</span><br><span class="line">                return 204;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30062181/article/details/84964691">spring security关于URL中包含双斜杠被权限拦截的处理</a> (这个是差不多的)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Damionew/article/details/87342152">【解决】SpringBoot使用Security拦截双斜杠请求导致重定向过多的问题</a></div>
+<h3 id="使用代码解决"><a href="#使用代码解决" class="headerlink" title="使用代码解决"></a>使用代码解决</h3><p>org.springframework.boot:spring-boot-starter-security:2.3.1.RELEASE，这是我的secuirty版本。</p>
+<p>有效的一种方法就是直接定义个默认的Bean,定义了这个defaultHttpFirewall之后，不需要Configure中注入也可以使用。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> HttpFirewall <span class="title function_">defaultHttpFirewall</span><span class="params">()</span> {</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DefaultHttpFirewall</span>();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>还有就是定义双斜杠忽略</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> HttpFirewall <span class="title function_">defaultHttpFirewall</span><span class="params">()</span> {</span><br><span class="line">    <span class="comment">// 解决双斜杠问题</span></span><br><span class="line">    <span class="type">StrictHttpFirewall</span> <span class="variable">firewall</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StrictHttpFirewall</span>();</span><br><span class="line">    <span class="comment">// 允许双斜杠</span></span><br><span class="line">    firewall.setAllowUrlEncodedDoubleSlash(<span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">return</span> firewall;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.programmersought.com/article/4318441906/">Spring security on the URL contains double slashes are blocked by permission processing</a> 这里是通过设置了一个filter,在执行Security之前，先把url的双斜杠，改为单斜杠解决问题。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Hypora/article/details/102549073">Spring Security 之 StrictHttpFirewall 坑</a> 这篇文章我有点看不懂，虽然他也是设置无效，但是又说defaultHttpFirewall有效，我很是不能理解。<br>3.<a target="_blank" rel="noopener" href="https://my.oschina.net/u/4315754/blog/3458732">The request was rejected because the URL contained a potentially malicious String “;”报错解决</a> 这个直接在Application中写了allowUrlSemicolonHttpFirewall这个Bean,但是实际上无效。<br>4.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904154054262792">Spring Security 自带防火墙！你都不知道自己的系统有多安全！</a> 我在这里才找到了为什么我配置双斜杠无效不起作用的问题。<br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/LQBlog/p/14343497.html">spring-security使用-安全防护HttpFirewall(七)</a> 提供了类图DefaultfHttpFirewall和StrictHttpFirewall都是继承自HttpFirewall，有这几种限制：限制请求方法、请求地址不能有分号、必须是可打印的 ASCII 字符、不能使用双斜杠、% 不被允许、反斜杠不被允许、. 不被允许<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/andy_zhang2007/article/details/90511688">Spring Security Web : StrictHttpFirewall HTTP防火墙(严格模式)</a> 包括了各种分析和源码展示</div>
+<h3 id="无效的解决方案"><a href="#无效的解决方案" class="headerlink" title="无效的解决方案"></a>无效的解决方案</h3><p>使用代码时，第一步创建一个HttpFirewall</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> HttpFirewall <span class="title function_">allowUrlEncodedSlashHttpFirewall</span><span class="params">()</span> {</span><br><span class="line">    <span class="type">StrictHttpFirewall</span> <span class="variable">firewall</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StrictHttpFirewall</span>();</span><br><span class="line">    firewall.setAllowUrlEncodedSlash(<span class="literal">true</span>);    </span><br><span class="line">    <span class="keyword">return</span> firewall;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>第二步，注入这个创建的Bean</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(WebSecurity web)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">    <span class="comment">//@formatter:off</span></span><br><span class="line">    <span class="built_in">super</span>.configure(web);</span><br><span class="line">    web.httpFirewall(allowUrlEncodedSlashHttpFirewall());</span><br><span class="line">    ....</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>经过上面的方法，我本以为可以了，但是实际上，还是会报错，我不知道自己那里做错了。<br><strong>这个方法虽然说无效，其实是因为针对我的双斜杠无效，其实应该是setAllowUrlEncodedDoubleSlash(true)</strong></p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48453980/spring-5-0-3-requestrejectedexception-the-request-was-rejected-because-the-url">Spring 5.0.3 RequestRejectedException: The request was rejected because the URL was not normalized</a> (这里主要提到的是Security问题，只需要增加一个HttpFirewall的配置，允许双斜杠就可以了。)<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/hetutu-5238/p/12145379.html">security.web.firewall.RequestRejectedException: The request was rejected because the URL contained a potentially malicious String “;”</a> 这篇文章从发现问题，到一步步到debug，表明了如何去除“;“这个问题，虽然不是双斜杠问题，但是也差不多<br>3.<a target="_blank" rel="noopener" href="https://github.com/spring-projects/spring-security/issues/5450">Customized HttpFirewall to allow // is not applied at StrictHttpFirewall</a> (创建了一个looseHttpFirewall的Bean，和我的方法差不多)<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Damionew/article/details/87339208">SpringSecurity手动忽略双斜杠校验//以及修改Jar包内源码</a> 这里直接修改了源码，然后又倒入回去了，我觉得这样不妥。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/51a1a461.html" rel="next" title="StarRocks数据库安装测试">
+                      <i class="iconfont icon-prev"></i> StarRocks数据库安装测试
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/dd024ec9.html" rel="prev" title="SpringSecurity入门">
+                      SpringSecurity入门 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-OPTIONS%E8%BF%94%E5%9B%9E401%E9%94%99%E8%AF%AF"><span class="toc-number">1.</span> <span class="toc-text">1.OPTIONS返回401错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%B7%A8%E5%9F%9F%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">2.跨域配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-permitAll%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">3.permitAll不起作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3web-ignoring-%E5%A4%B1%E6%95%88%E5%8F%8ATokenAuthenticationFilter%E4%B8%AD%E6%B3%A8%E5%85%A5-Autowired%E6%B3%A8%E5%85%A5%E5%A4%B1%E8%B4%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">解决web.ignoring()失效及TokenAuthenticationFilter中注入@Autowired注入失败的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-session%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">4.session管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-URL-contained-a-potentially-malicious-String-%E2%80%9C-%E2%80%9C"><span class="toc-number">6.</span> <span class="toc-text">5.URL contained a potentially malicious String “&#x2F;&#x2F;“</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8nginx%E8%BF%9B%E8%A1%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">6.1.</span> <span class="toc-text">使用nginx进行配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%A0%81%E8%A7%A3%E5%86%B3"><span class="toc-number">6.2.</span> <span class="toc-text">使用代码解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%97%A0%E6%95%88%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">6.3.</span> <span class="toc-text">无效的解决方案</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/76eb5ccc.html';
+      this.page.identifier = 'posts/76eb5ccc.html';
+      this.page.title = 'SpringSecurity问题汇总';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：SpringSecurity问题汇总 链接地址:https://bibichuan.github.io/posts/76eb5ccc.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'SpringSecurity问题汇总',
+		url: 'https://bibichuan.github.io/posts/76eb5ccc.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'SpringSecurity问题汇总',
+			isTipVisibility: true,
+			tip: 'SpringSecurity问题汇总',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitLab-Runner安装</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">GitLab-Runner安装</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Git/">Git</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-03-03 14:29:40
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>刚刚熟悉了如何使用AzureDevops,但是遇到收费的问题，又想用这种持续集成和交付的工具，辗转又来到了GitLab。微软的东西，就有一个好处，就是会有图型界面，连Pipeline也有Web界面可以简简单单的配置完成。但是到了GitLab这里，就没有这么幸运了，任何一条任务，都要写配置文件进行配置。对于配置文件的学习，又是一个不小的成本。虽然AzureDevops也支持yml格式配置文件，但是既然有控制台，谁还会去花时间学习配置文件如何编写呢？</p>
+<p>第一个问题就是，A机器安装了GitLab服务器，保存了仓库，B机器呢是要进行代码部署的机器，两者如何进行通信呢？类比于Azure Devops,B机器会安装一个代理软件之类的东西。安装的时候，AzureDevops也给了命令行，可以直接拷贝然后安装就可以了。但是GitLab好像没有这么方便了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://rorschachchan.github.io/2019/08/26/Gitlab-runner%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2/">Gitlab-runner实现跨服务器部署</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010442764">Gitlab CI yaml官方配置文件翻译</a><br>3.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/ce/ci/docker/using_docker_images.html#define-image-and-services-from-gitlab-ciyml">Using Docker images</a><br>4.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/">Install GitLab Runner</a></div>
+<h1 id="2-GitLabRunner"><a href="#2-GitLabRunner" class="headerlink" title="2.GitLabRunner"></a>2.GitLabRunner</h1><p>一台电脑上可以安装(其实叫注册更贴切)一个Runner，也可以安装(其实叫注册更贴切)多个Runner。可以安装一个通用的Runner，也可以安装一个特定于某个项目的Runner。参考文章中说：</p>
+<p>(1) 什么情况下需要注册Shared Runner？<br>比如，GitLab上面所有的工程都有可能需要在公司的服务器上进行编译、测试、部署等工作，这个时候注册一个Shared Runner供所有工程使用就很合适。</p>
+<p>(2) 什么情况下需要注册Specific Runner？<br>比如，我可能需要在我个人的电脑或者服务器上自动构建我参与的某个工程，这个时候注册一个Specific Runner就很合适。</p>
+<p>(3) 什么情况下需要在同一台机器上注册多个Runner？<br>比如，我是GitLab的普通用户，没有管理员权限，我同时参与多个项目，那我就需要为我的所有项目都注册一个Specific Runner，这个时候就需要在同一台机器上注册多个Runner。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/93b0277c31ab">gitlab CI &amp;&amp; Runners使用</a></div>
+<h2 id="3-windows下安装GitLab-Runner"><a href="#3-windows下安装GitLab-Runner" class="headerlink" title="3.windows下安装GitLab Runner"></a>3.windows下安装GitLab Runner</h2><p>这个就比较厉害了，类似于AzureDevops的在代理服务器或者是部署服务器上安装的代理软件。在哪台机器上安装了它，它就可以和安装GitLab的主服务器之间进行通信，并执行主服务器上定义的pipeline任务。摘自官网的描述，在windows上安装gitlab-runner。<br>(1) 在系统上创建一个文件夹，比如：C:\GitLab-Runner</p>
+<p>(2) 下载 <a target="_blank" rel="noopener" href="https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-386.exe">x86</a> 或者是 <a target="_blank" rel="noopener" href="https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-windows-amd64.exe">amd64</a> 版本的二进制文件，将它放到刚刚创建的文件夹中。重新命名这个二进制文件为 gitlab-runner.exe。</p>
+<p>(3) 打开命令提示符</p>
+<p>(4) 在GitLab服务器上注册Runner</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1.命令行运行:</span></span><br><span class="line">./gitlab-runner.exe register</span><br><span class="line"></span><br><span class="line"><span class="comment">## 2.Enter your GitLab instance URL:(输入gitlab的主机地址)</span></span><br><span class="line">Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )</span><br><span class="line">http://192.168.1.60 (比如我在ip地址为60的服务器上安装了GitLab)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 3.Enter the token you obtained to register the Runner:(输入获取到的token)</span></span><br><span class="line">Please enter the gitlab-ci token <span class="keyword">for</span> this runner</span><br><span class="line">xxx</span><br><span class="line"></span><br><span class="line"><span class="comment">## 4.Enter a description for the Runner, you can change this later in GitLab’s UI:(输入一段描述,可以在GitLab上改)</span></span><br><span class="line">Please enter the gitlab-ci description <span class="keyword">for</span> this runner</span><br><span class="line">[hostname] my-runner</span><br><span class="line"></span><br><span class="line"><span class="comment">## 5.Enter the tags associated with the Runner, you can change this later in GitLab’s UI:(输入与Runner相关的标签，稍后您可以在GitLab的U中进行更改)</span></span><br><span class="line">Please enter the gitlab-ci tags <span class="keyword">for</span> this runner (comma separated):</span><br><span class="line">my-tag,another-tag</span><br><span class="line"></span><br><span class="line"><span class="comment">## 6.Enter the Runner executor:(执行器的概念是什么,还有待深入)</span></span><br><span class="line">Please enter the executor: ssh, docker+machine, docker-ssh+machine, kubernetes, docker, parallels, virtualbox, docker-ssh, shell:</span><br><span class="line">docker</span><br><span class="line"></span><br><span class="line"><span class="comment">## 7.If you chose Docker as your executor, you’ll be asked for the default image to be used for projects that do not define one in .gitlab-ci.yml:(如果您选择Docker作为执行程序，则会要求您为未在.gitlab-ci.yml中定义一个的项目使用默认映像：)</span></span><br><span class="line">Please enter the Docker image (eg. ruby:2.6):</span><br><span class="line">alpine:latest</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(5) 将Runner安装为windos服务，并开机启动。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装</span></span><br><span class="line"><span class="built_in">cd</span> C:\GitLab-Runner</span><br><span class="line">.\gitlab-runner.exe install</span><br><span class="line">.\gitlab-runner.exe start</span><br><span class="line"></span><br><span class="line"><span class="comment">## 卸载</span></span><br><span class="line"><span class="built_in">cd</span> C:\GitLab-Runner</span><br><span class="line">.\gitlab-runner.exe stop</span><br><span class="line">.\gitlab-runner.exe uninstall</span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="built_in">rmdir</span> /s GitLab-Runner</span><br><span class="line"></span><br><span class="line"><span class="comment">## 更新,就是停止服务之后重新安装</span></span><br><span class="line"><span class="built_in">cd</span> C:\GitLab-Runner</span><br><span class="line">.\gitlab-runner.exe stop</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000007180257">GitLab-CI 从安装到差点放弃</a><br>2.<a target="_blank" rel="noopener" href="https://juejin.im/post/5cb92f67e51d456e896349f7">Gitlab自动部署之四：使用Gitlab-runner部署Gitlab的项目</a><br>3.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/windows.html">Install GitLab Runner on Windows</a><br>4.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/">Install GitLab Runner</a><br>5.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/register/index.html">Registering Runners</a><br>6.<a target="_blank" rel="noopener" href="https://blinkfox.github.io/2018/11/22/ruan-jian-gong-ju/devops/gitlab-ci-jie-shao-he-shi-yong/">GitLab CI/CD 介绍和使用</a><br>7.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2b7e73b0a096">gitlab-runner使用docker执行器，无法获取本地镜像。</a><br>8.<a target="_blank" rel="noopener" href="https://juejin.im/post/5cb92a3ae51d456e5f76c485">Gitlab自动部署之二：安装GITLAB-RUNNER</a></div>
+<h1 id="3-Executors执行器"><a href="#3-Executors执行器" class="headerlink" title="3.Executors执行器"></a>3.Executors执行器</h1><p>gitlab-runner的执行器主要分为SSH、Shell、Parallels、VirtualBox、Docker等很多种。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://s0docs0gitlab0com.icopy.site/runner/executors/README.html">Executors</a><br>2.<a target="_blank" rel="noopener" href="https://s0docs0gitlab0com.icopy.site/runner/executors/README.html#i-am-not-sure">I am not sure</a><br>3.<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10215241">安裝 GitLab</a><br>4.<a target="_blank" rel="noopener" href="https://blog.gezhiqiang.com/2017/03/01/gitlab-ce-install/">GitLab CE 搭建小结</a></div>
+<h1 id="4-CentOS-8-安装GitLab-Runner"><a href="#4-CentOS-8-安装GitLab-Runner" class="headerlink" title="4.CentOS 8 安装GitLab-Runner"></a>4.CentOS 8 安装GitLab-Runner</h1><p>(1) 手动安装gitlab-runner,需要下载指定版本的runner,可以在 <a target="_blank" rel="noopener" href="https://gitlab-runner-downloads.s3.amazonaws.com/latest/index.html">官网</a> 查看有哪些可用的 runner 的名字，比如我这里安装gitlab-runner_amd64.rpm 的版本。还有一点，安装gitlab-runner之前，要先安装git,如果已经安装了 git 还是没有找到git,请看问题(3)</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装git依赖</span></span><br><span class="line">yum install git</span><br><span class="line"></span><br><span class="line"><span class="comment">## 手动安装gitlab-runner,下载指定版本的 gitlab-runner,如果不翻墙的话，可能很慢，可以翻墙下载后上传到服务器上</span></span><br><span class="line">curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_amd64.rpm</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装gitlab runner</span></span><br><span class="line">rpm -ivh gitlab-runner_amd64.rpm</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动、停止、重启</span></span><br><span class="line">gitlab-runner start</span><br><span class="line">gitlab-runner stop</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 注册gitlab-runner</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 注册gitlab runner</span></span><br><span class="line">gitlab-runner register</span><br><span class="line"></span><br><span class="line"><span class="comment">## 输入 gitlab 地址</span></span><br><span class="line">http://192.168.1.60</span><br><span class="line"></span><br><span class="line"><span class="comment">## 这里的token分为两种 一种是 Shared Runner ，该 Runner 所有项目都可以使用 位置：顶部设置图标🔧 -&gt; 左侧栏Overview -&gt; Runner </span></span><br><span class="line"><span class="comment">## 另一种是 Specific Runner ，该 Runner 指定具体某个项目才可使用 位置：进入某个项目 -&gt; 左侧栏Setting -&gt; CI/CD -&gt; 在内容区域找到Runners一项，点击展开</span></span><br><span class="line">9FH5nFzd6NVZzKPZruRn</span><br><span class="line"></span><br><span class="line"><span class="comment">## 输入描述(我这里随便输入的)</span></span><br><span class="line">agent_65</span><br><span class="line"></span><br><span class="line"><span class="comment">## 输入tags(随便吧)</span></span><br><span class="line">agent_65</span><br><span class="line"></span><br><span class="line"><span class="comment">## 选择类型执行器的类型(选择docker,还需要选择docker镜像),我选择了docker，因为我本机已经安装了docker并且有一个centos的镜像</span></span><br><span class="line">docker</span><br><span class="line"></span><br><span class="line"><span class="comment">## 填入镜像的名称</span></span><br><span class="line">centos</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_5.png" lay-src="/posts/5b2cc0e3/runner_5.png" class="" title="runner注册">
+
+<p>注册成功：</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_6.png" lay-src="/posts/5b2cc0e3/runner_6.png" class="" title="runner注册">
+
+<p>刷新 gitlab 站点，可以查看已经注册成功了一个runner</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_7.png" lay-src="/posts/5b2cc0e3/runner_7.png" class="" title="runner注册">
+
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://my.oschina.net/uwith/blog/2243372">centos 安装 Gitlab Runner</a><br>【2】.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/linux-repository.html">Install GitLab Runner using the official GitLab repositories</a><br>【3】.<a target="_blank" rel="noopener" href="https://juejin.im/post/5cb92a3ae51d456e5f76c485">Gitlab自动部署之二：安装GITLAB-RUNNER</a> 1.安装Gitlab-runner；2.注册Runner；3.创建项目与 .gitlab-ci.yml 文件；<br>【4】.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/linux-manually.html">Install GitLab Runner manually on GNU/Linux</a><br>【5】.<a target="_blank" rel="noopener" href="https://www.howtoing.com/install-git-on-centos-8">如何在CentOS 8上安装Git</a><br>【6】.<a target="_blank" rel="noopener" href="https://s0docs0gitlab0com.icopy.site/runner/executors/README.html#i-am-not-sure">Executors</a><br>【7】.<a target="_blank" rel="noopener" href="https://s0docs0gitlab0com.icopy.site/runner/">GitLab Runner Docs</a></div>
+<p>(3) 删除注册信息</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看注册过的信息</span></span><br><span class="line">gitlab-runner list</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除(其中–url参数可查看上面的URL=后面的值填写，–token参数就是上面的Token=后面的值，复制粘贴即可。)</span></span><br><span class="line">gitlab-runner unregister --url http://192.168.1.60 --token 9FH5nFzd6NVZzKPZruRn</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://lusyoe.github.io/2016/08/29/Gitlab-CI-Multi-Runner%E6%90%AD%E5%BB%BACI%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90%E7%8E%AF%E5%A2%83/">Gitlab CI Multi Runner搭建CI持续集成环境</a></div>
+<p>(4) 卸载gitlab-runner</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 卸载服务</span></span><br><span class="line">gitlab-runner uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment">## 怎么装的，就怎么卸载，比如我使用的是rpm安装的，那就使用rpm -e命令,然后删除相关的文件及文件夹</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 列出所有安装的包</span></span><br><span class="line">rpm -qa</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看gitlab-runner软件安装时的全名</span></span><br><span class="line">rpm -qa |grep gitlab-runner</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看rpm包安装到那里去了</span></span><br><span class="line">rpm -ql gitlab-runner-12.9.0-1.x86_64</span><br><span class="line"></span><br><span class="line"><span class="comment">## 卸载gitlab-runner</span></span><br><span class="line">rpm -e gitlab-runner-12.9.0-1.x86_64</span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_8.png" lay-src="/posts/5b2cc0e3/runner_8.png" class="" title="runner注册">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://1cool.vip/blog/gitlab_ci.html">gitlab-ci持续集成 gitlab-runner权限不足的问题可改为www-data用户运行</a><br>2.<a target="_blank" rel="noopener" href="https://s0docs0gitlab0com.icopy.site/runner/commands/">GitLab Runner commands</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/gaohuna02/article/details/82685691">Centos7 完全卸载gitlab</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wanglei2258/article/details/4463345">linux rpm问题：怎样查看rpm安装包的安装路径</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ssergsw/article/details/9109271">查看RPM包默认的安装路径</a></div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(1) 为 repo ‘runner_gitlab-runner’ 下载元数据失败</p>
+<p>在CentOS8上安装gitlab-runner,执行命令：curl -L <a target="_blank" rel="noopener" href="https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh">https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh</a> | sudo bash 时出现问题,无法下载元数据。</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_1.png" lay-src="/posts/5b2cc0e3/runner_1.png" class="" title="runner安装失败">
+
+<p>看来使用仓库自动安装gitlab-runner 是不行了，只能手动安装了。</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_2.png" lay-src="/posts/5b2cc0e3/runner_2.png" class="" title="runner安装失败">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://qastack.cn/unix/109585/yum-update-fails-error-cannot-retrieve-repository-metadata-repomd-xml-for-re">yum更新失败：错误：无法检索存储库的存储库元数据（repomd.xml）</a><br>2.<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/">Install GitLab Runner</a></div>
+<p>(2) gitlab-runner-linux-amd64：不是 rpm 软件包 (或者没有 manifest)<br>无法自动安装，只能手动安装了，手动安装的时候，执行：curl -LJO <a target="_blank" rel="noopener" href="https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-arm64">https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-arm64</a> 命令下载rpm包，结果执行：rpm -i gitlab-runner-linux-amd64.rpm 安装时，又提示不是rpm软件包。</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_3.png" lay-src="/posts/5b2cc0e3/runner_3.png" class="" title="runner安装失败">
+
+<p>问题是我下载错误了，应该下载 rpm/gitlab-runner_amd64.rpm (<a target="_blank" rel="noopener" href="https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_amd64.rpm">https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_amd64.rpm</a>) 而不是上面的那一个 binaries/gitlab-runner-linux-arm64 二进制的文件。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://packages.gitlab.com/runner/gitlab-runner">gitlab-runner-12.9.0-1.x86_64.rpm</a><br>2.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-org/gitlab-runner/-/issues/2480">no rpm package/repo for centos7 arm</a><br>3.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-org/gitlab-runner/issues/2764">No package gitlab-runner available</a></div>
+<p>(3) 已经安装了git,但是找不到git-runner还是提示没有git<br>我的系统了已经安装了git(编译安装),使用 git 命令查看，有相关的软件，但是还是无法被git-runner识别，应该是依赖的问题。意思就是手动编译安装的git，没有在系统的依赖库中注入信息，那么git-runner在检查依赖的时候，就出现了找不到相关的git依赖了。</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_9.png" lay-src="/posts/5b2cc0e3/runner_9.png" class="" title="runner安装失败">
+
+<p>加上参数–test，就可以检查依赖关系</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_10.png" lay-src="/posts/5b2cc0e3/runner_10.png" class="" title="runner安装失败">
+
+<p>我发现了这个gitlab-runner值依赖git,既然是依赖的问题，但是又没法解决，那只能强行忽略依赖进行安装了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 测试安装及依赖</span></span><br><span class="line">rpm -ivh gitlab-runner_amd64.rpm --<span class="built_in">test</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 忽略依赖强制安装</span></span><br><span class="line">rpm -ivh gitlab-runner_amd64.rpm --nodeps</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kai27ks/article/details/7473683">解决RPM包依赖的几种方法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Deutschester/article/details/6309521">Linux RPM 命令参数使用详解 查看 rpm包依赖性</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chengxuyuanyonghu/article/details/61919643">编译安装详解和rpm和yum</a><br>4.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/be7ee68a68a6">git源码编译安装</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/frankcheng5143/article/details/79838414">GitLab持续集成–配置Runner</a><br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/networken/article/details/85403969">CentOS7编译安装最新版本Git</a></div>
+<p>(4)  Registering runner… failed                 runner=9FH5nFzd status=couldn’t execute POST against <a target="_blank" rel="noopener" href="http://xxxx/api/v4/runners">http://xxxx/api/v4/runners</a>:<br>执行注册的时候，出现了问题。无法连接主机，但是通过浏览器访问，是可以访问到主机的gitlab地址的。</p>
+<img src="/images/loadimg.png" data-original="/posts/5b2cc0e3/runner_11.png" lay-src="/posts/5b2cc0e3/runner_11.png" class="" title="runner安装失败">
+
+<p>奇怪的问题，我将外网的地址映射端口由8080改为8012就可以了。意思就是说，我外网ip地址为202.202.202.202,通过在ASUS(华硕)路由器上进行端口映射，将8080端口映射到内容192.168.1.60:80,从外网访问202.202.202.202:8080及可以访问到内容192.168.1.60:80，问题就出现在这个8080端口映射。我将8080映射，改为8012映射，便可以通过注册了。显然问题就出现在ASUS路由器的8080端口上了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-org/gitlab-runner/issues/2351">Registering runners - status=couldn’t execute POST against….</a><br>2.<a target="_blank" rel="noopener" href="https://www.asus.com.cn/support/FAQ/114093/">如何使用 ASUSWRT 设置 port forwarding？</a><br>3.<a target="_blank" rel="noopener" href="https://portforward.com/asus/rt-ac68u/">Simple Instructions to Help Setup a Port Forward on the Asus RT-AC68U Router</a></div>
+<h1 id="5-修改执行用户"><a href="#5-修改执行用户" class="headerlink" title="5.修改执行用户"></a>5.修改执行用户</h1><p>本来我想着要设置 gitlab-runner 账号密码的，后来发现无效。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看执行用户</span></span><br><span class="line">ps aux | grep gitlab-runner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换root,</span></span><br><span class="line"><span class="built_in">sudo</span> su -</span><br><span class="line"><span class="comment"># 设置密码</span></span><br><span class="line">passwd gitlab-runner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载服务</span></span><br><span class="line">gitlab-runner uninstall</span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换执行用户</span></span><br><span class="line">gitlab-runner install --user root</span><br><span class="line">gitlab-runner install --working-directory /home/gitlab-runner --user root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">systemctl restart gitlab-runner</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将用户加入root组</span></span><br><span class="line">usermod -g root gitlab-runner</span><br><span class="line"><span class="comment"># 默认的组就是gitlab-runner，将用户加入 gitlab-runner 组</span></span><br><span class="line">usermod -g gitlab-runner gitlab-runner</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://dusays.com/393/">修改 gitlab-runner 的执行用户</a> 安装 gitlab-runner 构建机默认会将用户设置为 gitlab-runner，该设置会导致.gitlab-ci.yml 脚本运行时出现一些权限问题。为了解决这些权限问题，杜老师将 gitlab-runner 构建机上的默认用户设置为 root。<br>【2】.<a target="_blank" rel="noopener" href="https://forum.gitlab.com/t/default-password-for-gitlab-runner-user-account-when-using-a-shell-executor/11264">Default password for gitlab-runner user account when using a shell executor</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013939884/article/details/103504384">修改 gitlab runner 默认用户 (gitlab-runner) 为 root</a> 修改 /etc/systemd/system/gitlab-runner.service<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qijkkwcw/article/details/109377938">让gitlab-runner直接用root运行脚本…这样就不受权限的烦闹</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/ab25e11a.html" rel="next" title="GitLab使用ssh连接免密登录失败">
+                      <i class="iconfont icon-prev"></i> GitLab使用ssh连接免密登录失败
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/986a1e2d.html" rel="prev" title="GitLab-Runner使用">
+                      GitLab-Runner使用 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-GitLabRunner"><span class="toc-number">2.</span> <span class="toc-text">2.GitLabRunner</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-windows%E4%B8%8B%E5%AE%89%E8%A3%85GitLab-Runner"><span class="toc-number">2.1.</span> <span class="toc-text">3.windows下安装GitLab Runner</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Executors%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">3.Executors执行器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-CentOS-8-%E5%AE%89%E8%A3%85GitLab-Runner"><span class="toc-number">4.</span> <span class="toc-text">4.CentOS 8 安装GitLab-Runner</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.0.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E4%BF%AE%E6%94%B9%E6%89%A7%E8%A1%8C%E7%94%A8%E6%88%B7"><span class="toc-number">5.</span> <span class="toc-text">5.修改执行用户</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/5b2cc0e3.html';
+      this.page.identifier = 'posts/5b2cc0e3.html';
+      this.page.title = 'GitLab-Runner安装';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：GitLab-Runner安装 链接地址:https://bibichuan.github.io/posts/5b2cc0e3.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'GitLab-Runner安装',
+		url: 'https://bibichuan.github.io/posts/5b2cc0e3.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'GitLab-Runner安装',
+			isTipVisibility: true,
+			tip: 'GitLab-Runner安装',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

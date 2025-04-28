@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>调研报告之OLAP数据库</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">调研报告之OLAP数据库</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/">大数据</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">后台服务</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-12-17 05:44:31
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>从今天开始接触大数据内容，可能学到的只是一个皮毛，但可以增加知识的广度，拓展自己的眼界，对世界的认识同样也会增加一分。</p>
+<h2 id="1-OLTP和OLAP"><a href="#1-OLTP和OLAP" class="headerlink" title="1.OLTP和OLAP"></a>1.OLTP和OLAP</h2><p>联机事务处理OLTP（on-line transaction processing） 主要是执行基本日常的事务处理，比如数据库记录的增删查改。比如在银行的一笔交易记录，就是一个典型的事务。<br>特点：</p>
+<pre><code>1.实时性要求高。银行异地汇款，以前要隔天才能到账，而现在是分分钟到账的节奏，说明现在银行的实时处理能力大大增强。
+2.数据量不是很大，生产库上的数据量一般不会太大，而且会及时做相应的数据处理与转移。
+3.交易一般是确定的，比如银行存取款的金额肯定是确定的，所以OLTP是对确定性的数据进行存取
+4.高并发，并且要求满足ACID原则。比如两人同时操作一个银行卡账户，比如大型的购物网站秒杀活动时上万的QPS请求。
+</code></pre>
+<p>联机分析处理OLAP（On-Line Analytical Processing） 是数据仓库系统的主要应用，支持复杂的分析操作，侧重决策支持，并且提供直观易懂的查询结果。典型的应用就是复杂的动态的报表系统。<br>特点：</p>
+<pre><code>1.实时性要求不是很高，比如最常见的应用就是天级更新数据，然后出对应的数据报表。
+2.数据量大，因为OLAP支持的是动态查询，所以用户也许要通过将很多数据的统计后才能得到想要知道的信息，例如时间序列分析等等，所以处理的数据量很大;
+3.OLAP系统的重点是通过数据提供决策支持，所以查询一般都是动态，自定义的。所以在OLAP中，维度的概念特别重要。一般会将用户所有关心的维度数据，存入对应数据平台。
+</code></pre>
+<p>OLAP场景的关键特征:</p>
+<pre><code>大多数是读请求
+数据总是以相当大的批(&gt; 1000 rows)进行写入
+不修改已添加的数据
+每次查询都从数据库中读取大量的行，但是同时又仅需要少量的列
+宽表，即每个表包含着大量的列
+较少的查询(通常每台服务器每秒数百个查询或更少)
+对于简单查询，允许延迟大约50毫秒
+列中的数据相对较小： 数字和短字符串(例如，每个URL 60个字节)
+处理单个查询时需要高吞吐量（每个服务器每秒高达数十亿行）
+事务不是必须的
+对数据一致性要求低
+每一个查询除了一个大表外都很小
+查询结果明显小于源数据，换句话说，数据被过滤或聚合后能够被盛放在单台服务器的内存中
+</code></pre>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bitcarmanlee/article/details/51011515">OLTP与OLAP的区别</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangzheng0413/article/details/8271322">OLAP、OLTP的介绍和比较</a><br>3.<a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/350209">OLAP 和OLTP的区别</a></div>
+<h2 id="2-何为列势存储？"><a href="#2-何为列势存储？" class="headerlink" title="2.何为列势存储？"></a>2.何为列势存储？</h2><p>列式数据库是以列相关存储架构进行数据存储的数据库，主要适合与批量数据处理和即席查询。相对应的是行式数据库，数据以行相关的存储体系架构进行空间分配，主要适合与小批量的数据处理，常用于联机事务型数据处理。传统的行式数据库，是按照行存储的，维护大量的索引和物化视图无论是在时间(处理)还是空间(存储)方面成本都很高。而列式数据库恰恰相反，列式数据库的数据是按照列存储，每一列单独存放，数据即是索引。只访问查询涉及的列，大大降低了系统I/O，每一列由一个线来处理，而且由于数据类型一致，数据特征相似，极大方便压缩。<br>优点：</p>
+<pre><code>数据压缩比高，正因为同一类型的列存储在一起。
+简化数据建模的复杂性。
+由于查询需要读取的blocks少，速度更快。
+BI的优秀选择。
+</code></pre>
+<p>Sybase IQ，ParAccel, Sand/DNA Analytics和 Vertica。Sybase IQ：知道IQ跟其它的关系型数据库相比，它的主要特征是什么？包括查询快、数据压缩比高、Load快，但是插入更新慢，不太适合数据老是变化，它是按列存储的。这时候你就知道它适做DSS（决策支持系统），数据集市，数据仓库，它不适合OLTP。适合OLAP。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35622907">处理海量数据：列式存储综述（存储篇）</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/judyge/article/details/49757529">列式存储与行式存储</a><br>3.<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93">列式数据库</a></div>
+<h2 id="3-业界常来搭建数据仓库的数据库"><a href="#3-业界常来搭建数据仓库的数据库" class="headerlink" title="3.业界常来搭建数据仓库的数据库"></a>3.业界常来搭建数据仓库的数据库</h2><p>在数据仓库领域的收费列数据库</p>
+<p>1、惠普公司的Vertica<br>2、oracle公司Oracle Warehouse Builder的<br>3、sybase公司的Sybase IQ/SAPIQ<br>4、mysql公司出的Infobright。<br>5、Greenplum公司的Greenplum</p>
+<p>互联网公司自主研发的</p>
+<p>1、华为的Carbondata。<br>2、百度研发给内部使用的palo。<br>3、腾讯Hermes<br>4、Druid:广告分析，互联网广告系统监控、度量和网络监控。开源免费。<br>5、俄罗斯的yandex公司为自己内部统计需要研发的clickhouse</p>
+<p>一些产品介绍表格：</p>
+<table>
+<thead>
+<tr>
+<th>数据库名称</th>
+<th>所属公司</th>
+<th>是否商业收费</th>
+<th>优点</th>
+<th>缺点</th>
+<th>说明</th>
+<th>列式存储(非行存储)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Oracle Warehouse Builder（OWB）</td>
+<td>oracle</td>
+<td>商业收费</td>
+<td>未知</td>
+<td>未知</td>
+<td>未知</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>Sybase IQ/SAPIQ</td>
+<td>SAP</td>
+<td>商业收费</td>
+<td></td>
+<td></td>
+<td>SAP公司收购数据库公司SYbase的产品。Sybase IQ拥有列式存储、网格架构、专利的数据压缩、先进的查询优化器。电信和金融行业的客户较多</td>
+<td>是</td>
+</tr>
+<tr>
+<td>Vertica</td>
+<td>惠普公司</td>
+<td>商业收费</td>
+<td>未知</td>
+<td>未知</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>hbase</td>
+<td>Apache的Hadoop项目的子项目</td>
+<td>开源免费</td>
+<td>很适合统计多维度数据。目前看资料，乐视的视频云涉及到视频多维度统计从redis、mysql迁到hbase，响应需求更快。Facebook用在很多业务中。</td>
+<td>1、搭建和维护HBase是很繁琐的，引入很多学习成本，遇到问题还要排查。2、Php操作hbase，需要安装一facebook的服务thrift，这个服务安装没成功。一个中间服务，不够简单。</td>
+<td>hbase与google的表格存储数据库bigtable是同一种东西。列存储。hbase是模仿bigtable产生的。</td>
+<td>是</td>
+</tr>
+<tr>
+<td>hive</td>
+<td></td>
+<td>开源免费</td>
+<td></td>
+<td>1、查询速度比较慢。2、基于MapReduce来处理数据。需要理解mapreduce，会写这种。目前来看不好上手</td>
+<td></td>
+<td>否，只是一中架构。</td>
+</tr>
+<tr>
+<td>palo</td>
+<td>百度</td>
+<td>开源免费</td>
+<td>用在百度统计以及百度其他应用。</td>
+<td>网上的使用资料比较少。要使用直接使用百度云提供的付费服务。<a target="_blank" rel="noopener" href="https://cloud.baidu.com/product/palo.html">百度云</a> 目前提供了付费服务</td>
+<td></td>
+<td>列存储</td>
+</tr>
+<tr>
+<td>clickhouse</td>
+<td>俄罗斯的Yandex</td>
+<td>开源免费</td>
+<td>查询速度快，SQL语句操作。</td>
+<td>1、文档齐全。有官网。支持php、.net等各类语言，官网直接提供了各类语言的库。2、速度很快。经过Yandex公司自身的实践考验。俄罗斯的nginx也是久经考验。</td>
+<td>此公司类似于中国的 百度和百度统计业务。为应对自身内部需要而开发</td>
+<td></td>
+</tr>
+<tr>
+<td>Infobright</td>
+<td>MySql公司</td>
+<td>开源免费，有商业版和社区版</td>
+<td></td>
+<td>1、社区版不支持更改数据。只能载入数据。2、社区版只能支持10多个并发查询 3、世面上用的人少。</td>
+<td>列存储</td>
+<td></td>
+</tr>
+<tr>
+<td>Greenplum</td>
+<td>Greenplum</td>
+<td>商业收费</td>
+<td></td>
+<td></td>
+<td>基于关系数据库PostgreSQL做存储</td>
+<td>列存储</td>
+</tr>
+<tr>
+<td>Druid</td>
+<td></td>
+<td>免费</td>
+<td></td>
+<td></td>
+<td></td>
+<td>列存储</td>
+</tr>
+</tbody></table>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangtao_20/p/8294974.html">数据仓库一些整理(列式数据库)</a>  (这篇文章非常全面，值得观赏)<br>2.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1054603">腾讯实时分析平台Hermes介绍</a></div>
+<h3 id="百度数据仓库Palo"><a href="#百度数据仓库Palo" class="headerlink" title="百度数据仓库Palo"></a>百度数据仓库Palo</h3><p>百度数据仓库Palo是百度智能云上提供的PB级别的MPP数据仓库服务，以较低的成本提供在大数据集上的高性能分析和报表查询功能。百度数据仓库Palo不是面向OLTP的数据库产品，而是一款面向OLAP的数据库产品，和百度数据仓库Palo功能定位比较相似的产品包括Greenplum、Vertica、Exadata等商业数据仓库系统和Amazon RedShift、Google BigQuery等云服务，大家可以参考以上产品来理解百度数据仓库Palo。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/doc/PALO/s/pjwvy0m38">百度数据仓库 Palo</a></div>
+<h3 id="Apache-CarbonData"><a href="#Apache-CarbonData" class="headerlink" title="Apache CarbonData"></a>Apache CarbonData</h3><p>Apache CarbonData is an indexed columnar data format for fast analytics on big data platform, e.g. Apache Hadoop, Apache Spark, etc.(Apache CarbonData是一种索引的列式数据格式，用于在大数据平台上进行快速分析，例如Apache Hadoop，Apache Spark等)</p>
+<h3 id="ClickHouse"><a href="#ClickHouse" class="headerlink" title="ClickHouse"></a>ClickHouse</h3><p>ClickHouse is a column-oriented database management system (DBMS) for online analytical processing of queries (OLAP)。(ClickHouse是面向列的数据库管理系统（DBMS），用于查询的在线分析处理（OLAP）)。上一张图：</p>
+<img src="/images/loadimg.png" data-original="/posts/a1e51305/bigdata_2.png" lay-src="/posts/a1e51305/bigdata_2.png" class="" title="大数据">
+<p>支持的语言也很多：</p>
+<img src="/images/loadimg.png" data-original="/posts/a1e51305/bigdata_1.png" lay-src="/posts/a1e51305/bigdata_1.png" class="" title="大数据">
+
+<p>总结起来：</p>
+<ul>
+<li><p>优点：<br>1、免费却不输于商业数据仓库。网上别人公开的测验数据看，性能不比惠普公司等提供的商业列式存储数据库差。与百度自己研发列数据库palo，也进行过性能对比，各有千秋，不输。<br>2、好上手，维护成本低。对php支持良好。界面管理工具也全。<br>3、扩展方便。支持分布式和数据复制。<br>4、经过俄罗斯最大的搜索引擎公司yandex，内部场景运行后开源出来的。由于是2016年6月才开源出来，故国内公司使用不多，毕竟已经使用了商业数据仓库的，迁移要权衡。</p>
+</li>
+<li><p>缺点：<br>1、不支持Transaction：想快就别想Transaction (事务)<br>2、聚合结果必须小于一台机器的内存大小：不是大问题<br>3、缺少完整的Update/Delete操作<br>4、支持有限操作系统<br>5、开源社区刚刚启动，主要是俄语为主</p>
+</li>
+</ul>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/22165241#tipjar">彪悍开源的分析数据库-ClickHouse</a> (这篇文章对ClickHouse有一个比较全面的分析，包括优缺点等)<br>2.<a target="_blank" rel="noopener" href="https://clickhouse.yandex/docs/en/interfaces/third-party/client_libraries/">ClickHouse Documentation</a></div>
+<h3 id="Vertica数据库"><a href="#Vertica数据库" class="headerlink" title="Vertica数据库"></a>Vertica数据库</h3><p>首先开始的就是列式存储数据库：Vertica:Vertica是一款基于列存储的MPP （massively parallel processing）架构的数据库。它可以支持存放多至PB（Petabyte）级别的结构化数据。Vertica是由关系数据库大师Michael Stonebraker(2014 年图灵奖获得者)所创建，于2011年被惠普收购并成为其核心大数据平台软件。<br>优势：</p>
+<pre><code>(1) 列式存储和计算
+(2) “横向扩展式”大规模并行处理 (MPP)
+(3) 实时分析
+(4) 数据库内部分析库
+(5) 完整的关系数据库和SQL 标准支持:支持SQL-92/SQL-99/SQL-2003 标准，提供ODBC、JDBC、ADO.NET 接口规范驱动，完全兼容传统关系数据库的开发、使用和管理习惯，可以轻松与现有的ETL 和报表工具集成
+(6) 可扩展的数据库内部分析框架
+(7) 原生支持Hadoop
+(8) 自动实现高可用性
+(9) 自动优化和性能管理
+</code></pre>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Vertica/8089565">Vertica维基百科</a><br>2.<a href="%E5%9F%BA%E4%BA%8EDBMS%E6%9E%B6%E6%9E%84%E7%9A%84%E5%88%97%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93:https://blog.csdn.net/pelick/article/details/38480313">Vertica:</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yezonggang/article/details/79198912">vertica数据库</a><br>4.<a target="_blank" rel="noopener" href="https://www.vertica.com/">Vertica官网</a></div>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>类似于第一篇文章，今天我又找到了其他的一些适合OLAP的高性能数据库。</p>
+<img src="/images/loadimg.png" data-original="/posts/a1e51305/bigdata_3.png" lay-src="/posts/a1e51305/bigdata_3.png" class="" title="OLAP数据库">
+
+<p>性能方面我没有实际的测过，也不好说明上面的数据对不对。我从列式存储开始，好像越走越宽了路，即使不用列式存储，也可以使用高性能的大规模的数据OLAP数据查询与分析。通过分析与查询，我了解了大数据的三个关键技术：预计算、大规模并行处理和列式存储。</p>
+<p>面向列的DBMS的示例：Vertica，Paraccel（Actian Matrix和Amazon Redshift），Sybase IQ，Exasol，Infobright，InfiniDB，MonetDB（VectorWise和Actian Vector），LucidDB，SAP HANA，Google Dremel，Google PowerDrill，Druid和kdb +。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ccad1333c48d">基于SnappyData构建实时数据仓库</a><br>2.<a target="_blank" rel="noopener" href="http://kylin.apache.org/cn/development/">Apache Kylin</a><br>3.<a target="_blank" rel="noopener" href="https://juejin.im/post/5da407ae51882554c075793a">Apache Kylin 概述</a><br>4.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f9a54193dc63">从携程性能测试case中重新认识clickhouse</a> (这篇文章中我顺着SnappyData，我认识了kylin,还有其他的一些支持OLAP的数据库)<br>5.<a target="_blank" rel="noopener" href="https://juejin.im/post/5da407ae51882554c075793a">Apache Kylin 概述</a></div>
+<h2 id="4-高性能数据库方案"><a href="#4-高性能数据库方案" class="headerlink" title="4.高性能数据库方案"></a>4.高性能数据库方案</h2><p>既然列式存储适合在OLAP(联机事务分析)的场景下使用，那么对于OLTP(联机事务处理),如何提高相应的性能呢？</p>
+<p>(1) 拆表：大表拆小表（垂直拆，水平拆；分表，分区partition，分片sharding），可以在应用层实现，也可以在数据库层面实现一部分；提高系统性能。<br>(2) 分库：把表放到不同的数据库，，这也是分布式数据库的基础；提高系统性能。<br>(3) 分布式：不同的数据库放到不同的服务器；提高系统性能。<br>(4) 集群：使用数据库复制等技术组建集群，实现读写分离、备份等；提高系统性能、可用性。<br>(5) 缓存：对常用的数据进行缓存。提高系统性能。<br>(6) 备份：主从库，快照，热备，异地备份等；提高系统可用性。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.oldboyedu.com/high-performance-database/">服务端高性能数据库优化演变细节案例</a> (这篇文章讲了创业过程中的将数据库性能一步步提高的过程，主要内容跟也和上述内容差不多)<br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f9a9eee9a8cc">14 | 高性能数据库集群：读写分离</a><br>3.<a target="_blank" rel="noopener" href="https://www.infoq.cn/article/i0Zmi7Y4lT7ePG5wYj0R">选择高性能 NoSQL 数据库的 5 个步骤</a><br>4.<a target="_blank" rel="noopener" href="https://www.iteye.com/blog/nethub2-2366463">大数据量、高并发数据库的高性能、高可用性解决方案</a><br>5.<a target="_blank" rel="noopener" href="http://www.weide-gd.com/Case/info/id/15.html">电网数据库高性能存储系统</a></div>
+<p><strong>总结：</strong><br>针对数据分析应用场景，就选择clickhouse这种读取多插入少的OLAP数据分析技术，如果是为了提过数据库的插入更新等性能，还是选择传统的数据库，然后采用分库、分表以及分布式等技术和手段来提高系统的性能。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/ca2307d7.html" rel="next" title="调研报告之Protobuf数据格式">
+                      <i class="iconfont icon-prev"></i> 调研报告之Protobuf数据格式
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/5719824f.html" rel="prev" title="调研报告之MQTT协议">
+                      调研报告之MQTT协议 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-OLTP%E5%92%8COLAP"><span class="toc-number">1.</span> <span class="toc-text">1.OLTP和OLAP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%95%E4%B8%BA%E5%88%97%E5%8A%BF%E5%AD%98%E5%82%A8%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">2.何为列势存储？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E4%B8%9A%E7%95%8C%E5%B8%B8%E6%9D%A5%E6%90%AD%E5%BB%BA%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">3.业界常来搭建数据仓库的数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BE%E5%BA%A6%E6%95%B0%E6%8D%AE%E4%BB%93%E5%BA%93Palo"><span class="toc-number">3.1.</span> <span class="toc-text">百度数据仓库Palo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Apache-CarbonData"><span class="toc-number">3.2.</span> <span class="toc-text">Apache CarbonData</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ClickHouse"><span class="toc-number">3.3.</span> <span class="toc-text">ClickHouse</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vertica%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">3.4.</span> <span class="toc-text">Vertica数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">3.5.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%AB%98%E6%80%A7%E8%83%BD%E6%95%B0%E6%8D%AE%E5%BA%93%E6%96%B9%E6%A1%88"><span class="toc-number">4.</span> <span class="toc-text">4.高性能数据库方案</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/a1e51305.html';
+      this.page.identifier = 'posts/a1e51305.html';
+      this.page.title = '调研报告之OLAP数据库';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：调研报告之OLAP数据库 链接地址:https://bibichuan.github.io/posts/a1e51305.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '调研报告之OLAP数据库',
+		url: 'https://bibichuan.github.io/posts/a1e51305.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '调研报告之OLAP数据库',
+			isTipVisibility: true,
+			tip: '调研报告之OLAP数据库',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cesium加载MVT数据二</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Cesium加载MVT数据二</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Cesium/">Cesium</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-06-09 16:18:19
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:39
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>上一节根据笼统的处理，基本上对使用 openlayer 使Cesium可以加载MVT数据有了一个大致的思路，这篇文章主要用来深化一下，并提供源代码。需要解决的问题主要有下面几个方面：<br>(1) 获取 mvt 瓦片数据<br>通过自定义 ImageryProvider,可以实现加载 mvt 格式的瓦片数据。根据瓦片构造原理，拼接合适的 url,通过调用 Cesium.Resource.createIfNeeded，通过一个url获取瓦片资源，然后使用 resource.fetchArrayBuffer() 进行数据处理。</p>
+<p>(2) 解析 mvt 数据<br>解析mvt数据，主要是通过 ol/format/MVT 这个解析库实现的。根据获取到 arrayBuffer 数据，可以通过 ol/format/MVT 的 readFeatures 从一个 arrayBuffer 中获取到所有的 feature 信息。</p>
+<p>(3) 解析 mapbox 的样式信息<br>如何解析 mapbox 的样式信息，将其应用到主要是通过 ol-mapbox-style 这个库来实现。但是这个库也有些问题：</p>
+<ul>
+<li><p>字体的渲染<br>在官方的库文件中，并不能支持 mapbox 的 style 的 glyphs 配置为 pbf 格式。 </p>
+</li>
+<li><p>精灵图的绘制<br>在库中，精灵图的加载通过 image 进行控制，异步获取图片数据之后，通过调用图层的 change 方法，触发图层数据的更新，但是这步操作，在 Cesium 里面是没有的。</p>
+</li>
+<li><p>各个图层样式分离<br>mapbox的样式文件中 layers 是一个数组，多个图层可以共用一个 source。这点在Cesium中不好实现，因为一个Cesium图层，对应的应该是一个source数据源，一个数据源的mvt切片包中，包含了多个feature,每一个feature分属不同的层。也就是说在创建Cesium时，一个图层对应一个 provider。</p>
+</li>
+</ul>
+<p>(4) 在 Cesium 上绘制整个图层<br>在Cesium绘制图层也同样通过 requestImage 函数，这个函数在获取数据后，可以通过返回一个 canvas 进行图层的绘制。也就是说可以讲获取到的 mvt 解析数据后，绘制到一个 canvas 上，这样就可以在 requestImage 进行返回，供 Cesium 进行渲染了。</p>
+<p>总结：<br>Cesium渲染mvt数据，用的工具主要是 openlayer的 mvt 解析库 和 ol-mapbox-style 样式解析库, 需要自定义的就是 Cesium 中的 ImageryProvider 这个类，通过这个类来渲染自己的图层。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/146393943">Cesium笔记(3):基本控件简介—ImageryProvider地图瓦片地图配</a> 支持的瓦片格式 wms、TMS、WMTS、ArcGIS、Bing Maps、Google Earth、Mapbox、OpenStreetMap<br>2.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/480835644">Cesium 高性能扩展之自定义地图主题</a> 这里主要讲了 加深对 Cesium 影像加载（ImageryLayer和ImageryProvider）的理解；加深对DrawCommand的理解；了解Cesium实现RTT的基本流程。<br>5.<a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/blogs/381631">从零打造一个Web地图引擎</a> 这里讲了在创建一个地图引擎的时候，常用的功能，比如地图分辨率获取，地图瓦片的加载，还有地图的拖动</div>
+<h1 id="2-MvtImageryProvider实现"><a href="#2-MvtImageryProvider实现" class="headerlink" title="2.MvtImageryProvider实现"></a>2.MvtImageryProvider实现</h1><p>这里我贴出来自己的代码，因为我使用的是 4490 的坐标系，所以这里的 tillingScheme 以及分辨率都是在 4490 的基础上实现的。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="variable constant_">MVT</span> <span class="keyword">from</span> <span class="string">'ol/format/MVT.js'</span>;</span><br><span class="line"><span class="keyword">import</span> {toContext} <span class="keyword">from</span> <span class="string">'ol/render'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建 mvt provider</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} options </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">MvtImageryProvider</span>(<span class="params">options</span>) {</span><br><span class="line">    options = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options, <span class="title class_">Cesium</span>.<span class="property">defaultValue</span>.<span class="property">EMPTY_OBJECT</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">options</span> = options</span><br><span class="line">    <span class="comment">// 瓦片的大小</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_tileWidth</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">tileWidth</span>, <span class="number">256</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_tileHeight</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">tileHeight</span>, <span class="number">256</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_minimumLevel</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">minimumLevel</span>, <span class="number">1</span>) <span class="comment">// 最小显示级别</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_maximumLevel</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">maximumLevel</span>, <span class="number">20</span>) <span class="comment">// 最大显示级别</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_rectangle</span> = <span class="title class_">Cesium</span>.<span class="property">Rectangle</span>.<span class="title function_">fromDegrees</span>(-<span class="number">180</span>, -<span class="number">90</span>, <span class="number">180</span>, <span class="number">90</span>)</span><br><span class="line">    <span class="comment">// 定义椭球体</span></span><br><span class="line">    <span class="keyword">let</span> cgs2000Ellipsolid = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Ellipsoid</span>(<span class="number">6378137.0</span>, <span class="number">6378137.0</span>, <span class="number">6356752.31414035585</span>)</span><br><span class="line">    <span class="keyword">let</span> myGeographicTilingScheme = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">GeographicTilingScheme</span>({</span><br><span class="line">      <span class="attr">ellipsoid</span>: cgs2000Ellipsolid,</span><br><span class="line">      <span class="attr">rectangle</span>: <span class="variable language_">this</span>.<span class="property">_rectangle</span>,</span><br><span class="line">      <span class="attr">numberOfLevelZeroTilesX</span>: <span class="number">4</span>,</span><br><span class="line">      <span class="attr">numberOfLevelZeroTilesY</span>: <span class="number">2</span></span><br><span class="line">    })</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_tilingScheme</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">tilingScheme</span>, myGeographicTilingScheme)</span><br><span class="line">    <span class="comment">// mvt 解析库</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_mvtParser</span> = <span class="keyword">new</span> <span class="title function_">MVT</span>()</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 计算分辨率，这里是定义的 4326 或者 4490 的分辨率，基本上就是固定的</span></span><br><span class="line"><span class="comment">     *  for (var i = 0; i &lt; 20; i++) {</span></span><br><span class="line"><span class="comment">     *       let reso = 180/(256*Math.pow(2, i));</span></span><br><span class="line"><span class="comment">     *  } </span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_resolutions</span> = [<span class="number">0.703125</span>, <span class="number">0.3515625</span>, <span class="number">0.17578125</span>, <span class="number">0.087890625</span>, <span class="number">0.0439453125</span>, <span class="number">0.02197265625</span>, <span class="number">0.010986328125</span>,</span><br><span class="line">        <span class="number">0.0054931640625</span>, <span class="number">0.00274658203125</span>, <span class="number">0.001373291015625</span>, <span class="number">0.0006866455078125</span>, <span class="number">0.00034332275390625</span>, <span class="number">0.000171661376953125</span>,</span><br><span class="line">        <span class="number">0.0000858306884765625</span>, <span class="number">0.00004291534423828125</span>, <span class="number">0.000021457672119140625</span>, <span class="number">0.000010728836059570312</span>, <span class="number">0.000005364418029785156</span>,</span><br><span class="line">        <span class="number">0.000002682209014892578</span>, <span class="number">0.000001341104507446289</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理样式信息，默认传入的就是一个可以解析的样式函数</span></span><br><span class="line">    <span class="keyword">if</span>(!options.<span class="property">styleConfig</span>){</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">"样式信息无效"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_styleConfig</span>=options.<span class="property">styleConfig</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 瓦片请求点url</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_key</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">key</span>, <span class="string">""</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_url</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">url</span>, <span class="string">""</span>)</span><br><span class="line">    <span class="comment">// 瓦片渲染队列</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_tileQueue</span> = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">TileReplacementQueue</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_cacheSize</span> = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 这些东西有没有用，这个我暂时还没有搞明白</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_hasAlphaChannel</span> = <span class="title class_">Cesium</span>.<span class="title function_">defaultValue</span>(options.<span class="property">hasAlphaChannel</span>, <span class="literal">true</span>)</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_errorEvent</span> = <span class="keyword">new</span> <span class="title class_">Cesium</span>.<span class="title class_">Event</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_readyPromise</span> = <span class="title class_">Cesium</span>.<span class="title function_">defer</span>()</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_credit</span> = <span class="literal">undefined</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_ready</span> = <span class="literal">true</span></span><br><span class="line">  }</span><br><span class="line"><span class="comment">// 定义 provider 的属性,这里有什么用，其实就是参考的官方定义一个 provider 所需要定义的一些属性进行的编写</span></span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperties</span>(<span class="title class_">MvtImageryProvider</span>.<span class="property"><span class="keyword">prototype</span></span>, {</span><br><span class="line">    <span class="attr">proxy</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">tileWidth</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_tileWidth</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">tileHeight</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_tileHeight</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">maximumLevel</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_maximumLevel</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">minimumLevel</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_minimumLevel</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">tilingScheme</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_tilingScheme</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">rectangle</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_tilingScheme</span>.<span class="property">rectangle</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">tileDiscardPolicy</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">errorEvent</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_errorEvent</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">ready</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_ready</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">readyPromise</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_readyPromise</span>.<span class="property">promise</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">credit</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_credit</span></span><br><span class="line">        }</span><br><span class="line">    },</span><br><span class="line"></span><br><span class="line">    <span class="attr">hasAlphaChannel</span>: {</span><br><span class="line">        <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params"></span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_hasAlphaChannel</span></span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">})</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} x </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} y </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} level </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">MvtImageryProvider</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">getTileCredits</span> = <span class="keyword">function</span> (<span class="params">x, y, level</span>) {</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 矢量数据选中</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} x </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} y </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} level </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} longitude </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} latitude </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">MvtImageryProvider</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">pickFeatures</span> = <span class="keyword">function</span> (<span class="params">x, y, level, longitude, latitude</span>) {</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取矢量瓦片并渲染</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} x </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} y </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} level </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} request </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title class_">MvtImageryProvider</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">requestImage</span> = <span class="keyword">function</span> (<span class="params">x, y, level, request</span>) {</span><br><span class="line">    <span class="keyword">let</span> cacheTile = <span class="title function_">findTileInQueue</span>(x, y, level, <span class="variable language_">this</span>.<span class="property">_tileQueue</span>)</span><br><span class="line">    <span class="keyword">if</span> (cacheTile != <span class="literal">undefined</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {</span><br><span class="line">            <span class="title function_">resolve</span>(cacheTile)</span><br><span class="line">        })</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        <span class="keyword">let</span> that = <span class="variable language_">this</span></span><br><span class="line">        <span class="keyword">let</span> url = <span class="variable language_">this</span>.<span class="property">_url</span></span><br><span class="line">        <span class="comment">// 这里不知道为什么，如果直接写level的话，那么我的4326的坐标系，就无法获取正确的图层</span></span><br><span class="line">        level=level+<span class="number">2</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> reverseY = <span class="variable language_">this</span>.<span class="property">_tilingScheme</span>.<span class="title function_">getNumberOfYTilesAtLevel</span>(level)-y-<span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 拼接url</span></span><br><span class="line">        url = url.<span class="title function_">replace</span>(<span class="string">"{x}"</span>, x).<span class="title function_">replace</span>(<span class="string">"{y}"</span>, y).<span class="title function_">replace</span>(<span class="string">"{reverseY}"</span>, reverseY).<span class="title function_">replace</span>(<span class="string">"{z}"</span>, level).<span class="title function_">replace</span>(<span class="string">"{k}"</span>, <span class="variable language_">this</span>.<span class="property">_key</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> resource = <span class="title class_">Cesium</span>.<span class="property">Resource</span>.<span class="title function_">createIfNeeded</span>(url)</span><br><span class="line">        <span class="keyword">return</span> resource.<span class="title function_">fetchArrayBuffer</span>().<span class="title function_">then</span>(<span class="function">(<span class="params">arrayBuffer</span>) =&gt;</span> {</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"canvas"</span>)</span><br><span class="line">            <span class="comment">// 这里的width为什么是 4096，暂时没有理论支撑，不太清楚。</span></span><br><span class="line">            <span class="comment">// 而且这里设置 4096 x 4096 特别的影响性能，这个问题在下一篇文章中会进行说明和修复</span></span><br><span class="line">            canvas.<span class="property">width</span> = <span class="number">4096</span></span><br><span class="line">            canvas.<span class="property">height</span> = <span class="number">4096</span></span><br><span class="line">            <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">"2d"</span>)</span><br><span class="line">            <span class="keyword">let</span> render = <span class="title function_">toContext</span>(ctx);</span><br><span class="line">            <span class="comment">// 解析mvt数据</span></span><br><span class="line">            <span class="keyword">let</span> features = that.<span class="property">_mvtParser</span>.<span class="title function_">readFeatures</span>(arrayBuffer)</span><br><span class="line">            <span class="comment">// 获取样式信息</span></span><br><span class="line">            <span class="keyword">let</span> styleConfig = that.<span class="property">_styleConfig</span></span><br><span class="line">            <span class="comment">// 遍历解析后的feature，将feature渲染到canvas上</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; features.<span class="property">length</span>; i++) {</span><br><span class="line">                <span class="keyword">let</span> feature = features[i];</span><br><span class="line">                <span class="keyword">let</span> properties = feature.<span class="title function_">getProperties</span>()</span><br><span class="line">                <span class="keyword">let</span> featureLayer = properties.<span class="property">layer</span></span><br><span class="line">                <span class="keyword">let</span> styleFunc = styleConfig[featureLayer] ? styleConfig[featureLayer].<span class="property">styleFunc</span> : <span class="string">""</span></span><br><span class="line">                </span><br><span class="line">                <span class="comment">// 获取样式信息</span></span><br><span class="line">                <span class="keyword">if</span>(styleFunc){</span><br><span class="line">                    <span class="keyword">let</span> styles = <span class="title function_">styleFunc</span>(features[i],<span class="variable language_">this</span>.<span class="property">_resolutions</span>[level])</span><br><span class="line">                    <span class="keyword">if</span>(styles){</span><br><span class="line">                        <span class="comment">// 循环遍历渲染feature</span></span><br><span class="line">                        <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; styles.<span class="property">length</span>; j++) {</span><br><span class="line">                            render.<span class="title function_">drawFeature</span>(feature,styles[j]);</span><br><span class="line">                        }</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">// 清理内存</span></span><br><span class="line">            features = <span class="literal">null</span></span><br><span class="line">            render = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// 渲染缓存队列(有没有用，还待考察)</span></span><br><span class="line">            <span class="keyword">if</span> (that.<span class="property">_tileQueue</span>.<span class="property">count</span> &gt; that.<span class="property">_cacheSize</span>) {</span><br><span class="line">                <span class="title function_">trimTiles</span>(that.<span class="property">_tileQueue</span>, that.<span class="property">_cacheSize</span> / <span class="number">2</span>)</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">// 切片缓存队列渲染(有没有用，还待考察)</span></span><br><span class="line">            canvas.<span class="property">xMvt</span> = x</span><br><span class="line">            canvas.<span class="property">yMvt</span> = y</span><br><span class="line">            canvas.<span class="property">zMvt</span> = level</span><br><span class="line">            that.<span class="property">_tileQueue</span>.<span class="title function_">markTileRendered</span>(canvas)</span><br><span class="line">            <span class="comment">// 返回待渲染的 canvas</span></span><br><span class="line">            <span class="keyword">return</span> canvas</span><br><span class="line">        } <span class="keyword">catch</span> (error) {</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(error)</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        })</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 查找缓存切片是否存在</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} x </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} y </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} level </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} tileQueue </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">findTileInQueue</span>(<span class="params">x, y, level, tileQueue</span>) {</span><br><span class="line"><span class="keyword">let</span> item = tileQueue.<span class="property">head</span></span><br><span class="line"><span class="keyword">while</span> (item != <span class="literal">undefined</span> &amp;&amp; !(item.<span class="property">xMvt</span> == x &amp;&amp; item.<span class="property">yMvt</span> == y &amp;&amp; item.<span class="property">zMvt</span> == level)) {</span><br><span class="line">    item = item.<span class="property">replacementNext</span></span><br><span class="line">}</span><br><span class="line"><span class="keyword">return</span> item</span><br><span class="line">}</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 移除缓存切片</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} tileReplacementQueue </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} item </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeQueue</span>(<span class="params">tileReplacementQueue, item</span>) {</span><br><span class="line">    <span class="keyword">let</span> previous = item.<span class="property">replacementPrevious</span></span><br><span class="line">    <span class="keyword">let</span> next = item.<span class="property">replacementNext</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (item === tileReplacementQueue.<span class="property">_lastBeforeStartOfFrame</span>) {</span><br><span class="line">        tileReplacementQueue.<span class="property">_lastBeforeStartOfFrame</span> = next</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (item === tileReplacementQueue.<span class="property">head</span>) {</span><br><span class="line">        tileReplacementQueue.<span class="property">head</span> = next</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        previous.<span class="property">replacementNext</span> = next</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (item === tileReplacementQueue.<span class="property">tail</span>) {</span><br><span class="line">        tileReplacementQueue.<span class="property">tail</span> = previous</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        next.<span class="property">replacementPrevious</span> = previous</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    item.<span class="property">replacementPrevious</span> = <span class="literal">undefined</span></span><br><span class="line">    item.<span class="property">replacementNext</span> = <span class="literal">undefined</span></span><br><span class="line"></span><br><span class="line">    --tileReplacementQueue.<span class="property">count</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} tileQueue </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> {<span class="type">*</span>} maximumTiles </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">trimTiles</span>(<span class="params">tileQueue, maximumTiles</span>) {</span><br><span class="line">    <span class="keyword">let</span> tileToTrim = tileQueue.<span class="property">tail</span></span><br><span class="line">    <span class="keyword">while</span> (tileQueue.<span class="property">count</span> &gt; maximumTiles &amp;&amp; <span class="title class_">Cesium</span>.<span class="title function_">defined</span>(tileToTrim)) {</span><br><span class="line">        <span class="keyword">let</span> previous = tileToTrim.<span class="property">replacementPrevious</span></span><br><span class="line"></span><br><span class="line">        <span class="title function_">removeQueue</span>(tileQueue, tileToTrim)</span><br><span class="line">        <span class="comment">// delete tileToTrim</span></span><br><span class="line">        tileToTrim = <span class="literal">null</span></span><br><span class="line"></span><br><span class="line">        tileToTrim = previous</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="comment">// 导出 Provider</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">MvtImageryProvider</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="3-图层加载"><a href="#3-图层加载" class="headerlink" title="3.图层加载"></a>3.图层加载</h1><p>因为我才用的是mars3d的库，所以做了一些封装，主要就是处理获取到的 mapbox style 的 json 文件。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> mars3d <span class="keyword">from</span> <span class="string">"mars3d"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">MvtImageryProvider</span> <span class="keyword">from</span> <span class="string">"./MvtImageryProvider.js"</span>;</span><br><span class="line"><span class="keyword">import</span> {stylefunction} <span class="keyword">from</span> <span class="string">'ol-mapbox-style'</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">VectorTileLayer</span> <span class="keyword">from</span> <span class="string">'ol/layer/VectorTile.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">VectorLayer</span> {</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">options</span>){</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">map</span> = <span class="variable language_">window</span>.<span class="property">map</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">options</span> = options || {}</span><br><span class="line">        <span class="comment">// 获取样式信息，并进行解析</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_styleUrl</span> = options.<span class="property">styleUrl</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">getStyle</span>(<span class="variable language_">this</span>.<span class="property">_styleUrl</span>)</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 加载样式信息</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="title function_">getStyle</span>(<span class="params">styleUrl</span>){</span><br><span class="line">        styleUrl = styleUrl||<span class="variable language_">this</span>.<span class="property">_styleUrl</span></span><br><span class="line">        mars3d.<span class="property">Util</span>.<span class="title function_">fetchJson</span>({</span><br><span class="line">            <span class="attr">url</span>: styleUrl,</span><br><span class="line">            <span class="attr">queryParameters</span>: {</span><br><span class="line">                <span class="attr">access_token</span>: <span class="variable language_">this</span>.<span class="property">options</span>.<span class="property">key</span> || <span class="string">"mars3d"</span></span><br><span class="line">            }</span><br><span class="line">        })</span><br><span class="line">        .<span class="title function_">then</span>(<span class="function">(<span class="params">styleJson</span>) =&gt;</span> {</span><br><span class="line">            <span class="comment">// this.options.styleConfig = json</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(styleJson)</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 临时变量</span></span><br><span class="line">            <span class="keyword">const</span> olLayer = <span class="keyword">new</span> <span class="title class_">VectorTileLayer</span>(); <span class="comment">// 临时 openlayer 图层</span></span><br><span class="line">            <span class="keyword">const</span> resolutions = [<span class="number">0.703125</span>, <span class="number">0.3515625</span>, <span class="number">0.17578125</span>, <span class="number">0.087890625</span>, <span class="number">0.0439453125</span>, <span class="number">0.02197265625</span>, <span class="number">0.010986328125</span>,</span><br><span class="line">                <span class="number">0.0054931640625</span>, <span class="number">0.00274658203125</span>, <span class="number">0.001373291015625</span>, <span class="number">0.0006866455078125</span>, <span class="number">0.00034332275390625</span>, <span class="number">0.000171661376953125</span>,</span><br><span class="line">                <span class="number">0.0000858306884765625</span>, <span class="number">0.00004291534423828125</span>, <span class="number">0.000021457672119140625</span>, <span class="number">0.000010728836059570312</span>, <span class="number">0.000005364418029785156</span>,</span><br><span class="line">                <span class="number">0.000002682209014892578</span>, <span class="number">0.000001341104507446289</span>]</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 遍历全部的图层，确定图层最大最小显示级别</span></span><br><span class="line">            <span class="keyword">let</span> layers = styleJson.<span class="property">layers</span></span><br><span class="line">            <span class="keyword">let</span> layersCount = layers.<span class="property">length</span></span><br><span class="line">            <span class="keyword">let</span> layerConfig = {}</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; layersCount; i++){</span><br><span class="line">                <span class="keyword">let</span> layer = layers[i]</span><br><span class="line">                <span class="comment">// 去掉背景和栅格图层</span></span><br><span class="line">                <span class="keyword">let</span> type = layer.<span class="property">type</span></span><br><span class="line">                <span class="keyword">if</span>(type === <span class="string">"background"</span> || type === <span class="string">"raster"</span> ) {</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">let</span> layerid = layer.<span class="property">id</span></span><br><span class="line">                layer.<span class="property">index</span> = i <span class="comment">// 添加数组索引，方便快速定位</span></span><br><span class="line">                layerConfig[layerid] = layer</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> sourceConfig = {} <span class="comment">// 数据源配置</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> layerid <span class="keyword">in</span> layerConfig){</span><br><span class="line">                <span class="keyword">let</span> layer = layerConfig[layerid]</span><br><span class="line">                <span class="comment">// 如果是带 ref 属性，说明是一个引用，具体的内容需要在另外一个图层中获取</span></span><br><span class="line">                <span class="keyword">let</span> ref = layer.<span class="property">ref</span></span><br><span class="line">                <span class="keyword">if</span>(ref){</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                    <span class="keyword">let</span> targetSource = layerConfig[ref]</span><br><span class="line">                    <span class="keyword">let</span> sourcIindex = layer.<span class="property">index</span></span><br><span class="line">                    layer = <span class="title class_">Object</span>.<span class="title function_">assign</span>(targetSource,layer)</span><br><span class="line">                    <span class="comment">// 覆盖原始样式,这样就不会在处理时出现错误</span></span><br><span class="line">                    styleJson.<span class="property">layers</span>[sourcIindex]=layer</span><br><span class="line">                }</span><br><span class="line"></span><br><span class="line">                <span class="keyword">let</span> sourceName = layer.<span class="property">source</span></span><br><span class="line">                <span class="keyword">let</span> source = sourceConfig[sourceName]</span><br><span class="line">                <span class="keyword">if</span>(!source){</span><br><span class="line">                    source = {}</span><br><span class="line">                }</span><br><span class="line">                <span class="comment">// 最大最小级别</span></span><br><span class="line">                <span class="keyword">let</span> minzoom = layer.<span class="property">minzoom</span> || <span class="number">1</span></span><br><span class="line">                <span class="keyword">let</span> maxzoom = layer.<span class="property">maxzoom</span> || <span class="number">20</span></span><br><span class="line">                <span class="keyword">if</span>(source.<span class="property">minzoom</span> &gt;= minzoom) {</span><br><span class="line">                    source.<span class="property">minzoom</span> = minzoom</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">if</span>(source.<span class="property">maxzoom</span> &lt;= maxzoom) {</span><br><span class="line">                    source.<span class="property">maxzoom</span> = maxzoom</span><br><span class="line">                }</span><br><span class="line">                <span class="comment">// 创建样式,因为 styleFunction 需要一个 openlayer 图层作为载体，于是就创建了一个临时的图层</span></span><br><span class="line">                <span class="keyword">const</span> styleFunc = <span class="title function_">stylefunction</span>(olLayer, styleJson, sourceName, resolutions);</span><br><span class="line">                <span class="keyword">let</span> styleConfig = source.<span class="property">styleConfig</span></span><br><span class="line">                <span class="keyword">if</span>(!styleConfig) {</span><br><span class="line">                    styleConfig = {}</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">let</span> layerId = layer.<span class="property">id</span></span><br><span class="line">                <span class="keyword">let</span> sourceLayer = layer[<span class="string">"source-layer"</span>]</span><br><span class="line">                styleConfig[sourceLayer] = {</span><br><span class="line">                    <span class="attr">id</span>: layerId,</span><br><span class="line">                    <span class="attr">sourceLayer</span>: sourceLayer,</span><br><span class="line">                    <span class="attr">styleFunc</span>: styleFunc</span><br><span class="line">                }</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 保存引用</span></span><br><span class="line">                source.<span class="property">styleConfig</span> = styleConfig </span><br><span class="line"></span><br><span class="line">                <span class="comment">// 保存引用</span></span><br><span class="line">                sourceConfig[sourceName] = source</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 获取全部的 souurces ，获取需要渲染的 类型为 vector 的图层，并创建</span></span><br><span class="line">            <span class="keyword">let</span> sources = styleJson.<span class="property">sources</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> sourceName <span class="keyword">in</span> sourceConfig){</span><br><span class="line">                <span class="keyword">let</span> sourceLayer = sourceConfig[sourceName] <span class="comment">// 处理后配置</span></span><br><span class="line">                <span class="keyword">let</span> originSource = sources[sourceName] <span class="comment">// 元数据配置</span></span><br><span class="line">                <span class="keyword">let</span> styleConfig = sourceLayer.<span class="property">styleConfig</span></span><br><span class="line">                <span class="keyword">if</span>(originSource.<span class="property">type</span> == <span class="string">"vector"</span>) {</span><br><span class="line">                    <span class="comment">// 切片地址，这里其实是一个数组，但是我暂时没有进行处理</span></span><br><span class="line">                    <span class="keyword">const</span> tiles = originSource.<span class="property">tiles</span></span><br><span class="line">                    <span class="keyword">const</span> url = tiles[<span class="number">0</span>]</span><br><span class="line">                    <span class="keyword">const</span> minimumLevel = sourceLayer.<span class="property">minimumLevel</span> || <span class="number">1</span></span><br><span class="line">                    <span class="keyword">const</span> maximumLevel = sourceLayer.<span class="property">maximumLevel</span> || <span class="number">20</span></span><br><span class="line">                    <span class="comment">// 创建图层</span></span><br><span class="line">                    <span class="keyword">const</span> provider = <span class="keyword">new</span> <span class="title class_">MvtImageryProvider</span>({</span><br><span class="line">                        <span class="attr">url</span>: url,</span><br><span class="line">                        <span class="attr">styleConfig</span>: styleConfig,</span><br><span class="line">                        <span class="attr">minimumLevel</span>: minimumLevel,</span><br><span class="line">                        <span class="attr">maximumLevel</span>: maximumLevel</span><br><span class="line">                    })</span><br><span class="line">                    <span class="keyword">let</span> cesium = mars3d.<span class="property">Cesium</span></span><br><span class="line">                    <span class="keyword">const</span> viewer = <span class="variable language_">this</span>.<span class="property">map</span>.<span class="property">viewer</span></span><br><span class="line">                    <span class="comment">//通过imageryLayers获取图层列表集合</span></span><br><span class="line">                    <span class="keyword">const</span> layers = viewer.<span class="property">scene</span>.<span class="property">imageryLayers</span>;</span><br><span class="line">                    layers.<span class="title function_">addImageryProvider</span>(provider);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="comment">/**</span></span><br><span class="line"><span class="comment">             * 测试</span></span><br><span class="line"><span class="comment">             */</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(sourceConfig)            </span><br><span class="line">            <span class="comment">// 或者使用 mars3d 的重载的方法进行 mvt 的加载</span></span><br><span class="line">            <span class="keyword">const</span> mvtLayer = <span class="keyword">new</span> mars3d.<span class="property">layer</span>.<span class="title class_">MvtLayer</span>({</span><br><span class="line">                <span class="attr">url</span>: <span class="string">"https://map.hongjing.fpi-inc.site:8081/maps/tdt_jj/{z}/{x}/{y}.mvt"</span>,</span><br><span class="line">                <span class="attr">styleConfig</span>: sourceConfig[<span class="string">"osm_jj"</span>].<span class="property">styleConfig</span>,</span><br><span class="line">                <span class="attr">minimumLevel</span>: <span class="number">4</span>,</span><br><span class="line">                <span class="attr">maximumLevel</span>: <span class="number">20</span></span><br><span class="line">            });</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">map</span>.<span class="title function_">addLayer</span>(mvtLayer);</span><br><span class="line">           </span><br><span class="line"></span><br><span class="line">        })</span><br><span class="line">        .<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">error</span>) {</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"加载样式出错"</span>, error)</span><br><span class="line">        })</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 扩展mars3d 的 BaseTileLayer</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MvtLayer</span> <span class="keyword">extends</span> <span class="title class_ inherited__">mars3d.layer.BaseTileLayer</span> {</span><br><span class="line">    <span class="comment">//构建ImageryProvider</span></span><br><span class="line">    <span class="title function_">_createImageryProvider</span>(<span class="params">options</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">createImageryProvider</span>(options)</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createImageryProvider</span>(<span class="params">options</span>) {</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MvtImageryProvider</span>(options)</span><br><span class="line">}</span><br><span class="line"><span class="title class_">MvtLayer</span>.<span class="property">createImageryProvider</span> = createImageryProvider</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在 mars3d 中进行注册 </span></span><br><span class="line"><span class="keyword">const</span> layerType = <span class="string">"mvt"</span> <span class="comment">//图层类型</span></span><br><span class="line">mars3d.<span class="property">LayerUtil</span>.<span class="title function_">register</span>(layerType, <span class="title class_">MvtLayer</span>)</span><br><span class="line">mars3d.<span class="property">LayerUtil</span>.<span class="title function_">registerImageryProvider</span>(layerType, createImageryProvider)</span><br><span class="line"></span><br><span class="line"><span class="comment">//对外接口</span></span><br><span class="line">mars3d.<span class="property">provider</span>.<span class="property">MvtImageryProvider</span> = <span class="title class_">MvtImageryProvider</span></span><br><span class="line">mars3d.<span class="property">layer</span>.<span class="property">MvtLayer</span> = <span class="title class_">MvtLayer</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<h1 id="4-性能优化"><a href="#4-性能优化" class="headerlink" title="4.性能优化"></a>4.性能优化</h1><p>虽然我使用了上面的代码，实现了图层的加载和显示，但是在使用面的代码进行创建的时候，发现内存占用非常的大。浏览器会不断的申请内存，直到把内存撑爆。后来我发现了是因为这个 canvas 的大小设置为4096 过大了。针对返回的数据是 4096 的像素坐标，这里我觉得有两种解决方案，一种就是对feature的坐标进行转换，将其转为0到4096范围内，另外一种就是将 canvas 进行适当的缩放。这两种到底哪种性能好。我觉得性能都不好，最好就是在数据请求的时候，就已经修改好了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bluebird888/article/details/127307232">MapBox 矢量数据规格（MVT) C++ 编解码示例</a></div>
+<h2 id="1-坐标转换"><a href="#1-坐标转换" class="headerlink" title="1.坐标转换"></a>1.坐标转换</h2><p>这里涉及到一个概念，就是说 mvt 的 extent 通常为4096，但是并不是说非要渲染为4096的坐标系，而是渲染为 256 x 256 的瓦片。这个其实就是一个矩阵相成的例子，将一个数组，转换成另外一个数组，所以才会有 this._transform = [0.125, 0, 0, 0.125, 0, 0] 这段代码，其实这段代码就是在瓦片是 512x512 的时候，如何从 4096x4096 转换成 512x512 的转换参数。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/21351965">矩阵乘法的本质是什么？</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45590473/article/details/122848202">坐标变换最通俗易懂的解释（推到+图解）</a></div>
+<h2 id="2-canvas-画布缩放"><a href="#2-canvas-画布缩放" class="headerlink" title="2.canvas 画布缩放"></a>2.canvas 画布缩放</h2><p>这种思路就是我尝试进行坐标的缩放，结果失败了。</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试方法</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">ctx.<span class="title function_">scale</span>(<span class="number">0.0625</span>, <span class="number">0.0625</span>);</span><br><span class="line"><span class="keyword">let</span> canvasData = ctx.<span class="title function_">getImageData</span>(<span class="number">0</span>, <span class="number">0</span>,<span class="number">4096</span>, <span class="number">4096</span>);  <span class="comment">// 保存画布</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(canvasData)</span><br><span class="line"><span class="keyword">let</span> recanvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">"canvas"</span>)</span><br><span class="line">recanvas.<span class="property">width</span> = <span class="number">256</span>;</span><br><span class="line">recanvas.<span class="property">height</span> = <span class="number">256</span>;</span><br><span class="line"><span class="keyword">let</span> rectx = recanvas.<span class="title function_">getContext</span>(<span class="string">"2d"</span>)</span><br><span class="line">rectx.<span class="title function_">putImageData</span>(canvasData, <span class="number">256</span>, <span class="number">256</span>);</span><br><span class="line">canvas.<span class="property">width</span> = <span class="number">256</span>;</span><br><span class="line">canvas.<span class="property">height</span> = <span class="number">256</span>;</span><br><span class="line">ctx.<span class="title function_">putImageData</span>(canvasData, <span class="number">200</span>, <span class="number">200</span>);</span><br><span class="line">canvas=recanvas</span><br><span class="line">canvas.<span class="property">width</span>=<span class="number">256</span>;</span><br><span class="line">canvas.<span class="property">height</span>=<span class="number">256</span>;</span><br><span class="line">ctx.<span class="title function_">putImageData</span>(canvasData,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">256</span>,<span class="number">256</span>)</span><br><span class="line">清理画布</span><br><span class="line">recanvas = <span class="literal">null</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-RenderFeature"><a href="#5-RenderFeature" class="headerlink" title="5.RenderFeature"></a>5.RenderFeature</h2><p>在使用openlayer进行数据解析的时候，进行读取的时候实际上转换成的 feature，不是。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/apidoc/module-ol_render_Feature-RenderFeature.html">ol/render/Feature~RenderFeature</a><br>2.<a target="_blank" rel="noopener" href="https://openlayers.org/en/latest/apidoc/module-ol_format_MVT-MVT.html">readFeatures</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/e9950d85.html" rel="next" title="Cesium加载天地图">
+                      <i class="iconfont icon-prev"></i> Cesium加载天地图
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/92963af5.html" rel="prev" title="Cesium加载MVT数据三">
+                      Cesium加载MVT数据三 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-MvtImageryProvider%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">2.MvtImageryProvider实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%9B%BE%E5%B1%82%E5%8A%A0%E8%BD%BD"><span class="toc-number">3.</span> <span class="toc-text">3.图层加载</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">4.</span> <span class="toc-text">4.性能优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2"><span class="toc-number">4.1.</span> <span class="toc-text">1.坐标转换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-canvas-%E7%94%BB%E5%B8%83%E7%BC%A9%E6%94%BE"><span class="toc-number">4.2.</span> <span class="toc-text">2.canvas 画布缩放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-RenderFeature"><span class="toc-number">4.3.</span> <span class="toc-text">5.RenderFeature</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/d0caacf8.html';
+      this.page.identifier = 'posts/d0caacf8.html';
+      this.page.title = 'Cesium加载MVT数据二';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Cesium加载MVT数据二 链接地址:https://bibichuan.github.io/posts/d0caacf8.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Cesium加载MVT数据二',
+		url: 'https://bibichuan.github.io/posts/d0caacf8.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Cesium加载MVT数据二',
+			isTipVisibility: true,
+			tip: 'Cesium加载MVT数据二',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

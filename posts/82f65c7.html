@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot从三到四</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Spring Boot从三到四</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Springboot/">Springboot</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Java/">Java</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-05-07 07:44:25
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>前面写了很多了关于SpringBoot入门的资料，这是第四篇。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/uPubQrKrAqGxIuj5sRNN-A">面试官问：为什么SpringBoot的 jar 可以直接运行？</a> (虽然不能算是入门了，但是进行了解，也有助于对整个框架的解释)</div>
+<h2 id="1-yml配置文件"><a href="#1-yml配置文件" class="headerlink" title="1.yml配置文件"></a>1.yml配置文件</h2><h3 id="1-定义多个配置文件"><a href="#1-定义多个配置文件" class="headerlink" title="(1) 定义多个配置文件"></a>(1) 定义多个配置文件</h3><p>可以同时定义多个yml配置文件，比如：application-dev.yml、application-prod.yml、application-test.yml，通过在application.yml文件中定义：spring.profiles.active 属性，来区分要启动的配置文件，可以同时启动多个配置文件，比如：spring.profiles.active=dev,prod,test,后者与前者如果有相同的配置，则后者配置获胜，覆盖前者。</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev,prod,test</span>   <span class="comment"># 选择加载文件application-{test}.yml</span></span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/82f65c7/springboot_1.png" lay-src="/posts/82f65c7/springboot_1.png" class="" title="springboot多配置">
+
+<div class="reference">参考文章：<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/SwordSnapLiu/article/details/78540902">使用 spring.profiles.active 及 @profile 注解 动态化配置内部及外部配置</a><br>7.<a target="_blank" rel="noopener" href="https://www.baeldung.com/spring-profiles">Spring Profiles</a><br>8.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/fef49d5b380c">Spring Boot - Profile配置</a></div>
+<h3 id="2-定义和引用变量"><a href="#2-定义和引用变量" class="headerlink" title="(2) 定义和引用变量"></a>(2) 定义和引用变量</h3><p>如果一个字符串在yml中多次出现，则可以定义变量，通过变量的引用，就可以减少字符串的书写次数，也容易将字符串进行修改，修改一次字符串之后，其他的引用也都跟着变化了。yml中，引用变量的方式是通过${变量名}方式。在properties中，也是使用同样的方法进行变量引用。但是在引用pom.xml中变量还是有些区别的。</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">app-name:</span> <span class="string">test</span></span><br><span class="line"></span><br><span class="line"><span class="attr">redis-name:</span> <span class="string">${app-name}-redis</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://juejin.im/post/5dbd8eb9e51d456e4a4011f1">Spring Boot 利用 YAML 变量引用来简化配置</a><br>2.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000015301615">springboot 多模块情况下多配置文件问题</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/baidu_41885330/article/details/81875395">SpringBoot+Maven多模块项目（创建、依赖、打包可执行jar包部署测试）完整流程</a><br>4.<a target="_blank" rel="noopener" href="https://juejin.im/post/5db1d39d518825644c4a6aec">03.SpringBoot的yml配置详解</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_16055765/article/details/89214858">springboot 配置文件中属性变量引用方式@@解析</a><br>6.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e091df2ff1c4">在spring boot使用总结（九） 使用yaml语言来写配置文件</a></div>
+<h3 id="3-yml引用pom-xml中的变量"><a href="#3-yml引用pom-xml中的变量" class="headerlink" title="(3) yml引用pom.xml中的变量"></a>(3) yml引用pom.xml中的变量</h3><p>在yml中引用pom.xml中的变量，需要两步<br>(1) pom.xml中添加</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--变量内容--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">name</span>&gt;</span>phemsjava<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>(2) 在application.yml配置文件中使用@@符合替换变量</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">redis:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">'@project.name@'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 进行打包</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean package</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样resources下的application.yml</p>
+<img src="/images/loadimg.png" data-original="/posts/82f65c7/springboot_2.png" lay-src="/posts/82f65c7/springboot_2.png" class="" title="springboot配置">
+
+
+<p>被打包之后的 tarcat/class 目录下的applcation.yml中的@@就会变成了相应的pom中的变量。在debug时，修改了pom.xml的值或者是yml中的值，除了重启应用程序之外，最好也执行一遍打包命令。</p>
+<img src="/images/loadimg.png" data-original="/posts/82f65c7/springboot_3.png" lay-src="/posts/82f65c7/springboot_3.png" class="" title="springboot配置">
+
+<p>(4) 也可以增加自定义的属性，在pom.xml中的properties填写自定义的属性</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">tk</span>&gt;</span>dfd<span class="tag">&lt;/<span class="name">tk</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/82f65c7/springboot_4.png" lay-src="/posts/82f65c7/springboot_4.png" class="" title="springboot配置">
+
+<p>在application.yml中直接使用@tk@，引用pom.xml中的变量。</p>
+<img src="/images/loadimg.png" data-original="/posts/82f65c7/springboot_5.png" lay-src="/posts/82f65c7/springboot_5.png" class="" title="springboot配置">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lijinzhou2017/article/details/78962257">maven多个子项目、父项目之间的引用问题</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32647655/article/details/101690906">yml、properties获取pom自定义变量</a><br>3.<a target="_blank" rel="noopener" href="https://juejin.im/post/5d1064e3f265da1b8d1628b4">Spring-Boot application.yml 文件拆分，实现 maven 多环境动态启用 Profiles</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xukun5137/article/details/93527564">SpringBoot配置文件yml（或properties）使用pom.xml中的变量</a> (仔细查看这个文章，里面有yml和properties中引用变量的方式)<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhengxiangwen/article/details/69524519">在pom.xml中自定义变量及其使用</a><br>6.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/cf3bd9ddfe6f">Maven打包时，环境变量替换,并解决spring-boot项目中${}无效的问题</a><br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35981283/article/details/78635273">application使用@符合问题：‘@’ that cannot start any token. (Do not use @ for indentation)</a></div>
+<h3 id="4-多模块的配置文件"><a href="#4-多模块的配置文件" class="headerlink" title="(4) 多模块的配置文件"></a>(4) 多模块的配置文件</h3><p>如果各个模块都有自己的配置文件，就需要用到了多application.yml 合并选项。以A模块依赖于B和C模块为例，需要将B和C模块的配置文件整合到A模块的配置中。假设B模块的配置文件名为application-dev.yml，C模块的配置文件名为application-test.yml，需要将它们整合到A模块的配置文件application.yml中。</p>
+<p>这里我本想引用 disasterapi 模块下的 src/main/resources/applicaion.yml 中的内容，结果总是找不到这个文件。使用 classpath:disasterapi/application.yml 也不行</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">classpath:/disasterapi/application.yml</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>最后的解决方案，就是将 application.yml 重命名为 application-disaster.yml,这样就可以直接找到这个文件了。</p>
+<img src="/images/loadimg.png" data-original="/posts/82f65c7/springboot_7.png" lay-src="/posts/82f65c7/springboot_7.png" class="" title="springboot配置">
+
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">import:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">classpath:application-disaster.yml</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37759676/article/details/130615579">maven多模块多配置文件整合方案</a><br>2.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1986714">SpringBoot使用spring.config.import多种方式导入配置文件</a><br>3.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15773567/5873357">Spring Boot 分离配置文件的 N 种方式</a> 1.配置文件位置:从 classpath 下加载;从项目所在的当前目录下加载;2.额外位置;3.位置通配符;4.导入外部配置。<br>4.<a target="_blank" rel="noopener" href="https://juejin.cn/s/springboot%20%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">springboot 多模块配置文件</a> 这里直接在 classpath 中写了 modul1 的配置，这个我尝试了，没有效果。<br>5.<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/article/15142190.html">如何配置SpringBoot多模块多环境配置文件 详细过程解析</a></div>
+<h2 id="4-properties中使用pom中的变量"><a href="#4-properties中使用pom中的变量" class="headerlink" title="4.properties中使用pom中的变量"></a>4.properties中使用pom中的变量</h2><p>(1) 在pom.xml中添加</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>true<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) properties配置文件中使用项目的版本号</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.version=${project.version}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="5-static静态方法中注入Bean"><a href="#5-static静态方法中注入Bean" class="headerlink" title="5.static静态方法中注入Bean"></a>5.static静态方法中注入Bean</h2><p>在静态方法中，只能使用静态的属性，所以需要</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1470336">static静态方法内调用Spring(依赖注入)的bean</a> 使用 @PostConstruct进行注入和使用set方法注入<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/skyLogin/p/9233119.html">springboot 静态方法注入bean、使用@value给static变量赋值</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_23167527/article/details/77994677">spring与springboot中，如何在static方法里用@Autowire或者@Resource注入的属性</a></div>
+<h2 id="6-读取配置文件"><a href="#6-读取配置文件" class="headerlink" title="6.读取配置文件"></a>6.读取配置文件</h2><p>需求是这样的，就是我有多个properities文件，但是不是系统启动必须的文件，比如：application.properties或者是bootstrap.properities文件，是一些属性文件，比如：Error.properitis、Text.properities,里面也是：key=value 这种键值队的集合，当我想要某一个属性的时候，我想通过 getString(“key”) 这样的方法获取到这个键所对应的值，我也不需要使用 @ConfigurationProperties、@PropertySource 注解，单独的写一个配置文件类，这样得不偿失，因为我有时候可能并不是需要里面的值，所以你可以看成是一个单纯的文本文件，但是我想要用更加简单的方式读取出来。</p>
+<p>使用 ResourceBundle textBundle = PropertyResourceBundle.getBundle(“Text”)，这样的方式，在打包成jar包的时候可以使用，但是我在 SpringBoot 中使用，死活不行，就是读取不到resources文件夹下的相关文件。根据参考文章5，可以将properities文件放到src文件夹下，使用相对路径进行读取，但是我最终还是失败了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//config为属性文件名，放在包com.test.config下，如果是放在src下，直接用config即可  </span></span><br><span class="line"><span class="type">ResourceBundle</span> <span class="variable">resource</span> <span class="operator">=</span> ResourceBundle.getBundle(<span class="string">"com/test/config/config"</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> resource.getString(<span class="string">"keyWord"</span>); </span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方法】<br>这里我提供一种使用 Spring 提供的 PropertiesLoaderUtils 工具进行读取resource文件夹下的文件方法。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">properties=PropertiesLoaderUtils.loadProperties(<span class="keyword">new</span> <span class="title class_">ClassPathResource</span>(<span class="string">"config/Text.properties"</span>));</span><br><span class="line"><span class="type">String</span> <span class="variable">key</span> <span class="operator">=</span> properties.getProperty(<span class="string">"FMT01"</span>);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里主要的就是要研究 ClassPathResource 的用法。当然还有很多其他的方法，我就不一一实验了。</p>
+<img src="/images/loadimg.png" data-original="/posts/82f65c7/springboot_6.png" lay-src="/posts/82f65c7/springboot_6.png" class="" title="springboot配置">
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.huaweicloud.com/articles/1348f5ff837be6040df21ef901fad399.html">SpringBoot读取application.properties文件</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/S1amDuncan/article/details/79791621">Spring Boot读取多个自定义配置文件里的配置项内容</a> 使用Environment env加载环境变量的信息<br>3.<a target="_blank" rel="noopener" href="https://www.pianshen.com/article/3929711369/">配置和读取多个Properties文件</a> 这篇文章有点老了，是spring的，还是用的xml的形式进行配置的<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Colton_Null/article/details/76223388">如何在SpringBoot下读取自定义properties配置文件</a> 使用的<br>5.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/sebastian-tyd/p/7895182.html">Java 读取 .properties 配置文件的几种方式</a> 这里有三种方法：基于ClassLoder读取配置文件、基于 InputStream 读取配置文件、通过 java.util.ResourceBundle 类来读取，这种方式比使用 Properties 要方便一些，这里还列举了各种不同的东西，但是我大部分都没有实验处理，主要是关于路径的问题，但是最后的加载方式，都是使用 Properties 这个类。<br>6.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904049913888776">Spring工具类之PropertiesLoaderUtils </a> 介绍了 PropertiesLoaderUtils 的用法，有好几种，但是始终还是<br>7.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/-beyond/p/11689291.html">Spring项目读取resource下的文件</a> 介绍了ClassPathResource的用法。</div>
+<h2 id="6-bootstrap文件"><a href="#6-bootstrap文件" class="headerlink" title="6.bootstrap文件"></a>6.bootstrap文件</h2><p>在 Spring Boot 中有两种上下文，一种是 bootstrap，另外一种是 application。</p>
+<ul>
+<li>bootstrap 是系统级的资源配置项，application是用户级的资源配置项。</li>
+<li>boostrap 由父 ApplicationContext 加载，比 applicaton 优先加载。</li>
+<li>bootstrap 具有更高优先级，它不会被本地配置覆盖。</li>
+<li>bootstrap 主要用于负责从外部源加载配置属性并解析。</li>
+<li>这两个上下文共用一个环境，它是任何Spring应用程序的外部属性的来源。</li>
+</ul>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wangooo/article/details/119913440">SpringCloud bootstrap.yml和application.yml 不同环境下的配置</a></div>
+<h2 id="7-多模块共用一个相同配置文件"><a href="#7-多模块共用一个相同配置文件" class="headerlink" title="7.多模块共用一个相同配置文件"></a>7.多模块共用一个相同配置文件</h2><div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ganmaotong/article/details/103223009">使用IDEA开发SpringBoot实现多Module共用配置文件</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/huashengweilong/p/11879349.html">【SpringBoot】【2】多模块项目共享公共的配置文件</a></div>
+<h2 id="8-覆盖Bean"><a href="#8-覆盖Bean" class="headerlink" title="8.覆盖Bean"></a>8.覆盖Bean</h2><p>1.Bean 注册优先级：</p>
+<ul>
+<li>具有 @ComponentScan注解的bean优先注册</li>
+<li>具有 @Configuration 注解的bean</li>
+<li>具有 @Controller @Service @Repository @Component 等常用注解的bean</li>
+<li>被@Import注解导入的Bean</li>
+<li>被 实现了ImportSelector接口的类导入的Bean</li>
+<li>被 实现了ImportBeanDefinitionRegistrar接口的类导入的Bean</li>
+<li>被 BeanDefinitionRegistry 动态注入的Bean (属于懒加载，在没有被Spring进行getBean查找时，不会执行初始化方法)</li>
+</ul>
+<p>2.覆盖bean方法<br>（1）使用 @Primary 进行覆盖</p>
+<p>（2）通过指定扫描顺序 @SpringBootApplication(scanBasePackages = {“com.dji.<em>“,”com.openmap.</em>“})，后面的覆盖前面的。</p>
+<p>（3）使用 BeanDefinitionRegistryPostProcessor</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DroneOsdRouter</span> <span class="keyword">implements</span> <span class="title class_">BeanDefinitionRegistryPostProcessor</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> IntegrationFlow <span class="title function_">osdRouterFlow</span><span class="params">()</span> {</span><br><span class="line">      </span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 因为我总是处理不了 原先注入的bean,所以就用了这种方法进行</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> beanDefinitionRegistry</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> BeansException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessBeanDefinitionRegistry</span><span class="params">(BeanDefinitionRegistry beanDefinitionRegistry)</span> <span class="keyword">throws</span> BeansException {</span><br><span class="line">       String beanName= <span class="string">"osdRouterFlow"</span>;</span><br><span class="line">       beanDefinitionRegistry.removeBeanDefinition(beanName);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postProcessBeanFactory</span><span class="params">(ConfigurableListableBeanFactory configurableListableBeanFactory)</span> <span class="keyword">throws</span> BeansException {</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（4）使用 @Order 定义 Bean 的顺序,Ordered / @Order 只控制执行顺序, 不控制Spring初始化Bean 的顺序</p>
+<p>（5）排除需要替换的jar包中的类</p>
+<p>（6）@ComponentScan(basePackages = {“com.dji.<em>“,”com.openmap.</em>“})，和SpringBootApplication一样，后面的包会覆盖前面的包，但是这个比SpringbootApplication优先级更高。</p>
+<p>（7）使用Spring @DependsOn控制bean加载顺序</p>
+<div class="reference">参考文章:<br>【1】.<a href="%5BosdRouterFlow%5D(https://blog.51cto.com/u_1472521/3711985)">Spring Bean 的重写与覆盖</a> 这里使用了 implements BeanDefinitionRegistryPostProcessor 配置的方法，就是直接使用 postProcessBeanDefinitionRegistry 方法，将注入的bean删除掉<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/gzt19881123/article/details/109333230">覆盖重写 原有Spring Bean的几种方式</a> 1.直接在自己工程中建同包同类名的类进行替换;2.采用@Primary注解;3.排除需要替换的jar包中的类;4.@Bean 覆盖;5.使用BeanDefinitionRegistryPostProcessor;<br>【3】.<a target="_blank" rel="noopener" href="https://instaer.me/article/jPZnPg">SpringBoot相同名称bean的覆盖问题</a> 从SpringBoot 2.1.0开始，默认禁用bean名称相同时的覆盖行为。spring.main.allow-bean-definition-overriding=true<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38832908/article/details/109693083">常见小bug之Spring @Configuration 注解未生效</a> 在启动类中修改了自动扫描的包和子包，所以扫描失败了。<br>【5】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7174675502072856613">Spring | @Order 与 Ordered 控制加载顺序 </a> Ordered / @Order 只控制执行顺序, 不控制Spring初始化Bean 的顺序<br>【6】.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000023204143">如何正确控制springboot中bean的加载顺序总结</a> 而当你在项目启动时需要提前做一个业务的初始化工作时，或者你正在开发某个中间件需要完成自动装配时。你会声明自己的Configuration类，但是可能你面对的是好几个有互相依赖的Bean。如果不加以控制，这时候可能会报找不到依赖的错误。但是你明明已经把相关的Bean都注册进spring上下文了呀。这时候你需要通过一些手段来控制springboot中的bean加载顺序。 误区：1.在标注了@Configuration的类中，写在前面的@Bean一定会被先注册；2.利用@Order这个标注能进行加载顺序的控制，目前用的比较多的有以下3点：控制AOP的类的加载顺序，也就是被@Aspect标注的类；控制ApplicationListener实现类的加载顺序；控制CommandLineRunner实现类的加载顺序<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/gzt19881123/article/details/128914552">Spring Bean 注册顺序优先级总结</a> @DependsOn；@Order；@Bean 方法参数注入；@AutoConfigureOrder；@AutoConfigureBefore 和 @AutoConfigureAfter<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/neweastsun/article/details/78775371">使用Spring @DependsOn控制bean加载顺序</a><br>【9】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/winterking3/article/details/114980183">SpringBoot教程(9) @DependsOn 设置Bean依赖 结合@Lazy 修改Bean加载顺序</a><br>【10】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/88223100/p/Spring-Boot-How-to-make-your-bean-complete-loading-before-other-beans.html">Spring Boot ｜如何让你的 bean 在其他 bean 之前完成加载</a> 这个 beanDefinitionNames 列表的顺序就决定了 Bean 的创建顺序，那么这个 beanDefinitionNames 列表又是怎么来的？答案是 ConfigurationClassPostProcessor 通过扫描你的代码和注解生成的，将 Bean 扫描解析成 Bean 定义（BeanDefinition），同时将 Bean 定义（BeanDefinition）注册到 BeanDefinitionRegistry 中，才有了 beanDefinitionNames 列表。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/54e02103.html" rel="next" title="Spring Boot从二到三">
+                      <i class="iconfont icon-prev"></i> Spring Boot从二到三
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/9339da07.html" rel="prev" title="Spring Boot从一到二">
+                      Spring Boot从一到二 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-yml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">1.yml配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%AE%9A%E4%B9%89%E5%A4%9A%E4%B8%AA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">(1) 定义多个配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%9A%E4%B9%89%E5%92%8C%E5%BC%95%E7%94%A8%E5%8F%98%E9%87%8F"><span class="toc-number">1.2.</span> <span class="toc-text">(2) 定义和引用变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-yml%E5%BC%95%E7%94%A8pom-xml%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">1.3.</span> <span class="toc-text">(3) yml引用pom.xml中的变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E5%A4%9A%E6%A8%A1%E5%9D%97%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">(4) 多模块的配置文件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-properties%E4%B8%AD%E4%BD%BF%E7%94%A8pom%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">2.</span> <span class="toc-text">4.properties中使用pom中的变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-static%E9%9D%99%E6%80%81%E6%96%B9%E6%B3%95%E4%B8%AD%E6%B3%A8%E5%85%A5Bean"><span class="toc-number">3.</span> <span class="toc-text">5.static静态方法中注入Bean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">6.读取配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-bootstrap%E6%96%87%E4%BB%B6"><span class="toc-number">5.</span> <span class="toc-text">6.bootstrap文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%A4%9A%E6%A8%A1%E5%9D%97%E5%85%B1%E7%94%A8%E4%B8%80%E4%B8%AA%E7%9B%B8%E5%90%8C%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">7.多模块共用一个相同配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E8%A6%86%E7%9B%96Bean"><span class="toc-number">7.</span> <span class="toc-text">8.覆盖Bean</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/82f65c7.html';
+      this.page.identifier = 'posts/82f65c7.html';
+      this.page.title = 'Spring Boot从三到四';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Spring Boot从三到四 链接地址:https://bibichuan.github.io/posts/82f65c7.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Spring Boot从三到四',
+		url: 'https://bibichuan.github.io/posts/82f65c7.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Spring Boot从三到四',
+			isTipVisibility: true,
+			tip: 'Spring Boot从三到四',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

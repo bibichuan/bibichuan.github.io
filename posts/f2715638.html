@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Linux运维之日志管理</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Linux运维之日志管理</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Linux/">Linux</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2021-01-15 08:26:29
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>有时候不注意，SpringBoot程序以及nacos文件就回产生很多的日志文件，如果不定期删除，就会出现磁盘空间被占满的情况，导致很多的程序无法运行，最近就遇到了这样的问题，被披头盖脸的骂了一顿，老板很生气，我也很生气，但是工作还是要做的啊。</p>
+<p>主要的日志：</p>
+<ul>
+<li><p>nacos的access日志</p>
+</li>
+<li><p>tomcat的catalina日志</p>
+</li>
+<li><p>springboot的logback日志</p>
+</li>
+</ul>
+<h2 id="1-磁盘空间查看"><a href="#1-磁盘空间查看" class="headerlink" title="1.磁盘空间查看"></a>1.磁盘空间查看</h2><p>出现最常见的磁盘空间沾满的情况，可以使用下面的几条命令查看磁盘空间的使用情况。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看磁盘剩余情况</span></span><br><span class="line"><span class="built_in">df</span> -hl</span><br><span class="line"></span><br><span class="line"><span class="comment">## or</span></span><br><span class="line"><span class="built_in">df</span> -h</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查找全局大文件</span></span><br><span class="line">find / -xdev -size +100M -<span class="built_in">exec</span> <span class="built_in">ls</span> -l {} \;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 进入文件目录，查看文件大小</span></span><br><span class="line"><span class="built_in">du</span> -sh *</span><br><span class="line"><span class="comment">## 对/目录进行磁盘占用量进行排序</span></span><br><span class="line"><span class="built_in">du</span> -sh /* | <span class="built_in">sort</span> -nr</span><br><span class="line"><span class="comment">## 然后进行一级一级的查看,然后就是使用rm -rf 进行清理</span></span><br><span class="line"><span class="built_in">du</span> -sh /var/* | <span class="built_in">sort</span> -nr</span><br><span class="line"></span><br><span class="line"><span class="comment">## 使用rm 命令删除文件</span></span><br><span class="line"><span class="built_in">rm</span> -rf *</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看哪些文件超过1G大小</span></span><br><span class="line">find / -xdev -size +1G -<span class="built_in">exec</span> <span class="built_in">ls</span> -l {} \;</span><br><span class="line">find / -<span class="built_in">type</span> f -size +1G -<span class="built_in">exec</span> <span class="built_in">du</span> -h {} \;</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="2-nohup不记录日志"><a href="#2-nohup不记录日志" class="headerlink" title="2.nohup不记录日志"></a>2.nohup不记录日志</h2><p>有时候如果使用了logback进行日志文件记录，我觉得可能就不需要输出nohup.out文件了，因为使用nohup命令后台执行java程序，默认的就会产生nohup.out文件，有时候会变的很大,可以使用linux的重定向讲错误输出到 /dev/null 中。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 只输出错误信息到日志文件</span></span><br><span class="line"><span class="built_in">nohup</span> ./program &gt;/dev/null 2&gt;<span class="built_in">log</span> &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 什么信息也不要</span></span><br><span class="line"><span class="built_in">nohup</span> ./program &gt;/dev/null 2&gt;&amp;1 &amp;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jasondan/p/3499175.html">nohup不输出日志信息的方法，及linux重定向学习</a></div>
+<h2 id="3-tomcat日志"><a href="#3-tomcat日志" class="headerlink" title="3.tomcat日志"></a>3.tomcat日志</h2><p>tomcat的catalina.out文件也有可能变的很大，可以进行相应的精简和删除。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/GX_1_11_real/article/details/80204475">解决catalina.out文件过大的问题</a> (这篇文章是说如何才能解决tomcat的日志文件输出过大的问题，使用日志切割工具cronolog、logrotate，使用脚本进行日志切割，或者是定义日志级别的版本)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ximaiyao1984/article/details/108735522">Tomcat清理日志文件无法立即释放磁盘空间</a></div>
+<h2 id="4-定时脚本"><a href="#4-定时脚本" class="headerlink" title="4.定时脚本"></a>4.定时脚本</h2><p>根据参考文章2中的脚本，我改造了相关的脚本。可以遍历directory.txt文件中指定的目录(每一个目录一行)，判断最后修改时间是否比当前时间要早5天，如果是，则自动删除。</p>
+<p>(1) 脚本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment">#该脚本是获取deleteDirectory.txt文件中配置的目录，然后遍历每个目录，获取所有文件及其最后修改日期，并删除最后修改日期在15天之前的文件。</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"\n\n"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#计算当前时间和要被删除的文件的最早的修改日期</span></span><br><span class="line">today=`<span class="built_in">date</span> +<span class="string">"%Y-%m-%d %H:%M:%S"</span>`</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"开始执行时间：<span class="variable">${today}</span>"</span></span><br><span class="line">deleteDate=`<span class="built_in">date</span> -d<span class="string">"-5 day"</span> +%Y-%m-%d`</span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">"要删除的日志文件的最后修改日期：<span class="variable">${deleteDate}</span>\n"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#进入目录，然后删除文件的方法</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">enterDirectory</span></span>() {</span><br><span class="line">    files=`<span class="built_in">ls</span> <span class="variable">$1</span>`</span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> <span class="variable">${files}</span> ; <span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> [[ -f <span class="string">"<span class="variable">$1</span>/<span class="variable">$file</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">            <span class="comment">## 原先的脚本无法运行</span></span><br><span class="line">            <span class="comment">## modifyDate=`stat "$1/${file}" | awk '{print $1}' |sed -n '6p'`</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">## 获取文件最后的修改时间</span></span><br><span class="line">            modifyDate=`<span class="built_in">stat</span> <span class="string">"<span class="variable">$1</span>/<span class="variable">${file}</span>"</span> | grep -i Modify| awk <span class="string">'{print $2}'</span>`</span><br><span class="line">            <span class="keyword">if</span> [[ $(<span class="built_in">echo</span> <span class="variable">${modifyDate}</span> <span class="variable">${deleteDate}</span> | awk <span class="string">'$1&lt;$2 {print -1} $1==$2 {print 0} $1&gt;$2 {print 1}'</span>) -eq -1 ]]; <span class="keyword">then</span></span><br><span class="line">                <span class="built_in">rm</span> -f <span class="string">"<span class="variable">$1</span>/<span class="variable">${file}</span>"</span></span><br><span class="line">                <span class="built_in">echo</span> -e <span class="string">"<span class="variable">$1</span>/<span class="variable">${file}</span> 文件被删除"</span></span><br><span class="line">            <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> [[ -d <span class="string">"<span class="variable">$1</span>/<span class="variable">$file</span>"</span> ]]; <span class="keyword">then</span></span><br><span class="line">            enterDirectory <span class="string">"<span class="variable">$1</span>/<span class="variable">$file</span>"</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#遍历指定的目录，然后将目录下所有的文件按照指定规则删除</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -r line</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">        enterDirectory <span class="variable">${line}</span></span><br><span class="line">    <span class="keyword">done</span> &lt; /cloud/crontab/clean_logs/directory.txt</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 其中的directory.txt</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/tomcat9.0.30/logs</span><br></pre></td></tr></tbody></table></figure>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021600242">shell脚本：遍历删除</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012443641/article/details/88688759">linux脚本监视指定日志目录，删除目录下15天之前的日志文件</a> (这篇文章的脚本，我没有运行成功，好处是支持遍历文件夹)<br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c8751434b9fb">linux定时删除日志脚本</a> (这个其实利用的是find方法，然后查找文件，执行删除任务，不好的地方就是不能遍历文件夹)<br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/iloveyoucc/archive/2012/07/10/2585529.html">shell:读取文件的每一行内容并输出</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012062455/article/details/77228994">Linux获取文件最后修改时间</a> (这里有一点就是 awk ‘{print  $6 “-“ $7 “-“ $8 }’ 这个用法还是让我知道了如何打印某一个片段)<br>6.<a target="_blank" rel="noopener" href="http://www.361way.com/chang-file-time/1632.html">linux下查看和修改文件时间</a> (这里提供了一个 grep -i Modify 可以查看文件的修改时间)</div>
+<hr>
+<p>(3) 定时任务</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑定时任务</span></span><br><span class="line">crontab -e</span><br><span class="line"></span><br><span class="line"><span class="comment">## 增加如下脚本，每天零点开始执行</span></span><br><span class="line">00 00 * * * /bin/bash /cloud/crontab/clean_logs/clean_logs.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_26282869/article/details/80705701">linux 让 crontab 每天03点00 访问一次指定的url</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d93e2b177814">关于定时执行任务：Crontab的20个例子</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010050174/article/details/72510367">windows服务器自动删除日志文件</a> (这里是windows上使用bat文件自动执行删除文件的脚本:forfiles -p “D:\Logs” -s -m *.log -d -7 -c “cmd /c del @path”，需要在系统任务计划程序中，设置定时任务)<br>4.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/21d1f20dcf8c">Windows 2008 计划任务配置</a> (如何设置windows的定时计划任务)</div>
+<h2 id="5-Docker清理"><a href="#5-Docker清理" class="headerlink" title="5.Docker清理"></a>5.Docker清理</h2><p>(1) 手动清理<br>手动清理，也是使用docker提供的命令进行的，主要就是prune命令，执行后，会询问是否要进行清理，输入y就可以了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 这样会让你输入y</span></span><br><span class="line">docker system prune</span><br><span class="line"></span><br><span class="line"><span class="comment">## or</span></span><br><span class="line">docker system prune -a</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 日志文件<br>容器的日志 则可以通过 docker logs 命令来访问，而且可以像 tail -f 一样，使用 docker logs -f 来实时查看。如果使用 Docker Compose，则可以通过 docker-compose logs &lt;服务名&gt; 来查看。如果深究其日志位置，每个容器的日志默认都会以 json-file 的格式存储于 /var/lib/docker/containers/&lt;容器id&gt;/&lt;容器id&gt;-json.log 下，不过并不建议去这里直接读取内容，因为 Docker 提供了更完善地日志收集方式 - Docker 日志收集驱动。</p>
+<p>编写日志清理脚本clear_docker_logs.sh</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'input log file  size '</span><span class="variable">$1</span>  </span><br><span class="line">default=20  </span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$1</span>"</span> ]  </span><br><span class="line"><span class="keyword">then</span>  </span><br><span class="line">  default=<span class="variable">$1</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">max=`<span class="built_in">expr</span> 1024 \* <span class="variable">$default</span>`  </span><br><span class="line"><span class="built_in">echo</span> <span class="string">'current set file size '</span><span class="variable">$max</span>  </span><br><span class="line"><span class="keyword">for</span> file <span class="keyword">in</span> ` <span class="built_in">ls</span> /var/lib/docker/containers/*/*-json.log `  </span><br><span class="line"><span class="keyword">do</span>  </span><br><span class="line">  <span class="comment">#echo $file</span></span><br><span class="line">  s=`<span class="built_in">du</span> -k <span class="variable">$file</span> |awk <span class="string">'{print $1}'</span>`</span><br><span class="line"> <span class="comment"># echo $s</span></span><br><span class="line">  <span class="keyword">if</span> [ <span class="variable">$s</span> -gt <span class="variable">$max</span> ]</span><br><span class="line">  <span class="keyword">then</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">'remove'</span><span class="variable">$file</span></span><br><span class="line">   <span class="built_in">truncate</span> -s 0 <span class="variable">$file</span></span><br><span class="line">   <span class="built_in">echo</span> <span class="string">'removed'</span><span class="variable">$file</span></span><br><span class="line">  <span class="keyword">fi</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>编辑定时任务,加入crontab 每隔半小时清理日志 </p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 赋予执行权限</span></span><br><span class="line"><span class="built_in">chmod</span> +x clear_docker_logs.sh  </span><br><span class="line"></span><br><span class="line"><span class="comment">#crontab -e</span></span><br><span class="line">*/30 * * * * /bin/sh /data/docker/docker_logs.sh 20 &gt;&gt; /root/mylog.log 2&gt;&amp;1</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_32820767/article/details/81196250">/var/lib/docker/overlay2 占用很大，清理Docker占用的磁盘空间，迁移 /var/lib/docker 目录</a> 使用：docker system prune 命令进行清理。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/haohaoxuexiyai/article/details/111244328">【已解决】docker overlay2占用大量磁盘空间处理方法</a> 通过手动或定时任务进行清除，当然这篇文章中没有介绍自动清理的方法，只是使用了：cat /dev/null &gt; *-json.log 进行手动清理。<br>【3】.<a target="_blank" rel="noopener" href="http://www.cxyzjd.com/article/qq_20407719/95991610">docker清理大杀器/docker的overlay文件占用磁盘很大？？_昨天在梦里-程序员宅基地_docker overlay</a> 方法一：docker system prune -a，方法二：安装portainer，使用portainer进行管理。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_536410/2369781">docker目录迁移及docker日志自动清理</a> 修改了Docker 的根目录，还提供了进行自动清理日志文件的脚本，并添加了定时任务,我看脚本的内容，也是主要清理的 *-json.log 文件。<br>【4】.<a target="_blank" rel="noopener" href="https://www.796t.com/article.php?id=189253">【已解決】docker overlay2佔用大量磁碟空間處理方法</a> 處理方式1:也是清理json.log文件，方式二，就是用prune命令进行清理<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/warrior_0319/article/details/79713155">docker 日志位置</a><br>【6】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/54chensongxia/p/15138314.html">/var/lib/docker/overlay2 占用很大，清理Docker占用的磁盘空间</a></div>
+<h2 id="6-var-log-journal-垃圾日志清理"><a href="#6-var-log-journal-垃圾日志清理" class="headerlink" title="6./var/log/journal/ 垃圾日志清理"></a>6./var/log/journal/ 垃圾日志清理</h2><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 只保留近一周的日志</span></span><br><span class="line">journalctl --vacuum-time=1w</span><br><span class="line"></span><br><span class="line"><span class="comment">## 只保留500MB的日志</span></span><br><span class="line">journalctl --vacuum-size=500M</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ithomer/article/details/89530790">Linux 系统 /var/log/journal/ 垃圾日志清理</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_30920479/article/details/106658356">reids清理日志文件</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/6036a4b4.html" rel="next" title="Linux运维之网络">
+                      <i class="iconfont icon-prev"></i> Linux运维之网络
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/9bbd7546.html" rel="prev" title="Linux运维之文件删除与恢复">
+                      Linux运维之文件删除与恢复 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.</span> <span class="toc-text">1.磁盘空间查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-nohup%E4%B8%8D%E8%AE%B0%E5%BD%95%E6%97%A5%E5%BF%97"><span class="toc-number">2.</span> <span class="toc-text">2.nohup不记录日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-tomcat%E6%97%A5%E5%BF%97"><span class="toc-number">3.</span> <span class="toc-text">3.tomcat日志</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%AE%9A%E6%97%B6%E8%84%9A%E6%9C%AC"><span class="toc-number">4.</span> <span class="toc-text">4.定时脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Docker%E6%B8%85%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">5.Docker清理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-var-log-journal-%E5%9E%83%E5%9C%BE%E6%97%A5%E5%BF%97%E6%B8%85%E7%90%86"><span class="toc-number">6.</span> <span class="toc-text">6.&#x2F;var&#x2F;log&#x2F;journal&#x2F; 垃圾日志清理</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/f2715638.html';
+      this.page.identifier = 'posts/f2715638.html';
+      this.page.title = 'Linux运维之日志管理';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Linux运维之日志管理 链接地址:https://bibichuan.github.io/posts/f2715638.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Linux运维之日志管理',
+		url: 'https://bibichuan.github.io/posts/f2715638.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Linux运维之日志管理',
+			isTipVisibility: true,
+			tip: 'Linux运维之日志管理',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

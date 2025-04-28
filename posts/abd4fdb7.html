@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot连接SqlServer数据库</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Spring Boot连接SqlServer数据库</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Springboot/">Springboot</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Java/">Java</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-11-15 10:33:42
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-修改pom-xml-添加sql-server支持"><a href="#1-修改pom-xml-添加sql-server支持" class="headerlink" title="1.修改pom.xml,添加sql server支持"></a>1.修改pom.xml,添加sql server支持</h1><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>  </span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.microsoft.sqlserver<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mssql-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.1.0.jre8-preview<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- or --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.microsoft.sqlserver<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>sqljdbc4<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<p>我在windows+JDK8上开发上开发时，使用的是sqljdbc4的依赖，但是我换到Deepin上，使用了免安装版的OpenJDK13,使用idea打开原先的工程，始终解决不了sqljdbc4的依赖</p>
+<img src="/images/loadimg.png" data-original="/posts/abd4fdb7/springboot_10.png" lay-src="/posts/abd4fdb7/springboot_10.png" class="" title="springboot连接数据库">
+
+<p>于是换成了mssql-jdb依赖，结果还真是可以了。</p>
+<h1 id="2-修改application-yml配置文件"><a href="#2-修改application-yml配置文件" class="headerlink" title="2.修改application.yml配置文件"></a>2.修改application.yml配置文件</h1><figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"> <span class="attr">datasource:</span></span><br><span class="line">    <span class="comment">## default connection pool</span></span><br><span class="line">    <span class="attr">hikari:</span></span><br><span class="line">      <span class="attr">connection-timeout:</span> <span class="number">20000</span></span><br><span class="line">      <span class="attr">maximum-pool-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">username:</span> <span class="string">xxx</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">xxxx</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:sqlserver://xxxx;databasename=ztzn</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.microsoft.sqlserver.jdbc.SQLServerDriver</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">hibernate:</span></span><br><span class="line">      <span class="attr">ddl-auto:</span> <span class="string">update</span></span><br><span class="line">    <span class="attr">properties:</span></span><br><span class="line">      <span class="attr">hibernate.temp.use_jdbc_metadata_defaults:</span> <span class="string">fase</span></span><br><span class="line">    <span class="attr">database-platform:</span> <span class="string">org.hibernate.dialect.SQLServer2008Dialect</span></span><br></pre></td></tr></tbody></table></figure>
+<p>也可以在url中指定用户名密码：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:sqlserver://localhost;user=MyUserName;password=*****;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/cfhacker007/article/details/4356044">JDBC 连接 SQL Server 数据库 - 创建连接 URL</a><br>2.<a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sql/connect/jdbc/building-the-connection-url?view=sql-server-ver15">Building the Connection URL</a></div>
+<h1 id="3-编写实体类"><a href="#3-编写实体类" class="headerlink" title="3.编写实体类"></a>3.编写实体类</h1><h1 id="4-编写接口，继承自JpaRepository"><a href="#4-编写接口，继承自JpaRepository" class="headerlink" title="4.编写接口，继承自JpaRepository"></a>4.编写接口，继承自JpaRepository</h1><div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017409489">Spring Boot 集成 MyBatis和 SQL Server实践</a></div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-对象名-‘sys-sequences’-无效"><a href="#1-对象名-‘sys-sequences’-无效" class="headerlink" title="1.对象名 ‘sys.sequences’ 无效"></a>1.对象名 ‘sys.sequences’ 无效</h2><img src="/images/loadimg.png" data-original="/posts/abd4fdb7/springboot_4.png" lay-src="/posts/abd4fdb7/springboot_4.png" class="" title="springboot连接sqlserver">
+
+<p>解决方法是在application.yml配置文件中配置数据库版本：database-platform: org.hibernate.dialect.SQLServer2008Dialect</p>
+<img src="/images/loadimg.png" data-original="/posts/abd4fdb7/springboot_5.png" lay-src="/posts/abd4fdb7/springboot_5.png" class="" title="springboot连接sqlserver">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sunshinegyan/article/details/78529648">com.microsoft.sqlserver.jdbc.SQLServerException: 对象名 ‘bbs_category’ 无效</a><br>2.<a target="_blank" rel="noopener" href="https://www.lefer.cn/posts/18830/">JPA在sqlserver2008下缺少sys.sequences的解决办法</a></div>
+<h1 id="2-缺少对象或列名，或者对象或列名为空。"><a href="#2-缺少对象或列名，或者对象或列名为空。" class="headerlink" title="2.缺少对象或列名，或者对象或列名为空。"></a>2.缺少对象或列名，或者对象或列名为空。</h1><p>对于 SELECT INTO 语句，请确保每列均具有名称。对于其他语句，请查找空的别名。不允许使用定义为 “” 或 [] 的别名。请将别名更改为有效名称。</p>
+<img src="/images/loadimg.png" data-original="/posts/abd4fdb7/springboot_5.png" lay-src="/posts/abd4fdb7/springboot_5.png" class="" title="springboot连接sqlserver">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wiseblog/articles/8748392.html">缺少对象或列名，或者对象或列名为空。对于 SELECT INTO 语句，请确保每列均具有名称。对于其他语句，请查找空的别名。不允许使用定义为 “” 或 [] 的别名。请添加名称或单个空格作为别名。 System.Data.SqlClient.SqlException: 缺少对象或列名，或者对象或列名为空。对于 SELECT INTO 语句，请确保每列均具有名称。对于其他语句，请查找空的别名。不允</a><br>2.<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/330052845">jpa 列名无效</a><br>3.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53636220/unable-to-build-hibernate-sessionfactory-nested-exception-is-org-hibernate-exce">Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.SQLGrammarException: Error accessing column metadata</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Randy_Wang_/article/details/79460306">Hibernate在控制台打印sql语句以及参数</a></div>
+<p>今天回来再次解决这个问题。这里有一些网站，都是说要指定模式的名字。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.dialect"</span> <span class="attr">value</span>=<span class="string">"org.hibernate.dialect.SQLServer2012Dialect"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.default_catalog"</span> <span class="attr">value</span>=<span class="string">"[database name]"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.default_schema"</span> <span class="attr">value</span>=<span class="string">"dbo"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"hibernate.id.new_generator_mappings"</span> <span class="attr">value</span>=<span class="string">"false"</span> /&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>我尝试着使用jpa.show-sql: true,将打印出的select语句，复制到navicate中，去掉where子句（因为生成的where子句是：where vclient0_.SiteNo=?），是可以执行的。出现了占位符的问题，我查了一下，发现sql server好像不支持占位符。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="http://www.ojit.com/article/1411320">java - 如何将Hibernate从MySQL迁移到SQL Server？</a><br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/35651997/how-to-migrate-hibernate-from-mysql-to-sql-server">How to migrate Hibernate from MySQL to SQL Server?</a><br>3.<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/162286738.html">SQL Server中能否使用“?”占位符</a></div>
+<p>jpa中添加了use-new-id-generator-mappings: false也不起作用，将naming:physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl，这样就将生成的name_ki类似列名，就改成了Entity中的字符中的大小写固定下来了。</p>
+<p>还是没解决啊。我尝试着在网上搜相关的内容，愣是没有人遇到过，真是的。询问群里的人，也没人愿意搭理我。我花了很长时间在这上面了，确实解决不了。项目又推进的急，真是崩溃啊。虽然可以使用Mybatis代替Hibernate，但是我总是不甘心就这样把这个问题留在这里。</p>
+<p>根据参考资料，我再次将ddl-auto: update 改为了ddl-auto: validate，结果出现： wrong column type encountered in column [SiteNo] in table [ztzn.dbo.V_client]; found [smallint (Types#SMALLINT)], but expecting [int (Types#INTEGER)]</p>
+<img src="/images/loadimg.png" data-original="/posts/abd4fdb7/springboot_7.png" lay-src="/posts/abd4fdb7/springboot_7.png" class="" title="springboot连接sqlserver">
+
+<p>数据类型不一致，难道是这个原因吗?我继续探索，将数据类型修改一下。</p>
+<p>改成什么呢？改成String不行，int也不行，Integer也不行。</p>
+<p>经历了将number对应到BigDecimal；将smalint对应到java的byte；然后将datetime对应java.sql.Timestamp；将char对应于string,并在那一列添加@Column(columnDefinition = “Char(5)”)注解；将tinyint改为byte，等一系列改造。</p>
+<p>卧槽，还是报错：缺少对象或列名，或者对象或列名为空。对于 SELECT INTO 语句，请确保每列均具有名称。对于其他语句，请查找空的别名。不允许使用定义为 “” 或 [] 的别名。请将别名更改为有效名称。<img src="/images/loadimg.png" data-original="/posts/abd4fdb7/springboot_8.png" lay-src="/posts/abd4fdb7/springboot_8.png" class="" title="springboot连接sqlserver"></p>
+<p>最后放弃吧，改成mybatis算了。</p>
+<p>惊喜啊，通过同事的帮助，我终于解决了这个问题，问题是出在我的application.yml配置中。<br>错误的配置：</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8909</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">mvc:</span></span><br><span class="line">    <span class="attr">throw-exception-if-no-handler-found:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="attr">add-mappings:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="comment">## default connection pool</span></span><br><span class="line">    <span class="attr">hikari:</span></span><br><span class="line">      <span class="attr">connection-timeout:</span> <span class="number">20000</span></span><br><span class="line">      <span class="attr">maximum-pool-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">username:</span> <span class="string">xxx</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">xxx</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:sqlserver://xxx;databasename=ztzn</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.microsoft.sqlserver.jdbc.SQLServerDriver</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">hibernate:</span></span><br><span class="line">      <span class="attr">ddl-auto:</span> <span class="string">update</span></span><br><span class="line">      <span class="attr">naming:</span></span><br><span class="line">        <span class="attr">physical-strategy:</span> <span class="string">org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</span></span><br><span class="line">     <span class="attr">use-new-id-generator-mappings:</span> <span class="literal">false</span></span><br><span class="line">   <span class="attr">properties:</span></span><br><span class="line">     <span class="attr">hibernate:</span></span><br><span class="line">       <span class="attr">temp.use_jdbc_metadata_defaults:</span> <span class="string">fase</span></span><br><span class="line">    <span class="attr">database-platform:</span> <span class="string">org.hibernate.dialect.SQLServer2005Dialect</span></span><br><span class="line">    <span class="attr">show-sql:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>正确的配置：</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8909</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">mvc:</span></span><br><span class="line">    <span class="attr">throw-exception-if-no-handler-found:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="attr">add-mappings:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="comment">## default connection pool</span></span><br><span class="line">    <span class="attr">hikari:</span></span><br><span class="line">      <span class="attr">connection-timeout:</span> <span class="number">20000</span></span><br><span class="line">      <span class="attr">maximum-pool-size:</span> <span class="number">5</span></span><br><span class="line">      <span class="attr">username:</span> <span class="string">jjjj</span></span><br><span class="line">      <span class="attr">password:</span> <span class="string">jjjj</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:sqlserver://jj.jj.jj.jj;databasename=ztzn</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.microsoft.sqlserver.jdbc.SQLServerDriver</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">hibernate:</span></span><br><span class="line">      <span class="attr">ddl-auto:</span> <span class="string">update</span></span><br><span class="line">      <span class="attr">naming:</span></span><br><span class="line">        <span class="attr">physical-strategy:</span> <span class="string">org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl</span></span><br><span class="line"><span class="comment">#      use-new-id-generator-mappings: false</span></span><br><span class="line"><span class="comment">#    properties:</span></span><br><span class="line"><span class="comment">#      hibernate:</span></span><br><span class="line"><span class="comment">#        temp.use_jdbc_metadata_defaults: fase</span></span><br><span class="line">    <span class="attr">database-platform:</span> <span class="string">org.hibernate.dialect.SQLServer2005Dialect</span></span><br><span class="line">    <span class="attr">show-sql:</span> <span class="literal">true</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>注意挥掉的内容</strong></p>
+<p>还有一个地方就是你要把@Id下面的@GeneratedValue注解去掉，否则会报:对象名 ‘hibernate_sequence’ 无效 的错误。</p>
+<img src="/images/loadimg.png" data-original="/posts/abd4fdb7/springboot_9.png" lay-src="/posts/abd4fdb7/springboot_9.png" class="" title="springboot连接sqlserver">
+
+<p>总结起来，主要就是自己的配置文件搞得事情，那个配置文件:temp.use_jdbc_metadata_defaults 属性是针对于Postgres的，但是不能在SqlServer中，所以不明白每一个文件配置内容，确实还是头疼啊。总之，还是要多多的学习吧，不能瞎几把抄网上的答案。我记得这个属性是PostgresSql数据库必须配置的，否则会出现：java.sql.SQLFeatureNotSupportedException: 这个 org.postgresql.jdbc.PgConnection.createClob() 方法尚未被实作，详情请收看 <a href="/posts/991bc6d4.html" title="Spring-Boot连接PostgresSql数据库">Spring-Boot连接PostgresSql数据库</a></p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/31529237/system-property-stops-taking-effect-when-moved-to-application-properties">System property stops taking effect when moved to application.properties</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1a6ca1993b16">Hibernate 进阶</a><br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/392299744b14">hibernate.cfg.xml 常用配置</a><br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/JemBai/archive/2009/08/20/1550683.html">Java数据类型和MySql数据类型对应表</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/justdb/article/details/7624407">SQLServer与Java数据类型对应表</a></div>
+<h2 id="3-The-driver-could-not-establish-a-secure-connection-to-SQL-Server-by-using-Secure-Sockets-Layer-SSL-encryption-Error-“The-server-selected-protocol-version-TLS10-is-not-accepted-by-client-preferences-TLS13-TLS12"><a href="#3-The-driver-could-not-establish-a-secure-connection-to-SQL-Server-by-using-Secure-Sockets-Layer-SSL-encryption-Error-“The-server-selected-protocol-version-TLS10-is-not-accepted-by-client-preferences-TLS13-TLS12" class="headerlink" title="3.The driver could not establish a secure connection to SQL Server by using Secure Sockets Layer (SSL) encryption. Error: “The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]"></a>3.The driver could not establish a secure connection to SQL Server by using Secure Sockets Layer (SSL) encryption. Error: “The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]</h2><p>【解决方法】<br>主要是jdk版本和mssql-jdbc版本不匹配，我安装了JDK17，使用的是:8.1.0.jre8-preview</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--1.8版本--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.microsoft.sqlserver<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mssql-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.1.0.jre8-preview<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--jdk17版本--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.microsoft.sqlserver<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mssql-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>9.5.0.jre17-preview<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>以前遇到了这个问题，我修改了mssql-jdbc的版本，就可以了，但是后来，又出现了这个问题，在docker中运行，死活不行，我尝试了 mssql-jdbc 版本 9.5.0.jre11-preview。 根据尝试，我认为第一个出现这个问题的原因，就是sql server服务器启用了TSL1.0，但是openjdk默认禁用了TLS1.0，所以就会出现，客户端不支持服务器的TLS1.0,JDK作为客户端，SQL Server服务器作为服务端。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://yafeiz.com/2021/08/28/The%20server%20selected%20protocol%20version%20TLS10%20is%20not%20accepted%20by%20client%20preferences%20[TLS12]/">The server selected protocol version TLS10 is not</a><br>【2】.<a target="_blank" rel="noopener" href="https://doc.dataiku.com/dss/latest/troubleshooting/problems/tls-error.html">The server selected protocol version TLS10 is not accepted by client preferences [TLS12]</a> In order to resolve this, your database administrator should enable TLS 1.2 on your database server host. See more information on TLS 1.2 support for SQL Server and MySQL.<br>【3】.<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/mem/configmgr/core/plan-design/security/enable-tls-1-2-server">如何在站点服务器和远程站点系统上启用 TLS 1.2</a></div>
+<hr>
+<p>根据分析，这个问题相应的就有两种方法解决：</p>
+<ul>
+<li>1.服务器开启TLS 1.2<br>关于sql server 服务器开启tls1.2，这个我就先不探索了，本着解决问题的思路进行，我因为不能很方便的接触到 sql server 服务器，所以就暂时先不用这个方法解决了。</li>
+</ul>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://docs.citrix.com/zh-cn/provisioning/current-release/advanced-concepts/limit-sql-secure-connections.html">通过将 SQL Server 限制到 TLS 1.2 启用安全连接</a> 这是在sql server 层面的配置</div>
+<ul>
+<li>2.JDK开启TLS 1.0<br>我用的是 docker 部署的程序，镜像是 adoptopenjdk/openjdk11-openj9:alpine-slim，<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入docker容器</span></span><br><span class="line">docker <span class="built_in">exec</span> -it <span class="built_in">id</span> /bin/sh</span><br><span class="line"><span class="comment">## 定位 security 配置文件 </span></span><br><span class="line">/opt/java/openjdk/conf/security/java.security</span><br><span class="line"><span class="comment">## 将下面的内容 使用 井号注释掉</span></span><br><span class="line">jdk.tls.disabledAlgorithms=SSLv3, TLSv1, TLSv1.1, RC4, DES, MD5withRSA, \       </span><br><span class="line">    DH keySize &lt; 1024, EC keySize &lt; 224, 3DES_EDE_CBC, anon, NULL, \            </span><br><span class="line">    include jdk.disabled.namedCurves   </span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者删除其中的TLSV1和TLSv1.1</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<p>经过测试，确实实现了启动TLS1.0的功能，但是还有一个问题，因为是使用的docker部署，不能每一次都直接进入到docker容器中吧，如何能使用dockerfile进行修改呢？</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/48464863/java-1-8-0-enable-tls1-2-in-jdbc-connection">Java 1.8.0 enable TLS1.2 in JDBC connection</a> Starting with JDBC driver version 6.3.2 we can add ;sslProtocol=TLSv1.2 to our connection URLs to specify the TLS version to use.<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/technicist/p/15303047.html">The server selected protocol version TLS10 is not accepted by client preferences TLS12</a> 因为新版的 JDK 不推荐使用旧的 TLSV1.0 的协议，所以默认删除 TLS10 的支持<br>3.<a target="_blank" rel="noopener" href="https://github.com/Tencent/TencentKona-8/wiki/%E5%85%B3%E4%BA%8EOpenJDK%E7%A6%81%E7%94%A8TLS-1.0%E4%B8%8E1.1%E7%9A%84%E5%88%86%E6%9E%90">关于OpenJDK禁用TLS 1.0与1.1的分析</a> 这里指出了OpenJDK禁用TLS1.0和1.1的问题，也指出了使用java代码输出支持的TLS版本<br>4.<a target="_blank" rel="noopener" href="https://github.com/shzlw/poli/issues/50">使用docker注意加驱动程序mssql可能会连接错误，需要到容器中修改java.security屏蔽3DES_EDE_CBC #50</a> 使用docker注意加驱动程序mssql可能会连接错误，需要到容器中修改java.security屏蔽3DES_EDE_CBC<br>5.<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/java/openjdk/java-security">重新启用 TLSv1 和 TLSv1.1</a> 1.在 JDK 的安装目录中，导航到文件夹 ./conf/security/;2.打开文件 java.security;3.搜索配置属性 jdk.tls.disabledAlgorithms;4.删除元素 TLSv1 和/或 TLSv1.1;5.重新启动 Java 应用程序;</div>
+<hr>
+<p>接着上文继续解决问题，dockerfile文件修改容器中的文件,可以使用copy命令，将宿主机上的文件拷贝到容器上。先将容器中修改后的文件，拷贝到本地来</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 复制security文件</span></span><br><span class="line">docker <span class="built_in">cp</span> ph-phems:/opt/java/openjdk/conf/security/java.security /home/bibichuan/phems-cloud/bin</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后编写dockerfile文件，使用copy命令进行覆盖</p>
+<figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 复制security文件</span></span><br><span class="line"><span class="keyword">COPY</span><span class="language-bash"> ./config/java.security /opt/java/openjdk/conf/security/java.security</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.codenong.com/43316935/">关于Docker：在Dockerfile中更改Java” SecureRandom”</a><br>2.<a target="_blank" rel="noopener" href="https://nj.transwarp.cn:8180/?p=2568">使用 Dockerfile 更换已有镜像的文件（换包）</a> 1.找到需要修改的镜像 name 和 tag；2.备份原始镜像；3.编写 DockerFile；4.构建新的镜像；5.push 镜像到仓库；6.回退。<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/dongdong9223/article/details/71425077">docker中宿主机与容器（container）互相拷贝传递文件的方法</a> docker cp mycontainer:/opt/testnew/file.txt /opt/test/；docker cp /opt/test/file.txt mycontainer:/opt/testnew/。 不管容器有没有启动，拷贝命令都会生效。<br>4.<a target="_blank" rel="noopener" href="https://www.programminghunter.com/article/60931244239/">dockerfile动态修改服务配置文件</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Yuan_xii/article/details/122385395">docker修改镜像中的文件</a> 这个就是使用的cp命令覆盖了镜像中的一个文件</div>
+<h2 id="4-Cannot-invoke-“java-lang-reflect-Method-invoke-Object-Object-”-because-“com-sun-xml-bind-v2-runtime-reflect-opt-Injector-defineClass”"><a href="#4-Cannot-invoke-“java-lang-reflect-Method-invoke-Object-Object-”-because-“com-sun-xml-bind-v2-runtime-reflect-opt-Injector-defineClass”" class="headerlink" title="4.Cannot invoke “java.lang.reflect.Method.invoke(Object, Object[])” because “com.sun.xml.bind.v2.runtime.reflect.opt.Injector.defineClass”"></a>4.Cannot invoke “java.lang.reflect.Method.invoke(Object, Object[])” because “com.sun.xml.bind.v2.runtime.reflect.opt.Injector.defineClass”</h2><p>这个也是因为代码和java版本不匹配导致的问题，暂时没解决，还是把jdk降到了13，没有用17了。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/5f811a6d.html" rel="next" title="Spring Boot问题汇总">
+                      <i class="iconfont icon-prev"></i> Spring Boot问题汇总
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/991bc6d4.html" rel="prev" title="Spring Boot连接PostgresSql数据库">
+                      Spring Boot连接PostgresSql数据库 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E4%BF%AE%E6%94%B9pom-xml-%E6%B7%BB%E5%8A%A0sql-server%E6%94%AF%E6%8C%81"><span class="toc-number">1.</span> <span class="toc-text">1.修改pom.xml,添加sql server支持</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%BF%AE%E6%94%B9application-yml%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">2.修改application.yml配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E7%BC%96%E5%86%99%E5%AE%9E%E4%BD%93%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">3.编写实体类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%BC%96%E5%86%99%E6%8E%A5%E5%8F%A3%EF%BC%8C%E7%BB%A7%E6%89%BF%E8%87%AAJpaRepository"><span class="toc-number">4.</span> <span class="toc-text">4.编写接口，继承自JpaRepository</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%AF%B9%E8%B1%A1%E5%90%8D-%E2%80%98sys-sequences%E2%80%99-%E6%97%A0%E6%95%88"><span class="toc-number">5.1.</span> <span class="toc-text">1.对象名 ‘sys.sequences’ 无效</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E7%BC%BA%E5%B0%91%E5%AF%B9%E8%B1%A1%E6%88%96%E5%88%97%E5%90%8D%EF%BC%8C%E6%88%96%E8%80%85%E5%AF%B9%E8%B1%A1%E6%88%96%E5%88%97%E5%90%8D%E4%B8%BA%E7%A9%BA%E3%80%82"><span class="toc-number">6.</span> <span class="toc-text">2.缺少对象或列名，或者对象或列名为空。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-The-driver-could-not-establish-a-secure-connection-to-SQL-Server-by-using-Secure-Sockets-Layer-SSL-encryption-Error-%E2%80%9CThe-server-selected-protocol-version-TLS10-is-not-accepted-by-client-preferences-TLS13-TLS12"><span class="toc-number">6.1.</span> <span class="toc-text">3.The driver could not establish a secure connection to SQL Server by using Secure Sockets Layer (SSL) encryption. Error: “The server selected protocol version TLS10 is not accepted by client preferences [TLS13, TLS12]</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Cannot-invoke-%E2%80%9Cjava-lang-reflect-Method-invoke-Object-Object-%E2%80%9D-because-%E2%80%9Ccom-sun-xml-bind-v2-runtime-reflect-opt-Injector-defineClass%E2%80%9D"><span class="toc-number">6.2.</span> <span class="toc-text">4.Cannot invoke “java.lang.reflect.Method.invoke(Object, Object[])” because “com.sun.xml.bind.v2.runtime.reflect.opt.Injector.defineClass”</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/abd4fdb7.html';
+      this.page.identifier = 'posts/abd4fdb7.html';
+      this.page.title = 'Spring Boot连接SqlServer数据库';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Spring Boot连接SqlServer数据库 链接地址:https://bibichuan.github.io/posts/abd4fdb7.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Spring Boot连接SqlServer数据库',
+		url: 'https://bibichuan.github.io/posts/abd4fdb7.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Spring Boot连接SqlServer数据库',
+			isTipVisibility: true,
+			tip: 'Spring Boot连接SqlServer数据库',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

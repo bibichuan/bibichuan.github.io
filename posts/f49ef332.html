@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nodejs服务端开发</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Nodejs服务端开发</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Nodejs/">Nodejs</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Javascript/">Javascript</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-11-20 05:37:36
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>没有好的思路，其实就应该先从参考文章说起。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b4f6a8785de7">08、Node.js -Express框架 -RESTful API</a><br>2.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25532102">【翻译】十个开发 Node.js REST API 的最佳实践</a><br>3.<a target="_blank" rel="noopener" href="http://restify.com/docs/home/">Quick Start</a><br>4.<a target="_blank" rel="noopener" href="http://restify.com/docs/home/">restify</a></div>
+<h2 id="1-可用的restful框架"><a href="#1-可用的restful框架" class="headerlink" title="1.可用的restful框架"></a>1.可用的restful框架</h2><h2 id="2-高并发的设计"><a href="#2-高并发的设计" class="headerlink" title="2.高并发的设计"></a>2.高并发的设计</h2><p>针对java和php，都可以同时处理多个http请求，但是如果使用nodejs，它是单线程的，该如何处理并发的请求呢？关于nodejs高并发的说法，其实是在nodejs处理io的时候，会用异步的方式，直接返回，然后后台去处理io请求，然后通过回调函数，将结果返回，这样才实现了串行处理的并发操作。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zdz8207/p/nodejs-io-tps.html">nodejs高并发大流量的设计实现,控制并发的三种方法</a><br>2.<a target="_blank" rel="noopener" href="https://cnodejs.org/topic/5c8b0a4a7ce0df3732428254">关于 Nodejs 服务器高并发的疑问</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/chyingp/p/pm2-documentation.html">PM2实用入门指南</a><br>4.<a target="_blank" rel="noopener" href="https://imweb.io/topic/5b6cf97093759a0e51c917c8">Nodejs探秘：深入理解单线程实现高并发原理</a><br>5.<a target="_blank" rel="noopener" href="https://cnodejs.org/topic/591e9446d371b6372a8afb8a">node如何处理同时发起上百个请求？</a><br>6.<a target="_blank" rel="noopener" href="https://codeday.me/bug/20170719/46735.html">为什么node.js一次只处理6个请求？</a></div>
+<h2 id="3-多线程"><a href="#3-多线程" class="headerlink" title="3.多线程"></a>3.多线程</h2><p>刚开始看nodejs多线程相关的内容，我有点莫名奇妙。创建一个线程使用new Worker,传递数据用postMessage(),问题是子线程如何接收数据呢？postMessage中可以传任何数据，假如我传递了postMessage(“Hello Word”),在子线程中如何接收这个字符串呢？<br>看了很多篇文章，都没人说到这个问题，是我太笨了吗？（一定是的）有说用workdata接收的，除了这个，还有其他的方法吗？</p>
+<p>(1) 使用第一步，我就遇到了错误：</p>
+<img src="/images/loadimg.png" data-original="/posts/f49ef332/nodejs_1.png" lay-src="/posts/f49ef332/nodejs_1.png" class="" title="nodejs">
+<p>查看我的nodejs版本</p>
+<img src="/images/loadimg.png" data-original="/posts/f49ef332/nodejs_2.png" lay-src="/posts/f49ef332/nodejs_2.png" class="" title="nodejs">
+<p>发现了原来我的版本不支持啊（ <a target="_blank" rel="noopener" href="https://medium.com/@Trott/using-worker-threads-in-node-js-80494136dbb6">using-worker-threads-in-node-js</a> ）。</p>
+<pre><code>worker_threads became available in Node.js 10.5.0. Prior to Node.js 11.7.0, you could not access the module unless you started node with the --experimental-worker flag
+</code></pre>
+<p>那还有啥好说的，升级呗，反正我安装了nvm。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nvm list available</span><br><span class="line"></span><br><span class="line">nvm install 12.13.1</span><br><span class="line"></span><br><span class="line">nvm use 12.13.1</span><br><span class="line"></span><br><span class="line">node -v</span><br></pre></td></tr></tbody></table></figure>
+<p>一顿操作下来，nodejs版本就升级到了12.13.1(如果有全局安装的包，更换版本的时候，需要重新全局安装)。</p>
+<img src="/images/loadimg.png" data-original="/posts/f49ef332/nodejs_3.png" lay-src="/posts/f49ef332/nodejs_3.png" class="" title="nodejs">
+
+<p>(2) 经过尝试，我明白了，原来接收和发送数据，只有一个事件，那就是message事件，主线程使用postMessage(value)发送数据，worker线程通过parentPort.on(“message”,function(){})接收发送来的value，同理，子线程通过parentPort.postMessage(‘Hello world!’); 发送的数据，主线程通过worker.on(“message”)来接受。除了message事件，还有error事件，exit事件等。<br>主线程：index.js</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> { <span class="title class_">Worker</span> } = <span class="built_in">require</span>(<span class="string">"worker_threads"</span>);</span><br><span class="line"><span class="comment">//启动新的线程</span></span><br><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">`<span class="subst">${__dirname}</span>/worker/kringin_worker.js`</span>);</span><br><span class="line">worker.<span class="title function_">postMessage</span>(<span class="string">"hk"</span>);</span><br><span class="line">worker.<span class="title function_">on</span>(<span class="string">'message'</span>, <span class="function">(<span class="params">msg</span>) =&gt;</span> { <span class="variable language_">console</span>.<span class="title function_">log</span>(msg); });</span><br></pre></td></tr></tbody></table></figure>
+<p>子线程：worker.js</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> {parentPort } = <span class="built_in">require</span>(<span class="string">"worker_threads"</span>);</span><br><span class="line"></span><br><span class="line">parentPort.<span class="title function_">on</span>(<span class="string">"message"</span>,<span class="function"><span class="params">data</span>=&gt;</span>{</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(data);</span><br><span class="line">});</span><br><span class="line">parentPort.<span class="title function_">postMessage</span>(<span class="string">'Hello world!'</span>);</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>打印输出：</p>
+<img src="/images/loadimg.png" data-original="/posts/f49ef332/nodejs_4.png" lay-src="/posts/f49ef332/nodejs_4.png" class="" title="nodejs">
+<p>就是这么简单。</p>
+<p>(3) 除了上面的方法，还有主进程在创建worker时，直接传入数据</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(__filename, {</span><br><span class="line">  <span class="attr">workerData</span>: <span class="string">"data"</span></span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+<p>相应的worker线程就变成了workerData 接收数据。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> { workerData } = <span class="built_in">require</span>(<span class="string">"worker_threads"</span>);</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/35353355">Node黑魔法之无痛用上多线程</a><br>2.<a target="_blank" rel="noopener" href="https://islishude.github.io/blog/2019/06/29/nodejs/Nodejs-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%BB%A5%E5%8F%8A%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%95%99%E7%A8%8B/">Nodejs 多线程以及线程池教程</a><br>3.<a target="_blank" rel="noopener" href="https://www.teakki.com/p/57dfa8423c20b02e90a0d2ee">Node.js事件循环（Event Loop）和线程池详解</a><br>4.<a target="_blank" rel="noopener" href="https://juejin.im/post/5d736a675188254faf71521a">[译]理解 Node.js 的中 Worker Threads</a></div>
+<h2 id="4-获取多线程的处理结果"><a href="#4-获取多线程的处理结果" class="headerlink" title="4.获取多线程的处理结果"></a>4.获取多线程的处理结果</h2><p>现在的需求是这样的，一个数组，数组中的每一个元素都要执行一段复杂耗时的操作，如何使用多线程的方式，将数组元素分组后，分别进行线程运算，最后将所有的运算结果统一接收，然后传递给前台呢？这就类似于同时处罚多个http响应，然后同时接受数据，是一个道理。<br>我也尝试过使用es6的async/awit语法，理论上是可以同时并行执行，然后一起返回结果的，但是，由于我对于async理解的还不到位，所以始终写不出来像样的代码。最后呢，我是通过计数器实现的，原理就是在主线程中顶一个全局计数器，当子线程执行完返回之后，将计数器加一，最后判断计数器和分块的线程数是否相同，如果相同，则证明所有线程已经执行完毕，就可以调用 req.send() 像客户端发送数据了。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">server.<span class="title function_">post</span>(<span class="string">'/api/kriging'</span>, <span class="keyword">function</span> (<span class="params">req, res, next</span>) {</span><br><span class="line">    <span class="keyword">try</span>{</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> url=<span class="string">"http://120.27.147.231:8080/geoserver/proheng/ows?service=WFS&amp;version=1.0.0&amp;request=GetFeature&amp;typeName=proheng%3Aall_factory_polygon&amp;outputFormat=application%2Fjson"</span>;</span><br><span class="line">        <span class="comment">// 从服务器获取厂区数据</span></span><br><span class="line">        axios.<span class="title function_">get</span>(url)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="keyword">function</span> (<span class="params">response</span>) {</span><br><span class="line">                <span class="keyword">var</span> data=response.<span class="property">data</span>;</span><br><span class="line">                <span class="keyword">if</span>(data){</span><br><span class="line">                    <span class="comment">// 保存结果</span></span><br><span class="line">                    <span class="keyword">let</span> resultFeatureCollec= {</span><br><span class="line">                        <span class="string">"type"</span> : <span class="string">"FeatureCollection"</span>,</span><br><span class="line">                        <span class="string">"features"</span> : []</span><br><span class="line">                    };</span><br><span class="line">                    resultFeatures=resultFeatureCollec.<span class="property">features</span>;</span><br><span class="line"></span><br><span class="line">                    <span class="comment">//计算开始时间</span></span><br><span class="line">                    <span class="keyword">var</span> sd = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">                    <span class="keyword">var</span> sart=sd.<span class="title function_">getTime</span>();</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"主线程计算开始："</span>+<span class="title function_">moment</span>().<span class="title function_">format</span>(<span class="string">"YYYY-MM-DD HH:mm:ss"</span>));</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// 将数据分块               </span></span><br><span class="line">                    <span class="keyword">let</span> size=<span class="number">20</span>;</span><br><span class="line">                    <span class="keyword">let</span> chunk=<span class="title class_">Math</span>.<span class="title function_">ceil</span>(data.<span class="property">features</span>.<span class="property">length</span>/size);</span><br><span class="line">                    <span class="keyword">var</span> featureCollection=data.<span class="property">features</span>;</span><br><span class="line">                    <span class="keyword">let</span> chunkId=<span class="number">0</span>; <span class="comment">// 子块的标志位</span></span><br><span class="line">                </span><br><span class="line">                    <span class="keyword">let</span> resultFun=[];</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;chunk;i++){</span><br><span class="line">                        <span class="keyword">let</span> s=i*size;</span><br><span class="line">                        <span class="keyword">let</span> e=(i+<span class="number">1</span>)*size;</span><br><span class="line">                        <span class="keyword">if</span>(e&gt;=featureCollection.<span class="property">length</span>){</span><br><span class="line">                            e=featureCollection.<span class="property">length</span>;</span><br><span class="line">                        }</span><br><span class="line">                </span><br><span class="line">                        <span class="keyword">var</span> chunkData=featureCollection.<span class="title function_">slice</span>(s,e);</span><br><span class="line">                        resultFun.<span class="title function_">push</span>(chunkData);               </span><br><span class="line">                        </span><br><span class="line">                        <span class="comment">//启动新的线程</span></span><br><span class="line">                        <span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="string">`<span class="subst">${__dirname}</span>/worker/kringin_worker.js`</span>);</span><br><span class="line">                        <span class="comment">// console.log(data.features);</span></span><br><span class="line">                        worker.<span class="title function_">postMessage</span>(chunkData);</span><br><span class="line">                        worker.<span class="title function_">on</span>(<span class="string">'message'</span>, <span class="function">(<span class="params">result</span>) =&gt;</span> { </span><br><span class="line">                            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"子线程处理完成"</span>);</span><br><span class="line">                            resultFeatures=[...resultFeatures,...result];</span><br><span class="line">                            chunkId++;</span><br><span class="line">                            <span class="keyword">if</span>(chunkId == chunk){</span><br><span class="line"></span><br><span class="line">                                <span class="comment">// 计算结束时间</span></span><br><span class="line">                                <span class="keyword">let</span> endt = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line">                                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'总插值时间：'</span> + (endt- sart) / <span class="number">1000</span> + <span class="string">'秒'</span>);</span><br><span class="line"></span><br><span class="line">                                resultFeatureCollec.<span class="property">features</span>=resultFeatures;</span><br><span class="line">                                res.<span class="title function_">send</span>(resultFeatureCollec);</span><br><span class="line">                            }</span><br><span class="line">                            worker.<span class="title function_">terminate</span>();</span><br><span class="line">                        });</span><br><span class="line">                        worker.<span class="title function_">on</span>(<span class="string">"error"</span>,<span class="function"><span class="params">err</span>=&gt;</span>{</span><br><span class="line">                            <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">                            chunkId++;</span><br><span class="line">                            res.<span class="title function_">send</span>(resultFeatureCollec);</span><br><span class="line">                        })</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            })</span><br><span class="line">            .<span class="title function_">catch</span>(<span class="keyword">function</span> (<span class="params">error</span>) {</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(error);</span><br><span class="line">            });</span><br><span class="line"></span><br><span class="line">    }<span class="keyword">catch</span>(err){</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">next</span>(<span class="keyword">new</span> errs.<span class="title class_">InternalError</span>(<span class="string">"服务器发生错误!"</span>));</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">next</span>();</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="http://es6.ruanyifeng.com/#docs/async">async 函数</a><br>2.<a target="_blank" rel="noopener" href="https://blog.svend.cc/2019/05/26/node-child-process/">Node.js 多进程处理CPU密集任务</a><br>3.<a target="_blank" rel="noopener" href="https://github.com/DoubleSpout/threadAndPackage/blob/master/chapter.7.thread_and_process.md">chapter.7.thread_and_process</a><br>4.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000010424097">nodejs中使用async/await 获取返回值问题</a><br>5.<a target="_blank" rel="noopener" href="https://juejin.im/post/5c14d245e51d455c627a940a">Node.js 真·多线程 Worker Threads 初探</a><br>6.<a target="_blank" rel="noopener" href="https://juejin.im/post/5c9b537de51d456c423a8728">Node.js 多线程完全指南</a></div>
+<h2 id="5-线程池"><a href="#5-线程池" class="headerlink" title="5.线程池"></a>5.线程池</h2><p>所谓线程池，就是好几个线程都放到一个池子里，那个空闲就用那个计算，就避免了每一次新建一个线程所进行的时间耗费了。关于线程池，nodejs好像也没有找到好用的解决方案。从网上找了人家写的线程池的例子，但是对于我的计算克里金插值来说，没有多大的效率提升。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</span><br><span class="line"><span class="keyword">const</span> { <span class="title class_">Worker</span> } = <span class="built_in">require</span>(<span class="string">'worker_threads'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WorkerPool</span> {</span><br><span class="line">    _workers = [];                    <span class="comment">// 线程引用数组</span></span><br><span class="line">    _activeWorkers = [];              <span class="comment">// 激活的线程数组</span></span><br><span class="line">    _queue = [];                      <span class="comment">// 任务队列</span></span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">workerPath, numOfThreads</span>) {</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">workerPath</span> = workerPath;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">numOfThreads</span> = numOfThreads;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">init</span>();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化多线程</span></span><br><span class="line">    <span class="title function_">init</span>(<span class="params"></span>) {</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">numOfThreads</span> &lt; <span class="number">1</span>) {</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">'线程池最小线程数应为1'</span>);</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>;i &lt; <span class="variable language_">this</span>.<span class="property">numOfThreads</span>; i++) {</span><br><span class="line">            <span class="keyword">const</span> worker = <span class="keyword">new</span> <span class="title class_">Worker</span>(<span class="variable language_">this</span>.<span class="property">workerPath</span>);</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_workers</span>[i] = worker;</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_activeWorkers</span>[i] = <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 结束线程池中所有线程</span></span><br><span class="line">    <span class="title function_">destroy</span>(<span class="params"></span>) {</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">numOfThreads</span>; i++) {</span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">_activeWorkers</span>[i]) {</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`<span class="subst">${i}</span>号线程仍在工作中...`</span>);</span><br><span class="line">            }</span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_workers</span>[i].<span class="title function_">terminate</span>();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查是否有空闲worker</span></span><br><span class="line">    <span class="title function_">checkWorkers</span>(<span class="params"></span>) {</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="variable language_">this</span>.<span class="property">numOfThreads</span>; i++) {</span><br><span class="line">            <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">_activeWorkers</span>[i]) {</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">          </span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="title function_">run</span>(<span class="params">getData</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> {</span><br><span class="line">            <span class="keyword">const</span> restWorkerId = <span class="variable language_">this</span>.<span class="title function_">checkWorkers</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">const</span> queueItem = {</span><br><span class="line">                getData,</span><br><span class="line">                <span class="attr">callback</span>: <span class="function">(<span class="params">error, result</span>) =&gt;</span> {</span><br><span class="line">                    <span class="keyword">if</span> (error) {</span><br><span class="line">                        <span class="keyword">return</span> <span class="title function_">reject</span>(error);</span><br><span class="line">                    }</span><br><span class="line">                    <span class="keyword">return</span> <span class="title function_">resolve</span>(result);</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 线程池已满,将任务加入任务队列</span></span><br><span class="line">            <span class="keyword">if</span> (restWorkerId === -<span class="number">1</span>) {</span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">_queue</span>.<span class="title function_">push</span>(queueItem);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            }</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 空闲线程执行任务</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">runWorker</span>(restWorkerId, queueItem);</span><br><span class="line">        })</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">async</span> <span class="title function_">runWorker</span>(<span class="params">workerId, queueItem</span>) {</span><br><span class="line">        <span class="keyword">const</span> worker = <span class="variable language_">this</span>.<span class="property">_workers</span>[workerId];</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">_activeWorkers</span>[workerId] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 线程结果回调</span></span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">messageCallback</span> = (<span class="params">result</span>) =&gt; {</span><br><span class="line">            queueItem.<span class="title function_">callback</span>(<span class="literal">null</span>, result);</span><br><span class="line">            <span class="title function_">cleanUp</span>();</span><br><span class="line">        };</span><br><span class="line">           </span><br><span class="line">        <span class="comment">// 线程错误回调</span></span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">errorCallback</span> = (<span class="params">error</span>) =&gt; {</span><br><span class="line">            queueItem.<span class="title function_">callback</span>(error);</span><br><span class="line">            <span class="title function_">cleanUp</span>();</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 任务结束消除旧监听器,若还有待完成任务,继续完成</span></span><br><span class="line">        <span class="keyword">const</span> <span class="title function_">cleanUp</span> = (<span class="params"></span>) =&gt; {</span><br><span class="line">            worker.<span class="title function_">removeAllListeners</span>(<span class="string">'message'</span>);</span><br><span class="line">            worker.<span class="title function_">removeAllListeners</span>(<span class="string">'error'</span>);</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">_activeWorkers</span>[workerId] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">_queue</span>.<span class="property">length</span>) {</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="variable language_">this</span>.<span class="title function_">runWorker</span>(workerId, <span class="variable language_">this</span>.<span class="property">_queue</span>.<span class="title function_">shift</span>());</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 线程创建监听结果/错误回调</span></span><br><span class="line">        worker.<span class="title function_">once</span>(<span class="string">'message'</span>, messageCallback);</span><br><span class="line">        worker.<span class="title function_">once</span>(<span class="string">'error'</span>, errorCallback);</span><br><span class="line">        <span class="comment">// 向子线程传递初始data</span></span><br><span class="line">        worker.<span class="title function_">postMessage</span>(queueItem.<span class="property">getData</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span>=<span class="title class_">WorkerPool</span>;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后使用：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pool = <span class="keyword">new</span> <span class="title class_">WorkerPool</span>(path.<span class="title function_">join</span>(__dirname, <span class="string">'worker.js'</span>), <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> items = [...<span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">10</span>)].<span class="title function_">fill</span>(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">all</span>(items.<span class="title function_">map</span>(<span class="title function_">async</span> (_, i) =&gt; {</span><br><span class="line">	<span class="keyword">const</span> res = <span class="keyword">await</span> pool.<span class="title function_">run</span>(_);</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`任务<span class="subst">${i}</span>完成结果:`</span>, res);</span><br><span class="line">})).<span class="title function_">then</span>(<span class="function">() =&gt;</span> {</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'所有任务完成 !'</span>);</span><br><span class="line">    <span class="comment">// 销毁线程池</span></span><br><span class="line">    pool.<span class="title function_">destroy</span>();</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>至于worker中长什么样，就不贴了，每个人不一样，反正就是有parentPort.on和parentPort.postMessage就对了。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> {parentPort } = <span class="built_in">require</span>(<span class="string">"worker_threads"</span>);</span><br><span class="line"><span class="keyword">const</span> krigingUtils=<span class="built_in">require</span>(<span class="string">"../utils/KrigingUtils"</span>);</span><br><span class="line"><span class="keyword">const</span> moment=<span class="built_in">require</span>(<span class="string">"moment"</span>);</span><br><span class="line"></span><br><span class="line">parentPort.<span class="title function_">on</span>(<span class="string">"message"</span>,<span class="function"><span class="params">data</span>=&gt;</span>{</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"子线程计算开始:"</span>+<span class="title function_">moment</span>().<span class="title function_">format</span>(<span class="string">"YYYY-MM-DD HH:mm:ss"</span>))</span><br><span class="line">    <span class="keyword">let</span> s=<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> count=data.<span class="property">length</span>;</span><br><span class="line">    <span class="keyword">let</span> resultFeatures=[];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> fi=<span class="number">0</span>;fi&lt;count;fi++){</span><br><span class="line">        <span class="keyword">let</span> featureData=data[fi];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">let</span> extent=[<span class="number">100000000</span>,<span class="number">100000000</span>,-<span class="number">100000000</span>,-<span class="number">100000000</span>];</span><br><span class="line">        <span class="comment">// 数据点范围边界</span></span><br><span class="line">        <span class="keyword">var</span> coodinates=featureData.<span class="property">geometry</span>.<span class="property">coordinates</span>[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">let</span> cout=coodinates.<span class="property">length</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;cout;i++){</span><br><span class="line">            <span class="keyword">if</span>(extent[<span class="number">0</span>]&gt;coodinates[i][<span class="number">0</span>])</span><br><span class="line">                extent[<span class="number">0</span>]=coodinates[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(extent[<span class="number">1</span>]&gt;coodinates[i][<span class="number">1</span>])</span><br><span class="line">                extent[<span class="number">1</span>]=coodinates[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(extent[<span class="number">2</span>]&lt;coodinates[i][<span class="number">0</span>])</span><br><span class="line">                extent[<span class="number">2</span>]=coodinates[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">if</span>(extent[<span class="number">3</span>]&lt;coodinates[i][<span class="number">1</span>])</span><br><span class="line">                extent[<span class="number">3</span>]=coodinates[i][<span class="number">1</span>];</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">//随机生成一些离散点</span></span><br><span class="line">        <span class="keyword">let</span> dataset = {</span><br><span class="line">            <span class="string">"type"</span> : <span class="string">"FeatureCollection"</span>,</span><br><span class="line">            <span class="string">"features"</span> : []</span><br><span class="line">        };</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建10个位置随机、属性值随机的特征点</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) {</span><br><span class="line">            <span class="keyword">let</span> feature={</span><br><span class="line">                <span class="string">"type"</span> : <span class="string">"Feature"</span>,</span><br><span class="line">                <span class="string">"properties"</span> : {</span><br><span class="line">                    <span class="string">"level"</span> : <span class="title class_">Math</span>.<span class="title function_">random</span>()*<span class="number">100</span></span><br><span class="line">                },</span><br><span class="line">                <span class="string">"geometry"</span> : {</span><br><span class="line">                    <span class="string">"type"</span> : <span class="string">"Point"</span>,</span><br><span class="line">                    <span class="string">"coordinates"</span> : [ extent[<span class="number">0</span>] + <span class="title class_">Math</span>.<span class="title function_">random</span>() * (extent[<span class="number">2</span>] - extent[<span class="number">0</span>]),extent[<span class="number">1</span>]+<span class="title class_">Math</span>.<span class="title function_">random</span>()*(extent[<span class="number">3</span>]-extent[<span class="number">1</span>])]</span><br><span class="line">                }</span><br><span class="line">            };</span><br><span class="line">            dataset.<span class="property">features</span>.<span class="title function_">push</span>(feature);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">var</span> breaks = [<span class="number">0</span>, <span class="number">0.1</span>, <span class="number">0.2</span>, <span class="number">0.3</span>, <span class="number">0.4</span>, <span class="number">0.5</span>, <span class="number">0.6</span>, <span class="number">0.7</span>, <span class="number">0.8</span>, <span class="number">0.9</span>, <span class="number">1.0</span>];</span><br><span class="line">        <span class="comment">// 计算插值</span></span><br><span class="line">        <span class="keyword">let</span> isobands=krigingUtils.<span class="title function_">constructShape</span>(dataset,<span class="string">"level"</span>,breaks,extent,featureData.<span class="property">geometry</span>);</span><br><span class="line">        resultFeatures=[...resultFeatures,...isobands.<span class="property">features</span>];</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">let</span> e=<span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'子线程执行时间：'</span> + (e - s) / <span class="number">1000</span> + <span class="string">'秒'</span>);</span><br><span class="line">    </span><br><span class="line">    parentPort.<span class="title function_">postMessage</span>(resultFeatures);</span><br><span class="line">});</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018660861">Node.js 多线程完全指南</a><br>2.<a target="_blank" rel="noopener" href="https://juejin.im/post/5d8cb150e51d457838128c3a#heading-7">创建线程池</a></div>
+<h2 id="6-pm2部署nodejs"><a href="#6-pm2部署nodejs" class="headerlink" title="6.pm2部署nodejs"></a>6.pm2部署nodejs</h2><p>pm2提供了集群的方式启动nodejs应用，而且多个应用之间共享监听端口，简直不能在方便了。<br>(1) 安装：npm install pm2 -g<br>(2) 启动：pm2 start index.js -i max</p>
+<img src="/images/loadimg.png" data-original="/posts/f49ef332/nodejs_5.png" lay-src="/posts/f49ef332/nodejs_5.png" class="" title="nodejs">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/zhoujie/p/nodejs4.html">nodejs高大上的部署方式-PM2</a><br>2.<a target="_blank" rel="noopener" href="https://codeday.me/bug/20170804/51540.html">node.js – 什么时候使用线程池？</a><br>3.<a target="_blank" rel="noopener" href="https://juejin.im/post/5b823506e51d4538d517662f">使用pm2自动化部署node项目</a><br>4.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6b3b506f7d0a">PM2 常用命令</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/a4471560.html" rel="next" title="Nodejs服务端开发二">
+                      <i class="iconfont icon-prev"></i> Nodejs服务端开发二
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/e842686a.html" rel="prev" title="Nodejs之Restify">
+                      Nodejs之Restify <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8F%AF%E7%94%A8%E7%9A%84restful%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">1.可用的restful框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%AB%98%E5%B9%B6%E5%8F%91%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.</span> <span class="toc-text">2.高并发的设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">3.多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%8E%B7%E5%8F%96%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%A4%84%E7%90%86%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">4.获取多线程的处理结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-number">5.</span> <span class="toc-text">5.线程池</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-pm2%E9%83%A8%E7%BD%B2nodejs"><span class="toc-number">6.</span> <span class="toc-text">6.pm2部署nodejs</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/f49ef332.html';
+      this.page.identifier = 'posts/f49ef332.html';
+      this.page.title = 'Nodejs服务端开发';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Nodejs服务端开发 链接地址:https://bibichuan.github.io/posts/f49ef332.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Nodejs服务端开发',
+		url: 'https://bibichuan.github.io/posts/f49ef332.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Nodejs服务端开发',
+			isTipVisibility: true,
+			tip: 'Nodejs服务端开发',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

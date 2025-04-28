@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArcGIS影像切片</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">ArcGIS影像切片</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-04-06 02:53:34
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:39
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>ArcGIS 的影像切片是一种比较通用的切片数据格式,主要包括：_alllayers、conf.cdi 和 Conf.xml 几个文件， _allayers文件夹中包括了从L01到L12等几个不同级别的文件夹，每个文件夹里面包括了：.bundle 和 .bundlx 文件，这就是一个 “紧凑型” 的文件格式类型。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_1.jpg" lay-src="/posts/ec673edd/arcgis_1.jpg" class="" title="ArcGIS切片">
+
+<p>“紧凑型” 存储最主要的两种文件是 bundle 和 bundlx 文件，其中bundle文件用以存储切片数据，bundlx是bundle文件中切片数据的索引文件。</p>
+<p>一个bundle文件中最多可以存储128<em>128（16384）个切片，但是创建切片缓存并不是一张张切片单独生成，而是以4096像素（无抗锯齿）或2048像素（有抗锯齿）为边长渲染的，如果我们选择的切片边长为256像素并开启了抗锯齿，那么每次ArcSOC进程创建的是一张以8</em>8（64）个切片拼接成的大图，然后切割后存入bundle文件中。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/10.8/publish-services/linux/ways-to-add-tiles-to-a-cache.htm">将切片添加到缓存的方法</a> 在ArcGIS Server中创建缓存切片<br>【2】.<a target="_blank" rel="noopener" href="http://zhihu.geoscene.cn/article/286">ArcGIS 切片缓存紧凑文件格式分析与使用</a> 这里说了紧凑型的文件格式的说明,并写了一个java代码进行数据的访问。从上面的分析，我们如果知道了一个切片的级别、行号、列号，就可以通过bundlx首先找到bundle中切片内容的偏移，然后从bundle文件中取出4个字节的长度数据，再随后根据这个长度读取真实的切片数据。关于如何计算切片的行号、列号，以及bundle文件的命名方式<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wclwksn2019/article/details/104265053">GIS开发：Arcgis的切片格式</a><br>【4】.<a target="_blank" rel="noopener" href="https://www.osgeo.cn/doc_ogcstd/ogc_standard/ch10_chapter9/chapter.html">1.10. X. WMTS-切片地图 Web 服务</a><br>【5】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/what-is-image-service-caching-.htm">什么是影像服务缓存？</a></div>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>切片之后的缓存文件夹里面，有一个 Conf.xml 文件，里面记录了切片的配置，比如将数据切成 7-20 级数据。</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">CacheInfo</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:xs</span>=<span class="string">"http://www.w3.org/2001/XMLSchema"</span> <span class="attr">xmlns:typens</span>=<span class="string">"http://www.esri.com/schemas/ArcGIS/10.1"</span> <span class="attr">xsi:type</span>=<span class="string">"typens:CacheInfo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">TileCacheInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:TileCacheInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">SpatialReference</span> <span class="attr">xsi:type</span>=<span class="string">"typens:GeographicCoordinateSystem"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">WKT</span>&gt;</span>GEOGCS["GCS_China_Geodetic_Coordinate_System_2000",DATUM["D_unknown",SPHEROID["Unknown",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]<span class="tag">&lt;/<span class="name">WKT</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">XOrigin</span>&gt;</span>-400<span class="tag">&lt;/<span class="name">XOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">YOrigin</span>&gt;</span>-400<span class="tag">&lt;/<span class="name">YOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">XYScale</span>&gt;</span>11258999068426.24<span class="tag">&lt;/<span class="name">XYScale</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ZOrigin</span>&gt;</span>-100000<span class="tag">&lt;/<span class="name">ZOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ZScale</span>&gt;</span>10000<span class="tag">&lt;/<span class="name">ZScale</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">MOrigin</span>&gt;</span>-100000<span class="tag">&lt;/<span class="name">MOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">MScale</span>&gt;</span>10000<span class="tag">&lt;/<span class="name">MScale</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">XYTolerance</span>&gt;</span>8.9831528411952133e-009<span class="tag">&lt;/<span class="name">XYTolerance</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ZTolerance</span>&gt;</span>0.001<span class="tag">&lt;/<span class="name">ZTolerance</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">MTolerance</span>&gt;</span>0.001<span class="tag">&lt;/<span class="name">MTolerance</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">HighPrecision</span>&gt;</span>true<span class="tag">&lt;/<span class="name">HighPrecision</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LeftLongitude</span>&gt;</span>-180<span class="tag">&lt;/<span class="name">LeftLongitude</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">SpatialReference</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TileOrigin</span> <span class="attr">xsi:type</span>=<span class="string">"typens:PointN"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">X</span>&gt;</span>-180<span class="tag">&lt;/<span class="name">X</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Y</span>&gt;</span>90<span class="tag">&lt;/<span class="name">Y</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">TileOrigin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TileCols</span>&gt;</span>256<span class="tag">&lt;/<span class="name">TileCols</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TileRows</span>&gt;</span>256<span class="tag">&lt;/<span class="name">TileRows</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">DPI</span>&gt;</span>96<span class="tag">&lt;/<span class="name">DPI</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PreciseDPI</span>&gt;</span>96<span class="tag">&lt;/<span class="name">PreciseDPI</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LODInfos</span> <span class="attr">xsi:type</span>=<span class="string">"typens:ArrayOfLODInfo"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>7<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>4617149.7423495166<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.01098632777<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>8<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>2308574.8711747583<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.0054931638850000001<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>9<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>1154287.4357975107<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.0027465819429999998<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>10<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>577143.7176886237<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.0013732909709999999<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>11<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>288571.85905444348<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.00068664548599999995<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>12<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>144285.92952722174<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.00034332274299999998<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>13<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>72142.964553479251<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.00017166137099999999<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>14<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>36071.482486871253<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>8.5830686000000007e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>15<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>18035.741243435627<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>4.2915343000000003e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>16<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>9017.870411586191<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>2.1457671e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>17<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>4508.9354159247168<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>1.0728836e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>18<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>2254.4677079623584<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>5.3644179999999999e-006<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>19<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>1127.2338539811792<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>2.682209e-006<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>20<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>563.61671685896795<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>1.3411040000000001e-006<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LODInfos</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">TileCacheInfo</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">TileImageInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:TileImageInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CacheTileFormat</span>&gt;</span>MIXED<span class="tag">&lt;/<span class="name">CacheTileFormat</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CompressionQuality</span>&gt;</span>75<span class="tag">&lt;/<span class="name">CompressionQuality</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Antialiasing</span>&gt;</span>false<span class="tag">&lt;/<span class="name">Antialiasing</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">TileImageInfo</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">CacheStorageInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:CacheStorageInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">StorageFormat</span>&gt;</span>esriMapCacheStorageModeCompact<span class="tag">&lt;/<span class="name">StorageFormat</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PacketSize</span>&gt;</span>128<span class="tag">&lt;/<span class="name">PacketSize</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">CacheStorageInfo</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CacheInfo</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="投影变换"><a href="#投影变换" class="headerlink" title="投影变换"></a>投影变换</h2><p>这里有一点需要说明的就是，根据上面的配置文件说明，如果数据不是经纬度坐标系，将无法进行切片。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_6.jpg" lay-src="/posts/ec673edd/err_6.jpg" class="" title="ArcMap">
+
+<p>下面的就是投影坐标系，而不是地理坐标系。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_7.jpg" lay-src="/posts/ec673edd/err_7.jpg" class="" title="ArcMap">
+
+<p>选择 “数据管理工具”-&gt;投影和变换, 然后选择 “栅格”-&gt;投影栅格，可以将栅格的坐标系进行重新投影，这个好像还是挺费时间的。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_8.jpg" lay-src="/posts/ec673edd/arcgis_8.jpg" class="" title="ArcMap">
+
+<p>建议就是输出栅格直接填入 .tif 格式，这样生成的栅格就是tif格式的了。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_4.jpg" lay-src="/posts/ec673edd/arcgis_pro_4.jpg" class="" title="ArcGISPro">
+
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/oloroso/p/8329750.html">ArcGIS进行自定义投影转换</a> 数据管理-&gt;投影和变换-&gt;栅格-&gt;投影栅格，可以将栅格数据重新定义投影。<br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/512502609">3、ArcGIS Pro中的地理处理</a> 工具的类别与类型：内置工具、脚本工具、模型工具。使用工具对话框执行工具。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45696917/article/details/120436465">Arcgis栅格数据投影</a> 注意“输出栅格数据集”在文件名最后手动加上“.tif”即可以tif形式导出数据<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/smss007/article/details/103504631">栅格影像WGS84转CGCS2000坐标</a><br>【5】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/environment-settings/cell-size.htm">像元大小</a>  默认输出分辨率将由输入栅格数据集中最粗糙的输入确定。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/dsac1/article/details/45667305">ArcGIS教程：栅格像元大小和重采样</a> 1.最邻近分配法：因为最邻近分配法不会更改输入像元的值，它是用于离散(分类)数据的重采样技术。2.双线性插值法：双线性插值法使用四个最邻近输入像元中心的值来确定输出栅格上的值。3.三次卷积插值法：三次卷积插值法与双线性插值法类似，它是通过 16 个最邻近输入像元中心及其值来计算加权平均值。不应对分类数据使用双线性插值法或三次卷积插值法，因为输出栅格数据集中不会保留类别。但是，这三种技术均可用于连续数据，其中最邻近法将生成块状输出，双线性插值法将生成更平滑的结果，三次卷积插值法将生成最清晰的数据。</div>
+<h2 id="数据量"><a href="#数据量" class="headerlink" title="数据量"></a>数据量</h2><p>关于数据量我需要说明一下，从原始数据中，获取到的img遥感影像，文件夹大小是500多G，但是进行投影变换之后，文件夹大小，只有180多个G了，但是在查看影像数据的时候，为压缩大小确实为391G。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_6.jpg" lay-src="/posts/ec673edd/arcgis_pro_6.jpg" class="" title="ArcGISPro">
+
+<p>这里其实也合理的，在原始影像文件夹中，存储了一百多个G的金字塔数据，加上未压缩的391个G，差不多就是原始文件夹的大小了。进行投影变换之后文件的大小变成了186G，也说明了在影像数据被压缩之后，就是这么大了，为压缩之前是391个G。根据上面的信息来判断，至于切片之后的第20级，应该会有180G左右。</p>
+<h1 id="1-ArcGIS-Map-切片"><a href="#1-ArcGIS-Map-切片" class="headerlink" title="1.ArcGIS Map 切片"></a>1.ArcGIS Map 切片</h1><p>使用 ArcGIS Map 进行切片，就是创建离线的缓存，方法和使用 ArcGIS Server 进行切片差不多。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yangniceyangyang/article/details/104254494">arcgis 影像切片，不需要发布服务（生成png格式或者.bundle格式都可以）、可不是生成切片包哦</a> 打开arcmap，加载需要切片的影像图——&gt;打开数据管理工具-&gt;切片缓存-&gt;生成切片缓存方案，这样就可以进行切片了。<br>【2】.<a target="_blank" rel="noopener" href="http://zhihu.geoscene.cn/article/3984">arcgis server地图服务切片（10.4.1） </a> 1.打开arctoolbox，打开【创建地图服务器缓存】工具，开始切片的配置。输入服务：要切片的服务，服务缓存目录、比例类型、缓存切片格式、存储格式：EXPLODED=切片文件不压缩，以一个个图片文件形式存在，如果切片需要在tomcat（或者http server）发布，就只能这种方式，但确定是文件数量多，切片压缩解压都满。COMPACT=切片文件压缩，切片按arcgis只有的格式压缩成一些大文件，优缺点跟上述相关。2.arctoolbox找到工具【管理地图服务缓存切片】，当进行了上一步创建了切片配置，就可以用此工具创建切片</div>
+<h2 id="1-生成切片方案"><a href="#1-生成切片方案" class="headerlink" title="1.生成切片方案"></a>1.生成切片方案</h2><p>打开arcmap，加载需要切片的影像图——&gt;打开如下图工具: 数据管理工具 -&gt; 切片缓存 -&gt; 生成切片缓存方案</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcmap_1.png" lay-src="/posts/ec673edd/arcmap_1.png" class="" title="ArcMap">
+
+<p>在高级选项中，可以选择切片格式</p>
+<h2 id="2-创建切片"><a href="#2-创建切片" class="headerlink" title="2.创建切片"></a>2.创建切片</h2><p>数据管理工具 -&gt; 切片缓存 -&gt; 管理切片缓存，可以选择保存缓存位置、名称、倒入缓存切片，最小最大比例等参数，主要就是 “输入切片方案（可选）” 中选择 IMPORT_SCHEME，这样就可以选择自己创建的缓存方案了。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcmap_2.png" lay-src="/posts/ec673edd/arcmap_2.png" class="" title="ArcMap">
+
+<h2 id="3-问题"><a href="#3-问题" class="headerlink" title="3.问题"></a>3.问题</h2><p>(1) 输入数据源空间参考和切片方案空间参考之间没有可用的基准面变换<br>正确的数据</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_2.png" lay-src="/posts/ec673edd/err_2.png" class="" title="ArcMap">
+
+<p>错误的数据</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_3.png" lay-src="/posts/ec673edd/err_3.png" class="" title="ArcMap">
+
+<p>【解决方案】</p>
+<ul>
+<li>（1）选择与数据源使用同一坐标系的切片方案，通过修改 切片方案文件进行处理。</li>
+<li>（2）或者是先用数据源生成一个切片方案，然后直接修改方案文件里面的信息。<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 将4490 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">WKT</span>&gt;</span>GEOGCS["GCS_China_Geodetic_Coordinate_System_2000",DATUM["D_unknown",SPHEROID["Unknown",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433]]<span class="tag">&lt;/<span class="name">WKT</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 改为4326 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">WKT</span>&gt;</span>GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137.0,298.257223563]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433],AUTHORITY["EPSG",4326]]<span class="tag">&lt;/<span class="name">WKT</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/2.9/tool-reference/tool-errors-and-warnings/001001-010000/tool-errors-and-warnings-01526-01550-001529.htm">001529: 输入数据源空间参考和切片方案空间参考之间没有可用的基准面变换。</a></div>
+<p>(2) 无法启动配置RasterCommander.ImageServer</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_4.png" lay-src="/posts/ec673edd/err_4.png" class="" title="ArcMap">
+
+<p>【解决方法】<br>在相应工具中选择“环境”，并行处理因素，输入“0”，此后可以正常运行，其他工具出现同样错误也可以用这种方法。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/X_Cosmic/article/details/108536283">[ArcGIS常见错误集：2] AcrGIS 无法启动配置 RasterCommander.ImageServer</a> 这个可以解决问题。<br>【2】.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/609440198">ArcPro应用01、并行处理因子设置与测试</a> 1.空——让各工具决定使用进程的数量，这是默认设置。2.0——不跨进程多个进程进行操作。3.n——可以指定进程的数量。4.n%——使用百分比计算进程数量：进程数量=系统核数量*n/100</div>
+<p>(3) 不会针对比例生成缓存切片，它不在最大最小范围内<br>在执行切片的时候，出现了这个问题，不知道是什么原因。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_1.png" lay-src="/posts/ec673edd/err_1.png" class="" title="ArcMap">
+
+<p>【解决方法】<br>后来发现，是坐标系的问题，切片方案坐标系是地理坐标系，但是数据是投影坐标系。需要做的就是将栅格数据重投影为地理坐标系。</p>
+<p>(4) 崩溃<br>每当我选择切片方案文件夹的时候，总是会出现这个问题，不知道什么原因。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_5.png" lay-src="/posts/ec673edd/err_5.png" class="" title="ArcMap">
+
+<p>(5) .img转为tif格式<br>本来我以为无法切片的原因，是因为 .img 格式无法进行切片，于是我把它转成了 tif 格式,结果并不是这个原因。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/dsac1/article/details/44919745">ArcGIS中把img图层文件转成tif图层文件的方法</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/hellfire2007/article/details/77483039">ArcGIS中的一些影像格式：.ige .img .rde .rrd</a> img文件就成了索引文件了,rrd还是金字塔文件,ige则实际用来存储栅格数据,rde文件：在某些情况下，金字塔文件(rrd)也会超过2GB，这时会创建rde文件来存储这些信息</div>
+<h1 id="2-ArcGIS-Server-切片"><a href="#2-ArcGIS-Server-切片" class="headerlink" title="2.ArcGIS Server 切片"></a>2.ArcGIS Server 切片</h1><p>(1) 右键数据，选择 共享为服务</p>
+<p>(2) 选择发布为服务，连接 ArcGIS Server</p>
+<p>(3) 选择文件夹</p>
+<p>(4) 在打开的属性框中，选择 缓存，进行高级设置。</p>
+<p>(5) 可以设置比例尺</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/LoveCarpenter/article/details/80738367">（十二）ArcGIS Server发布松散型切片服务</a> 这里说了如何使用arcgis server 进行切片的步骤。<br>【2】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/10.8/publish-services/linux/ways-to-add-tiles-to-a-cache.htm">将切片添加到缓存的方法</a> 将切片添加到缓存的方法有多种:1.发布服务时自动构建缓存。2.发布服务后使用管理地图服务器缓存切片地理处理工具手动构建缓存。3.用户首次访问时按需构建切片。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/suntongxue100/article/details/128572046">ArcGIS 切片问题小结</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40625478/article/details/110917301">管理和迁移ArcGIS Server服务之–切片服务（TileServer缓存服务）（二</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangshuanlai/article/details/90750690">网站地图服务发布（一）发布arcgis切片服务</a><br>【6】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/what-is-map-caching-.htm">ArcGIS Server</a> 这是官方对地图服务发布以及缓存的相关说明。<br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/SmileCoffin/article/details/72828218">ArcGIS Server 自定义比例尺切图</a> 这个有图有真相，可以作为参考资料。1.选中需要进行发布的mxd文件，然后鼠标右击，在弹出的菜单中选择Share As Service。2.在弹出的Share as Service对话框中选择Publish a service单选按钮。3.在打开的窗口中选择一个进行地图发布的服务，并指定这个地图服务的名称。3.在打开的Service Editor窗口中，我们开始进行缓存切片操作，先点击左侧列表中的Caching项，右边窗口会出现Caching的一些设置，由于要进行切片缓存，所以我们需要勾选Using tiles from a cache的单选按钮，然后在Tiling Schema的下拉列表中选择Suggest，在弹出的Scale Levels对话框中随意输入一个级别，默认亦可，因为后面会自定义切图比例尺，此时设置的比例尺并不会作为最后真正切图的比例尺，然后单击OK按钮。4.单击Caching选项下面的Advanced Setting命令，选中默认的比例尺，然后单击右边的Delete按钮，删除所有的默认比例尺。5.默认比例尺删除完毕后，下面开始自定义比例尺，我们在显示比例尺列表上方的文本框中输入切图比例尺（比例尺的分母，如1：50000，直接输入50000即可），然后单击Add按钮<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaofengfengxiao/article/details/105984446">如何输出ArcGIS Server瓦片格式并发布地图服务</a> 通过91卫图助手下载谷歌卫星影像,直接进行ArcGIS Server影像切片的发布。<br>【9】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1194230">Arcgis格式的切片发布</a> 在arcmap的file菜单，打开下拉的share as，可直接将打开的数据，发布到arcgis server中。</div>
+<h2 id="1-加载数据"><a href="#1-加载数据" class="headerlink" title="1.加载数据"></a>1.加载数据</h2><p>使用ArcMap打开我们要发布的数据，打开影像数据。</p>
+<h2 id="2-共享服务"><a href="#2-共享服务" class="headerlink" title="2.共享服务"></a>2.共享服务</h2><p>点击文件-&gt;共享于-&gt;服务打开共享为服务面板，点击发布服务，创建服务目录和存储位置。这里我放到了 F:\arcgisserver\directories\arcgiscache 文件夹中。</p>
+<h2 id="3-选择切片方案"><a href="#3-选择切片方案" class="headerlink" title="3.选择切片方案"></a>3.选择切片方案</h2><p>进入服务编辑页面，点击缓存，在这里我使用软件建议切片方案。或者使用导入切片文件，这个我尝试了，发现无法选择切片，结果就只能是自己手动创建比例尺了。点击高级设置，可以手动创建切片方案，还可以查看切片缓存大小。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_server_6.jpg" lay-src="/posts/ec673edd/arcgis_server_6.jpg" class="" title="ArcGIS Server">
+
+<h2 id="4-设置存储格式"><a href="#4-设置存储格式" class="headerlink" title="4.设置存储格式"></a>4.设置存储格式</h2><p>点击高级设置，将图片类型设置为PNG，将存储格式选择为Exploded,切片高度选择为256*256，还可以进行比例尺的配置</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_server_1.png" lay-src="/posts/ec673edd/arcgis_server_1.png" class="" title="ArcGIS Server">
+
+<h2 id="5-点击发布，发布成功"><a href="#5-点击发布，发布成功" class="headerlink" title="5.点击发布，发布成功"></a>5.点击发布，发布成功</h2><img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_server_4.jpg" lay-src="/posts/ec673edd/arcgis_server_4.jpg" class="" title="ArcGIS Server">
+
+<p>在目录窗格，选中服务，可以查看服务状态。右键服务名称，然后点击查看服务状态，可以打开服务状态查看。（这一点其实也是比ArcPro好的地方，因为ArcPro无法查看整个的缓存进度。）</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_server_5.jpg" lay-src="/posts/ec673edd/arcgis_server_5.jpg" class="" title="ArcGIS Server">
+
+<h2 id="6-查看缓存"><a href="#6-查看缓存" class="headerlink" title="6.查看缓存"></a>6.查看缓存</h2><p>进入到缓存文件夹，进入ArcGIS Server缓存文件夹(在安装ArcGIS Server的时候设置的缓存目录。)</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/local-cache-directories-on-the-server.htm">为本地缓存生成配置目录</a><br>【2】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/accessing-map-and-image-cache-properties-in-manager.htm">在 ArcGIS Server Manager 中编辑服务缓存属性</a> 可打开服务器缓存目录以检查缓存切片和切片方案文件 conf.xml。 另一个文件 conf.cdi 包含服务的默认范围信息，在 ArcMap 中以栅格数据集形式查看缓存时需要使用它。 名为 status.gdb 的地理数据库包含 ArcGIS 在其缓存状态报告中显示的信息。</div>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1) 图层的数据源未注册到服务器</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_server_2.jpg" lay-src="/posts/ec673edd/arcgis_server_2.jpg" class="" title="ArcGIS Server">
+
+<p>【解决方案】<br>将鼠标悬停在分析器消息上。 单击出现的选项按钮 选项，然后单击将数据源注册到服务器。 在添加数据存储对话框上，完成所需信息，然后单击创建。 有关详细信息，请参阅管理注册的数据存储。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_server_2.jpg" lay-src="/posts/ec673edd/arcgis_server_2.jpg" class="" title="ArcGIS Server">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/sharing/analyzer-warning-messages/24011-data-source-is-not-registered-with-the-server-and-data-will-be-copied-to-the-server.htm">24011：数据源未注册到服务器，则此数据将被复制到服务器</a><br>【2】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/sharing/overview/manage-registered-data-stores.htm">管理注册的数据存储</a></div>
+<h1 id="3-ArcGIS-Pro切片"><a href="#3-ArcGIS-Pro切片" class="headerlink" title="3.ArcGIS Pro切片"></a>3.ArcGIS Pro切片</h1><p>经过尝试，终于算是找到了使用 ArcGIS Pro 进行切片的方法，我这里用了一个 杭州的 7 到 20 级的切片进行了测试。</p>
+<ul>
+<li><p>1.数据处理<br>将水经注下载的切片进行合并，然后进行掩膜提取，这部分内容在其他地方写过了，只要找到相应的工具，就可以操作了。</p>
+</li>
+<li><p>2.投影变换<br>使用 “数据管理” -&gt; “投影变换” -&gt; “投影栅格”，将 4326 的影像数据，投影为 4490 的经纬度投影。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_14.png" lay-src="/posts/ec673edd/arcgis_pro_14.png" class="" title="ArcGIS切片">
+</li>
+<li><p>3.生成切片方案<br>使用 “数据管理” -&gt; “切片缓存” -&gt; “生成切片缓存切片方案”，选择15级，选中向元大小，高级里面的 256 x 256,切片格式选择 MIXED 压缩，存储格式选择 “压缩”，生成切片缓存方案 </p>
+</li>
+<li><p>4.修改切片方案<br>将生成的切片方案 xml 进行修改,</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">CacheInfo</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns:xs</span>=<span class="string">"http://www.w3.org/2001/XMLSchema"</span> <span class="attr">xmlns:typens</span>=<span class="string">"http://www.esri.com/schemas/ArcGIS/3.0.0"</span> <span class="attr">xsi:type</span>=<span class="string">"typens:CacheInfo"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">TileCacheInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:TileCacheInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">SpatialReference</span> <span class="attr">xsi:type</span>=<span class="string">"typens:GeographicCoordinateSystem"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">WKT</span>&gt;</span>GEOGCS["GCS_China_Geodetic_Coordinate_System_2000",DATUM["D_China_2000",SPHEROID["CGCS2000",6378137.0,298.257222101]],PRIMEM["Greenwich",0.0],UNIT["Degree",0.0174532925199433],AUTHORITY["EPSG",4490]]<span class="tag">&lt;/<span class="name">WKT</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">XOrigin</span>&gt;</span>-400<span class="tag">&lt;/<span class="name">XOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">YOrigin</span>&gt;</span>-400<span class="tag">&lt;/<span class="name">YOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">XYScale</span>&gt;</span>11258999068426.24<span class="tag">&lt;/<span class="name">XYScale</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ZOrigin</span>&gt;</span>-100000<span class="tag">&lt;/<span class="name">ZOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ZScale</span>&gt;</span>10000<span class="tag">&lt;/<span class="name">ZScale</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">MOrigin</span>&gt;</span>-100000<span class="tag">&lt;/<span class="name">MOrigin</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">MScale</span>&gt;</span>10000<span class="tag">&lt;/<span class="name">MScale</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">XYTolerance</span>&gt;</span>8.9831528411952133e-09<span class="tag">&lt;/<span class="name">XYTolerance</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">ZTolerance</span>&gt;</span>0.001<span class="tag">&lt;/<span class="name">ZTolerance</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">MTolerance</span>&gt;</span>0.001<span class="tag">&lt;/<span class="name">MTolerance</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">HighPrecision</span>&gt;</span>true<span class="tag">&lt;/<span class="name">HighPrecision</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LeftLongitude</span>&gt;</span>-180<span class="tag">&lt;/<span class="name">LeftLongitude</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">WKID</span>&gt;</span>4490<span class="tag">&lt;/<span class="name">WKID</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LatestWKID</span>&gt;</span>4490<span class="tag">&lt;/<span class="name">LatestWKID</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">SpatialReference</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TileOrigin</span> <span class="attr">xsi:type</span>=<span class="string">"typens:PointN"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">X</span>&gt;</span>-180<span class="tag">&lt;/<span class="name">X</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">Y</span>&gt;</span>90<span class="tag">&lt;/<span class="name">Y</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">TileOrigin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TileCols</span>&gt;</span>256<span class="tag">&lt;/<span class="name">TileCols</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">TileRows</span>&gt;</span>256<span class="tag">&lt;/<span class="name">TileRows</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">DPI</span>&gt;</span>96<span class="tag">&lt;/<span class="name">DPI</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LODInfos</span> <span class="attr">xsi:type</span>=<span class="string">"typens:ArrayOfLODInfo"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>7<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>4617149.7423495166<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.01098632777<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>8<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>2308574.8711747583<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.0054931638850000001<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>9<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>1154287.4357975107<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.0027465819429999998<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>10<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>577143.7176886237<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.0013732909709999999<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>11<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>288571.85905444348<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.00068664548599999995<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>12<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>144285.92952722174<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.00034332274299999998<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>13<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>72142.964553479251<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>0.00017166137099999999<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>14<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>36071.482486871253<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>8.5830686000000007e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>15<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>18035.741243435627<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>4.2915343000000003e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>16<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>9017.870411586191<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>2.1457671e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>17<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>4508.9354159247168<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>1.0728836e-005<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>18<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>2254.4677079623584<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>5.3644179999999999e-006<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>19<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>1127.2338539811792<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>2.682209e-006<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">LODInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:LODInfo"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">LevelID</span>&gt;</span>20<span class="tag">&lt;/<span class="name">LevelID</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Scale</span>&gt;</span>563.61671685896795<span class="tag">&lt;/<span class="name">Scale</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">Resolution</span>&gt;</span>1.3411040000000001e-006<span class="tag">&lt;/<span class="name">Resolution</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">LODInfo</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">LODInfos</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PreciseDPI</span>&gt;</span>96<span class="tag">&lt;/<span class="name">PreciseDPI</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">TileCacheInfo</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">TileImageInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:TileImageInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CacheTileFormat</span>&gt;</span>MIXED<span class="tag">&lt;/<span class="name">CacheTileFormat</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CompressionQuality</span>&gt;</span>75<span class="tag">&lt;/<span class="name">CompressionQuality</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Antialiasing</span>&gt;</span>false<span class="tag">&lt;/<span class="name">Antialiasing</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">BandCount</span>&gt;</span>1<span class="tag">&lt;/<span class="name">BandCount</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">LERCError</span>&gt;</span>0<span class="tag">&lt;/<span class="name">LERCError</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">TileImageInfo</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">CacheStorageInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:CacheStorageInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">StorageFormat</span>&gt;</span>esriMapCacheStorageModeCompact<span class="tag">&lt;/<span class="name">StorageFormat</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PacketSize</span>&gt;</span>128<span class="tag">&lt;/<span class="name">PacketSize</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">CacheStorageInfo</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CacheInfo</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li><p>3.执行切片<br>使用 “数据管理” -&gt; “切片缓存” -&gt; ”管理切片缓存“,输入缓存位置、缓存名称、数据源、导入切片方案，选择 “环境” 选项，将 “并行因子” 设置为 0,然后点击运行之后，就可以进行切片了。</p>
+</li>
+</ul>
+<p>总结：<br>(1) 在进行切片的时候，没有显示进度条的地方，虽然显示了已经是100%，但是没有显示已经切片完成了，那就是还没有切片完成，</p>
+<p>(2) 生成的默认的切片方案中的存储格式为 esriMapCacheStorageModeCompactV2，索引文件 .bundlx 合并到了 .bundle 文件中了 ，需要修改为 esriMapCacheStorageModeCompact 才能生成 .bundle 和 .bundlx 文件。这个地方我卡了很久了，测试了很久了，还是没有处理好。</p>
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/install/windows/connect-to-arcgis-server-from-arcgis-desktop.htm">从 ArcGIS Pro 连接到 ArcGIS Server</a> 在使用 ArcGIS Pro 时，您可以直接连接到 ArcGIS Server 站点。 这样您就能够使用其中的内容；且如果您有相应的凭据，则可发布服务和执行各种管理任务。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36250702/article/details/127763115">ArcGIS Pro发布影像切片的方法</a> 大多数用户习惯于使用ArcMap在客户端生成切片，然后再发布的过程。此方法很占时间。今天介绍一种tpk（tile package）离线包发布切片的方式。经过两个步骤：1.生成切片缓存方案。2.管理切片缓存，生成完毕后会在指定目录下输出各级的切片方案。还可以 输出切片缓存，生成 tpk 切片包。<br>【3】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/sharing/overview/create-an-offline-scene.htm">教程：创建离线场景</a> 离线数据通常需要进行预处理。 此工作流将介绍如何创建切片包作为高程源，以便在创建移动场景包地理处理工具中使用。 但是，它也可以用于根据航空影像创建切片包。 支持将引用栅格数据集的航空图像作为创建移动场景包工具的输入。选项 1：在 WebMercatorAuxiliarySphere 中为地面高程源创建切片包。选项 2：在 WGS84 中为地面高程源创建切片包。选项 3：共享 Web 场景或 Web 图层。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44616652/article/details/89710152">ArcGIS 发布服务的那些事儿——（2）切片服务（A篇）</a> 这篇文章讲了使用 ArcGIS Server进行切片和使用ArcGIS Pro进行切片。对于涉及较大地理范围或较大地图比例的缓存，此工具可能会需要较长的运行时间。如果取消此工具，将停止切片创建，但不删除现有切片。这意味着，如果您的时间不足，可以先取消工具，随后再通过将更新模式参数设置为重新创建空切片（Python 中为 update_mode=“RECREATE_EMPTY_TILES”），来在同一缓存上重新运行该工具。其中update_mode选择RECREATE_EMPTY_TILES，则可开始创建切片，运行完该工具后，会有一个jobid，在Catalog中找到相应服务，右键&gt;查看切片状态，切换到Job Status选项，即可看到切片的状态。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39520013/article/details/111777575">arcgis切片紧凑型_ArcGIS知识集：[4]ArcGIS切片规划</a><br>【6】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-history.htm">地理处理历史记录</a> 请在分析功能区的地理处理组中，单击历史记录按钮 </div>
+<h2 id="1-生成切片缓存切片方案"><a href="#1-生成切片缓存切片方案" class="headerlink" title="1.生成切片缓存切片方案"></a>1.生成切片缓存切片方案</h2><p>(1) 打开菜单栏Analysis-&gt;Tools -&gt; 右侧打开 Geoprocessing。</p>
+<p>(2) 选择 Data Management Tools (数据管理) -&gt; Tile Cache -&gt; Generate Tile Cache Tilling Scheme，打开方案创建工具。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_2.png" lay-src="/posts/ec673edd/arcgis_2.png" class="" title="ArcGISPro">
+
+<p>(3) 针对需要的参数进行填入，可以选择要生成的比例级别。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_13.png" lay-src="/posts/ec673edd/arcgis_pro_13.png" class="" title="ArcGISPro">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/data-management/an-overview-of-the-tile-cache-toolset.htm">切片缓存工具集概述</a> 1.导出切片缓存:将切片从现有切片缓存导出到新切片缓存或切片包中。2.生成切片缓存切片方案:生成用于定义比例级别、切片尺寸以及其他切片缓存属性的 XML 切片方案文件。3.导入切片缓存:将切片从某个切片缓存导入另一个切片缓存。4.管理切片缓存:在现有切片缓存中创建和更新切片。<br>【2】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/data-management/generate-tile-cache-tiling-scheme.htm">生成切片缓存切片方案 (数据管理)</a> 可以通过对话框的形式和arcpy的形式进行数据切片</div>
+<h2 id="2-创建切片缓存"><a href="#2-创建切片缓存" class="headerlink" title="2.创建切片缓存"></a>2.创建切片缓存</h2><p>(1) 打开菜单栏Analysis-&gt;Tools -&gt; 右侧打开 Geoprocessing。</p>
+<p>(2) Data Management Tools -&gt; Tile Cache -&gt; Manage Tile Cache，打开缓存管理工具。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_6.png" lay-src="/posts/ec673edd/arcgis_6.png" class="" title="ArcGISPro">
+
+<p>(3) 选择缓存存储位置，缓存名称、Manage Mode 、Input Data Source，选择 Input Tiling Scheme 为 import scheme,这样就可以选择自己刚刚创建的切片方案了。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_7.png" lay-src="/posts/ec673edd/arcgis_7.png" class="" title="ArcGISPro">
+
+<p>优化参数之后，就可以执行切片了。</p>
+<p>(4) 创建完成<br>经过43小时的切片，最后生成了 159G 的切片数据，从7级到20级。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_10.jpg" lay-src="/posts/ec673edd/arcgis_pro_10.jpg" class="" title="切片">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/data-management/manage-tile-cache.htm">管理切片缓存 (数据管理)</a></div>
+<p>现有方案文件 (.xml) 的路径或从现有影像服务或地图服务中导入的切片方案。</p>
+<h2 id="3-创建地图服务器缓存-服务器"><a href="#3-创建地图服务器缓存-服务器" class="headerlink" title="3.创建地图服务器缓存 (服务器)"></a>3.创建地图服务器缓存 (服务器)</h2><p>(1) 打开菜单栏Analysis-&gt;Tools -&gt; 右侧打开 Geoprocessing</p>
+<p>(2) Server Tools -&gt; Caching -&gt; Create Map Server Cache 工具，这个工具是使用的服务进行切片，也不是使用的tiff格式的数据进行的切片。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_3.jpg" lay-src="/posts/ec673edd/arcgis_3.jpg" class="" title="ArcGISPro">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/server/generate-map-server-cache-tiling-scheme.htm">生成地图服务器缓存切片方案 (服务器)</a><br>【2】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/server/create-map-server-cache.htm">创建地图服务器缓存 (服务器)</a> 使用情况:1.此工具只适用于 ArcGIS Server 地图或影像服务。2.此工具只适用于 ArcGIS Enterprise 中的地图和影像图层以及 ArcGIS Server 中的地图和影像服务。3.栅格数据最适合使用 JPEG 或 MIXED 图像格式进行发布。 使用 JPEG 或 MIXED 格式的矢量地图时，应使用高压缩质量值（如 90），从而减轻线和文本的模糊程度。 也可使用 PNG 格式发布矢量数据。4.缓存一旦生成，就无法对缓存图像格式进行更改。 必须先删除缓存，然后才能将其切换到其他格式。</div>
+<h2 id="4-创建地图切片包-数据管理"><a href="#4-创建地图切片包-数据管理" class="headerlink" title="4.创建地图切片包(数据管理)"></a>4.创建地图切片包(数据管理)</h2><p>这个工具创建的是 .tpk 或者是 .tpkx 格式的文件。</p>
+<p>(1) 打开菜单栏Analysis-&gt;Tools -&gt; 右侧打开 Geoprocessing</p>
+<p>(2) Data Management Tools -&gt; Package -&gt; Create Map Tile Package，创建地图切片包。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_4.jpg" lay-src="/posts/ec673edd/arcgis_4.jpg" class="" title="ArcGISPro">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/data-management/create-map-tile-package.htm">创建地图切片包</a><br>【2】.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/453978">.tpk格式文件简介</a><br>【3】.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/665517471021">ArcGIS Pro 自定义矢量切片比例尺、级别</a></div>
+<h2 id="5-发布为Web图层"><a href="#5-发布为Web图层" class="headerlink" title="5.发布为Web图层"></a>5.发布为Web图层</h2><p>右键单击需要发布的图层，选择分享，选择发布为 WebLayer 图层，因为我这里是破解版本的，没有登录，于是这个 “Share As Web Layer” 是灰色的，无法选择。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_5.jpg" lay-src="/posts/ec673edd/arcgis_5.jpg" class="" title="ArcGISPro">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/service-publishing-in-arcgis-pro.htm">在 ArcGIS Pro 中发布服务</a> 在 ArcGIS Pro 中存在两种基础共享模型。 第一个模型将 Web 内容共享到活动门户，该门户可以是 ArcGIS Enterprise 门户或 ArcGIS Online。 第二个模型直接将服务发布到独立 ArcGIS Server 站点（不与门户联合的站点）。<br>【2】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/sharing/overview/publish-an-image-service.htm">发布影像服务</a></div>
+<h2 id="6-紧凑型-compact-切片"><a href="#6-紧凑型-compact-切片" class="headerlink" title="6.紧凑型 compact 切片"></a>6.紧凑型 compact 切片</h2><p>我发现就是切片切出来的不是 .bundle 和 .bundlx 文件,而是 .bundle 和 .bundle.done 文件。更加让我心寒的是，这个 .bundle.done 文件的大小，竟然是 0 字节，所以我这几天的切片都是白切了，根本就没有用。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_7.jpg" lay-src="/posts/ec673edd/arcgis_pro_7.jpg" class="" title="ArcGIS Pro">
+
+<p>【解决方案】<br>根据参考文章，在 10.3 及其以后，出现了 compactv2 版本，这个版本的 .bundlx 和 .bundle 文件进行了合并。</p>
+<p>(1) 在紧凑型缓存的初始版本中（称为 compact），该格式也包含扩展名为 .bundlx 的单独索引文件。 当缓存托管在网络共享或云存储中时，包含的单独 .bundlx 文件会对性能产生负面影响，因此 10.3 版本中引入了第二个版本的紧凑型缓存 (compactv2)。 在目前创建缓存时默认使用的此版本中，.bundlx 文件包含在 .bundle 文件中。 此举可大幅减少客户端需要对缓存进行的调用次数，从而提升从网络共享或云存储中使用和提供缓存时的性能。</p>
+<p>(2) 创建缓存时，可能会在缓存文件夹中看到临时 .lock 文件和 .done 文件。 .lock 文件使得 ArcGIS Server 能够追踪当前所创建的包；存在 .lock 文件并不代表客户端无法访问包。 同样，.done 文件使得 ArcGIS Server 能够追踪已经创建的包。 缓存工作完成后，所有的 .lock 和 .done 文件都会被删除。</p>
+<p>(3) 如果要将运行 10.3 或更高版本的站点所生成的紧凑型缓存（采用 compactv2 格式）传输到运行 10.0 至 10.2.2 版本的站点，请使用 ArcGIS Pro 中的导出地图服务器缓存工具。 此工具在早期版本中生成紧凑型缓存（带有单独的 .bundlx 文件）。 然后，您可以将导出的缓存发送到收件人服务器站点。 您还可以使用此工具导出松散缓存，以供 10.0 及更早版本使用。</p>
+<p>（4）经过长时间的尝试，竟然找到了缓存切片存储为 .bundlx 文件的解决方法，直接在切片的时候，就直接生成了.bundlx文件。在创建切片的时候，找到创建的切片方案文件，将其中的 esriMapCacheStorageModeCompactV2, 改为 esriMapCacheStorageModeCompact。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_11.jpg" lay-src="/posts/ec673edd/arcgis_pro_11.jpg" class="" title="ArcGIS Pro">
+
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--修改前--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">CacheStorageInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:CacheStorageInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">StorageFormat</span>&gt;</span>esriMapCacheStorageModeCompactV2<span class="tag">&lt;/<span class="name">StorageFormat</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PacketSize</span>&gt;</span>128<span class="tag">&lt;/<span class="name">PacketSize</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CacheStorageInfo</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--修改后--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">CacheStorageInfo</span> <span class="attr">xsi:type</span>=<span class="string">"typens:CacheStorageInfo"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">StorageFormat</span>&gt;</span>esriMapCacheStorageModeCompact<span class="tag">&lt;/<span class="name">StorageFormat</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">PacketSize</span>&gt;</span>128<span class="tag">&lt;/<span class="name">PacketSize</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CacheStorageInfo</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样就可以直接生成带 .bundlx 文件的切片格式了。但是实际上在使用导出切片缓存工具的时候，还是会出现文件夹为空的情况，如果你存储的时候选择了 esriMapCacheStorageModeCompact 格式，那么导出的时候，就只能选择导出为 “紧凑型”，这样就可以在导出文件夹中查看到数据，并且格式还是原先的格式 “紧凑型“ 或者是 “紧凑型v2” ，导出为其他的类型，都是没有数据的。如果你存储为 esriMapCacheStorageModeCompactV2 版本，那么导出的切片类型中就只能选择 “紧凑型V2” ，结果文件夹中才会有数据,就算你改了存储格式，结果还是不会一样的。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_12.jpg" lay-src="/posts/ec673edd/arcgis_pro_12.jpg" class="" title="ArcGIS Pro">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/inside-the-compact-cache-storage-format.htm">紧凑缓存</a> ArcGIS Server的说明文档。这里有 .done文件和 .bundlx 文件的说明。紧凑型缓存的 compactv2 版本只能用于 ArcGIS Server 10.3 及更高版本。 该格式为开放规范。<br>【2】.<a target="_blank" rel="noopener" href="https://enterprise.arcgis.com/zh-cn/server/latest/publish-services/windows/copying-caches.htm">复制缓存</a> 需要借助工具进行低版本的缓存转换。<br>【3】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/3.0/tool-reference/server/export-map-server-cache.htm">导出地图服务器缓存</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wjzt7322/article/details/103505319">无法浏览ArcMap10.6发布的缓存切片服务的解决</a> 在切片数据中，找到的切片方案文件conf.xml,紧凑型文件的存储格式为esriMapCacheStorageModeCompact，而通过ARCMap10.6发布的是esriMapCacheStorageModeCompactV2类型，导致无法读取原始文件。缓存地图服务的缓存路径下，找到对应服务的切片方案文件,将esriMapCacheStorageModeCompactV2修改为esriMapCacheStorageModeCompact</div>
+<h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h2><p>(1) No datum transformations are available between input data source spatial reference and tiling scheme spatial reference<br>这个问题就是说选择的数据格式，不适合选择的切片方案。</p>
+<p>(2) 生成的切片文件夹为空<br>这个问题就是使用切片的方案进行切片的时候，总是生成空的文件夹，里面没有什么东西。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_1.jpg" lay-src="/posts/ec673edd/arcgis_pro_1.jpg" class="" title="切片">
+
+<p>这个原因其实也很简单，就是其实在 ArcGIS Pro 中，虽然显示的是完成了，但是其实还是在不断的进行处理中，这个让我本来就非常的疑惑的，后来通过不断的查看才能弄清楚了这个东西，把鼠标放到文件夹上，文件夹的大小还是在不断的增长的，我确信还是没有运行完整个的切片，毕竟数据量还是挺大的。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_4.jpg" lay-src="/posts/ec673edd/arcgis_pro_4.jpg" class="" title="切片">
+
+<p>还有就是虽然显示切片成功了，但是无法生成切片的内容，加载到地图中的切片，是一片空白的，文件夹也只有两个，只有08级和20级的文件夹，其他的文件夹都没有了。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_2.jpg" lay-src="/posts/ec673edd/arcgis_pro_2.jpg" class="" title="切片">
+
+<p>【解决方案】<br>经过我不断的对并行因子进行调整，从 “空”，到 “6” 到 “100%”，到 “0” ，只有当并行因子为 “0” 的时候，才会出现的没有很快结束，程序在不断运行，不断进行切片的情况。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_3.jpg" lay-src="/posts/ec673edd/arcgis_pro_3.jpg" class="" title="切片">
+
+<p>但是让我无法理解的就是，这个并行因子不应该是程序处理的线程数吗，为什么会出现导致程序最终结果运行不成功的问题呢？这个真是让人非常的疑惑。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012248603/article/details/75006799">关于ArcGis发布切片服务切片失败，切片率为0</a> 1.转坐标系为web墨卡托包括数据框坐标。2.修改\directories\arcgiscache文件夹的权限信息，添加ArcGis登陆用户完全控制。3.发布不切片的服务。4.修改服务缓存部分，定义切片级别。5.先不选择按需创建切片，保存并重新启动后，查看切pain是否成功。6.不成功，点击按需创建切片，保存并重新启动。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/GEO_WSS/article/details/79104854">ArcGIS Pro 2.1并行处理因子（环境设置）</a></div>
+<p>(3)  一个或多个比例超出了最小和最大缓存比例范围<br>这个问题就是说配置的切片方案，有一部分超出了范围。这个问题也是让我非常的烦，就是明明我的切片方案是对的，但是就是无法进行，或者20级的切片文件夹总是空的。</p>
+<p>【解决方法】<br>请更改管理切片缓存工具中的最小缓存比例和最大缓存比例参数值以包含输入中提供的所有比例。～～这是官方给的解决方案，但是我查看了原始的数据，之所以出现这样的结果，就是因为我原始数据大小是500G，但是经过栅格重投影之后，数据量急剧的减少了，只有180G了，自然在大的比例尺下，就无法生成切片了。～～ </p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_8.jpg" lay-src="/posts/ec673edd/err_8.jpg" class="" title="切片">
+
+<p>这个主要就是调整上面的最大和最小缓存比例就可以了。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_9.jpg" lay-src="/posts/ec673edd/err_9.jpg" class="" title="切片">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/2.9/tool-reference/tool-errors-and-warnings/001001-010000/tool-errors-and-warnings-01501-01525-001521.htm">001521: 一个或多个比例位于“最小缓存比例”和“最大缓存比例”范围之外</a> 请更改管理切片缓存工具中的最小缓存比例和最大缓存比例参数值以包含输入中提供的所有比例。<br>【2】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/data/imagery/pixel-size-of-image-and-raster-data-pro-.htm">影像和栅格数据的像素大小</a></div>
+<p>(4) ERROR 001517: 无法对 影像 生成切片<br>由于以下原因，管理切片缓存工具未生成缓存:</p>
+<ul>
+<li>未在缓存目录中创建切片。</li>
+<li>出现数据访问问题。</li>
+</ul>
+<p>【解决方案】<br>1.确保您对缓存目录具有写入访问权限。 确认存储缓存目录的磁盘具有足够的可用磁盘空间。</p>
+<p>2.确保您对镶嵌数据集或地图文档的数据源具有读取权限。 如果正在通过 UNC 共享访问数据，请确保该共享仍然可用。 确认远程计算机的插头连接良好。</p>
+<p>3.如果是通过数据库访问数据，确保数据库服务正常且处于运行中。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/3.0/tool-reference/tool-errors-and-warnings/001001-010000/tool-errors-and-warnings-01501-01525-001517.htm">001517: 无法为 <value> 生成切片。</value></a></div>
+<p>(5) 001473: 为以下比例导出缓存失败：&lt;值&gt;。<br>这是一个警告，指定比例的缓存可能不存在于输入切片缓存中。但是我还是遇到了，明明就是从缓存中直接导出的，结果还是显示不存在。</p>
+<p>【解决方案】<br>导出切片缓存时，取消选中失败的比例级别。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/3.0/tool-reference/tool-errors-and-warnings/001001-010000/tool-errors-and-warnings-01451-01475-001473.htm">为以下比例导出缓存失败</a></div>
+<p>(4) 导出缓存为空<br>在我工具箱-&gt;数据管理工具-&gt;切片缓存，使用 “导出缓存工具” 进行切片格式转换的时候，结果虽然运行成功了，但是结果文件夹为空，这真是令人沮丧。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_9.jpg" lay-src="/posts/ec673edd/arcgis_pro_9.jpg" class="" title="ArcGIS Pro">
+
+<p>【尝试方案】<br>1.如果是导出切片包的时候，就会出现这个问题：Tiles may not be present at scale</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/arcgis_pro_8.jpg" lay-src="/posts/ec673edd/arcgis_pro_8.jpg" class="" title="ArcGIS Pro">
+
+<p>2.我尝试了其他的方法，修改方案名称，只能导出 “紧凑型v2” 的切片格式，不能导出 “紧凑型” 的切片格式，这样在早期的 ArcGIS Server上就无法运行了。</p>
+<p>【解决方案】<br>说是解决了导出缓存为空的问题，其实没有解决缓存为空的问题。我尝试了很多遍，总是不成功，但是我不断的尝试，不断的尝试，同样的操作，同样的参数，最后竟然有一次成功了，这就让我更加的郁闷了。我从 “紧凑型v2” 导出了 “紧凑型” 和 “松散型” 。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_11.jpg" lay-src="/posts/ec673edd/err_11.jpg" class="" title="错误">
+
+<p><strong>环境设置中的 “并行处理因子” 一定要设置为0</strong> 只有设置为 0,输出的文件夹才不会为空,这个问题我尝试了很久，算是解决了。</p>
+<img src="/images/loadimg.png" data-original="/posts/ec673edd/err_12.jpg" lay-src="/posts/ec673edd/err_12.jpg" class="" title="错误">
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://community.esri.com/t5/arcgis-enterprise-questions/cache-tiles-not-present-at-determined-scale/td-p/16424">Cache tiles not present at determined scale</a> 这里有说是使用整数进行配置。</div>
+<h1 id="3-ArcPy进行切片"><a href="#3-ArcPy进行切片" class="headerlink" title="3.ArcPy进行切片"></a>3.ArcPy进行切片</h1><p>(1) 管理切片<br>因为使用工具进行切片的时候，经过测试，并不能配置切片的 ”并行处理因子“，也就是一次只能一个进程处理切片，如果需要多几个进程进行切片，可能需要多个ArcPro进程，或者使用 工具代码进行切片。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"></span><br><span class="line"><span class="comment">## 缓存文件夹</span></span><br><span class="line">folder = <span class="string">"C:/Workspace/CacheDatasets/Manage"</span></span><br><span class="line"><span class="comment">## 缓存模式</span></span><br><span class="line">mode = <span class="string">"RECREATE_ALL_TILES"</span></span><br><span class="line"><span class="comment">## 在缓存位置中待创建的缓存数据集的名称</span></span><br><span class="line">cacheName = <span class="string">"Test"</span></span><br><span class="line"><span class="comment">## 栅格数据集、镶嵌数据集或地图文档</span></span><br><span class="line">dataSource = <span class="string">"C:/Workspace/Cache.gdb/md"</span></span><br><span class="line"><span class="comment">## 指定将使用的切片方案。</span></span><br><span class="line">method = <span class="string">"IMPORT_SCHEME"</span></span><br><span class="line">tilingScheme = <span class="string">"C:/Workspace/Schemes/Tilingscheme.xml"</span></span><br><span class="line">scales = <span class="string">"16000;8000;4000;2000;1000"</span></span><br><span class="line">areaofinterest = <span class="string">"#"</span></span><br><span class="line">maxcellsize = <span class="string">"#"</span></span><br><span class="line">mincachedscale = <span class="string">"8000"</span></span><br><span class="line">maxcachedscale = <span class="string">"2000"</span></span><br><span class="line"><span class="comment">## 定义并行处理因子</span></span><br><span class="line">arcpy.env.parallelProcessingFactor = <span class="string">"0"</span></span><br><span class="line"></span><br><span class="line">arcpy.ManageTileCache_management(</span><br><span class="line">       folder, mode, cacheName, dataSource, method, tilingScheme,</span><br><span class="line">       scales, areaofinterest, maxcellsize, mincachedscale, maxcachedscale)</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/data-management/manage-tile-cache.htm">管理切片缓存</a> 这里有简单的python代码。<br>【2】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/environment-settings/parallel-processing-factor.htm">并行处理因子（环境设置）</a> 定义并行处理因子</div>
+<p>(2) 多进程版本</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Pool</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">folder = <span class="string">r"F:/huancun"</span></span><br><span class="line">mode = <span class="string">"RECREATE_EMPTY_TILES"</span></span><br><span class="line">dataSource = <span class="string">r"F:/重投影/hangzhou.tif"</span></span><br><span class="line">method = <span class="string">"IMPORT_SCHEME"</span></span><br><span class="line">tilingScheme = <span class="string">r"F:/huancun/hangzhou.xml"</span></span><br><span class="line">scales = [<span class="string">"4617149.7423495166"</span>,<span class="string">"2308574.8711747583"</span>,<span class="string">"1154287.4357975107"</span>,<span class="string">"577143.7176886237"</span>,<span class="string">"288571.85905444348"</span>,<span class="string">"144285.92952722174"</span>,<span class="string">"72142.964553479251"</span>,</span><br><span class="line">          <span class="string">"36071.482486871253"</span>,<span class="string">"18035.741243435627"</span>,<span class="string">"9017.870411586191"</span>,<span class="string">"4508.9354159247168"</span>,<span class="string">"2254.4677079623584"</span>,<span class="string">"1127.2338539811792"</span>,<span class="string">"563.61671685896795"</span>]</span><br><span class="line">mincachedscale = <span class="string">"4617149.7423495166"</span></span><br><span class="line">maxcachedscale = <span class="string">"563.616716858968"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 定义并行处理因子</span></span><br><span class="line">arcpy.env.parallelProcessingFactor = <span class="string">"0"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 子进程要执行的代码</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run_proc</span>(<span class="params">cacheName,scale</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Run task %s (%s)...'</span> % (cacheName, os.getpid()))</span><br><span class="line">    arcpy.ManageTileCache_management(</span><br><span class="line">       folder, mode, cacheName, dataSource, method, tilingScheme,</span><br><span class="line">       scale, mincachedscale, maxcachedscale)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">'__main__'</span>:</span><br><span class="line">    scaleCount=<span class="built_in">len</span>(scales)</span><br><span class="line">    p=Pool(scaleCount)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, scaleCount):</span><br><span class="line">       cacheName= <span class="string">"HangZhou_"</span>+<span class="built_in">str</span>(i)</span><br><span class="line">       scale=scales[i]</span><br><span class="line">       p.apply_async(run_proc, args=(cacheName,scale))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">'Waiting for all subprocesses done...'</span>)</span><br><span class="line">    p.close()</span><br><span class="line">    p.join()</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017628290184064">多进程</a></div>
+<p>（2） 导出切片<br>理论上使用下面的方法就可以生成 “紧凑型” 的切片，但是结果并不如人意，主要就是因为无论怎么修改 storageFormat 存储格式，最后的结果文件中，都是原样保存了 原始的存储格式。</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="comment">## 定义并行处理因子</span></span><br><span class="line">arcpy.env.parallelProcessingFactor = <span class="string">"0"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 要导出的现有切片缓存    </span></span><br><span class="line">cacheSource = <span class="string">r"F:/huancun/hz"</span></span><br><span class="line"><span class="comment">## 要将切片缓存或切片包导出到其中的输出文件夹</span></span><br><span class="line">cacheTarget = <span class="string">r"F:/huancun"</span></span><br><span class="line"><span class="comment">## 已导出的切片缓存或切片包的名称</span></span><br><span class="line">cacheName = <span class="string">r"hzv1"</span></span><br><span class="line"><span class="comment">## 指定是将缓存导出为切片缓存还是切片包</span></span><br><span class="line">cacheType = <span class="string">"TILE_CACHE"</span></span><br><span class="line"><span class="comment">##  确定切片的存储格式</span></span><br><span class="line">storageFormat = <span class="string">"COMPACT"</span></span><br><span class="line"><span class="comment">## 比例</span></span><br><span class="line">scales = <span class="string">"4617149.7423495166"</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">arcpy.ExportTileCache_management(cacheSource, cacheTarget, cacheName,</span><br><span class="line">     cacheType, storageFormat,scales)</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/tool-reference/data-management/export-tile-cache.htm">导出切片缓存</a> ArcPro的设置<br>【2】.<a target="_blank" rel="noopener" href="https://desktop.arcgis.com/zh-cn/arcmap/latest/tools/data-management-toolbox/export-tile-cache.htm">导出切片缓存</a> ArcMap的设置</div>
+<h1 id="4-其他工具切片"><a href="#4-其他工具切片" class="headerlink" title="4.其他工具切片"></a>4.其他工具切片</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36213352/article/details/124726923">GIS数据处理-栅格切片工具</a> 1.MapTiler：把 GDAL2Tiles 工具做了个图形化界面，使用更方便。暂时只支持栅格图片；2.Google Maps Image Cutter：顾名思义，基本上来说专门为Google Maps 提供Overlay的；3.MapCruncher：主要是为微软Bing Maps提供的切图工具。<br>【2】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7119318895227306021">GeoTIFF 切片小工具，解决栅格数据可视化数据量大问题 </a> 使用的是 rastertile 工具</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/b066aaf2.html" rel="next" title="ArcGIS空间插值示例">
+                      <i class="iconfont icon-prev"></i> ArcGIS空间插值示例
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/80b2e8ad.html" rel="prev" title="ArcGIS安装与破解">
+                      ArcGIS安装与破解 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%95%E5%BD%B1%E5%8F%98%E6%8D%A2"><span class="toc-number">1.2.</span> <span class="toc-text">投影变换</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E9%87%8F"><span class="toc-number">1.3.</span> <span class="toc-text">数据量</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-ArcGIS-Map-%E5%88%87%E7%89%87"><span class="toc-number">2.</span> <span class="toc-text">1.ArcGIS Map 切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%94%9F%E6%88%90%E5%88%87%E7%89%87%E6%96%B9%E6%A1%88"><span class="toc-number">2.1.</span> <span class="toc-text">1.生成切片方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%88%87%E7%89%87"><span class="toc-number">2.2.</span> <span class="toc-text">2.创建切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%97%AE%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">3.问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-ArcGIS-Server-%E5%88%87%E7%89%87"><span class="toc-number">3.</span> <span class="toc-text">2.ArcGIS Server 切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%8A%A0%E8%BD%BD%E6%95%B0%E6%8D%AE"><span class="toc-number">3.1.</span> <span class="toc-text">1.加载数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1"><span class="toc-number">3.2.</span> <span class="toc-text">2.共享服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%80%89%E6%8B%A9%E5%88%87%E7%89%87%E6%96%B9%E6%A1%88"><span class="toc-number">3.3.</span> <span class="toc-text">3.选择切片方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E8%AE%BE%E7%BD%AE%E5%AD%98%E5%82%A8%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text">4.设置存储格式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%82%B9%E5%87%BB%E5%8F%91%E5%B8%83%EF%BC%8C%E5%8F%91%E5%B8%83%E6%88%90%E5%8A%9F"><span class="toc-number">3.5.</span> <span class="toc-text">5.点击发布，发布成功</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E6%9F%A5%E7%9C%8B%E7%BC%93%E5%AD%98"><span class="toc-number">3.6.</span> <span class="toc-text">6.查看缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">3.7.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-ArcGIS-Pro%E5%88%87%E7%89%87"><span class="toc-number">4.</span> <span class="toc-text">3.ArcGIS Pro切片</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%94%9F%E6%88%90%E5%88%87%E7%89%87%E7%BC%93%E5%AD%98%E5%88%87%E7%89%87%E6%96%B9%E6%A1%88"><span class="toc-number">4.1.</span> <span class="toc-text">1.生成切片缓存切片方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E5%88%87%E7%89%87%E7%BC%93%E5%AD%98"><span class="toc-number">4.2.</span> <span class="toc-text">2.创建切片缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%9B%E5%BB%BA%E5%9C%B0%E5%9B%BE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%93%E5%AD%98-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.3.</span> <span class="toc-text">3.创建地图服务器缓存 (服务器)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%88%9B%E5%BB%BA%E5%9C%B0%E5%9B%BE%E5%88%87%E7%89%87%E5%8C%85-%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86"><span class="toc-number">4.4.</span> <span class="toc-text">4.创建地图切片包(数据管理)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8F%91%E5%B8%83%E4%B8%BAWeb%E5%9B%BE%E5%B1%82"><span class="toc-number">4.5.</span> <span class="toc-text">5.发布为Web图层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E7%B4%A7%E5%87%91%E5%9E%8B-compact-%E5%88%87%E7%89%87"><span class="toc-number">4.6.</span> <span class="toc-text">6.紧凑型 compact 切片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">4.7.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-ArcPy%E8%BF%9B%E8%A1%8C%E5%88%87%E7%89%87"><span class="toc-number">5.</span> <span class="toc-text">3.ArcPy进行切片</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7%E5%88%87%E7%89%87"><span class="toc-number">6.</span> <span class="toc-text">4.其他工具切片</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/ec673edd.html';
+      this.page.identifier = 'posts/ec673edd.html';
+      this.page.title = 'ArcGIS影像切片';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：ArcGIS影像切片 链接地址:https://bibichuan.github.io/posts/ec673edd.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'ArcGIS影像切片',
+		url: 'https://bibichuan.github.io/posts/ec673edd.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'ArcGIS影像切片',
+			isTipVisibility: true,
+			tip: 'ArcGIS影像切片',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

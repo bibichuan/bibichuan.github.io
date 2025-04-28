@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arcpy开发基础知识点总结</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Arcpy开发基础知识点总结</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Arcgis/">Arcgis</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/Gis/">Gis</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-08-19 01:07:32
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:39
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为一个GIS开放人员，不会ArcGIS，真的不是一件好事。还记得谁说过，能学会ArcGIS中20%的知识，你就是一个大牛了。可见ArcGIS包含的内容之丰富，工具之广泛，原理之深入，是其他GIS软件都没法比拟的，也正是如此，ArcGIS才能常年占据地理信息系统市场的半壁江山，甚至可以说是80%的市场。因为项目需要，也是为了拓展自己的知识面，现在开始学习用Arcpy。“ArcPy 是一个 Python 站点包，可提供以实用高效的方式通过 Python 执行地理数据分析、数据转换、数据管理和地图自动化。该包提供了丰富纯正的 Python 体验，具有代码完成功能（输入关键字和点即可获得该关键字所支持的属性和方法的弹出列表；从中选择一个属性或方法即可将其插入），并针对每个函数、模块和类提供了参考文档。使用 ArcPy 的另一个主要原因是，Python 是一种通用的编程语言。它是一种支持动态输入的解释型语言，适用于交互操作以及一次性程序（即脚本）快速原型制作，同时具有编写大型应用程序的强大功能。用 ArcPy 编写的 ArcGIS 应用程序的优势在于，可以使用由多个不同领域的 GIS 专业人员和程序员组成的众多 Python 小群体开发的附加模块。”</p>
+<h3 id="ArcPy3-0"><a href="#ArcPy3-0" class="headerlink" title="ArcPy3.0"></a>ArcPy3.0</h3><p>启动方式(显示的所有路径假定按计算机（所有用户）安装 ArcGIS Pro。 如果已为当前用户安装 ArcGIS Pro，请将 %LOCALAPPDATA% 替换为 %PROGRAMFILES%。):<br>(1) 要从命令提示符运行 Python 脚本（可在 .py 文件后添加参数），请键入以下内容：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"C:\Program Files\ArcGIS\Pro\bin\Python\Scripts\propy"</span> myscript.py</span><br></pre></td></tr></tbody></table></figure>
+
+<p>或者是将 “C:\Program Files\ArcGIS\Pro\bin\Python\Scripts” 加入Path环境变量，这样就可以直接从命令行中，使用 propy 命令来启用 ArcPy 了。</p>
+<p>(2) 从批处理文件启动<br>要从 .bat 文件运行 Python 脚本，请在 propy 上使用 call：</p>
+<figure class="highlight bat"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> Run my Python script</span><br><span class="line"><span class="keyword">call</span> "<span class="variable">%PROGRAMFILES%</span>\ArcGIS\Pro\bin\Python\Scripts\propy" myscript.py</span><br><span class="line">@<span class="built_in">echo</span> Finished</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 作为计划任务启动<br>如果作为计划任务运行 Python 脚本，程序或脚本应为 C:\PROGRA~1\ArcGIS\Pro\bin\Python\Scripts\propy，并且参数应包含 Python 脚本的完整路径。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/arcpy/get-started/installing-python-for-arcgis-pro.htm">ArcGIS Pro 中的 Python</a> ArcPy的官方教程<br>2.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/390221">如何使用ArcPy</a></div>
+<h3 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h3><p>ArcGIS Pro 提供大量 Python 软件包的访问权限。 为了支持 Python 包，ArcGIS Pro 包含一个包管理系统，名为 conda。 ArcGIS Pro 将 conda 与包管理器页面相集成。 也可以从命令提示符访问 conda。启动 ArcGIS Pro Python 3 conda 环境：</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"%PROGRAMFILES%\ArcGIS\Pro\bin\Python\Scripts\proenv"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>可从命令提示符使用 conda 命令访问 conda 功能。 活动 Python 环境通过在当前目录之前的提示符中以括号括起指示。 使用 Python 命令提示符快捷方式可打开使用 ArcGIS Pro 的活动 conda 环境初始化的命令提示符窗口。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/arcpy/get-started/what-is-conda.htm">包管理器</a></div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(1) The current user does not have write permissions to the target environment</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_25262697/article/details/127665206">conda更新出现The current user does not have write permissions to the target environment的解决办法</a></div>
+<h2 id="1-Arcpy调用地理处理工具"><a href="#1-Arcpy调用地理处理工具" class="headerlink" title="1.Arcpy调用地理处理工具"></a>1.Arcpy调用地理处理工具</h2><p>脚本中所有可用的地理处理工具都被定义为arcpy对象的动态函数（dynamic function）。脚本中执行的每一个工具都必须遵循特定的语法规则，首先需要定义工具名称，之后紧跟一个下划线（_）和工具箱的别名。在我们的示例中，Buffer工具位于Analysis Tools工具箱中，该工具箱的别名为analysis。使用别名是因为可能有多个工具的名称相同。使用&lt;toolname&gt;_&lt;toolbox_alias&gt;的语句规则实现对每个工具的唯一引用。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/932e83db7f59">ArcGIS Python编程案例(2)-使用ArcPy编写脚本</a></div>
+<h2 id="2-自动生成线段编号"><a href="#2-自动生成线段编号" class="headerlink" title="2.自动生成线段编号"></a>2.自动生成线段编号</h2><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"></span><br><span class="line">shp = <span class="string">r'D:\zlc\hdxs\geodata\pipeline_20190821_0859.shp'</span></span><br><span class="line">numberList=[]</span><br><span class="line"><span class="comment">## 获取全部的线段编号</span></span><br><span class="line"><span class="keyword">with</span> arcpy.da.SearchCursor(shp,[<span class="string">"Number"</span>]) <span class="keyword">as</span> cursor:</span><br><span class="line">    <span class="keyword">for</span> uniquerow <span class="keyword">in</span> cursor:</span><br><span class="line">        <span class="keyword">if</span> uniquerow[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> numberList:</span><br><span class="line">            numberList.append(uniquerow[<span class="number">0</span>])</span><br><span class="line"><span class="comment">## 遍历每个线段编号，然后为子线段进行编号</span></span><br><span class="line"><span class="keyword">for</span> number <span class="keyword">in</span> numberList:</span><br><span class="line">    query=<span class="string">'"Number"='</span>+<span class="built_in">str</span>(number)</span><br><span class="line">    count=<span class="number">0</span></span><br><span class="line">    cursor_line = arcpy.UpdateCursor(shp, query, <span class="string">""</span>, <span class="string">"SubNumber"</span>, <span class="string">"Number"</span>)</span><br><span class="line">    <span class="keyword">for</span> row_line <span class="keyword">in</span> cursor_line:</span><br><span class="line">        count+=<span class="number">1</span></span><br><span class="line">        row_line.setValue(<span class="string">"SubNumber"</span>, count)</span><br><span class="line">        cursor_line.updateRow(row_line)</span><br><span class="line">    <span class="keyword">del</span> row_line</span><br><span class="line">    <span class="keyword">del</span> cursor_line</span><br><span class="line"><span class="built_in">print</span> <span class="string">'done'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43944387/article/details/90235954">利用arcpy实现自动编号</a> (主要就是参考的这里的代码)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/OldMonkeyYu_s/article/details/94615047">【Arcpy】shp的读取与创建</a><br>3.<a target="_blank" rel="noopener" href="https://desktop.arcgis.com/zh-cn/arcmap/10.3/analyze/arcpy-data-access/updatecursor-class.htm">da.UpdateCursor</a><br>4.<a target="_blank" rel="noopener" href="https://desktop.arcgis.com/zh-cn/arcmap/10.3/analyze/arcpy-functions/updatecursor.htm">UpdateCursor</a> (da.UpdateCursor和UpdateCursor是不一样的)<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/huludan/article/details/50754252">python自动给数字前面补0的方法</a></div>
+<h2 id="3-字段自动编号"><a href="#3-字段自动编号" class="headerlink" title="3.字段自动编号"></a>3.字段自动编号</h2><p>在字段计算器中，选择Python脚本，选择“Show codeblock 显示代码块”，代码块的内容如下：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rec=<span class="number">0</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">autoIncrement</span>():</span><br><span class="line">    <span class="keyword">global</span> rec</span><br><span class="line">    pStart=<span class="number">1</span></span><br><span class="line">    pInterval=<span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span>(rec==<span class="number">0</span>):</span><br><span class="line">        rec=pStart</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        rec=rec+pInterval</span><br><span class="line">    <span class="keyword">return</span> rec</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在下面的等于框中写上 autoIncrement()， 调用该函数</p>
+<img src="/images/loadimg.png" data-original="/posts/611dd883/arcpy_1.png" lay-src="/posts/611dd883/arcpy_1.png" class="" title="arcpy编程">
+
+<p>(2) 自动补零<br>除了编号之外，还需要进行自动补零，然后加上前缀，可以使用VB代码如下，这里就是将字段编号为：“前缀0001”、“前缀0002”、“前缀0003”…..</p>
+<figure class="highlight vbscript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"前缀"</span> &amp; <span class="built_in">left</span>(<span class="string">"0000"</span>,<span class="number">4</span>-<span class="built_in">len</span>( [FID]+<span class="number">1</span>)) &amp; ([FID] +<span class="number">1</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用python语言就是</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'前缀'</span> + (<span class="built_in">str</span>(autoIncrement())).zfill(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">## 如果是某一个字段比如test3自段</span></span><br><span class="line"><span class="string">' !test3!'</span>  + (<span class="built_in">str</span>(autoIncrement())).zfill(<span class="number">5</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ccnucb/article/details/105312472">Arcgis如何给新添的字段自动编号</a> (这里使用python实现了自动编号)<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sydbc/article/details/17962689">ArcGIS中小数前补全0</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yzhyingcool/p/10085769.html">解析ArcGis的字段计算器（三）——文本型字段计算，编号那些事儿</a> (使用vb代码比较简单)</div>
+<h2 id="4-浮点数精度问题"><a href="#4-浮点数精度问题" class="headerlink" title="4.浮点数精度问题"></a>4.浮点数精度问题</h2><p>使用arcgis字段计算器的时候，想要将获取到的地理坐标面积，进行四舍五入并保留两位小数存入MJ属性中，借助于python的round函数，可以进行四舍五入计算，但是总是会出现问题，就是 125396883.690809 进行四舍五入之后，只剩下了 12539600，就算是乘以100，最后还是零而不是883，使用了多种方法都不行。这个 MJ 属性，是浮点型数据，相对应的mj0之所以有两位小数，是因为它是文本型字段，这样就比较清晰了，是因为浮点型精度问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/611dd883/arcpy_2.png" lay-src="/posts/611dd883/arcpy_2.png" class="" title="arcpy">
+
+<p>【解决方法】<br>浮点型数字有效位数只有7位，需要换成双精度的数据。因为是位的有效位，所以就可以看出为什么后面的883等数字。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://desktop.arcgis.com/zh-cn/arcmap/10.3/manage-data/tables/calculate-field-examples.htm#ESRI_SECTION1_11EAB368A53B4D1C9618A58A1B09F9D0">计算字段示例</a> 使用pythong脚本的介绍<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Rhao999/article/details/103866407">为何float有效位数只有7位？</a> 因为单精度数的尾数用23位存储，加上默认的小数点前的1位1，2^(23+1) = 16777216。因为 10^7 &lt; 16777216 &lt; 10^8，所以说单精度浮点数的有效位数是7位<br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tsingke/p/10223183.html">为何float有效位数为7位？</a></div>
+<h2 id="5-将GDB转为geojson"><a href="#5-将GDB转为geojson" class="headerlink" title="5.将GDB转为geojson"></a>5.将GDB转为geojson</h2><p>esri的json和标准的geojson还是有区别的。我尝试了很多的方法，做了很多的工作，真是浪费了很多的时间。其实关键的就是 FeaturesToJSON 方法，传入一个geojson参数。还有ChatGPT提供的 arcpy.FeaturesToJSON_conversion 这个方法，其实并不是非常的正确，这个转为json，还需要自己去解析。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置工作空间</span></span><br><span class="line">arcpy.env.workspace = <span class="string">r"C:\work\TRGF.gdb"</span></span><br><span class="line">out_folder = <span class="string">r"C:\work\output"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取 GDB 中所有的要素类</span></span><br><span class="line">feature_classes = arcpy.ListFeatureClasses()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> fc <span class="keyword">in</span> feature_classes:</span><br><span class="line">    <span class="comment"># 构造输出文件名</span></span><br><span class="line">    out_json_file = os.path.join(out_folder, fc + <span class="string">".geojson"</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f"Exporting <span class="subst">{fc}</span> to <span class="subst">{out_json_file}</span>"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 导出要素类为 GeoJSON 格式</span></span><br><span class="line">    arcpy.conversion.FeaturesToJSON(fc, out_json_file, geoJSON=<span class="literal">True</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>根据ChatGPT的说法，arcpy.FeaturesToJSON_conversion 和 arcpy.conversion.FeaturesToJSON 都是用来将 ArcGIS 地理数据转换为 JSON 或 GeoJSON 格式的函数，主要区别在于前者是一个函数，而后者是一个工具。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42751928/article/details/107914347">arcmap批量导出shp和geojson数据(包含自定义文件名)</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenzy945/article/details/18267905">python json loads遇到中文的情况分析。</a>  json.loads(dataJsonStr, encoding=”GB2312”)<br>3.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/conversion/features-to-json.htm">Features To JSON (Conversion)</a> Converts features to Esri JSON or GeoJSON format. The fields, geometry, and spatial reference of features will be converted to their corresponding JSON representation and written to a file with a .json or .geojson extension.<br>4.<a target="_blank" rel="noopener" href="https://gis.stackexchange.com/questions/245915/outputting-geojson-with-arcpy-featurestojson-conversion-tool-of-arcgis-pro">Outputting geoJSON with arcpy.FeaturesToJSON_conversion tool of ArcGIS Pro?</a><br>5.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/arcpy/functions/alphabetical-list-of-arcpy-functions.htm">ArcPy 函数概述</a><br>6.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/arcpy/geoprocessing_and_python/using-tools-in-python.htm">通过 Python 使用工具</a></div>
+<h2 id="6-将geojson转为shape"><a href="#6-将geojson转为shape" class="headerlink" title="6.将geojson转为shape"></a>6.将geojson转为shape</h2><p>代码其实很简单，就是需要一个正确的geojson格式的文件，才可以。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> arcpy</span><br><span class="line"></span><br><span class="line"><span class="comment"># GeoJSON 文件路径</span></span><br><span class="line">json_file = <span class="string">r"data/output.geojson"</span></span><br><span class="line"><span class="comment"># Shapefile 文件输出路径</span></span><br><span class="line">shp_file = <span class="string">r"data/output.shp"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用 json_to_features 工具将 GeoJSON 转为 Shapefile</span></span><br><span class="line">arcpy.JSONToFeatures_conversion(json_file, shp_file)</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/gislaozhang/article/details/80701394">ArcGIS Python编程案例-ArcPy数据访问模块</a><br>2.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/create-feature-class.htm">Create Feature Class (Data Management)</a></div>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>(1) Polygons and MultiPolygons should follow the right-hand rule<br>在geojson验证<a target="_blank" rel="noopener" href="https://geojsonlint.com/">网站</a> 上，验证一段geojson代码,出现了上面的问题:Polygons and MultiPolygons should follow the right-hand rule。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"type"</span><span class="punctuation">:</span> <span class="string">"Polygon"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"coordinates"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">[</span></span><br><span class="line">                <span class="number">120.252240976</span><span class="punctuation">,</span></span><br><span class="line">                <span class="number">30.397120046</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">[</span></span><br><span class="line">                <span class="number">120.25224893</span><span class="punctuation">,</span></span><br><span class="line">                <span class="number">30.397123254</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">[</span></span><br><span class="line">                <span class="number">120.252257108</span><span class="punctuation">,</span></span><br><span class="line">                <span class="number">30.397126008</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">[</span></span><br><span class="line">                <span class="number">120.252265474</span><span class="punctuation">,</span></span><br><span class="line">                <span class="number">30.397128297</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">[</span></span><br><span class="line">                <span class="number">120.252273995</span><span class="punctuation">,</span></span><br><span class="line">                <span class="number">30.397130111</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">[</span></span><br><span class="line">                <span class="number">120.252282632</span><span class="punctuation">,</span></span><br><span class="line">                <span class="number">30.397131442</span></span><br><span class="line">            <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">            <span class="punctuation">[</span></span><br><span class="line">                <span class="number">120.252240976</span><span class="punctuation">,</span></span><br><span class="line">                <span class="number">30.397120046</span></span><br><span class="line">            <span class="punctuation">]</span></span><br><span class="line"></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>【解决方案】<br>这个问题解决方法，就是换了一个网站进行geojson的验证，使用<a target="_blank" rel="noopener" href="http://geojson.io/">geojson</a> 进行验证就好了，这个网站不挑是不是右手坐标系。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://dev.to/jinagamvasubabu/solution-polygons-and-multipolygons-should-follow-the-right-hand-rule-2c8i">Solution: Polygons and MultiPolygons should follow the right-hand rule</a><br>2.<a target="_blank" rel="noopener" href="https://github.com/mapstertech/mapster-right-hand-rule-fixer/blob/main/lib/rewind-browser.js">mapstertech/mapster-right-hand-rule-fixer</a><br>3.<a target="_blank" rel="noopener" href="https://gis.stackexchange.com/questions/259944/polygons-and-multipolygons-should-follow-the-right-hand-rule">Polygons and MultiPolygons should follow the right-hand rule</a> My old GeoJSON worked with Google Maps, Leaflet, OpenLayers, Mapbox, Bing Maps, etc. however failed geojsonlint.com validate.I have to use another website to validate: <a href="http://geojson.io。这里也提供了python解决方案：This">http://geojson.io。这里也提供了python解决方案：This</a> can be fixed very easily in Python using geojson-rewind.<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lionhenryzxxy/article/details/105748056">如何检测Geojson,Geojson下载</a><br>5.<a target="_blank" rel="noopener" href="https://github.com/rgeo/rgeo-geojson/issues/39">Polygons and MultiPolygons should follow the right-hand rule</a><br>6.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/539689986">GeoJSON三分钟入门教程</a> 这里也有对各个类型的图形进行了说明和示例。</div>
+<p>(2) arcgisscripting.ExecuteError: ERROR 999999: Something unexpected caused the tool to fail<br>这个问题主要出在坐标不正确的情况下，比如面的坐标系不同。</p>
+<p>【解决方案】<br>按照标准的geojson进行生成，面的第一个点和最后一个点要重叠。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.oschina.net/translate/geojson-spec?cmp">GeoJSON格式规范说明</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_17627195/article/details/125225582">geojson 格式说明（格式详解）</a> 这里有不同的类型的示例<br>3.<a target="_blank" rel="noopener" href="https://support.esri.com/en/technical-article/000023667">Error: ERROR 999999 Something unexpected caused the tool to fail</a> This error is displayed when the existing enterprise geodatabase connection in the ArcGIS Pro project has the versioning type set to Traditional instead of Branch in the Geodatabase Connection Properties window.</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/b55fe48e.html" rel="next" title="Arcpy根据点的访问和距已知点的距离计算坐标值">
+                      <i class="iconfont icon-prev"></i> Arcpy根据点的访问和距已知点的距离计算坐标值
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/7e743c40.html" rel="prev" title="Arcpy将mxd导出为图片">
+                      Arcpy将mxd导出为图片 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArcPy3-0"><span class="toc-number">1.1.</span> <span class="toc-text">ArcPy3.0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conda"><span class="toc-number">1.2.</span> <span class="toc-text">Conda</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Arcpy%E8%B0%83%E7%94%A8%E5%9C%B0%E7%90%86%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">1.Arcpy调用地理处理工具</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E7%BA%BF%E6%AE%B5%E7%BC%96%E5%8F%B7"><span class="toc-number">3.</span> <span class="toc-text">2.自动生成线段编号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AD%97%E6%AE%B5%E8%87%AA%E5%8A%A8%E7%BC%96%E5%8F%B7"><span class="toc-number">4.</span> <span class="toc-text">3.字段自动编号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="toc-number">5.</span> <span class="toc-text">4.浮点数精度问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%B0%86GDB%E8%BD%AC%E4%B8%BAgeojson"><span class="toc-number">6.</span> <span class="toc-text">5.将GDB转为geojson</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%B0%86geojson%E8%BD%AC%E4%B8%BAshape"><span class="toc-number">7.</span> <span class="toc-text">6.将geojson转为shape</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">7.1.</span> <span class="toc-text">问题</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/611dd883.html';
+      this.page.identifier = 'posts/611dd883.html';
+      this.page.title = 'Arcpy开发基础知识点总结';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Arcpy开发基础知识点总结 链接地址:https://bibichuan.github.io/posts/611dd883.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Arcpy开发基础知识点总结',
+		url: 'https://bibichuan.github.io/posts/611dd883.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Arcpy开发基础知识点总结',
+			isTipVisibility: true,
+			tip: 'Arcpy开发基础知识点总结',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

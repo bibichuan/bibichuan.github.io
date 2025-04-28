@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务器运维之Linux</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">服务器运维之Linux</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2019-05-19 04:47:40
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-磁盘消失的容量"><a href="#1-磁盘消失的容量" class="headerlink" title="1.磁盘消失的容量"></a>1.磁盘消失的容量</h1><p>linux中通过df -h 可以查看磁盘的使用量和剩余量</p>
+<img src="/images/loadimg.png" data-original="/posts/2fbfd567/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A3%81%E7%9B%98.png" lay-src="/posts/2fbfd567/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A3%81%E7%9B%98.png" class="" title="消失的磁盘">
+
+<p>仔细观察发现，使用量和剩余量并不能等于磁盘的总容量，这是什么原因呢？原来ext系统，包括ext2、3、4系统，会有磁盘5%的空间留给root用户，如果一个磁盘有1000G,百分之五的空间，也是很可观的，所以对于一个纯数据盘，完全没有必要留这么多，通过命令 tune2fs 去除保留空间，</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## sda6为想要去除保留空间的磁盘的挂载磁盘</span></span><br><span class="line">tune2fs -m 0 /dev/sda6</span><br></pre></td></tr></tbody></table></figure>
+
+<p>结果如图：</p>
+<img src="/images/loadimg.png" data-original="/posts/2fbfd567/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A3%81%E7%9B%98.png" lay-src="/posts/2fbfd567/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A3%81%E7%9B%98.png" class="" title="消失的磁盘">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/achenyuan/article/details/78674102">linux查看磁盘使用情况命令</a><br>2.<a href="ttps://blog.csdn.net/wanghailong041/article/details/49658227">hLinux下磁盘保留空间的调整，解决df看到的空间和实际磁盘大小不一致的问题</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/github_30641423/article/details/122643941">linux“消失”的磁盘空间</a></div>
+<h1 id="2-创建用户"><a href="#2-创建用户" class="headerlink" title="2.创建用户"></a>2.创建用户</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建账号</span></span><br><span class="line">useradd 选项 用户名</span><br><span class="line"><span class="comment"># 例子，创建用户，并增加用户目录</span></span><br><span class="line">useradd -d  /home/hj -m hj</span><br><span class="line"><span class="comment"># 删除账号,userdel 选项 用户名,删除用户及其家目录</span></span><br><span class="line">userdel -r 用户名</span><br><span class="line"><span class="comment"># 修改用户密码</span></span><br><span class="line">passwd 选项 用户名</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-user-manage.html">Linux 用户和用户组管理</a></div>
+<h1 id="3-切换用户"><a href="#3-切换用户" class="headerlink" title="3.切换用户"></a>3.切换用户</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 临时切换root用户，输入当前用户的密码</span></span><br><span class="line"><span class="built_in">sudo</span> su - root</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/android_cai_niao/article/details/117285972">Linux切换到root用户</a> sudo su - root<br>2.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15704227/5436347">linux中如何将身份临时转换为root</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lanhuazui10/article/details/121130700">Linux下临时切换用户</a> su - root  输入root密码后切换之root用户但是pwd目录/root;su root  输入root密码后切换之root用户但是pwd目录不变</div>
+<h1 id="4-磁盘管理"><a href="#4-磁盘管理" class="headerlink" title="4.磁盘管理"></a>4.磁盘管理</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 显示目前在Linux系统上的文件系统的磁盘使用情况统计</span></span><br><span class="line"><span class="built_in">df</span> -h</span><br><span class="line"><span class="comment">## 查看所有磁盘的文件系统类型(type)</span></span><br><span class="line"><span class="built_in">df</span> -T</span><br><span class="line"></span><br><span class="line"><span class="comment">## 列出块设备信息（df -h不能看到的卷）,显示文件系统</span></span><br><span class="line">lsblk -f</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看全部磁盘</span></span><br><span class="line">fdisk -l</span><br><span class="line"></span><br><span class="line"><span class="comment">## 设置文件系统</span></span><br><span class="line">mkfs.ext4 /dev/vdb</span><br><span class="line"></span><br><span class="line"><span class="comment">#挂载命令 将磁盘vdb1 挂载到 /home/hj 目录下</span></span><br><span class="line">mount /dev/vdb1 /home/hj</span><br><span class="line"></span><br><span class="line"><span class="comment">## 卸载</span></span><br><span class="line">umount /home/hj</span><br><span class="line"></span><br><span class="line"><span class="comment">## 编辑 /etc/fstab 文件，永久挂载分区:设备     挂载点 		  文件系统类型 	挂载参数 	  是否备份 	是否检测</span></span><br><span class="line">vi /etc/fstab</span><br><span class="line"></span><br><span class="line"><span class="comment">## 检查是否挂载成功</span></span><br><span class="line">mount -a</span><br><span class="line"></span><br><span class="line"><span class="comment">## 永久挂载</span></span><br><span class="line"><span class="comment"># fdiks -l 命令查询到你要挂载的硬盘盘符，比如：/dev/sdb</span></span><br><span class="line"><span class="comment"># blkid /dev/sdb 命令查询你要挂载的硬盘的UUID</span></span><br><span class="line"><span class="comment"># 将UUID写入配置文件 /etc/fstab</span></span><br><span class="line">UID=afab653d-7620-49df-ba66-f956c372ef93 /home/mkky/data4 ext4 defaults 0 0</span><br><span class="line"><span class="comment"># 第一列是 UUID  第二列是挂载的目录 第三列是文件系统 第四列是参数 第五列0表示不备份 第六列必须为0或者2 引导区为1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看硬盘是否正确挂载</span></span><br><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/09584783bd1d">linux查看系统未被挂载的磁盘空间的方法</a> 1.查看linux下的硬盘挂载的空间、使用空间:df -h。2.查看没有挂载的硬盘是否检测在系统中:lsblk。3.挂载 （挂载完，要在/etc/fstab 下面配置挂载信息 要不然重启挂载就消失了）<br>2.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15346415/3671741">Linux查看文件系统、磁盘、目录的容量（df、du命令）</a><br>3.<a target="_blank" rel="noopener" href="https://www.disktool.cn/content-center/linux-hard-disk-partition-369.html">如何给Linux硬盘分区？</a> 硬盘分区，格式化Linux硬盘分区，临时挂载分区，永久挂载分区<br>4.<a target="_blank" rel="noopener" href="https://blog.51cto.com/weiruoyu/787683">Linux下/etc/fstab永久挂载</a><br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/yyylll62803112/article/details/19818837">linux lost+found文件是什么文件夹？</a> 这个目录是使用标准的ext2/ext3档案系统格式才会产生的一个目录，目的在于当档案系统发生错误时， 将一些遗失的片段放置到这个目录下。<br>6.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jyzhao/p/4778657.html">本文目的: 熟悉Linux的基本磁盘分区、格式化、目录挂载。</a><br>7.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e5f670e5f2e6">Ubuntu永久挂载硬盘</a></div>
+<h1 id="5-7za压缩和解压"><a href="#5-7za压缩和解压" class="headerlink" title="5.7za压缩和解压"></a>5.7za压缩和解压</h1><p>最常见的指令是a, l和x.</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 压缩，限制每个包的大小</span></span><br><span class="line">7z a name.7z filename -v2048m</span><br><span class="line"><span class="comment">## 解压,使用参数e有可能丢失目录结构</span></span><br><span class="line">7z e xxx.7z.001</span><br><span class="line"><span class="comment"># 解压缩</span></span><br><span class="line">7z x xxx.7z.001</span><br></pre></td></tr></tbody></table></figure>
+
+<p>command操作命令：</p>
+<ul>
+<li>a 添加到压缩文件</li>
+<li>b 基准测试，测试7z当前性能</li>
+<li>d 从压缩文件中删除</li>
+<li>e 从压缩文件中解压缩，但不包含目录结构（即所有各级文件都解压到一个目录里）</li>
+<li>l 列出压缩文件的内容</li>
+<li>t 测试压缩文件</li>
+<li>u 更新文件到压缩文件</li>
+<li>x 从压缩文件中解压缩，包含目录结构</li>
+</ul>
+<p>现在有一个需求，就是一系列的文件分开压缩之后，使用一个 e 命令解压之后，因为文件很大，导致整个的磁盘都占满了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32146369/article/details/111550885">linux下解压7z压缩包分卷</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41895190/article/details/99675773">7z a name.7z filename -v2048m</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27062249/article/details/52921294">Linux下7z的使用方法</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/pxg943055021/article/details/110483171">Linux zip/unzip分卷压缩，解压</a> 根据情况分卷–4g: zip -s 4g b.zip –out c.zip<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Milogenius/article/details/112169180">Zip和7-zip谁更强,如何选择?</a><br>6.<a target="_blank" rel="noopener" href="https://blog.51cto.com/jschu/1733192"> 7za压缩与解压缩，7-Zip，xx.7z 原创 </a></div>
+<h1 id="6-ping"><a href="#6-ping" class="headerlink" title="6.ping"></a>6.ping</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ping -S 192.168.254.200 172.18.85.133</span><br></pre></td></tr></tbody></table></figure>
+
+<h1 id="7-生成ssl证书"><a href="#7-生成ssl证书" class="headerlink" title="7.生成ssl证书"></a>7.生成ssl证书</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -utf8 -days 1095  -new -nodes -sha256 -newkey rsa:2048 -keyout ~/.ssh/id_rsa.pub -out rsa.csr </span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/42218.html">如何制作CSR文件</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xxss120/article/details/78758832">在Windows平台下自己生成crt证书</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wenxuehai/p/14115538.html">https的页面内嵌入http页面报错的问题</a><br>4.<a target="_blank" rel="noopener" href="https://blog.aofall.com/archives/4.html">使用 OpenSSL 生成 CSR 文件以申请 SSL 证书 </a> 会创建一个 RSA 的 2048 位私钥并在当前目录保存为 server.key 并生成一个域名为 yoursite.com 的 CSR 并保存为 server.csr.一般这样生成的 CSR 即可用于申请大多数 CA 的数字证书。</div>
+<h1 id="8-mv文件后磁盘空间未释放"><a href="#8-mv文件后磁盘空间未释放" class="headerlink" title="8.mv文件后磁盘空间未释放"></a>8.mv文件后磁盘空间未释放</h1><p>我通过mv命令进行移动的时候，发现磁盘没有足够的空间移动了，但是我通过 df 和 du 命令得出的结果好像不一致。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 查看磁盘空间</span></span><br><span class="line"><span class="built_in">df</span> -h </span><br><span class="line"></span><br><span class="line"><span class="comment">## 对/目录进行磁盘占用量进行排序</span></span><br><span class="line"><span class="built_in">du</span> -sh /* | <span class="built_in">sort</span> -nr</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方法】<br>很多的文章都是说查询 deleted 的命令，看看有没有占用文件，没有删除的，但是对于我的情况，我并没有从删除的文件中取到这个东西，而且本身我没有删除，我只是移动了文件。</p>
+<p>后来我重启电脑之后，还是没有释放掉文件。我把移动后的文件，包括cp后的文件，全部删除，这样这个问题就解决了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14475876/2673202">mv移动文件后磁盘未释放</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xd502djj/p/6668632.html">linux 删除文件后磁盘空间不释放的原因</a><br>3.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_14475876/2673202">mv移动文件后磁盘未释放</a> 也是通过 杀死deleted进程解决<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/w15247147672/article/details/115819007">Linux 磁盘已满但找不到对应的大文件的问题</a><br>5.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/296922">linux删除文件未释放空间问题处理</a> 1.先df -lh查看一下磁盘使用状况;2.找到被删除文件所在的分区,eg.opt分区;3.查看被删除了的所有文件：lsof -n /opt |grep deleted;4.kill 进程<br>6.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/Richardzhu/p/3142076.html">Linux磁盘空间被未知资源耗尽</a> lsof -n | grep deleted<br>7.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7028073838407581703">Linux 磁盘空间被吃掉了？这样排查不背锅！ </a> 1.使用 lsof +L1 命令。2.我们可以通过tune2fs修改预留空间的比例：tune2fs -m 1 /dev/vda1<br>8.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ytc6/p/10155994.html">du 与df 统计系统磁盘不一致原因与解决方法</a> 常见的df和du不一致情况就是文件删除的问题。当一个文件被删除后，在文件系统目录中已经不可见了，所以du就不会再统计它了。然而如果此时还有运行的进程持有这个已经被删除了的文件的句柄，那么这个文件就不会真正在磁盘中被删除， 分区超级块中的信息也就不会更改。这样df仍旧会统计这个被删除了的文件。<br>9.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c5f2783e09c8">Linux清理临时文件</a></div>
+<h1 id="9-定时任务"><a href="#9-定时任务" class="headerlink" title="9.定时任务"></a>9.定时任务</h1><p>我这里的需求就是 从晚上18点到早上 8点，每隔5分钟执行一次程序。经过多次尝试，用了很多的方法，还看了很多的资料，最后还是写出来了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打开定时任务配置文件</span></span><br><span class="line">crontab -e</span><br><span class="line"><span class="comment"># 在配置文件中写入定时任务的操作, 这里就是指定每天18点定时执行开启脚本, 18点-早上8点，每隔五分钟执行一次</span></span><br><span class="line"><span class="comment"># 因为边界值是包含的，所以 0-7，其实是包含了 7点59分的，又因为前面的值要小于后面的值，所以要是快0点的时候，需要改成两个</span></span><br><span class="line">*/5 8-23 * * *  /bin/bash /usr/local/rclone/start.sh &gt; /usr/local/rclone/logs/crontab.log 2&gt;&amp;1 &amp;</span><br><span class="line">*/5 0-7 * * *  /bin/bash /usr/local/rclone/start.sh &gt; /usr/local/rclone/logs/crontab.log 2&gt;&amp;1 &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定每天8点定时执行关闭脚本</span></span><br><span class="line">0 8 * * * /bin/bash /usr/local/rclone/stop.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 八点半到10点半，每隔五分钟，这种写法不正确</span></span><br><span class="line">*/5 8:30-10:30 * * * </span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>还有一个问题，那就是如果是 8点30分到第二天8点30分，每隔5分钟执行一次该如何写呢？或者说是8点30分，到8点40分，每隔5分钟执行一次。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/flyingeagle/articles/7658604.html">Quartz 定时任务设置某个时间区间每隔一定时间触发的cron表达式</a><br>【2】.<a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/2078442556269805468.html">crontab 8点半到10点半，每隔5分钟执行一次，怎么写</a> */5 8:30-10:30 * * * 这种写法也是错误的<br>【3】.<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000038434576">crontab 上午8点到晚上12点怎么写?</a><br>【4】.<a target="_blank" rel="noopener" href="https://tooltt.com/crontab/c/49.html">在线crontab晚上11点到早上8点之间每两个小时和早上八点解析验证</a> 这个有很多的都是错误的，比如写了 23-7 这种形式<br>【5】.<a target="_blank" rel="noopener" href="https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules?hl=zh-cn">Cron 作业格式和时区</a> 如需匹配一系列值，请指定起始值和停止值，并用连字符 (-) 分隔。请勿在范围中包含空格。范围包含边界值。第一个数字必须小于第二个数字。<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_35831256/article/details/117544067">linux crontab 24点,linux crontab实现自动化任务</a><br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u012129607/article/details/80418149">crontab 脚本错误日志和正确的输出写入到文件</a><br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_28423997/article/details/88890963">定时任务执行shell脚本中 grep -v grep 中的坑</a><br>【10】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lxy100202/article/details/128851804">crontab定时任务执行未成功，手动执行却可以的问题解决</a><br>【11】.<a target="_blank" rel="noopener" href="https://www.lfhacks.com/tech/linux-cron/">Crontab 实例</a> 因为各种时间点坐标的进位周期各不相同（60分、24小时、30天、12月），所以一些只关注周期而忽略时间点坐标的需求，仅靠原生的 cron 语法就不能达到目的了。这时候，需要 test 命令配合完成.</div>
+<h1 id="10-利用率"><a href="#10-利用率" class="headerlink" title="10.利用率"></a>10.利用率</h1><p>在电信信创云上申请了一台服务器，结果利用率总是上不去，然后数据局就开始通报了，现在为了保住这个东西，只能是先把这个利用率用上去了，只能想办法了。最后我选择了阿里开源的 chaosblade 工具。</p>
+<p>(1) 安装<br>下载相应的安装包，直接复制到服务器上，然后进入相应的目录即可。</p>
+<p>(2) 使用<br>常用命令如下</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 填充home目录80%的使用空间</span></span><br><span class="line">./blade create disk fill --path /home/hj/test --percent 80 --retain-handle   </span><br><span class="line"><span class="comment"># cpu 负载到80%</span></span><br><span class="line">./blade create cpu load --cpu-percent 80</span><br><span class="line"><span class="comment"># 占用80%的ram内存</span></span><br><span class="line">./blade create mem load --mode ram --mem-percent 80        </span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行成功，会返回一个id，如需撤销故障注入，执行如下命令</span></span><br><span class="line">./blade d {<span class="built_in">id</span>}</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询曾经注入的故障id，便于删除</span></span><br><span class="line">./blade s --<span class="built_in">type</span> c</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看cpu使用率，%us：表示用户空间程序的cpu使用率；%sy：表示系统空间的cpu使用率，主要是内核程序；%ni：表示用户空间且通过nice调度过的程序的cpu使用率；%id：空闲cpu；%wa：cpu运行时在等待io的时间；%hi：cpu处理硬中断的数量。%si：cpu处理软中断的数量；%st：被虚拟机偷走的cpu</span></span><br><span class="line">top -bn 1 -i -c</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内存使用率</span></span><br><span class="line">free -h</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看磁盘利用率</span></span><br><span class="line"><span class="built_in">df</span> -h</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Mr_wilson_liu/article/details/133787492">Linux-提高CPU、内存使用率shell脚本</a> 介绍了阿里的一个工具 chaosblade，这里的cpu、磁盘还有内存使用方法都有示例。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44455388/article/details/120675231">Linux提高CPU、内存的使用率</a> cpumit<br>【3】.<a target="_blank" rel="noopener" href="https://chaosblade.io/docs/getting-started/chaosblade-tool-quick-start/">ChaosBlade 工具使用快速入门</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/AlbenXie/article/details/72885951">Linux系统查看CPU使用率的几个命令</a> 1.top,在第三行有显示CPU当前的使用情况:top -bn 1 -i -c;2.vmstat,每1秒收集一次，共5次:vmstat 1 5;3.sar,每1秒收集一次，共5次:sar -u 1 5;4.mpstat,每1秒收集一次，共5次:mpstat 1 5;5.iostat,这个命令主要用来查看io使用情况，也可以来查看cpu:iostat -c 1 2;6.dstat,每秒cpu使用率情况获取;7.<br>【5】.<a target="_blank" rel="noopener" href="https://www.51cto.com/article/719609.html">Linux 下查看内存使用情况方法总结</a> 1./proc/meminfo；2.atop；3.free 命令；4.GNOME System Monitor；</div>
+<h1 id="11-kdevtmpfsi"><a href="#11-kdevtmpfsi" class="headerlink" title="11.kdevtmpfsi"></a>11.kdevtmpfsi</h1><p>我在一次使用 top 命令查看，发现有一个进程一直在占用 cpu 和 内存，是 kdevtmpfsi。后来看了下，这个竟然是一个挖矿病毒。</p>
+<p>【尝试方案】</p>
+<ul>
+<li>清除 Redis<br>(1) crontab -l 命令先看看 crontab 的定时任务列表<br>(2) ps -ef|grep kdevtmpfsi  命令查看 kdevtmpfsi 的进程，并且使用 kill -9 PID 杀死kdevtmpfsi 对应的进程<br>(3) ps -ef|grep kinsing  命令查看kdevtmpfsi程序的守护进程kinsing  ，并且使用 kill -9 PID 杀死对应的进程<br>(4) find / -iname kdevtmpfsi 命令再次确定kdevtmpfsi文件所在位置以便删除，使用 rm -rf 所在位置 删除 kdevtmpfsi 程序<br>(5) find / -iname kinsing 命令再次确定 kinsing 文件所在位置以便删除，使用 rm -rf 所在位置 删除 kdevtmpfsi 程序<br>(6) cat ~/.ssh/authorized_keys 查看是否有陌生的的公钥，有则删除掉，<br>(7) cd 命令切换到自己 Redis 的安装目录下，然后删除该目录下的 red2.so 文件以及以 kinsing 开头的所有文件。</li>
+</ul>
+<ul>
+<li><p>清除 Docker<br>(1) 查询病毒所在的容器并进入<br>(2) 查询病毒的进程和文件路径<br>(3) 查询定时任务并清除<br>(4) 禁止下载病毒的IP<br>(5) 重启容器</p>
+</li>
+<li><p>防护措施<br>(1) 把异常的IP地址，入站及出站全部封禁<br>(2) 不定期更新 Redis 服务密码，禁止使用默认端口，非必要不暴露在公网或绑定指定IP<br>(3) 启用ssh公钥登陆，禁用密码登陆。<br>(4) 完善安全策略，入口流量，非必要一般只开放 80 443 端口就行，出口流量默认可以不限制，如果有需要根据需求来限制。<br>(5) 防火墙能用的尽量用起来，有条件可以上付费的。 </p>
+</li>
+</ul>
+<p>【解决方案】<br>最后的解决方案，<br>(1) 直接把 Docker PHP 镜像删除，然后重启镜像。<br>(2) 关闭 9000 默认端口。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000042305570">清除Docker中的kdevtmpfsi挖矿病毒</a> 这里是Docker中的方法<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Ancoda/article/details/124433630">kdevtmpfsi 处理（挖矿病毒清除）</a> kdevtmpfsi 是一个挖矿病毒，大多数都是 redis 程序侵入，而且受害者还不少。<br>【3】.<a target="_blank" rel="noopener" href="https://www.alpacabro.com/archives/docker-php-kdevtmpfsi-mining-virus-infection.html">记一次 Docker 容器内 PHP 感染 kdevtmpfsi 挖矿病毒</a> 这是PHP的docker的病毒，乍一看似乎毫无问题，但是9000:9000和没有任何防备的防火墙形成了非常致命的漏洞，攻击者虽然无法获取到宿主机的权限，但是依然可以利用容器来挖矿，耗尽你的系统资源；而且万一之后 Docker 爆出容器逃逸漏洞，宿主机也危在旦夕。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/d5e521dc.html" rel="next" title="服务器运维之MinIO">
+                      <i class="iconfont icon-prev"></i> 服务器运维之MinIO
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/54fd0984.html" rel="prev" title="服务器运维之IIS配置UrlScan">
+                      服务器运维之IIS配置UrlScan <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E7%A3%81%E7%9B%98%E6%B6%88%E5%A4%B1%E7%9A%84%E5%AE%B9%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">1.磁盘消失的容量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-number">2.</span> <span class="toc-text">2.创建用户</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%88%87%E6%8D%A2%E7%94%A8%E6%88%B7"><span class="toc-number">3.</span> <span class="toc-text">3.切换用户</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%A3%81%E7%9B%98%E7%AE%A1%E7%90%86"><span class="toc-number">4.</span> <span class="toc-text">4.磁盘管理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-7za%E5%8E%8B%E7%BC%A9%E5%92%8C%E8%A7%A3%E5%8E%8B"><span class="toc-number">5.</span> <span class="toc-text">5.7za压缩和解压</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-ping"><span class="toc-number">6.</span> <span class="toc-text">6.ping</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E7%94%9F%E6%88%90ssl%E8%AF%81%E4%B9%A6"><span class="toc-number">7.</span> <span class="toc-text">7.生成ssl证书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-mv%E6%96%87%E4%BB%B6%E5%90%8E%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E6%9C%AA%E9%87%8A%E6%94%BE"><span class="toc-number">8.</span> <span class="toc-text">8.mv文件后磁盘空间未释放</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1"><span class="toc-number">9.</span> <span class="toc-text">9.定时任务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E5%88%A9%E7%94%A8%E7%8E%87"><span class="toc-number">10.</span> <span class="toc-text">10.利用率</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#11-kdevtmpfsi"><span class="toc-number">11.</span> <span class="toc-text">11.kdevtmpfsi</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/2fbfd567.html';
+      this.page.identifier = 'posts/2fbfd567.html';
+      this.page.title = '服务器运维之Linux';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：服务器运维之Linux 链接地址:https://bibichuan.github.io/posts/2fbfd567.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '服务器运维之Linux',
+		url: 'https://bibichuan.github.io/posts/2fbfd567.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '服务器运维之Linux',
+			isTipVisibility: true,
+			tip: '服务器运维之Linux',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

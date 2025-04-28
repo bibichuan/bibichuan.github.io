@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GitLab-Runner使用</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">GitLab-Runner使用</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Git/">Git</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-04-03 06:50:32
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-HelloWorld"><a href="#1-HelloWorld" class="headerlink" title="1.HelloWorld"></a>1.HelloWorld</h1><p>安装完了gitlab-runner,就可以使用了。在项目的根目录下创建.gitlab-ci.yml文件,编写如下内容。</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stages:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">deploy</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">deploy</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">cat</span> <span class="string">/etc/redhat-release</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">shell_65</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>script 是必须的，表明要执行的脚本,tags 表示要在哪个runner执行。编写了这个文件之后，提交代码，就会自动执行CI/CD命令。</p>
+<h1 id="2-Docker"><a href="#2-Docker" class="headerlink" title="2.Docker"></a>2.Docker</h1><p>(1) 说明<br>GitLab-Runner中有一类执行器，是docker,这里的docker不是使用docker安装gitlab-runner,而是gitlab-runner的执行器类型docker，像参考文章1和2,都是说的是如何在docker的镜像中安装gitlab-runner，显然不符合我们的要求。</p>
+<p>根据参考资料显示，在.gitlab-ci.yml中定义image 镜像时，gitlab会拉取远程镜像，然后执行脚本。<a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/executors/docker.html#using-the-always-pull-policy">官方文档执行器-docker</a> 一章中明确表示：</p>
+<pre><code>The always pull policy will ensure that the image is always pulled. When always is used, the Runner will try to pull the image even if a local copy is available. If the image is not found, then the build will fail with an error similar to:
+</code></pre>
+<p>意思就是说：always 策略将确保始终拉取远程镜像，在使用 always 策略时，即使有本地副本，Runner也将尝试拉取远程镜像，如果找不到该镜像，则构建失败，并显示错误。</p>
+<p>(2) 修改拉取策略</p>
+<p>知道问题所在了，那就可以修改这个策略了。打开 /etc/gitlab-runner/config.toml,在对应的runner节点下,添加pull_policy = “if-not-present” 就可以了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[[runners]]</span><br><span class="line">  name = <span class="string">"agent_192.168.1.65"</span></span><br><span class="line">  url = <span class="string">"http://192.168.1.60"</span></span><br><span class="line">  token = <span class="string">"hJPohBwUx8tDf8n5Wjas"</span></span><br><span class="line">  executor = <span class="string">"docker"</span></span><br><span class="line">  [runners.custom_build_dir]</span><br><span class="line">  [runners.cache]</span><br><span class="line">    [runners.cache.s3]</span><br><span class="line">    [runners.cache.gcs]</span><br><span class="line">  [runners.docker]</span><br><span class="line">    tls_verify = <span class="literal">false</span></span><br><span class="line">    image = <span class="string">"centos"</span></span><br><span class="line">    privileged = <span class="literal">false</span></span><br><span class="line">    disable_entrypoint_overwrite = <span class="literal">false</span></span><br><span class="line">    oom_kill_disable = <span class="literal">false</span></span><br><span class="line">    disable_cache = <span class="literal">false</span></span><br><span class="line">    volumes = [<span class="string">"/cache"</span>]</span><br><span class="line">    shm_size = 0</span><br><span class="line"></span><br><span class="line">    pull_policy = <span class="string">"if-not-present"</span></span><br></pre></td></tr></tbody></table></figure>
+<p>当使用” if-not-present拉取策略时，运行程序将首先检查image是否在本地存在. 如果是，则将使用image的本地版本. 否则，Runner将尝试拉取远程镜像。修改了此文件，重启gitlab-runner</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 重启gitlab-runner</span></span><br><span class="line">gitlab-runner restart</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样说起来，其实使用docker作为执行器还是不方便的。</p>
+<p>(3) 执行<br>代码中我定义了一个image:centos:7.2.1511,本地没有，所以会去远程拉取镜像</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">image: centos:7.2.1511</span><br><span class="line"></span><br><span class="line">stages:</span><br><span class="line">- deploy</span><br><span class="line">deploy:</span><br><span class="line">  stage: deploy</span><br><span class="line">  script:</span><br><span class="line">  - <span class="built_in">cat</span> /etc/redhat-release</span><br><span class="line">  only:</span><br><span class="line">  - master</span><br><span class="line">  tags:</span><br><span class="line">  - docker_65</span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/986a1e2d/gitlab_2.png" lay-src="/posts/986a1e2d/gitlab_2.png" class="" title="gitlab-runner">
+
+<p>最后输出的系统版本也是： CentOS Linux release 7.2.1511 (Core) ，在安装gitlab-runner的服务器上，使用docker ls查看，也多出了一个 centos:7.2.1511 的镜像。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/aixiaoyang168/article/details/72168834">Docker搭建自己的Gitlab CI Runner</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/why_still_confused/article/details/89243006">gitlab-runner Docker安装</a><br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2b7e73b0a096">gitlab-runner使用docker执行器，无法获取本地镜像。</a> (根据这个文章，有点入门了,这里告诉我们，gitlab-runner每次都会去拉取镜像，然后执行相关的操作，而不是使用本地镜像)<br>4.<a target="_blank" rel="noopener" href="https://s0docs0gitlab0com.icopy.site/runner/executors/docker.html">The Docker executor</a><br>5.<a target="_blank" rel="noopener" href="https://my.oschina.net/dingdayu/blog/1807415">gitlab runner 优化</a></div>
+<h1 id="3-scp免密登陆"><a href="#3-scp免密登陆" class="headerlink" title="3.scp免密登陆"></a>3.scp免密登陆</h1><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 切换用户</span></span><br><span class="line">su gitlab-runner</span><br><span class="line"><span class="comment"># 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -P <span class="string">""</span></span><br><span class="line"><span class="comment"># 拷贝密钥到远程</span></span><br><span class="line">ssh-copy-id -i .ssh/id_rsa.pub -p 端口号 用户名字@192.168.x.xxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 免密登陆</span></span><br><span class="line">ssh -p 端口号 用户名字@192.168.x.xxx</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ichen820/article/details/123825858">ssh 带端口登录</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/w-j-q/p/14979363.html">在配置SSH免密登录时报错：/usr/bin/ssh-copy-id: ERROR: failed to open ID file ‘/root/.pub’: 没有那个文件或目录</a><br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/downey-blog/p/10477670.html">SCP免密传输和SSH登录协议详解</a> 预备知识:对称加密、非对称加密、<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xyang81/article/details/51477925">Linux SSH免密码登录与拷贝文件（SCP）</a> 生成：ssh-keygen -t rsa -P “”，拷贝快捷方式:ssh-copy-id -i ~/.ssh/id_rsa.pub root@服务器地址<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42877759/article/details/88651765">rsync同步文件如何指定服务器端口</a> rsync -avuz -e ‘ssh -p 2222’ user@remote-server:/path/to/remote/folder</div>
+<h1 id="4-前端部署"><a href="#4-前端部署" class="headerlink" title="4.前端部署"></a>4.前端部署</h1><p>在项目的根目录下创建 .gitlab-ci.yml 文件。</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">stages:</span> <span class="comment"># 阶段</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">deploy</span></span><br><span class="line"></span><br><span class="line"><span class="attr">cache:</span> <span class="comment"># 缓存</span></span><br><span class="line">  <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">jeecgboot-vue3/node_modules</span></span><br><span class="line"></span><br><span class="line"><span class="attr">deploy-job:</span></span><br><span class="line">  <span class="attr">tags:</span> <span class="comment"># runner标签</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">deploy</span> <span class="comment"># 阶段</span></span><br><span class="line">  <span class="attr">script:</span> <span class="comment"># 执行脚本</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">cd</span> <span class="string">jeecgboot-vue3</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pnpm</span> <span class="string">config</span> <span class="string">set</span> <span class="string">registry</span> <span class="string">https://registry.npmmirror.com</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pnpm</span> <span class="string">install</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">pnpm</span> <span class="string">build</span>	<span class="comment">#打包指令本文package.json文件scripts配置的是build:prod，执行该指令会打包生成dist目录</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">rsync</span> <span class="string">-r</span> <span class="string">--delete</span> <span class="string">./dist/*</span> <span class="string">-e</span> <span class="string">'ssh -p 7022'</span> <span class="string">hj@xxxxx:/home/hj/drone/drone-cloud</span> <span class="comment">#将本地开发主机上的dist文件同步到远程服务器的对应目录下</span></span><br><span class="line">  <span class="attr">only:</span> <span class="comment"># 定义分支</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">hjkj</span>  </span><br></pre></td></tr></tbody></table></figure>
+
+<p>说明：</p>
+<ul>
+<li>tags：执行的runner的标签</li>
+<li>only：执行的分支，或者条件</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/biubiubiuPlus/article/details/136644029">Gitlab CI/CD 自动化打包部署前端（vue）项目</a> 这篇文章讲了如何复制前端文件的方法，使用 scp 进行复制<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44092905/article/details/121000985">gitlab实现VUE项目的dist打包文件全自动同步部署到远程nginx服务器上  </a> 配置rsync的密钥<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kozazyh/article/details/86662796">gitlab-把ci工作指定给专用的runner执行。</a><br>【4】.<a target="_blank" rel="noopener" href="https://fennay.github.io/gitlab-ci-cn/gitlab-ci-yaml.html">通过 .gitlab-ci.yml配置任务</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wb785074651/article/details/108662107">gitlab持续集成CI/CD在.gitlab-ci.yml文件中执行shell脚本</a> 开始打包，执行脚本，执行结束。chmod a+x ./scripts/build/test.sh</div>
+<h1 id="5-jar部署"><a href="#5-jar部署" class="headerlink" title="5.jar部署"></a>5.jar部署</h1><p>大部分的文章都是使用docker部署，但是我想要使用 jar 部署</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy-serve:</span></span><br><span class="line">  <span class="attr">tags:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">deploy</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">cd</span> <span class="string">jeecg-boot</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">export</span> <span class="string">JAVA_HOME=/usr/local/java/openjdk-17.0.12</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">export</span> <span class="string">PATH=$JAVA_HOME/bin:$PATH</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">mvn</span> <span class="string">clean</span> <span class="string">package</span> <span class="string">-Pprod</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">ssh</span> <span class="string">-p</span> <span class="number">7022 </span><span class="string">hj@$HOST_ALIYUN</span> <span class="string">'cd /home/hj/drone;rm -rf drone-cloud\.jar'</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">scp</span> <span class="string">-P</span> <span class="number">7022</span> <span class="string">-r</span> <span class="string">./jeecg-module-system/jeecg-system-start/target/drone-cloud\.jar</span>  <span class="string">hj@$HOST_ALIYUN:/home/hj/drone/drone-cloud\.jar</span> <span class="comment">#将本地开发主机上的dist文件同步到远程服务器的对应目录下</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">ssh</span> <span class="string">-p</span> <span class="number">7022 </span><span class="string">hj@$HOST_ALIYUN</span> <span class="string">'kill -9 `pgrep -f drone-cloud\.jar` ; echo 1'</span></span><br><span class="line">   <span class="bullet">-</span> <span class="string">ssh</span> <span class="string">-p</span> <span class="number">7022 </span><span class="string">hj@$HOST_ALIYUN</span> <span class="string">'cd /home/hj/drone;nohup /usr/local/java/jdk-17.0.2/bin/java -jar drone-cloud\.jar &gt; /dev/null 2&gt;&amp;1 &amp;'</span></span><br><span class="line">  <span class="comment"># rules:</span></span><br><span class="line">  <span class="comment">#   - if: '$CI_COMMIT_BRANCH == "hjkj"' # 定义分支</span></span><br><span class="line">  <span class="comment">#     changes: # 文件改变</span></span><br><span class="line">  <span class="comment">#       - mini-webview/**/* </span></span><br><span class="line">  <span class="comment">#     when: on_success</span></span><br><span class="line">  <span class="attr">when:</span> <span class="string">manual</span> <span class="comment"># 手动触发</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36308742/article/details/95072599">手动打jar包，利用GilLab CI/CD流水线（.gitLab-ci.yml文件）自动打jar并放到服务器运行。</a> 这里用scp的方式部署了jar，大部分都是图片，所以还是要自己写。<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/51core/articles/15239764.html">scp覆盖命令</a> 这里是文件目录的问题。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/neve_give_up_dan/article/details/104100638">为什么SCP传输没有覆盖</a> 这里其实也是说的是文件夹的覆盖</div>
+<h1 id="5-配置文件"><a href="#5-配置文件" class="headerlink" title="5.配置文件"></a>5.配置文件</h1><figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">only:</span></span><br><span class="line">  <span class="attr">changes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">frontend/**/*</span></span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/noscallion/article/details/129854245">gitlab ci only changes某目录下任意文件改变时触发job</a> 表示 frontend 文件夹下的文件 任意文件改变时触发 job<br>【2】.<a target="_blank" rel="noopener" href="https://meigit.readthedocs.io/en/latest/gitlab_ci_.gitlab-ci.yml_detail.html">GitLab CI流水线配置文件.gitlab-ci.yml详解</a><br>【3】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7266438926482440252">CI/CD之gitlab-ci.yml配置</a> 使用关联方式安装nodejs时，gitlab的CI/CD中无法检测到node，也就无法使用npm,会报错：npm: command not found<br>【4】.<a target="_blank" rel="noopener" href="https://gitlab.cn/docs/jh/ci/yaml/gitlab_ci_yaml.html">.gitlab-ci.yml 文件</a> 在.gitlab-ci.yml文件中，您可以定义:要运行的脚本。要包含的其他配置文件和模板。依赖项和缓存。要按顺序运行的命令和要并行运行的命令。将应用程序部署到的位置。无论您是想自动运行脚本还是手动触发它们中的任何一个。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43187580/article/details/132335607">Gitlab CI/CD: rules和only</a> 分支-rules:- if: ‘$CI_COMMIT_BRANCH == “main”‘ when: on_success</div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1-ERROR-Job-failed-Error-response-from-daemon-pull-access-denied-for-center-repository-does-not-exist-or-may-require-‘docker-login’-denied-requested-access-to-the-resource-is-denied-docker-go-196-18s"><a href="#1-ERROR-Job-failed-Error-response-from-daemon-pull-access-denied-for-center-repository-does-not-exist-or-may-require-‘docker-login’-denied-requested-access-to-the-resource-is-denied-docker-go-196-18s" class="headerlink" title="1.ERROR: Job failed: Error response from daemon: pull access denied for center, repository does not exist or may require ‘docker login’: denied: requested access to the resource is denied (docker.go:196:18s)"></a>1.ERROR: Job failed: Error response from daemon: pull access denied for center, repository does not exist or may require ‘docker login’: denied: requested access to the resource is denied (docker.go:196:18s)</h2><p>镜像不存在的错误：</p>
+<img src="/images/loadimg.png" data-original="/posts/986a1e2d/gitlab_1.png" lay-src="/posts/986a1e2d/gitlab_1.png" class="" title="gitlab-runner">
+
+<p>(2) Maven依赖<br>在参考文章中，还提到了一个问题：</p>
+<pre><code>每次maven:3-jdk-8去执行build和test都会重新拉取镜像，下载依赖的jar包，比较耗时耗资源。这是因为docker image每次构建都是在独立的container里， maven的 .m2文件并不会被多次构建公用，这里我们可以通过修改gitlab-runner的配置，将maven .m2目录加到volumes中，并增加镜像拉取规则（默认是从远程拉取镜像，这里修改为优先获取本地镜像，不存在时才去远程拉取镜像）
+</code></pre>
+<p>这里需要将.m2的目录挂载到docker镜像中,”/Users/wanyang3/.m2:/root/.m2” 意思是将本地 /Users/wanyang3/.m2 挂载成docker镜像的 /root/.m2 目录。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[[runners]]</span><br><span class="line">  ...</span><br><span class="line">  [runners.docker]</span><br><span class="line">    ...</span><br><span class="line">    volumes = ["/cache","/Users/wanyang3/.m2:/root/.m2"]</span><br><span class="line">    pull_policy = "if-not-present"</span><br><span class="line">  ...</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/aixiaoyang168/article/details/72168834">Docker搭建自己的Gitlab CI Runner</a></div>
+<h2 id="2-拉取代码失败"><a href="#2-拉取代码失败" class="headerlink" title="2.拉取代码失败"></a>2.拉取代码失败</h2><p>我编写了 yml 配置文件，但是拉取代码的时候，没有用 使用ssh拉取，却使用了 http 拉取。致命错误：无法访问 ‘<a target="_blank" rel="noopener" href="http://192.168.1.8:10007/zjhjkj/drone-cloud.git/'%EF%BC%9AThe">http://192.168.1.8:10007/zjhjkj/drone-cloud.git/'：The</a> requested URL returned error: 403</p>
+<p>【解决方案】<br>这个错误就是当前用户没有执行权限，将用户加入到项目中即可。</p>
+<p>项目管理（Manage）-&gt; Members -&gt; 找到提交用户，然后加入项目。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/daihaoxin/article/details/102722071">解决gitlab-runner拉取代码失败</a> 将构建目录/home/dev/opbin/gitlab-runner/builds/a64e29e6/0/fe清空，重新执行pipeline，成功！！<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mo_sss/article/details/135868430">Gitlab Runner执行CI/CD时报错：fatal: unable to access ‘http://gitlab-xxxxxxxxxxxxx/gitlab-instance-xxxxxxx</a> 在我们创建的runner的配置文件中加入参数clone_url = “<a href="http://ip:port”">http://ip:port”</a>, 与url的值相同<br>【3】.<a target="_blank" rel="noopener" href="https://gitlab.cn/docs/jh/ci/ssh_keys/">在 GitLab CI/CD 中使用 SSH 密钥</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32734365/article/details/107466677">Gitlab CI, unable to access ‘http://*.git‘: The requested URL returned error: 403</a> 将gitlab的root用户加入项目即可。</div>
+<h2 id="3-pnpm：未找到命令"><a href="#3-pnpm：未找到命令" class="headerlink" title="3.pnpm：未找到命令"></a>3.pnpm：未找到命令</h2><p>运行 runner 的时候，出现这个问题。</p>
+<p>【尝试方案】<br>（1）后来我尝试了去输出 mvn,这个倒是可以输出的。</p>
+<p>（2）尝试使用 .sh 文件</p>
+<p>（3）尝试使用docker进行打包</p>
+<p>（4）尝试 nvm alais default v20.10.0</p>
+<p>（5）尝试修改 gitlab-runner 运行用户</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看</span></span><br><span class="line">ps -aux |grep gitlab-runner</span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">gitlab-runner uninstall</span><br><span class="line"><span class="comment"># 停止</span></span><br><span class="line">gitlab-runner stop</span><br><span class="line"><span class="comment"># 安装</span></span><br><span class="line">gitlab-runner install --user gitlab-runner --working-directory /home/gitlab-runner</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">gitlab-runner start</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>【解决方案】<br>使用yum重新安装nodejs</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://github.com/nodesource/distributions#rpminstall</span></span><br><span class="line">curl -fsSL https://rpm.nodesource.com/setup_20.x -o nodesource_setup.sh</span><br><span class="line"><span class="comment"># 安装源</span></span><br><span class="line">bash nodesource_setup.sh</span><br><span class="line"><span class="comment"># 安装nodejs</span></span><br><span class="line">yum install -y nodejs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置镜像</span></span><br><span class="line">npm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br><span class="line"></span><br><span class="line">pnpm config <span class="built_in">set</span> registry https://registry.npmmirror.com</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://forum.gitlab.com/t/gitlab-ci-cd-npm-not-found/59318/3">GitLab CI/CD - npm not found</a><br>【2】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/75616581/use-pnpm-in-diferent-gitlab-ci-stages">Use pnpm in diferent Gitlab CI stages</a><br>【3】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/61625191/nvm-in-gitlab-ci-script-and-ssh">Nvm in Gitlab-ci script and ssh</a><br>【4】.<a target="_blank" rel="noopener" href="https://docs.pingcode.com/ask/ask-ask/86520.html">GitLab的环境变量配置指南</a><br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39626154/article/details/127210739">【问题解决】gitlab-runner更改执行用户</a> 切换用户<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013939884/article/details/103504384">修改 gitlab runner 默认用户 (gitlab-runner) 为 root</a><br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39973810/article/details/137468202">如何在Linux中安装NVM（Node Version Manager）</a><br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_35861727/article/details/123508145">Linux环境yum安装nodejs</a> curl -sL <a target="_blank" rel="noopener" href="https://rpm.nodesource.com/setup_17.x">https://rpm.nodesource.com/setup_17.x</a> | bash -<br>【9】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/fps2tao/p/9956139.html">在CentOS 7上安装Node.js的4种方法（yum安装和源码安装）</a> 源码安装,使用EPEL安装 (yum安装方式),使用已编译版本安装,通过NVM安装<br><a target="_blank" rel="noopener" href="https://gitlab.cn/docs/jh/ci/examples/deployment/composer-npm-deploy.html">在 GitLab CI/CD 中通过 SCP 运行 Composer 和 npm 脚本</a> 如何将文件传输到实时服务器,如何部署</div>
+<h2 id="4-Job’s-log-exceeded-limit-of-4194304-bytes"><a href="#4-Job’s-log-exceeded-limit-of-4194304-bytes" class="headerlink" title="4.Job’s log exceeded limit of 4194304 bytes"></a>4.Job’s log exceeded limit of 4194304 bytes</h2><p>【解决方案】</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑 runner配置文件</span></span><br><span class="line">vi /etc/gitlab-runner/config.toml</span><br><span class="line"><span class="comment"># 增加</span></span><br><span class="line">output_limit = 10240</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">gitlab-runner restart</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/53541000/gitlab-ci-cd-jobs-log-exceeded-limit">Gitlab CI/CD job’s log exceeded limit</a><br>【2】.<a target="_blank" rel="noopener" href="https://gitlab.com/gitlab-org/gitlab-runner/-/issues/2955">Job’s log exceeded limit of 4194304 bytes.</a> output_limit = 10240</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/5b2cc0e3.html" rel="next" title="GitLab-Runner安装">
+                      <i class="iconfont icon-prev"></i> GitLab-Runner安装
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/105aa627.html" rel="prev" title="Ghost系统备份和还原">
+                      Ghost系统备份和还原 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-HelloWorld"><span class="toc-number">1.</span> <span class="toc-text">1.HelloWorld</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Docker"><span class="toc-number">2.</span> <span class="toc-text">2.Docker</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-scp%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86"><span class="toc-number">3.</span> <span class="toc-text">3.scp免密登陆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2"><span class="toc-number">4.</span> <span class="toc-text">4.前端部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-jar%E9%83%A8%E7%BD%B2"><span class="toc-number">5.</span> <span class="toc-text">5.jar部署</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">5.配置文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">7.</span> <span class="toc-text">问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-ERROR-Job-failed-Error-response-from-daemon-pull-access-denied-for-center-repository-does-not-exist-or-may-require-%E2%80%98docker-login%E2%80%99-denied-requested-access-to-the-resource-is-denied-docker-go-196-18s"><span class="toc-number">7.1.</span> <span class="toc-text">1.ERROR: Job failed: Error response from daemon: pull access denied for center, repository does not exist or may require ‘docker login’: denied: requested access to the resource is denied (docker.go:196:18s)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E6%8B%89%E5%8F%96%E4%BB%A3%E7%A0%81%E5%A4%B1%E8%B4%A5"><span class="toc-number">7.2.</span> <span class="toc-text">2.拉取代码失败</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-pnpm%EF%BC%9A%E6%9C%AA%E6%89%BE%E5%88%B0%E5%91%BD%E4%BB%A4"><span class="toc-number">7.3.</span> <span class="toc-text">3.pnpm：未找到命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Job%E2%80%99s-log-exceeded-limit-of-4194304-bytes"><span class="toc-number">7.4.</span> <span class="toc-text">4.Job’s log exceeded limit of 4194304 bytes</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/986a1e2d.html';
+      this.page.identifier = 'posts/986a1e2d.html';
+      this.page.title = 'GitLab-Runner使用';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：GitLab-Runner使用 链接地址:https://bibichuan.github.io/posts/986a1e2d.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'GitLab-Runner使用',
+		url: 'https://bibichuan.github.io/posts/986a1e2d.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'GitLab-Runner使用',
+			isTipVisibility: true,
+			tip: 'GitLab-Runner使用',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

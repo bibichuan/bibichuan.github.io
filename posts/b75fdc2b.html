@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StarRocks集群部署</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">StarRocks集群部署</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-03-17 06:28:23
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>老板准备搭建Starrocks集群，但是设备不够，阿里云两台服务器4核8G，内网两台服务器，有一个路由器，有固定IP，经过尝试和环境搭建，我探索出如下的方案设计，其实如果仔细的阅读官方的文档，多处都强调了至少三个节点才能组成集群的，但是不亲自实验，就是会不死心的。</p>
+<ul>
+<li><p>(1) 离线数据同步<br>该方案主要是使用了阿里开源的数据同步工具 DataX 和可视化开源工具 DataX-Web，通过相关的脚本和配置，可以实现定时任务，准时实对数据进行备份和数据转移。该方案可以实现不同数据源的同步，比如SqlServer 到SqlServer，也可以实现SqlServer到starrocks数据，工具可以搭建在内网虚拟机中，对数据库服务器不产生性能影响，只是通过网络进行数据查询和插入，性能取决于带宽，</p>
+</li>
+<li><p>(2) Starrocks双机热备<br>因为四台服务器，分属两个网络，根据starrocks安装部署要求，FF必须为奇数，不能实现starrocks的三台服务器的高可用性，但是可以部署一个Follwer和一个Observer，实现读的高可用性，也就是实现了数据的双机热备，但是不能实现写的高可用性。</p>
+</li>
+<li><p>(3) Starrocks多机集群<br><del>限于starrocks配置的要求，FF和BE的配置文件中的 priority_networks 监听的IP地址，必须是本机网卡的地址，不能通过转发等形式实现，但是可以通过OpenVPN实现两个不同网络的连接，这样在阿里云和内网环境中就可以实现虚拟专用网，并部署3台以上的高可用集群。但是该方案的缺点就是不能实现通常意义上的高可用性，限制于OpenVPN实现的服务端和客户端模式的问题，虽然形成了局域网，但是网络的连通性取决于作为OpenVPN服务端端设备是否正常运行，而且关于OpenVPN的性能如何，是否有网络的损失，暂时未又充分的数据说明。</del></p>
+</li>
+</ul>
+<p>该方案有了新的说明，可以通过部署 OpenVPN 高可用集群（可以查看 <a href="/posts/61fe8459.html" title="OpenVPN之高可用集群">OpenVPN之高可用集群</a>），解决OpenVPN Server单点失效的问题，这样就可以实现了阿里云网络和内网进行联通，同时可以配置Starrocks的高可用集群了。</p>
+<ul>
+<li>(4) 高可用Linux集群<br>可以借助于其他的软件，搭建不同网络环境下的Linux高可用集群，是否可行，还有带进一步的研究。</li>
+</ul>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.donews.com/news/detail/4/3184512.html">ClickHouse vs StarRocks选型对比</a><br>2.<a target="_blank" rel="noopener" href="https://www.daimajiaoliu.com/daima/48115e7d89003fc">openvpn服务高可用的三种方案</a> 这里的三种方案，实现openvpn server的高可用性：1.在vpn客户端使用多个配置文件实现（由用户选择拨号）；2.通过在客户端配置文件实现负载均衡；3.通过域名加DNS轮询的方式实现负载均衡（DNS自动分配VPN）。<br>3.<a target="_blank" rel="noopener" href="https://www.saoniuhuo.com/article/detail-30266.html">StarRocks集群管理</a> StarRocks可以通过滚动升级的方式，平滑进行升级。升级顺序是先升级BE，再升级FE。StarRocks保证BE后向兼容FE。升级的过程可以分为：测试升级的正确性，滚动升级，观察服务。BE、FE启动顺序不能颠倒。因为如果升级导致新旧 FE、BE 不兼容，从新 FE 发出的命令可能会导致旧的 BE 挂掉。但是因为已经部署了新的 BE 文件，BE 通过守护进程自动重启后，即已经是新的 BE 了。<br>4.<a target="_blank" rel="noopener" href="https://finance.sina.com.cn/tech/2022-01-19/doc-ikyamrmz6148339.shtml">实时数仓不用愁，StarRocks+Flink来解忧！</a></div>
+<h2 id="1-高可用性"><a href="#1-高可用性" class="headerlink" title="1.高可用性"></a>1.高可用性</h2><p>什么是高可用，以及如何实现高可用，我暂时不做过多的介绍，一个集群就可以实现高可用了，可以 参考文章 <a href="/posts/67f006f1.html" title="调研报告之系统高可用">调研报告之系统高可用</a></p>
+<h2 id="2-负载均衡"><a href="#2-负载均衡" class="headerlink" title="2.负载均衡"></a>2.负载均衡</h2><p>实现高可用的第一个条件，就是要负载均衡，如果一台服务挂掉了，如和自动切换到另外的一台服务上面呢？</p>
+<p>(1) 代码方式<br>自己在应用层代码进行重试和负载均衡。比如发现一个连接挂掉，就自动在其他连接上进行重试。应用层代码重试需要应用自己配置多个StarRocks前端节点地址。</p>
+<p>(2) JDBC Connector<br>如果使用 mysql jdbc connector 来连接StarRocks，可以使用 jdbc 的自动重试机制:</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:mysql:<span class="comment">//[host:port],[host:port].../[database][?propertyName1][=propertyValue1][&amp;propertyName2][=propertyValue2]... </span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) ProxySQL<br>ProxySQL 是一个灵活强大的 MySQL 代理层, 可以实现读写分离，支持 Query 路由、SQL Cache，动态加载配置、故障切换和 SQL 过滤等功能。StarRocks 的 FE 进程负责接收用户连接和查询请求，其本身是可以横向扩展且高可用的，但是需要用户在多个 FE 上架设一层 proxy，来实现自动的连接负载均衡。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.saoniuhuo.com/article/detail-30563.html">StarRocks负载均衡</a></div>
+<h2 id="2-集群架构"><a href="#2-集群架构" class="headerlink" title="2.集群架构"></a>2.集群架构</h2><p>1.3节点的StarRocks集群,每台机器上均会部署StarRocks的FE与BE服务，除此之外，如果我们要用到MySQL同步服务，则可以在第一个节点上额外部署MySQL同步组件(包括Bifrost、Kafka、Econvert)，当然也可以选择额外一台机器来部署同步组件；如果不需要MySQL同步服务，则不需要安装。</p>
+<p>2.一般数量为奇数(2n+1), 使用多数派(n+1)确认, 可容忍少数派(n)故障; </p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ult_me/article/details/121716779">第1.5章：StarRocks部署–集群部署</a><br>2.<a target="_blank" rel="noopener" href="https://fdoc.epoint.com.cn:3366/dbabook/StarRocks/StarRocks%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2.html">StarRocks 集群部署</a> 这里部署了三台服务器，三台服务器上分别部署了FF和BE</div>
+<h2 id="3-扩容和缩容"><a href="#3-扩容和缩容" class="headerlink" title="3.扩容和缩容"></a>3.扩容和缩容</h2><p>FE扩缩容时要注意：</p>
+<p>(1) Follower FE(包括Master)的数量必须为奇数，建议部署3个，组成高可用(HA)模式即可。<br>(2) 当 FE 处于高可用部署时（1个Master，2个Follower），建议通过增加 Observer FE 来扩展 FE 的读服务能力。当然也可以继续增加 Follower FE，但几乎是不必要的。<br>(3) 通常一个 FE 节点可以应对 10-20 台 BE 节点。建议总的 FE 节点数量在 10 个以下。而3个即可满足绝大部分需求。<br>(4) helper 不能指向 FE 自身，必须指向一个或多个已存在并且正常运行中的 Master/Follower FE。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/administration/Scale_up_down">扩容缩容</a> 官方文档<br>2.<a target="_blank" rel="noopener" href="https://doris.apache.org/zh-CN/installing/install-deploy.html#%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9">Dorris扩容和缩容</a></div>
+<h2 id="4-集群部署"><a href="#4-集群部署" class="headerlink" title="4.集群部署"></a>4.集群部署</h2><p>我这里测试的网络环境有点特殊，是阿里云的两台安装了CentOS8的服务器，公司内网中在Hyper-V中安装了CentOS8的虚拟机，为了使内网这台虚拟机对外可见，需要使用公司路由器设置端口转发，公司申请了固定的ip地址。</p>
+<table>
+<thead>
+<tr>
+<th>节点名称</th>
+<th>节点IP</th>
+<th>部署组件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>node01</td>
+<td>集群IP</td>
+<td>StarRocks FE&amp;BE</td>
+</tr>
+<tr>
+<td>node02</td>
+<td>集群IP</td>
+<td>StarRocks FE&amp;BE</td>
+</tr>
+<tr>
+<td>node03</td>
+<td>集群IP</td>
+<td>StarRocks FE&amp;BE</td>
+</tr>
+</tbody></table>
+<p>我突然发现了一个严重的问题，就是如果使用外网IP，就会造成一个难以估量的问题，就是无法创建集群。于是我又找了一些资料，注意点地方有下面几点：</p>
+<p>(1) be总磁盘空间按3副本计算的话, 需要数据量*3, 然后预留40%作为后台compaction及中间数据存放<br>(2) 同一节点可部署多个be, 但如果要求3副本数据, 则必须3个机器部署3个be<br>(3) be的数量多少直接决定了查询速度<br>(4) fe 分为Folloer(选一个leader) 和 Observer<br>(5) FE 节点数据至少为1（1 个 Follower）。当部署 1 个 Follower 和 1 个 Observer 时，可以实现读高可用。当部署 3 个 Follower 时，可以实现读写高可用（HA）。<br>(6) Follower 的数量必须为奇数，Observer 数量随意。<br>(7) 根据以往经验，当集群可用性要求很高是（比如提供在线业务），可以部署 3 个 Follower 和 1-3 个 Observer。如果是离线业务，建议部署 1 个 Follower 和 1-3 个 Observer。<br>(8) 如果 FE 和 BE 混部，需注意资源竞争问题，并保证元数据目录和数据目录分属不同磁盘。<br>(9) 因为有多网卡的存在，或因为安装过 docker 等环境导致的虚拟网卡的存在，同一个主机可能存在多个不同的 ip。当前 Doris 并不能自动识别可用 IP。所以当遇到部署主机上有多个 IP 时，必须通过 priority_networks 配置项来强制指定正确的 IP。当配置完 priority_networks 并启动 FE 或 BE 后，只是保证了 FE 或 BE 自身的 IP 进行了正确的绑定。而在使用 ADD BACKEND 或 ADD FRONTEND 语句中，也需要指定和 priority_networks 配置匹配的 IP，否则集群无法建立。</p>
+<p>我这里有三台阿里云的服务器，其中服务器一为账号A的阿里云服务器，安装了OpenVPN server;服务器二和服务器三为账号B的两台阿里云服务器，可以组成局域网,安装了OpenVPN client和starrocks;内网中有一台群晖的NAS设备，部署了一台虚拟机,安装了OpenVPN Server;还有一台服务器使用Hyper-V虚拟出来了三台虚拟机，其中两台安装了starrocks和OpenVPN Client,一台安装了OpenVPN Server。三台OpenVPN Server组成了VPN的高可用性，剩下的OpenVPN Client组成专用网，负责starrocks的高可用性，为了实现集群的对外访问，fe和be的配置文件priority_networks中，除了要指明OpenVPN的ip地址之外，还要指定另外的ip地址，比如阿里云的服务器，就是阿里云上的局域网地址，内网的服务器就是内网的局域网地址，这样通过路由器的端口转发，就可以发现处在openvpn网络中的starrocks集群。复杂的网络拓扑图如下：</p>
+<img src="/images/loadimg.png" data-original="/posts/b75fdc2b/starrocks_1.png" lay-src="/posts/b75fdc2b/starrocks_1.png" class="" title="starrocks集群">
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ult_me/article/details/121493170">第1.2章：StarRocks部署–部署环境准备</a><br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wenbronk/p/12264010.html">doris02-编译安装</a> 这里的注意事项很多,上面的大部分注意事项就是这里说的。<br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/shoufeng/p/14314785.html">ZooKeeper 04 - ZooKeeper 集群的节点为什么必须是奇数个</a> 关于为什么Follower的数量必须是奇数，可以参考这篇文章，我觉得ZooKeeper中集群要解决的脑裂问题，也是starrocks必须解决的问题。<br>4.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/1800">部署在阿里云上 be 配置外网加入fe失败</a> 这里也遇到了外网ip加入fe失败的问题，阿里云提出了解决方案就是买他们的产品。<br>5.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/1024">部署场景问题梳理</a> 这里一些问题的梳理，比如：集群有add信息，但是ip识别出错；服务器同步超时；fe进程存在，但是fe状态false；进程查不到<br>6.<a target="_blank" rel="noopener" href="https://www.iodraw.com/diagram/">在线绘图</a></div>
+<h3 id="1-创建用户"><a href="#1-创建用户" class="headerlink" title="1.创建用户"></a>1.创建用户</h3><p>因为我作为管理员，就懒的创建新的用户了，直接用root账号进行安装和配置了，可以新建一个starrocks用户，并创建密码</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 创建用户</span></span><br><span class="line">useradd starrocks</span><br><span class="line"><span class="comment">## 配置密码</span></span><br><span class="line">passwd starrocks</span><br><span class="line"></span><br><span class="line"><span class="comment">## 切换用户</span></span><br><span class="line">su starrocks</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_36118270/article/details/62899093">解决linux下sudo更改文件权限报错xxxis not in the sudoers file. This incident will be reported.</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/daiyudong2020/article/details/54784172">linux增加用户并赋予sudo权限</a></div>
+<h3 id="2-配置hosts"><a href="#2-配置hosts" class="headerlink" title="2.配置hosts"></a>2.配置hosts</h3><p>编辑节点名称和ip地址对应，三台机器上设置如下，因为我的三台电脑，分数不同的局域网，故使用的是外网IP,如果三台机器属于同一个局域网，应该设置的是局域网地址。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑节点名称和ip地址对应</span></span><br><span class="line">vi /etc/hosts</span><br><span class="line"><span class="comment">## 添加</span></span><br><span class="line">node01集群IP  node01</span><br><span class="line">node02集群IP  node02</span><br><span class="line">node03集群IP   node03</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="3-配置免密登录"><a href="#3-配置免密登录" class="headerlink" title="3.配置免密登录"></a>3.配置免密登录</h3><figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 生成密钥</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">"node01"</span></span><br><span class="line"><span class="comment">## 拷贝密钥，将 .ssh/id_rsa.pub 中的内容，拷贝到 ~/.ssh/authorized_keys 文件中，三台机器中authorized_keys都要有三台机器的id_rsa.pub中的内容</span></span><br><span class="line"><span class="comment">## 当然也可以使用ssh-copy-id命令</span></span><br><span class="line">ssh-copy-id node01</span><br><span class="line"><span class="comment">## 将本地的id_rsa.pub文件内容，拷贝到node02节点的 /home/starrocks/.ssh/authorized_keys 文件夹中，输入用户名密码之后就可以了</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa.pub starrocks@node02</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jeikerxiao/article/details/84105529">SSH 三步解决免密登录</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xbw12138/article/details/72773993">ssh: permission denied (publickey)</a> 修改 PasswordAuthentication yes  #允许密码认证 ，重启 systemctl restart sshd<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/SHENNONGZHAIZHU/article/details/53244247">ubuntu配置SSH免密码登陆，提示Permission denied (publickey).</a></div>
+<h3 id="4-部署准备"><a href="#4-部署准备" class="headerlink" title="4.部署准备"></a>4.部署准备</h3><p>阿里云的防火墙或者是安全组，记得配置 ‘8030|8040|9010|9020|9030’ 这几个端口放行，如果进行端口转发的话，记得开启这几个端口转发。将文件复制到三台机器上，这个就不说了，在三台服务器上上传一模一样的配置文件</p>
+<h3 id="5-部署FE"><a href="#5-部署FE" class="headerlink" title="5.部署FE"></a>5.部署FE</h3><p>我在这里卡了很久，启动之后，查看日志，总是出现 ：frontend 127.0.0.1:9010 is not added to cluster yet. 意思是某一个地址没有加入到集群中。我是阿里云的机器，使用ifconfig查看的时候，会有一个回环地址和网卡地址，根据参考资料我尝试了修改fe.conf的配置。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 修改配置文件</span></span><br><span class="line">vi fe/conf/fe.conf </span><br><span class="line"><span class="comment">## 设置 priority_networks设置相匹配的IP</span></span><br><span class="line">priority_networks = 192.168.1.60  </span><br><span class="line"></span><br><span class="line"><span class="comment">## 创建元数据目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p fe/meta</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动node01节点的fe,自动成为了 Leader</span></span><br><span class="line">./bin/start_fe.sh --daemon</span><br><span class="line"><span class="comment">## 连接实例</span></span><br><span class="line">mysql -h 127.0.0.1 -P9030 -uroot</span><br><span class="line"><span class="comment">## 先将实例添加入集群,ALTER SYSTEM ADD FOLLOWER "host:port";</span></span><br><span class="line"><span class="comment">## host为机器的IP，如果机器存在多个IP，需要选取priority_networks里的IP，port为edit_log_port，默认为9010。</span></span><br><span class="line">mysql&gt; alter system add follower <span class="string">"node01:9010"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除实例 edit_log_port 默认为 9010</span></span><br><span class="line">mysql&gt; alter system drop follower <span class="string">"fe_host:edit_log_port"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 配置为观察者模式</span></span><br><span class="line">mysql&gt; ALTER SYSTEM ADD OBSERVER <span class="string">"host:port"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动node01和node02的实例，首次启动必须指定 helper，host:port</span></span><br><span class="line"><span class="comment">## host为helper节点的IP，如果有多个IP，需要选取priority_networks里的IP。port为edit_log_port，默认为9010。</span></span><br><span class="line">./bin/start_fe.sh --helper node03:9010 --daemon</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看集群状态</span></span><br><span class="line">mysql&gt; SHOW PROC <span class="string">'/frontends'</span>\G</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意</strong><br>(1) 这里设置follower和helper的地方，设置的host都需要使用本机的ip地址，也就是使用 ifconfig 中查询到的ip地址，所以在使用端口转发的情况就不会试用了。<br>(2) 如果在 fe.conf 或者是 be.conf 的中设置 priority_networks 不是本机的ip地址，就可能启动不了。如果有多个ip，可以在priority_networks中配置多个ip，这样就可以实现内网集群通信，外网查询，例如查询ifconfig中的ip地址：</p>
+<img src="/images/loadimg.png" data-original="/posts/b75fdc2b/starrocks_2.png" lay-src="/posts/b75fdc2b/starrocks_2.png" class="" title="starrocks集群">
+
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">## 10.9.0.4 用作集群地址，172.24.148.5 用作外网访问地址</span><br><span class="line">priority_networks = 10.9.0.4;172.24.148.5</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) follower或者是observer的端口要一致<br>(4) 使用show proc命令查看状态的时候，如果无法加入集群，可以使用drop先删除节点，然后删除节点上的meta目录，再重新添加节点，并启动节点。</p>
+<h2 id="6-部署BE"><a href="#6-部署BE" class="headerlink" title="6.部署BE"></a>6.部署BE</h2><p>编辑be/conf/be.conf的配置文件，设置 priority_networks ，修改Java堆内存，避免GC建议16G以上；</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 创建存储目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p storage</span><br><span class="line"><span class="comment">## 通过mysql客户端添加BE节点，默认端口 9050</span></span><br><span class="line">mysql&gt; ALTER SYSTEM ADD BACKEND <span class="string">"host:port"</span>;</span><br><span class="line"><span class="comment">## 启动</span></span><br><span class="line">bin/start_be.sh --daemon</span><br><span class="line"></span><br><span class="line"><span class="comment">## 删除</span></span><br><span class="line">mysql &gt; ALTER SYSTEM DROPP BACKEND <span class="string">"host:port"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">## 确认启动状态</span></span><br><span class="line">mysql&gt; SHOW PROC <span class="string">'/backends'</span>\G</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="7-跨网段集群方案"><a href="#7-跨网段集群方案" class="headerlink" title="7.跨网段集群方案"></a>7.跨网段集群方案</h2><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>(1) invalid cluster id</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1864333">Apache Doris BE错误 ErrMsg: invalid cluster id. ignore.</a></div>
+<p>(2) frontend 172.24.148.4:9010 is not added to cluster yet<br>问题主要是没有配置fe.conf的 priority_networks </p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">frontend 172.24.148.4:9010 is not added to cluster yet. role UNKNOWN</span><br><span class="line">2022-03-18 18:41:08,444 WARN (main|1) [Catalog.getClusterIdAndRole():1008] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes:  </span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) frontend 127.0.0.1:9010 is not added to cluster yet </p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://doris.apache.org/zh-CN/installing/install-deploy.html#%E8%BD%AF%E7%A1%AC%E4%BB%B6%E9%9C%80%E6%B1%82">安装与部署</a> 这是Apache Doris的安装部署文件，里面有详细的单机和集群部署说明。</div>
+<p>(4) ip address range configured for priority_networks does not include the current IP address</p>
+<p>(5) line 119: ulimit: open files: cannot modify limit: Operation not permitted</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑文件</span></span><br><span class="line">vi /etc/profile</span><br><span class="line"><span class="comment">## 取消文件限制</span></span><br><span class="line"><span class="built_in">ulimit</span> -n 65535</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.51cto.com/lucifer119/1248853x"> linux文件最大连接数问题—bash:ulimit:open files:cannot modify limit:Operation not permitted 转载 </a><br>2.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_10069777/2085424">非root用户ulimit报错cannot modify limit: Operation not</a> 修改 /etc/security/limits.conf 这个不起作用<br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kerrycode/p/15536333.html">ulimit: open files: cannot modify limit: Operation not permitted</a></div>
+<p>(6) Fail to get master client from cache. host= port=0 code=THRIFT_RPC_ERROR</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/1100">broker load导入后集群起不来</a></div>
+<p>(7)  failed to get fe node type from helper node: 192.168.40.81:9010. response code: 400<br>可能是版本不同导致的问题，但是我重新安装和配置了，还是不行，并不是版本的问题。</p>
+<p>【尝试】<br>(1) 尝试重新安装最新版本的，两台机器都使用最新版本的代码进行安装，不行。</p>
+<p>(2) 尝试只开起一个 follower，另外一个是 OBSERVER，不可以</p>
+<p>(3) 因为两台虚拟机node02,node03，有两个网卡，一个的是物理网卡，一个使用的是openvpn的虚拟网卡，我尝试了使用物理网卡进行连接，做 follower 和 observer 集群可以，但是使用openvpn的虚拟网卡，就出现了无法加入集群的问题。</p>
+<p>作为maseter的节点的日志显示：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">2022-03-23 10:06:44,662 INFO (nioEventLoopGroup-3-8|116) [BaseAction.handleRequest():88] receive http request. url=/role?host=10.9.0.4&amp;port=9010</span><br><span class="line">2022-03-23 10:06:44,662 WARN (nioEventLoopGroup-3-8|116) [MetaBaseAction.isFromValidFe():98] request is not from valid FE. client: 10.9.0.1</span><br><span class="line">2022-03-23 10:06:44,976 INFO (tablet checker|32) [TabletChecker.checkTablets():312] finished to check tablets. unhealth/total/added/in_sched/not_ready: 0/0/0/0/0, cost: 0 ms</span><br><span class="line">2022-03-23 10:06:44,976 INFO (tablet checker|32) [TabletChecker.runAfterCatalogReady():188] TStat :</span><br><span class="line">TStat num of tablet check round: 30 (+1)</span><br><span class="line">TStat cost of tablet check(ms): 0 (+0)</span><br><span class="line">TStat num of tablet checked in tablet checker: 0 (+0)</span><br><span class="line">TStat num of unhealthy tablet checked in tablet checker: 0 (+0)</span><br><span class="line">TStat num of tablet being added to tablet scheduler: 0 (+0)</span><br><span class="line">TStat num of tablet schedule round: 580 (+20)</span><br><span class="line">TStat cost of tablet schedule(ms): 24 (+0)</span><br><span class="line">TStat num of tablet being scheduled: 0 (+0)</span><br><span class="line">TStat num of tablet being scheduled succeeded: 0 (+0)</span><br><span class="line">TStat num of tablet being scheduled failed: 0 (+0)</span><br><span class="line">TStat num of tablet being scheduled discard: 0 (+0)</span><br><span class="line">TStat num of tablet priority upgraded: 0 (+0)</span><br><span class="line">TStat num of tablet priority downgraded: 0 (+0)</span><br><span class="line">TStat num of clone task: 0 (+0)</span><br><span class="line">TStat num of clone task succeeded: 0 (+0)</span><br><span class="line">TStat num of clone task failed: 0 (+0)</span><br><span class="line">TStat num of clone task timeout: 0 (+0)</span><br><span class="line">TStat num of replica missing error: 0 (+0)</span><br><span class="line">TStat num of replica version missing error: 0 (+0)</span><br><span class="line">TStat num of replica unavailable error: 0 (+0)</span><br><span class="line">TStat num of replica redundant error: 0 (+0)</span><br><span class="line">TStat num of replica missing in cluster error: 0 (+0)</span><br><span class="line">TStat num of balance scheduled: 0 (+0)</span><br><span class="line">TStat num of colocate replica mismatch: 0 (+0)</span><br><span class="line">TStat num of colocate replica redundant: 0 (+0)</span><br><span class="line"></span><br><span class="line">2022-03-23 10:06:44,978 INFO (Routine load scheduler|37) [RoutineLoadScheduler.process():76] there are 0 job need schedule</span><br><span class="line">2022-03-23 10:06:44,978 WARN (Routine load task scheduler|38) [RoutineLoadTaskScheduler.process():103] no available be slot to scheduler tasks, wait for 10 seconds to scheduler again, you can set max_routine_load_task_num_per_be bigger in fe.conf, current value is 5</span><br><span class="line">2022-03-23 10:06:45,071 INFO (tablet scheduler|31) [TabletScheduler.adjustPriorities():382] adjust priority for all tablets. changed: 0, total: 0</span><br><span class="line">2022-03-23 10:06:46,091 WARN (heartbeat-mgr-pool-4|103) [Util.getResultForUrl():336] failed to get result from url: http://10.9.0.4:8030/api/bootstrap?cluster_id=1047167524&amp;token=ff455fb4-2f55-4ef4-9fba-78ef83b82fe2. Connection refused</span><br><span class="line">2022-03-23 10:06:46,092 WARN (heartbeat mgr|25) [HeartbeatMgr.runAfterCatalogReady():142] get bad heartbeat response: type: FRONTEND, status: BAD, msg: got exception, name: 10.9.0.4_9010_1648000684518, queryPort: 0, rpcPort: 0, replayedJournalId: 0, feStartTime: \N, feVersion: null</span><br></pre></td></tr></tbody></table></figure>
+
+<p>作为 observer 日志显示：</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">2022-03-23 10:07:35,689 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:07:40,786 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:07:40,787 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:07:45,884 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:07:45,885 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:07:50,982 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:07:50,982 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:07:56,080 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:07:56,081 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:01,178 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:01,179 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:06,276 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:06,276 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:11,334 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:11,334 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:16,435 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:16,436 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:21,533 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:21,533 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:26,631 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:26,631 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:31,729 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:31,729 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:36,827 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:36,827 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:41,925 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:41,926 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:47,023 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:47,024 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:52,121 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:52,122 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br><span class="line">2022-03-23 10:08:57,219 WARN (main|1) [Catalog.getFeNodeTypeAndNameFromHelpers():1116] failed to get fe node type from helper node: 10.9.0.6:9010. response code: 400</span><br><span class="line">2022-03-23 10:08:57,220 WARN (main|1) [Catalog.getClusterIdAndRole():996] current node is not added to the group. please add it first. sleep 5 seconds and retry, current helper nodes: [10.9.0.6:9010]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 因为使用node03作为master启动的时候，node02无法加入集群，但是我交换了两者的位置，将node02作为master启动，使用node03使用–helper参数加入node02组成的集群，发现竟然可以成功的加入到集群中，这更加的让我感到迷惑了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/869">开源版1.19.0部署fe集群</a> 这里说的是版本问题，但是我的版本是一致的<br>2.<a target="_blank" rel="noopener" href="https://lists.apache.org/thread/y83ml27h327p89yw17ohk8k0o6oyfzgs">[GitHub] [incubator-doris] hf200012 opened a new issue #5292: FE宕机启动错误问题</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/a13555f5.html" rel="next" title="Swig(nodejs)模板使用记录">
+                      <i class="iconfont icon-prev"></i> Swig(nodejs)模板使用记录
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/fe09707a.html" rel="prev" title="StarRocks疑难杂症">
+                      StarRocks疑难杂症 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E9%AB%98%E5%8F%AF%E7%94%A8%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">1.高可用性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1"><span class="toc-number">3.</span> <span class="toc-text">2.负载均衡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%9B%86%E7%BE%A4%E6%9E%B6%E6%9E%84"><span class="toc-number">4.</span> <span class="toc-text">2.集群架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9"><span class="toc-number">5.</span> <span class="toc-text">3.扩容和缩容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2"><span class="toc-number">6.</span> <span class="toc-text">4.集群部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-number">6.1.</span> <span class="toc-text">1.创建用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEhosts"><span class="toc-number">6.2.</span> <span class="toc-text">2.配置hosts</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E5%85%8D%E5%AF%86%E7%99%BB%E5%BD%95"><span class="toc-number">6.3.</span> <span class="toc-text">3.配置免密登录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%83%A8%E7%BD%B2%E5%87%86%E5%A4%87"><span class="toc-number">6.4.</span> <span class="toc-text">4.部署准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E9%83%A8%E7%BD%B2FE"><span class="toc-number">6.5.</span> <span class="toc-text">5.部署FE</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E9%83%A8%E7%BD%B2BE"><span class="toc-number">7.</span> <span class="toc-text">6.部署BE</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E8%B7%A8%E7%BD%91%E6%AE%B5%E9%9B%86%E7%BE%A4%E6%96%B9%E6%A1%88"><span class="toc-number">8.</span> <span class="toc-text">7.跨网段集群方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">9.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/b75fdc2b.html';
+      this.page.identifier = 'posts/b75fdc2b.html';
+      this.page.title = 'StarRocks集群部署';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：StarRocks集群部署 链接地址:https://bibichuan.github.io/posts/b75fdc2b.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'StarRocks集群部署',
+		url: 'https://bibichuan.github.io/posts/b75fdc2b.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'StarRocks集群部署',
+			isTipVisibility: true,
+			tip: 'StarRocks集群部署',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

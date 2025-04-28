@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Java跨语言通信之Python</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Java跨语言通信之Python</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-08-05 05:51:53
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-Java调用Python"><a href="#1-Java调用Python" class="headerlink" title="1.Java调用Python"></a>1.Java调用Python</h1><p>有这么一个命题，就是说后端算法部门，使用了TensorFlow等机器学习算法进行了数据预测，现在有个需求，就是说要通过浏览器页面输入相关的计算参数，然后返回计算结果，理论上呢，python也可以作为一个web服务器来开发，但是算法部门的同事不会相关的技术。我后台语言使用的是java，那么如何通过java调用python进行计算呢?或者说，如何把python web集成到java的微服务框架中呢?python和java如何更好的交互，带着这样的问题，开始了这篇文章的探索。</p>
+<p>主要有三种方式：<br>(1) 使用java的库JPython，直接执行python语言，但是Jpython也有缺点</p>
+<pre><code>不支持 Python3.0 以上的语法
+python 源码中若引用的第三方库包含 C 语言扩展，将无法提供支持，如 numpy 等
+</code></pre>
+<p>(2) 使用Python作为微服务，提供web响应，实现起来简单。但是效率比较低，成本比较高。可以使用Tornado，还有Flask、Django等Python Web服务器。</p>
+<p>(3) 将Python使用CPython库转换为c代码，然后使用JNI进行调用。虽然效率高，但是实现的步骤相当复杂，还不一定能成。</p>
+<p>(4) 后来我又发现了一种，其实和第二种比较像，只不过不是作为web应用，而是作为一个socket服务来用罢了。java和python之间通过socket进行通讯,这样比起一个笨重的web服务器来说，是不是显得更加的简单呢？</p>
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/IT_xiao_bai/article/details/79074988">Java调用Python程序方法总结</a> (通过jython这个库直接执行python语句)<br>【2】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1475738">Python写的微服务如何融入Spring Cloud体系？</a> (微服务的概念突破了语言的限制，所以也可以通过Python实现微服务，并融入到Java的生态中去。这篇文章使用了Tornado作为python的服务器实现，使用consulate进行服务注册于发现，Feign作为注册和发现中心)<br>【3】.<a target="_blank" rel="noopener" href="https://github.com/nacos-group/nacos-sdk-python">nacos-sdk-python</a> (nacos的python支持)<br>【4】.<a target="_blank" rel="noopener" href="https://juejin.im/post/6844903725086015502#heading-0">Python 微服务开发–Python Microservices Development</a> (使用python开放微服务)<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/nimoyaoww/article/details/79454668">Java 调用 python 的接口</a> (也是使用了jython依赖)<br>【6】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xuanyuan/p/12453796.html">Python一键转Jar包，Java调用Python新姿势！</a> (这篇文章就如何使用java与python的原因的有关方法做了总结，主要原因是问题解决方向不同，可以通过restful服务进行对接，也可以使用JPython，还可以使用JNI调用，这篇文章就是主要讲了如何将python转换为c语言，并使用java native进行调用的方法)<br>【7】.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/3097466/using-numpy-and-cpython-with-jython">Using NumPy and Cpython with Jython</a> (这是如何使用JPython调用Numpy库的讨论，最后好像也没有讨论出结果来)<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013185349/article/details/96767174">java web应用调用python机器学习训练的模型</a><br>【9】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wuwuyong/p/10600749.html">java调用python的几种用法（看这篇就够了）</a> 在java类中直接执行python语句;在java类中直接调用本地python脚本;使用Runtime.getRuntime()执行python脚本文件（推荐）<br>【10】.<a target="_blank" rel="noopener" href="https://developer.baidu.com/article/details/1890524">Java与Python深度学习模型的交互方法</a> 1.使用Jython。2.使用进程间通信。3.使用gRPC或Thrift。<br>【11】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/maosonglin/p/9397257.html">java web应用调用python深度学习训练的模型</a> 这里提供了实用socket进行通讯的方法，还提供了相关的代码。 1. java代码可以直接调用python代码，只需要下载相应的jar包就行。2. 将python训练的模型参数保存到文本中，用java代码重现模型的预测算法。3. 使用python进程运行深度学习中训练的模型，在java应用程序中调用python进程提供的服务。</div>
+<h1 id="2-Python调用Java"><a href="#2-Python调用Java" class="headerlink" title="2.Python调用Java"></a>2.Python调用Java</h1><p>在Python中，我们可以使用<code>JPype</code>库来实现Python与Java之间的交互。<code>JPype</code>是一个Python模块，提供了Python与Java之间的接口，方便进行跨语言调用。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xlxxcc/article/details/66968541">python调用java API</a><br>【2】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/news/1308365">python怎么调用支持java的接口</a></div>
+<h1 id="3-grpc交互"><a href="#3-grpc交互" class="headerlink" title="3.grpc交互"></a>3.grpc交互</h1><p>采用gRPC，有了服务的注册中心，服务切换更新更加轻量化，并且遵循 Netty 的线程分工原则，协议层消息的接收和编解码由Netty 的 I/O(NioEventLoop)线程负责；后续应用层的处理由应用线程负责，防止由于应用处理耗时而阻塞 Netty 的 I/O 线程， 可以通过服务名和方法名调用，直接调用启动的时候注册的服务实例，不需要反射或者JSON编码解码进行调用，性能更优； 不过因为有Netty的线程分工原则，gRPC之间会做频繁的线程切换，如果在一次gRPC调用过程中，做了多次I/O线程到应用线程之间的切换，会导致性能的下降。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhj_fly/article/details/82684970">java和python使用grpc交互</a><br>【2】.<a target="_blank" rel="noopener" href="https://github.com/guangxush/JavaClient_PythonServer">Java客户端调用Python服务端</a> 某些大型web服务一般是采用Spring框架编写的，然而深度学习计算框架TensorFlow是采用Python编写的，那么如何让客户端调用Python服务端的计算资源返回结果呢，一种可以采用传统的HTTP Web Service的方式，将服务端封装为Web服务，客户端直接通过JSON请求进行调用并返回结果；另外一种是通过基于HTTP2协议RPC服务，Python将计算服务注册在注册中心，Java客户端通过端口号在注册中心找到对应的服务后，调用服务端的服务实例。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15895329/5894299">拥抱云原生，Java与Python基于gRPC通信</a> 大概就是这么一个情况，公司产品需要一个上万人排班(而且可能是多个上万人进行排班)的功能，但系统是基于java做的后台，公司的算法那工程师使用的是python进行算法实现，故需要进行跨系统支持，毕竟算法运算非常非常吃资源。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011870022/article/details/118060375">JAVA和Python的GRPC远程调用</a><br>【5】.<a target="_blank" rel="noopener" href="https://doc.oschina.net/grpc?t=60138">gRPC 基础: Python</a></div>
+<h2 id="3-1-Python服务端"><a href="#3-1-Python服务端" class="headerlink" title="3.1.Python服务端"></a>3.1.Python服务端</h2><p>我这里参考了网上的文章，然后修改了部分代码，搞成了自己的,目录结构如下图：</p>
+<img src="/images/loadimg.png" data-original="/posts/bbb9f6e1/python_1.png" lay-src="/posts/bbb9f6e1/python_1.png" class="" title="python">
+
+<p>(1) 安装依赖</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pip install grpcio</span><br><span class="line"><span class="comment"># 安装 python 下的 protoc 编译器</span></span><br><span class="line">pip install grpcio-tools</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）编写 .proto 文件</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> proto;</span><br><span class="line"></span><br><span class="line">service Message {</span><br><span class="line">  <span class="comment">// send message</span></span><br><span class="line">  rpc <span class="title function_">sendMessage</span> <span class="params">(MessageRequest)</span> returns (MessageReply) {}</span><br><span class="line">}</span><br><span class="line"><span class="comment">// message request</span></span><br><span class="line">message MessageRequest {</span><br><span class="line">  <span class="type">string</span> <span class="variable">message</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// message response</span></span><br><span class="line">message MessageReply {</span><br><span class="line">  <span class="type">string</span> <span class="variable">message</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">  int32 code=<span class="number">2</span>;</span><br><span class="line">  string result=<span class="number">3</span>;</span><br><span class="line">  bool success=<span class="number">4</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）编译文件<br>编译 .proto 文件，生成java的文件。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译 proto 文件</span></span><br><span class="line">python -m grpc_tools.protoc --python_out=. --grpc_python_out=. -I. message.proto </span><br></pre></td></tr></tbody></table></figure>
+
+<p>（4）修改模块导入<br>修改 src\proto\message_pb2_grpc.py 里面的模块导入方式。</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import message_pb2 as message_pb2</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> message_pb2 <span class="keyword">as</span> message__pb2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（5）编写main.py启动服务</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent <span class="keyword">import</span> futures</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> grpc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 实现 proto 文件中定义的 message</span></span><br><span class="line"><span class="keyword">import</span> proto.message_pb2_grpc <span class="keyword">as</span> message_pb2_grpc</span><br><span class="line"><span class="keyword">import</span> proto.message_pb2 <span class="keyword">as</span> message_pb2</span><br><span class="line"></span><br><span class="line">_ONE_DAY_IN_SECONDS = <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义服务</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MessageServer</span>(message_pb2_grpc.MessageServicer):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">sendMessage</span>(<span class="params">self, request, context</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">"接收到客户端消息："</span> + request.message)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 服务端向客户端返回多个消息</span></span><br><span class="line">        <span class="comment"># for i in message_list:</span></span><br><span class="line">        <span class="comment">#     yield message_pb2.MessageReply(message= request.message)</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> message_pb2.MessageReply(message= request.message)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">serve</span>():</span><br><span class="line">    server = grpc.server(futures.ThreadPoolExecutor(max_workers=<span class="number">10</span>))</span><br><span class="line">    message_pb2_grpc.add_MessageServicer_to_server(MessageServer(), server)</span><br><span class="line">    server.add_insecure_port(<span class="string">'[::]:50052'</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"启动服务器等待连接。。。。"</span>)</span><br><span class="line">    server.start()</span><br><span class="line">    server.wait_for_termination()</span><br><span class="line">    <span class="comment"># try:</span></span><br><span class="line">    <span class="comment">#     while True:</span></span><br><span class="line">    <span class="comment">#         time.sleep(_ONE_DAY_IN_SECONDS)</span></span><br><span class="line">    <span class="comment"># except KeyboardInterrupt:</span></span><br><span class="line">    <span class="comment">#     server.stop(0)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    serve()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里使用的是单流的模式，其实如果要是想要服务端向客户端发送多个消息，可以 yield 关键字去调用，就可以一直返回消息了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/whc18858/article/details/131064187">【Protobuf速成指南】.proto文件的编写与编译</a><br>【2】.<a target="_blank" rel="noopener" href="https://apifox.com/apiskills/how-to-use-grpc-in-python/">Python 中使用 gRPC</a> 1.定义 Protocol Buffers 文件。2.生成 gRPC 代码，生成 example_pb2.py 和 example_pb2_grpc.py 两个文件。3.实现服务器。4.实现客户端。5.运行服务器和客户端。</div>
+<h2 id="3-2-Java客户端"><a href="#3-2-Java客户端" class="headerlink" title="3.2.Java客户端"></a>3.2.Java客户端</h2><p>使用 java 客户端，也要通过 proto 文件生成java代码，有些使用了 protobuf-maven-plugin 插件，但是我修改了pom，好像也不管用，没有运行成功。<br>（1）引入依赖</p>
+<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--protobuf 版本号--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">protobuf.version</span>&gt;</span>3.6.0<span class="tag">&lt;/<span class="name">protobuf.version</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!--grpc版本号--&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">grpc.version</span>&gt;</span>1.7.0<span class="tag">&lt;/<span class="name">grpc.version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-netty-shaded<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.26.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-protobuf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.26.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.grpc<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>grpc-stub<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.26.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extensions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">extension</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>kr.motd.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>os-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">extension</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-compiler-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">source</span>&gt;</span>16<span class="tag">&lt;/<span class="name">source</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">target</span>&gt;</span>16<span class="tag">&lt;/<span class="name">target</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.xolstice.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>protobuf-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.5.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--默认的proto文件路径--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">protoSourceRoot</span>&gt;</span>src/main/proto<span class="tag">&lt;/<span class="name">protoSourceRoot</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--Protobuf compiler artifact specification, in groupId:artifactId:version[:type[:classifier]] format. When this parameter is set, the plugin attempts to resolve the specified artifact as protoc executable.--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">protocArtifact</span>&gt;</span>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</span><br><span class="line">                <span class="tag">&lt;/<span class="name">protocArtifact</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">pluginId</span>&gt;</span>grpc-java<span class="tag">&lt;/<span class="name">pluginId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">pluginArtifact</span>&gt;</span>io.grpc:protoc-gen-grpc-java:${grpc.version}:exe:${os.detected.classifier}</span><br><span class="line">                <span class="tag">&lt;/<span class="name">pluginArtifact</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--设置是否在生成java文件之前清空outputDirectory的文件，默认值为true，设置为false时也会覆盖同名文件--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">clearOutputDirectory</span>&gt;</span>true<span class="tag">&lt;/<span class="name">clearOutputDirectory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">executions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">execution</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">goals</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>compile<span class="tag">&lt;/<span class="name">goal</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">goal</span>&gt;</span>compile-custom<span class="tag">&lt;/<span class="name">goal</span>&gt;</span> <span class="comment">&lt;!--按照指定的插件进行编译，即按照GRPC协议编译protob文件--&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">goals</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">execution</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">executions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）编写 proto 文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">syntax = "proto3";</span><br><span class="line"></span><br><span class="line">option java_multiple_files = true;</span><br><span class="line">package proto;</span><br><span class="line"></span><br><span class="line">service Message {</span><br><span class="line">  // send message</span><br><span class="line">  rpc sendMessage (MessageRequest) returns (MessageReply) {}</span><br><span class="line">}</span><br><span class="line">// message request</span><br><span class="line">message MessageRequest {</span><br><span class="line">  string message = 1;</span><br><span class="line">}</span><br><span class="line">// message response</span><br><span class="line">message MessageReply {</span><br><span class="line">  string message = 1;</span><br><span class="line">  int32 code=2;</span><br><span class="line">  string result=3;</span><br><span class="line">  bool success=4;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）使用protobuf插件生成Java代码<br>执行编译命令进行编译，没有问题的话，最后生成的代码会到 target/generated-sources/protobuf 目录下，就可以使用了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ mvn compile</span><br></pre></td></tr></tbody></table></figure>
+
+<p>将生成的 java/proto 和 grpc-java/proto 目录里面的文件，拷贝到 相应的包目录下等待使用。</p>
+<p>（4）编写客户端<br>编写客户端连接，如下代码，注意这里的 com.dji.sample.ai.grpc 包，其实和你自己的包有关系，需要改成你自己的包名，比如我这里放到的就是 grpc 这个目录下。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.dji.sample.ai.grpc.MessageGrpc;</span><br><span class="line"><span class="keyword">import</span> com.dji.sample.ai.grpc.MessageReply;</span><br><span class="line"><span class="keyword">import</span> com.dji.sample.ai.grpc.MessageRequest;</span><br><span class="line"><span class="keyword">import</span> io.grpc.ManagedChannel;</span><br><span class="line"><span class="keyword">import</span> io.grpc.ManagedChannelBuilder;</span><br><span class="line"><span class="keyword">import</span> io.grpc.StatusRuntimeException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"><span class="keyword">import</span> java.util.logging.Level;</span><br><span class="line"><span class="keyword">import</span> java.util.logging.Logger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MessageClient</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> Logger.getLogger(MessageClient.class.getName());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ManagedChannel channel;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> MessageGrpc.MessageBlockingStub blockingStub;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Construct client connecting to HelloWorld server at {<span class="doctag">@code</span> host:port}.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">MessageClient</span><span class="params">(String host, <span class="type">int</span> port)</span> {</span><br><span class="line">        <span class="built_in">this</span>(ManagedChannelBuilder.forAddress(host, port)</span><br><span class="line">                <span class="comment">// Channels are secure by default (via SSL/TLS). For the example we disable TLS to avoid</span></span><br><span class="line">                <span class="comment">// needing certificates.</span></span><br><span class="line">                .usePlaintext()</span><br><span class="line">                .build());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Construct client for accessing HelloWorld server using the existing channel.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    MessageClient(ManagedChannel channel) {</span><br><span class="line">        <span class="built_in">this</span>.channel = channel;</span><br><span class="line">        blockingStub = MessageGrpc.newBlockingStub(channel);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">shutdown</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException {</span><br><span class="line">        channel.shutdown().awaitTermination(<span class="number">5</span>, TimeUnit.SECONDS);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Say hello to server.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendMessage</span><span class="params">(String message)</span> {</span><br><span class="line">        <span class="type">MessageRequest</span> <span class="variable">request</span> <span class="operator">=</span> MessageRequest.newBuilder().setMessage(message).build();</span><br><span class="line">        MessageReply response;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            response = blockingStub.sendMessage(request);</span><br><span class="line">            logger.info(<span class="string">"接收来自服务器的响应: "</span> + response.getMessage());</span><br><span class="line">        } <span class="keyword">catch</span> (StatusRuntimeException e) {</span><br><span class="line">            logger.log(Level.WARNING, <span class="string">"RPC failed: {0}"</span>, e.getStatus());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Greet server. If provided, the first element of {<span class="doctag">@code</span> args} is the name to use in the</span></span><br><span class="line"><span class="comment">     * greeting.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="comment">// Access a service running on the local machine on port 50052</span></span><br><span class="line">        <span class="type">MessageClient</span> <span class="variable">client</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MessageClient</span>(<span class="string">"localhost"</span>, <span class="number">50052</span>);</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="type">String</span> <span class="variable">user</span> <span class="operator">=</span> <span class="string">"world"</span>;</span><br><span class="line">            <span class="comment">// Use the arg as the name to greet if provided</span></span><br><span class="line">            <span class="keyword">if</span> (args.length &gt; <span class="number">0</span>) {</span><br><span class="line">                user = args[<span class="number">0</span>];</span><br><span class="line">            }</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ;</span><br><span class="line">            <span class="keyword">while</span> (<span class="literal">true</span>){</span><br><span class="line">                client.sendMessage(user+i++);</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">finally</span> {</span><br><span class="line">            client.shutdown();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（5）运行<br>修改了相关的程序包依赖，就可以直接运行客户端了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175500/9207561">idea protobuf 插件生成java代码</a> 这篇文章是使用 idea 创建了一个 proto 的代码,用到了 protobuf support插件，但是我没有找到这个插件。在 idea 的 Setting 插件市场中安装 Protobuf Support 插件。在 Protobuf 文件中，点击右键并选择 “Generate” -&gt; “Generate protobuf Java code”。这将生成与 Protobuf 文件中定义的消息和服务对应的 Java 代码。生成的 Java 代码将自动保存在与 Protobuf 文件相同的目录中，使用与 Protobuf 文件的名称相同的包名。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenmaolin928/article/details/130647115">在idea工具下，使用protobuf自动生成java代码，超详细教程</a> 下载protoc.exe编译器,下载地址：Releases otocolbuffers/protobuf · GitHub,下载完后解压，然后配置环境变量：PROTOCBUF_HOME<br>【3】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liugh/p/7505533.html">Intellij IDEA中使用Protobuf的正确姿势</a>  一般的做法，是执行protoc命令，依次将.proto文件转成Java类: 不过gRPC官方推荐了一种更优雅的使用姿势，可以通过maven轻松搞定<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhuyu19911016520/article/details/123975991">Protobuf Support</a> 这里有配置 outputDirectory 生成后的文件存放根路径。idea -&gt; Maven -&gt; Plugins -&gt; protobuf -&gt; 点击 protobuf:compile 就可以生成portobuf java实体类</div>
+<h2 id="3-3-Python客户端"><a href="#3-3-Python客户端" class="headerlink" title="3.3.Python客户端"></a>3.3.Python客户端</h2><p>（1）grpc安装</p>
+<p>（2）定义proto文件</p>
+<p>（3）生成存根代码</p>
+<p>（4）客户端demo</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> grpc</span><br><span class="line"><span class="keyword">import</span> first_pb2 <span class="keyword">as</span> pb2</span><br><span class="line"><span class="keyword">import</span> first_pb2_grpc <span class="keyword">as</span> pb2_grpc</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">run</span>():</span><br><span class="line">    <span class="comment"># 定义一个频道</span></span><br><span class="line">    conn = grpc.insecure_channel(<span class="string">'127.0.0.1:5000'</span>)</span><br><span class="line">    <span class="comment"># 生成客户端</span></span><br><span class="line">    client = pb2_grpc.BibiliStub(channel=conn)</span><br><span class="line">    response = client.HelloDewei(pb2.HellDeweiReq(</span><br><span class="line">        name=<span class="string">'wgs'</span>,</span><br><span class="line">        age=<span class="number">25</span></span><br><span class="line">    ))</span><br><span class="line">    <span class="built_in">print</span>(response.result)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    run()</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42363032/article/details/115282405">python grpc 服务端和客户端调用demo</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/bugang4663/article/details/131094796">python grpc使用示例</a> 这是客户端 grpc 的完整例子。</div>
+<h2 id="3-4-Java服务端"><a href="#3-4-Java服务端" class="headerlink" title="3.4.Java服务端"></a>3.4.Java服务端</h2><p>使用 java 作为grpc的服务端，主要的步骤如下：</p>
+<img src="/images/loadimg.png" data-original="/posts/bbb9f6e1/java_1.png" lay-src="/posts/bbb9f6e1/java_1.png" class="" title="JAVA">
+
+<p>（1）编写 proto 文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">syntax = "proto3";</span><br><span class="line"></span><br><span class="line">option java_multiple_files = true;</span><br><span class="line">package proto;</span><br><span class="line"></span><br><span class="line">service ManageAi {</span><br><span class="line">  // 增加AI</span><br><span class="line">  rpc addManageAi(ManageAiRequest) returns (ManageAiResponse) {}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">message ManageAiRequest {</span><br><span class="line">  // 任务id</span><br><span class="line">  string job_id=1;</span><br><span class="line">  // 任务名称</span><br><span class="line">  string job_name=2;</span><br><span class="line">  // 唯一id</span><br><span class="line">  string uuid=3;</span><br><span class="line">  // 时间</span><br><span class="line">  string time=5;</span><br><span class="line">  // 图片</span><br><span class="line">  string photo=6;</span><br><span class="line">  // 视频</span><br><span class="line">  string video=7;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">message ManageAiResponse {</span><br><span class="line">  string message = 1;</span><br><span class="line">  int32 code=2;</span><br><span class="line">  string result=3;</span><br><span class="line">  bool success=4;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）添加 gRPC 依赖和插件</p>
+<p>（3）生成存根<br>就是生成 grpc 的java代码</p>
+<p>（4）实现Service<br>创建一个新的 AiServer 类来实现 addManageAi 操作。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AiServer</span> <span class="keyword">extends</span> <span class="title class_">ManageAiGrpc</span>.ManageAiImplBase {</span><br><span class="line">    <span class="comment">// 增加AI识别记录</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addManageAi</span><span class="params">(ManageAiRequest request, StreamObserver&lt;ManageAiResponse&gt; responseObserver)</span> {</span><br><span class="line">        <span class="type">ManageAiResponse</span> <span class="variable">response</span> <span class="operator">=</span> ManageAiResponse.newBuilder()</span><br><span class="line">                .setCode(<span class="number">200</span>)</span><br><span class="line">                .setSuccess(<span class="literal">true</span>)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Use responseObserver to send a single response back</span></span><br><span class="line">        responseObserver.onNext(response);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When you are done, you must call onCompleted.</span></span><br><span class="line">        responseObserver.onCompleted();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里是单流，也就是客户端和服务端都是一次请求和一次响应，其实也可以改成从服务端向客户端流式传输，只要多次调用 onNext(response) 返回多个响应就好了，最后再掉用 onCompleted 方法即可。</p>
+<p>（5）启动服务器<br>实现服务器监听</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">App</span></span><br><span class="line">{</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">( String[] args )</span> <span class="keyword">throws</span> Exception</span><br><span class="line">    {</span><br><span class="line">      <span class="comment">// Create a new server to listen on port 8080</span></span><br><span class="line">      <span class="type">Server</span> <span class="variable">server</span> <span class="operator">=</span> ServerBuilder.forPort(<span class="number">8080</span>)</span><br><span class="line">        .addService(<span class="keyword">new</span> <span class="title class_">GreetingServiceImpl</span>())</span><br><span class="line">        .build();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Start the server</span></span><br><span class="line">      server.start();</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Server threads are running in the background.</span></span><br><span class="line">      System.out.println(<span class="string">"Server started"</span>);</span><br><span class="line">      <span class="comment">// Don't exit the main thread. Wait until server is terminated.</span></span><br><span class="line">      server.awaitTermination();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（6）启动</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1893192">java版gRPC实战之三：服务端流</a> 这里用了 grpc-server-spring-boot-starter 和 build.gradle，而不是maven<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/boling_cavalry/article/details/115803738">java版gRPC实战之二：服务发布和调用</a> 和上面的路子是一样的，都是用一个工程实验的，使用了 grpc-server-spring-boot-starter。<br>【3】.<a target="_blank" rel="noopener" href="https://codelabs.developers.google.com/codelabs/cloud-grpc-java?hl=zh-cn#0">使用 Java 构建 gRPC 服务</a> 这是谷歌的一个教程，用了原生的grpc服务，您只需将 proto 文件中的 stream 关键字添加到请求或响应参数中，即可轻松构建流服务。</div>
+<h1 id="4-文件上传"><a href="#4-文件上传" class="headerlink" title="4.文件上传"></a>4.文件上传</h1><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/spy14414/article/details/89499174">grpc图片传输 python实现</a> 这篇文章其实是将图片转为了base64字符串然后进行传输的，还有从客户端以流的形式进行数据传递，服务端接收消息，并将base64转为了图片。<br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/siyunianhua/p/18162918">c# gRPC服务中 常见proto支持的数据类型</a> 1.基本类型;2.枚举类型;3.重复类型;4.嵌套类型;5.时间类型;6.字典类型;7.Oneof 类型。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/minglove1986/article/details/78204947">gRPC 对应Java类型</a><br>【4】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/inventory/7239/article/1634342">用Python进行gRPC接口测试（三）</a>  标量值类型与我们在编程语言使用的基本数据类型概念类似，用来携带的数据也大体相同。在python中，这些标量值类型都能找到与之对应的python数据类型，处理起来简单便捷。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/captain5339/article/details/128308306">gRPC python实现文件上传，以及使用流式通信上传超大文件</a> 这篇文章使用二进制的形式进行文件上传，可以实现超大的文件上传。如果文件比较大，上传过程中很容易出现丢包现象，而且在1次传送又很占内存，特别是几百M的大文件，服务器侧也无法承受，因此解决思路为：在Client 端将大文件分成多个更小的chunk，如64K, 用streaming方式上传，读１次上传1次。利用protobuf message 的oneof 字段修饰符，在第1个上传请求中，发送文件名，后面的request是文件内容chunk。发送完成，server保存文件后，发送1条response, 其中包含 status, 指明结果。</div>
+<h1 id="5-流式传输"><a href="#5-流式传输" class="headerlink" title="5.流式传输"></a>5.流式传输</h1><p>这里我用 java 作为流接收端进行测试，我结合了参考文章1和参考文章2进行了测试。<br>(1) 定义proto文件</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">syntax = "proto3";</span><br><span class="line"></span><br><span class="line">option java_multiple_files = true;</span><br><span class="line">package proto;</span><br><span class="line"></span><br><span class="line">service ManageAi {</span><br><span class="line">  // 文件上传</span><br><span class="line">  rpc fileUpload(stream FileUploadRequest) returns (ManageAiResponse) {}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">message FileUploadRequest {</span><br><span class="line">  oneof data {</span><br><span class="line">    string name = 1;</span><br><span class="line">    bytes chunk = 2;</span><br><span class="line">  }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">message ManageAiResponse {</span><br><span class="line">  string message = 1;</span><br><span class="line">  int32 code=2;</span><br><span class="line">  string result=3;</span><br><span class="line">  bool success=4;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 生成java代码<br>根据proto文件，生成java代码，将生成的target下的generated-soueces/protobuf下的 java 代码复制到项目中，待使用。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn compile</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) 实现Service端<br>这里主要就是注意，要在 fileUpload 方法中，返回一个 StreamObserver 操作，其中的 onNext 方法负责接收客户端传入的数据。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AiServer</span> <span class="keyword">extends</span> <span class="title class_">ManageAiGrpc</span>.ManageAiImplBase {</span><br><span class="line">    <span class="comment">// 上传接口</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> StreamObserver&lt;FileUploadRequest&gt; <span class="title function_">fileUpload</span><span class="params">(StreamObserver&lt;ManageAiResponse&gt; responseObserver)</span>{</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">StreamObserver</span>&lt;FileUploadRequest&gt;() {</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 实现数据接收</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onNext</span><span class="params">(FileUploadRequest stock)</span> {</span><br><span class="line">                log.info(stock.toString());</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 数据接收完成,返回信息</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCompleted</span><span class="params">()</span> {</span><br><span class="line">                responseObserver.onNext(ManageAiResponse.newBuilder()</span><br><span class="line">                        .build());</span><br><span class="line">                responseObserver.onCompleted();</span><br><span class="line">            }</span><br><span class="line">            <span class="comment">// 数据接收错误</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onError</span><span class="params">(Throwable t)</span> {</span><br><span class="line">                log.error(t.getMessage(), t);</span><br><span class="line">            }</span><br><span class="line">        };</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">( String[] args )</span> <span class="keyword">throws</span> Exception</span><br><span class="line">    {</span><br><span class="line">        <span class="comment">// Create a new server to listen on port 8080</span></span><br><span class="line">        <span class="type">Server</span> <span class="variable">server</span> <span class="operator">=</span> ServerBuilder.forPort(<span class="number">9999</span>)</span><br><span class="line">                .addService(<span class="keyword">new</span> <span class="title class_">AiServer</span>())</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Start the server</span></span><br><span class="line">        server.start();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Server threads are running in the background.</span></span><br><span class="line">        System.out.println(<span class="string">"Server started"</span>);</span><br><span class="line">        <span class="comment">// Don't exit the main thread. Wait until server is terminated.</span></span><br><span class="line">        server.awaitTermination();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 生成python代码<br>根据 proto 文件，执行生成 python 代码。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -m grpc_tools.protoc --python_out=. --grpc_python_out=. -I. ManageAi.proto</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(5) 实现clint端</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> logging</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> grpc</span><br><span class="line"><span class="comment"># 客户端</span></span><br><span class="line"><span class="keyword">import</span> proto.ManageAi_pb2 <span class="keyword">as</span> ManageAI_pb2</span><br><span class="line"><span class="keyword">import</span> proto.ManageAi_pb2_grpc <span class="keyword">as</span> ManageAi_pb2_grpc</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fileUpload</span>():</span><br><span class="line">    <span class="keyword">yield</span> ManageAI_pb2.FileUploadRequest(name=os.path.basename(<span class="string">"秸秆1"</span>))</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">r'D:\\zlc\\drone\\视频\\秸秆1.mp4'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        size = os.path.getsize(<span class="string">r'D:\\zlc\\drone\\视频\\秸秆1.mp4'</span>) / <span class="number">1024</span></span><br><span class="line">        n = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">            content = f.read(<span class="number">1024</span>)</span><br><span class="line">            <span class="keyword">if</span> content:</span><br><span class="line">                n = n + <span class="number">1</span></span><br><span class="line">                <span class="built_in">print</span>(<span class="string">'传输进度:{}%'</span>.<span class="built_in">format</span>(<span class="built_in">round</span>(n / size * <span class="number">100</span>, <span class="number">2</span>)))</span><br><span class="line">                <span class="keyword">yield</span> ManageAI_pb2.FileUploadRequest(chunk=content)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">client</span>():</span><br><span class="line">    <span class="keyword">with</span> grpc.insecure_channel(<span class="string">'localhost:9999'</span>) <span class="keyword">as</span> channel:</span><br><span class="line">        client = ManageAi_pb2_grpc.ManageAiStub(channel)  <span class="comment"># 客户端使用Stub类发送请求,参数为频道,为了绑定链接</span></span><br><span class="line">        response = client.fileUpload(fileUpload())  <span class="comment"># 需要将上面的send_stream传进来</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">'返回结果:'</span>, response.message)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    client()</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43810267/article/details/126222414">python对于grpc的简单操作（三）</a> 客户端服务端单流、双流在python中的写法，还提供了一个上传视频流的方法。<br>【2】.<a target="_blank" rel="noopener" href="https://apifox.com/apiskills/how-to-use-grpc-stream-in-java/">在 Java 中使用 gRPC 进行流式(stream)传输</a> 1.服务器流 RPC：客户端向服务器发送单个请求，并获取回几条它顺序读取的消息。2.客户端流 RPC：客户端向服务器发送一系列消息。客户端等待服务器处理消息并读取返回的响应。3.双向流 RPC：客户端和服务器可以双向发送多条消息。消息的接收顺序与发送顺序相同。但是，服务器或客户端可以选择回复接收到的消息的顺序。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_47951400/article/details/124141042">Java版gRPC的使用之二：服务端流、客户端流和双向流</a> 这里的单流、双流都是用java代码去编写的。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213312/9137120">grpc 传输文件 java </a> 这里感觉写流一半，也没有写如何定义的 grpc 方法，如何保存的数据等等。<br>【5】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7127156711852343326">gRPC实战（二、流式传输 Java、Go实现） </a> 分别用java和go语言实现了客户端流、服务端流和双向流的问题。</div>
+<h1 id="5-问题"><a href="#5-问题" class="headerlink" title="5.问题"></a>5.问题</h1><h2 id="4-1-Interpreting-non-ascii-codepoint"><a href="#4-1-Interpreting-non-ascii-codepoint" class="headerlink" title="4.1.Interpreting non ascii codepoint"></a>4.1.Interpreting non ascii codepoint</h2><p>在使用 python 生成 proto 文件的使用，出现了这个问题。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"><span class="comment">#在Python时候不需要这个选项</span></span><br><span class="line"><span class="comment">#option java_multiple_files = true;</span></span><br><span class="line">package shiyun;</span><br><span class="line"></span><br><span class="line">// The greeting service definition.</span><br><span class="line">service AutoChat {</span><br><span class="line">  // Sends a greeting</span><br><span class="line">  rpc autoChat (AutoChatRequest) returns (AutoChatReply) {}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">// The request message containing the use<span class="string">r's name.</span></span><br><span class="line"><span class="string">message AutoChatRequest {</span></span><br><span class="line"><span class="string">  string question = 1;</span></span><br><span class="line"><span class="string">}</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">// The response message containing the greetings</span></span><br><span class="line"><span class="string">message AutoChatReply {</span></span><br><span class="line"><span class="string">  string response = 1;</span></span><br><span class="line"><span class="string">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>上面的 .proto 的内容有些问题：</p>
+<ul>
+<li>不能包含中文</li>
+<li>注释应该为 //, 而不是 # </li>
+</ul>
+<p>正确的 .proto 文件如下：</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">syntax = <span class="string">"proto3"</span>;</span><br><span class="line"><span class="keyword">package</span> shiyun;</span><br><span class="line"><span class="comment">// The greeting service definition.</span></span><br><span class="line">service AutoChat {</span><br><span class="line">  rpc <span class="title function_">autoChat</span> <span class="params">(AutoChatRequest)</span> returns (AutoChatReply) {}</span><br><span class="line">}</span><br><span class="line"><span class="comment">// The request message containing the user's name.</span></span><br><span class="line">message AutoChatRequest {</span><br><span class="line">  <span class="type">string</span> <span class="variable">question</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">}</span><br><span class="line"><span class="comment">// The response message containing the greetings</span></span><br><span class="line">message AutoChatReply {</span><br><span class="line">  <span class="type">string</span> <span class="variable">response</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/missdaddio/article/details/67633878">linux文件头出现非ascii字符</a><br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/uncle_ll/article/details/72854756">[Caffe]:关于 Error parsing text-format</a> 这是protobuf提示的一个错误。它的意思是在用户的prototxt中第xxx行，第xx 列有非。</div>
+<h2 id="4-2-程序包io-grpc不存在"><a href="#4-2-程序包io-grpc不存在" class="headerlink" title="4.2.程序包io.grpc不存在"></a>4.2.程序包io.grpc不存在</h2><p>【解决方案】<br>这个问题主要就是我不知道什么时候把依赖 grpc-protobuf 这几个弄掉了，或者是我没有找到地方。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_32447301/article/details/86385698">IDEA搭建gRPC服务</a> 这里有 GrpcClientService 服务，@GrpcClient 注解。</div>
+<h2 id="4-3-AutoChatGrpc-java-111-31-找不到符号"><a href="#4-3-AutoChatGrpc-java-111-31-找不到符号" class="headerlink" title="4.3.AutoChatGrpc.java:[111,31] 找不到符号"></a>4.3.AutoChatGrpc.java:[111,31] 找不到符号</h2><p>【解决方案】<br>主要就是把 outputDirectory 这个配置文件删掉了，叫他自动生成到 target/generated-sources/protobuf 目录下。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/davidullua/article/details/128176207">IntelliJ IDEA 中找不到 protocol buffer 生成的 Java 类的解决方法</a> 如果 protoc 生成的 class 文件找不到，说明 protoc 文件没有没有正确编译。 可以调整 IDEA 的默认参数， 然后重启 IntelliJ IDEA 使得 IDE 能够正确找到 protoc 生成的 Java 类。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39594499/article/details/139703999">idea的java代码引用proto文件报错</a></div>
+<h2 id="4-4-Protobuf-gencode-version-5-27-2-is-older-than-the-runtime-version-5-28-2-at-ManageAi-proto-Please-avoid-checked-in-Protobuf-gencode-that-can-be-obsolete"><a href="#4-4-Protobuf-gencode-version-5-27-2-is-older-than-the-runtime-version-5-28-2-at-ManageAi-proto-Please-avoid-checked-in-Protobuf-gencode-that-can-be-obsolete" class="headerlink" title="4.4.Protobuf gencode version 5.27.2 is older than the runtime version 5.28.2 at ManageAi.proto. Please avoid checked-in Protobuf gencode that can be obsolete."></a>4.4.Protobuf gencode version 5.27.2 is older than the runtime version 5.28.2 at ManageAi.proto. Please avoid checked-in Protobuf gencode that can be obsolete.</h2><p>编写完了客户端，服务端，但是进行测试的时候，客户端出现了这个问题，服务端java出现了。</p>
+<p>【解决方案】<br>这个好像只是一个警告，可以不用管。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://github.com/protocolbuffers/protobuf/issues/18096">Excessive new warning in Python protobuf runtime</a><br>【2】.<a target="_blank" rel="noopener" href="https://github.com/grpc/grpc/issues/37609">UserWarnings emitted from all protoc-generated _pb2 packages</a> For me, it was a problem with protobuf. In my requirements.txt, I specified protobuf==5.27.2, and now the warning has disappeared.</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/f158c06b.html" rel="next" title="Java高级技术概况">
+                      <i class="iconfont icon-prev"></i> Java高级技术概况
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/4fb7cd85.html" rel="prev" title="Java跨语言通信之C语言">
+                      Java跨语言通信之C语言 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Java%E8%B0%83%E7%94%A8Python"><span class="toc-number">1.</span> <span class="toc-text">1.Java调用Python</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Python%E8%B0%83%E7%94%A8Java"><span class="toc-number">2.</span> <span class="toc-text">2.Python调用Java</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-grpc%E4%BA%A4%E4%BA%92"><span class="toc-number">3.</span> <span class="toc-text">3.grpc交互</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-Python%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">3.1.</span> <span class="toc-text">3.1.Python服务端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-Java%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">3.2.</span> <span class="toc-text">3.2.Java客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-Python%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">3.3.</span> <span class="toc-text">3.3.Python客户端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-Java%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-number">3.4.</span> <span class="toc-text">3.4.Java服务端</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">4.</span> <span class="toc-text">4.文件上传</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E6%B5%81%E5%BC%8F%E4%BC%A0%E8%BE%93"><span class="toc-number">5.</span> <span class="toc-text">5.流式传输</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E9%97%AE%E9%A2%98"><span class="toc-number">6.</span> <span class="toc-text">5.问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-Interpreting-non-ascii-codepoint"><span class="toc-number">6.1.</span> <span class="toc-text">4.1.Interpreting non ascii codepoint</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%A8%8B%E5%BA%8F%E5%8C%85io-grpc%E4%B8%8D%E5%AD%98%E5%9C%A8"><span class="toc-number">6.2.</span> <span class="toc-text">4.2.程序包io.grpc不存在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-AutoChatGrpc-java-111-31-%E6%89%BE%E4%B8%8D%E5%88%B0%E7%AC%A6%E5%8F%B7"><span class="toc-number">6.3.</span> <span class="toc-text">4.3.AutoChatGrpc.java:[111,31] 找不到符号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4-Protobuf-gencode-version-5-27-2-is-older-than-the-runtime-version-5-28-2-at-ManageAi-proto-Please-avoid-checked-in-Protobuf-gencode-that-can-be-obsolete"><span class="toc-number">6.4.</span> <span class="toc-text">4.4.Protobuf gencode version 5.27.2 is older than the runtime version 5.28.2 at ManageAi.proto. Please avoid checked-in Protobuf gencode that can be obsolete.</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/bbb9f6e1.html';
+      this.page.identifier = 'posts/bbb9f6e1.html';
+      this.page.title = 'Java跨语言通信之Python';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Java跨语言通信之Python 链接地址:https://bibichuan.github.io/posts/bbb9f6e1.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Java跨语言通信之Python',
+		url: 'https://bibichuan.github.io/posts/bbb9f6e1.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Java跨语言通信之Python',
+			isTipVisibility: true,
+			tip: 'Java跨语言通信之Python',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

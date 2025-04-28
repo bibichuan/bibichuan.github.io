@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高德地图API使用笔记二</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">高德地图API使用笔记二</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-07-19 01:53:11
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:42
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>我这里还是使用的jssdk2.0和loca2.0进行的测试。</p>
+<h2 id="2-自定义地图无法叠加Loca"><a href="#2-自定义地图无法叠加Loca" class="headerlink" title="2.自定义地图无法叠加Loca"></a>2.自定义地图无法叠加Loca</h2><p>这个问题让我非常的头疼，我使用了Loca添加了部分的资源，但是在使用 AMap.GLCustomLayer 进行自定义加载图层的时候，出现了问题，就是无法将Loca和GLCustomLayer进行结合使用。在官方的例子下，添加loca容器，原有的三个盒子就不见了。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="title class_">Map</span>(<span class="string">'container'</span>, {</span><br><span class="line">    <span class="attr">center</span>: [<span class="number">120.092</span>, <span class="number">30.355</span>],</span><br><span class="line">    <span class="attr">zooms</span>: [<span class="number">2</span>, <span class="number">20</span>],</span><br><span class="line">    <span class="attr">zoom</span>: <span class="number">14</span>,</span><br><span class="line">    <span class="attr">viewMode</span>: <span class="string">'3D'</span>,</span><br><span class="line">    <span class="attr">pitch</span>: <span class="number">50</span>,</span><br><span class="line">});</span><br><span class="line"><span class="comment">// 创建loca</span></span><br><span class="line"><span class="keyword">var</span> loca = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">Container</span>({</span><br><span class="line">    <span class="attr">map</span>: map,</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 创建自定义图层</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> gllayer = <span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="title class_">GLCustomLayer</span>({</span><br><span class="line">    <span class="comment">/** 省略代码 */</span></span><br><span class="line">});</span><br><span class="line">map.<span class="title function_">add</span>(gllayer);</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决】<br>这里的 AMap.GLCustomLayer 添加，必须在 new Loca.Container 之前，否则就不会出现自定义的图层</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="title class_">Map</span>(<span class="string">'container'</span>, {</span><br><span class="line">    <span class="attr">center</span>: [<span class="number">120.092</span>, <span class="number">30.355</span>],</span><br><span class="line">    <span class="attr">zooms</span>: [<span class="number">2</span>, <span class="number">20</span>],</span><br><span class="line">    <span class="attr">zoom</span>: <span class="number">14</span>,</span><br><span class="line">    <span class="attr">viewMode</span>: <span class="string">'3D'</span>,</span><br><span class="line">    <span class="attr">pitch</span>: <span class="number">50</span>,</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> gllayer = <span class="keyword">new</span> <span class="title class_">AMap</span>.<span class="title class_">GLCustomLayer</span>({</span><br><span class="line">    <span class="comment">/** 省略代码 */</span></span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">map.<span class="title function_">add</span>(gllayer);</span><br><span class="line"><span class="comment">// 创建loca</span></span><br><span class="line"><span class="keyword">var</span> loca = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">Container</span>({</span><br><span class="line">    <span class="attr">map</span>: map,</span><br><span class="line">});</span><br></pre></td></tr></tbody></table></figure>
+
+<p>交流圈中说，这个问题是已知的问题，后面排期会解决，我用的是 Loca 2.0 和 jssdk 2.0，关键是要急用，这就比较尴尬了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/jsapi-v2/example/selflayer/glcustom-layer">自定义图层-GLCustomLayer 结合 THREE</a></div>
+<h2 id="3-ZMarkerLayer无法嵌入"><a href="#3-ZMarkerLayer无法嵌入" class="headerlink" title="3.ZMarkerLayer无法嵌入"></a>3.ZMarkerLayer无法嵌入</h2><p>我使用官方的这个例子<a target="_blank" rel="noopener" href="https://developer.amap.com/demo/loca-v2/demos/cat-laser/laser">国贸数据分布</a> 里面的数据，潜入自己的项目中，一模一样的代码，结果弹出了这个错误：Error while reading CSS rules from null SecurityError: CSSStyleSheet.cssRules getter: Not allowed to access cross-origin stylesheet ，我上面两条是我自己的map和loca,应该没有什么问题的，数据也都是官方的数据，代码都是一样。</p>
+<img src="/images/loadimg.png" data-original="/posts/30208acf/amap_1.png" lay-src="/posts/30208acf/amap_1.png" class="" title="高德地图API">
+
+<p>这个问题，看来是MacBook上的Firfox独有的。</p>
+<p><strong>后来我发现，这个问题不大，虽然报了错误，但是不影响渲染。</strong></p>
+<h2 id="4-ZMarkerLayer出现偏移"><a href="#4-ZMarkerLayer出现偏移" class="headerlink" title="4.ZMarkerLayer出现偏移"></a>4.ZMarkerLayer出现偏移</h2><p>当我使用官方提供的例子 “国贸数据分布” ，嵌入到自己的项目中，就是有问题，这个边框还是有点偏移。</p>
+<img src="/images/loadimg.png" data-original="/posts/30208acf/amap_2.png" lay-src="/posts/30208acf/amap_2.png" class="" title="高德地图API">
+
+<p>应该是全局的样式影响到了这个ZMarker的创建，因为ZMarker本质上就是一个dom，不过是将它输出为了canvas上。后来经过我的努力，最终解决了找到了罪魁祸首,就是这个 box-sizing，如果设置了 border-box ，就会出现偏移的情况。</p>
+<figure class="highlight css"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*<span class="selector-pseudo">:not</span>(<span class="selector-tag">input</span>){</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决】<br>可以在ZMarker创建的时候，将content中的 box-sizing:initial 进行重新初始化。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://github.com/niklasvh/html2canvas/issues/2197">Unable to access cssRules property DOMException: “CSSStyleSheet.cssRules getter: Not allowed to access cross-origin stylesheet”</a></div>
+<h2 id="5-火狐浏览器无法渲染部分样式"><a href="#5-火狐浏览器无法渲染部分样式" class="headerlink" title="5.火狐浏览器无法渲染部分样式"></a>5.火狐浏览器无法渲染部分样式</h2><p>高德地图在 macos 的火狐浏览器(Firefox Developer Edition 104.0b10 64 位)上有问题，loca 2.0版本，比如 <a target="_blank" rel="noopener" href="https://developer.amap.com/demo/loca-v2/demos/zmarker/house-price">标牌点-某片区的房价情况</a> 在火狐浏览器上显示时，没有下面的呼吸点。</p>
+<img src="/images/loadimg.png" data-original="/posts/30208acf/amap_3.jpg" lay-src="/posts/30208acf/amap_3.jpg" class="" title="高德地图">
+
+<p>在谷歌浏览器上显示的比较全，会有下面的呼吸点。</p>
+<img src="/images/loadimg.png" data-original="/posts/30208acf/amap_4.jpg" lay-src="/posts/30208acf/amap_4.jpg" class="" title="高德地图">
+
+
+<p>打开火狐的控制台，出现了：Uncaught TypeError: console.error is not a function，还有就是：同源策略禁止读取位于 <a target="_blank" rel="noopener" href="https://a.amap.com/Loca/static/loca-v2/demos/images/prism_blue.png">https://a.amap.com/Loca/static/loca-v2/demos/images/prism_blue.png</a> 的远程资源。这个可能不是主要的问题，当我在自己的项目中嵌入这些代码的时候：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 呼吸点 金色</span></span><br><span class="line"><span class="keyword">var</span> scatterYellow = <span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">ScatterLayer</span>({</span><br><span class="line">    loca,</span><br><span class="line">    <span class="attr">zIndex</span>: <span class="number">110</span>,</span><br><span class="line">    <span class="attr">opacity</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">visible</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">zooms</span>: [<span class="number">2</span>, <span class="number">26</span>],</span><br><span class="line">    <span class="attr">depth</span>: <span class="literal">false</span></span><br><span class="line">});</span><br><span class="line"></span><br><span class="line">scatterYellow.<span class="title function_">setSource</span>(geo);</span><br><span class="line">scatterYellow.<span class="title function_">setStyle</span>({</span><br><span class="line">    <span class="attr">unit</span>: <span class="string">'meter'</span>,</span><br><span class="line">    <span class="attr">size</span>: <span class="keyword">function</span> (<span class="params">i, feat</span>) {</span><br><span class="line">        <span class="keyword">return</span> feat.<span class="property">properties</span>.<span class="property">price</span> &gt; <span class="number">60000</span> ? [<span class="number">90</span>, <span class="number">90</span>] : [<span class="number">0</span>, <span class="number">0</span>];</span><br><span class="line">    },</span><br><span class="line">    <span class="attr">texture</span>: <span class="string">'https://a.amap.com/Loca/static/loca-v2/demos/images/scan_yellow.png'</span>,</span><br><span class="line">    <span class="attr">altitude</span>: <span class="number">20</span>,</span><br><span class="line">    <span class="attr">duration</span>: <span class="number">2000</span>,</span><br><span class="line">    <span class="attr">animate</span>: <span class="literal">true</span>,</span><br><span class="line">});</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>出现的错误会更多：Error while reading CSS rules from null SecurityError: CSSStyleSheet.cssRules getter: Not allowed to access cross-origin stylesheet。Error while reading CSS rules from null SecurityError: CSSStyleSheet.cssRules getter: Not allowed to access cross-origin stylesheet。Error: (regl) invalid texture shape。虽然官网的例子没有弹出这些问题，但是下面的呼吸点，都是无法显示的。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://github.com/hydra-synth/atom-hydra/issues/5">Uncaught Error: (regl) invalid texture shape</a></div>
+<h2 id="6-内存泄漏问题排查"><a href="#6-内存泄漏问题排查" class="headerlink" title="6.内存泄漏问题排查"></a>6.内存泄漏问题排查</h2><p>当我在使用 <a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/loca-v2/demos/cat-point/guangdong_cuisine">圆点—全国粤菜分布情况</a> 这个示例的时候，总是会出现内存不断飙升的情况，我测试了官方的例子，却又没有问题。我的项目使用的是 vue 3.0 进行开发的，我修改了很多的代码，把能想到的代码都进行了清理，最后只剩下 loca.add(pointLayer); 只要我一加这句话，那么内存就会不断的飙升，真是奇了怪了。</p>
+<p>【尝试】<br>1.后来我看了看自己的loca创建的代码，我使用的是store进行的存储，本来我以为因为响应式的问题，后来我改了，还是不行。</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">getters</span>:{</span><br><span class="line">    <span class="title function_">loca</span>(<span class="params">state</span>){</span><br><span class="line">      <span class="keyword">let</span> tempLoca=<span class="literal">null</span>;</span><br><span class="line">      <span class="keyword">if</span>(state.<span class="property">loca</span>){</span><br><span class="line">        tempLoca=state.<span class="property">loca</span>;</span><br><span class="line">      }<span class="keyword">else</span>{</span><br><span class="line">        tempLoca=<span class="keyword">new</span> <span class="title class_">Loca</span>.<span class="title class_">Container</span>({</span><br><span class="line">            <span class="attr">map</span>:state.<span class="property">map</span></span><br><span class="line">        })</span><br><span class="line">        tempLoca=<span class="title function_">markRaw</span>(tempLoca);</span><br><span class="line">        </span><br><span class="line">        state.<span class="property">loca</span>=tempLoca;</span><br><span class="line">      }</span><br><span class="line">      <span class="keyword">return</span> tempLoca;</span><br><span class="line">    }</span><br><span class="line">  },</span><br></pre></td></tr></tbody></table></figure>
+
+<p>2.奇怪的是，在谷歌浏览器中没有出现类似的内存不断飙升的问题，但是在火狐浏览器中，就会出现这个问题。</p>
+<p>3.使用官方的例子，在单独的html开发，也不会出现内存飙升的问题，主要的问题可能就是在vue环境中会出现这个问题。</p>
+<h2 id="7-热力图"><a href="#7-热力图" class="headerlink" title="7.热力图"></a>7.热力图</h2><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 初始化热力图</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">initHeatMap</span>(<span class="params"></span>){</span><br><span class="line">    <span class="keyword">if</span> (!<span class="title function_">isSupportCanvas</span>()) {</span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">'热力图仅对支持canvas的浏览器适用,您所使用的浏览器不能使用热力图功能,请换个浏览器试试~'</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    }</span><br><span class="line">    <span class="title function_">axiox</span>({</span><br><span class="line">        <span class="attr">method</span>:<span class="string">"get"</span>,</span><br><span class="line">        <span class="attr">url</span>:<span class="string">"./data/heatmapdata.json"</span></span><br><span class="line">    }).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>{</span><br><span class="line">        <span class="keyword">return</span> res.<span class="property">data</span>;</span><br><span class="line">    }).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>{</span><br><span class="line">        <span class="keyword">let</span> heatmapData=res;</span><br><span class="line">        mainMap.<span class="title function_">plugin</span>([<span class="string">"AMap.HeatMap"</span>],<span class="keyword">function</span>(<span class="params"></span>) {</span><br><span class="line">        <span class="comment">//初始化heatmap对象</span></span><br><span class="line">        <span class="keyword">let</span> heatmap = <span class="keyword">new</span> $AMap.<span class="title class_">HeatMap</span>(mainMap, {</span><br><span class="line">            <span class="attr">radius</span>: <span class="number">25</span>, <span class="comment">//给定半径</span></span><br><span class="line">            <span class="attr">opacity</span>: [<span class="number">0</span>, <span class="number">0.8</span>],</span><br><span class="line">            <span class="attr">gradient</span>:{</span><br><span class="line">                <span class="number">0.5</span>: <span class="string">'blue'</span>,</span><br><span class="line">                <span class="number">0.65</span>: <span class="string">'rgb(117,211,248)'</span>,</span><br><span class="line">                <span class="number">0.7</span>: <span class="string">'rgb(0, 255, 0)'</span>,</span><br><span class="line">                <span class="number">0.9</span>: <span class="string">'#ffea00'</span>,</span><br><span class="line">                <span class="number">1.0</span>: <span class="string">'red'</span></span><br><span class="line">            }</span><br><span class="line">        });</span><br><span class="line">        <span class="comment">//设置数据集：该数据为北京部分“公园”数据</span></span><br><span class="line">        heatmap.<span class="title function_">setDataSet</span>({</span><br><span class="line">            <span class="attr">data</span>: heatmapData,</span><br><span class="line">            <span class="attr">max</span>: <span class="number">100</span></span><br><span class="line">        });</span><br><span class="line">        });</span><br><span class="line">    }).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> {</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">    })</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p>从最大值到最小值归一化到 0-1 区间， 然后颜色对应如下：</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.5</span>: <span class="string">'blue'</span>,</span><br><span class="line"><span class="number">0.65</span>: <span class="string">'rgb(117,211,248)'</span>,</span><br><span class="line"><span class="number">0.7</span>: <span class="string">'rgb(0, 255, 0)'</span>,</span><br><span class="line"><span class="number">0.9</span>: <span class="string">'#ffea00'</span>,</span><br><span class="line"><span class="number">1.0</span>: <span class="string">'red'</span> 。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>例子中的半径设置为了25，还有一个透明度的变化，从内到外依次变淡</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.patrick-wied.at/static/heatmapjs/">Who is using heatmap.js</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.patrick-wied.at/static/heatmapjs/docs.html">heatmap.js Documentation</a><br>【3】.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904114644582408">heatmap.js（热力图）源码解读 </a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34966814/article/details/124455439">heatmap.js 中文文档</a><br>【5】.<a target="_blank" rel="noopener" href="https://lbs.amap.com/demo/javascript-api-v2/example/selflayer/heatmap">热力图</a> 这是高德的热力图效果<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45530512/article/details/129750209">高德地图Uncaught Invalid Object: Pixel(NaN, NaN)和Uncaught Invalid Object: LngLat(NaN, NaN)</a> 经纬度为空[]或unll或undefined</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/f8a99b77.html" rel="next" title="高德地图API城市扫描线效果">
+                      <i class="iconfont icon-prev"></i> 高德地图API城市扫描线效果
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/8af2216b.html" rel="prev" title="高德地图API使用笔记">
+                      高德地图API使用笔记 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9C%B0%E5%9B%BE%E6%97%A0%E6%B3%95%E5%8F%A0%E5%8A%A0Loca"><span class="toc-number">2.</span> <span class="toc-text">2.自定义地图无法叠加Loca</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-ZMarkerLayer%E6%97%A0%E6%B3%95%E5%B5%8C%E5%85%A5"><span class="toc-number">3.</span> <span class="toc-text">3.ZMarkerLayer无法嵌入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ZMarkerLayer%E5%87%BA%E7%8E%B0%E5%81%8F%E7%A7%BB"><span class="toc-number">4.</span> <span class="toc-text">4.ZMarkerLayer出现偏移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%81%AB%E7%8B%90%E6%B5%8F%E8%A7%88%E5%99%A8%E6%97%A0%E6%B3%95%E6%B8%B2%E6%9F%93%E9%83%A8%E5%88%86%E6%A0%B7%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">5.火狐浏览器无法渲染部分样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5"><span class="toc-number">6.</span> <span class="toc-text">6.内存泄漏问题排查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E7%83%AD%E5%8A%9B%E5%9B%BE"><span class="toc-number">7.</span> <span class="toc-text">7.热力图</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/30208acf.html';
+      this.page.identifier = 'posts/30208acf.html';
+      this.page.title = '高德地图API使用笔记二';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：高德地图API使用笔记二 链接地址:https://bibichuan.github.io/posts/30208acf.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '高德地图API使用笔记二',
+		url: 'https://bibichuan.github.io/posts/30208acf.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '高德地图API使用笔记二',
+			isTipVisibility: true,
+			tip: '高德地图API使用笔记二',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

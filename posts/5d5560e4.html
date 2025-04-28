@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>技术研究之大疆无人机</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">技术研究之大疆无人机</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2023-06-20 09:45:26
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>最近接到了一个项目，就是使用大疆的无人机进行自动巡检，所以就要研究相关的技术</p>
+<p>（1）第三方云平台泛指网关设备可以直接访问的各个服务端，对于上云API来说，只要通信链路能够访问到第三方云平台服务，即可进行通信，这样对于第三方云平台的环境部署就没有做限制，无论是私有化部署还是公有云部署，只要能访问均可工作。</p>
+<p>（2）第三方云平台需要先部署MQTT网关、HTTPS服务、Websocket服务、对象存储等基础服务，打通与网关设备的通信链路，即可进行功能集开发实现，上云API提供的功能集主要分2部分，一部分是基于DJI Pilot 2的，有飞手操作的场景，该场景下提供的功能集有：地图元素、态势感知、直播、媒体库、航线库、设备管理。另一部分是主要面向大疆机场的场景，功能集有：固件远程升级、设备异常告警、机场远程控制等等，当然，有些功能集是两种场景均有重叠的，例如视频直播，具体使用方式详见各个功能集方案及API说明章节。</p>
+<p>（3）第三方云平台在打通与无人机的业务之后，即可通过自身私有协议，搭建前端web页面、APP应用、小程序等，深入业务场景例如安防、能源、环保、海事等，构建一个完整的场景业务工作流。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/overview/product-architecture.html">产品架构</a> 从架构分层上可以看出，上云API是基于大疆行业版无人机的基础上对外提供的接口，整体思路采用与物联网类似的端边云架构分层。此处要特别注意，无人机并不能直接接入第三方云平台，它需要先连接网关设备（遥控器、机场），然后通过遥控器中的DJI Pilot 2或者机场间接上云，DJI Pilot 2、大疆机场在注册登录第三方云平台时，会同时把飞机和负载的能力一起上报。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38821574/article/details/117968510">SpringBoot获取大疆无人机的飞行数据</a> 这是一个人开发的应用，可以联系查看<br>【3】.<a target="_blank" rel="noopener" href="https://fly.bzao.cn/">免费航线规划</a> 这个网站可以自动规划航线，可以作为参考。</div>
+<h1 id="2-需要解决的问题"><a href="#2-需要解决的问题" class="headerlink" title="2.需要解决的问题"></a>2.需要解决的问题</h1><p>关于是否可以使用Web应用去操纵飞机，首先需要解决的几个问题。</p>
+<p>(1) 上云API 可以在云端控制飞机吗？<br>如果要实现的是通过网页控制飞机的飞行，这个到底能不能做到呢？ 在论坛里，说明：“Pilot2 为了保证安全性，目前上云API没有提供控制接口，云台控制接口也没有。”，但是我在查看机场物模型的定义的时候，发现通过机场，可以控制飞行器的状态。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/articles/5266261696537">上云API 可以在云端控制飞机吗？</a> Pilot2 为了保证安全性，目前上云API没有提供控制接口，云台控制接口也没有。<br>2.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/articles/5266627807001">上云API 可以控制飞机拍照、录像吗？ </a><br>3.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/server-api-reference/mqtt/thing-model/gateway/dock/drc.html">指令飞行</a></div>
+<p>(2) 飞机的坐标系是什么？<br>标准的 WGS84 坐标系，不管APP的地图是高德还是Mapbox地图，与服务器交互的坐标系都是 WGS84。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/articles/5266514304025">Pilot 2地图使用的坐标系是什么？</a></div>
+<p>(3) 飞机和遥控器断开后，上云API 开发的第三方云还能连接飞机吗？<br>不可以，断开后就获取不到飞机的数据。原因：第三方云不能直接连接飞机，中间需要通过遥控器。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/articles/5266303064601">飞机和遥控器断开后，上云API 开发的第三方云还能连接飞机吗？ </a></div>
+<p>(4) 无人机画面如何回传<br>这部分的内容主要就是通过视频直播的形式进行的，在官方的教程中，使用的是 声网的SDK。我以前使用过阿里云的地址，可以很方便的集成直播播放。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://bbs.dji.com/thread-197155-1-1.html">无人机视频直播如何设置？</a><br>2.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/feature-set/dock-feature-set/dock-livestream.html">直播功能</a> 直播功能主要是把无人机相机负载和大疆机场的监控视频码流发给第三方云平台进行播放，用户可以方便的在远程web页面点击直播。直播功能支持直播的开始、停止、清晰度设置、镜头切换。</div>
+<h1 id="3-软件依赖"><a href="#3-软件依赖" class="headerlink" title="3.软件依赖"></a>3.软件依赖</h1><p>软件安装需要 redis、emqx、java、node</p>
+<h1 id="4-前端项目"><a href="#4-前端项目" class="headerlink" title="4.前端项目"></a>4.前端项目</h1><p>前端项目启动需要注意以下几点</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/quick-start/source-code-deployment-steps.html">基于源码的部署</a></div>
+<h2 id="4-1-修改src别名"><a href="#4-1-修改src别名" class="headerlink" title="4.1.修改src别名"></a>4.1.修改src别名</h2><p>源代码里面的src别名，用了 “/@” 进行替代，需要修改为 “@”，否则启动不了。修改vite.config.js文件</p>
+<figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将下面的代码</span></span><br><span class="line"><span class="attr">resolve</span>: {</span><br><span class="line">    <span class="attr">alias</span>: [{</span><br><span class="line">        <span class="comment">// https://github.com/vitejs/vite/issues/279#issuecomment-635646269</span></span><br><span class="line">        <span class="attr">find</span>: <span class="string">'/@'</span>,</span><br><span class="line">        <span class="attr">replacement</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">'./src'</span>),</span><br><span class="line">    }]</span><br><span class="line">},</span><br><span class="line"></span><br><span class="line"><span class="comment">// 替换为</span></span><br><span class="line"><span class="attr">resolve</span>: {</span><br><span class="line">    <span class="attr">alias</span>: {</span><br><span class="line">        <span class="string">'@'</span>: path.<span class="title function_">resolve</span>(__dirname, <span class="string">'src'</span>),</span><br><span class="line">    }</span><br><span class="line">},</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后将所有文件中的 “/@” 全部替换为 “@”,注意是全部的用 /@ 引入的路径，都改为这个路径。</p>
+<h2 id="4-2-修改依赖项"><a href="#4-2-修改依赖项" class="headerlink" title="4.2.修改依赖项"></a>4.2.修改依赖项</h2><p>因为我在执行安装的时候，出现了很多莫名奇妙的问题，比如 exports 不存在，模块无法加载等等。删除package.json中的 @vue/compiler-sfc，然后执行依赖安装</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装全部依赖</span></span><br><span class="line">pnpm install</span><br><span class="line"><span class="comment">## 安装没有的依赖</span></span><br><span class="line">pnpm add lodash</span><br><span class="line">pnpm add moment</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="4-3-登陆"><a href="#4-3-登陆" class="headerlink" title="4.3.登陆"></a>4.3.登陆</h2><p>修改配置文件之后，就可以进行登陆了。默认的账户名：pilot，密码：pilot123</p>
+<h1 id="5-后端服务"><a href="#5-后端服务" class="headerlink" title="5.后端服务"></a>5.后端服务</h1><p>后台服务依赖于redes、mysql 和 mqtt 服务，需要将相关的软件安装，并配置到 application 中，配置完成之后，就可以启动了，基本没有什么大的问题。</p>
+<p>（1）数据库创建</p>
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">-</span>uroot <span class="operator">-</span>pxxx  <span class="operator">&lt;</span> cloud_sample.sql</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/iSun520/p/17479187.html">MySQL执行SQL文件的几种方式</a><br>2.<a target="_blank" rel="noopener" href="https://www.yisu.com/zixun/315262.html">mysql执行sql脚本文件的方法</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/vebasan/article/details/7619911">MySQL执行外部sql脚本文件的命令</a></div>
+<h1 id="6-上云"><a href="#6-上云" class="headerlink" title="6.上云"></a>6.上云</h1><p>上云模块分为两种，一种是 Pilot 上云，一种是 机场上云。</p>
+<h2 id="6-1-Pilot上云"><a href="#6-1-Pilot上云" class="headerlink" title="6.1.Pilot上云"></a>6.1.Pilot上云</h2><p>机场上云需要借助遥控器内安装的 DJI Pilot 2。<br>(1) 创建局域网<br>修改前端和后端代码，将前端和后端发不到局域网内，创建一个可以局域网访问的 http 连接。</p>
+<p>(2) 然后打开遥控器的 DJI Pilot2 软件，点击 “Cloud Service”</p>
+<img src="/images/loadimg.png" data-original="/posts/5d5560e4/dji_1.png" lay-src="/posts/5d5560e4/dji_1.png" class="" title="大疆无人机">
+
+<p>(3) 登陆第三方平台<br>选择 开放云平台 输入 url:<code>http://192.168.0.106/pilot-login</code> ,我这里部署的内网地址是 192.168.0.106，然后输入用户名密码，就可以登陆了。</p>
+<img src="/images/loadimg.png" data-original="/posts/5d5560e4/dji_2.png" lay-src="/posts/5d5560e4/dji_2.png" class="" title="大疆无人机">
+
+<p>(4) 查看设备信息<br>登陆之后，点击左上角的返回按钮，就可以回到主页面了。</p>
+<img src="/images/loadimg.png" data-original="/posts/5d5560e4/dji_3.png" lay-src="/posts/5d5560e4/dji_3.png" class="" title="大疆无人机">
+
+<p>(5) 调试<br>打开mqtt调试工具，订阅 topic主题：sys/product/+/status 和 sys/product/+/status_reply,当设备上线的时候，就会发送信息到这个主题上，设备就算是上云了。</p>
+<img src="/images/loadimg.png" data-original="/posts/5d5560e4/dji_4.png" lay-src="/posts/5d5560e4/dji_4.png" class="" title="大疆无人机">
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/feature-set/pilot-feature-set/pilot-access-to-cloud.html">Pilot 上云</a></div>
+<h1 id="7-MQTT说明"><a href="#7-MQTT说明" class="headerlink" title="7.MQTT说明"></a>7.MQTT说明</h1><p>在 <a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/server-api-reference/mqtt/topic-definition.html">Topic</a> 定义中，这里有两个 SN 需要注意：</p>
+<ul>
+<li><p>gateway_sn<br>  表示网关设备的 SN，网关设备分为 Pilot 也就是遥控器，和 机场 。Pilot 的SN 在设备的后面有一个二维码，二维码下面就是设备SN。</p>
+</li>
+<li><p>device_sn<br>  表示该物模型属性的所属设备的 SN，我理解为 飞机。</p>
+</li>
+</ul>
+<p>除此之外，还有就是一些content需要注意：</p>
+<ul>
+<li><p>主题：sys/product/{gateway_sn}/status</p>
+<p>其中的 device_secret 和 nonce 的获取,比如下面的内容，实现的是：网关设备+子设备上线</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"tid"</span><span class="punctuation">:</span> <span class="string">"tid001"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"bid"</span><span class="punctuation">:</span> <span class="string">"bid001"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"method"</span><span class="punctuation">:</span> <span class="string">"update_topo"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"timestamp"</span><span class="punctuation">:</span> <span class="number">1234567890123</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">        <span class="attr">"type"</span><span class="punctuation">:</span> <span class="number">98</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"sub_type"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"device_secret"</span><span class="punctuation">:</span> <span class="string">"secret"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"nonce"</span><span class="punctuation">:</span> <span class="string">"nonce"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"version"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"sub_devices"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">            <span class="punctuation">{</span></span><br><span class="line">                <span class="attr">"sn"</span><span class="punctuation">:</span> <span class="string">"drone001"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"type"</span><span class="punctuation">:</span> <span class="number">116</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"sub_type"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"index"</span><span class="punctuation">:</span> <span class="string">"A"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"device_secret"</span><span class="punctuation">:</span> <span class="string">"secret"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"nonce"</span><span class="punctuation">:</span> <span class="string">"nonce"</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">"version"</span><span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">            <span class="punctuation">}</span></span><br><span class="line">        <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>官方给出的回答：“这个是在对接上云的流程后，网关设备向云端上报的。可以从消息中获取。”</p>
+<p>后来我重新设置之后，重新上线，果真得到了设备的信息。</p>
+<img src="/images/loadimg.png" data-original="/posts/5d5560e4/dji_5.png" lay-src="/posts/5d5560e4/dji_5.png" class="" title="大疆无人机">
+
+</li>
+</ul>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://support.dji.com/help/content?customId=zh-cn03400006853&amp;spaceId=34&amp;re=CN&amp;lang=zh-CN&amp;documentType=artical&amp;paperDocType=paper&amp;encryptId=As%25252FvepL7pMkYGngm6U0EcQ%25253D%25253D">如何查询设备信息 </a><br>2.<a target="_blank" rel="noopener" href="https://mqttx.app/zh/docs/get-started">开始使用</a><br>3.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/server-api-reference/mqtt/thing-model/gateway/rc-plus/device.html">设备拓扑更新</a><br>4.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/requests/85829">网关设备上线下线中的device_secret如何获取</a> 我提了一个问题给社区，不知道会不会有回应。</div>
+<h1 id="8-视频直播"><a href="#8-视频直播" class="headerlink" title="8.视频直播"></a>8.视频直播</h1><p>本部分主要就是将飞机相机和机场的视频实时画面进行传输。其实这部分我花费了很长的时间进行技术的探索，虽然大疆采用的是 “声网” 的推流地址，但是在 “声网” 中，我竟然很难找到简单的拉流操作，集成的 web sdk 也是什么 互动直播之类的东西，但是我根本不用互动直播啊，我只需要播放飞机的视频流就可以了。</p>
+<p>(1) <a target="_blank" rel="noopener" href="https://www.shengwang.cn/">登陆声网</a></p>
+<p>(2) 创建项目<br>在 <a target="_blank" rel="noopener" href="https://console.shengwang.cn/project">项目管理</a> 里面配置项目，并获取 AppID，和临时的 Token。<br>临时token的生产，需要选择产品，并输入频道名，这个频道名，下面一步还要用的到。</p>
+<p>(3) 修改前端配置<br>在前端源码目录的 src/api/http/config.ts 文件中，修改 agoraAPPID、agoraToken和agoraChannel，其中 agoraChannel 的名字可以随便取，注意和第二步生成的token时填入的一致就好了。当观察者和你取的 agoraChannel 同一的时候，就意味着你们进入了同一个房间，实现了直播。</p>
+<figure class="highlight ts"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Agora</span></span><br><span class="line"><span class="attr">agoraAPPID</span>: <span class="string">'你的 appid '</span>,</span><br><span class="line"><span class="attr">agoraToken</span>: <span class="string">'你的 token'</span>,</span><br><span class="line"><span class="attr">agoraChannel</span>: <span class="string">'这里可以取一个自己的名字'</span>,</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 测试<br>打开 <code>http://192.168.0.20:8080/livestream/living</code> pc端管理页面，选择直播，并选择需要直播的镜头和画质等，就可以开启直播了。</p>
+<img src="/images/loadimg.png" data-original="/posts/5d5560e4/dji_6.png" lay-src="/posts/5d5560e4/dji_6.png" class="" title="大疆无人机">
+
+<p>但是这个直播也不是非常的稳定的，可能是因为我内网不稳定的原因吗？总是出现： RECV_VIDEO_DECODE_FAILED 问题。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/articles/6663305630105-%E7%AC%AC%E5%85%AD%E7%AB%A0-%E6%8E%A8%E6%B5%81%E7%9B%B4%E6%92%AD">第六章：推流直播 </a></div>
+<h2 id="9-总结"><a href="#9-总结" class="headerlink" title="9.总结"></a>9.总结</h2><p>根据一系列的操作，我终于算是摸清了整个大疆无人机Demo的逻辑：</p>
+<p>(1) 前后端软件依赖安装</p>
+<p>(2) 创建数据库，配置mqtt服务器，获取声网直播 appid、token等信息</p>
+<p>(3) 修改前后端服务配置，mqtt、redis、agora配置等</p>
+<p>(4) 遥控器登陆 第三方云平台，在 “/pilot-login” 页面实现设备上线和绑定</p>
+<p>(5) 在PC端 ”livestream/living“ 测试声网直播功能</p>
+<p>(6) 进行后续的开发<br>通过订阅 mqtt 服务，可以定时获取飞机和设备的状态和位置，还可以通过发送mqtt消息，操作设备和飞机的属性。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Topic: thing/product/{device_sn}/state 状态数据:设备在状态变化时上报</span><br><span class="line"></span><br><span class="line">Topic: thing/product/{device_sn}/osd 定频数据:设备将以 0.5HZ 的频率定时上报</span><br></pre></td></tr></tbody></table></figure>
+
+<p>技术难点就是上云操作，配置mqtt服务，配置声网直播操作。大部分的控制操作，都是使用的mqtt进行操作，飞机和机场的事实画面回传，使用的就是声网的直播，或者是RTMP等服务。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://doc.shengwang.cn/doc/rtc/javascript/get-started/quick-start">实现音视频互动</a></div>
+<h2 id="10-API汇总"><a href="#10-API汇总" class="headerlink" title="10.API汇总"></a>10.API汇总</h2><p>在了解了整个的流程之后，剩下的就是调用 API 进行开发了，</p>
+<h3 id="10-1-航线管理"><a href="#10-1-航线管理" class="headerlink" title="10.1.航线管理"></a>10.1.航线管理</h3><h2 id="11-问题汇总"><a href="#11-问题汇总" class="headerlink" title="11.问题汇总"></a>11.问题汇总</h2><p>(1) Error Msg: Device is not registered.. The device has not been registered, please call the ‘SDKManager.registerDevice()’ method to register the device first.<br>这个问题就是在云平台上，无人机没有注册进去，这个问题也非常的奇怪，就是说每过一段时间，无人机就会掉线。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://bbs.dji.com/thread-327438-1-1.html">大疆无人机注册问题</a> 民航局规定的需要实名注册。</div>
+<p>(2) Please check whether the live stream service is normal<br>这个就是检查三个参数，可是最后还是没有检查出来，到底是什么问题。</p>
+<p>【尝试方案】<br>（1）我尝试在不同的网络下进行测试，结果没有用。<br>（2）我尝试用可行的 token 进行测试，结果出现的问题是 211001，<br>（3）另外的错误代码就是 513010,说是 ”直播失败，设备无法联网“，这个我在部署到另外的一台服务器上，确实是可以的啊，为什么到这里就不行了呢？<br>（4）我尝试去理解这个东西，我怀疑是多个mqtt订阅消息，导致消息错乱的问题，会不会是这个问题呢？我想不起来。<br>（5）我不断的去检查这个接口，发现返回的状态码和我本身定义的状态吗不一致。<br>（6）我尝试查看发布消息的源码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; CommonTopicResponse&lt;T&gt; <span class="title function_">publishWithReply</span><span class="params">(Class&lt;T&gt; clazz, String topic, CommonTopicRequest request,</span></span><br><span class="line"><span class="params">                                                       <span class="type">int</span> retryCount, <span class="type">long</span> timeout)</span> {</span><br><span class="line">    <span class="type">AtomicInteger</span> <span class="variable">time</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicInteger</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">hasBid</span> <span class="operator">=</span> StringUtils.hasText(request.getBid());</span><br><span class="line">    request.setBid(hasBid ? request.getBid() : UUID.randomUUID().toString());</span><br><span class="line">    <span class="comment">// Retry</span></span><br><span class="line">    <span class="keyword">while</span> (time.getAndIncrement() &lt;= retryCount) {</span><br><span class="line">        <span class="built_in">this</span>.publish(topic, request);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// If the message is not received in 3 seconds then resend it again.</span></span><br><span class="line">        CommonTopicResponse&lt;T&gt; receiver = Chan.getInstance(request.getTid(), <span class="literal">true</span>).get(request.getTid(), timeout);</span><br><span class="line">        <span class="comment">// Need to match tid and bid.</span></span><br><span class="line">        <span class="keyword">if</span> (Objects.nonNull(receiver)</span><br><span class="line">                &amp;&amp; receiver.getTid().equals(request.getTid())</span><br><span class="line">                &amp;&amp; receiver.getBid().equals(request.getBid())) {</span><br><span class="line">            <span class="keyword">if</span> (clazz.isAssignableFrom(receiver.getData().getClass())) {</span><br><span class="line">                <span class="keyword">return</span> receiver;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">TypeMismatchException</span>(receiver.getData(), clazz);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// It must be guaranteed that the tid and bid of each message are different.</span></span><br><span class="line">        <span class="keyword">if</span> (!hasBid) {</span><br><span class="line">            request.setBid(UUID.randomUUID().toString());</span><br><span class="line">        }</span><br><span class="line">        request.setTid(UUID.randomUUID().toString());</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">CloudSDKException</span>(CloudSDKErrorEnum.MQTT_PUBLISH_ABNORMAL, <span class="string">"No message reply received."</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>最终我还是回归到了代码上面，我不晓得我以前写的代码为什么可以，但是这次我实在只能重新看原先的代码了。最新的大疆demo中的代码这么写的 liveStart 中的代码。当然其中的一些返回值和判断做了调整，我不晓得自己当时为什么这么写，</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Result <span class="title function_">liveStart</span><span class="params">(LiveTypeDTO liveParam)</span> {</span><br><span class="line">      <span class="comment">// Check if this lens is available live.</span></span><br><span class="line">        Result&lt;DeviceDTO&gt; responseResult = <span class="built_in">this</span>.checkBeforeLive(liveParam.getVideoId());</span><br><span class="line">        <span class="keyword">if</span> (CommonConstant.SC_OK_200 != responseResult.getCode() ) {</span><br><span class="line">            <span class="keyword">return</span> responseResult;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="type">ILivestreamUrl</span> <span class="variable">url</span> <span class="operator">=</span> LiveStreamProperty.get(liveParam.getUrlType());</span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * 解析 agora url</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="keyword">if</span>(liveParam.getUrlType()==UrlTypeEnum.AGORA){</span><br><span class="line">            LivestreamAgoraUrl agoraUrl=<span class="keyword">new</span> <span class="title class_">LivestreamAgoraUrl</span>();</span><br><span class="line">            Map&lt;String,String&gt; urlMap= HttpUtil.decodeParamMap(liveParam.getUrl(), Charset.forName(<span class="string">"UTF-8"</span>));</span><br><span class="line">            agoraUrl.setSn(urlMap.get(<span class="string">"sn"</span>));</span><br><span class="line">            agoraUrl.setChannel(urlMap.get(<span class="string">"channel"</span>));</span><br><span class="line">            agoraUrl.setToken(urlMap.get(<span class="string">"token"</span>));</span><br><span class="line">            agoraUrl.setUid(Integer.valueOf(urlMap.get(<span class="string">"uid"</span>)));</span><br><span class="line">            url=agoraUrl;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        url = setExt(liveParam.getUrlType(), url, liveParam.getVideoId());</span><br><span class="line"></span><br><span class="line">        TopicServicesResponse&lt;ServicesReplyData&lt;String&gt;&gt; response = abstractLivestreamService.liveStartPush(</span><br><span class="line">                SDKManager.getDeviceSDK(responseResult.getResult().getDeviceSn()),</span><br><span class="line">                <span class="keyword">new</span> <span class="title class_">LiveStartPushRequest</span>()</span><br><span class="line">                        .setUrl(url)</span><br><span class="line">                        .setUrlType(liveParam.getUrlType())</span><br><span class="line">                        .setVideoId(liveParam.getVideoId())</span><br><span class="line">                        .setVideoQuality(liveParam.getVideoQuality()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!response.getData().getResult().isSuccess()) {</span><br><span class="line">            <span class="keyword">return</span> Result.error(response.getData().getResult().getMessage());</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="type">LiveDTO</span> <span class="variable">live</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LiveDTO</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">switch</span> (liveParam.getUrlType()) {</span><br><span class="line">            <span class="keyword">case</span> AGORA:</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> RTMP:</span><br><span class="line">                live.setUrl(url.toString().replace(<span class="string">"rtmp"</span>, <span class="string">"webrtc"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> GB28181:</span><br><span class="line">                <span class="type">LivestreamGb28181Url</span> <span class="variable">gb28181</span> <span class="operator">=</span> (LivestreamGb28181Url) url;</span><br><span class="line">                live.setUrl(<span class="keyword">new</span> <span class="title class_">StringBuilder</span>()</span><br><span class="line">                        .append(<span class="string">"webrtc://"</span>)</span><br><span class="line">                        .append(gb28181.getServerIP())</span><br><span class="line">                        .append(<span class="string">"/live/"</span>)</span><br><span class="line">                        .append(gb28181.getAgentID())</span><br><span class="line">                        .append(<span class="string">"@"</span>)</span><br><span class="line">                        .append(gb28181.getChannel())</span><br><span class="line">                        .toString());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> RTSP:</span><br><span class="line">                live.setUrl(response.getData().getOutput());</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> WHIP:</span><br><span class="line">                live.setUrl(url.toString().replace(<span class="string">"whip"</span>, <span class="string">"whep"</span>));</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> Result.error(LiveErrorCodeEnum.URL_TYPE_NOT_SUPPORTED.getMessage());</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Result.ok(live);</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<p>后来我改成了</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Result <span class="title function_">liveStart</span><span class="params">(LiveTypeDTO liveParam)</span> {</span><br><span class="line">        <span class="comment">// Check if this lens is available live.</span></span><br><span class="line">        Result&lt;DeviceDTO&gt; responseResult = <span class="built_in">this</span>.checkBeforeLive(liveParam.getVideoId());</span><br><span class="line">        <span class="keyword">if</span> (CommonConstant.SC_OK_200 != responseResult.getCode()) {</span><br><span class="line">            <span class="keyword">return</span> responseResult;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        TopicServicesResponse&lt;ServicesReplyData&lt;String&gt;&gt; response = abstractLivestreamService.liveStartPush(</span><br><span class="line">                SDKManager.getDeviceSDK(responseResult.getResult().getDeviceSn()), <span class="keyword">new</span> <span class="title class_">LiveStartPushRequest</span>()</span><br><span class="line">                        .setUrl(liveParam.getUrl())</span><br><span class="line">                        .setUrlType(liveParam.getUrlType())</span><br><span class="line">                        .setVideoId(liveParam.getVideoId())</span><br><span class="line">                        .setVideoQuality(liveParam.getVideoQuality()));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (!response.getData().getResult().isSuccess()) {</span><br><span class="line">            <span class="keyword">return</span> Result.error(response.getData().getResult().getMessage());</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="type">LiveDTO</span> <span class="variable">live</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">LiveDTO</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> Result.OK(live);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>当然这个 LiveStartPushRequest 也做了相应的调整。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> sean</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.7</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2023/5/23</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LiveStartPushRequest</span> <span class="keyword">extends</span> <span class="title class_">BaseModel</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull</span></span><br><span class="line">    <span class="keyword">private</span> UrlTypeEnum urlType;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * RTMP: (rtmp://xxxxxxx) Example: rtmp://192.168.1.1:8080/live</span></span><br><span class="line"><span class="comment">     * RTSP：(uerName&amp;password&amp;port) Example: userName=dji-cloud-api&amp;password=123456&amp;port=8080</span></span><br><span class="line"><span class="comment">     * GB28181：(serverIP&amp;serverPort&amp;serverID&amp;agentID&amp;agentPassword&amp;localPort&amp;channel)</span></span><br><span class="line"><span class="comment">     *  Example: serverIP=192.168.1.1&amp;serverPort=8080&amp;serverID=34000000000000000000&amp;agentID=</span></span><br><span class="line"><span class="comment">     *  300000000010000000000&amp;agentPassword=0000000&amp;localPort=7060&amp;channel=340000000000000000000</span></span><br><span class="line"><span class="comment">     * AGORA：(channel&amp;sn&amp;token&amp;uid)</span></span><br><span class="line"><span class="comment">     *  Example: channel=1ZNDH360010162_39-0-7&amp;sn=1ZNDH360010162&amp;token=006dca67721582a48768ec4d8</span></span><br><span class="line"><span class="comment">     *  17b7b25a86IAB4cw2JgN6iX8BpTPdc3e4S1Iendz94IFJ56aSXKvzAJei27MqF2zyCIgCLIIoBt41+YAQAAQC3jX</span></span><br><span class="line"><span class="comment">     *  5gAgC3jX5gAwC3jX5gBAC3jX5g&amp;uid=50000</span></span><br><span class="line"><span class="comment">     *  Notice: The token generated by Shengwang may have special characters such as '+' ' ',</span></span><br><span class="line"><span class="comment">     *  and need to do url encode, otherwise there will be a parsing error on the PILOT side</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@NotBlank</span></span><br><span class="line">    <span class="keyword">private</span> String url;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * The format is #{uav_sn}/#{camera_id}/#{video_index},</span></span><br><span class="line"><span class="comment">     * drone serial number/payload and mounted location enumeration value/payload lens numbering</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@NotNull</span></span><br><span class="line">    <span class="keyword">private</span> VideoId videoId;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NotNull</span></span><br><span class="line">    <span class="keyword">private</span> VideoQualityEnum videoQuality;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LiveStartPushRequest</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"LiveStartPushRequest{"</span> +</span><br><span class="line">                <span class="string">"urlType="</span> + urlType +</span><br><span class="line">                <span class="string">", url='"</span> + url + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", videoId="</span> + videoId +</span><br><span class="line">                <span class="string">", videoQuality="</span> + videoQuality +</span><br><span class="line">                <span class="string">'}'</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> UrlTypeEnum <span class="title function_">getUrlType</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> urlType;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LiveStartPushRequest <span class="title function_">setUrlType</span><span class="params">(UrlTypeEnum urlType)</span> {</span><br><span class="line">        <span class="built_in">this</span>.urlType = urlType;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getUrl</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> url;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LiveStartPushRequest <span class="title function_">setUrl</span><span class="params">(String url)</span> {</span><br><span class="line">        <span class="built_in">this</span>.url = url;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VideoId <span class="title function_">getVideoId</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> videoId;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LiveStartPushRequest <span class="title function_">setVideoId</span><span class="params">(VideoId videoId)</span> {</span><br><span class="line">        <span class="built_in">this</span>.videoId = videoId;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> VideoQualityEnum <span class="title function_">getVideoQuality</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> videoQuality;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> LiveStartPushRequest <span class="title function_">setVideoQuality</span><span class="params">(VideoQualityEnum videoQuality)</span> {</span><br><span class="line">        <span class="built_in">this</span>.videoQuality = videoQuality;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">this</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/community/posts/13737998147225-%E5%A3%B0%E7%BD%91%E6%92%AD%E6%94%BE%E5%A4%B1%E8%B4%A5">声网播放失败</a></div>
+<p>(3) 无法获取飞机的 total_flight_sorties 总架次信息<br>根据使用说明文档，使用 thing/product/{device_sn}/osd 无法获取飞机的 total_flight_sorties 总架次信息，而且获取到的 total_flight_distance 和 total_flight_time 都是零。我该如何获取飞机的飞行总架次信息?</p>
+<p>【解决方案】<br>目前是只有机场上云才能拿到这个信息，pilot上云暂时还不支持。pilot 不支持，至少应该在文档里面说明下啊。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://sdk-forum.dji.net/hc/zh-cn/requests/98974?page=1">如何获取飞机总架次信息</a><br>2.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/pilot-to-cloud/mqtt/aircraft/properties.html">设备属性</a></div>
+<h2 id="12-起飞和返航"><a href="#12-起飞和返航" class="headerlink" title="12.起飞和返航"></a>12.起飞和返航</h2><p>我发现只有一键起飞命令，没有一键返航命令啊，几经周折，还是找到了返航的任务了。<br>（1）一键起飞<br>一键起飞的接口是在大疆机场的 <a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/drc.html">指令飞行</a> 这一个章节里面，调用了 takeoff_to_point 命令实现的。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 一键起飞</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RequestMapping("/takeoffToPoint")</span></span><br><span class="line"><span class="keyword">private</span> HttpResultResponse&lt;Boolean&gt; <span class="title function_">takeoffToPoint</span><span class="params">(<span class="meta">@RequestBody</span> JSONObject param)</span>{</span><br><span class="line">    String sn=param.getString(<span class="string">"sn"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 设置飞行参数</span></span><br><span class="line">    TakeoffToPointParam takeParam=<span class="keyword">new</span> <span class="title class_">TakeoffToPointParam</span>();</span><br><span class="line">    takeParam.setTargetLongitude(param.getDouble(<span class="string">"target_longitude"</span>));</span><br><span class="line">    takeParam.setTargetLatitude(param.getDouble(<span class="string">"target_latitude"</span>));</span><br><span class="line">    takeParam.setTargetLatitude(param.getDouble(<span class="string">"target_height"</span>));</span><br><span class="line">    takeParam.setSecurityTakeoffHeight(param.getDouble(<span class="string">"security_takeoff_height"</span>));</span><br><span class="line">    takeParam.setRthAltitude(param.getDouble(<span class="string">"rth_altitude"</span>));</span><br><span class="line">    takeParam.setMaxSpeed(param.getDouble(<span class="string">"max_speed"</span>));</span><br><span class="line">    takeParam.setRcLostAction(RcLostActionEnum.RETURN_HOME);</span><br><span class="line">    takeParam.setExitWaylineWhenRcLost(ExitWaylineWhenRcLostEnum.EXECUTE_RC_LOST_ACTION);</span><br><span class="line">    takeParam.setRthMode(RthModeEnum.SMART_HEIGHT);</span><br><span class="line">    takeParam.setCommanderModeLostAction(CommanderModeLostActionEnum.EXECUTE_RC_LOST_ACTION);</span><br><span class="line">    takeParam.setCommanderFlightMode(CommanderFlightModeEnum.SMART_HEIGHT);</span><br><span class="line">    takeParam.setCommanderFlightHeight(param.getFloat(<span class="string">"commander_flight_height"</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> controlService.takeoffToPoint(sn, takeParam);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）一键返航<br>我还是没有在官方的地方找到返航的设置，我问了论坛，问了以前的开发人员，最后都没有及时的得到回复，最后终于算是看源码找到了答案，这个一键返航的功能，是在 <a href="(https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/wayline.html)">航线管理</a> 里面的,一个在指令飞行里面，一个在航线管理里面，怎么能让人找到两着的关联呢？</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 返航控制</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@RequestMapping("/returnHome")</span></span><br><span class="line"><span class="keyword">private</span> HttpResultResponse&lt;Boolean&gt; <span class="title function_">returnHome</span><span class="params">(<span class="meta">@RequestParam(value = "sn")</span>String sn)</span>{</span><br><span class="line">    <span class="keyword">return</span> controlService.controlDockDebug(sn, RemoteDebugMethodEnum.RETURN_HOME,<span class="literal">null</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/drc.html">指令飞行</a> 这里有一键起飞命令。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38821574/article/details/123356320">无人机飞行数据java版本api大疆无人机SpringBoot</a> 这是一个完整的例子，但是不一定会给你说答案。</div>
+<h2 id="13-飞行数据导出"><a href="#13-飞行数据导出" class="headerlink" title="13.飞行数据导出"></a>13.飞行数据导出</h2><div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://support.dji.com/help/content?customId=zh-cn03400006894&amp;spaceId=34&amp;re=CN&amp;lang=zh-CN&amp;Type=artical&amp;paperDocType=paper">飞控数据导出指引 </a><br>【2】.<a target="_blank" rel="noopener" href="https://bbs.dji.com/thread-339131-1-1.html">航点飞行保存的航点如何导出到本地保存起来？</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/99e2e6ad.html" rel="next" title="技术研究之大疆智图">
+                      <i class="iconfont icon-prev"></i> 技术研究之大疆智图
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/75b706c7.html" rel="prev" title="技术研究之声网直播">
+                      技术研究之声网直播 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E9%9C%80%E8%A6%81%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">2.需要解决的问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E8%BD%AF%E4%BB%B6%E4%BE%9D%E8%B5%96"><span class="toc-number">3.</span> <span class="toc-text">3.软件依赖</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE"><span class="toc-number">4.</span> <span class="toc-text">4.前端项目</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E4%BF%AE%E6%94%B9src%E5%88%AB%E5%90%8D"><span class="toc-number">4.1.</span> <span class="toc-text">4.1.修改src别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E4%BF%AE%E6%94%B9%E4%BE%9D%E8%B5%96%E9%A1%B9"><span class="toc-number">4.2.</span> <span class="toc-text">4.2.修改依赖项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3-%E7%99%BB%E9%99%86"><span class="toc-number">4.3.</span> <span class="toc-text">4.3.登陆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%90%8E%E7%AB%AF%E6%9C%8D%E5%8A%A1"><span class="toc-number">5.</span> <span class="toc-text">5.后端服务</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E4%B8%8A%E4%BA%91"><span class="toc-number">6.</span> <span class="toc-text">6.上云</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-Pilot%E4%B8%8A%E4%BA%91"><span class="toc-number">6.1.</span> <span class="toc-text">6.1.Pilot上云</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-MQTT%E8%AF%B4%E6%98%8E"><span class="toc-number">7.</span> <span class="toc-text">7.MQTT说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD"><span class="toc-number">8.</span> <span class="toc-text">8.视频直播</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E6%80%BB%E7%BB%93"><span class="toc-number">8.1.</span> <span class="toc-text">9.总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-API%E6%B1%87%E6%80%BB"><span class="toc-number">8.2.</span> <span class="toc-text">10.API汇总</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-%E8%88%AA%E7%BA%BF%E7%AE%A1%E7%90%86"><span class="toc-number">8.2.1.</span> <span class="toc-text">10.1.航线管理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="toc-number">8.3.</span> <span class="toc-text">11.问题汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#12-%E8%B5%B7%E9%A3%9E%E5%92%8C%E8%BF%94%E8%88%AA"><span class="toc-number">8.4.</span> <span class="toc-text">12.起飞和返航</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-%E9%A3%9E%E8%A1%8C%E6%95%B0%E6%8D%AE%E5%AF%BC%E5%87%BA"><span class="toc-number">8.5.</span> <span class="toc-text">13.飞行数据导出</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/5d5560e4.html';
+      this.page.identifier = 'posts/5d5560e4.html';
+      this.page.title = '技术研究之大疆无人机';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：技术研究之大疆无人机 链接地址:https://bibichuan.github.io/posts/5d5560e4.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '技术研究之大疆无人机',
+		url: 'https://bibichuan.github.io/posts/5d5560e4.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '技术研究之大疆无人机',
+			isTipVisibility: true,
+			tip: '技术研究之大疆无人机',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

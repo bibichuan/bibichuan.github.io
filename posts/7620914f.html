@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ArcPro制作遥感影像分类数据集</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">ArcPro制作遥感影像分类数据集</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2025-01-03 09:15:08
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:39
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>在 ArcPro中自带了深度学习标注工具，就不需要像 ArcMap 中这么麻烦了。<strong>但是经过我的尝试，“标注对象以供深度学习使用，只能进行图像分类使用，不能坐分割使用。生成的 label 只有坐标的最大最小值信息。”</strong></p>
+<h1 id="1-加载影像"><a href="#1-加载影像" class="headerlink" title="1.加载影像"></a>1.加载影像</h1><p>就是通过工具栏，知道地图，加载一个 .tif 的影像数据。</p>
+<h1 id="2-新建方案"><a href="#2-新建方案" class="headerlink" title="2.新建方案"></a>2.新建方案</h1><p>点击工具栏 “分类工具” -&gt; “标注对象以供深度学习使用”，打开新的标注方案。</p>
+<img src="/images/loadimg.png" data-original="/posts/7620914f/seg_1.jpg" lay-src="/posts/7620914f/seg_1.jpg" class="" title="图像分割">
+
+<h1 id="3-新建分类"><a href="#3-新建分类" class="headerlink" title="3.新建分类"></a>3.新建分类</h1><p>新建新的分类，填写名称，数值，还有颜色，别名。</p>
+<img src="/images/loadimg.png" data-original="/posts/7620914f/seg_2.jpg" lay-src="/posts/7620914f/seg_2.jpg" class="" title="图像分割">
+
+<h1 id="4-绘制图形"><a href="#4-绘制图形" class="headerlink" title="4.绘制图形"></a>4.绘制图形</h1><p>选择不同的图形类型，然后进行标注绘制，有 “方框”、“多边形”、”圆形”，还有手绘。</p>
+<h1 id="5-导出训练数据"><a href="#5-导出训练数据" class="headerlink" title="5.导出训练数据"></a>5.导出训练数据</h1><p>通过 “导出训练数据”，可以将标注好的数据导出为需要的数据格式。</p>
+<img src="/images/loadimg.png" data-original="/posts/7620914f/seg_3.jpg" lay-src="/posts/7620914f/seg_3.jpg" class="" title="图像分割">
+
+<p>导出的数据格式可以有下面的一些方式：</p>
+<ul>
+<li><p>KITTI 标注<br>元数据遵循与卡尔斯鲁厄理工学院和丰田工业大学 (KITTI) 对象检测评估数据集相同的格式。 KITTI 数据集是一款视觉基准套件。 标注文件是纯文本文件。 所有的值（数值和字符串）均由空格分隔开，每行对应一个对象。</p>
+</li>
+<li><p>PASCAL 可视化对象类<br>元数据遵循与模式分析、统计建模和计算学习、可视化对象类 (PASCAL VOC) 数据集相同的格式。 PASCAL VOC 数据集是用于对象类识别的标准化影像数据集。 标注文件是 .xml 文件，包含有关影像名称、类值和边界框的信息。 这是默认设置。</p>
+</li>
+<li><p>导出切片<br>输出将为不带标注的影像片。 此格式用于影像转换技术，例如 Pix2Pix 和超分辨率。</p>
+</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/tangjielin/p/18288301">Python|遥感影像语义分割：使用Python(GDAL)制作遥感影像语义分割数据集</a> 使用ArcGIS Pro标注得到标签图标注对象以供深度学习使用—ArcGIS Pro | 文档，由于我的任务是二分类任务，因此我得到的标签图是一张二值图。这里提供了 Python 代码，对二值图进行了切割，”滑动窗口裁剪函数“，这个其实可以作为后面分割的代码。<br>【2】.<a target="_blank" rel="noopener" href="https://pro.arcgis.com/zh-cn/pro-app/latest/help/analysis/image-analyst/label-objects-for-deep-learning.htm">标注对象以供深度学习使用</a> 这是官方工具说明，但是经过我不断的尝试，这里是用作分类的标注，而不是分割的标注。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mzpmzk/article/details/88065416">目标检测：PASCAL VOC 数据集简介</a>  SegmentationClass 存放按照 class 分割的图片,SegmentationObject 存放按照 object 分割的图片</div>
+<h1 id="6-格式转换"><a href="#6-格式转换" class="headerlink" title="6.格式转换"></a>6.格式转换</h1><p>导出的数据格式可能并不是需要的，还需要进行数据格式转换。从 arcpro 中导出的 voc 格式，需要转换为 yolo 的 text 格式。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="comment"># 类别</span></span><br><span class="line">classes = [<span class="string">'255'</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">convert</span>(<span class="params">size, box</span>):</span><br><span class="line">    dw = <span class="number">1.</span>/(size[<span class="number">0</span>])</span><br><span class="line">    dh = <span class="number">1.</span>/(size[<span class="number">1</span>])</span><br><span class="line">    x = (box[<span class="number">0</span>] + box[<span class="number">1</span>])/<span class="number">2.0</span> - <span class="number">1</span></span><br><span class="line">    y = (box[<span class="number">2</span>] + box[<span class="number">3</span>])/<span class="number">2.0</span> - <span class="number">1</span></span><br><span class="line">    w = box[<span class="number">1</span>] - box[<span class="number">0</span>]</span><br><span class="line">    h = box[<span class="number">3</span>] - box[<span class="number">2</span>]</span><br><span class="line">    x = x*dw</span><br><span class="line">    w = w*dw</span><br><span class="line">    y = y*dh</span><br><span class="line">    h = h*dh</span><br><span class="line">    <span class="keyword">if</span> w&gt;=<span class="number">1</span>:</span><br><span class="line">        w=<span class="number">0.99</span></span><br><span class="line">    <span class="keyword">if</span> h&gt;=<span class="number">1</span>:</span><br><span class="line">        h=<span class="number">0.99</span></span><br><span class="line">    <span class="keyword">return</span> (x,y,w,h)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">convert_annotation</span>(<span class="params">rootpath,xmlname</span>):</span><br><span class="line">    xmlpath = rootpath + <span class="string">'/labels'</span></span><br><span class="line">    xmlfile = os.path.join(xmlpath,xmlname)</span><br><span class="line">    <span class="keyword">with</span> <span class="built_in">open</span>(xmlfile, <span class="string">"r"</span>, encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> in_file:</span><br><span class="line">      txtname = xmlname[:-<span class="number">4</span>]+<span class="string">'.txt'</span></span><br><span class="line">      <span class="built_in">print</span>(txtname)</span><br><span class="line">      txtpath = rootpath + <span class="string">'/worktxt'</span><span class="comment">#生成的.txt文件会被保存在worktxt目录下</span></span><br><span class="line">      <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(txtpath):</span><br><span class="line">        os.makedirs(txtpath)</span><br><span class="line">      txtfile = os.path.join(txtpath,txtname)</span><br><span class="line">      <span class="keyword">with</span> <span class="built_in">open</span>(txtfile, <span class="string">"w+"</span> ,encoding=<span class="string">'UTF-8'</span>) <span class="keyword">as</span> out_file:</span><br><span class="line">        tree=ET.parse(in_file)</span><br><span class="line">        root = tree.getroot()</span><br><span class="line">        size = root.find(<span class="string">'size'</span>)</span><br><span class="line">        w = <span class="built_in">int</span>(size.find(<span class="string">'width'</span>).text)</span><br><span class="line">        h = <span class="built_in">int</span>(size.find(<span class="string">'height'</span>).text)</span><br><span class="line">        out_file.truncate()</span><br><span class="line">        <span class="keyword">for</span> obj <span class="keyword">in</span> root.<span class="built_in">iter</span>(<span class="string">'object'</span>):</span><br><span class="line">            cls = obj.find(<span class="string">'name'</span>).text</span><br><span class="line">            <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> classes:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            cls_id = classes.index(cls)</span><br><span class="line">            xmlbox = obj.find(<span class="string">'bndbox'</span>)</span><br><span class="line">            b = (<span class="built_in">float</span>(xmlbox.find(<span class="string">'xmin'</span>).text), <span class="built_in">float</span>(xmlbox.find(<span class="string">'xmax'</span>).text), <span class="built_in">float</span>(xmlbox.find(<span class="string">'ymin'</span>).text), <span class="built_in">float</span>(xmlbox.find(<span class="string">'ymax'</span>).text))</span><br><span class="line">            bb = convert((w,h), b)</span><br><span class="line">            out_file.write(<span class="built_in">str</span>(cls_id) + <span class="string">" "</span> + <span class="string">" "</span>.join([<span class="built_in">str</span>(a) <span class="keyword">for</span> a <span class="keyword">in</span> bb]) + <span class="string">'\n'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    rootpath=<span class="string">r'D:\zlc\drone\drone-train\data\segment'</span></span><br><span class="line">    xmlpath=rootpath+<span class="string">'/labels'</span></span><br><span class="line">    <span class="built_in">list</span>=os.listdir(xmlpath)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(<span class="built_in">list</span>)) :</span><br><span class="line">        path = os.path.join(xmlpath,<span class="built_in">list</span>[i])</span><br><span class="line">        <span class="keyword">if</span> (<span class="string">'.xml'</span> <span class="keyword">in</span> path)<span class="keyword">or</span>(<span class="string">'.XML'</span> <span class="keyword">in</span> path):</span><br><span class="line">            convert_annotation(rootpath,<span class="built_in">list</span>[i])</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'done'</span>, i)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'not xml file'</span>,i)</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Guo_Python/article/details/107984940">PASCAL VOC 数据集转化为yolo数据集格式</a> 1.PASCAL VOC数据格式;2.yolo 数据格式;3.文件布局如图所示。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/BGMcat/article/details/120889683">YOLO与voc格式互转,超详细</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40107571/article/details/130473524">VOC格式数据集转yolo格式数据集</a> 这里也提到了一个 Annotations 的文件夹，我看代码像是转换目标识别的代码，而不是图像分割的代码。开始我以为是这个样子，后来我发现好像图像分割和图像分类是一样的，只不过我的转换代码有问题罢了。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44231797/article/details/137246424">目标检测：数据集划分 &amp; XML数据集转YOLO标签</a> 这个代码我感觉和转换的策略还是挺正常的。<br>【5】.<a target="_blank" rel="noopener" href="https://rapidai.github.io/LabelConvert/docs/overview/">label_convert</a> 一个数据转换工具。<br>【6】.<a target="_blank" rel="noopener" href="https://paddlexdocs.readthedocs.io/en/stable/appendix/how_to_convert_dataset.html">PaddleX GUI</a> 当前PaddleX GUI支持ImageNet格式的图像分类数据集、VOC格式的目标检测数据集、COCO格式的实例分割数据集、Seg格式的语义分割的数据集，当使用LabelMe、EasyData、标注精灵这3个工具标注数据时，PaddleX提供了相应接口可将数据转换成与PaddleX GUI想适配的数据集，使用方式如下所示：<br>【7】.<a target="_blank" rel="noopener" href="https://docs.ultralytics.com/zh/datasets/segment/">支持的数据集格式</a> 这是yolo支持的数据集格式，官方说明：1.每幅图像一个文本文件：数据集中的每幅图像都有一个相应的文本文件，文件名与图像文件相同，扩展名为”.txt”。2.每个对象一行：文本文件中的每一行对应图像中的一个对象实例。3.每行对象信息：每行包含对象实例的以下信息，对象类别索引：代表对象类别的整数（如 0 代表人，1 代表汽车等），对象边界坐标：遮罩区域周围的边界坐标，归一化后介于 0 和 1 之间。<br>【8】.<a target="_blank" rel="noopener" href="https://github.com/ultralytics/JSON2YOLO"> ultralytics / JSON2YOLO </a> Welcome to the COCO2YOLO repository! This toolkit is designed to help you convert datasets in JSON format, following the COCO (Common Objects in Context) standards, into YOLO (You Only Look Once) format, which is widely recognized for its efficiency in real-time object detection tasks.</div>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>（1）只有具有单波段或三波段且没有色彩映射的 8 位无符号或 16 位无符号数据支持 JPEG 压缩<br>yolo训练的时候，只支持 jpeg 格式的数据，不支持 tiff 格式，在创建供深度学习的数据集的时候，可以选择导出为jpg格式，但是使用 arcpro 转换为 jpg，又出现相应的错误。tif为多波段数据，一般包括4波段（蓝、绿、红、近红外）。我使用了 python转换成了 jpg 格式，结果倒是能转换，但是丢失了大部分的地理信息。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">tif_to_jpg</span>(<span class="params">input_dir, output_dir</span>):</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(output_dir):</span><br><span class="line">        os.makedirs(output_dir)</span><br><span class="line">    <span class="keyword">for</span> filename <span class="keyword">in</span> os.listdir(input_dir):</span><br><span class="line">        <span class="keyword">if</span> filename.endswith(<span class="string">'.tif'</span>):</span><br><span class="line">            input_path = os.path.join(input_dir, filename)</span><br><span class="line">            output_path = os.path.join(output_dir, filename.replace(<span class="string">'.tif'</span>, <span class="string">'.jpg'</span>))</span><br><span class="line">            image = Image.<span class="built_in">open</span>(input_path)</span><br><span class="line">            image.convert(<span class="string">'RGB'</span>).save(output_path, <span class="string">'JPEG'</span>)</span><br><span class="line"></span><br><span class="line">input_dir = <span class="string">r'D:\zlc\drone\drone-train\data\tif'</span></span><br><span class="line">output_dir = <span class="string">r'D:\zlc\drone\drone-train\data\tif'</span></span><br><span class="line">tif_to_jpg(input_dir, output_dir)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>解决方案其实不是解决方案，yolo是支持tif检测的，只是因为我的坐标转换的时候，出现了问题，没有加载进来图片，所以导致问题了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_73406727/article/details/138613224">解决ERROR 001523: 只有具有单波段或三波段且没有色彩映射的 8 位无符号或 16 位无符号数据支持 JPEG 压缩</a> 1.使用的arcmap  在图层窗口中 选中tif ，选择导出，选 使用渲染器和强制为RGB颜色！其余内容默认即可，输出位置根据自己需要保存。2.直接在gispro 中 导出栅格然后选择，使用渲染器和强制为RGB颜色。<br>【2】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Lizongming_/article/details/135652383">Yolov8改为高光谱多通道图像输入</a> 这里修改了模型配置，代码处理等，还是挺麻烦的。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_63022207/article/details/141219904">基于yolov10完成对遥感影像的屋顶光伏检测识别</a> 这里直接用的 tif 裁剪然后进行预测。<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44967227/article/details/112060038">Python + Opencv 实现图像tif格式转jpg</a> 这里提供了一个 tif 转 jpg 的代码。<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46192906/article/details/124594899">【板栗糖GIS】arcmap—如何批量将4波段影像转换为3波段</a><br>【6】.<a target="_blank" rel="noopener" href="https://learn.arcgis.com/zh-cn/projects/prepare-imagery-and-raster-data-for-analysis/">准备影像和栅格数据以供分析</a><br>【7】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45501482/article/details/131389183">将高分二四波段影像提取为三波段影像</a> 1.用Arcmap打开高分影像，查看影像为4波段,右键影像，选择导出数据,勾选强制转换成RGB，输入保存路径和保存名称，点击save。2.波段融合，工具箱，找到 “数据管理工具” -&gt; “栅格” -&gt; “栅格处理” -&gt; Composite Bands(波段合成)<br>【8】.<a target="_blank" rel="noopener" href="https://products.aspose.com/words/zh/python-net/conversion/tiff-to-jpg/">在 Python 中将 TIFF转换为JPG</a> 将库引用（导入库）添加到您的Python项目，在Python打开源TIFF文件，调用save()方法，传递带有JPG扩展名的输出文件名，TIFF转换的结果JPG。<br>【9】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16213412/8484045">python tif图片转为jpg</a> 这里用了 PIL 库，可以执行成功。<br>【10】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44967227/article/details/112060038">Python + Opencv 实现图像tif格式转jpg</a> 这里用了 opencv,看似简单，实际上没有用的。<br>【11】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42431141/article/details/115361202">踩坑实录——多光谱影像（.tif）输入深度学习网络训练</a> 这里有很多的问题出现了，也解决了不少问题。</div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/957d9767.html" rel="next" title="ArcPro安装与破解">
+                      <i class="iconfont icon-prev"></i> ArcPro安装与破解
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/857b18d3.html" rel="prev" title="ArcPro使用技巧">
+                      ArcPro使用技巧 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%8A%A0%E8%BD%BD%E5%BD%B1%E5%83%8F"><span class="toc-number">2.</span> <span class="toc-text">1.加载影像</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E6%96%B0%E5%BB%BA%E6%96%B9%E6%A1%88"><span class="toc-number">3.</span> <span class="toc-text">2.新建方案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E6%96%B0%E5%BB%BA%E5%88%86%E7%B1%BB"><span class="toc-number">4.</span> <span class="toc-text">3.新建分类</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E7%BB%98%E5%88%B6%E5%9B%BE%E5%BD%A2"><span class="toc-number">5.</span> <span class="toc-text">4.绘制图形</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%AF%BC%E5%87%BA%E8%AE%AD%E7%BB%83%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">5.导出训练数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-number">7.</span> <span class="toc-text">6.格式转换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">8.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/7620914f.html';
+      this.page.identifier = 'posts/7620914f.html';
+      this.page.title = 'ArcPro制作遥感影像分类数据集';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：ArcPro制作遥感影像分类数据集 链接地址:https://bibichuan.github.io/posts/7620914f.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'ArcPro制作遥感影像分类数据集',
+		url: 'https://bibichuan.github.io/posts/7620914f.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'ArcPro制作遥感影像分类数据集',
+			isTipVisibility: true,
+			tip: 'ArcPro制作遥感影像分类数据集',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python打包工具pyinstaller</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Python打包工具pyinstaller</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-04-25 12:48:46
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我使用了 Detect It Easy 这个工具，查出了一个朋友发给我的一个exe程序使用的是PyInstaller进行打包的，于是我就尝试进行了程序的破解。</p>
+<h2 id="1-编译"><a href="#1-编译" class="headerlink" title="1.编译"></a>1.编译</h2><p>经过上面的Detect工具进行查看，我发现了软件是使用 PyInstaller 编译的,于是我就开始尝试进行解码。</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/crack_1.png" lay-src="/posts/96391aec/crack_1.png" class="" title="破解">
+
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装</span></span><br><span class="line">pip install pyinstaller</span><br><span class="line"><span class="comment">## 打包</span></span><br><span class="line">pyinstaller -F main.py</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jirryzhang/article/details/78881512">PyInstaller用法</a><br>2.<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/2690.html">Python PyInstaller安装和使用教程</a> 这里对多个PyInstaller的参数进行了说明，还给了一个链接mysql的例子。<br>3.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/162237978">别再问我怎么Python打包成exe了</a> Pyinstaller -F setup.py 打包exe;Pyinstaller -F -w setup.py 不带控制台的打包;Pyinstaller -F -i xx.ico setup.py 打包指定exe图标打包<br>4.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7167787660537233444">Python PyInstaller 打包成 Win、Mac 应用程序（app / exe） </a> 可以在 Windows、Mac 和 Linux 上使用，但是并不是跨平台的，而是说要是希望打包成 .exe 文件，需要在Windows 系统上运行 PyInstaller 进行打包工作；打包成 Mac App，需要在 Mac OS 上使用，Linux 也一样，不能在一端上打另外两段的包，还有 Mac m1 的打包不能给 Mac intel 的使用，相反也一样。</div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(1)  No module named ‘src’<br>我在安装pyinstaller的时候，遇到了这个问题。</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/err_3.png" lay-src="/posts/96391aec/err_3.png" class="" title="python3错误">
+
+<p>【尝试】<br>有文章说是增加系统变量，但是我这里是使用 pip install 安装包的时候报错了，应该不适合。后来发现pyinstaller不支持py38,尝试使用 virtualenv 创建虚拟环境，结果报错：RuntimeError: failed to find interpreter for Builtin discover of python_spec=’python3.6’</p>
+<p>【解决】<br>最后我直接跳过了我原先安装的 python 3.8.2,安装了python 3.10,解决了这个问题。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/51049663/python3-6-error-modulenotfounderror-no-module-named-src">Python3.6 error: ModuleNotFoundError: No module named ‘src’</a> 增加系统路径（测试成功）<br>2.<a target="_blank" rel="noopener" href="https://github.com/pyinstaller/pyinstaller/issues/4311">Add support for Python 3.8</a> 这里讨论了pyinstaller不支持38<br>3.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/59134747/converting-a-python-3-8-file-to-exe">Converting a python 3.8 file to .exe</a> 这里提到了使用virtualenv创建36环境<br>4.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/38457004">virtualenv安装并指定python版本</a> 在windows中，不同的python是可以安装在不同的目录中，但是你系统使用哪个版本，就把哪个版本的路径添加到系统的环境变量最前面即可。刚才的例子里看到我目前使用的主版本是3.7.3，这个时候如果想要使用python3.8来创建虚拟环境的话，就需要告知3.8版本的实际路径<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39899630/article/details/110556626">python3.8安装pyinstaller库_模块：pyinstaller库的安装与使用</a> pip install <code>https://github.com/pyinstaller/pyinstaller/archive/develop.tar.gz</code> 这个我尝试了没有用<br>6.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Meet_again007/article/details/103967535">python3.8与pyinstaller冲突问题解决</a></div>
+<hr>
+<p>(2) DLL load failed while importing _ufuncs:<br>这个在打包一个含有numpy和scipy模块的项目时，打包不报错，但是打包完成的exe文件无法执行，总是出现这个错误，</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/err_9.jpg" lay-src="/posts/96391aec/err_9.jpg" class="" title="错误">
+
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">from</span> scipy.interpolate <span class="keyword">import</span> interp1d</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【尝试】<br>(1) 我尝试通过重新安装numpy,然后进行打包，结果还是不行。首先我之前直接通过pip install下载安装的numpy没有mkl,在下载时需要首先在官网<a target="_blank" rel="noopener" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#numpy">下载numpy+mkl.whl文件</a>,然后<a target="_blank" rel="noopener" href="https://pypi.org/project/scipy/#files">下载scipy模块</a></p>
+<p>1.运行:pip uninstall numpy</p>
+<p>2.然后运行：pip install “numpy-1.16.4+mkl-cp37-cp37m-win_amd64.whl”</p>
+<p>3.运行:pip uninstall scipy</p>
+<p>4.然后pip install “scipy-1.4.0-cp37-cp37m-win_amd64.whl”</p>
+<p>需要注意的是numpy版本要和scipy版本相同，</p>
+<p>【解决方案】<br>经过多次尝试，重新安装numpy和scipy都不行，最后我尝试升级pyinstaller，将pyinstaller升级到了  pefile-2023.2.7 pyinstaller-5.8.0 ,重新进行打包，竟然成功运行了项目，问题也算是解决了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013044310/article/details/82874719">python使用scipy报错：“ImportError: DLL load failed: 找不到指定的模块”的解决方案</a> 这是linux解决方法<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42001765/article/details/120971224">pyinstaller 打包后运行报ImportError: DLL load failed: 找不到指定的模块</a> 解决方法在pyinstaller的一个issue中，出现这个问题的原因是skimage、sklearn、scipy必须在torch前import，否则会有共享库的冲突导致报错。<br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/moxiao1995071310/article/details/116932406">记一次Pyinstaller打包缺失.dll解决方式，ImportError: DLL load failed while importing blspy: 动态链接库(DLL)初始化例程失败。</a> 将缺失的dll放到打包后的目录下<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42944019/article/details/121322543">ImportError: DLL load failed while importing _multiarray_umath: 找不到指定的模块（pyinstaller打包的问题）</a> 将dist目录下带有mkl的dll移动到numpy/core目录下，试着运行了下，竟然成功了！<br>5.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39020361/python-scipy-module-import-error-due-to-missing-ufuncs-dll">Python scipy module import error due to missing ._ufuncs dll</a> 使用了：conda remove icc_rt –force，conda install icc_rt –no-deps，但是我没有安装conda这个库。<br>6.<a target="_blank" rel="noopener" href="https://github.com/marcelotduarte/cx_Freeze/issues/43">Import errors when using cx_Freeze with specific scipy modules</a> 1.copy all the numpy DLLs (from c:\Python27\Lib\site-packages\numpy\core), regardless of using scipy 13 or 14。2.add the following to my code:<br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43182743/article/details/105653570">import scipy.misc 出现DLL load failed: 找不到指定的模块错误</a><br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/lch551218/article/details/105246438">#根本上解决# 使用 Pyinstaller 打包后 出现 lib not found 错误</a> 将pyinstaller升级到和python对应的版本，这个很难做到，所以直接使用 pip install –upgrade 包名命令，将pyinstaller和用到的python库全部升级到最新的版本，实在不行就使用pip-review –local –interactive命令升级所有包</div>
+<hr>
+<p>(3) 计算机缺少 api-ms-win-core-path<br>在win7系统上运行pyinstaller打包的程序，报错。</p>
+<p>【解决方法】<br>我用的是python3.10进行的打包，已经不支持win7了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1848431">pyinstaller打包后在win7不能运行提示缺少api-ms-win-core-path-l1-1-0.dll</a> 最后发现是因为Python3.9已经不再支持Win7了，最后使用Python3.8.6来编译解决了这个问题。<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/hughhzh/article/details/84061773">解决win 7打开ie提示api-ms-win-core-path-l1-1-0.dll丢失的方法</a> 安装根据系统选择vc_redist.x64或者vc_redist.x86进行安装</div>
+<h2 id="2-反编译"><a href="#2-反编译" class="headerlink" title="2.反编译"></a>2.反编译</h2><p>知道了是pyinstaller打包的程序，这里就尝试着进行编译试试。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59442292">超详细Pyinstaller打包exe+反编译Pyinstaller打包的exe教程+防止反编译教程</a> 这里还有提供了pyc在线发编译的链接，不过好像要关注扫码，也是从写py脚本，编译成exe，然后在反编译回来。<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/pcat/p/8990482.html">PyInstaller Extractor安装和使用方法</a> 这个反编译出来的和我的差不多，但是还有些不太明白的地方。<br>3.<a target="_blank" rel="noopener" href="https://www.whcsrl.com/blog/1021122">Python 反编译 pyinstaller打包的exe文件 从0开始</a> 这篇文章非常的详细，关于未加密的有些疑惑就可以解开了，关于破解那些文件，不破解那些文件，都有说明。而且你可以从这篇文章中，能知道到底如何才能知道到底是覆盖8字节，还是16字节，这个挺实用的。<br>4.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/109266820">谈谈 Pyinstaller 的编译和反编译，如何保护你的代码</a> 这里说了加密和不加密的两种方法，从编译产出的文件和反编译后的文件进行对比，查看字节数，但是这里用了16字节，还是不准确的。</div>
+<h3 id="1-解包exe程序"><a href="#1-解包exe程序" class="headerlink" title="1.解包exe程序"></a>1.解包exe程序</h3><p><a target="_blank" rel="noopener" href="https://sourceforge.net/projects/pyinstallerextractor/">下载pyinstxtractor.py</a>，使用python命令进行解包，会生成main.exe_extracted文件夹，如果python的版本没有错误的话，该文件夹里面会有很多的没有后缀的文件，还有些dll文件依赖等，以及PYZ-00.pyz_extracted子文件夹。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python pyinstxtractor.py xx.exe</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="2-复制字节"><a href="#2-复制字节" class="headerlink" title="2.复制字节"></a>2.复制字节</h3><p>找到要破解的文件，一半是没有后缀的文件，这个要盲猜了，如果文件较多的话，然后修改后缀为pyc文件。将struct中的前几个字节复制到这个文件中，有人说是8字节，有人说是16字节。这里应该根据实际情况做，只需要用 Hex Editor 编译器打开struct文件，和要反编译的文件，对比前几个字节，把不同的反编译文件中没有的前几个字节补上就可以了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sjhuangx/article/details/104998179">使用vscode查看二进制文件</a><br>2.<a target="_blank" rel="noopener" href="https://mh-nexus.de/en/hxd/">windows下二进制编辑器</a></div>
+<h3 id="3-uncompyle6"><a href="#3-uncompyle6" class="headerlink" title="3.uncompyle6"></a>3.uncompyle6</h3><p>下载安装相应版本的uncomyle6,使用 uncompyle6 工具，解码未加密的.pyc文件。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装</span></span><br><span class="line">pip install uncompyle6</span><br><span class="line"><span class="comment">## 编译</span></span><br><span class="line">uncompyle6 -o pcat.py pcat.pyc</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15060540/3888913">python逆向实战：反编译pyinstaller打包生成的exe</a></div>
+<h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h2><p>(1) UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position 2-3: ordinal not in range(128)<br>这个错误主要是因为源码用了python3编译，而我用了python2进行解码，换成python3就好了。</p>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lsdb/p/12470739.html">Python3报错处理：UnicodeEncodeError: ‘ascii’ codec can’t encode characters in position 0-1: ordinal not in range(128)</a></div>
+<p>(2) 引入相对路径<br>对于python还不是很熟的我来说，还是有问题的。这里注意，要是用 sys.path.append(‘C:\Users\ph\Desktop\破解\main’) 将当前路径加入到路径中，才能找到模块。</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/err_2.png" lay-src="/posts/96391aec/err_2.png" class="" title="错误">
+
+<p>也可以直接倒入当前路径,模块下面要有一个 <strong>init</strong>.py 文件，就算是空的也可以。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line">sys.path.append(<span class="string">'.'</span>)</span><br><span class="line"><span class="keyword">from</span> Utils <span class="keyword">import</span> mssql_helper</span><br></pre></td></tr></tbody></table></figure>
+
+<p>注意其中的目录结构，main.py同级目录下有一个 Utils 文件夹，文件夹下有一个模块mssql_helper,里面写了一个Class类，还有一个就是空的 <strong>init</strong>.py 文件。</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/err_4.png" lay-src="/posts/96391aec/err_4.png" class="" title="错误">
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41699811/article/details/84965328">相对导入问题解决，ImportError:attempted relative import with no known parent package</a> 使用 sys.path.append(‘/home/user/fqm/Project’) 倒入了相对路径，<br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37950540/article/details/84452642">python引入同一目录下的py文件</a> 在目录下有<strong>init</strong>.py文件，在admin.py文件中加一行：from . import dealcode（如果要引入同一目录下的dealcode.py文件中的一个类Hello，在admin.py文件中加一行：from .dealcode import Hello）。这个点，我尝试了不行。<br>3.<a target="_blank" rel="noopener" href="https://www.1024sou.com/article/8098.html">ModuleNotFoundError: No module named ‘xxx’可能的解决方案大全</a> 1.module包没安装;2.忘了import;3.没有<strong>init</strong>.py文件;4.安装的第三方module包的版本不对;5.自建的包名与第三方安装的包名相同，导致import包的时候导错了包;6.没设置PYTHONPATH环境变量;7.自建的module包所在路径不在PYTHONPATH下;<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39873208/article/details/109969105">python不能import当前目录下的文件_python引入同一目录下的py文件</a></div>
+<p>(2) 丢失api-ms-win-crt-runtime-l1-1-0.dll，解决方案。<br>这里在windows server 2012 r2上运行exe的时候，出现了这个问题。我尝试按照参考文章1，单独安装 这个dll，结果不行。</p>
+<p>【解决】<br>下载 <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-US/cpp/windows/latest-supported-vc-redist?view=msvc-170">Microsoft Visual C++ Redistributable latest supported downloads</a>，重新安装Microsoft Visual C++ Redistributable，就可以了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/80111169">丢失api-ms-win-crt-runtime-l1-1-0.dll，解决方案</a> 这里是下载了 dll, 然后使用了regsvr32 进行了注册，64位注册 ：%systemroot%\SysWoW64\regsvr32<br>2.<a target="_blank" rel="noopener" href="https://windll.com/zh/dll/microsoft-corporation/api-ms-win-crt-runtime-l1-1-0">如何修复Api-ms-win-crt-runtime-l1-1-0.dll错误?</a> 安装或重新安装微软Visual C ++可重新分配软件包，这个解决了我的问题。<br>3.<a target="_blank" rel="noopener" href="https://support.microsoft.com/en-us/topic/how-to-use-the-regsvr32-tool-and-troubleshoot-regsvr32-error-messages-a98d960a-7392-e6fe-d90a-3f4e0cb543e5">How to use the Regsvr32 tool and troubleshoot Regsvr32 error messages</a></div>
+<p>(3) windows安装了pyinstaller,还是提示找不到程序<br>我在windows上，使用pip命令，成功安装了pyinstaller，但是运行的时候，还是提示找不到。</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/err_5.png" lay-src="/posts/96391aec/err_5.png" class="" title="错误">
+
+<p>后来我卸载的时候发现，这个路径不对。我在安装pyinstaller的时候，使用的全局安装，所有用户都可用，所以最后的安装路径就是:C:\Program Files\Python310,环境变量也就是这个路径，但是使用pip安装的时候，安装到了：c:\users\phkj\appdata\roaming\python\python310,用户目录中，这个目录并不在环境变量PATH中。</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/err_6.png" lay-src="/posts/96391aec/err_6.png" class="" title="错误">
+
+<p>【解决】<br>解决方法就是将环境变量添加进去。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\users\phkj\appdata\roaming\python\python310\</span><br><span class="line">c:\users\phkj\appdata\roaming\python\python310\scripts</span><br></pre></td></tr></tbody></table></figure>
+
+<p>配置好环境变量之后，如果使用vscode，最好将全部的vscode窗口都关闭，然后再打开，我尝试了新建一个终端的方法，还是不行。</p>
+<img src="/images/loadimg.png" data-original="/posts/96391aec/err_7.png" lay-src="/posts/96391aec/err_7.png" class="" title="错误">
+
+<hr>
+<p>(4) No module named ‘pymssql’<br>系统打包之后，运行exe出现这个问题。我重新安装了 pymysql ,重新执行打包，最后生成的exe还是找不到这个包的依赖。我把python卸载，重新安装，也是同样的问题。python安装的时候，有两种安装方法，一种就是直接安装，所有的都是默认的配置，路径也是默认的路径，都安装在了用户目录下面。另外一种就是自定义安装，可以选择是否为全部的用户安装，还可以修改安装路径，我尝试了两种方式，都有问题。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pymysql</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决】<br>后来我把python卸载，在安装的时候：<br>1，选择了自定义安装<br>2，选择了将python添加入环境变量中<br>3.并且在自定义的时候，修改了默认的python安装路径为：C:\Soft\python<br>4.重新执行了安装pyinstaller 和 pymssql<br>5.然后在执行 pyinstaller命令时，增加了 –paths 参数，指向了python的安装路径</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F .\main.py --paths C:\Soft\python</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/mjy2wxy/p/14703091.html">pyinstaller打包后运行报错-No module named ‘pymssql._mssql’</a></div>
+<p>(5) No such file or directory: ‘C:\Program Files\Python310\python310.dll’<br>我在win11 上安装新版的python 3.10.7,选择了自定义安装，修改了安装路径到：C:\Soft\python\，之后安装pyinstaller执行py打包成exe文件，结果就报了这个错误，我难道不能修改默认的安装路径吗？</p>
+<p>【解决方法】<br>我重新执行了pyinstaller命令，增加了 –paths 参数</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pyinstaller -F .\main.py --paths C:\Soft\python</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/55380296/how-to-fix-error-errno-2-no-such-file-or-directory-c-program-files-pytho">How to fix Error: [Errno 2] No such file or directory: ‘C:\Program Files\Python37\lib\venv\scripts\nt\python_d.exe’</a><br>2.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/38674400/missing-dll-files-when-using-pyinstaller">Missing dll files when using pyinstaller</a> 这里加了一个path参数</div>
+<hr>
+<p>(5) unsupported format character ‘’’ (0x27) at index 43<br>主要是这个LIKE问题，我将一个% 改为%%，结果报错：not all arguments converted during string formatting</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 刚开始</span></span><br><span class="line">syh_rows = mssql_connector.ExecQuery(<span class="string">"SELECT * FROM [jc03a] WHERE [编号] LiKE 'HKH%' ORDER BY [试验号] ASC "</span> % cur_date)</span><br><span class="line"><span class="comment">## 修改</span></span><br><span class="line">syh_rows = mssql_connector.ExecQuery(<span class="string">"SELECT * FROM [jc03a] WHERE [编号] LiKE 'HKH%%' ORDER BY [试验号] ASC "</span> % cur_date)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方法】<br>想要以HKH开头的sql语句，如下编写：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">syh_rows = mssql_connector.ExecQuery(<span class="string">"SELECT * FROM [jc03a] WHERE [试验号] LiKE '%s%%' AND [试验日期]='%s' ORDER BY [试验号] ASC "</span> % (<span class="string">'HKH'</span>,cur_date))</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/helloxiaozhe/article/details/96475701">Python中： unsupported format character ‘’’ (0x27)</a><br>2.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0b56d7d60036">Python：pymysl 中 SQL 语句使用 where like 模糊查询时 % 的处理方法</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/184fdd66.html" rel="next" title="Python测试网络延迟">
+                      <i class="iconfont icon-prev"></i> Python测试网络延迟
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/5ba4e05b.html" rel="prev" title="Python开发之视频处理">
+                      Python开发之视频处理 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%BC%96%E8%AF%91"><span class="toc-number">2.</span> <span class="toc-text">1.编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-number">3.</span> <span class="toc-text">2.反编译</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%A7%A3%E5%8C%85exe%E7%A8%8B%E5%BA%8F"><span class="toc-number">3.1.</span> <span class="toc-text">1.解包exe程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%8D%E5%88%B6%E5%AD%97%E8%8A%82"><span class="toc-number">3.2.</span> <span class="toc-text">2.复制字节</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-uncompyle6"><span class="toc-number">3.3.</span> <span class="toc-text">3.uncompyle6</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/96391aec.html';
+      this.page.identifier = 'posts/96391aec.html';
+      this.page.title = 'Python打包工具pyinstaller';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Python打包工具pyinstaller 链接地址:https://bibichuan.github.io/posts/96391aec.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Python打包工具pyinstaller',
+		url: 'https://bibichuan.github.io/posts/96391aec.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Python打包工具pyinstaller',
+			isTipVisibility: true,
+			tip: 'Python打包工具pyinstaller',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

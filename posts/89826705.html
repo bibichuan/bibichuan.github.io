@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Docker安装和配置</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">Docker安装和配置</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/tags/Docker/">Docker</a>
+                    
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2020-03-10 07:07:47
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-Windows10安装docker"><a href="#1-Windows10安装docker" class="headerlink" title="1.Windows10安装docker"></a>1.Windows10安装docker</h1><p>windos7和8上使用的是docker toolbox进行安装，windows10上有另外的安装方法。<br>(1) [下载docker] (<a target="_blank" rel="noopener" href="https://hub.docker.com/editions/community/docker-ce-desktop-windows">https://hub.docker.com/editions/community/docker-ce-desktop-windows</a>)<br>使用迅雷下载可能比较快，使用浏览器自带的，下载就特别的慢。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_1.png" lay-src="/posts/89826705/docker_1.png" class="" title="docker安装">
+
+<p>(2) 安装的时候没有找到地方更改安装路径，估计是默认了</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_2.png" lay-src="/posts/89826705/docker_2.png" class="" title="docker安装">
+
+<p>(3) 安装完要重启</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_3.png" lay-src="/posts/89826705/docker_3.png" class="" title="docker安装">
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/windows-docker-install.html">Windows Docker 安装</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/tina_ttl/article/details/51372604">Docker学习系列（一）：windows下安装docker</a><br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b21c508514ae">Docker windows安装并启用镜像加速</a> (内容都大同小异，其实windows上已经有了比较成熟的可执行程序，修改配置文件也简单的。)</div>
+<h2 id="1-改变镜像文件存储路径"><a href="#1-改变镜像文件存储路径" class="headerlink" title="1.改变镜像文件存储路径"></a>1.改变镜像文件存储路径</h2><p>(1) 开始菜单右键-&gt;控制面板-&gt;管理工具-&gt;Hyper-V 管理器-&gt;虚拟机右键-&gt;设置-&gt;SCSI控制器磁盘驱动器。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_5.png" lay-src="/posts/89826705/docker_5.png" class="" title="docker安装">
+
+<p>(2) 将默认C:\Users\Public\Documents\Hyper-V\Virtual hard disks\MobyLinuxVM.vhdx的文件拷贝到想要改变的路径,我这里拷贝到D:\soft\DockerImage路径下，然后点击浏览读取并确定保存设置</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_4.png" lay-src="/posts/89826705/docker_4.png" class="" title="docker安装">
+
+<p>这样直接修改路径，好像不可以。因为虚拟机已经在运行了，你重新指定一个新的镜像，那只能是打开了新的虚拟机罢了。于是我换了一个思路。通过移动虚拟机的方式进行修改镜像位置。<br>(1) 打开Hyper-V管理器，选中虚拟机右键-&gt;移动-&gt;</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_11.png" lay-src="/posts/89826705/docker_11.png" class="" title="docker安装">
+
+<p>(2) 打开移动对话框</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_12.png" lay-src="/posts/89826705/docker_12.png" class="" title="docker安装">
+
+<p>(3) 一步步的选择操作,到选择文件夹的地方</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_13.png" lay-src="/posts/89826705/docker_13.png" class="" title="docker安装">
+
+<p>(4) 点击完成</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_14.png" lay-src="/posts/89826705/docker_14.png" class="" title="docker安装">
+
+<p>(5) 再次查看Docker的位置,已经到新的位置上了。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_15.png" lay-src="/posts/89826705/docker_15.png" class="" title="docker安装">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/StemQ/article/details/53150939">docker for windows pull镜像文件的安装位置改变方法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wwangfabei1989/article/details/79293004">docker for windows修改虚拟机路径</a></div>
+<p>(6) Docker设置中,修改镜像保存地址<br>除了将Docker虚拟机移动到其他地方，还有一个地方是默认的镜像保存地址是：C:\ProgramData\DockerDesktop\vm-data,可以在设置中修改位置。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_8.png" lay-src="/posts/89826705/docker_8.png" class="" title="docker入门">
+
+<p>(7) 因为我以前安装过一个CentOS镜像，然后有一次莫名其妙的重启系统后,用户没有权限访问自己的文件夹了，只能重新创建了一个用户，用新的用户登录系统。结果就算我重新在Docker中指定了镜像保存的位置,结果这个文件还是删除不掉。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_16.png" lay-src="/posts/89826705/docker_16.png" class="" title="docker安装">
+
+<p>win10下右键任务栏-&gt;任务管理器-&gt;性能-&gt;打开资源监视器-&gt;CPU-&gt;关联句柄处输入想要查的文件名-&gt;这里是explore.exe(资源管理,小心谨慎的操作,直接右键结束进程，你就没有任务栏了,多半要重启电脑。)</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_18.png" lay-src="/posts/89826705/docker_18.png" class="" title="docker安装">
+
+<p>当然不重启电脑也行,重新Ctrl+Alt+Del键,调出任务管理器-&gt;文件-&gt;新建任务-&gt;然后输入explorer.exe,确定就好了。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_19.png" lay-src="/posts/89826705/docker_19.png" class="" title="docker安装">
+
+<p>当然这样做了，上面的文件占用问题还是没有解决,然后你猜怎么找，我重启电脑，解决了问题。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/a746742897/article/details/78736498">操作无法完成，因为该文件已在system中打开</a><br>2.<a target="_blank" rel="noopener" href="https://jingyan.baidu.com/article/215817f7950dc71eda14238d.html">操作无法完成，因为文件已在system中打开</a></div>
+<p><strong>没有什么是重启电脑解决不了的,如果有，那就一直重启</strong></p>
+<h2 id="2-镜像加速"><a href="#2-镜像加速" class="headerlink" title="2.镜像加速"></a>2.镜像加速</h2><p>新版的Docker好像没有了Daemon选项，只有一个Docker Engine,里面有registry-mirrors，可以直接修改这个数组。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">{</span><br><span class="line">    "registry-mirrors": [</span><br><span class="line">        "http://hub-mirror.c.163.com",</span><br><span class="line">        "http://docker.mirrors.ustc.edu.cn"</span><br><span class="line">    ]</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_6.png" lay-src="/posts/89826705/docker_6.png" class="" title="docker安装">
+
+<p>我手贱，输入了一个错误的地址，结果，docker启动不起来了。可以找到C:\Users\用户名.docker下的daemon.json，直接修改registry-mirrors的值，然后从任务管理器强制关闭docker,然后重新启动docker。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_7.png" lay-src="/posts/89826705/docker_7.png" class="" title="docker安装">
+
+<p>还有一个地方，如果配置了镜像，还是非常的慢的话，看看是不是DNS没有配置</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 编辑DNS</span></span><br><span class="line">vi /etc/resolv.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">## 增加</span></span><br><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 8.8.8.8</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：1<br>1.<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/windows-docker-install.html">镜像加速</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010716706/article/details/69524863">Docker无法正常启动的原因及解决办法</a><br>3.<a target="_blank" rel="noopener" href="http://ask.zol.com.cn/x/6491068.html">Win10提示”操作无法完成,因为文件已在System中打开”怎么处理</a></div>
+<h2 id="3-国内源不生效"><a href="#3-国内源不生效" class="headerlink" title="3.国内源不生效"></a>3.国内源不生效</h2><p>我配置了国内源，但是还是不生效，配置之后，结果不行。我查看了 docker info，已经修改过了国内源。我的是v27.3.1，2024年12月13日，用了很多方法，尝试了很多步骤，结果还是不行，最后还是会走 registry-1 这个东西。</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"registry-mirrors"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"https://docker.m.daocloud.io"</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_20.png" lay-src="/posts/89826705/docker_20.png" class="" title="docker安装">
+
+<p>【尝试方案】<br>（1）尝试清理缓存，结果无效。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker system prune -a</span><br></pre></td></tr></tbody></table></figure>
+
+<p>（2）尝试使用代理，结果也没有效果</p>
+<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">"proxies"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"http-proxy"</span><span class="punctuation">:</span> <span class="string">"http://127.0.0.1:7890"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"https-proxy"</span><span class="punctuation">:</span> <span class="string">"http://127.0.0.1:7890"</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>（3）尝试重启电脑，结果无效。</p>
+<p>（4）配置阿里云的镜像，结果也是无效，最后还是会走 Error response from daemon: Get “<a target="_blank" rel="noopener" href="https://registry-1.docker.io/v2/&quot;">https://registry-1.docker.io/v2/"</a></p>
+<p>（5）修改DNS配置，通过系统设置里面，修改 DNS 为 8.8.4.4，重启Docker，结果无效。出现新的错误： dialing registry-1.docker.io:443 container via direct connection because  has no HTTPS proxy</p>
+<p>（6）更新 Docker Desktop 版本，到v4.37.0，结果还是不行。</p>
+<p>（7）最后我解决了，还是通过配置DNS解决的。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">首选DNS：223.5.5.5</span><br><span class="line">备用DNS：8.8.8.8</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/89826705/err_5.png" lay-src="/posts/89826705/err_5.png" class="" title="Docker配置">
+
+<p>但是虽然能解决了 hello-word 的拉取，但是没有解决 opendronemap/odm 的拉取，还是报错误：Error response from daemon: Get “<a target="_blank" rel="noopener" href="https://registry-1.docker.io/v2/&quot;">https://registry-1.docker.io/v2/"</a>: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)</p>
+<p>【解决方案】<br>最后还是通过挂载代理的方式进行的，在Docker Desktop的设置中 -&gt; 选择 Resources  -&gt; 然后选择 Proxies -&gt; 修改 http 和 https 代理，这里我用了本地代理的方式，然后重启 Docker 就可以了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175446/7617140">windows怎么更换docker镜像源不生效</a><br>【2】.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/databank/p/18360383"> docker修改镜像地址后不生效</a><br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Lyon_Nee/article/details/124169099">Windows Docker 配置国内镜像源的两种方法</a> 配置文件位于 C:\Users\Administrator.docker\目录下的daemon.json<br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Wilonx/article/details/126502603">Win docker 设置镜像源失效，不起作用解决办法</a> 貌似版本升级bug。<br>【5】.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1806455">如何优雅的给 Docker 配置网络代理</a> 这是linux配置代理的方式。<br>【6】.<a target="_blank" rel="noopener" href="https://neucrack.com/p/286">docker 设置代理，以及国内加速镜像设置</a> 1.国内镜像加速。2.docker pull 拉取 push 推送镜像时设置代理。3.build 镜像时使用代理。4.设置 docker 全局代理。5.容器使用宿主机的代理的几种方法总结。<br>【7】.<a target="_blank" rel="noopener" href="https://exp-blog.com/container/windows-xi-tong-she-zhi-docker-dai-li-zhi-yin/">Docker 设置代理指引（Windows 系统）</a> 这里设置了 wsl2 的代理，但是我的windows上没有wsl网络。<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_58983612/article/details/125030316">docker 配置镜像后依然报错，没有走镜像</a> 修改了DNS配置，这里用的是 8.8.4.4 的配置，结果不行。</div>
+<h2 id="4-ensuring-main-distro-is-deployed-checking-if-main-distro-is-up-to-date-checking-main-distro-bootstrap-version-getting-main-distro-bootstrap-version"><a href="#4-ensuring-main-distro-is-deployed-checking-if-main-distro-is-up-to-date-checking-main-distro-bootstrap-version-getting-main-distro-bootstrap-version" class="headerlink" title="4.ensuring main distro is deployed: checking if main distro is up to date: checking main distro bootstrap version: getting main distro bootstrap version"></a>4.ensuring main distro is deployed: checking if main distro is up to date: checking main distro bootstrap version: getting main distro bootstrap version</h2><p>在重启系统之后，结果出现了这个问题。</p>
+<p>【尝试方案】<br>尝试了命令行，后来又出现了新的问题，An unexpected error occurred while executing a WSL command.Either shut down WSL down with wsl –shutdown, and/or reboot your machine. You can also try reinstalling WSL and/or Docker Desktop. </p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wsl --unregister docker-desktop</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>最后就是直接选择 恢复 就可以了，其他的也没有什么办法了。</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://forums.docker.com/t/docker-desktop-distro-installation-failed-after-upgradation-to-4-32-0/142393">Docker Desktop distro installation failed after upgradation to 4.32.0</a></div>
+<h1 id="2-Deepin安装docker"><a href="#2-Deepin安装docker" class="headerlink" title="2.Deepin安装docker"></a>2.Deepin安装docker</h1><p>一键安装脚本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://get.docker.com/ | sh</span><br></pre></td></tr></tbody></table></figure>
+
+<p>安装完之后，有一个提示：</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/err_3.png" lay-src="/posts/89826705/err_3.png" class="" title="docker安装">
+
+<p>这个时候在命令行运行docker会遇到权限的问题，需要使用 sudo docker version命令</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/err_4.png" lay-src="/posts/89826705/err_4.png" class="" title="docker安装">
+
+<p>如果想要不使用sudo命令运行docker，可以增加docker用户组，并将当前用户添加进去</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 新建用户组</span></span><br><span class="line"><span class="built_in">sudo</span> groupadd docker</span><br><span class="line"><span class="comment">## 添加当前用户</span></span><br><span class="line"><span class="built_in">sudo</span> usermod -aG docker <span class="variable">$USER</span></span><br><span class="line"><span class="comment">## 刷新用户信息</span></span><br><span class="line">newgrp docker</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user">Manage Docker as a non-root user</a></div>
+<hr>
+<p>本来想直接使用docker官方的Debain版，因为Deepin是基于Debain开发的，但是有参考资料说明，如果单纯只是使用Debain版的安装，好像不会成功，因为Deepin进行了大量的修改。比如没有wheey版本等，unstable版本的问题等。我的系统版本已经是15.11了。<br>(1) 卸载</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 这些命令挺全的，综合了多个版本</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get remove docker docker-engine docker-ce docker.io</span><br><span class="line"><span class="built_in">sudo</span> apt-get purge docker</span><br><span class="line"><span class="built_in">sudo</span> apt-get autoremove docker</span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">rm</span> -rf /var/lib/docker</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) 安装相关工具<br>这一步视情况进行安装和不安装，我没有进行安装，直接跳到了安装密钥一步，倒是也没有问题。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-get install apt-transport-https ca-certificates curl software-properties-common</span><br></pre></td></tr></tbody></table></figure>
+<p><del>这里我遇到了问题：”没有可用的软件包 python-software-properties，但是它被其它的软件包引用了。”</del></p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_9.png" lay-src="/posts/89826705/docker_9.png" class="" title="docker安装">
+
+<p><del>尝试的解决方法，去掉python-software-properties软件包的安装</del></p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://chubuntu.com/questions/21863/e-package-python-software-properties-has-no-installation-candidate.html">E：包’python-software-properties’没有安装候选者</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39467231/article/details/82724698">没有可用的软件包××，但是它被其他的软件包引用了——解决方法</a><br>3.<a target="_blank" rel="noopener" href="https://yeasy.gitbooks.io/docker_practice/install/debian.html">Debian 安装 Docker CE</a></div>
+<p>(3) 安装秘钥</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装秘钥</span></span><br><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | <span class="built_in">sudo</span> apt-key add -</span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看秘钥</span></span><br><span class="line"><span class="built_in">sudo</span> apt-key fingerprint OEBFCD88</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) 添加docker仓库</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 更新仓库</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment">## 编辑源列表文件 /etc/apt/sources.list,这步一定要做，否则可能会出现错误aptsources.distro.NoDistroTemplateException</span></span><br><span class="line"><span class="built_in">sudo</span> gedit /etc/apt/sources.list</span><br><span class="line"><span class="comment">## 添加</span></span><br><span class="line">deb [<span class="built_in">arch</span>=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/debian stretch stable</span><br></pre></td></tr></tbody></table></figure>
+<p><del>安装这一步(add-apt-repository)的时候，又出现错误了:”could not find a distribution template for Deepin/stable”</del></p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/docker_10.png" lay-src="/posts/89826705/docker_10.png" class="" title="docker">
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/520715/deepin-15-10-error-could-not-find-a-distribution-template-for-deepin-stable">Deepin 15.10 Error: could not find a distribution template for Deepin/stable</a><br>2.<a target="_blank" rel="noopener" href="https://bbs.deepin.org/forum.php?mod=viewthread&amp;tid=178307">docker无法安装</a></div>
+<p>(6) 查看docker可安装版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> apt-cache madison docker-ce</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/jeikerxiao/article/details/83628833">Docker 升级到最新版本</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangpeterx/article/details/102474179">ubuntu/debian安装最新版docker和docker-compose</a><br>3.<a target="_blank" rel="noopener" href="https://yeasy.gitbooks.io/docker_practice/install/debian.html">Debian 安装 Docker CE</a></div>
+<p>(7) 安装特定版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装特定版本docker</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install docker-ce=18.06.3~ce~3-0~debian containerd</span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者直接安装最新版docker</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get install docker-ce</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>(8) 设置docker非root账户,可以将普通用户也可以使用docker命令运行docker,而不用再输入sudo命令(要重启电脑才能生效)。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> gpasswd -a <span class="variable">${USER}</span> docker</span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者把你的账号加到 docker 用户组</span></span><br><span class="line"><span class="built_in">sudo</span> usermod -aG docker <span class="variable">$USER</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>(9) 查看安装的docker版本</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/debian-docker-install.html">Debian Docker 安装</a><br>2.<a target="_blank" rel="noopener" href="https://wiki.deepin.org/index.php?title=Docker&amp;oldid=1131">关于Deepin中的Docker</a><br>3.<a target="_blank" rel="noopener" href="https://wiki.deepin.org/wiki/Docker">在 Deepin 中安装 Docker 最新版的方法</a><br>4.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/80417153">deepin安装docker</a> (这个好像写的更加的详细点,版本到了15.10了)<br>5.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8200a3a50806">deepin系统下的docker安装</a> (这个版本才刚是15.7)<br>6.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e6b6268956ec">Deepin 安装 最新版Docker</a> (这个就更老了深度15.4)<br>7.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39750084/article/details/82056081">Linux中修改docker镜像源的方法及原因</a></div>
+<p>(10) 修改镜像源</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 配置文件在daemon.json中，没有就新建</span></span><br><span class="line">vim /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line"><span class="comment">## 添加如下网易镜像</span></span><br><span class="line"><span class="comment">##{</span></span><br><span class="line"><span class="comment">##    "registry-mirrors": ["http://hub-mirror.c.163.com"]</span></span><br><span class="line"><span class="comment">##}</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="built_in">tee</span> /etc/docker/daemon.json &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">{</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://docker.m.daocloud.io"</span>]</span><br><span class="line">}</span><br><span class="line">EOF</span><br><span class="line"></span><br><span class="line"><span class="comment">## 重新加载配置(这个很重要)</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"><span class="built_in">sudo</span> systemctl restart docker</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/skh2015java/article/details/82631633">修改docker镜像源的方法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39750084/article/details/82056081">怎么修改镜像源</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u010316188/article/details/79865451">docker 更换镜像源地址</a><br>4.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cao-lei/p/14448052.html">Docker 配置国内镜像源加速 </a> 中国官方镜像、网易163镜像、中科大镜像<br>【5】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_56097487/article/details/139538160">docker 拉取镜像失败</a> 大部分的镜像网站都不能用了。</div>
+<p>(11) 配置本地镜像的存放位置<br>镜像的默认存放路径是：/var/lib/docker，可以通过修改软连接的方法，也可以通过扩展卷的方法，好像看起来有点复杂，就没有尝试了。<br>有一种简单的方式，就是修改daemon.json文件。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 停止docker服务</span></span><br><span class="line">systemctl stop docker     </span><br><span class="line"></span><br><span class="line"><span class="comment">## 编辑</span></span><br><span class="line">vim  /etc/docker/daemon.json </span><br><span class="line"></span><br><span class="line"><span class="comment">## 添加</span></span><br><span class="line">{</span><br><span class="line"></span><br><span class="line">    <span class="string">"data-root"</span>:<span class="string">"/data/docker-data"</span></span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">## 将docker镜像迁移到新目录</span></span><br><span class="line"><span class="built_in">mv</span> /var/lib/docker /data/docker-data    </span><br><span class="line"></span><br><span class="line"><span class="comment">## 重新加载配置</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动docker服务</span></span><br><span class="line">systemctl start docker   </span><br><span class="line"></span><br><span class="line"><span class="comment">## 查看信息</span></span><br><span class="line">docker info</span><br></pre></td></tr></tbody></table></figure>
+
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/wenwenxiong/article/details/78728696">Docker配置本地镜像与容器的存储位置</a><br>2.<a target="_blank" rel="noopener" href="https://blog.51cto.com/forangela/1949947">四个修改Docker默认存储位置的方法</a><br>3.<a target="_blank" rel="noopener" href="https://www.centosdoc.com/docker/53.html">DOCKER更改镜像存储位置</a><br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u013948858/article/details/79974796">【Docker】daemon.json的作用（八）</a></div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>(1) Got permission denied while trying to connect to the Docker daemon socket<br>执行：docker search hello-world 出现了权限错误，可是我明明已经执行了gpasswd和usermod命令啊。</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/err_1.png" lay-src="/posts/89826705/err_1.png" class="" title="docker错误">
+
+<p>参考文章中有这么一句话：</p>
+<pre><code>您需要注销并重新登录，以便重新评估组成员身份或键入以下命令：
+su -s ${USER}
+</code></pre>
+<p>运行su命令不管事,总是出现鉴定故障，我就干脆重启了电脑。运行:docker version 出现的权限错误，也是这么解决。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/questions/how-to-fix-docker-got-permission-denied-while-trying-to-connect-to-the-docker-daemon-socket">How to fix docker: Got permission denied while trying to connect to the Docker daemon socket</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/a1010256340/article/details/79812857">docker执行命令报错：Got permission denied while trying to connect to the Docker daemon socket at unix:///va</a></div>
+<h2 id="3-CentOS安装Docker"><a href="#3-CentOS安装Docker" class="headerlink" title="3.CentOS安装Docker"></a>3.CentOS安装Docker</h2><p>CentOS安装Docker其实没啥问题，按照菜鸟教程上的步骤一步步的操作就好了。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 卸载原先的安装包</span></span><br><span class="line"><span class="built_in">sudo</span> yum remove docker docker-client docker-client-latest docker-commondocker-latest docker-latest-logrotate docker-logrotate docker-engine</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装依赖</span></span><br><span class="line"><span class="built_in">sudo</span> yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"><span class="comment">## 设置仓库</span></span><br><span class="line"><span class="built_in">sudo</span> yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br><span class="line"><span class="comment"># 清华源（两步都要执行）</span></span><br><span class="line">yum-config-manager --add-repo https://mirror.tuna.tsinghua.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">sed -i <span class="string">'s+https://download.docker.com+https://mirrors.tuna.tsinghua.edu.cn/docker-ce+'</span> /etc/yum.repos.d/docker-ce.repo</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装最新版Docker,我这里是19.0.3版,安装起来有点慢，如果网络不通，其实可以配置 清华源，或者干脆就是离线安装，也不是不可以</span></span><br><span class="line"><span class="built_in">sudo</span> yum install docker-ce docker-ce-cli containerd.io</span><br><span class="line"><span class="comment">## 启动</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start docker</span><br><span class="line"></span><br><span class="line"><span class="comment">## 编辑配置文件，默认的镜像及容器存储路径为/var/lib/docker，可以使用docker info查看</span></span><br><span class="line">vi /etc/docker/daemon.json</span><br><span class="line"></span><br><span class="line"><span class="comment">## 重新加载配置</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl daemon-reload</span><br><span class="line"></span><br><span class="line"><span class="comment">## 启动docker服务</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl start docker</span><br><span class="line"></span><br><span class="line"><span class="comment">## 停止docker服务，出现：Warning: Stopping docker.service, but it can still be activated by: docker.socket 使用</span></span><br><span class="line"><span class="built_in">sudo</span> systemctl stop docker.socket</span><br><span class="line"><span class="built_in">sudo</span> systemctl stop docker.service</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://www.runoob.com/docker/centos-docker-install.html">CentOS Docker 安装</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/inslow/article/details/54177191">修改CentOS默认yum源为国内yum镜像源</a><br>3.<a target="_blank" rel="noopener" href="https://ieevee.com/tech/2016/09/28/docker-mirror.html">国内 docker 仓库镜像对比</a><br>4.<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1604396">Centos7修改Docker默认存储位置</a> 修改启动参数ExecStart，增加了–graph参数，指向了新的docker镜像存储位置<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014527619/article/details/81079637">在CentOS 7 更改Docker默认镜像和容器的位置</a> 两种方法修改镜像位置，一种是通过建立软连接的方式，一种就是启动参数增加–graph的方法<br>6.<a target="_blank" rel="noopener" href="https://www.huaweicloud.com/articles/40fbfd3e9fccc6c2d04e16f9ad784e1b.html">四个修改Docker默认存储位置的方法</a> 方法一、软链接;方法二、修改镜像和容器的存放路径,修改配置文件指定启动参数即可;方法三、system下创建配置文件;方法四、使用docker-storage-set（docker1.12）命令进行配置<br>7.<a target="_blank" rel="noopener" href="https://www.centosdoc.com/docker/53.html">docker更改镜像存储位置</a> 第一种就是做软连接；可通过修改/etc/sysconfig/docker文件实现，OPTIONS=’–graph=”/data/docker-data”；通过修改文件/etc/docker/daemon.json 实现，添加”graph”:”/data/docker-data”。如果已经存在了镜像，需要将旧文件移到新的位置：mv /var/lib/docker /data/docker-data ,将docker镜像迁移到新目录<br>8.<a target="_blank" rel="noopener" href="https://blog.csdn.net/paulkg12/article/details/120831478">docker:containerd.io docker-ce-cli docker-ce 的区别</a> containerd.io : 守护进程 containerd。 它在 docker 包上独立工作，并且是 docker 包所必需的。<br>9.<a target="_blank" rel="noopener" href="https://blog.51cto.com/wutengfei/2946943">无法正常停止docker进程</a><br>10.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41169544/article/details/128870707">anolis8.6QU1 docker 安装</a></div>
+<h3 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h3><p>(1) package docker-ce-3:19.03.8-3.el7.x86_64 requires containerd.io &gt;= 1.2.2-3, but none of the providers can be installed,如果要安装高版本的话，可能会遇到新的问题：package docker-ce-3:26.1.4-1.el7.x86_64 requires containerd.io &gt;= 1.6.24, but none of the providers can be installed</p>
+<img src="/images/loadimg.png" data-original="/posts/89826705/err_2.png" lay-src="/posts/89826705/err_2.png" class="" title="docker错误">
+
+<p>我的是CentOS8安装docker时报错,解决方法是升级 containerd.io，去官网查看最新版本<a target="_blank" rel="noopener" href="https://download.docker.com/linux/centos/7/x86_64/edge/Packages/">containerd.io-1.2.13-3.1.el7.x86_64.rpm</a></p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget</span><br><span class="line"><span class="comment">## 离线下载，上传到服务器</span></span><br><span class="line">wget https://download.docker.com/linux/centos/7/x86_64/edge/Packages/containerd.io-1.2.13-3.1.el7.x86_64.rpm</span><br><span class="line">yum install -y  containerd.io-1.2.13-3.1.el7.x86_64.rpm</span><br><span class="line"></span><br><span class="line"><span class="comment">## 重新安装docker</span></span><br><span class="line">yum install docker-ce docker-ce-cli</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章：<br>【1】.<a target="_blank" rel="noopener" href="https://www.backendcloud.cn/2020/03/16/centos8installdocker/">CentOS 8.0 安装docker 报错：Problem: package docker-ce-3:19.03.8-3.el7.x86_64 requires containerd.io &gt;= 1.2.2-3</a><br>【2】.<a target="_blank" rel="noopener" href="https://mirrors.aliyun.com/docker-ce/linux/centos/7/x86_64/stable/Packages/">containerd.io-1.6.33-3.1.el7.x86_64.rpm</a> 离线下载包</div>
+<h2 id="4-UOS-1020a安装Docker"><a href="#4-UOS-1020a安装Docker" class="headerlink" title="4.UOS 1020a安装Docker"></a>4.UOS 1020a安装Docker</h2><p>信创云上安装了 UOS V20 1020a 版本:UniontechOS 20,就是无法安装 docker。</p>
+<p>【尝试方案】<br>（1）尝试使用 清华源，尝试使用 阿里云的源，都不行。<br>（2）尝试自己写 docker-ce.repo，结果 这个总是链接不上:Timeout was reached for <code>https://mirrors.aliyun.com/docker-ce/linux/centos/7/x86_64/stable/repodata/repomd.xml</code>,但是我同样的在自己的网络中，是可以访问这个地址的。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tee</span> /etc/yum.repos.d/docker-ce.repo &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">[docker-ce-stable]</span><br><span class="line">name=Docker-CE-Stable-<span class="variable">$basearch</span></span><br><span class="line">baseurl=https://mirrors.aliyun.com/docker-ce/linux/centos/7/<span class="variable">$basearch</span>/stable</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line"></span><br><span class="line">[extras]</span><br><span class="line">name=Extras-<span class="variable">$basearch</span></span><br><span class="line">baseurl=https://mirrors.aliyun.com/centos/7/extras/<span class="variable">$basearch</span>/</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决方案】<br>（1）最后我还是只增加了清华的源，不知道服务器为什么对某几个地址有限制，就是无法使用 阿里云 的缘，就这么算了吧。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tee</span> /etc/yum.repos.d/docker-ce.repo &lt;&lt;-<span class="string">'EOF'</span></span><br><span class="line">[docker-ce-stable]</span><br><span class="line">name=Docker-CE-Stable-<span class="variable">$basearch</span></span><br><span class="line">baseurl=https://mirror.tuna.tsinghua.edu.cn/docker-ce/linux/centos/7/<span class="variable">$basearch</span>/stable</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br></pre></td></tr></tbody></table></figure>
+
+<p>增加完了清华的源，然后解决了这个 containerd.io-1.6.33-3.1.el7.x86_64.rpm 版本依赖的问题，最后终于可以安装 docker 26版本了。</p>
+<p>（2）还有一种可能，就是这个DNS服务器的问题</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编辑 DNS 配置文件</span></span><br><span class="line">vi /etc/resolv.conf </span><br><span class="line"></span><br><span class="line"><span class="comment"># Generated by NetworkManager，注释掉 10.130.82.8</span></span><br><span class="line">nameserver 10.130.82.8</span><br><span class="line">nameserver 10.130.82.9</span><br><span class="line">nameserver 223.5.5.5</span><br><span class="line">nameserver 8.8.8.8</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/mwl093/article/details/135574684">UOS安装Docker</a> 修改[docker-ce-stable]下的baseurl地址<br>【2】.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/2811273">在统信UOS V201050a上安装Docker</a> 这里 UOS V201050a ，用的是 apt 管理。<br>【3】.<a target="_blank" rel="noopener" href="https://maxqiu.com/article/detail/24">CentOS7 安装 Docker-CE</a><br>【4】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45813250/article/details/128409779">【全平台】统信服务器操作系统安装Docker-CE</a> 这里自定义了一个 docker-ce.repo,<br>【5】.<a target="_blank" rel="noopener" href="https://github.com/IceWhaleTech/CasaOS/issues/1868">国内已经无法按照脚本安装docker，有考虑优化安装策略么</a></div>
+<h1 id="3-Aliyun-OS安装"><a href="#3-Aliyun-OS安装" class="headerlink" title="3.Aliyun OS安装"></a>3.Aliyun OS安装</h1><p>使用 <a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/ecs/use-cases/install-and-use-docker">安装Docker</a> 指南就可以。</p></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/f7b2e44a.html" rel="next" title="Docker安装和配置三">
+                      <i class="iconfont icon-prev"></i> Docker安装和配置三
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/77fa128d.html" rel="prev" title="Docker Compose问题">
+                      Docker Compose问题 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Windows10%E5%AE%89%E8%A3%85docker"><span class="toc-number">1.</span> <span class="toc-text">1.Windows10安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%94%B9%E5%8F%98%E9%95%9C%E5%83%8F%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84"><span class="toc-number">1.1.</span> <span class="toc-text">1.改变镜像文件存储路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%95%9C%E5%83%8F%E5%8A%A0%E9%80%9F"><span class="toc-number">1.2.</span> <span class="toc-text">2.镜像加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%9B%BD%E5%86%85%E6%BA%90%E4%B8%8D%E7%94%9F%E6%95%88"><span class="toc-number">1.3.</span> <span class="toc-text">3.国内源不生效</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-ensuring-main-distro-is-deployed-checking-if-main-distro-is-up-to-date-checking-main-distro-bootstrap-version-getting-main-distro-bootstrap-version"><span class="toc-number">1.4.</span> <span class="toc-text">4.ensuring main distro is deployed: checking if main distro is up to date: checking main distro bootstrap version: getting main distro bootstrap version</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Deepin%E5%AE%89%E8%A3%85docker"><span class="toc-number">2.</span> <span class="toc-text">2.Deepin安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">2.0.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-CentOS%E5%AE%89%E8%A3%85Docker"><span class="toc-number">2.1.</span> <span class="toc-text">3.CentOS安装Docker</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98-1"><span class="toc-number">2.1.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-UOS-1020a%E5%AE%89%E8%A3%85Docker"><span class="toc-number">2.2.</span> <span class="toc-text">4.UOS 1020a安装Docker</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Aliyun-OS%E5%AE%89%E8%A3%85"><span class="toc-number">3.</span> <span class="toc-text">3.Aliyun OS安装</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/89826705.html';
+      this.page.identifier = 'posts/89826705.html';
+      this.page.title = 'Docker安装和配置';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：Docker安装和配置 链接地址:https://bibichuan.github.io/posts/89826705.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'Docker安装和配置',
+		url: 'https://bibichuan.github.io/posts/89826705.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'Docker安装和配置',
+			isTipVisibility: true,
+			tip: 'Docker安装和配置',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

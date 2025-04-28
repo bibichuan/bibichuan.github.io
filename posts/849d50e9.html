@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StarRocks源码编译</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">StarRocks源码编译</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    未分类
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2022-03-11 09:11:31
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:40
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><p>这个需求挺奇葩的，老板想要把SQL命令：SHOW VARIABLES，显示的内容，比如 version_comment、version 等修改掉，目的就是对外提供数据的时候，不让别人看到数据库信息(对外提供数据的时候，不是通过接口方式，而是直接提供数据库连接，我也是醉了)。为了这个，不惜修改源码也要实现，这不是难为我了吗。</p>
+<img src="/images/loadimg.png" data-original="/posts/849d50e9/starrocks_1.png" lay-src="/posts/849d50e9/starrocks_1.png" class="" title="starrocks运维">
+
+<figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">---- 尝试修改环境变量，失败了，ERROR 1064 (HY000): Variable 'version_comment' is a read only variable</span></span><br><span class="line"><span class="keyword">set</span> <span class="keyword">GLOBAL</span> version_comment <span class="operator">=</span> test;</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/leshami/article/details/39585253">MySQL 系统变量(system variables)</a><br>2.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/reference/System_variable">系统变量</a> version_comment 用于显示 StarRocks 的版本。不可更改。<br>3.<a target="_blank" rel="noopener" href="https://blog.bcmeng.com/post/starrocks-source-code-1.html">StarRocks 源码导读一</a> StarRocks CBO 优化器、StarRocks 向量化执行器，感觉已经超出我的认知范围了</div>
+<h2 id="1-Docker中编译安装"><a href="#1-Docker中编译安装" class="headerlink" title="1.Docker中编译安装"></a>1.Docker中编译安装</h2><p><strong>经过我长时间的尝试和修改(大约两三天)，我最终还是没有实现成功的自己搭建编译环境，我觉得要是自己搭建编译环境还是有一定的难度的，会遇到各种各样的问题，比如 protobuf、zlib问题，还有其他问题，比如我下面列举的，我一一解决，最后还是有解决不完的问题，总是缺少这个，缺少那个，我真是烦透了，所以我最后还是放弃了自己搭建编译环境。</strong></p>
+<p>官方提供了Docker编译环境，应该是把需要的依赖什么的都安装好了,只需要上传源码就可以了,真的太丝滑了，我都开始怀疑我花了两天时间搞本地编译，到底价值何在呢？</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 1.下载docker(已有可以忽略)</span></span><br><span class="line">yum install -y docker</span><br><span class="line"><span class="comment">## 2.启动docker</span></span><br><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">## 3.pull 镜像</span></span><br><span class="line">docker pull starrocks/dev-env:main</span><br><span class="line"><span class="comment">## 4.启动镜像</span></span><br><span class="line">docker run -it --name starrocks --privileged=<span class="literal">true</span> -d starrocks/dev-env:main</span><br><span class="line"><span class="comment">## 启动时挂载本地镜像，本地的 ~/.m2 指向 容器内的 /root/.m2，本地的 /cloud，指向容器内的 /cloud，我的源码就放在了 /cloud 目录下</span></span><br><span class="line">docker run -it -v ~/.m2:/root/.m2 -v /cloud:/cloud --name starrocks -d starrocks/dev-env:main</span><br><span class="line"></span><br><span class="line"><span class="comment">## 5.进入镜像</span></span><br><span class="line">docker <span class="built_in">exec</span> -it starrocks /bin/bash</span><br><span class="line"><span class="comment">## 6.下载代码</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/StarRocks/starrocks.git</span><br><span class="line"></span><br><span class="line"><span class="comment">## 7.编译</span></span><br><span class="line"><span class="built_in">cd</span> starrocks</span><br><span class="line"><span class="comment">## 为了解决项目下载pom的问题</span></span><br><span class="line"><span class="built_in">cd</span> fe</span><br><span class="line"><span class="comment">## 先进行fe模块打包</span></span><br><span class="line">mvn clean package -Dmaven.wagon.http.ssl.insecure=<span class="literal">true</span> -Dmaven.wagon.http.ssl.allowall=<span class="literal">true</span></span><br><span class="line"><span class="comment">## 进入jdbcbridge 目录</span></span><br><span class="line"><span class="built_in">cd</span> ../jdbc_bridge</span><br><span class="line"><span class="comment">## 同样执行</span></span><br><span class="line">mvn clean package -Dmaven.wagon.http.ssl.insecure=<span class="literal">true</span> -Dmaven.wagon.http.ssl.allowall=<span class="literal">true</span></span><br><span class="line"><span class="comment">## 回到主目录</span></span><br><span class="line"><span class="built_in">cd</span> ..</span><br><span class="line"><span class="comment">## 执行编译</span></span><br><span class="line">sh build.sh</span><br><span class="line"><span class="comment">## 8.编译不需要AVX2支持的starrocks</span></span><br><span class="line">vi build.sh</span><br><span class="line"><span class="comment">## 将USE_AVX2=ON 修改为USE_AVX2=OFF 保存退出后，执行 sh build.sh</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>注意</strong><br>使用官方的docker进行编译的时候，内存占用特别的厉害，我16G的电脑，都扛不住。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/ult_me/article/details/121455418">第1.1章：StarRocks部署–源码编译</a> 这里除了源码编译，还有一些解释说明<br>2.<a target="_blank" rel="noopener" href="https://docs.starrocks.com/zh-cn/main/administration/Build_in_docker">dev-env image 使用说明</a> 官方的文档<br>3.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/794d9e2eba07">Doris系列2-Doris编译和安装</a> 使用Docker 镜像编译安装Doris<br>4.<a target="_blank" rel="noopener" href="https://forum.starrocks.com/t/topic/514">StarRocks FE开发环境搭建</a> 这个主要就是上面的命令，我觉得这样写，还是简单方便的<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37067752/article/details/107474369">Apache Doris技术实践</a> 这篇文章介绍的Doris的安装，部署还有在美团的应用，可以好好的看一看。</div>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>使用官方的Docker镜像编译，看来也不是一帆风顺，遇到的第一个问题和第二个问题可以合并解决。</p>
+<p>(1) Could not transfer artifact org.apache.maven.plugins:maven-checkstyle-plugin:pom:3.1.1 from/to spring-plugins (<a target="_blank" rel="noopener" href="https://repo.spring.io/plugins-release/">https://repo.spring.io/plugins-release/</a>)<br>这个问题，意思就是无法下载依赖包。我尝试设置了maven的中央仓库指向 阿里云，重新执行编译工作，还是报错。</p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Plugin org.apache.maven.plugins:maven-checkstyle-plugin:3.1.1 or one of its dependencies could not be resolved: Failed to read artifact descriptor for org.apache.maven.plugins:maven-checkstyle-plugin:jar:3.1.1: Could not transfer artifact org.apache.maven.plugins:maven-checkstyle-plugin:pom:3.1.1 from/to spring-plugins (https://repo.spring.io/plugins-release/): Transfer failed for https://repo.spring.io/plugins-release/org/apache/maven/plugins/maven-checkstyle-plugin/3.1.1/maven-checkstyle-plugin-3.1.1.pom: java.lang.RuntimeException: Unexpected error: java.security.InvalidAlgorithmParameterException: the trustAnchors parameter must be non-empty -&gt; [Help 1]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这里显示，这个插件必须要用户名密码才能下载，我打开了上面的链接，确实是需要用户密码的。但是奇怪的是，我在本机的代码中，单独编译fe这个模块，竟然不会报这个错误，虽然也无法编译通过，但是没有报需要认证这个错误。我尝试降低版本，也是不行的，总是报错。</p>
+<p>【无效尝试】<br>我尝试了很多的方法，似好都不起作用</p>
+<ul>
+<li>1.重新下载版本</li>
+<li>2.重新挂载.m2目录</li>
+<li>3.设置代理</li>
+</ul>
+<p>我甚至修改了源码中的关于 maven-checkstyle-plugin 的引用，直接删掉了部分内容,虽然暂时的解决了无法编译  maven-checkstyle-plugin，不过又出现了新的问题。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/78124">最快的 maven repository–阿里镜像仓库</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/longqizhanshen/article/details/107119808">2021最新 Maven之阿里云镜像仓库配置</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43928549/article/details/110038566">docker doris（0.13） 编译100%报错 sh build.sh报错</a><br>4.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15127557/3349205">Doris源码编译(填坑)</a> 这里是修改了pom.xml，改成了现在的样子，spring-plugins改成了cloudera-public，但是还是报错<br>5.<a target="_blank" rel="noopener" href="https://dominoc925.blogspot.com/2018/03/resolving-maven-trustanchors-parameter.html">Resolving Maven “trustAnchors parameter must be non-empty” error </a></div>
+<p>(2) Could not transfer artifact org.codehaus.plexus:plexus-utils:pom<br>和上一个问题是一模一样的问题，这个问题也是认证的问题，这个到底是什么问题呢？虽然上个问题我通过注释掉 maven-checkstyle-plugin 这个插件解决了，但是不能全部无法下载的依赖都进行删除吧。</p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project fe-common: Execution default-compile of goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile failed: Plugin org.apache.maven.plugins:maven-compiler-plugin:3.1 or one of its dependencies could not be resolved: Failed to collect dependencies at org.apache.maven.plugins:maven-compiler-plugin:jar:3.1 -&gt; org.apache.maven:maven-artifact:jar:2.0.9 -&gt; org.codehaus.plexus:plexus-utils:jar:1.5.1: Failed to read artifact descriptor for org.codehaus.plexus:plexus-utils:jar:1.5.1: Could not transfer artifact org.codehaus.plexus:plexus-utils:pom:1.5.1 from/to spring-plugins (https://repo.spring.io/plugins-release/): Transfer failed for https://repo.spring.io/plugins-release/org/codehaus/plexus/plexus-utils/1.5.1/plexus-utils-1.5.1.pom: java.lang.RuntimeException: Unexpected error: java.security.InvalidAlgorithmParameterException: the trustAnchors parameter must be non-empty -&gt; [Help 1]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>[解决]<br>主要就是因为缺少安全证书导致的，在打包的时候可以跳过ssl认证。</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 进入fe目录</span></span><br><span class="line"><span class="built_in">cd</span> fe</span><br><span class="line"><span class="comment">## 执行打包</span></span><br><span class="line">mvn clean package -Dmaven.wagon.http.ssl.insecure=<span class="literal">true</span> -Dmaven.wagon.http.ssl.allowall=<span class="literal">true</span></span><br><span class="line"><span class="comment">## 回到主目录,执行编译</span></span><br><span class="line">./build.sh</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdn17355456893/article/details/120595168">IDEA打包Maven项目失败-InvalidAlgorithmParameterException: the trustAnchors parameter must be non-empty</a> 从maven仓库（<a target="_blank" rel="noopener" href="http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/surefire/surefire-junit4/2.12.4/surefire-junit4-2.12.4.pom%EF%BC%89%E4%B8%8B%E8%BD%BD%E4%BE%9D%E8%B5%96%E7%94%A8%E7%9A%84https%E5%8D%8F%E8%AE%AE%EF%BC%8C%E6%89%80%E4%BB%A5%E9%9C%80%E8%A6%81%E7%94%A8%E5%88%B0CA%E3%80%82">http://maven.aliyun.com/nexus/content/groups/public/org/apache/maven/surefire/surefire-junit4/2.12.4/surefire-junit4-2.12.4.pom）下载依赖用的https协议，所以需要用到CA。</a><br>这个问题是由于HTTPS的安全认证问题导致无法从远程仓库下载依赖<br>2.<a target="_blank" rel="noopener" href="https://ckl-it.de/how-to-fix-java-error-the-trustanchors-parameter-must-be-non-empty">How to fix Java Error “The trustAnchors parameter must be non-empty” while building Maven Single Jar</a><br>3.<a target="_blank" rel="noopener" href="https://github.com/StarRocks/starrocks/issues/4137">the trustAnchors parameter must be non-empty</a> 我提了issue，希望有人能出来解决，我自己解决了<br>4.<a target="_blank" rel="noopener" href="https://blog.csdn.net/c654528593/article/details/121974027">使用Openjdk8和maven时出错：java.security.InvalidAlgorithmParameterException</a> 这里使用的是openjdk8时出现了问题，openjdk缺少安全证书，通过以下方式追加 -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true<br>5.<a target="_blank" rel="noopener" href="https://www.wenwl.site/maven/Maven-Issue-InvalidAlgorithmParameterException.html#%E6%A6%82%E8%BF%B0">Maven: java.lang.RuntimeException: Unexpected error: java.security.InvalidAlgorithmParameterException: the trustAnchors parameter must be non-empty</a></div>
+<p>(3) image does not exist: /cloud/soft/starrocks/output/fe/meta/image/image.0<br>源码编译之后，部署 fe 的时候，启动日志中出现了这个问题。</p>
+<p>【解决】<br>其实我觉得可能不需要解决，如果非要做了什么的话，就是 修改了 fe/conf/fe.conf 中的 meta_dir 注释打开了。</p>
+<div class="reference">参考文章：<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37067752/article/details/107474369">5.4 部署FE，报错找不到IMAGE.0</a></div>
+<h2 id="2-编译完成"><a href="#2-编译完成" class="headerlink" title="2.编译完成"></a>2.编译完成</h2><p>编译完成后，产出文件在output/目录中</p>
+<img src="/images/loadimg.png" data-original="/posts/849d50e9/starrocks_3.png" lay-src="/posts/849d50e9/starrocks_3.png" class="" title="starrocks编译">
+
+<h2 id="3-windows开发问题"><a href="#3-windows开发问题" class="headerlink" title="3.windows开发问题"></a>3.windows开发问题</h2><p>在windows上打开idea编译fe模块的时候，无法编译成功，显示 thrift did not exit cleanly. </p>
+<p>(1) <a target="_blank" rel="noopener" href="https://www.apache.org/dyn/closer.cgi?path=/thrift/0.13.0/thrift-0.13.0.exe">下载</a><br>下载 thrift.exe 程序，记得重命名，放到 自定义目录中，我这里放到了 D:\soft\thrift 目录</p>
+<p>(2) 设置环境变量<br>在系统的环境变量中，添加 D:\soft\thrift 目录。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/119404869">解决thrift:compile编译报错问题thrift failed error: /bin/sh</a> 1. 系统环境变量配置的有问题(调整thrift的环境变量目录配置，在PATH后加入thrift编译后的可执行文件) 2. 系统环境变量没有问题，但是IDE运行时读取的环境变量有问题<br>2.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangxiangstudy/p/14960692.html"> Thrift did not exit cleanly</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014597198/article/details/79171896">Thrift开发 之 windows上安装</a> 下载，重命名，并添加环境变量</div>
+<h2 id="4-编译Broke"><a href="#4-编译Broke" class="headerlink" title="4.编译Broke"></a>4.编译Broke</h2><p>作为备份和恢复的Broke需要单独的编译，进入到目录之后，执行build.sh编译就可以了。编译后，产出文件在fs_brokers/apache_hdfs_broker/output目录中</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> fs_brokers/apache_hdfs_broker/ &amp;&amp; sh build.sh</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="4-手动安装编译环境"><a href="#4-手动安装编译环境" class="headerlink" title="4.手动安装编译环境"></a>4.手动安装编译环境</h2><p>我刚开始使用的是手动编译环境，就是在一个CentOS8的环境中，安装一些依赖然后进行编译，简直要痛苦死了，最后没有编译成功，放弃了。</p>
+<h3 id="1-编译环境搭建"><a href="#1-编译环境搭建" class="headerlink" title="1.编译环境搭建"></a>1.编译环境搭建</h3><p>我的虚拟机是CentOS8,需要的环境:</p>
+<ul>
+<li>python 2.7+</li>
+<li>java 1.8+</li>
+<li>gcc </li>
+<li>cmake </li>
+<li>gcc-c++</li>
+</ul>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装python</span></span><br><span class="line">yum install python2</span><br><span class="line"><span class="comment">## 查看python安装</span></span><br><span class="line"><span class="built_in">cd</span> /usr/bin</span><br><span class="line"><span class="comment">## 设置软链接</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/bin/python3.6 /usr/bin/python</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装gcc</span></span><br><span class="line">yum -y install gcc gcc-c++</span><br><span class="line"></span><br><span class="line"><span class="comment">## 安装cmake</span></span><br><span class="line">yum install cmake libarchive patch byacc flex libtoolize zlib-devel libstdc++* *atomic*</span><br><span class="line"></span><br><span class="line"><span class="comment">## 或者 安装一系列的软件开发包 Install  168 Packages Upgrade   12 Packages Total download size: 143 M</span></span><br><span class="line">dnf group install <span class="string">"Development Tools"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Romance5201314/article/details/81667778">Linux设置默认Python版本</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/u011665991/article/details/81502711">linux 安装gcc和 g++</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/Ljnoit/article/details/104345052">【Linux】Linux下安装gcc/g++</a><br>4.<a target="_blank" rel="noopener" href="https://zh.codepre.com/centos-5380.html">如何在CentOS 8上安装CMake</a> 源码编译<br>5.<a target="_blank" rel="noopener" href="https://blog.csdn.net/chenyulancn/article/details/118540210">cmake: symbol lookup error: cmake: undefined symbol: archive_write_add_filter_zstd 两种解决方法</a> 两种方法:1.安装 libarchive;2.安装低版本或者高版本的 cmake。<br>6.<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/120865367">在 CentOS 上安装 GCC</a> 安装一系列的开发包</div>
+<h3 id="2-下载第三方依赖包"><a href="#2-下载第三方依赖包" class="headerlink" title="2.下载第三方依赖包"></a>2.下载第三方依赖包</h3><p>由于编译的时候，需要一些外部依赖包，但是因为墙的存在，所以可能会出现 429 错误，下载 OpenSSL_1_1_1m.tar.gz 文件，放置到 源码目录 thirdparty/src 文件夹下。如果其他的下载也出现了问题，可以重新执行 ./build.sh 命令，或者是下载相应的资源包到该文件夹下。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43552777/article/details/104458313">ERROR 429: Too Many Requests.</a> 下载 OpenSSL_1_1_1m.tar.gz 的时候，会出现这个问题，主要就是墙的问题。</div>
+<p>(1) patch: command not found</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install patch</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(2) byacc: command not found</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install byacc</span><br></pre></td></tr></tbody></table></figure>
+
+<p>(3) flex: command not found</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install flex </span><br></pre></td></tr></tbody></table></figure>
+
+<p>(4) libtoolize: command not found</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install libtool </span><br></pre></td></tr></tbody></table></figure>
+
+<p>(5) Failed to build B2 build engine<br>依赖安装之后，出现了这个问题：</p>
+<figure class="highlight txt"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">A C++11 capable compiler is required for building the B2 engine.</span><br><span class="line">Toolset 'cxx' does not appear to support C++11.</span><br><span class="line"></span><br><span class="line">** Note, the C++11 capable compiler is _only_ required for building the B2</span><br><span class="line">** engine. The B2 build system allows for using any C++ level and any other</span><br><span class="line">** supported language and resource in your projects.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">You can specify the toolset as the argument, i.e.:</span><br><span class="line">    ./build.sh gcc</span><br><span class="line"></span><br><span class="line">Toolsets supported by this script are:</span><br><span class="line">    acc, clang, como, gcc, intel-darwin, intel-linux, kcc, kylix, mipspro,</span><br><span class="line">    pathscale, pgi, qcc, sun, sunpro, tru64cxx, vacpp</span><br><span class="line"></span><br><span class="line">For any toolset you can override the path to the compiler with the CXX</span><br><span class="line">environment variable. You can also use additional flags for the compiler</span><br><span class="line">with the CXXFLAGS environment variable.</span><br><span class="line"></span><br><span class="line">A special toolset; cxx, is available which is used as a fallback when a more</span><br><span class="line">specific toolset is not found and the cxx command is detected. The 'cxx'</span><br><span class="line">toolset will use the CXX, CXXFLAGS, and LIBS environment variables, if present.</span><br><span class="line"></span><br><span class="line">Similarly, the cross-cxx toolset is available for cross-compiling by using the</span><br><span class="line">BUILD_CXX, BUILD_CXXFLAGS, and BUILD_LDFLAGS environment variables to compile</span><br><span class="line">binaries that will be executed on the build system. This allows CXX etc. to be</span><br><span class="line">set for cross-compilers to be propagated to subprocesses.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Failed to build B2 build engine</span><br></pre></td></tr></tbody></table></figure>
+
+<img src="/images/loadimg.png" data-original="/posts/849d50e9/starrocks_2.png" lay-src="/posts/849d50e9/starrocks_2.png" class="" title="starrocks编译安装">
+
+<p>这个意思是要兼容c++11的编译器。<br>【尝试】<br>我重新安装了开发工具包</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装gcc-c++</span></span><br><span class="line">yum install gcc-c++</span><br><span class="line"><span class="comment">## 开发工具包</span></span><br><span class="line">dnf group install <span class="string">"Development Tools"</span></span><br></pre></td></tr></tbody></table></figure>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/26954046/how-to-enable-c11-in-linux">how to enable c++11 in linux</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35976351/article/details/79673352">linux g++开启C++11/14支持</a><br>3.<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yg-Mark/p/12915410.html">linux 下安装g++报错：No match for argument: g++</a></div>
+<p>(6)  but no working zlib library was found<br>这里显示，没有可用的zlib,不是没有zlib命令，所以即便是使用了yum安装了zlib-devel也可能出现这个问题。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">checking for library containing zlibVersion... no</span><br><span class="line">configure: error: in `/cloud/soft/starrocks-main/thirdparty/src/protobuf-3.14.0':</span><br><span class="line">configure: error: --with-zlib was given, but no working zlib library was found</span><br><span class="line">See `config.log' for more details</span><br></pre></td></tr></tbody></table></figure>
+
+<p>【解决】<br>我暂时修改了编译源码，把 thirdparty/build-thirdparty.sh 中的 build_protobuf 代码部分的 –with-zlib –with-zlib-include=${TP_INSTALL_DIR}/include 配置去掉了。</p>
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://github.com/apache/incubator-doris/discussions/6596">编译过程报错：没有可用的zlib，要怎么解决？</a> 这里直接建议使用官方的 Docker image 进行编译<br>2.<a target="_blank" rel="noopener" href="https://github.com/grpc/homebrew-grpc/issues/83">Failing check for library containing zlibVersion during install</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/xi__q/article/details/107730688">protobuf学习（一）– 安装protobuf</a><br>4.<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1c2069254045">编译安装protobuf 详细步骤 Ubuntu</a><br>5.<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/36374267/how-to-fix-fatal-error-zlib-h-no-such-file-or-directory">How to fix fatal error: zlib.h: no such file or directory?</a> 这篇文章没啥用我感觉</div>
+<p>(7) unrecognized option: `-j13’<br>这个问题我不知道怎么产生的，我以为是java版本的问题，因为我使用的jdk就是openjdk13,我重新安装了jdk1.8，好像还是不行。</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">configure: WARNING: you should use --build, --host, --target</span><br><span class="line">configure: error: unrecognized option: `-j13'</span><br><span class="line">Try `./configure --help' for more information</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这个问题是我修复上个问题产生的，我删除zlib的时候，把make位置放错了。</p>
+<p>(8) cannot find /usr/lib64/libatomic.so.1.2.0</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ld: cannot find /usr/lib64/libatomic.so.1.2.0</span><br><span class="line">/usr/bin/ld: cannot find -lstdc++</span><br><span class="line">collect2: error: ld returned 1 exit status</span><br><span class="line">make[2]: *** [Makefile:3890: protoc] Error 1</span><br><span class="line">make[2]: Leaving directory '/cloud/soft/starrocks-main/thirdparty/src/protobuf-3.14.0/src'</span><br><span class="line">make[1]: *** [Makefile:1871: all-recursive] Error 1</span><br><span class="line">make[1]: Leaving directory '/cloud/soft/</span><br></pre></td></tr></tbody></table></figure>
+
+<p>[解决]</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 安装依赖</span></span><br><span class="line">yum -y install *atomic*</span><br></pre></td></tr></tbody></table></figure>
+
+<p>[错误方法]</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 使用下面的方法可能还是报错</span></span><br><span class="line"><span class="comment">## 查获libatomic.so库</span></span><br><span class="line">find / -name libatomic.so</span><br><span class="line"><span class="comment">## 创建软连接</span></span><br><span class="line"><span class="built_in">ln</span> -s /usr/lib/gcc/x86_64-redhat-linux/8/libatomic.so /usr/lib64/libatomic.so.1.2.0</span><br><span class="line"><span class="comment">## 删除软连接</span></span><br><span class="line"><span class="built_in">rm</span> -rf /usr/lib64/libatomic.so.1.2.0</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_39767121/article/details/111540704">6 redis 编译失败_编译redis6报错/usr/bin/ld: cannot find -latomic解决方法</a><br>2.<a target="_blank" rel="noopener" href="https://blog.csdn.net/m290345792/article/details/78518360">linux软链接的创建、删除和更新</a></div>
+<p>(9) /usr/bin/ld: cannot find -lstdc++</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ld: cannot find -lstdc++</span><br><span class="line">collect2: error: ld returned 1 exit status</span><br><span class="line">make[2]: *** [Makefile:3890: protoc] Error 1</span><br><span class="line">make[2]: Leaving directory '/cloud/soft/starrocks-main/thirdparty/src/protobuf-3.14.0/src'</span><br><span class="line">make[1]: *** [Makefile:1871: all-recursive] Error 1</span><br><span class="line">make[1]: Leaving directory '/cloud/soft/starrocks-main/thirdparty/src/protobuf-3.14.0'</span><br><span class="line">make: *** [Makefile:1778: all] Error 2</span><br></pre></td></tr></tbody></table></figure>
+
+<p>[解决]</p>
+<figure class="highlight sh"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y libstdc++*</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>1.<a target="_blank" rel="noopener" href="https://bbs.huaweicloud.com/forum/forum.php?mod=viewthread&amp;tid=115019"> 编译过程中报“/usr/bin/ld: cannot find -ldstdc++”错误解决方法</a><br>2.<a target="_blank" rel="noopener" href="https://www.itread01.com/p/198441.html">解決/usr/bin/ld: cannot find -lxxx</a><br>3.<a target="_blank" rel="noopener" href="https://blog.csdn.net/sirria1/article/details/104276817">/usr/bin/ld: cannot find -l**** 问题的解决办法</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/fe09707a.html" rel="next" title="StarRocks疑难杂症">
+                      <i class="iconfont icon-prev"></i> StarRocks疑难杂症
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/2b1b064e.html" rel="prev" title="StarRocks数据库运维二">
+                      StarRocks数据库运维二 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Docker%E4%B8%AD%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">1.Docker中编译安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BC%96%E8%AF%91%E5%AE%8C%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">2.编译完成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-windows%E5%BC%80%E5%8F%91%E9%97%AE%E9%A2%98"><span class="toc-number">3.</span> <span class="toc-text">3.windows开发问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%BC%96%E8%AF%91Broke"><span class="toc-number">4.</span> <span class="toc-text">4.编译Broke</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%89%8B%E5%8A%A8%E5%AE%89%E8%A3%85%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83"><span class="toc-number">5.</span> <span class="toc-text">4.手动安装编译环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">5.1.</span> <span class="toc-text">1.编译环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%8B%E8%BD%BD%E7%AC%AC%E4%B8%89%E6%96%B9%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="toc-number">5.2.</span> <span class="toc-text">2.下载第三方依赖包</span></a></li></ol></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/849d50e9.html';
+      this.page.identifier = 'posts/849d50e9.html';
+      this.page.title = 'StarRocks源码编译';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：StarRocks源码编译 链接地址:https://bibichuan.github.io/posts/849d50e9.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: 'StarRocks源码编译',
+		url: 'https://bibichuan.github.io/posts/849d50e9.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: 'StarRocks源码编译',
+			isTipVisibility: true,
+			tip: 'StarRocks源码编译',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>

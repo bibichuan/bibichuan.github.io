@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>目标检测之数据预测</title>
+    <!-- 页面描述 -->
+<meta name="description" content=""/>
+<!-- 页面关键词 -->
+<meta name="keywords" content=""/>
+<!-- 网页作者 -->
+<meta name="author" content="bibichuan, ibibichuan@gmail.com"/>
+<!-- 搜索引擎抓取 -->
+<meta name="robots" content="index,follow"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+
+<!--禁止百度转码-->
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<!--启用WebApp全屏模式-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<!--禁止数字自动识别为电话号码-->
+<meta name="format-detection" content="telephone=no" />
+<!--忽略识别邮箱-->
+<meta name="format-detection" content="email=no" />
+<!--360强制谷歌内核-->
+<meta name="renderer" content="webkit"> 
+
+<link rel="icon" href="/images/favicon.ico">
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1022896_nclaqhxyt.css">
+
+<link href="/css/main.css" rel="stylesheet" type="text/css" />
+
+<!-- 谷歌广告 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8382618401389723"></script>
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var BTheme = window.BTheme ||{};
+  var CONFIG = {
+    root: '/'
+  };
+</script>
+
+<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?ee4ff785c4c68fa9a0ea17241e0574ea";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<!--谷歌统计-->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G4HPTST8XX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-G4HPTST8XX');
+</script>
+
+    
+    
+        
+    
+        
+            
+            
+            <link href="/lib/layui/css/layui.css" rel="stylesheet" type="text/css" />
+        
+    
+
+    
+        
+    
+
+    
+        
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
+<link rel="stylesheet" type="text/css" href="/lib/share/style/css/ishare.css">
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+<body class="main">
+
+    <header id="header" class="header layui-fluid">
+        <div class="header-inner layui-row"><div class="header-wrap">
+    <div class="logo_wrap">
+        <a href="/"><img src="/images/logo.png"></a>
+    </div>
+    <div class='search-warp'>
+  <div class="search">
+    <input class="search-ipt" placeholder="请输入搜索内容"/>
+    <div class="search-btn clear"><i class="iconfont icon-guanbi"></i></div>
+    <div class="search-btn find"><i class="iconfont icon-sousuo"></i></div>
+  </div>
+  <div class="result">
+    <ul class="result-content"></ul>
+  </div>
+</div>
+    <div class="icon-menu"><i class="iconfont icon-m_menu"></i></div>
+    <nav class="site-nav">
+        <ul class="menu layui-nav">
+            
+            
+            <li class="menu-item layui-nav-item">
+                <a href="/" rel="section">
+                    <i class="iconfont icon-home"></i>首页<i class="iconfont icon-header-mobile icon-right"></i>
+                </a>
+            </li>
+            
+            
+
+            
+            
+
+            
+            
+                
+                
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E6%9D%82%E6%96%87/">
+                                    杂文
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Python/">
+                                    Python
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Gis/">
+                                    Gis
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/Asp/">
+                                    Asp
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                        
+                        
+                            
+                            <li class="menu-item layui-nav-item">
+                                <a href="/categories/%E8%BD%AF%E4%BB%B6/">
+                                    软件
+                                    <i class="iconfont icon-header-mobile icon-right"></i>
+                                </a>
+                            </li>
+                        
+                        
+                        
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                
+                <li class="more menu-item layui-nav-item">
+                    
+                    <a href="javascript:;" class="menu-more">
+                        更多分类
+                        <i class="iconfont icon-header-mobile icon-sidemenu"></i>
+                    </a>
+                    
+                    <dl class="layui-nav-child">
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Java/">
+                                            Java
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%89%8D%E7%AB%AF/">
+                                            前端
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Javascript/">
+                                            Javascript
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                            数据库
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
+                                            操作系统
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/Nodejs/">
+                                            Nodejs
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/">
+                                            大数据
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%90%8E%E5%8F%B0%E6%9C%8D%E5%8A%A1/">
+                                            后台服务
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E9%9A%8F%E7%AC%94/">
+                                            随笔
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                                            机器学习
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                            
+                            
+                                
+                                
+                                    
+                                    <dd class="nav-child">
+                                        <a href="/categories/%E5%85%B6%E4%BB%96/">
+                                            其他
+                                            <i class="iconfont icon-header-mobile icon-right"></i>
+                                        </a>
+                                    </dd>
+                                
+                            
+                        
+                    </dl>
+                </li>
+            
+        </ul>
+    </nav>
+</div></div>
+    </header>
+    
+    <main class="main-content layui-fluid" id="main-content">
+      <div class="main-inner">
+        
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-xs12 layui-col-sm10 layui-col-sm-offset1 layui-col-md6 layui-col-md-offset2 layui-col-lg6 layui-col-lg-offset2">
+        <div class="container post_wrap">
+          <div class="post">
+            <div class="article">
+              <h1 class="title">目标检测之数据预测</h1>
+              <div class="author">
+                <span class="tag">标签：
+                  
+
+                  
+                    无
+                  
+                </span>
+                <span class="tag">分类：
+                  
+
+                  
+                    
+                    
+                      
+                      
+                      <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                    
+                  
+                </span>
+                <span class='tag'>
+                  创建时间：2024-09-02 06:22:35
+                </span>
+                <span class='tag'>
+                  更新时间：2025-04-28 14:37:41
+                </span>
+              </div>
+              <div class="content">
+                <html><head></head><body><h1 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h1><p>前几篇文章使用了 ssd 进行了静态视频的输出，然后卡在了检测结果的输出上面了。使用 yolov8 的基本流程也类似</p>
+<ul>
+<li>定义视频流地址，并使用FFmpeg启动一个进程来读取视频流，并将其转换为图像帧。</li>
+<li>加载YOLOv8模型，并设置相关参数，如输入图像尺寸、阈值等。</li>
+<li>循环读取每一帧图像，并将其输入到YOLOv8模型中进行目标检测。</li>
+<li>处理检测结果，如筛选出置信度高的检测框、绘制边界框等。</li>
+<li>可以将处理后的图像帧保存到视频文件中，也可以直接在屏幕上显示图像帧（使用OpenCV等库）</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://cloud.baidu.com/article/3318934">基于DL Streamer与YOLOv8模型实现多路视频流实时分析</a> 这里首次提到了一个叫 DL Streamer 的东西,DL Streamer是一个高性能的深度学习视频流处理框架，它支持多种视频源输入，包括摄像头、视频文件和网络流等。DL Streamer提供了丰富的功能，如视频解码、预处理、模型推理和后处理等，使得开发人员能够快速地搭建视频流处理系统。<br>【2】.<a target="_blank" rel="noopener" href="https://jbritian.com/article/145">YOLOv8 实时检测视频并将结果处理为 httpflv</a> 这里有整个代码，但是关于模型的构建还是没有想过的说明<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/TUSTer_/article/details/134716467">用训练好的模型在Yolov8上进行推理演示python代码，含图像检测，视频推理，实时摄像头检测。</a> 1.图像检测；2.视频检测；3.实时摄像头检测。<br>【4】.<a target="_blank" rel="noopener" href="https://www.fwqtg.net/yolov8%E5%AE%9E%E6%88%98%E7%AC%AC%E4%BA%94%E5%A4%A9-yolov8ffmpg%E5%AE%9E%E6%97%B6%E8%A7%86%E9%A2%91%E6%B5%81%E6%A3%80%E6%B5%8B%E5%B9%B6%E8%BF%9B%E8%A1%8C%E5%AE%9E%E6%97%B6%E6%8E%A8.html">yolov8实战第五天——yolov8+ffmpg实时视频流检测并进行实时推流——（推流，保姆教学）</a> 这里还安装了 nginx-rtmp 模块，使用windows进行了安装和配置<br>【5】.<a target="_blank" rel="noopener" href="https://docs.ultralytics.com/zh/quickstart/">快速入门</a> 这里似乎是 yolov8 的官方说明文档<br>【6】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/virobotics/article/details/130156212?spm=a2c6h.12873639.article-detail.11.55dd78716wDRR6">【YOLOv8】实战一：手把手教你使用YOLOv8实现实时目标检测</a> 下载模型权重文件,这一步其实可以不做，我们在第三步导出模型为onnx的时候如果权重文件不存在，会自动帮我们下载一个权重文件，但速度会较慢，所以个人还是建议先在官网中下载权重文件，再导出为onnx模型.<br>【7】.<a target="_blank" rel="noopener" href="https://wenku.csdn.net/answer/50ktcshonv">yolov8图像识别python</a> 这里有 yolov8.pt 的下载地址<br>【8】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/river_star1/article/details/132530344">使用OpenCV和YOLOv8制作目标检测器(附源码)</a> 这里还提供了一个区域的人员检测的问题。1.进行区域划分，编写算法，判断不同区域内的人员数量。2.小狗检测器,使用预训练模型获取小狗和沙发的目标框，并且计算两者的关系，以此来触发报警。3.车辆检测器。</div>
+<h1 id="2-视频预测"><a href="#2-视频预测" class="headerlink" title="2.视频预测"></a>2.视频预测</h1><p>使用官方默认的模型，对视频数据mp4进行标注，然后发布为 rtmp 。这里的 model 如果不在本地的话，会自动去网上下载，然后保存到本地。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> subprocess</span><br><span class="line"><span class="keyword">from</span> ultralytics <span class="keyword">import</span> YOLO</span><br><span class="line"></span><br><span class="line"><span class="comment"># 载入 YOLOv8 模型</span></span><br><span class="line">model = YOLO(<span class="string">'yolov8n.pt'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取视频内容</span></span><br><span class="line">cap = cv2.VideoCapture(<span class="string">'./data/pedestrians.mp4'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取原视频的宽度和高度</span></span><br><span class="line">original_width = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_WIDTH))</span><br><span class="line">original_height = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))</span><br><span class="line">fps = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FPS))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置 FFmpeg 子进程，用于推流</span></span><br><span class="line">rtmp_url = <span class="string">'rtmp://xxx/live/test2'</span>  <span class="comment"># 修改为您的 NGINX RTMP 服务器地址</span></span><br><span class="line">command = [<span class="string">'ffmpeg'</span>,</span><br><span class="line">           <span class="string">'-y'</span>,</span><br><span class="line">           <span class="string">'-f'</span>, <span class="string">'rawvideo'</span>,</span><br><span class="line">           <span class="string">'-vcodec'</span>, <span class="string">'rawvideo'</span>,</span><br><span class="line">           <span class="string">'-pix_fmt'</span>, <span class="string">'bgr24'</span>,</span><br><span class="line">           <span class="string">'-s'</span>, <span class="string">"{}x{}"</span>.<span class="built_in">format</span>(original_width, original_height),</span><br><span class="line">           <span class="string">'-r'</span>, <span class="built_in">str</span>(fps),</span><br><span class="line">           <span class="string">'-i'</span>, <span class="string">'-'</span>,</span><br><span class="line">           <span class="string">'-c:v'</span>, <span class="string">'libx264'</span>,</span><br><span class="line">           <span class="string">'-pix_fmt'</span>, <span class="string">'yuv420p'</span>,</span><br><span class="line">           <span class="string">'-preset'</span>, <span class="string">'ultrafast'</span>,</span><br><span class="line">           <span class="string">'-f'</span>, <span class="string">'flv'</span>,</span><br><span class="line">           rtmp_url]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 FFmpeg 进程</span></span><br><span class="line">proc = subprocess.Popen(command, stdin=subprocess.PIPE)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 循环遍历视频帧</span></span><br><span class="line"><span class="keyword">while</span> cap.isOpened():</span><br><span class="line">    <span class="comment"># 从视频中读取一帧</span></span><br><span class="line">    success, frame = cap.read()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> success:</span><br><span class="line">        <span class="comment"># 对帧运行 YOLOv8 推理</span></span><br><span class="line">        results = model(frame)</span><br><span class="line">        <span class="comment"># 获取检测结果，detections是一个包含物体坐标、类别和置信度的数组，可以根据需要进一步处理这些信息</span></span><br><span class="line">        <span class="comment"># detections=model.postprocess(results)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 在帧上可视化结果</span></span><br><span class="line">        annotated_frame = results[<span class="number">0</span>].plot()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 将处理后的帧写入 FFmpeg 进程</span></span><br><span class="line">        proc.stdin.write(annotated_frame.tobytes())</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 显示带有标注的帧</span></span><br><span class="line">        cv2.imshow(<span class="string">"YOLOv8 推理"</span>, annotated_frame)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 如果按下 'q' 键，则中断循环</span></span><br><span class="line">        <span class="keyword">if</span> cv2.waitKey(<span class="number">1</span>) &amp; <span class="number">0xFF</span> == <span class="built_in">ord</span>(<span class="string">"q"</span>):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 释放视频捕获对象</span></span><br><span class="line">cap.release()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭 FFmpeg 进程</span></span><br><span class="line">proc.stdin.close()</span><br><span class="line">proc.wait()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 关闭显示窗口</span></span><br><span class="line">cv2.destroyAllWindows()</span><br></pre></td></tr></tbody></table></figure>
+
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_67421731/article/details/132276460">零基础yolov8实时检测</a> 根据模型返回数据自己处理原图像,可以自己设置检测框以及检测标签的样式，相关模型返回数据及处理方式请参考官方文档<br>【2】.<a target="_blank" rel="noopener" href="https://blog.51cto.com/u_16175440/6937232">python 获取视频上的时间戳</a> video.get(cv2.CAP_PROP_POS_MSEC),获取当前帧的时间戳，单位为毫秒。<br>【3】.<a target="_blank" rel="noopener" href="https://wenku.csdn.net/answer/4f6a3b88e2534216833cde4561b890c2">python opencv 获取rtmp实践戳</a> 这里也是通过 cv2.CAP_PROP_POS_MSEC 获取到的rtmp的时间戳。</div>
+<h1 id="3-预测参数"><a href="#3-预测参数" class="headerlink" title="3.预测参数"></a>3.预测参数</h1><p>model接口参数如下：</p>
+<ul>
+<li><p>source<br>指定用于推理的数据源。可以是实时源的图像路径、视频文件、目录、URL 或设备 ID。支持多种格式和来源，可跨不同类型的输入灵活应用。默认：’ultralytics/assets’</p>
+</li>
+<li><p>conf<br>设置检测的最小置信度阈值。置信度低于此阈值的检测到的对象将被忽略。调整此值有助于减少误报。默认：0.25</p>
+</li>
+<li><p>iou<br>非极大值抑制 (NMS) 的交并集 (IoU) 阈值。较低的值会消除重叠框，从而减少检测次数，这对于减少重复项很有用。默认：0.7</p>
+</li>
+<li><p>imgsz<br>定义用于推理的图像大小。可以是用于调整正方形大小的单个整数 640 或（高度，宽度）元组。适当的尺寸可以提高检测精度和处理速度。默认：0.7</p>
+</li>
+<li><p>half<br>启用半精度 (FP16) 推理，这可以加快受支持 GPU 上的模型推理速度，同时对准确性的影响最小。默认：False</p>
+</li>
+<li><p>device<br>指定用于推理的设备（例如，cpu、cuda:0 或 0）。允许用户选择 CPU、特定 GPU 或其他计算设备来执行模型。默认：None</p>
+</li>
+<li><p>max_det<br>每个图像允许的最大检测数。限制模型在单次推理中可以检测到的对象总数，防止密集场景中的过多输出。默认：300</p>
+</li>
+<li><p>vid_stride<br>视频输入的帧步长。允许在视频中跳帧以加快处理速度，但会牺牲时间分辨率。值为 1 时处理每一帧，较高的值会跳过帧。默认：1</p>
+</li>
+<li><p>stream_buffer<br>确定是否对视频流的传入帧进行排队。如果为 False，旧帧将被丢弃以容纳新帧（针对实时应用程序进行了优化）。如果为“True”，则将新帧放入缓冲区中排队，确保不会跳过任何帧，但如果推理 FPS 低于流 FPS，则会导致延迟。默认：False</p>
+</li>
+<li><p>visualize<br>在推理过程中激活模型特征的可视化，提供对模型“看到”的内容的见解。对于调试和模型解释很有用。默认：False</p>
+</li>
+<li><p>augment<br>启用预测测试时间增强 (TTA)，可能会以推理速度为代价提高检测鲁棒性.默认：False</p>
+</li>
+<li><p>agnostic_nms<br>启用与类无关的非极大值抑制 (NMS)，它合并不同类的重叠框。在类重叠很常见的多类检测场景中很有用。默认：False</p>
+</li>
+<li><p>classes<br>将预测过滤为一组类 ID。仅返回属于指定类别的检测。对于在多类检测任务中关注相关对象很有用。按类别过滤结果。可以指定单个类别（例如class=0）或多个类别（例如class=[0,2,3]）。默认值为None，表示不进行类别过滤。默认：None</p>
+</li>
+<li><p>retina_masks<br>如果模型中可用，则使用高分辨率分割掩模。这可以提高分割任务的掩模质量，提供更精细的细节。默认：False</p>
+</li>
+<li><p>embed<br>指定从中提取特征向量或嵌入的图层。对于聚类或相似性搜索等下游任务很有用。默认：None</p>
+</li>
+<li><p>show<br>是否显示检测结果。如果设置为True，则会在屏幕上显示检测到的对象。默认值为False。</p>
+</li>
+<li><p>save<br>是否保存带有检测结果的图像。如果设置为True，则会将检测结果保存为图像文件。默认值为False。</p>
+</li>
+<li><p>save_txt<br>是否将检测结果保存为文本文件（.txt）。默认值为False。</p>
+</li>
+<li><p>save_conf<br>是否将检测结果与置信度分数一起保存。默认值为False。</p>
+</li>
+<li><p>save_crop<br>是否保存裁剪后的带有检测结果的图像。默认值为False。</p>
+</li>
+<li><p>hide_labels<br>是否隐藏标签。如果设置为True，则在显示检测结果时不显示对象标签。默认值为False。</p>
+</li>
+<li><p>hide_conf<br>是否隐藏置信度分数。如果设置为True，则在显示检测结果时不显示置信度分数。默认值为False。</p>
+</li>
+<li><p>line_width<br>边界框的线宽。如果设置为None，则根据图像大小进行自动缩放。默认值为None。</p>
+</li>
+<li><p>visualize<br>是否可视化模型特征。默认值为False。</p>
+</li>
+<li><p>boxes<br>在分割预测中显示边界框。默认值为True。</p>
+</li>
+</ul>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_37553692/article/details/130910432">YOLOv8预测参数详解（全面详细、重点突出、大白话阐述小白也能看懂）</a><br>【2】.<a target="_blank" rel="noopener" href="https://docs.ultralytics.com/modes/predict/">Model Prediction with Ultralytics YOLO</a> 这里是官方的关于预测结果的说明文档，有些参数说明：boxes、masks、probs,speed等。</div>
+<h1 id="3-预测结果"><a href="#3-预测结果" class="headerlink" title="3.预测结果"></a>3.预测结果</h1><p>通常使用 model 传入相关的参数，就可以得到一个 results 结果，其中包含了 boxes 属性，也包含了如 plot() 这样的方法。</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">results = model(<span class="string">"bus.jpg"</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Boxes object can be used to index, manipulate, and convert bounding boxes to different formats.</p>
+<div class="reference">参考文章:<br>【1】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/2301_79578379/article/details/138376437">YOLOv8得到物体的坐标中心点信息</a><br>【2】.<a target="_blank" rel="noopener" href="https://docs.ultralytics.com/reference/engine/results/">Reference for ultralytics/engine/results.py</a> 这是 results 结果的 API 说明。<br>【3】.<a target="_blank" rel="noopener" href="https://blog.csdn.net/kaituozhizzz/article/details/130237967">视频流识别—python</a></div></body></html>
+              </div>
+            </div>
+          </div>
+          <div class='post-footer'>
+            <div>**本文已结束，感谢您的观看**</div>
+            <div class="btn btn-pay">鼓励一下</div>
+          </div>
+          
+            <div class="page">
+              
+              <section class="past-wrap">
+                <section class="past">
+                <p>往期推荐</p>
+                </section>
+              </section>
+              <div class="post-nav">
+                <div class="post-nav-next post-nav-item">
+                  
+                    <a href="/posts/cc966ecc.html" rel="next" title="目标检测之标注工具">
+                      <i class="iconfont icon-prev"></i> 目标检测之标注工具
+                    </a>
+                  
+                </div>
+
+                <span class="post-nav-divider"></span>
+
+                <div class="post-nav-prev post-nav-item">
+                  
+                    <a href="/posts/9b3c91c2.html" rel="prev" title="目标检测之数据训练">
+                      目标检测之数据训练 <i class="iconfont icon-next"></i>
+                    </a>
+                  
+                </div>
+              </div>
+            </div>
+          
+          
+ <div class="comments" id="comments">
+    <div id="disqus_thread">
+        <noscript>
+            不支持Javascript,那你还上啥网啊。
+            <a target="_blank" rel="noopener" href="https://disqus.com/?ref_noscript"></a>
+        </noscript>
+    </div>
+</div>
+
+      </div>
+    </div>
+
+
+    <div class="layui-col-md2 layui-col-lg2 layui-col-sm10 layui-col-xs12 catalogue-wrap">
+        
+
+<div class="catalogue-content">
+    <div class="title">文章目录</div>
+    <div class="toc-content">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">1.前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E8%A7%86%E9%A2%91%E9%A2%84%E6%B5%8B"><span class="toc-number">2.</span> <span class="toc-text">2.视频预测</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%A2%84%E6%B5%8B%E5%8F%82%E6%95%B0"><span class="toc-number">3.</span> <span class="toc-text">3.预测参数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E9%A2%84%E6%B5%8B%E7%BB%93%E6%9E%9C"><span class="toc-number">4.</span> <span class="toc-text">3.预测结果</span></a></li></ol>
+    </div>
+</div>
+
+
+        <div class="sidecontent">
+
+    
+
+    <div class="side-panel side-sponsor">
+        <div class="side-title one">小额赞助</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">本人提供免费与付费咨询服务，感谢您的支持！赞助请发邮件通知，方便公布您的善意！</div>
+                <div class="content">
+                    <img src="/images/pay.png" title="小额赞助"/>
+                </div>
+                
+                
+                <div class="donor_content">
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">**光</span>
+                            <span class="money">3.01 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">Sun</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                        
+                        <div class="donor-item">
+                            <span class="name">bibichuan</span>
+                            <span class="money">3.00 元</span>
+                        </div>
+                    
+                    <div class="donor_footer">
+                        <span>捐赠者名单</span>
+                        <span class="total">合计：9.01 元</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title two">微信公众号</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <img src="/images/wechat.png" title="公众号"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ad side-panel">
+        <div class="side-title one">广告位</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">诚心邀请广大金主爸爸洽谈合作</div>
+                <div class="detail">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日一省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">isNaN 和 Number.isNaN 函数的区别？</div>
+                <div class="detail">
+                    
+                        <p>1.函数 isNaN 接收参数后，会尝试将这个参数转换为数值，任何不能被转换为数值的的值都会返回 true，因此非数字值传入也会返回 true ，会影响 NaN 的判断。</p>
+                    
+                        <p>2.函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日二省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">为什么0.1+0.2 ! == 0.3，如何让其相等?</div>
+                <div class="detail">
+                     
+                        <p>一个直接的解决方法就是设置一个误差范围，通常称为“机器精度”。对JavaScript来说，这个值通常为2-52，在ES6中，提供了Number.EPSILON属性，而它的值就是2-52，只要判断0.1+0.2-0.3是否小于Number.EPSILON，如果小于，就可以判断为0.1+0.2 ===0.3。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-8"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title three">每日三省</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">== 操作符的强制类型转换规则？</div>
+                <div class="detail">
+                     
+                        <p>1.首先会判断两者类型是否**相同，**相同的话就比较两者的大小。</p>
+                    
+                        <p>2.类型不相同的话，就会进行类型转换。</p>
+                    
+                        <p>3.会先判断是否在对比 null 和 undefined，是的话就会返回 true。</p>
+                    
+                        <p>4.判断两者类型是否为 string 和 number，是的话就会将字符串转换为 number。</p>
+                    
+                        <p>5.判断其中一方是否为 boolean，是的话就会把 boolean 转为 number 再进行判断。</p>
+                    
+                        <p>6.判断其中一方是否为 object 且另一方为 string、number 或者 symbol，是的话就会把 object 转为原始类型再进行判断。</p>
+                    
+                </div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2021-04-07</span>
+                
+                    <span class="side-footer-item side-button down" title="查看答案">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                
+                    <a class="side-footer-item side-button answer-url" href="https://juejin.cn/post/6940945178899251230#heading-12"
+                    target="_blank">链接地址</a>
+                
+            </div>
+        </div>
+    </div>
+    <div class="side-ask side-panel">
+        
+        <div class="side-title two">每日英语</div>
+        <div class="side-content-wrap">
+            <div class="side-content">
+                <div class="heading">Happiness is time precipitation, smile is the lonely sad.</div>
+                <div class="detail">幸福是年华的沉淀，微笑是寂寞的悲伤。</div>
+            </div>
+            <div class="side-footer">
+                <span class="side-footer-item time">2016</span>
+                
+                    <span class="side-footer-item side-button down" title="查看翻译">
+                        <i class="iconfont icon-expansion"></i>
+                    </span>
+                
+                <span class="side-footer-item author">——— 美文</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+    </div>
+
+  </div>
+  <div class="side-tool">
+    <div class="side-icon-wrap">
+        <i class="iconfont icon-sidemenu"></i>
+    </div>
+    <ul class="side-tool-content">
+        <li title="回到顶部" class="back-to-top side-tool-item">
+            <a class="function-button"><i class="iconfont icon-backtop"></i></a>
+        </li> 
+        <li title="分享文章" class="side-share side-tool-item">
+            <a class="function-button"><i class="iconfont icon-share"></i></a>
+            <div class="iShare iShare-content"></div>
+        </li>
+        <li title="喜欢文章" class="side-like side-tool-item">
+            <a class="function-button"><i class="iconfont icon-like"></i></a>
+        </li>
+         <li class="side-close" title="关闭侧边栏">
+            <a class="function-button"><i class="iconfont icon-close"></i></a>
+        </li>
+    </ul>
+</div>
+
+      </div>
+    </main>   
+    
+    <footer id="footer" class="footer layui-fluid">
+      <div class="layui-row">
+        <div class="container footer-inner">
+          <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="footer-col">
+  <div>温馨提示</div>
+  <div><a href="/about" target="_self">关于作者</a></div>
+  <div><a href="/archives">博客归档</a></div>
+  <div>
+    <span id="busuanzi_container_site_uv">
+      访客数<span id="busuanzi_value_site_uv"></span>人次
+    </span>
+  </div>
+</div>
+<div class="footer-col">
+  <div>友情链接</div>
+  
+  
+  
+  
+    
+        <div><a href="https://malagis.com" target="_blank">麻辣GIS</a></div>
+    
+  
+    
+        <div><a href="https://www.giserdqy.com" target="_blank">GIS开发者</a></div>
+    
+  
+    
+        <div><a href="https://earth.nullschool.net/zh-cn/" target="_blank">earth.nullschool</a></div>
+    
+  
+    
+        <div><a href="https://www.gisclouder.com/" target="_blank">码上GIS实现的热力图</a></div>
+    
+  
+    
+        <div><a href="http://www.cnblogs.com/naaoveGIS/" target="_blank">李晓辉的博客园</a></div>
+    
+  
+    
+        
+          <div><a href="/links">更多</a></div>
+          
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+    
+        
+    
+  
+  <div class="chain-msg">**注意：以上网站都没给钱**</div>
+</div>
+<div class="footer-col">
+  <div>精彩推荐</div>
+  
+    <div><a href="/study">励志</a></div>
+  
+    <div><a href="/anime">动漫</a></div>
+  
+    <div><a href="/movie">电影</a></div>
+  
+    <div><a href="/tv">电视</a></div>
+  
+    <div><a href="/book">书籍</a></div>
+  
+</div>
+<div class="footer-col">
+  <div>开源项目</div>
+  
+    <div><a href="/"></a></div>
+  
+</div>
+          
+        </div>
+      </div>
+    </footer>
+
+    
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/layui/layui.js"></script>
+        
+    
+        
+    
+
+    
+        
+            
+            
+                
+            
+            <script type="text/javascript" src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+        
+    
+
+    
+        
+            
+            
+            <script type="text/javascript" src="/lib/jquery.actual.min.js"></script>
+        
+    
+
+
+    
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+
+
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearchLite.min.js"></script>
+<script type="text/javascript">
+  var client = algoliasearch('DM9LMZOGZE', '1c2739694b8acb4c4edab8ccb098d166');
+  var index = client.initIndex('bibichuan');
+  $(document).ready(function(){
+    var $search=$(".header-wrap");
+    var $searchbtn= $search.find(".find");
+    var $ipt=$search.find(".search-ipt");
+    var $resultClear=$search.find(".clear");
+    var $result=$search.find(".result");
+    // 加入layui
+    layui.use('layer', function(){
+      var layer = layui.layer;
+      // 搜索按钮点击
+      $searchbtn.on("click",function(){
+        var text=$ipt.val();
+        var $this=$(this);
+        var $resultContent=$result.find(".result-content");
+        if(text){
+          var loadDialog=layer.load();
+          if(!$this.hasClass("disabled")){
+            $this.addClass("disabled");
+            index.search(text, (err, { hits } = {}) => {
+              layer.close(loadDialog); 
+
+              $this.removeClass("disabled");
+              var resultHtml="";
+              // 命中
+              if(hits.length>0){
+                var count=hits.length;
+                for(var i=0;i<count;i++){
+                  var h=hits[i];
+                  //根据返回值中_highlightResult来判断显示的内容。
+                  var content=h.contentStripTruncate;
+                  var _highlight=h._highlightResult;
+
+                  var resultC="";
+                  var hitType=""; // 命中的类型
+                  //标题命中
+                  if(_highlight.title&&!resultC){  
+                    if(_highlight.title.matchLevel&&_highlight.title.matchLevel!='none'){
+                      resultC=_highlight.title.value;
+                      hitType="title";
+                    }
+                  }
+                  //分类命中
+                  if(_highlight.categories&&!resultC){ 
+                    var arr=_highlight.categories;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="categories";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="categories";
+                      }
+                    }
+                  }
+
+                  //标签命中
+                  if(_highlight.tags&&!resultC){ 
+                    var arr=_highlight.tags;
+                    if(arr instanceof Array){
+                      var countTemp=arr.length;
+                      for(var j=0;j<countTemp;j++){
+                        var temp=arr[j];
+                        if(temp.matchLevel&&temp.matchLevel!='none'){
+                          resultC=temp.value;
+                          hitType="tags";
+                        }
+                      }
+                    }else{
+                      if(arr.matchLevel&&arr.matchLevel!='none'){
+                        resultC=arr.value;
+                        hitType="tags";
+                      }
+                    }
+                  }
+
+                  // 内容命中
+                  if(!resultC){ 
+                    resultC=_highlight.contentStripTruncate.value;
+                    hitType="contentStripTruncate";
+                  }
+
+                  //如果内容过长，则截断
+                  if(resultC.length>50){
+                    var index=resultC.indexOf('<em>');
+                    var blockIndex=10;
+                    if(index>=blockIndex){
+                      index=index-blockIndex;
+                    }else{
+                      index=0;
+                    }
+                    resultC="..."+resultC.substring(index,index+20+blockIndex)+"...";
+                  }
+                  switch(hitType){
+                    case "title":
+                      resultC="标题："+resultC;
+                      break;
+                    case "categories":
+                      resultC="分类："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "tags":
+                      resultC="标签："+resultC;
+                      resultC+=" ("+h.contentStripTruncate.substring(0,40)+"...)";
+                      break;
+                    case "contentStripTruncate":
+                      resultC="内容："+resultC;
+                      break;
+                  }
+
+                  resultHtml+='<li class="result-item" title="'+content+'"><a href="'+h.permalink+'">'+resultC+'</a></li>';
+                }
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }else{
+                var resultHtml='<li class="result-item" title="未找到相关内容"><a>未找到相关内容</a></li>';
+                $(resultHtml).appendTo($resultContent.empty());
+                $result.show();
+                $resultClear.show();
+              }
+            });
+          }
+        }else{
+          layer.msg("请输入搜索内容");
+        }
+      });
+      // 删除输入内容
+      $resultClear.on("click",function(){
+        $result.hide();
+        $resultClear.hide();
+        //清空输入内容
+        $ipt.val("");
+      });
+      // 监听确定事件
+      $ipt.keydown(function(e){
+        if(e.keyCode==13){
+          $searchbtn.click();
+        }
+      });
+    });              
+  
+  });
+</script>
+    
+
+    
+<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
+<script src="/js/src/post/post.js">></script>
+
+  
+
+  <script type="text/javascript">
+    var disqus_config = function () {
+      this.page.url = 'https://bibichuan.github.io/posts/72128d4d.html';
+      this.page.identifier = 'posts/72128d4d.html';
+      this.page.title = '目标检测之数据预测';
+      };
+    // 加载评论内容
+    function loadComments () {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://https-bibichuan-github-io.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', '' + +new Date());
+      (d.head || d.body).appendChild(s);
+
+      // 隐藏相关文章
+      s.onload = function () {
+        var relatedCommon=$('#comments #disqus_recommendations');
+        if(relatedCommon){
+          relatedCommon.hide();
+        }
+
+      }
+    }
+    function scrollFunction(){
+      // offsetTop may changes because of manually resizing browser window or lazy loading images.
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          var scrollTop = $(window).scrollTop();
+
+          // pre-load comments a bit? (margin or anything else)
+          if (offsetTop - scrollTop < 60) {
+            $(window).off('scroll',scrollFunction);
+            loadComments();
+          }
+    }
+    $(function () {
+      if($("#comments").length<=0){
+        return;
+      }
+      var offsetTop = $('#comments').offset().top - $(window).height();
+      if (offsetTop <= 0) {
+        // load directly when there's no a scrollbar
+        loadComments();
+      } else {
+        $(window).on('scroll', scrollFunction);
+      }
+    });
+  </script>
+
+
+
+<script src="/lib/share/iShare.js"></script>
+<script type="text/javascript">
+var iSharel=(new iShare({container:'.iShare-content',config:{
+		title: '这里有精彩的内容，你确定不过来看看吗？链接标题：目标检测之数据预测 链接地址:https://bibichuan.github.io/posts/72128d4d.html  |(复制此地址在浏览器中打开)——bibichaun出品。',
+		description: '目标检测之数据预测',
+		url: 'https://bibichuan.github.io/posts/72128d4d.html',
+		isAbroad: false,
+		isTitle: true,
+		initialized: true,
+		WXoptions:{
+			evenType: 'click',
+			isTitleVisibility: true,
+			title: '目标检测之数据预测',
+			isTipVisibility: true,
+			tip: '目标检测之数据预测',
+			qrcodeW: '120',
+			qrcodeH: '120',
+			qrcodeFgc: '#4a148c',
+      bgcolor: '#2BAD13'
+		}
+	}}));
+</script>
+
+
+</body>
+</html>
